@@ -7,30 +7,32 @@
     --accent-primary: #E05D44;
     --accent-secondary: #F4A261;
     --success: #2A9D8F;
-    
+
     /* Typography */
     --font-heading: 'Outfit', sans-serif;
     --font-body: 'Inter', sans-serif;
-    
+
     /* Spacing */
     --spacing-sm: 0.5rem;
     --spacing-md: 1rem;
     --spacing-lg: 2rem;
     --spacing-xl: 4rem;
-    
+
     /* UI Elements */
     --radius-sm: 8px;
     --radius-md: 12px;
     --radius-lg: 24px;
     --radius-pill: 50px;
-    
+
     --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.05);
     --glass-bg: rgba(255, 255, 255, 0.7);
     --glass-border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 /* Reset */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -44,7 +46,12 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-family: var(--font-heading);
     font-weight: 700;
     line-height: 1.2;
@@ -149,7 +156,7 @@ ul {
     text-align: center;
     padding: 0 var(--spacing-lg);
     background: radial-gradient(circle at top right, rgba(244, 162, 97, 0.1), transparent 40%),
-                radial-gradient(circle at bottom left, rgba(224, 93, 68, 0.05), transparent 40%);
+        radial-gradient(circle at bottom left, rgba(224, 93, 68, 0.05), transparent 40%);
 }
 
 .hero-content {
@@ -192,8 +199,9 @@ ul {
     .hero h1 {
         font-size: 2.5rem;
     }
-    
+
     .nav-links {
-        display: none; /* Simple mobile hide for now */
+        display: none;
+        /* Simple mobile hide for now */
     }
 }
