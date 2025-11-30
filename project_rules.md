@@ -85,7 +85,7 @@ Use modern, clean sans-serif fonts available via Google Fonts.
 - **Breakpoint Strategy**: Use Flexbox/Grid to adapt from 320px to 1920px+.
 - **Desktop Excellence**:
     - Implement hover states (cursor pointers, color shifts).
-    - No hovering animations that impact SEO.
+    - **STRICTLY FORBIDDEN**: No hovering animations that move elements (e.g., `transform: translate`, `scale`). This negatively impacts SEO/CLS.
     - Use screen real estate effectively (multi-column).
 - **Mobile Excellence**:
     - Convert hover dependencies to click/touch.
@@ -124,3 +124,33 @@ Use modern, clean sans-serif fonts available via Google Fonts.
     - `BreadcrumbList` for hierarchy.
     - `Article` for blog posts.
     - `Product` for items/services.
+
+## 6. SEO Guidelines (Yoast)
+
+### Keyphrase Placement
+- **Focus Keyphrase**: Must appear in SEO Title, Slug, Introduction (first paragraph), Subheadings (30-75%), Meta Description, and Image Alt Attributes.
+
+### Keyphrase Density & Length
+- **Frequency**: 0.5% - 3% density.
+- **Length**: Keep keyphrase to 4 content words or fewer.
+- **Uniqueness**: Do not reuse keyphrases across pages.
+
+### Links
+- **Outbound**: At least one link to an external domain.
+- **Internal**: At least one link to another page on the site.
+
+### Content & Technical
+- **Text Length**: Min 300 words (Regular), Min 900 words (Cornerstone).
+- **Title Width**: ~60 characters.
+- **Meta Description**: 120-156 characters.
+- **H1**: Only one H1 tag per page.
+
+### Readability
+- **Transition Words**: >30% of sentences.
+- **Passive Voice**: <10%.
+- **Sentence Length**: <25% of sentences >20 words.
+- **Paragraph Length**: Max 150 words.
+- **Flesch Reading Ease**: >60.
+
+### Writing Style
+- **No Abbreviations/Contractions**: Do not use contractions like "it's", "we'll", "won't", "can't". Always use the full form: "it is", "we will", "will not", "cannot".

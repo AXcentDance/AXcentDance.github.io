@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schedule & Levels – AXcent Dance</title>
+    <meta name="description"
+        content="Weekly Bachata class schedule in Zurich and guide to finding your perfect level at AXcent Dance.">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* --- Journey Level Guide --- */
+        /* Re-using standard variables for the journey section where possible, 
+           or defining local overrides that match the theme */
+        .journey-section {
+            padding: 100px 20px;
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* --- Hero Section (Aligned with Index) --- */
+        .schedule-hero {
+            padding: 120px 20px 40px;
+            /* Compact padding */
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-subtitle-modern {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 1.5rem;
+            /* Reduced margin */
+            line-height: 1.6;
+            font-weight: 300;
+        }
+
+        /* Override for compact layout */
+        .schedule-section {
+            padding-top: 2rem !important;
+        }
+
+
+
+        /* --- Journey Level Guide --- */
+        .journey-section {
+            padding: 100px 20px;
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-title-journey {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding: 20px 0;
+        }
+
+        /* The Line */
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 2px;
+            background: linear-gradient(to bottom,
+                    transparent,
+                    var(--accent-start),
+                    var(--accent-end),
+                    transparent);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .timeline-content {
+            width: 45%;
+            background: rgba(20, 20, 20, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--card-border);
+            padding: 2rem;
+            border-radius: 16px;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Alternating Layout */
+        .timeline-item:nth-child(odd) {
+            justify-content: flex-start;
+        }
+
+        .timeline-item:nth-child(even) {
+            justify-content: flex-end;
+        }
+
+        /* Connectors */
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            width: 16px;
+            height: 16px;
+            background: #fff;
+            border-radius: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 0 15px #fff;
+            z-index: 2;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-right: 50px;
+            /* Push away from center */
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-left: 50px;
+            /* Push away from center */
+            text-align: left;
+        }
+
+        .journey-title {
+            font-size: 1.5rem;
+            color: #fff;
+            margin-bottom: 0.5rem;
+        }
+
+        .journey-tag {
+            display: inline-block;
+            font-size: 0.8rem;
+            padding: 4px 12px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            margin-bottom: 1rem;
+            color: var(--accent-end);
+        }
+
+        .journey-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Role Split Layout */
+        .role-split {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1rem;
+            text-align: left;
+            /* Ensure text aligns left inside columns */
+        }
+
+        .role-col {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1rem;
+            border-radius: 8px;
+        }
+
+        .role-title {
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .role-title.leader {
+            color: #a0c4ff;
+        }
+
+        /* Soft Blue for Leader */
+        .role-title.follow {
+            color: #ffadad;
+        }
+
+        /* Soft Red for Follow */
+
+        .role-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .role-list li {
+            margin-bottom: 0.25rem;
+            padding-left: 1rem;
+            position: relative;
+        }
+
+        .role-list li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--accent-start);
+        }
+
+        /* Mobile Timeline */
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item {
+                justify-content: flex-start !important;
+                padding-left: 50px;
+            }
+
+            .timeline-dot {
+                left: 20px;
+            }
+
+            .timeline-content {
+                width: 100%;
+                text-align: left !important;
+                margin: 0 !important;
+            }
+
+            .role-split {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Background Blobs (Standard) -->
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+
+    <!-- Navigation -->
+    <header class="main-header">
+        <div class="container navbar">
+            <a href="index.html" class="logo">AXcent <span>Dance</span></a>
+            <button class="mobile-menu-btn" aria-label="Toggle menu">MENU</button>
+            <nav class="nav-links">
+                <a href="index.html#about">About us</a>
+                <a href="schedule.html">Schedule</a>
+                <a href="events.html">Events</a>
+                <a href="registration.html">Registration</a>
+                <a href="contact.html">Contact</a>
+                <a href="index.html#trial-form" class="btn-header-cta">Book Free Trial</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section (Modern Split) -->
+    <section class="schedule-hero-modern">
+        <div class="container">
+            <div class="hero-grid">
+                <!-- Left: Text Content -->
+                <div class="hero-content-left">
+                    <div class="hero-badge">
+                        <div class="hero-badge-line"></div>
+                        <div class="hero-badge-text">WEEKLY CLASSES</div>
+                    </div>
+                    <h1 class="hero-title-large" style="font-size: 3.5rem; margin-bottom: 1rem;">
+                        SCHEDULE <span class="text-gradient">& LEVELS</span>
+                    </h1>
+                    <p class="hero-desc-border" style="border: none; padding: 0; margin: 0; max-width: 500px;">
+                        Find your rhythm with our weekly Bachata classes in Zurich. From absolute beginners to advanced
+                        dancers, we have a spot for you.
+                    </p>
+                    <div class="hero-buttons-group" style="margin-top: 2rem; justify-content: flex-start;">
+                        <a href="index.html#trial-form" class="btn-tilted btn-tilted-primary">
+                            <div class="btn-tilted-content">
+                                <span>BOOK TRIAL CLASS</span>
+                                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                                </svg>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right: Image -->
+                <div class="hero-content-right" style="height: 500px;">
+                    <div class="arch-bg" style="transform: rotate(-2deg); border-radius: 20px;"></div>
+                    <div class="arch-image-wrapper" style="border-radius: 20px;">
+                        <img src="schedule_hero.png" alt="Bachata Dance Atmosphere" class="arch-image">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main>
+        <!-- Grid Schedule (Reverted) -->
+        <section id="schedule" class="schedule-section">
+            <div class="container">
+                <div class="schedule-header">
+                    <h2 class="section-title-modern">Weekly Schedule</h2>
+                    <p class="schedule-meta">Zurich Altstetten • English Taught</p>
+                </div>
+
+                <!-- Desktop Grid Header -->
+                <div class="schedule-grid-header">
+                    <div class="col-header time">Start</div>
+                    <div class="col-header day">Wednesday</div>
+                    <div class="col-header day">Thursday</div>
+                </div>
+
+                <div class="hidden-mobile">
+                    <!-- Slot 1 -->
+                    <div class="schedule-row">
+                        <div class="time-slot">18:30</div>
+
+                        <!-- Wed Class -->
+                        <div class="class-card">
+                            <span class="level-tag tag-beginner">Beginner 0</span>
+                            <h4 class="class-name">Bachata Beginner 0</h4>
+                            <p class="class-instructor">with Ale y Alexia</p>
+                        </div>
+
+                        <!-- Thu Class -->
+                        <div class="class-card">
+                            <span class="level-tag tag-beginner">Beginner 3</span>
+                            <h4 class="class-name">Bachata Beginner 3</h4>
+                            <p class="class-instructor">with Ale y Alexia</p>
+                        </div>
+                    </div>
+
+                    <!-- Slot 2 -->
+                    <div class="schedule-row">
+                        <div class="time-slot">19:30</div>
+
+                        <!-- Wed Class -->
+                        <div class="class-card">
+                            <span class="level-tag tag-sensual">Foundation</span>
+                            <h4 class="class-name">Bachata Sensual Foundation</h4>
+                            <p class="class-instructor">with Ale y Xidan</p>
+                        </div>
+
+                        <!-- Thu Class -->
+                        <div class="class-card">
+                            <span class="level-tag tag-styling">Open Level</span>
+                            <h4 class="class-name">Lady Styling</h4>
+                            <p class="class-instructor">with Xidan</p>
+                        </div>
+                    </div>
+
+                    <!-- Slot 3 -->
+                    <div class="schedule-row">
+                        <div class="time-slot">20:30</div>
+
+                        <!-- Wed Class -->
+                        <div class="class-card">
+                            <span class="level-tag tag-sensual">Improver</span>
+                            <h4 class="class-name">Bachata Sensual Improver</h4>
+                            <p class="class-instructor">with Ale y Xidan</p>
+                        </div>
+
+                        <!-- Thu Class -->
+                        <div class="class-card">
+                            <span class="level-tag tag-sensual">Intermediate</span>
+                            <h4 class="class-name">Sensual Mastery</h4>
+                            <p class="class-instructor">with Ale y Xidan</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mobile Schedule Fallback -->
+                <div class="hidden-desktop">
+                    <div class="mobile-schedule-day">
+                        <h3 class="mobile-day-title">Wednesday</h3>
+                        <div class="schedule-row">
+                            <div class="class-card">
+                                <div class="mobile-time">18:30</div>
+                                <h4 class="class-name">Bachata Beginner 0</h4>
+                            </div>
+                            <div class="class-card">
+                                <div class="mobile-time">19:30</div>
+                                <h4 class="class-name">Bachata Sensual Foundation</h4>
+                            </div>
+                            <div class="class-card">
+                                <div class="mobile-time">20:30</div>
+                                <h4 class="class-name">Bachata Sensual Improver</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mobile-schedule-day">
+                        <h3 class="mobile-day-title">Thursday</h3>
+                        <div class="schedule-row">
+                            <div class="class-card">
+                                <div class="mobile-time">18:30</div>
+                                <h4 class="class-name">Bachata Beginner 3</h4>
+                            </div>
+                            <div class="class-card">
+                                <div class="mobile-time">19:30</div>
+                                <h4 class="class-name">Lady Styling</h4>
+                            </div>
+                            <div class="class-card">
+                                <div class="mobile-time">20:30</div>
+                                <h4 class="class-name">Bachata Sensual Intermediate/Advanced</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Journey Level Guide -->
+        <section class="journey-section">
+            <div class="section-header">
+                <h2 class="section-title-modern">Your Dance Journey</h2>
+                <p class="journey-desc" style="max-width: 800px; margin: 0 auto; margin-bottom: 2rem;">
+                    This is an overview of a dancer's journey with AXcent. We divide classes by what you
+                    <strong>should</strong> be taking (Core) and what would be a good <strong>complimentary</strong>
+                    addition.
+                    <br><br>
+                    Remember that each journey belongs to you. Please talk to us to know what is the best class for you!
+                </p>
+            </div>
+
+            <div class="timeline">
+
+                <!-- Stage 1: 0 - 8 Months -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="journey-tag">0 - 6 Months</span>
+                        <h3 class="journey-title">The Start</h3>
+                        <p class="journey-desc">
+                            Your friendly introduction to Bachata.
+                        </p>
+                        <div class="role-split">
+                            <div class="role-col">
+                                <div class="role-title">Everyone</div>
+                                <ul class="role-list">
+                                    <li>Bachata Beginner 0</li>
+                                    <li>Bachata Beginner 1</li>
+                                    <li>Bachata Beginner 2</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stage 2: 6 Months - 1.5 Years -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="journey-tag">6 Months - 1 Years</span>
+                        <h3 class="journey-title">Building the Foundation</h3>
+                        <div class="role-split">
+                            <div class="role-col">
+                                <div class="role-title leader">🕺 Leader</div>
+                                <ul class="role-list">
+                                    <li><strong>Core:</strong> Sensual Foundation</li>
+                                </ul>
+                            </div>
+                            <div class="role-col">
+                                <div class="role-title follow">💃 Follow</div>
+                                <ul class="role-list">
+                                    <li><strong>Core:</strong> Sensual Foundation</li>
+                                    <li><em>Complimentary:</em> Lady Styling</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stage 3: 1.5 Years - 2 Years -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="journey-tag">1 Years - 1.5 Years</span>
+                        <h3 class="journey-title">Expanding Your Flow</h3>
+                        <div class="role-split">
+                            <div class="role-col">
+                                <div class="role-title leader">🕺 Leader</div>
+                                <ul class="role-list">
+                                    <li><strong>Core:</strong> Sensual Foundation</li>
+                                    <li><strong>Core:</strong> Improver</li>
+                                </ul>
+                            </div>
+                            <div class="role-col">
+                                <div class="role-title follow">💃 Follow</div>
+                                <ul class="role-list">
+                                    <li><strong>Core:</strong> Improver</li>
+                                    <li><strong>Core:</strong> Lady Styling</li>
+                                    <li><em>Complimentary:</em> Sensual Foundation</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stage 4: 2 Years + -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"
+                        style="background: var(--accent-start); box-shadow: 0 0 15px var(--accent-start);"></div>
+                    <div class="timeline-content" style="border-color: rgba(255, 59, 48, 0.3);">
+                        <span class="journey-tag" style="color: var(--accent-start);">2 Years +</span>
+                        <h3 class="journey-title">Mastering the Art</h3>
+                        <div class="role-split">
+                            <div class="role-col">
+                                <div class="role-title leader">🕺 Leader</div>
+                                <ul class="role-list">
+                                    <li><strong>Core:</strong> Intermediate / Advanced</li>
+                                    <li><em>Complimentary:</em> Improver</li>
+                                </ul>
+                            </div>
+                            <div class="role-col">
+                                <div class="role-title follow">💃 Follow</div>
+                                <ul class="role-list">
+                                    <li><strong>Core:</strong> Intermediate / Advanced</li>
+                                    <li><strong>Core:</strong> Lady Styling</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Footer CTA -->
+        <section class="footer-cta" style="margin-top: 50px;">
+            <div class="container">
+                <div class="cta-content">
+                    <h3 class="cta-title">Ready to start?</h3>
+                    <a href="index.html#trial-form" class="skew-button btn-primary">
+                        <div>BOOK TRIAL CLASS</div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="main-footer">
+        <p>Hermetschloostrasse 73, 8048, Zurich</p>
+        <p>&copy; 2025 AXcent Dance. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

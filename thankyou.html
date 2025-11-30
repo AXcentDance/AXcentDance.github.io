@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You – AXcent Dance</title>
+    <meta name="description" content="Thank you for your interest in AXcent Dance. We will be in touch soon.">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Specific styles for Thank You page to center content */
+        .thank-you-section {
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .thank-you-content {
+            max-width: 600px;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            padding: 3rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .thank-you-logo {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 3rem;
+            letter-spacing: -0.02em;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+            display: inline-block;
+        }
+
+        .thank-you-logo span {
+            color: var(--primary-color);
+        }
+
+        .thank-you-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, #fff, #ccc);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .thank-you-message {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 2.5rem;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Background Elements -->
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+
+    <!-- Navigation Bar -->
+    <header class="main-header">
+        <div class="container navbar">
+            <a href="index.html" class="logo">AX<span>CENT</span></a>
+            <ul class="nav-links">
+                <li><a href="index.html#about">About us</a></li>
+                <li><a href="schedule.html">Schedule</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="registration.html">Registration</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <a href="index.html#trial-form" class="btn-header-cta">Book Free Trial</a>
+            <button class="mobile-menu-btn">MENU</button>
+        </div>
+    </header>
+
+    <main>
+        <section class="thank-you-section">
+            <div class="thank-you-content">
+                <div class="thank-you-logo">AX<span>CENT</span></div>
+                <h1 class="thank-you-title">Thank You!</h1>
+                <p class="thank-you-message">
+                    We have received your registration and will contact you soon with all the details for your trial
+                    class.
+                    <br><br>
+                    Get ready to dance!
+                </p>
+
+                <a href="index.html" class="btn-tilted btn-tilted-primary">
+                    <span class="btn-tilted-content">
+                        BACK TO HOME
+                    </span>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <p>Hermetschloostrasse 73, 8048, Zurich</p>
+        <p>&copy; 2025 AXcent Dance. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

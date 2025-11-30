@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register for Classes | AXcent Dance</title>
+    <meta name="description"
+        content="Register for Bachata classes in Zurich with AXcent Dance. Choose your package and join the community.">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Registration Specific Styles */
+        .reg-hero {
+            padding: 180px 20px 60px;
+            text-align: center;
+        }
+
+        .reg-form-container {
+            max-width: 800px;
+            margin: 0 auto 80px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 40px;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--text-light);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 0.5rem;
+        }
+
+        .price-toggle {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 10px;
+            border-radius: 50px;
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .toggle-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            padding: 8px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .toggle-btn.active {
+            background: var(--accent-start);
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(108, 92, 231, 0.4);
+        }
+
+        .package-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .package-option {
+            cursor: pointer;
+            position: relative;
+        }
+
+        .package-option input {
+            position: absolute;
+            opacity: 0;
+        }
+
+        .package-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            transition: all 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .package-option input:checked+.package-card {
+            border-color: var(--accent-start);
+            background: rgba(108, 92, 231, 0.1);
+            box-shadow: 0 0 20px rgba(108, 92, 231, 0.2);
+        }
+
+        .pkg-name {
+            display: block;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .pkg-price {
+            display: block;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--accent-light);
+        }
+
+        .pkg-desc {
+            display: block;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+        }
+
+        .class-checkbox-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1rem;
+        }
+
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .checkbox-label:hover {
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .checkbox-label input {
+            accent-color: var(--accent-start);
+            width: 18px;
+            height: 18px;
+        }
+
+        @media (max-width: 768px) {
+            .reg-form-container {
+                padding: 20px;
+            }
+
+            .reg-hero {
+                padding-top: 120px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Background Blobs -->
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+
+    <!-- Navigation -->
+    <header class="main-header">
+        <div class="container navbar">
+            <a href="index.html" class="logo">AXcent <span>Dance</span></a>
+            <button class="mobile-menu-btn" aria-label="Toggle menu">MENU</button>
+            <nav class="nav-links">
+                <a href="index.html#about">About us</a>
+                <a href="schedule.html">Schedule</a>
+                <a href="events.html">Events</a>
+                <a href="registration.html" class="active">Registration</a>
+                <a href="contact.html">Contact</a>
+                <a href="index.html#trial-form" class="btn-header-cta">Book Free Trial</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="reg-hero">
+            <div class="container">
+                <h1 class="hero-title-large">
+                    Join the <span class="text-gradient">Movement</span>
+                </h1>
+                <p class="hero-subtitle-modern">
+                    Secure your spot in our upcoming Bachata courses.
+                </p>
+            </div>
+        </section>
+
+        <section class="container">
+            <div class="reg-form-container">
+                <form action="https://formsubmit.co/info@axcentdance.com" method="POST" id="registrationForm">
+                    <input type="hidden" name="_subject" value="New Course Registration!">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_next" value="https://axcentdance.com/thankyou.html">
+
+                    <!-- 1. Personal Details -->
+                    <div class="form-section">
+                        <h3 class="form-section-title">1. Personal Details</h3>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="firstname">First Name</label>
+                                <input type="text" id="firstname" name="firstname" required placeholder="Jane">
+                            </div>
+                            <div class="form-group">
+                                <label for="lastname">Last Name</label>
+                                <input type="text" id="lastname" name="lastname" required placeholder="Doe">
+                            </div>
+                        </div>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" required placeholder="jane@example.com">
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone</label>
+                                <input type="tel" id="phone" name="phone" required placeholder="+41 79 123 45 67">
+                            </div>
+                        </div>
+
+                        <div class="form-group" style="margin-top: 1rem;">
+                            <label>Role</label>
+                            <div class="radio-group" style="display: flex; gap: 2rem;">
+                                <label class="checkbox-label" style="flex: 1; justify-content: center;">
+                                    <input type="radio" name="role" value="Leader" required>
+                                    <span>Leader 🕺</span>
+                                </label>
+                                <label class="checkbox-label" style="flex: 1; justify-content: center;">
+                                    <input type="radio" name="role" value="Follower" required>
+                                    <span>Follower 💃</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2. Package Selection -->
+                    <div class="form-section" style="margin-top: 3rem;">
+                        <h3 class="form-section-title">2. Choose Your Package</h3>
+
+                        <div class="price-toggle">
+                            <button type="button" class="toggle-btn active" id="btnRegular"
+                                onclick="setPricing('regular')">Regular</button>
+                            <button type="button" class="toggle-btn" id="btnStudent"
+                                onclick="setPricing('student')">Student / Low Income</button>
+                        </div>
+                        <input type="hidden" name="pricing_tier" id="pricingTier" value="Regular">
+
+                        <div class="package-grid">
+                            <!-- 1 Course -->
+                            <label class="package-option">
+                                <input type="radio" name="package" value="1 Course (8 Weeks)" required>
+                                <div class="package-card">
+                                    <span class="pkg-name">1 Course</span>
+                                    <span class="pkg-price" data-reg="200 CHF" data-stu="170 CHF">200 CHF</span>
+                                    <span class="pkg-desc">8 Weeks (8 Lessons)</span>
+                                </div>
+                            </label>
+
+                            <!-- 2 Courses -->
+                            <label class="package-option">
+                                <input type="radio" name="package" value="2 Courses (8 Weeks)">
+                                <div class="package-card">
+                                    <span class="pkg-name">2 Courses</span>
+                                    <span class="pkg-price" data-reg="318 CHF" data-stu="270 CHF">318 CHF</span>
+                                    <span class="pkg-desc">8 Weeks (16 Lessons)</span>
+                                </div>
+                            </label>
+
+                            <!-- 3 Courses -->
+                            <label class="package-option">
+                                <input type="radio" name="package" value="3 Courses (8 Weeks)">
+                                <div class="package-card">
+                                    <span class="pkg-name">3 Courses</span>
+                                    <span class="pkg-price" data-reg="395 CHF" data-stu="335 CHF">395 CHF</span>
+                                    <span class="pkg-desc">8 Weeks (24 Lessons)</span>
+                                </div>
+                            </label>
+
+                            <!-- 10 Class Pass -->
+                            <label class="package-option">
+                                <input type="radio" name="package" value="10 Class Pass">
+                                <div class="package-card">
+                                    <span class="pkg-name">10 Class Pass</span>
+                                    <span class="pkg-price" data-reg="280 CHF" data-stu="238 CHF">280 CHF</span>
+                                    <span class="pkg-desc">Flexible (Valid 1 Year)</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- 3. Select Classes -->
+                    <div class="form-section" style="margin-top: 3rem;">
+                        <h3 class="form-section-title">3. Select Your Classes</h3>
+                        <p style="color: var(--text-muted); margin-bottom: 1rem; font-size: 0.9rem;">Please check the
+                            classes you intend to join.</p>
+
+                        <div class="class-checkbox-grid">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="classes[]" value="Wed 18:30 Beginner 0">
+                                <span>Wed 18:30 - Beginner 0</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="classes[]" value="Wed 19:30 Sensual Foundation">
+                                <span>Wed 19:30 - Sensual Foundation</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="classes[]" value="Wed 20:30 Sensual Improver">
+                                <span>Wed 20:30 - Sensual Improver</span>
+                            </label>
+
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="classes[]" value="Thu 18:30 Beginner 3">
+                                <span>Thu 18:30 - Beginner 3</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="classes[]" value="Thu 19:30 Lady Styling">
+                                <span>Thu 19:30 - Lady Styling</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="classes[]" value="Thu 20:30 Sensual Intermediate/Advanced">
+                                <span>Thu 20:30 - Sensual Intermediate/Advanced</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- 4. Agreements -->
+                    <div class="form-section" style="margin-top: 3rem;">
+                        <div class="form-group">
+                            <label class="checkbox-label" style="background: none; padding: 0;">
+                                <input type="checkbox" name="newsletter" value="yes" checked>
+                                <span style="font-size: 0.9rem; color: var(--text-muted);">I want to stay connected with
+                                    AXcent Dance news and events.</span>
+                            </label>
+                        </div>
+                        <div class="form-group" style="margin-top: 1rem;">
+                            <label class="checkbox-label" style="background: none; padding: 0;">
+                                <input type="checkbox" name="privacy_policy" required>
+                                <span style="font-size: 0.9rem; color: var(--text-muted);">I accept the <a href="#"
+                                        style="color: var(--accent-light);">Privacy Policy</a>.</span>
+                            </label>
+                        </div>
+                        <div class="form-group" style="margin-top: 0.5rem;">
+                            <label class="checkbox-label" style="background: none; padding: 0;">
+                                <input type="checkbox" name="terms" required>
+                                <span style="font-size: 0.9rem; color: var(--text-muted);">I accept the <a href="#"
+                                        style="color: var(--accent-light);">General Terms and Conditions</a>.</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="skew-button btn-primary"
+                        style="width: 100%; margin-top: 2rem; border: none; font-size: 1.1rem;">
+                        <div>COMPLETE REGISTRATION</div>
+                    </button>
+
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="main-footer">
+        <p>Hermetschloostrasse 73, 8048, Zurich</p>
+        <p>&copy; 2025 AXcent Dance. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Simple script to handle pricing toggle
+        function setPricing(type) {
+            const btnRegular = document.getElementById('btnRegular');
+            const btnStudent = document.getElementById('btnStudent');
+            const pricingInput = document.getElementById('pricingTier');
+
+            if (type === 'regular') {
+                btnRegular.classList.add('active');
+                btnStudent.classList.remove('active');
+                pricingInput.value = 'Regular';
+
+                document.querySelectorAll('.pkg-price').forEach(el => {
+                    el.textContent = el.getAttribute('data-reg');
+                });
+            } else {
+                btnRegular.classList.remove('active');
+                btnStudent.classList.add('active');
+                pricingInput.value = 'Student';
+
+                document.querySelectorAll('.pkg-price').forEach(el => {
+                    el.textContent = el.getAttribute('data-stu');
+                });
+            }
+        }
+    </script>
+</body>
+
+</html>

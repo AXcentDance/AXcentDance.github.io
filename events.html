@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dominican Bachata Bootcamp | AXcent Dance</title>
+    <meta name="description"
+        content="The Biggest Dominican Bachata Event in Zurich. 7 Hours Intensive with Aitor Gomez & Sarah La Morena.">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .event-hero {
+            padding: 160px 20px 60px;
+            text-align: center;
+        }
+
+        .event-container {
+            max-width: 1000px;
+            margin: 0 auto 80px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .event-image-wrapper {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .event-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .event-image-wrapper:hover .event-image {
+            transform: scale(1.03);
+        }
+
+        .event-content {
+            text-align: left;
+        }
+
+        .event-tagline {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--accent-start);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .event-title {
+            font-size: 3rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(to right, #fff, #ccc);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .event-description {
+            color: var(--text-light);
+            line-height: 1.7;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .event-details-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .detail-item {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 1rem;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .detail-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 0.3rem;
+        }
+
+        .detail-value {
+            font-weight: 700;
+            color: #fff;
+            font-size: 1.1rem;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        @media (max-width: 900px) {
+            .event-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .event-title {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Background Blobs -->
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+
+    <!-- Navigation -->
+    <header class="main-header">
+        <div class="container navbar">
+            <a href="index.html" class="logo">AXcent <span>Dance</span></a>
+            <button class="mobile-menu-btn" aria-label="Toggle menu">MENU</button>
+            <nav class="nav-links">
+                <a href="index.html#about">About us</a>
+                <a href="schedule.html">Schedule</a>
+                <a href="events.html" class="active">Events</a>
+                <a href="registration.html">Registration</a>
+                <a href="contact.html">Contact</a>
+                <a href="index.html#trial-form" class="btn-header-cta">Book Free Trial</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="event-hero">
+            <div class="container">
+                <h1 class="hero-title-large">
+                    Upcoming <span class="text-gradient">Events</span>
+                </h1>
+            </div>
+        </section>
+
+        <section class="container">
+            <div class="event-container">
+                <!-- Left: Image -->
+                <div class="event-image-wrapper">
+                    <img src="dominican_bootcamp.png" alt="Dominican Bachata Bootcamp Flyer" class="event-image">
+                </div>
+
+                <!-- Right: Content -->
+                <div class="event-content">
+                    <span class="event-tagline">2nd Edition • 3/4 October 2026</span>
+                    <h2 class="event-title">Dominican Bachata Bootcamp</h2>
+
+                    <p class="event-description">
+                        Join us for the <strong>Biggest Dominican Bachata Event in Zurich</strong>!
+                        Immerse yourself in a 7-hour intensive bootcamp featuring international artists
+                        <strong>Aitor Gomez</strong> and <strong>Sarah La Morena</strong>.
+                        Take your skills to the next level with 4 hours of partnerwork and 3 hours of styling.
+                    </p>
+
+                    <div class="event-details-grid">
+                        <div class="detail-item">
+                            <div class="detail-label">Instructors</div>
+                            <div class="detail-value">Aitor & Sarah</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">Format</div>
+                            <div class="detail-value">7 Hours Intensive</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">Date</div>
+                            <div class="detail-value">3/4 Oct 2026</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">Price</div>
+                            <div class="detail-value">115 CHF</div>
+                        </div>
+                    </div>
+
+                    <div class="cta-group">
+                        <a href="https://wa.me/41799668481" class="skew-button btn-primary" style="border: none;">
+                            <div>BOOK VIA WHATSAPP</div>
+                        </a>
+                        <a href="registration.html" class="skew-button btn-secondary">
+                            <div>REGISTER ONLINE</div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="main-footer">
+        <p>Hermetschloostrasse 73, 8048, Zurich</p>
+        <p>&copy; 2025 AXcent Dance. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
