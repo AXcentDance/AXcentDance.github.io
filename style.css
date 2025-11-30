@@ -468,26 +468,90 @@ svg {
     background-color: var(--bg-main);
 }
 
-.values-section {
-    padding: 3rem 0;
+/* GALLERY & VALUES SECTION (Split Layout) */
+.gallery-values-section {
+    padding: 5rem 0;
+    background-color: var(--bg-main);
     position: relative;
     z-index: 20;
-    background-color: var(--bg-main);
-    overflow: hidden;
 }
 
-.values-grid {
+.split-layout {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 2rem;
-    align-items: start;
+    gap: 4rem;
 }
 
 @media (min-width: 1024px) {
-    .values-grid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 3rem;
+    .split-layout {
+        grid-template-columns: 1fr 1fr;
+        gap: 6rem;
+        align-items: start;
     }
+}
+
+/* Left Column: Gallery */
+.gallery-col {
+    width: 100%;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+}
+
+.gallery-item {
+    background-color: #2a1a4a;
+    /* Placeholder color */
+    border-radius: 1rem;
+    aspect-ratio: 3/4;
+    background-size: cover;
+    background-position: center;
+    border: 1px solid var(--glass-border);
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: scale(1.02);
+}
+
+/* Placeholder Images for Gallery */
+.gallery-item.item-1 {
+    background-image: url('https://images.unsplash.com/photo-1516475429286-465d815a0df7?q=80&w=800&auto=format&fit=crop');
+}
+
+.gallery-item.item-2 {
+    background-image: url('https://images.unsplash.com/photo-1545959570-a94197c16417?q=80&w=800&auto=format&fit=crop');
+    margin-top: 2rem;
+}
+
+.gallery-item.item-3 {
+    background-image: url('https://images.unsplash.com/photo-1504609773096-104ff2c73ba4?q=80&w=800&auto=format&fit=crop');
+    margin-top: -2rem;
+}
+
+.gallery-item.item-4 {
+    background-image: url('https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?q=80&w=800&auto=format&fit=crop');
+}
+
+
+/* Right Column: Values */
+.values-col {
+    width: 100%;
+}
+
+.section-title-left {
+    text-align: left;
+    margin-left: 0;
+    margin-right: 0;
+    display: block;
+}
+
+.values-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
 }
 
 .value-item {
