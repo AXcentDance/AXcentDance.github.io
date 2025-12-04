@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Registration – AXcent Dance</title>
+    <meta name="description" content="Complete your registration for AXcent Dance classes.">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Specific styles for Cart page */
+        .cart-section {
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cart-content {
+            max-width: 600px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            padding: 3rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .cart-logo {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 3rem;
+            letter-spacing: -0.02em;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+            display: inline-block;
+        }
+
+        .cart-logo span {
+            color: var(--primary-color);
+        }
+
+        .cart-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, #fff, #ccc);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .cart-message {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 2.5rem;
+            line-height: 1.6;
+        }
+
+        .payment-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: #635bff;
+            /* Stripe Blurple */
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            max-width: 300px;
+            margin: 0 auto;
+        }
+
+        .payment-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(99, 91, 255, 0.3);
+        }
+
+        .loading-spinner {
+            display: none;
+            margin-bottom: 1rem;
+            color: var(--text-muted);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Background Elements -->
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+
+    <!-- Navigation Bar -->
+    <header class="main-header">
+        <div class="container navbar">
+            <a href="index.html" class="logo"><span class="logo-title">AXCENT</span><span
+                    class="logo-subtitle text-gradient">DANCE</span></a>
+            <button class="mobile-menu-btn" aria-label="Toggle menu">MENU</button>
+            <nav class="nav-links">
+                <a href="index.html#about">About us</a>
+                <a href="schedule.html">Schedule</a>
+                <a href="events.html">Events</a>
+                <a href="registration.html">Registration</a>
+                <a href="contact.html">Contact</a>
+                <div class="dropdown">
+                    <button class="dropbtn">More ▾</button>
+                    <div class="dropdown-content">
+                        <a href="room-rental.html">Room Rental</a>
+                        <a href="collaborations.html">Collaborations</a>
+                    </div>
+                </div>
+                <a href="index.html#trial-form" class="btn-header-cta">Book Free Trial</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="cart-section">
+            <div class="cart-content">
+                <div class="cart-logo"><span class="logo-title">AXCENT</span><span
+                        class="logo-subtitle text-gradient">DANCE</span></div>
+                <h1 class="cart-title">Complete Registration</h1>
+
+                <div id="cart-details">
+                    <p class="cart-message">
+                        Thank you for registering! To secure your spot, please complete the payment securely via Stripe.
+                    </p>
+
+                    <a href="#" id="stripe-payment-btn" class="payment-btn">
+                        Pay with Card
+                    </a>
+                </div>
+
+                <div id="cart-error" style="display: none;">
+                    <p class="cart-message" style="color: #ff4444;">
+                        No registration details found. Please go back and register again.
+                    </p>
+                    <a href="registration.html" class="btn-tilted btn-tilted-primary">
+                        <span class="btn-tilted-content">GO TO REGISTRATION</span>
+                    </a>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <a href="index.html" class="logo footer-logo"><span class="logo-title">AXCENT</span><span
+                        class="logo-subtitle text-gradient">DANCE</span></a>
+                <p class="footer-address">
+                    Hermetschloostrasse 73,<br>
+                    8048 Zurich Altstetten<br> 2 minute walking from Tram 2 stop and Bus 31 stop
+                </p>
+            </div>
+            <div class="footer-col">
+                <h4 class="footer-heading">Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="schedule.html">Schedule</a></li>
+                    <li><a href="registration.html">Registration</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 AXcent Dance. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const stripeLink = localStorage.getItem('axcent_stripe_link');
+            const mailtoLink = localStorage.getItem('axcent_mailto_link');
+
+            const paymentBtn = document.getElementById('stripe-payment-btn');
+            const cartDetails = document.getElementById('cart-details');
+            const cartError = document.getElementById('cart-error');
+
+            if (stripeLink) {
+                paymentBtn.href = stripeLink;
+
+                // Optional: Trigger mailto if it exists and hasn't been opened yet
+                // But usually browsers block auto-popups. 
+                // We'll assume registration.html might have tried, or we can try here.
+                // Let's try here as a backup or primary method.
+                if (mailtoLink) {
+                    // Small delay to ensure page load
+                    setTimeout(() => {
+                        window.location.href = mailtoLink;
+                    }, 1000);
+                }
+
+                // Clear storage so it doesn't persist forever? 
+                // Maybe keep it for a bit in case they refresh.
+                // localStorage.removeItem('axcent_stripe_link');
+            } else {
+                cartDetails.style.display = 'none';
+                cartError.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+
+</html>

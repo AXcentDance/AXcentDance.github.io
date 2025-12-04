@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Milano Sensual Congress | AXcent Dance</title>
+    <meta name="description"
+        content="Join AXcent Dance at the Milano Sensual Congress. Experience the world's premier Bachata Sensual event with us.">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .event-hero {
+            padding: 160px 20px 60px;
+            text-align: center;
+        }
+
+        .event-container {
+            max-width: 1000px;
+            margin: 0 auto 80px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .event-image-wrapper {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .event-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .event-image-wrapper:hover .event-image {
+            transform: scale(1.03);
+        }
+
+        .event-content {
+            text-align: left;
+        }
+
+        .event-tagline {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--accent-start);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .event-title {
+            font-size: 3rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(to right, #fff, #ccc);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .event-description {
+            color: var(--text-light);
+            line-height: 1.7;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .event-details-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .detail-item {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 1rem;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .detail-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 0.3rem;
+        }
+
+        .detail-value {
+            font-weight: 700;
+            color: #fff;
+            font-size: 1.1rem;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        /* Other Events Section */
+        .other-events-section {
+            padding: 4rem 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 4rem;
+        }
+
+        .other-event-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: white;
+        }
+
+        .other-event-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: var(--accent-start);
+            transform: translateX(10px);
+        }
+
+        .other-event-info h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .other-event-info p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 900px) {
+            .event-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .event-title {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Background Blobs -->
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+
+    <!-- Navigation -->
+    <header class="main-header">
+        <div class="container navbar">
+            <a href="index.html" class="logo">
+                <span class="logo-title">AXCENT</span><span class="logo-subtitle text-gradient">DANCE</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Toggle menu">MENU</button>
+            <nav class="nav-links">
+                <a href="index.html#about">About us</a>
+                <a href="schedule.html">Schedule</a>
+                <a href="events.html" class="active">Events</a>
+                <a href="registration.html">Registration</a>
+                <a href="contact.html">Contact</a>
+                <a href="index.html#trial-form" class="btn-header-cta">Book Free Trial</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="event-hero">
+            <div class="container">
+                <h1 class="page-title">
+                    Upcoming Events
+                </h1>
+                <p class="hero-desc-border" style="border: none; padding: 0; max-width: 700px; margin: 0 auto;">
+                    Join the AXcent Dance family at international congresses. We organize group trips, shared
+                    accommodation, and exclusive discounts for our students.
+                </p>
+            </div>
+        </section>
+
+        <section class="container">
+            <div class="event-container">
+                <!-- Left: Image -->
+                <div class="event-image-wrapper">
+                    <!-- Placeholder image for now, user can replace -->
+                    <div
+                        style="width: 100%; height: 400px; background: linear-gradient(45deg, #2a1a4a, #ff3b30); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 1.5rem;">
+                        Milano Sensual Congress Image
+                    </div>
+                </div>
+
+                <!-- Right: Content -->
+                <div class="event-content">
+                    <span class="event-tagline">Group Trip • January 2026 • <span
+                            style="color: var(--accent-start);">Join Us</span></span>
+                    <h2 class="event-title">Milano Sensual Congress</h2>
+
+                    <p class="event-description">
+                        Experience the magic of <strong>Milano Sensual Congress</strong> with us!
+                        It's one of the most prestigious Bachata Sensual events in the world, featuring the creators of
+                        the style, Korke & Judith, and many more top international artists.
+                    </p>
+
+                    <div class="event-details-grid">
+                        <div class="detail-item">
+                            <div class="detail-label">Location</div>
+                            <div class="detail-value">Milan, Italy</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">Type</div>
+                            <div class="detail-value">Full Pass + Hotel</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">Date</div>
+                            <div class="detail-value">Jan 2026</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">Group Discount</div>
+                            <div class="detail-value">Available</div>
+                        </div>
+                    </div>
+
+                    <div class="cta-group">
+                        <a href="contact.html" class="btn-hero btn-hero-secondary">
+                            <span class="btn-hero-content">INQUIRE NOW</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Other Events Link -->
+            <div class="other-events-section">
+                <h3 style="margin-bottom: 1.5rem; font-size: 1.5rem;">More Events</h3>
+                <a href="events.html" class="other-event-card">
+                    <div
+                        style="width: 60px; height: 60px; background: #333; border-radius: 10px; flex-shrink: 0; overflow: hidden;">
+                        <img src="dominican_bootcamp.png" alt="Bootcamp"
+                            style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="other-event-info">
+                        <h4>Dominican Bachata Bootcamp</h4>
+                        <p>7 Hours Intensive with Aitor & Sarah • Oct 2026</p>
+                    </div>
+                    <div style="margin-left: auto; font-size: 1.5rem; color: var(--accent-start);">→</div>
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="main-footer">
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <a href="index.html" class="logo footer-logo"><span class="logo-title">AXCENT</span><span class="logo-subtitle text-gradient">DANCE</span></a>
+                <p class="footer-address">
+                    Hermetschloostrasse 73,<br>
+                    8048 Zurich Altstetten<br> 2 minute walking from Tram 2 stop and Bus 31 stop
+                </p>
+                <div class="footer-socials">
+                    <a href="https://instagram.com/axcentdance" target="_blank" aria-label="Instagram">
+                        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                        </svg>
+                    </a>
+                    <a href="mailto:info@axcentdance.com" aria-label="Email">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                            </path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <ul class="footer-links">
+                    <li><a href="terms.html">Terms & Conditions</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="imprint.html">Imprint</a></li>
+                </ul>
+            </div>
+            <div class="footer-col footer-map-col">
+                <h4 class="footer-heading">Find Us</h4>
+                <div class="footer-map-wrapper">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2701.567677685764!2d8.4844443!3d47.3861111!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47900a3910000001%3A0x1234567890abcdef!2sHermetschloostrasse%2073%2C%208048%20Z%C3%BCrich!5e0!3m2!1sen!2sch!4v1625000000000!5m2!1sen!2sch"
+                        width="100%" height="150" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 AXcent Dance. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Room Rental | AXcent Dance</title>
+    <meta name="description"
+        content="Rent our dance studio room for your own events or classes. Contact us for availability and rates.">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Background Elements -->
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+
+    <!-- Navigation Bar -->
+    <header class="main-header">
+        <div class="container navbar">
+            <a href="index.html" class="logo">
+                <span class="logo-title">AXCENT</span><span class="logo-subtitle text-gradient">DANCE</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Toggle menu">MENU</button>
+            <nav class="nav-links">
+                <a href="index.html#about">About us</a>
+                <a href="schedule.html">Schedule</a>
+                <a href="events.html">Events</a>
+                <a href="registration.html">Registration</a>
+                <a href="contact.html">Contact</a>
+                <div class="dropdown">
+                    <button class="dropbtn">More ▾</button>
+                    <div class="dropdown-content">
+                        <a href="room-rental.html">Room Rental</a>
+                        <a href="collaborations.html">Collaborations</a>
+                    </div>
+                </div>
+                <a href="index.html#trial-form" class="btn-header-cta">Book Free Trial</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero rental-hero">
+            <!-- Background Image -->
+            <div class="rental-bg-image">
+                <img src="assets/images/home/gallery_1.jpg" alt="Dance Studio">
+            </div>
+
+            <div class="container" style="position: relative; z-index: 2;">
+                <div class="hero-content reveal" style="text-align: center; margin: 0 auto;">
+                    <div class="hero-badge" style="justify-content: center;">
+                        <span class="hero-badge-line"></span>
+                        <span class="hero-badge-text">SPACE FOR YOU</span>
+                        <span class="hero-badge-line"></span>
+                    </div>
+                    <h1 class="hero-title-large" style="font-size: 5rem; margin-bottom: 0.5rem;">
+                        ROOM RENTAL
+                    </h1>
+                    <p class="hero-desc-border" style="border: none; padding: 0; max-width: 700px;">
+                        Create your own magic.
+                        <strong>Rent our beautiful studio room (~140m²) for your events, workshops, or
+                            rehearsals.</strong>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Rental Form Section -->
+        <section class="rental-contact-section reveal">
+            <div class="container">
+                <div class="rental-glass-panel">
+
+                    <!-- Desktop: Split Layout -->
+                    <div class="rental-grid">
+
+                        <!-- Left: Form -->
+                        <div class="rental-form-col">
+                            <h3 class="section-title-modern" style="font-size: 2.5rem; margin-bottom: 2rem;">Rental
+                                Inquiry</h3>
+
+                            <form action="https://formsubmit.co/info@axcentdance.com" method="POST">
+                                <input type="hidden" name="_subject" value="New Room Rental Inquiry!">
+                                <input type="hidden" name="_captcha" value="false">
+                                <input type="hidden" name="_next" value="https://axcentdance.com/thankyou.html">
+
+                                <div class="form-grid"
+                                    style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;">
+                                    <div class="form-group floating-label">
+                                        <input type="text" id="firstname" name="firstname" class="form-input-modern"
+                                            placeholder=" " required>
+                                        <label for="firstname">First Name</label>
+                                    </div>
+                                    <div class="form-group floating-label">
+                                        <input type="text" id="lastname" name="lastname" class="form-input-modern"
+                                            placeholder=" " required>
+                                        <label for="lastname">Last Name</label>
+                                    </div>
+                                </div>
+
+                                <div class="form-group floating-label" style="margin-bottom: 1.5rem;">
+                                    <input type="text" id="businessname" name="businessname" class="form-input-modern"
+                                        placeholder=" ">
+                                    <label for="businessname">Business Name (Optional)</label>
+                                </div>
+
+                                <div class="form-grid"
+                                    style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;">
+                                    <div class="form-group floating-label">
+                                        <input type="tel" id="phone" name="phone" class="form-input-modern"
+                                            placeholder=" " required>
+                                        <label for="phone">Phone Number</label>
+                                    </div>
+                                    <div class="form-group floating-label">
+                                        <input type="email" id="email" name="email" class="form-input-modern"
+                                            placeholder=" " required>
+                                        <label for="email">Email</label>
+                                    </div>
+                                </div>
+
+                                <div class="form-group" style="margin-bottom: 2rem;">
+                                    <label class="form-label-static"
+                                        style="display: block; margin-bottom: 1rem; color: var(--text-muted); font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 700;">Type
+                                        of Rental</label>
+                                    <div class="rental-type-grid"
+                                        style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                                        <label class="rental-card-option">
+                                            <input type="radio" name="rental_type" value="Day" required>
+                                            <div class="rental-card-content">
+                                                <span class="icon">📅</span>
+                                                <span class="title">One-time Event</span>
+                                                <span class="desc">Workshops, parties, or single rehearsals.</span>
+                                            </div>
+                                        </label>
+                                        <label class="rental-card-option">
+                                            <input type="radio" name="rental_type" value="Weekly" required>
+                                            <div class="rental-card-content">
+                                                <span class="icon">🔄</span>
+                                                <span class="title">Recurring</span>
+                                                <span class="desc">Weekly classes or regular practice slots.</span>
+                                            </div>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="form-group floating-label" style="margin-bottom: 1.5rem;">
+                                    <input type="text" id="timing" name="timing" class="form-input-modern"
+                                        placeholder=" " required>
+                                    <label for="timing">Preferred Date & Time</label>
+                                </div>
+
+                                <div class="form-group floating-label" style="margin-bottom: 2rem;">
+                                    <textarea id="message" name="message" class="form-textarea-modern" placeholder=" "
+                                        style="min-height: 120px;"></textarea>
+                                    <label for="message">Tell us about your event...</label>
+                                </div>
+
+                                <button type="submit" class="btn-hero btn-hero-primary"
+                                    style="width: 100%; border-radius: 12px;">
+                                    <span class="btn-hero-content">SEND INQUIRY</span>
+                                </button>
+                            </form>
+                        </div>
+
+                        <!-- Right: Info/Image (Hidden on mobile initially, or stacked) -->
+                        <div class="rental-info-col hidden-mobile">
+                            <h4 class="section-title-modern" style="font-size: 2rem;">Studio Specs</h4>
+                            <ul class="specs-list"
+                                style="margin-top: 2rem; display: flex; flex-direction: column; gap: 1.5rem;">
+                                <li style="display: flex; align-items: center; gap: 1rem;">
+                                    <span
+                                        style="width: 40px; height: 40px; background: rgba(255,59,48,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--accent-start);">📐</span>
+                                    <div>
+                                        <strong style="display: block; color: white;">~140m² Space</strong>
+                                        <span style="color: var(--text-muted); font-size: 0.9rem;">Spacious dance
+                                            floor</span>
+                                    </div>
+                                </li>
+                                <li style="display: flex; align-items: center; gap: 1rem;">
+                                    <span
+                                        style="width: 40px; height: 40px; background: rgba(255,59,48,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--accent-start);">🪞</span>
+                                    <div>
+                                        <strong style="display: block; color: white;">Full Mirrors</strong>
+                                        <span style="color: var(--text-muted); font-size: 0.9rem;">Wall-to-wall
+                                            mirrors</span>
+                                    </div>
+                                </li>
+                                <li style="display: flex; align-items: center; gap: 1rem;">
+                                    <span
+                                        style="width: 40px; height: 40px; background: rgba(255,59,48,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--accent-start);">🔊</span>
+                                    <div>
+                                        <strong style="display: block; color: white;">Pro Sound System</strong>
+                                        <span style="color: var(--text-muted); font-size: 0.9rem;">Bluetooth & AUX
+                                            ready</span>
+                                    </div>
+                                </li>
+                                <li style="display: flex; align-items: center; gap: 1rem;">
+                                    <span
+                                        style="width: 40px; height: 40px; background: rgba(255,59,48,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--accent-start);">☀️</span>
+                                    <div>
+                                        <strong style="display: block; color: white;">Natural Light</strong>
+                                        <span style="color: var(--text-muted); font-size: 0.9rem;">Full approx. 10
+                                            meters of windows</span>
+                                    </div>
+                                </li>
+                                <li style="display: flex; align-items: center; gap: 1rem;">
+                                    <span
+                                        style="width: 40px; height: 40px; background: rgba(255,59,48,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--accent-start);">💡</span>
+                                    <div>
+                                        <strong style="display: block; color: white;">Flexible Lighting</strong>
+                                        <span style="color: var(--text-muted); font-size: 0.9rem;">System fit for any
+                                            occasion</span>
+                                    </div>
+                                </li>
+                                <li style="display: flex; align-items: center; gap: 1rem;">
+                                    <span
+                                        style="width: 40px; height: 40px; background: rgba(255,59,48,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--accent-start);">✨</span>
+                                    <div>
+                                        <strong style="display: block; color: white;">Event Ready</strong>
+                                        <span style="color: var(--text-muted); font-size: 0.9rem;">Professional
+                                            decorations for warmth & hospitality</span>
+                                    </div>
+                                </li>
+                                <li style="display: flex; align-items: center; gap: 1rem;">
+                                    <span
+                                        style="width: 40px; height: 40px; background: rgba(255,59,48,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--accent-start);">🚻</span>
+                                    <div>
+                                        <strong style="display: block; color: white;">Facilities</strong>
+                                        <span style="color: var(--text-muted); font-size: 0.9rem;">Bathroom right
+                                            outside the room</span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+    </main>
+
+    <footer class="main-footer">
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <a href="index.html" class="logo footer-logo"><span class="logo-title">AXCENT</span><span
+                        class="logo-subtitle text-gradient">DANCE</span></a>
+                <p class="footer-address">
+                    Hermetschloostrasse 73,<br>
+                    8048 Zurich Altstetten<br> 2 minute walking from Tram 2 stop and Bus 31 stop
+                </p>
+                <div class="footer-socials">
+                    <a href="https://instagram.com/axcentdance" target="_blank" aria-label="Instagram">
+                        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                        </svg>
+                    </a>
+                    <a href="mailto:info@axcentdance.com" aria-label="Email">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                            </path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <ul class="footer-links">
+                    <li><a href="terms.html">Terms & Conditions</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="imprint.html">Imprint</a></li>
+                </ul>
+            </div>
+            <div class="footer-col footer-map-col">
+                <h4 class="footer-heading">Find Us</h4>
+                <div class="footer-map-wrapper">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2701.567677685764!2d8.4844443!3d47.3861111!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47900a3910000001%3A0x1234567890abcdef!2sHermetschloostrasse%2073%2C%208048%20Z%C3%BCrich!5e0!3m2!1sen!2sch!4v1625000000000!5m2!1sen!2sch"
+                        width="100%" height="150" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 AXcent Dance. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

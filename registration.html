@@ -10,19 +10,19 @@
     <link rel="stylesheet" href="style.css">
     <style>
         /* Registration Specific Styles */
-        .reg-hero {
-            padding: 180px 20px 60px;
-            text-align: center;
-        }
+        /* Registration Specific Styles */
+        /* .reg-hero removed in favor of .schedule-hero-modern */
 
         .reg-form-container {
             max-width: 800px;
             margin: 0 auto 80px;
-            background: rgba(255, 255, 255, 0.03);
+            background: rgba(20, 20, 20, 0.6);
+            /* Darker background for better contrast */
             border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
+            border-radius: 24px;
             padding: 40px;
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
         }
 
         .form-section-title {
@@ -83,22 +83,31 @@
         }
 
         .package-card {
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 1.5rem;
-            border-radius: 12px;
+            padding: 2rem 1.5rem;
+            border-radius: 16px;
             text-align: center;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             height: 100%;
             display: flex;
             flex-direction: column;
             justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .package-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.3);
         }
 
         .package-option input:checked+.package-card {
             border-color: var(--accent-start);
-            background: rgba(108, 92, 231, 0.1);
-            box-shadow: 0 0 20px rgba(108, 92, 231, 0.2);
+            background: rgba(108, 92, 231, 0.15);
+            box-shadow: 0 0 30px rgba(108, 92, 231, 0.3);
+            transform: scale(1.02);
         }
 
         .pkg-name {
@@ -170,7 +179,9 @@
     <!-- Navigation -->
     <header class="main-header">
         <div class="container navbar">
-            <a href="index.html" class="logo">AXcent <span>Dance</span></a>
+            <a href="index.html" class="logo">
+                <span class="logo-title">AXCENT</span><span class="logo-subtitle text-gradient">DANCE</span>
+            </a>
             <button class="mobile-menu-btn" aria-label="Toggle menu">MENU</button>
             <nav class="nav-links">
                 <a href="index.html#about">About us</a>
@@ -178,29 +189,72 @@
                 <a href="events.html">Events</a>
                 <a href="registration.html" class="active">Registration</a>
                 <a href="contact.html">Contact</a>
+                <div class="dropdown">
+                    <button class="dropbtn">More ▾</button>
+                    <div class="dropdown-content">
+                        <a href="room-rental.html">Room Rental</a>
+                        <a href="collaborations.html">Collaborations</a>
+                    </div>
+                </div>
                 <a href="index.html#trial-form" class="btn-header-cta">Book Free Trial</a>
             </nav>
         </div>
     </header>
 
-    <main>
-        <section class="reg-hero">
-            <div class="container">
-                <h1 class="hero-title-large">
-                    Join the <span class="text-gradient">Movement</span>
-                </h1>
-                <p class="hero-subtitle-modern">
-                    Secure your spot in our upcoming Bachata courses.
-                </p>
-            </div>
-        </section>
+    <!-- Hero Section (Modern Split) -->
+    <section class="schedule-hero-modern">
+        <div class="container">
+            <div class="hero-grid">
+                <!-- Left: Text Content -->
+                <div class="hero-content-left">
+                    <div class="hero-badge">
+                        <div class="hero-badge-line"></div>
+                        <div class="hero-badge-text">JOIN THE FAMILY</div>
+                    </div>
+                    <h1 class="page-title" style="margin-bottom: 1rem;">
+                        REGISTRATION
+                    </h1>
+                    <p class="hero-desc-border" style="border: none; padding: 0; margin: 0; max-width: 500px;">
+                        Register now for Bachata Sensual classes in Zurich. Partnerwork and ladystyle.
+                        <strong>No partner needed.</strong>
+                    </p>
+                    <div class="reg-description" style="margin-top: 1.5rem; color: var(--text-muted);">
+                        <p>All classes run continuously. Each pass is valid for <strong>8 weeks</strong>.</p>
+                    </div>
+                </div>
 
-        <section class="container">
-            <div class="reg-form-container">
-                <form action="https://formsubmit.co/info@axcentdance.com" method="POST" id="registrationForm">
-                    <input type="hidden" name="_subject" value="New Course Registration!">
-                    <input type="hidden" name="_captcha" value="false">
-                    <input type="hidden" name="_next" value="https://axcentdance.com/thankyou.html">
+                <!-- Right: Image -->
+                <div class="hero-content-right">
+                    <div class="framed-hero-wrapper">
+                        <div class="framed-hero-inner">
+                            <img src="assets/images/registration_hero_placeholder.png"
+                                alt="Bachata Dance Class Placeholder">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main>
+        <section class="container" style="margin-top: 4rem;">
+
+            <!-- Winter Holiday Notice -->
+            <div class="notice-box">
+                <div class="notice-icon">🎉</div>
+                <div class="notice-content">
+                    <strong>A New Season Starts!</strong><br>
+                    AXcent Dance will open on <strong>January 7th</strong> in our brand new location:
+                    <strong>Hermetschloostrasse 73, 8048 Zurich Altstetten<br> 2 minute walking from Tram 2 stop and Bus 31 stop</strong>.
+                    <br>We can't wait to welcome you to our new home for an amazing year of dance!
+                </div>
+            </div>
+
+            <div class="form-wrapper reg-form-container">
+
+                <form class="registration-form" id="registrationForm">
+                    <input type="hidden" name="pricing_tier" id="pricingTier" value="Regular">
+                    <!-- Removed formsubmit inputs as we handle submission via JS -->
 
                     <!-- 1. Personal Details -->
                     <div class="form-section">
@@ -227,70 +281,98 @@
                         </div>
 
                         <div class="form-group" style="margin-top: 1rem;">
-                            <label>Role</label>
+                            <label>Sex</label>
                             <div class="radio-group" style="display: flex; gap: 2rem;">
                                 <label class="checkbox-label" style="flex: 1; justify-content: center;">
-                                    <input type="radio" name="role" value="Leader" required>
-                                    <span>Leader 🕺</span>
+                                    <input type="radio" name="sex" value="Male" required>
+                                    <span>Male 👨</span>
                                 </label>
                                 <label class="checkbox-label" style="flex: 1; justify-content: center;">
-                                    <input type="radio" name="role" value="Follower" required>
-                                    <span>Follower 💃</span>
+                                    <input type="radio" name="sex" value="Female" required>
+                                    <span>Female 👩</span>
                                 </label>
                             </div>
                         </div>
                     </div>
 
-                    <!-- 2. Package Selection -->
+                    <!-- 2. Class Passes -->
                     <div class="form-section" style="margin-top: 3rem;">
-                        <h3 class="form-section-title">2. Choose Your Package</h3>
+                        <h3 class="form-section-title">2. Class Passes</h3>
+                        <p style="color: var(--text-muted); margin-bottom: 1rem; font-size: 0.9rem;">
+                            Select the package that fits your schedule.
+                        </p>
 
-                        <div class="price-toggle">
+                        <div class="price-toggle" style="margin-bottom: 2rem;">
                             <button type="button" class="toggle-btn active" id="btnRegular"
                                 onclick="setPricing('regular')">Regular</button>
                             <button type="button" class="toggle-btn" id="btnStudent"
-                                onclick="setPricing('student')">Student / Low Income</button>
+                                onclick="setPricing('student')">Student (-15%)</button>
                         </div>
                         <input type="hidden" name="pricing_tier" id="pricingTier" value="Regular">
 
-                        <div class="package-grid">
+                        <div class="pricing-grid">
                             <!-- 1 Course -->
-                            <label class="package-option">
+                            <label class="pricing-option">
                                 <input type="radio" name="package" value="1 Course (8 Weeks)" required>
-                                <div class="package-card">
-                                    <span class="pkg-name">1 Course</span>
-                                    <span class="pkg-price" data-reg="200 CHF" data-stu="170 CHF">200 CHF</span>
-                                    <span class="pkg-desc">8 Weeks (8 Lessons)</span>
+                                <div class="pricing-card">
+                                    <div class="pricing-header">
+                                        <span class="pricing-title">1 Course</span>
+                                        <span class="pricing-duration">8 Weeks</span>
+                                    </div>
+                                    <div class="pricing-price" data-reg="200 CHF" data-stu="170 CHF">200 CHF</div>
+                                    <div class="pricing-desc">8 Lessons Total</div>
                                 </div>
                             </label>
 
-                            <!-- 2 Courses -->
-                            <label class="package-option">
-                                <input type="radio" name="package" value="2 Courses (8 Weeks)">
-                                <div class="package-card">
-                                    <span class="pkg-name">2 Courses</span>
-                                    <span class="pkg-price" data-reg="318 CHF" data-stu="270 CHF">318 CHF</span>
-                                    <span class="pkg-desc">8 Weeks (16 Lessons)</span>
+                            <!-- 2 Classes/Week -->
+                            <label class="pricing-option">
+                                <input type="radio" name="package" value="2 Classes/Week (8 Weeks)">
+                                <div class="pricing-card">
+                                    <div class="pricing-header">
+                                        <span class="pricing-title">2 Classes/Week</span>
+                                        <span class="pricing-duration">8 Weeks</span>
+                                    </div>
+                                    <div class="pricing-price" data-reg="318 CHF" data-stu="270 CHF">318 CHF</div>
+                                    <div class="pricing-desc">16 Lessons Total</div>
                                 </div>
                             </label>
 
-                            <!-- 3 Courses -->
-                            <label class="package-option">
-                                <input type="radio" name="package" value="3 Courses (8 Weeks)">
-                                <div class="package-card">
-                                    <span class="pkg-name">3 Courses</span>
-                                    <span class="pkg-price" data-reg="395 CHF" data-stu="335 CHF">395 CHF</span>
-                                    <span class="pkg-desc">8 Weeks (24 Lessons)</span>
+                            <!-- 3 Classes/Week -->
+                            <label class="pricing-option">
+                                <input type="radio" name="package" value="3 Classes/Week (8 Weeks)">
+                                <div class="pricing-card">
+                                    <div class="pricing-header">
+                                        <span class="pricing-title">3 Classes/Week</span>
+                                        <span class="pricing-duration">8 Weeks</span>
+                                    </div>
+                                    <div class="pricing-price" data-reg="395 CHF" data-stu="335 CHF">395 CHF</div>
+                                    <div class="pricing-desc">24 Lessons Total</div>
+                                </div>
+                            </label>
+
+                            <!-- 4 Classes/Week -->
+                            <label class="pricing-option">
+                                <input type="radio" name="package" value="4 Classes/Week (8 Weeks)">
+                                <div class="pricing-card">
+                                    <div class="pricing-header">
+                                        <span class="pricing-title">4 Classes/Week</span>
+                                        <span class="pricing-duration">8 Weeks</span>
+                                    </div>
+                                    <div class="pricing-price" data-reg="460 CHF" data-stu="390 CHF">460 CHF</div>
+                                    <div class="pricing-desc">32 Lessons Total</div>
                                 </div>
                             </label>
 
                             <!-- 10 Class Pass -->
-                            <label class="package-option">
-                                <input type="radio" name="package" value="10 Class Pass">
-                                <div class="package-card">
-                                    <span class="pkg-name">10 Class Pass</span>
-                                    <span class="pkg-price" data-reg="280 CHF" data-stu="238 CHF">280 CHF</span>
-                                    <span class="pkg-desc">Flexible (Valid 1 Year)</span>
+                            <label class="pricing-option full-width">
+                                <input type="radio" name="package" value="10-Class Flexible Pack">
+                                <div class="pricing-card">
+                                    <div class="pricing-header">
+                                        <span class="pricing-title">10-Class Flexible Pack</span>
+                                        <span class="pricing-duration">1 Year Validity</span>
+                                    </div>
+                                    <div class="pricing-price" data-reg="280 CHF" data-stu="238 CHF">280 CHF</div>
+                                    <div class="pricing-desc">Flexible attendance for 1 year</div>
                                 </div>
                             </label>
                         </div>
@@ -302,32 +384,128 @@
                         <p style="color: var(--text-muted); margin-bottom: 1rem; font-size: 0.9rem;">Please check the
                             classes you intend to join.</p>
 
-                        <div class="class-checkbox-grid">
-                            <label class="checkbox-label">
-                                <input type="checkbox" name="classes[]" value="Wed 18:30 Beginner 0">
-                                <span>Wed 18:30 - Beginner 0</span>
-                            </label>
-                            <label class="checkbox-label">
-                                <input type="checkbox" name="classes[]" value="Wed 19:30 Sensual Foundation">
-                                <span>Wed 19:30 - Sensual Foundation</span>
-                            </label>
-                            <label class="checkbox-label">
-                                <input type="checkbox" name="classes[]" value="Wed 20:30 Sensual Improver">
-                                <span>Wed 20:30 - Sensual Improver</span>
-                            </label>
+                        <div class="timetable-selection-grid">
+                            <!-- Wednesday Column -->
+                            <div class="timetable-col">
+                                <h4 class="timetable-day-header">Wednesday</h4>
 
-                            <label class="checkbox-label">
-                                <input type="checkbox" name="classes[]" value="Thu 18:30 Beginner 3">
-                                <span>Thu 18:30 - Beginner 3</span>
+                                <div class="class-option-wrapper">
+                                    <label class="class-option">
+                                        <input type="checkbox" name="classes[]" value="Wed 18:30 Beginner 0">
+                                        <div class="class-option-card">
+                                            <span class="time">18:30</span>
+                                            <span class="name">Bachata Beginner 0</span>
+                                        </div>
+                                    </label>
+                                    <div class="class-role-select">
+                                        <label><input type="radio" name="role_Wed_1830_Beginner_0"
+                                                value="Leader"><span>Leader</span></label>
+                                        <label><input type="radio" name="role_Wed_1830_Beginner_0"
+                                                value="Follower"><span>Follower</span></label>
+                                    </div>
+                                </div>
+
+                                <div class="class-option-wrapper">
+                                    <label class="class-option">
+                                        <input type="checkbox" name="classes[]" value="Wed 19:30 Sensual Foundation">
+                                        <div class="class-option-card">
+                                            <span class="time">19:30</span>
+                                            <span class="name">Bachata Sensual Foundation</span>
+                                        </div>
+                                    </label>
+                                    <div class="class-role-select">
+                                        <label><input type="radio" name="role_Wed_1930_Sensual_Foundation"
+                                                value="Leader"><span>Leader</span></label>
+                                        <label><input type="radio" name="role_Wed_1930_Sensual_Foundation"
+                                                value="Follower"><span>Follower</span></label>
+                                    </div>
+                                </div>
+
+                                <div class="class-option-wrapper">
+                                    <label class="class-option">
+                                        <input type="checkbox" name="classes[]" value="Wed 20:30 Sensual Improver">
+                                        <div class="class-option-card">
+                                            <span class="time">20:30</span>
+                                            <span class="name">Bachata Sensual Improver</span>
+                                        </div>
+                                    </label>
+                                    <div class="class-role-select">
+                                        <label><input type="radio" name="role_Wed_2030_Sensual_Improver"
+                                                value="Leader"><span>Leader</span></label>
+                                        <label><input type="radio" name="role_Wed_2030_Sensual_Improver"
+                                                value="Follower"><span>Follower</span></label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Thursday Column -->
+                            <div class="timetable-col">
+                                <h4 class="timetable-day-header">Thursday</h4>
+
+                                <div class="class-option-wrapper">
+                                    <label class="class-option">
+                                        <input type="checkbox" name="classes[]" value="Thu 18:30 Beginner 3">
+                                        <div class="class-option-card">
+                                            <span class="time">18:30</span>
+                                            <span class="name">Bachata Beginner 3</span>
+                                        </div>
+                                    </label>
+                                    <div class="class-role-select">
+                                        <label><input type="radio" name="role_Thu_1830_Beginner_3"
+                                                value="Leader"><span>Leader</span></label>
+                                        <label><input type="radio" name="role_Thu_1830_Beginner_3"
+                                                value="Follower"><span>Follower</span></label>
+                                    </div>
+                                </div>
+
+                                <div class="class-option-wrapper">
+                                    <label class="class-option">
+                                        <input type="checkbox" name="classes[]" value="Thu 19:30 Lady Styling">
+                                        <div class="class-option-card">
+                                            <span class="time">19:30</span>
+                                            <span class="name">Lady Styling</span>
+                                        </div>
+                                    </label>
+                                    <!-- No role select for Lady Styling as it's solo/styling usually, but user asked for it next to EACH course. Adding for consistency or maybe skip? 
+                                         User said "each person can maybe have a course as lead and another as follow". Lady styling implies no partner. 
+                                         I will add it but maybe it's redundant. Actually, Lady Styling is usually solo. 
+                                         Let's add it for consistency but maybe hide it or just not include it for styling? 
+                                         User said "Next to each course". I'll add it. -->
+                                    <div class="class-role-select">
+                                        <label><input type="radio" name="role_Thu_1930_Lady_Styling"
+                                                value="Leader"><span>Leader</span></label>
+                                        <label><input type="radio" name="role_Thu_1930_Lady_Styling"
+                                                value="Follower"><span>Follower</span></label>
+                                    </div>
+                                </div>
+
+                                <div class="class-option-wrapper">
+                                    <label class="class-option">
+                                        <input type="checkbox" name="classes[]"
+                                            value="Thu 20:30 Sensual Intermediate/Advanced">
+                                        <div class="class-option-card">
+                                            <span class="time">20:30</span>
+                                            <span class="name">Bachata Sensual Int/Adv</span>
+                                        </div>
+                                    </label>
+                                    <div class="class-role-select">
+                                        <label><input type="radio" name="role_Thu_2030_Sensual_Int_Adv"
+                                                value="Leader"><span>Leader</span></label>
+                                        <label><input type="radio" name="role_Thu_2030_Sensual_Int_Adv"
+                                                value="Follower"><span>Follower</span></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group" style="margin-top: 2rem;">
+                            <label for="dates_unavailable"
+                                style="line-height: 1.4; display: block; margin-bottom: 0.5rem;">
+                                Your pass is 8 weeks long. If there are days you cannot join (up to 2), write them here
+                                so that we can extend your pass:
                             </label>
-                            <label class="checkbox-label">
-                                <input type="checkbox" name="classes[]" value="Thu 19:30 Lady Styling">
-                                <span>Thu 19:30 - Lady Styling</span>
-                            </label>
-                            <label class="checkbox-label">
-                                <input type="checkbox" name="classes[]" value="Thu 20:30 Sensual Intermediate/Advanced">
-                                <span>Thu 20:30 - Sensual Intermediate/Advanced</span>
-                            </label>
+                            <textarea id="dates_unavailable" name="dates_unavailable" rows="2"
+                                placeholder="e.g., Dec 25th, Jan 1st..."></textarea>
                         </div>
                     </div>
 
@@ -336,22 +514,25 @@
                         <div class="form-group">
                             <label class="checkbox-label" style="background: none; padding: 0;">
                                 <input type="checkbox" name="newsletter" value="yes" checked>
-                                <span style="font-size: 0.9rem; color: var(--text-muted);">I want to stay connected with
+                                <span style="font-size: 0.9rem; color: var(--text-muted);">I want to stay connected
+                                    with
                                     AXcent Dance news and events.</span>
                             </label>
                         </div>
                         <div class="form-group" style="margin-top: 1rem;">
                             <label class="checkbox-label" style="background: none; padding: 0;">
                                 <input type="checkbox" name="privacy_policy" required>
-                                <span style="font-size: 0.9rem; color: var(--text-muted);">I accept the <a href="#"
-                                        style="color: var(--accent-light);">Privacy Policy</a>.</span>
+                                <span style="font-size: 0.9rem; color: var(--text-muted);">I accept the <a
+                                        href="privacy.html" target="_blank" style="color: var(--accent-light);">Privacy
+                                        Policy</a>.</span>
                             </label>
                         </div>
                         <div class="form-group" style="margin-top: 0.5rem;">
                             <label class="checkbox-label" style="background: none; padding: 0;">
                                 <input type="checkbox" name="terms" required>
-                                <span style="font-size: 0.9rem; color: var(--text-muted);">I accept the <a href="#"
-                                        style="color: var(--accent-light);">General Terms and Conditions</a>.</span>
+                                <span style="font-size: 0.9rem; color: var(--text-muted);">I accept the <a
+                                        href="terms.html" target="_blank" style="color: var(--accent-light);">General
+                                        Terms and Conditions</a>.</span>
                             </label>
                         </div>
                     </div>
@@ -368,13 +549,55 @@
     </main>
 
     <footer class="main-footer">
-        <p>Hermetschloostrasse 73, 8048, Zurich</p>
-        <p>&copy; 2025 AXcent Dance. All rights reserved.</p>
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <a href="index.html" class="logo footer-logo"><span class="logo-title">AXCENT</span><span
+                        class="logo-subtitle text-gradient">DANCE</span></a>
+                <p class="footer-address">
+                    Hermetschloostrasse 73,<br>
+                    8048 Zurich Altstetten<br> 2 minute walking from Tram 2 stop and Bus 31 stop
+                </p>
+                <div class="footer-socials">
+                    <a href="https://instagram.com/axcentdance" target="_blank" aria-label="Instagram">
+                        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                        </svg>
+                    </a>
+                    <a href="mailto:info@axcentdance.com" aria-label="Email">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                            </path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <ul class="footer-links">
+                    <li><a href="terms.html">Terms & Conditions</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="imprint.html">Imprint</a></li>
+                </ul>
+            </div>
+            <div class="footer-col footer-map-col">
+                <h4 class="footer-heading">Find Us</h4>
+                <div class="footer-map-wrapper">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2701.567677685764!2d8.4844443!3d47.3861111!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47900a3910000001%3A0x1234567890abcdef!2sHermetschloostrasse%2073%2C%208048%20Z%C3%BCrich!5e0!3m2!1sen!2sch!4v1625000000000!5m2!1sen!2sch"
+                        width="100%" height="150" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 AXcent Dance. All rights reserved.</p>
+        </div>
     </footer>
 
     <script src="script.js"></script>
     <script>
-        // Simple script to handle pricing toggle
+        // Pricing Toggle Logic
         function setPricing(type) {
             const btnRegular = document.getElementById('btnRegular');
             const btnStudent = document.getElementById('btnStudent');
@@ -385,7 +608,7 @@
                 btnStudent.classList.remove('active');
                 pricingInput.value = 'Regular';
 
-                document.querySelectorAll('.pkg-price').forEach(el => {
+                document.querySelectorAll('.pricing-price').forEach(el => {
                     el.textContent = el.getAttribute('data-reg');
                 });
             } else {
@@ -393,11 +616,138 @@
                 btnStudent.classList.add('active');
                 pricingInput.value = 'Student';
 
-                document.querySelectorAll('.pkg-price').forEach(el => {
+                document.querySelectorAll('.pricing-price').forEach(el => {
                     el.textContent = el.getAttribute('data-stu');
                 });
             }
         }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Role Selection Logic
+            const classCheckboxes = document.querySelectorAll('.class-option input[type="checkbox"]');
+
+            function updateRoleState(checkbox) {
+                const wrapper = checkbox.closest('.class-option-wrapper');
+                const roleRadios = wrapper.querySelectorAll('.class-role-select input[type="radio"]');
+                const roleLabels = wrapper.querySelectorAll('.class-role-select label');
+
+                if (checkbox.checked) {
+                    roleRadios.forEach(radio => radio.disabled = false);
+                    roleLabels.forEach(label => label.style.opacity = '1');
+                    roleLabels.forEach(label => label.style.pointerEvents = 'auto');
+                } else {
+                    roleRadios.forEach(radio => {
+                        radio.disabled = true;
+                        radio.checked = false; // Uncheck if class is deselected
+                    });
+                    roleLabels.forEach(label => label.style.opacity = '0.5');
+                    roleLabels.forEach(label => label.style.pointerEvents = 'none');
+                }
+            }
+
+            classCheckboxes.forEach(cb => {
+                updateRoleState(cb);
+                cb.addEventListener('change', () => updateRoleState(cb));
+            });
+
+            // Form Validation & Submission
+            const validationForm = document.getElementById('registrationForm');
+            if (validationForm) {
+                validationForm.addEventListener('submit', function (e) {
+                    e.preventDefault();
+
+                    // 1. Validation
+                    const selectedClasses = document.querySelectorAll('.class-option input[type="checkbox"]:checked');
+
+                    if (selectedClasses.length === 0) {
+                        alert('Please select at least one class to register.');
+                        return;
+                    }
+
+                    for (const checkbox of selectedClasses) {
+                        const wrapper = checkbox.closest('.class-option-wrapper');
+                        const roleSelected = wrapper.querySelector('.class-role-select input[type="radio"]:checked');
+
+                        if (!roleSelected) {
+                            const className = wrapper.querySelector('.name').textContent;
+                            alert(`Please select a role (Leader/Follower) for ${className}.`);
+                            return;
+                        }
+                    }
+
+                    // 2. Gather Data
+                    const formData = new FormData(validationForm);
+                    const isStudent = document.getElementById('pricingTier').value === 'Student';
+                    const selectedPackage = formData.get('package');
+
+                    if (!selectedPackage) {
+                        alert("Please select a package.");
+                        return;
+                    }
+
+                    // 3. Determine Stripe Link
+                    let stripeLink = '';
+                    const links = {
+                        "10-Class Flexible Pack": {
+                            student: "https://buy.stripe.com/aFa00l1sz1Dz90jewWfnO09",
+                            regular: "https://buy.stripe.com/8x2cN71szaa5b8r88yfnO08"
+                        },
+                        "4 Classes/Week (8 Weeks)": {
+                            student: "https://buy.stripe.com/dRmdRbdbh4PLccv74ufnO07",
+                            regular: "https://buy.stripe.com/00w14p9Z59610tN1KafnO06"
+                        },
+                        "3 Classes/Week (8 Weeks)": {
+                            student: "https://buy.stripe.com/aFabJ37QXgyt90j60qfnO05",
+                            regular: "https://buy.stripe.com/cNiaEZ8V13LH90j74ufnO04"
+                        },
+                        "2 Classes/Week (8 Weeks)": {
+                            student: "https://buy.stripe.com/aFaeVf4ELeqla4n3SifnO03",
+                            regular: "https://buy.stripe.com/eVqeVf9Z581X1xR60qfnO02"
+                        },
+                        "1 Course (8 Weeks)": {
+                            student: "https://buy.stripe.com/cNidRb9Z56XTccv0G6fnO01",
+                            regular: "https://buy.stripe.com/eVq28tb395TP5O7agGfnO00"
+                        }
+                    };
+
+                    if (links[selectedPackage]) {
+                        stripeLink = isStudent ? links[selectedPackage].student : links[selectedPackage].regular;
+                    } else {
+                        alert("Invalid package selection.");
+                        return;
+                    }
+
+                    // 4. Construct Email (Mailto)
+                    const subject = `Registration: ${formData.get('firstname')} ${formData.get('lastname')}`;
+                    const datesUnavailable = formData.get('dates_unavailable') || 'None';
+                    // formData.getAll('classes[]') might not work in all browsers if not supported, but usually fine.
+                    // Let's manually get classes for safety or use formData.
+                    const classes = [];
+                    document.querySelectorAll('input[name="classes[]"]:checked').forEach(cb => classes.push(cb.value));
+
+                    const body = `
+Name: ${formData.get('firstname')} ${formData.get('lastname')}
+Email: ${formData.get('email')}
+Phone: ${formData.get('phone')}
+Sex: ${formData.get('sex')}
+Student: ${isStudent ? 'Yes' : 'No'}
+Package: ${selectedPackage}
+Dates Unavailable: ${datesUnavailable}
+
+Selected Classes:
+${classes.join('\n')}
+                    `.trim();
+
+                    const mailtoLink = `mailto:slamitza@gmail.com,info@axcentdance.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+                    // 5. Store Links & Redirect
+                    localStorage.setItem('axcent_stripe_link', stripeLink);
+                    localStorage.setItem('axcent_mailto_link', mailtoLink);
+
+                    window.location.href = 'cart.html';
+                });
+            }
+        });
     </script>
 </body>
 

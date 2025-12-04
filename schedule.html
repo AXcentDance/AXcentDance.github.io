@@ -15,7 +15,7 @@
         /* Re-using standard variables for the journey section where possible, 
            or defining local overrides that match the theme */
         .journey-section {
-            padding: 100px 20px;
+            padding: 60px 20px;
             position: relative;
             max-width: 1000px;
             margin: 0 auto;
@@ -49,7 +49,7 @@
 
         /* --- Journey Level Guide --- */
         .journey-section {
-            padding: 100px 20px;
+            padding: 60px 20px;
             position: relative;
             max-width: 1000px;
             margin: 0 auto;
@@ -57,7 +57,7 @@
 
         .section-header {
             text-align: center;
-            margin-bottom: 80px;
+            margin-bottom: 40px;
         }
 
         .section-title-journey {
@@ -92,7 +92,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            margin-bottom: 60px;
+            margin-bottom: 30px;
             position: relative;
         }
 
@@ -101,7 +101,7 @@
             background: rgba(20, 20, 20, 0.6);
             backdrop-filter: blur(10px);
             border: 1px solid var(--card-border);
-            padding: 2rem;
+            padding: 1.5rem;
             border-radius: 16px;
             position: relative;
             transition: transform 0.3s ease;
@@ -266,7 +266,9 @@
     <!-- Navigation -->
     <header class="main-header">
         <div class="container navbar">
-            <a href="index.html" class="logo">AXcent <span>Dance</span></a>
+            <a href="index.html" class="logo">
+                <span class="logo-title">AXCENT</span><span class="logo-subtitle text-gradient">DANCE</span>
+            </a>
             <button class="mobile-menu-btn" aria-label="Toggle menu">MENU</button>
             <nav class="nav-links">
                 <a href="index.html#about">About us</a>
@@ -274,6 +276,13 @@
                 <a href="events.html">Events</a>
                 <a href="registration.html">Registration</a>
                 <a href="contact.html">Contact</a>
+                <div class="dropdown">
+                    <button class="dropbtn">More ▾</button>
+                    <div class="dropdown-content">
+                        <a href="room-rental.html">Room Rental</a>
+                        <a href="collaborations.html">Collaborations</a>
+                    </div>
+                </div>
                 <a href="index.html#trial-form" class="btn-header-cta">Book Free Trial</a>
             </nav>
         </div>
@@ -289,31 +298,33 @@
                         <div class="hero-badge-line"></div>
                         <div class="hero-badge-text">WEEKLY CLASSES</div>
                     </div>
-                    <h1 class="hero-title-large" style="font-size: 3.5rem; margin-bottom: 1rem;">
-                        SCHEDULE <span class="text-gradient">& LEVELS</span>
+                    <h1 class="page-title" style="margin-bottom: 1rem;">
+                        SCHEDULE & LEVELS
                     </h1>
                     <p class="hero-desc-border" style="border: none; padding: 0; margin: 0; max-width: 500px;">
                         Find your rhythm with our weekly Bachata classes in Zurich. From absolute beginners to advanced
                         dancers, we have a spot for you.
                     </p>
                     <div class="hero-buttons-group" style="margin-top: 2rem; justify-content: flex-start;">
-                        <a href="index.html#trial-form" class="btn-tilted btn-tilted-primary">
-                            <div class="btn-tilted-content">
-                                <span>BOOK TRIAL CLASS</span>
-                                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <a href="index.html#trial-form" class="btn-hero btn-hero-primary">
+                            <span class="btn-hero-content">
+                                BOOK TRIAL CLASS
+                                <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                                        d="M17 8l4 4m0 0l-4 4m4-4H3">
+                                    </path>
                                 </svg>
-                            </div>
+                            </span>
                         </a>
                     </div>
                 </div>
 
                 <!-- Right: Image -->
-                <div class="hero-content-right" style="height: 500px;">
-                    <div class="arch-bg" style="transform: rotate(-2deg); border-radius: 20px;"></div>
-                    <div class="arch-image-wrapper" style="border-radius: 20px;">
-                        <img src="schedule_hero.png" alt="Bachata Dance Atmosphere" class="arch-image">
+                <div class="hero-content-right">
+                    <div class="framed-hero-wrapper">
+                        <div class="framed-hero-inner">
+                            <img src="assets/images/schedule_hero_placeholder.png" alt="Bachata Dance Class Atmosphere">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -342,18 +353,18 @@
                         <div class="time-slot">18:30</div>
 
                         <!-- Wed Class -->
-                        <div class="class-card">
+                        <a href="class-bachata-beginner-0.html" class="class-card">
                             <span class="level-tag tag-beginner">Beginner 0</span>
                             <h4 class="class-name">Bachata Beginner 0</h4>
                             <p class="class-instructor">with Ale y Alexia</p>
-                        </div>
+                        </a>
 
                         <!-- Thu Class -->
-                        <div class="class-card">
+                        <a href="class-bachata-beginner-3.html" class="class-card">
                             <span class="level-tag tag-beginner">Beginner 3</span>
                             <h4 class="class-name">Bachata Beginner 3</h4>
                             <p class="class-instructor">with Ale y Alexia</p>
-                        </div>
+                        </a>
                     </div>
 
                     <!-- Slot 2 -->
@@ -361,18 +372,18 @@
                         <div class="time-slot">19:30</div>
 
                         <!-- Wed Class -->
-                        <div class="class-card">
+                        <a href="class-bachata-sensual-foundation.html" class="class-card">
                             <span class="level-tag tag-sensual">Foundation</span>
                             <h4 class="class-name">Bachata Sensual Foundation</h4>
                             <p class="class-instructor">with Ale y Xidan</p>
-                        </div>
+                        </a>
 
                         <!-- Thu Class -->
-                        <div class="class-card">
+                        <a href="class-lady-styling.html" class="class-card">
                             <span class="level-tag tag-styling">Open Level</span>
                             <h4 class="class-name">Lady Styling</h4>
                             <p class="class-instructor">with Xidan</p>
-                        </div>
+                        </a>
                     </div>
 
                     <!-- Slot 3 -->
@@ -380,18 +391,18 @@
                         <div class="time-slot">20:30</div>
 
                         <!-- Wed Class -->
-                        <div class="class-card">
+                        <a href="class-bachata-sensual-improver.html" class="class-card">
                             <span class="level-tag tag-sensual">Improver</span>
                             <h4 class="class-name">Bachata Sensual Improver</h4>
                             <p class="class-instructor">with Ale y Xidan</p>
-                        </div>
+                        </a>
 
                         <!-- Thu Class -->
-                        <div class="class-card">
+                        <a href="class-bachata-sensual-inter-adv.html" class="class-card">
                             <span class="level-tag tag-sensual">Intermediate</span>
                             <h4 class="class-name">Sensual Mastery</h4>
                             <p class="class-instructor">with Ale y Xidan</p>
-                        </div>
+                        </a>
                     </div>
                 </div>
 
@@ -455,7 +466,7 @@
                 <div class="timeline-item">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
-                        <span class="journey-tag">0 - 6 Months</span>
+
                         <h3 class="journey-title">The Start</h3>
                         <p class="journey-desc">
                             Your friendly introduction to Bachata.
@@ -477,8 +488,8 @@
                 <div class="timeline-item">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
-                        <span class="journey-tag">6 Months - 1 Years</span>
-                        <h3 class="journey-title">Building the Foundation</h3>
+
+                        <h3 class="journey-title">Building the Sensual Style Foundation</h3>
                         <div class="role-split">
                             <div class="role-col">
                                 <div class="role-title leader">🕺 Leader</div>
@@ -501,7 +512,7 @@
                 <div class="timeline-item">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
-                        <span class="journey-tag">1 Years - 1.5 Years</span>
+
                         <h3 class="journey-title">Expanding Your Flow</h3>
                         <div class="role-split">
                             <div class="role-col">
@@ -528,7 +539,7 @@
                     <div class="timeline-dot"
                         style="background: var(--accent-start); box-shadow: 0 0 15px var(--accent-start);"></div>
                     <div class="timeline-content" style="border-color: rgba(255, 59, 48, 0.3);">
-                        <span class="journey-tag" style="color: var(--accent-start);">2 Years +</span>
+
                         <h3 class="journey-title">Mastering the Art</h3>
                         <div class="role-split">
                             <div class="role-col">
@@ -552,13 +563,37 @@
             </div>
         </section>
 
+        <!-- Private Classes Section -->
+        <section class="private-classes-section" style="padding: 80px 20px; background: rgba(255, 255, 255, 0.02);">
+            <div class="container" style="max-width: 900px; text-align: center;">
+                <h2 class="section-title-modern">Private Classes</h2>
+                <div class="private-content" style="margin-top: 2rem;">
+                    <p class="hero-desc-border" style="border: none; padding: 0; max-width: 700px; margin: 0 auto;">
+                        Sometimes, group classes aren't enough to address your specific needs.
+                        Whether you want to <strong>accelerate your learning</strong>, refine your <strong>leading or
+                            following technique</strong>, or simply gain more confidence on the dance floor, private
+                        classes offer the personalized attention you deserve.
+                    </p>
+                    <p style="margin-top: 1.5rem; color: var(--text-muted); font-size: 1.1rem;">
+                        Work directly with our instructors to unlock your full potential in a focused, supportive
+                        environment.
+                    </p>
+                    <div style="margin-top: 3rem;">
+                        <a href="contact.html" class="btn-hero btn-hero-secondary" style="display: inline-flex;">
+                            <span class="btn-hero-content">INQUIRE NOW</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Footer CTA -->
         <section class="footer-cta" style="margin-top: 50px;">
             <div class="container">
                 <div class="cta-content">
                     <h3 class="cta-title">Ready to start?</h3>
-                    <a href="index.html#trial-form" class="skew-button btn-primary">
-                        <div>BOOK TRIAL CLASS</div>
+                    <a href="index.html#trial-form" class="btn-hero btn-hero-primary" style="display: inline-flex;">
+                        <span class="btn-hero-content">BOOK TRIAL CLASS</span>
                     </a>
                 </div>
             </div>
@@ -567,8 +602,50 @@
     </main>
 
     <footer class="main-footer">
-        <p>Hermetschloostrasse 73, 8048, Zurich</p>
-        <p>&copy; 2025 AXcent Dance. All rights reserved.</p>
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <a href="index.html" class="logo footer-logo"><span class="logo-title">AXCENT</span><span
+                        class="logo-subtitle text-gradient">DANCE</span></a>
+                <p class="footer-address">
+                    Hermetschloostrasse 73,<br>
+                    8048 Zurich Altstetten<br> 2 minute walking from Tram 2 stop and Bus 31 stop
+                </p>
+                <div class="footer-socials">
+                    <a href="https://instagram.com/axcentdance" target="_blank" aria-label="Instagram">
+                        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                        </svg>
+                    </a>
+                    <a href="mailto:info@axcentdance.com" aria-label="Email">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                            </path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <ul class="footer-links">
+                    <li><a href="terms.html">Terms & Conditions</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="imprint.html">Imprint</a></li>
+                </ul>
+            </div>
+            <div class="footer-col footer-map-col">
+                <h4 class="footer-heading">Find Us</h4>
+                <div class="footer-map-wrapper">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2701.567677685764!2d8.4844443!3d47.3861111!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47900a3910000001%3A0x1234567890abcdef!2sHermetschloostrasse%2073%2C%208048%20Z%C3%BCrich!5e0!3m2!1sen!2sch!4v1625000000000!5m2!1sen!2sch"
+                        width="100%" height="150" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 AXcent Dance. All rights reserved.</p>
+        </div>
     </footer>
 
     <script src="script.js"></script>

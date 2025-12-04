@@ -22,28 +22,40 @@
     <!-- Navigation Bar -->
     <header class="main-header">
         <div class="container navbar">
-            <a href="index.html" class="logo">AX<span>CENT</span></a>
-            <ul class="nav-links">
-                <li><a href="index.html#about">About us</a></li>
-                <li><a href="schedule.html">Schedule</a></li>
-                <li><a href="events.html">Events</a></li>
-                <li><a href="registration.html">Registration</a></li>
-                <li><a href="contact.html" class="active">Contact</a></li>
-            </ul>
-            <a href="index.html#trial-form" class="btn-header-cta">Book Free Trial</a>
-            <button class="mobile-menu-btn">MENU</button>
+            <a href="index.html" class="logo">
+                <span class="logo-title">AXCENT</span><span class="logo-subtitle text-gradient">DANCE</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Toggle menu">MENU</button>
+            <nav class="nav-links">
+                <a href="index.html#about">About us</a>
+                <a href="schedule.html">Schedule</a>
+                <a href="events.html">Events</a>
+                <a href="registration.html">Registration</a>
+                <a href="contact.html">Contact</a>
+                <div class="dropdown">
+                    <button class="dropbtn">More ▾</button>
+                    <div class="dropdown-content">
+                        <a href="room-rental.html">Room Rental</a>
+                        <a href="collaborations.html">Collaborations</a>
+                    </div>
+                </div>
+                <a href="index.html#trial-form" class="btn-header-cta">Book Free Trial</a>
+            </nav>
         </div>
     </header>
 
     <main>
         <!-- Contact Hero -->
-        <section class="hero" style="min-height: 60vh; padding-bottom: 0;">
+        <section class="hero" style="min-height: 30vh; padding-bottom: 0;">
             <div class="container">
                 <div class="hero-content" style="text-align: center; margin: 0 auto;">
-                    <div class="hero-tag">GET IN TOUCH</div>
-                    <h1 class="hero-title-large" style="font-size: 4rem; margin-bottom: 1rem;">
-                        CONTACT<br>
-                        <span class="text-gradient">US.</span>
+                    <div class="hero-badge" style="justify-content: center;">
+                        <span class="hero-badge-line"></span>
+                        <span class="hero-badge-text">GET IN TOUCH</span>
+                        <span class="hero-badge-line"></span>
+                    </div>
+                    <h1 class="page-title" style="margin-bottom: 0.5rem;">
+                        CONTACT US
                     </h1>
                     <p class="hero-desc-border" style="border: none; padding: 0;">
                         Questions about classes? Want to book a private? Or just want to say hi?
@@ -54,7 +66,7 @@
         </section>
 
         <!-- Contact Content -->
-        <section class="contact-section">
+        <section class="contact-section" style="padding-top: 2rem;">
             <div class="container contact-grid">
 
                 <!-- Left: Contact Info -->
@@ -74,15 +86,14 @@
                         <div>
                             <div class="contact-label">Address</div>
                             <div class="contact-value">
-                                Meierwiesenstrasse 58,<br>
-                                8064 Zurich Altstetten
+                                Hermetschloostrasse 73,<br>
+                                8048 Zurich Altstetten<br> 2 minute walking from Tram 2 stop and Bus 31 stop
                             </div>
                             <div style="margin-top: 0.5rem; font-size: 0.875rem; color: var(--text-muted);">
                                 (In front of the tram stop, entrance ground floor)
                             </div>
-                            <a href="https://maps.app.goo.gl/angEvTfCYHXq4Pze7" target="_blank"
-                                class="skew-button btn-secondary"
-                                style="margin-top: 1rem; padding: 0.5rem 1.5rem; font-size: 0.875rem;">
+                            <a href="https://maps.app.goo.gl/angEvTfCYHXq4Pze7" target="_blank" class="btn-secondary"
+                                style="margin-top: 1rem; padding: 0.5rem 1.5rem; font-size: 0.875rem; border-radius: 20px; display: inline-block; text-decoration: none; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); transition: all 0.3s ease;">
                                 <div>OPEN MAPS</div>
                             </a>
                         </div>
@@ -145,8 +156,9 @@
                                 placeholder="How can we help you?" required></textarea>
                         </div>
 
-                        <button type="submit" class="skew-button btn-primary" style="width: 100%; border: none;">
-                            <div>SEND MESSAGE</div>
+                        <button type="submit" class="btn-primary"
+                            style="width: 100%; border: none; border-radius: 20px; padding: 1rem; font-weight: 700; cursor: pointer; transition: all 0.3s ease;">
+                            SEND MESSAGE
                         </button>
                     </form>
                 </div>
@@ -157,8 +169,50 @@
     </main>
 
     <footer class="main-footer">
-        <p>Meierwiesenstrasse 58, 8064 Zurich Altstetten</p>
-        <p>&copy; 2025 AXcent Dance. All rights reserved.</p>
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <a href="index.html" class="logo footer-logo"><span class="logo-title">AXCENT</span><span
+                        class="logo-subtitle text-gradient">DANCE</span></a>
+                <p class="footer-address">
+                    Hermetschloostrasse 73,<br>
+                    8048 Zurich Altstetten<br> 2 minute walking from Tram 2 stop and Bus 31 stop
+                </p>
+                <div class="footer-socials">
+                    <a href="https://instagram.com/axcentdance" target="_blank" aria-label="Instagram">
+                        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                        </svg>
+                    </a>
+                    <a href="mailto:info@axcentdance.com" aria-label="Email">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                            </path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <ul class="footer-links">
+                    <li><a href="terms.html">Terms & Conditions</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="imprint.html">Imprint</a></li>
+                </ul>
+            </div>
+            <div class="footer-col footer-map-col">
+                <h4 class="footer-heading">Find Us</h4>
+                <div class="footer-map-wrapper">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2701.567677685764!2d8.4844443!3d47.3861111!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47900a3910000001%3A0x1234567890abcdef!2sHermetschloostrasse%2073%2C%208048%20Z%C3%BCrich!5e0!3m2!1sen!2sch!4v1625000000000!5m2!1sen!2sch"
+                        width="100%" height="150" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 AXcent Dance. All rights reserved.</p>
+        </div>
     </footer>
 
     <script src="script.js"></script>
