@@ -2659,7 +2659,7 @@ svg {
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 15px;
-    padding: 2rem;
+    padding: 1.5rem;
     transition: all 0.3s ease;
     display: flex;
     flex-direction: column;
@@ -2682,19 +2682,19 @@ svg {
     font-weight: 800;
     padding: 0.25rem 0.75rem;
     border-radius: 999px;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
     letter-spacing: 0.1em;
 }
 
 .guide-icon {
     font-size: 2.5rem;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
 }
 
 .guide-title {
     font-size: 1.5rem;
     font-weight: 800;
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.5rem;
     color: white;
 }
 
