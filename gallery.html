@@ -4,54 +4,93 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Imprint – AXcent Dance Zurich</title>
-    <link rel="canonical" href="https://axcentdance.com/imprint.html">
-    <meta name="description" content="Imprint (Impressum) for AXcent Dance Zurich.">
+    <title>Gallery | AXcent Dance Zurich</title>
+    <link rel="canonical" href="https://axcentdance.com/gallery.html">
+    <meta name="description"
+        content="See the AXcent Dance community in action. Photos and videos from our Bachata classes, socials, and events in Zurich.">
+
+    <!-- Styles -->
     <link rel="stylesheet" href="style.css">
     <style>
-        .legal-content {
-            max-width: 800px;
+        .gallery-hero {
+            padding: 160px 20px 80px;
+            text-align: center;
+            background: linear-gradient(to bottom, rgba(5, 2, 8, 0.8), var(--bg-main)), url('assets/images/hero.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .gallery-container {
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 4rem 1rem;
-            color: var(--text-light);
+            padding: 4rem 20px;
         }
 
-        .legal-content h1 {
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
-            background: var(--grad);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
         }
 
-        .legal-content h2 {
-            font-size: 1.5rem;
-            margin-top: 2rem;
-            margin-bottom: 1rem;
+        .gallery-item {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            aspect-ratio: 1 / 1;
+            background: rgba(255, 255, 255, 0.05);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.02);
+            z-index: 2;
+        }
+
+        .gallery-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-img {
+            opacity: 0.8;
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 1rem;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
             color: white;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
         }
 
-        .legal-content p,
-        .legal-content ul,
-        .legal-content li {
-            margin-bottom: 1rem;
-            line-height: 1.6;
-            color: var(--text-muted);
-        }
-
-        .legal-content ul {
-            padding-left: 1.5rem;
+        .gallery-item:hover .gallery-caption {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
 
 <body>
-    <!-- Navigation -->
+
+    <!-- Background Elements -->
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+
+    <!-- Navigation Bar -->
     <header class="main-header">
         <div class="container navbar">
-            <a href="index.html" class="logo"><span class="logo-title">AXCENT</span><span
-                    class="logo-subtitle text-gradient">DANCE</span></a>
+            <a href="index.html" class="logo">
+                <span class="logo-title">AXCENT</span><span class="logo-subtitle text-gradient">DANCE</span>
+            </a>
             <button class="mobile-menu-btn" aria-label="Toggle menu">MENU</button>
             <nav class="nav-links">
                 <a href="about.html">About us</a>
@@ -78,66 +117,66 @@
     </header>
 
     <main>
-        <section class="legal-content">
-            <h1>Imprint of AXcent Dance in Zurich</h1>
-            <p>This legal notice provides the official imprint of AXcent Dance in Zurich, including contact details,
-                responsible parties, and important disclaimers regarding this website and its content.</p>
-
-            <h2>Overview</h2>
-            <ul>
-                <li>Registered Address</li>
-                <li>Studio Location</li>
-                <li>Email Contact</li>
-                <li>Responsible for Content</li>
-                <li>Copyright Notice</li>
-                <li>Disclaimer – Third-Party Links</li>
-                <li>Disclaimer – Liability</li>
-            </ul>
-
-            <p>The imprint identifies the owner and legal responsibility for this website in accordance with Swiss law.
-                AXcent Dance is a Bachata and Sensual Bachata dance school operating in Zurich. This page clarifies who
-                manages the website, how to reach us, and who is accountable for published content. Visitors can use
-                this page to verify the authenticity of our school and the transparency of our communications.</p>
-
-            <h2>Registered Address</h2>
-            <p>Soldanellastrasse 3<br>8048 Zürich<br>Switzerland</p>
-
-            <h2>Studio Location</h2>
-            <p>Hermetschloostrasse 73<br>8048 Zürich<br>Switzerland</p>
-            <p>Classes typically run on Wednesday and Thursday evenings (18:30–21:30). For up-to-date schedules and
-                bookings, please refer to our <a href="schedule.html" style="color: var(--accent-start);">classes
-                    page</a>.</p>
-
-            <h2>Email Contact</h2>
-            <p>Email: <a href="mailto:info@axcentdance.com" style="color: var(--accent-start);">info@axcentdance.com</a>
-            </p>
-
-            <h2>Responsible for Content</h2>
-            <p>Alessandro Slamitz (Owner)</p>
-
-            <h2>Copyright Notice</h2>
-            <p>All texts, images, videos, and other materials on this website are the property of AXcent Dance or the
-                specifically named rights holders. Any reproduction, distribution, or use of elements requires prior
-                written consent from the respective rights holder. We respect the rights of all contributors and event
-                participants.</p>
-
-            <h2>Disclaimer – Third-Party Links</h2>
-            <p>This website may contain links to external websites. AXcent Dance has no influence on the content of
-                these third-party sites and assumes no liability for their content. Responsibility for linked pages lies
-                solely with their operators.</p>
-
-            <h2>Disclaimer – Liability</h2>
-            <p>The author assumes no liability for the correctness, accuracy, timeliness, reliability, or completeness
-                of the information provided. Liability claims against the author for material or immaterial damages
-                resulting from access to, use of, or non-use of the published information, from misuse of the
-                connection, or from technical malfunctions, are excluded.</p>
-            <p>All offers are non-binding. The author expressly reserves the right to change, supplement, or delete
-                parts of the pages or the entire offer without prior notice, or to temporarily or permanently cease
-                publication.</p>
+        <!-- Hero Section -->
+        <section class="gallery-hero">
+            <div class="container">
+                <div class="hero-badge">
+                    <span class="hero-badge-line"></span>
+                    <span class="hero-badge-text">MOMENTS</span>
+                    <span class="hero-badge-line"></span>
+                </div>
+                <h1 class="page-title">Gallery</h1>
+                <p class="hero-desc-border" style="border: none; padding: 0;">
+                    Capturing the joy, connection, and passion of our dance community.
+                </p>
+            </div>
         </section>
+
+        <!-- Gallery Grid -->
+        <section class="gallery-container">
+            <div class="gallery-grid">
+                <!-- Placeholder Items -->
+                <div class="gallery-item">
+                    <div
+                        style="width:100%; height:100%; background: #333; display:flex; align-items:center; justify-content:center; color:#666;">
+                        Image Placeholder</div>
+                    <div class="gallery-caption">Social Dancing</div>
+                </div>
+                <div class="gallery-item">
+                    <div
+                        style="width:100%; height:100%; background: #333; display:flex; align-items:center; justify-content:center; color:#666;">
+                        Image Placeholder</div>
+                    <div class="gallery-caption">Workshop Vibes</div>
+                </div>
+                <div class="gallery-item">
+                    <div
+                        style="width:100%; height:100%; background: #333; display:flex; align-items:center; justify-content:center; color:#666;">
+                        Image Placeholder</div>
+                    <div class="gallery-caption">Performance Team</div>
+                </div>
+                <div class="gallery-item">
+                    <div
+                        style="width:100%; height:100%; background: #333; display:flex; align-items:center; justify-content:center; color:#666;">
+                        Image Placeholder</div>
+                    <div class="gallery-caption">Class Demo</div>
+                </div>
+                <div class="gallery-item">
+                    <div
+                        style="width:100%; height:100%; background: #333; display:flex; align-items:center; justify-content:center; color:#666;">
+                        Image Placeholder</div>
+                    <div class="gallery-caption">Summer Party</div>
+                </div>
+                <div class="gallery-item">
+                    <div
+                        style="width:100%; height:100%; background: #333; display:flex; align-items:center; justify-content:center; color:#666;">
+                        Image Placeholder</div>
+                    <div class="gallery-caption">Student Showcase</div>
+                </div>
+            </div>
+        </section>
+
     </main>
 
-    <!-- Footer -->
     <footer class="main-footer">
         <div class="container footer-grid">
             <div class="footer-col">
@@ -199,6 +238,7 @@
             <p>&copy; 2025 AXcent Dance. All rights reserved.</p>
         </div>
     </footer>
+
     <script src="script.js"></script>
 </body>
 

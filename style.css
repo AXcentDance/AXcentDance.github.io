@@ -233,13 +233,45 @@ svg {
     left: 0;
     width: 100%;
     z-index: 1000;
-    background: rgba(15, 5, 24, 0.8);
-    /* Dark glass */
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--glass-border);
+    background: rgba(15, 5, 24, 0.6);
+    /* Lower opacity for better glass effect */
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     height: var(--header-height);
     display: flex;
     align-items: center;
+    transition: all 0.4s ease;
+}
+
+/* Glassmorphism 2.0 - Shine Border */
+.main-header::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg,
+            transparent 0%,
+            rgba(255, 255, 255, 0.0) 20%,
+            rgba(255, 255, 255, 0.5) 50%,
+            rgba(255, 255, 255, 0.0) 80%,
+            transparent 100%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+}
+
+.main-header.scrolled {
+    background: rgba(15, 5, 24, 0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.main-header.scrolled::after {
+    opacity: 1;
 }
 
 .navbar {
@@ -297,6 +329,8 @@ svg {
     background-color: transparent;
     color: var(--text-muted);
     padding: 0;
+    padding-bottom: 5px;
+    /* Align with nav links */
     font-size: 0.875rem;
     font-weight: 700;
     border: none;
@@ -341,12 +375,98 @@ svg {
     /* Slide up to position */
 }
 
+.dropdown-content a {
+    color: var(--text-muted);
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    font-size: 0.875rem;
+    transition: all var(--transition-fast);
+}
+
+.dropdown-content a:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: var(--text-main);
+    padding-left: 20px;
+}
+
+/* Dropdown Underline on Text Only */
+.dropdown-content a::after {
+    display: none !important;
+    /* Remove wide underline */
+}
+
+.dropdown-content a span {
+    position: relative;
+    display: inline-block;
+    /* Ensure span respects width */
+}
+
+.dropdown-content a span::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.5);
+    transition: width 0.3s ease;
+}
+
+.dropdown-content a:hover span::after {
+    width: 100%;
+}
+
+.dropdown-content a.active span::after {
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent-start), var(--accent-end), transparent);
+    box-shadow: 0 2px 10px rgba(255, 59, 48, 0.4);
+}
+
 /* ... existing code ... */
 
-.nav-links a:hover {
+.nav-links a:not(.btn-header-cta) {
+    position: relative;
+    padding-bottom: 5px;
+    /* Space for underline */
+}
+
+.nav-links a:not(.btn-header-cta)::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 1px;
+    /* Thinner for modern look */
+    background: rgba(255, 255, 255, 0.5);
+    /* Grey for hover */
+    transition: width 0.3s ease;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+.nav-links a:not(.btn-header-cta):hover {
     color: var(--text-main);
     text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
-    transition: all var(--transition-fast);
+}
+
+.nav-links a:not(.btn-header-cta):hover::after {
+    width: 80%;
+    /* Grey underline on hover */
+}
+
+.nav-links a:not(.btn-header-cta).active {
+    color: white;
+}
+
+.nav-links a:not(.btn-header-cta).active::after {
+    width: 100%;
+    height: 2px;
+    /* Thinner active state */
+    background: linear-gradient(90deg, transparent, var(--accent-start), var(--accent-end), transparent);
+    box-shadow: 0 2px 10px rgba(255, 59, 48, 0.4);
 }
 
 .btn-header-cta {
@@ -518,6 +638,37 @@ svg {
 @media (min-width: 768px) {
     .hero-title-large {
         font-size: 10rem;
+    }
+}
+
+/* Text Reveal Animation */
+.reveal-wrapper {
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: bottom;
+    /* Ensures alignment isn't messed up */
+    line-height: 1;
+    /* Tighten line height for mask */
+}
+
+.reveal-content {
+    display: inline-block;
+    transform: translateY(110%);
+    animation: revealUp 1.2s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+}
+
+/* Stagger the second line */
+.reveal-wrapper:nth-child(2) .reveal-content {
+    animation-delay: 0.2s;
+}
+
+@keyframes revealUp {
+    from {
+        transform: translateY(110%);
+    }
+
+    to {
+        transform: translateY(0);
     }
 }
 
@@ -2436,26 +2587,13 @@ svg {
 }
 
 .footer-logo {
-    font-size: 1.875rem;
-    /* Restored size */
-    font-weight: 900;
-    font-style: italic;
-    letter-spacing: -0.05em;
-    color: var(--text-main);
-    width: auto;
-    /* Override .logo width */
-    display: inline-block;
-    /* Or flex/block as needed, but auto width is key */
-}
-
-.footer-logo span {
-    color: var(--accent-start);
+    margin-bottom: 0;
 }
 
 .footer-address {
     color: var(--text-muted);
+    font-size: 0.9rem;
     line-height: 1.6;
-    font-size: 0.95rem;
 }
 
 .footer-socials {
@@ -2465,7 +2603,7 @@ svg {
 
 .footer-socials a {
     color: var(--text-muted);
-    transition: color 0.2s;
+    transition: color 0.3s ease;
 }
 
 .footer-socials a:hover {
@@ -2473,16 +2611,13 @@ svg {
 }
 
 .footer-heading {
-    font-size: 1.1rem;
-    font-weight: 700;
+    font-family: var(--font-display);
+    font-size: 1.5rem;
     color: white;
     margin-bottom: 0.5rem;
 }
 
 .footer-links {
-    list-style: none;
-    padding: 0;
-    margin: 0;
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
@@ -2490,9 +2625,8 @@ svg {
 
 .footer-links a {
     color: var(--text-muted);
-    text-decoration: none;
-    transition: color 0.2s;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
 }
 
 .footer-links a:hover {
@@ -2500,10 +2634,9 @@ svg {
 }
 
 .footer-map-wrapper {
-    border-radius: 1rem;
+    border-radius: 12px;
     overflow: hidden;
     border: 1px solid var(--glass-border);
-    height: 150px;
 }
 
 .footer-bottom {
@@ -2511,8 +2644,10 @@ svg {
     padding-top: 2rem;
     border-top: 1px solid rgba(255, 255, 255, 0.05);
     color: var(--text-muted);
-    font-size: 0.85rem;
+    font-size: 0.8rem;
 }
+
+
 
 /* Page Title for Secondary Pages */
 .page-title {
@@ -2976,4 +3111,54 @@ svg {
     font-size: 0.75rem;
     color: var(--text-muted);
     line-height: 1.3;
+}
+
+/* VIEW TRANSITIONS API */
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+}
+
+@keyframes fade-out {
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes slide-from-right {
+    from {
+        transform: translateX(30px);
+    }
+}
+
+@keyframes slide-to-left {
+    to {
+        transform: translateX(-30px);
+    }
+}
+
+::view-transition-old(root) {
+    animation: 90ms cubic-bezier(0.4, 0, 1, 1) both fade-out,
+        300ms cubic-bezier(0.4, 0, 0.2, 1) both slide-to-left;
+}
+
+::view-transition-new(root) {
+    animation: 210ms cubic-bezier(0, 0, 0.2, 1) 90ms both fade-in,
+        300ms cubic-bezier(0.4, 0, 0.2, 1) both slide-from-right;
+}
+
+/* Morphing Elements - Assign unique names to key elements */
+/* Note: For true morphing between different pages, elements need the same view-transition-name */
+
+/* Example: Hero Title Morph */
+.hero-title-large,
+.page-title {
+    view-transition-name: page-title;
+}
+
+/* Example: Hero Image Morph */
+.hero-video,
+.course-hero {
+    view-transition-name: hero-visual;
 }
