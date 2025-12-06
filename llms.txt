@@ -1,0 +1,22 @@
+# AXcent Dance Studio
+
+AXcent Dance is a premier dance studio in Zurich, Switzerland, specializing in Bachata and Latin dance styles. We offer classes for all levels, from absolute beginners to advanced dancers, as well as private lessons, wedding dance choreography, and event hosting.
+
+## Core Pages
+
+- [Home](https://axcentdance.com/) - Overview of the studio, latest news, and trial class registration.
+- [Schedule](https://axcentdance.com/schedule.html) - Weekly class schedule and pricing.
+- [Events](https://axcentdance.com/events.html) - Upcoming workshops, bootcamps, and socials.
+- [About Us](https://axcentdance.com/about.html) - Meet the team (Ale & Xidan) and learn about our philosophy.
+- [Contact](https://axcentdance.com/contact.html) - Location, contact form, and details.
+
+## Classes & Guides
+
+- [Bachata Beginner](https://axcentdance.com/class-bachata-beginner-0.html) - Course details for new dancers.
+- [Bachata Sensual](https://axcentdance.com/class-bachata-sensual-foundation.html) - Foundation and technique for Sensual style.
+- [Lady Styling](https://axcentdance.com/class-bachata-lady-styling.html) - Solo styling classes.
+- [Dance Etiquette](https://axcentdance.com/etiquette.html) - Rules and guidelines for social dancing.
+
+## Blog
+
+- [Blog](https://axcentdance.com/blog.html) - Latest news, music tips, and dance advice.
