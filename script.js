@@ -66,31 +66,23 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     // Active Link Highlighting
     const currentPath = window.location.pathname;
-    const navItems = document.querySelectorAll('.nav-links a');
+    // Remove trailing slash if present (except for root)
+    const cleanPath = currentPath.length > 1 && currentPath.endsWith('/') ? currentPath.slice(0, -1) : currentPath;
+    const currentPage = cleanPath.split('/').pop() || 'index.html'; // Fallback for root
 
-    navItems.forEach(link => {
-        const linkPath = link.getAttribute('href');
-        // Handle root path and index.html
-        if ((currentPath === '/' || currentPath.endsWith('index.html')) && (linkPath === 'index.html' || linkPath === './')) {
-            // Don't highlight home on other pages if logo is clicked, but usually home link is explicit.
-            // Actually, let's just check if the href matches the end of the path
-            // But for home, we might want to be careful.
-            // Let's stick to simple matching for now.
-        }
-
-        if (currentPath.endsWith(linkPath) && linkPath !== '#') {
-            link.classList.add('active');
-        } else if (linkPath !== 'index.html' && currentPath.includes(linkPath)) {
-            // Handle sub-pages if necessary, or exact matches
-            link.classList.add('active');
-        }
-    });
-
-    // Better Active Link Logic
-    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
     document.querySelectorAll('.nav-links a').forEach(link => {
-        const linkPage = link.getAttribute('href');
-        if (linkPage === currentPage) {
+        const linkHref = link.getAttribute('href');
+        if (!linkHref) return;
+
+        // Normalize link href (remove ./ and .html)
+        let cleanLink = linkHref.replace('./', '');
+        if (cleanLink.endsWith('.html')) cleanLink = cleanLink.slice(0, -5);
+        if (cleanLink === '') cleanLink = 'index.html'; // Treat empty or ./ as index
+
+        // Check for match
+        if (linkHref === './' && (currentPage === 'index.html' || currentPage === '')) {
+            link.classList.add('active');
+        } else if (cleanLink === currentPage) {
             link.classList.add('active');
         }
     });

@@ -1,0 +1,15 @@
+/* TEAM */
+Founders: Ale & Xidan
+Contact: info@axcentdance.com
+Location: Zurich, Switzerland
+
+/* SITE */
+Last update: 2025-12-07
+Language: English, German
+Doctype: HTML5
+Standards: CSS3, ES6+
+Components: Vanilla JS, No Frameworks
+Hosted on: GitHub Pages
+
+/* THANKS */
+To our amazing students and the Zurich Bachata community for dancing with us.

@@ -1,0 +1,6 @@
+Contact: mailto:info@axcentdance.com
+Expires: 2026-12-31T23:59:59z
+Preferred-Languages: en, de
+Canonical: https://axcentdance.com/.well-known/security.txt
+Policy: https://axcentdance.com/privacy
+Hiring: https://axcentdance.com/contact

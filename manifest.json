@@ -1,0 +1,22 @@
+{
+    "name": "AXcent Dance Zurich",
+    "short_name": "AXcent Dance",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#FDFBF7",
+    "theme_color": "#E05D44",
+    "orientation": "portrait",
+    "icons": [
+        {
+            "src": "assets/images/logo.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "assets/images/logo.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "description": "Premier Bachata and Latin dance studio in Zurich. Join our community for classes, workshops, and social events."
+}
