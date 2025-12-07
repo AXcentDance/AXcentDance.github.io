@@ -11,8 +11,8 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="style.css">
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
 
 
     <style>
@@ -142,6 +142,106 @@
             font-weight: 600;
         }
     </style>
+    <style>
+        #globe-section {
+            padding: 4rem 0;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(to right, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0));
+        }
+
+        .globe-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 30px;
+            padding: 2rem;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+        }
+
+        .globe-legend {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .globe-legend h3 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: white;
+        }
+
+        .city-list {
+            display: none;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 16px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: var(--grad);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .stat-label {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        #globe-viz {
+            flex: 2;
+            min-width: 300px;
+            height: 500px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: grab;
+        }
+
+        #globe-viz:active {
+            cursor: grabbing;
+        }
+
+        .scene-tooltip {
+            color: white !important;
+            background: rgba(20, 10, 30, 0.9) !important;
+            padding: 8px 12px !important;
+            border-radius: 8px !important;
+            font-family: var(--font-body) !important;
+            font-weight: 600 !important;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3) !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        }
+    </style>
 </head>
 
 <body>
@@ -162,16 +262,16 @@
                 <div class="dropdown">
                     <button class="dropbtn">More ▾</button>
                     <div class="dropdown-content">
-                                                <a href="room-rental.html"><span>Room Rental</span></a>
-            <a href="collaborations.html"><span>Collaborations</span></a>
-            <a href="wedding-dance.html"><span>Wedding Dance</span></a>
-            <a href="private-lessons.html"><span>Private Lessons</span></a>
-            <a href="gallery.html"><span>Gallery</span></a>
+                        <a href="room-rental.html"><span>Room Rental</span></a>
+                        <a href="collaborations.html"><span>Collaborations</span></a>
+                        <a href="wedding-dance.html"><span>Wedding Dance</span></a>
+                        <a href="private-lessons.html"><span>Private Lessons</span></a>
+                        <a href="gallery.html"><span>Gallery</span></a>
                         <a href="education.html"><span>Education</span></a>
-            <a href="beginner-guide.html"><span>Beginner Guide</span></a>
-<a href="blog.html"><span>Blog</span></a>
-            <a href="faq.html"><span>FAQ</span></a>
-            <a href="etiquette.html"><span>Dance Etiquette</span></a>
+                        <a href="beginner-guide.html"><span>Beginner Guide</span></a>
+                        <a href="blog.html"><span>Blog</span></a>
+                        <a href="faq.html"><span>FAQ</span></a>
+                        <a href="etiquette.html"><span>Dance Etiquette</span></a>
                     </div>
                 </div>
                 <a href="index.html#trial-form" class="btn-header-cta">Book Free Trial</a>
@@ -237,12 +337,50 @@
             </div>
         </section>
 
+        <!-- Workshops Map Section -->
+        <section id="globe-section">
+            <div class="container">
+                <div class="globe-wrapper">
+                    <!-- Legend Side -->
+                    <div class="globe-legend">
+                        <h3>Our Footprint</h3>
+                        <p style="color: var(--text-muted); margin-bottom: 2rem; font-size: 1.1rem; line-height: 1.6;">
+                            We are honored to have shared our passion for Bachata at workshops and international
+                            congresses across the globe. From intimate studio sessions to massive festival stages.
+                        </p>
+
+                        <div class="stats-grid">
+                            <div class="stat-card">
+                                <span class="stat-number">25+</span>
+                                <span class="stat-label">Cities</span>
+                            </div>
+                            <div class="stat-card">
+                                <span class="stat-number">12</span>
+                                <span class="stat-label">Countries</span>
+                            </div>
+                            <div class="stat-card">
+                                <span class="stat-number">3</span>
+                                <span class="stat-label">Continents</span>
+                            </div>
+                            <div class="stat-card">
+                                <span class="stat-number">∞</span>
+                                <span class="stat-label">Memories</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Globe Side -->
+                    <div id="globe-viz"></div>
+                </div>
+            </div>
+        </section>
+
         <!-- Team Section -->
         <section class="section-padding" style="background: var(--bg-secondary);">
             <div class="container">
-                <div class="section-header" style="text-align: center; margin-bottom: 3rem;">
-                    <h2 class="section-title-modern">Our Team</h2>
-                    <p class="section-subtitle">Meet the instructors who make it all happen.</p>
+                <div class="section-header" style="text-align: center; margin-bottom: 2rem;">
+                    <h2 class="section-title-modern">Global Teaching</h2>
+                    <p class="section-subtitle">Cities where we have taught Workshops & Congresses</p>
                 </div>
 
                 <div class="team-grid">
@@ -346,6 +484,131 @@
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        // Lazy Load Map Strategy
+        document.addEventListener('DOMContentLoaded', () => {
+            const globeSection = document.getElementById('globe-section');
+            const container = document.getElementById('globe-viz');
+            let mapLoaded = false;
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !mapLoaded) {
+                        mapLoaded = true;
+                        loadGlobeResources();
+                        observer.disconnect();
+                    }
+                });
+            }, { rootMargin: '200px' }); // Start loading 200px before section is visible
+
+            observer.observe(globeSection);
+
+            function loadGlobeResources() {
+                // Dynamically load libraries
+                const script1 = document.createElement('script');
+                script1.src = 'https://unpkg.com/globe.gl';
+                script1.async = true;
+
+                const script2 = document.createElement('script');
+                script2.src = 'https://unpkg.com/topojson-client';
+                script2.async = true;
+
+                // Wait for both to load
+                let scriptsLoaded = 0;
+                const onScriptLoad = () => {
+                    scriptsLoaded++;
+                    if (scriptsLoaded === 2) {
+                        initGlobe();
+                    }
+                };
+
+                script1.onload = onScriptLoad;
+                script2.onload = onScriptLoad;
+
+                document.body.appendChild(script1);
+                document.body.appendChild(script2);
+            }
+
+            function initGlobe() {
+                // Workshop Data
+                const workshops = [
+                    { lat: 47.3769, lng: 8.5417, label: "Zurich (HQ)", size: 1.0, color: '#ff3b30' },
+                    { lat: 46.9480, lng: 7.4474, label: "Bern", size: 0.5, color: '#ff3b30' },
+                    { lat: 47.0502, lng: 8.3093, label: "Lucerne", size: 0.5, color: '#ff3b30' },
+                    { lat: 47.5596, lng: 7.5886, label: "Basel", size: 0.5, color: '#ff3b30' },
+                    { lat: 47.4245, lng: 9.3767, label: "St. Gallen", size: 0.5, color: '#ff3b30' },
+                    { lat: 45.4642, lng: 9.1900, label: "Milano", size: 0.5, color: '#ff3b30' },
+                    { lat: 45.4064, lng: 11.8768, label: "Padova", size: 0.5, color: '#ff3b30' },
+                    { lat: 45.0703, lng: 7.6869, label: "Torino", size: 0.5, color: '#ff3b30' },
+                    { lat: 45.6669, lng: 12.2423, label: "Treviso", size: 0.5, color: '#ff3b30' },
+                    { lat: 43.9125, lng: 12.9155, label: "Pesaro", size: 0.5, color: '#ff3b30' },
+                    { lat: 38.9098, lng: 16.5877, label: "Catanzaro", size: 0.5, color: '#ff3b30' },
+                    { lat: 48.7758, lng: 9.1829, label: "Stuttgart", size: 0.5, color: '#ff3b30' },
+                    { lat: 52.5200, lng: 13.4050, label: "Berlin", size: 0.5, color: '#ff3b30' },
+                    { lat: 51.5074, lng: -0.1278, label: "London", size: 0.5, color: '#ff3b30' },
+                    { lat: 55.9533, lng: -3.1883, label: "Edinburgh", size: 0.5, color: '#ff3b30' },
+                    { lat: 41.3851, lng: 2.1734, label: "Barcelona", size: 0.5, color: '#ff3b30' },
+                    { lat: 38.9667, lng: -0.1833, label: "Gandia", size: 0.5, color: '#ff3b30' },
+                    { lat: 54.6872, lng: 25.2797, label: "Vilnius", size: 0.5, color: '#ff3b30' },
+                    { lat: 44.4268, lng: 26.1025, label: "Bucharest", size: 0.5, color: '#ff3b30' },
+                    { lat: 25.2048, lng: 55.2708, label: "Dubai", size: 0.5, color: '#ff3b30' },
+                    { lat: 24.4539, lng: 54.3773, label: "Abu Dhabi", size: 0.5, color: '#ff3b30' },
+                    { lat: 35.6762, lng: 139.6503, label: "Tokyo", size: 0.5, color: '#ff3b30' },
+                    { lat: 34.3416, lng: 108.9398, label: "Xi'an", size: 0.5, color: '#ff3b30' },
+                    { lat: 47.6062, lng: -122.3321, label: "Seattle", size: 0.5, color: '#ff3b30' },
+                    { lat: 43.6150, lng: -116.2023, label: "Boise", size: 0.5, color: '#ff3b30' },
+                    { lat: 37.7749, lng: -122.4194, label: "San Francisco", size: 0.5, color: '#ff3b30' },
+                    { lat: 49.2827, lng: -123.1207, label: "Vancouver", size: 0.5, color: '#ff3b30' }
+                ];
+
+                const world = Globe()
+                    (container)
+                    .backgroundColor('rgba(0,0,0,0)') // Transparent to blend with site bg
+                    .pointsData(workshops)
+                    .pointAltitude(0.02)
+                    .pointColor('color')
+                    // HTML Tooltip Content
+                    .pointLabel('label') // Simple text label
+                    .pointRadius(0.3)
+                    .pointResolution(24)
+                    .onPointHover(point => {
+                        container.style.cursor = point ? 'pointer' : '';
+                    })
+                    // Add animated rings for a "modern" vibe
+                    .ringsData(workshops)
+                    .ringColor(() => 'rgba(255, 59, 48, 0.3)') // Semi-transparent red
+                    .ringMaxRadius(3)
+                    .ringPropagationSpeed(2)
+                    .ringRepeatPeriod(1000)
+                    .width(container.clientWidth)
+                    .height(500);
+
+                // Load Country Borders
+                fetch('https://unpkg.com/world-atlas/countries-110m.json')
+                    .then(res => res.json())
+                    .then(land => {
+                        world
+                            .polygonsData(topojson.feature(land, land.objects.countries).features)
+                            .polygonCapColor(() => '#1a1a1a') // Dark fill for countries
+                            .polygonSideColor(() => 'rgba(0,0,0,0)')
+                            .polygonStrokeColor(() => '#555'); // Visible grey border
+                    });
+
+                // Auto-rotate
+                world.controls().autoRotate = false;
+                world.controls().autoRotateSpeed = 0.5;
+
+                // Zoom limits
+                world.controls().minDistance = 150;
+                world.controls().maxDistance = 400;
+
+                // Handle Resize
+                window.addEventListener('resize', () => {
+                    if (world) world.width(container.clientWidth);
+                });
+            } // End of initGlobe
+        });
+    </script>
 </body>
 
 </html>
