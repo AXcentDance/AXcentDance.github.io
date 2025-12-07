@@ -87,3 +87,35 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
+// Blog Filtering Logic
+const filterBtns = document.querySelectorAll('.filter-btn');
+const blogCards = document.querySelectorAll('.modern-card'); // Ensure this matches your card class
+
+if (filterBtns.length > 0 && blogCards.length > 0) {
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            // 1. Remove active class from all buttons
+            filterBtns.forEach(b => b.classList.remove('active'));
+            // 2. Add active class to clicked button
+            btn.classList.add('active');
+
+            // 3. Get filter value
+            const filterValue = btn.getAttribute('data-filter');
+
+            // 4. Filter cards
+            blogCards.forEach(card => {
+                const cardCategory = card.getAttribute('data-category');
+
+                if (filterValue === 'all' || filterValue === cardCategory) {
+                    card.style.display = 'flex'; // Or 'block' depending on your card layout
+                    // Optional: Add a fade-in animation/class here if desired
+                    setTimeout(() => card.style.opacity = '1', 10);
+                } else {
+                    card.style.display = 'none';
+                    card.style.opacity = '0';
+                }
+            });
+        });
+    });
+}
