@@ -141,14 +141,23 @@
                 </button>
             </div>
 
+
+            <!-- Hours Danced -->
+            <div class="dash-card" style="text-align: center;">
+                <h2>Dance Time</h2>
+                <div style="font-size: 3rem; font-weight: bold; color: var(--accent-light);">
+                    <span id="hoursCount">0</span> h
+                </div>
+                <p style="color: var(--text-muted); margin-top: 5px;">Time invested in yourself</p>
+            </div>
+
             <!-- Recent Activity -->
-            <div class="dash-card">
+            <div class="dash-card" style="grid-column: 1 / -1;">
                 <h2>Your Classes</h2>
-                <ul class="purchase-list">
-                    <li class="purchase-item" style="color: var(--text-muted); text-align: center; display: block;">
-                        No purchases found yet.
+                <ul class="purchase-list" id="purchaseList">
+                    <li class="purchase-item" style="color: var(--text-muted); text-align: center;">
+                        Loading data...
                     </li>
-                    <!-- Items will be injected here in Level 2 -->
                 </ul>
             </div>
 
@@ -166,13 +175,53 @@
             const { data: { session } } = await supabase.auth.getSession();
 
             if (!session) {
-                // Not logged in -> Redirect to login
                 window.location.href = 'login.html';
-            } else {
-                // Logged in -> Show Page
-                document.getElementById('loading').style.display = 'none';
-                document.getElementById('userEmail').textContent = session.user.email;
+                return;
             }
+
+            document.getElementById('loading').style.display = 'none';
+            document.getElementById('userEmail').textContent = session.user.email;
+
+            // Fetch Data (Level 2)
+            fetchUserData(session.user.email);
+        }
+
+        async function fetchUserData(email) {
+            // 1. Fetch Purchases
+            const { data: purchases, error } = await supabase
+                .from('purchases')
+                .select('*')
+                .eq('user_email', email)
+                .order('date', { ascending: false });
+
+            const listEl = document.getElementById('purchaseList');
+            const hoursEl = document.getElementById('hoursCount');
+            listEl.innerHTML = '';
+
+            if (error || !purchases || purchases.length === 0) {
+                listEl.innerHTML = '<li class="purchase-item" style="color: var(--text-muted);">No classes found yet.</li>';
+                hoursEl.textContent = '0';
+            } else {
+                let totalHours = 0;
+
+                purchases.forEach(p => {
+                    // specific logic for hours
+                    totalHours += (p.hours_added || 0);
+
+                    const li = document.createElement('li');
+                    li.className = 'purchase-item';
+                    li.innerHTML = `
+                        <span>${p.course_name}</span>
+                        <span style="opacity:0.6;">${new Date(p.date).toLocaleDateString()}</span>
+                    `;
+                    listEl.appendChild(li);
+                });
+
+                hoursEl.textContent = totalHours;
+            }
+
+            // 2. Fetch Loyalty Points (Level 3 - Placeholder for now)
+            // We will add this logic in the text step
         }
 
         checkSession();
