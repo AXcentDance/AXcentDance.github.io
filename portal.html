@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portal | AXcent Dance</title>
+    <link rel="stylesheet" href="style.min.css">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <style>
+        .portal-header {
+            padding: 120px 20px 60px;
+            text-align: center;
+            background: linear-gradient(var(--bg-main), rgba(20, 20, 20, 0));
+        }
+
+        .portal-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .portal-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .dash-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 30px;
+        }
+
+        .points-display {
+            text-align: center;
+        }
+
+        .stamp-card {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .stamp {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .stamp.filled {
+            background: var(--accent-gradient);
+            box-shadow: 0 0 15px var(--accent-start);
+        }
+
+        .purchase-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 1rem;
+        }
+
+        .purchase-item {
+            padding: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-main);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="loading">Loading Portal...</div>
+
+    <!-- Navigation -->
+    <header class="main-header">
+        <div class="container navbar">
+            <a href="index.html" class="logo">
+                <span class="logo-title">AXCENT</span><span class="logo-subtitle text-gradient">DANCE</span>
+            </a>
+            <div style="display: flex; gap: 20px; align-items: center;">
+                <span id="userEmail" style="color: var(--text-muted); font-size: 0.9rem;"></span>
+                <button id="logoutBtn"
+                    style="background:none; border: 1px solid rgba(255,255,255,0.2); padding: 5px 15px; color: white; border-radius: 20px; cursor: pointer;">Log
+                    Out</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="portal-header">
+        <h1 class="portal-title">My Dashboard</h1>
+        <p>Welcome back to your dance journey.</p>
+    </div>
+
+    <div class="portal-container">
+        <div class="dashboard-grid">
+
+            <!-- Loyalty Card -->
+            <div class="dash-card points-display">
+                <h2>Loyalty Points</h2>
+                <div class="stamp-card">
+                    <div class="stamp filled">✨</div>
+                    <div class="stamp"></div>
+                    <div class="stamp"></div>
+                    <div class="stamp"></div>
+                    <div class="stamp"></div>
+                </div>
+                <p>1 / 5 Stamps Collected</p>
+                <div style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-muted);">
+                    Collect 5 stamps to unlock a 50 CHF discount code!
+                </div>
+                <button disabled
+                    style="margin-top: 20px; padding: 10px 20px; background: rgba(255,255,255,0.1); border:none; border-radius: 10px; color: rgba(255,255,255,0.3); width: 100%;">
+                    Reward Locked 🔒
+                </button>
+            </div>
+
+            <!-- Recent Activity -->
+            <div class="dash-card">
+                <h2>Your Classes</h2>
+                <ul class="purchase-list">
+                    <li class="purchase-item" style="color: var(--text-muted); text-align: center; display: block;">
+                        No purchases found yet.
+                    </li>
+                    <!-- Items will be injected here in Level 2 -->
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
+    <script type="module">
+        import { supabase } from './assets/js/supabase-client.js';
+
+        // Check Session
+        async function checkSession() {
+            const { data: { session } } = await supabase.auth.getSession();
+
+            if (!session) {
+                // Not logged in -> Redirect to login
+                window.location.href = 'login.html';
+            } else {
+                // Logged in -> Show Page
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('userEmail').textContent = session.user.email;
+            }
+        }
+
+        checkSession();
+
+        // Logout
+        document.getElementById('logoutBtn').addEventListener('click', async () => {
+            await supabase.auth.signOut();
+            window.location.href = 'index.html';
+        });
+    </script>
+</body>
+
+</html>
