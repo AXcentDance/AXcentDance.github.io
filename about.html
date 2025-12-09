@@ -10,16 +10,16 @@
         content="Meet Ale and Xidan, the founders of AXcent Dance Zurich. Learn about our teaching philosophy, our journey, and our passion for Bachata Sensual.">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.min.css">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
 
 
     <style>
         .about-hero {
-            padding: 160px 20px 80px;
+            padding: 160px 20px 40px;
             text-align: center;
-            background: linear-gradient(to bottom, rgba(5, 2, 8, 0.8), var(--bg-main)), url('assets/images/hero.jpg');
+            background: linear-gradient(to bottom, rgba(5, 2, 8, 0.8), var(--bg-main)), url('assets/images/hero.webp');
             background-size: cover;
             background-position: center;
             position: relative;
@@ -144,7 +144,7 @@
     </style>
     <style>
         #globe-section {
-            padding: 4rem 0;
+            padding: 0 0 2rem;
             position: relative;
             overflow: hidden;
             background: linear-gradient(to right, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0));
@@ -153,18 +153,21 @@
         .globe-wrapper {
             display: flex;
             align-items: center;
-            gap: 2rem;
+            gap: 1rem;
+            /* Reduced gap */
             flex-wrap: wrap;
             background: linear-gradient(145deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
             border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 30px;
-            padding: 2rem;
+            padding: 1rem;
+            /* Reduced padding */
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
         }
 
         .globe-legend {
             flex: 1;
             min-width: 300px;
+            text-align: center;
         }
 
         .globe-legend h3 {
@@ -180,13 +183,16 @@
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 1.5rem;
-            margin-top: 2rem;
+            gap: 1rem;
+            /* Reduced gap */
+            margin-top: 1rem;
+            /* Reduced margin */
         }
 
         .stat-card {
             background: rgba(255, 255, 255, 0.05);
-            padding: 1.5rem;
+            padding: 1rem;
+            /* Reduced padding */
             border-radius: 16px;
             backdrop-filter: blur(5px);
             border: 1px solid rgba(255, 255, 255, 0.1);
@@ -200,19 +206,20 @@
         }
 
         .stat-number {
-            font-size: 2.5rem;
+            font-size: 2rem;
+            /* Slightly smaller font to save space */
             font-weight: 800;
             background: var(--grad);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.25rem;
             display: block;
         }
 
         .stat-label {
             color: var(--text-muted);
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             text-transform: uppercase;
             letter-spacing: 0.05em;
         }
@@ -220,7 +227,8 @@
         #globe-viz {
             flex: 2;
             min-width: 300px;
-            height: 500px;
+            height: 380px;
+            /* Increased height */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -245,6 +253,10 @@
 </head>
 
 <body>
+    <!-- Page Transition Loader -->
+    <div id="page-transition">
+        <img src="assets/images/logo.png" alt="AXcent Logo" class="transition-logo">
+    </div>
 
     <!-- Navigation Bar -->
     <header class="main-header">
@@ -264,6 +276,7 @@
                     <div class="dropdown-content">
                         <a href="room-rental.html"><span>Room Rental</span></a>
                         <a href="collaborations.html"><span>Collaborations</span></a>
+                        <a href="corporate-events.html"><span>Corporate Events</span></a>
                         <a href="wedding-dance.html"><span>Wedding Dance</span></a>
                         <a href="private-lessons.html"><span>Private Lessons</span></a>
                         <a href="gallery.html"><span>Gallery</span></a>
@@ -295,6 +308,53 @@
             </div>
         </section>
 
+        <!-- AXcent Footprint Section (Map) -->
+        <section id="globe-section">
+            <div class="container">
+                <div class="globe-wrapper">
+                    <!-- Header inside the box -->
+                    <div style="width: 100%; text-align: center; margin-bottom: 2rem;">
+                        <h2 style="font-size: 2.5rem; color: white; margin-bottom: 1rem;">AXcent Footprint</h2>
+                        <p style="color: var(--text-muted); font-size: 1.1rem;">
+                            We are honored to have shared our passion and method with dance communities across the
+                            globe.
+                        </p>
+                        <p style="color: var(--text-muted); font-size: 1.1rem; margin-top: 0.5rem;">
+                            You can find on the map all the places in which we have offered workshops and trainings.
+                        </p>
+                    </div>
+
+                    <!-- Content Row -->
+                    <div style="display: flex; width: 100%; align-items: center; gap: 2rem; flex-wrap: wrap;">
+                        <!-- Legend Side -->
+                        <div class="globe-legend">
+                            <div class="stats-grid">
+                                <div class="stat-card">
+                                    <span class="stat-number">25+</span>
+                                    <span class="stat-label">Cities</span>
+                                </div>
+                                <div class="stat-card">
+                                    <span class="stat-number">12</span>
+                                    <span class="stat-label">Countries</span>
+                                </div>
+                                <div class="stat-card">
+                                    <span class="stat-number">3</span>
+                                    <span class="stat-label">Continents</span>
+                                </div>
+                                <div class="stat-card">
+                                    <span class="stat-number">∞</span>
+                                    <span class="stat-label">Memories</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Globe Side -->
+                        <div id="globe-viz"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Founders Section -->
         <section class="founders-section">
             <div class="container">
@@ -307,7 +367,7 @@
 
                     <!-- Content -->
                     <div class="founders-content">
-                        <h2>Ale y Xidan</h2>
+                        <h2>The Founders: Ale y Xidan</h2>
                         <p>
                             We are Alessandro and Xidan, the founders of AXcent Dance. Our journey began with a shared
                             passion for Bachata Sensual and a vision to create a dance school that goes beyond just
@@ -337,43 +397,7 @@
             </div>
         </section>
 
-        <!-- Workshops Map Section -->
-        <section id="globe-section">
-            <div class="container">
-                <div class="globe-wrapper">
-                    <!-- Legend Side -->
-                    <div class="globe-legend">
-                        <h3>Our Footprint</h3>
-                        <p style="color: var(--text-muted); margin-bottom: 2rem; font-size: 1.1rem; line-height: 1.6;">
-                            We are honored to have shared our passion for Bachata at workshops and international
-                            congresses across the globe. From intimate studio sessions to massive festival stages.
-                        </p>
 
-                        <div class="stats-grid">
-                            <div class="stat-card">
-                                <span class="stat-number">25+</span>
-                                <span class="stat-label">Cities</span>
-                            </div>
-                            <div class="stat-card">
-                                <span class="stat-number">12</span>
-                                <span class="stat-label">Countries</span>
-                            </div>
-                            <div class="stat-card">
-                                <span class="stat-number">3</span>
-                                <span class="stat-label">Continents</span>
-                            </div>
-                            <div class="stat-card">
-                                <span class="stat-number">∞</span>
-                                <span class="stat-label">Memories</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Globe Side -->
-                    <div id="globe-viz"></div>
-                </div>
-            </div>
-        </section>
 
         <!-- Team Section -->
         <section class="section-padding" style="background: var(--bg-secondary);">
@@ -452,38 +476,42 @@
                 <div class="footer-map-wrapper">
                     <iframe
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2701.567677685764!2d8.4844443!3d47.3861111!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47900a3910000001%3A0x1234567890abcdef!2sHermetschloostrasse%2073%2C%208048%20Z%C3%BCrich!5e0!3m2!1sen!2sch!4v1625000000000!5m2!1sen!2sch"
-                        width="100%" height="150" style="border:0;" allowfullscreen="" loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <div class="footer-col">
+                        <h4 class="footer-heading">Quick Links</h4>
+                        <ul class="footer-links">
+                            <li><a href="guide-bachata.html">Bachata in Zurich</a></li>
+                            <li><a href="wedding-dance.html">Wedding Dance</a></li>
+                            <li><a href="private-lessons.html">Private Lessons</a></li>
+                            <li><a href="registration.html">Gift Cards</a></li>
+                        </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4 class="footer-heading">Legal</h4>
+                    <ul class="footer-links">
+                        <li><a href="">Terms & Conditions</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="imprint.html">Imprint</a></li>
+                    </ul>
                 </div>
             </div>
 
-            <!-- Quick Links (SEO) -->
-            <div class="footer-col">
-                <h4 class="footer-heading">Quick Links</h4>
-                <ul class="footer-links">
-                    <li><a href="guide-bachata.html">Bachata in Zurich</a></li>
-                    <li><a href="wedding-dance.html">Wedding Dance</a></li>
-                    <li><a href="contact.html">Private Lessons</a></li>
-                    <li><a href="registration.html">Gift Cards</a></li>
-                </ul>
+            <div class="container footer-map-full" style="margin-bottom: 2rem;">
+                <h4 class="footer-heading" style="margin-bottom: 1rem;">Find Us</h4>
+                <div class="footer-map-wrapper-large"
+                    style="border-radius: 12px; overflow: hidden; border: 1px solid var(--glass-border);">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2701.567677685764!2d8.4844443!3d47.3861111!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47900a3910000001%3A0x1234567890abcdef!2sHermetschloostrasse%2073%2C%208048%20Z%C3%BCrich!5e0!3m2!1sen!2sch!4v1625000000000!5m2!1sen!2sch"
+                        width="100%" height="250" style="border:0; width: 100%; display: block;" allowfullscreen=""
+                        loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
             </div>
-
-            <!-- Legal -->
-            <div class="footer-col">
-                <h4 class="footer-heading">Legal</h4>
-                <ul class="footer-links">
-                    <li><a href="">Terms & Conditions</a></li>
-                    <li><a href="privacy.html">Privacy Policy</a></li>
-                    <li><a href="imprint.html">Imprint</a></li>
-                </ul>
+            <div class="footer-bottom">
+                <p>&copy; 2025 AXcent Dance. All rights reserved.</p>
             </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2025 AXcent Dance. All rights reserved.</p>
-        </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="script.min.js"></script>
     <script>
         // Lazy Load Map Strategy
         document.addEventListener('DOMContentLoaded', () => {
@@ -580,8 +608,17 @@
                     .ringMaxRadius(3)
                     .ringPropagationSpeed(2)
                     .ringRepeatPeriod(1000)
+                    // Add visibility labels
+                    .labelsData(workshops)
+                    .labelLat('lat')
+                    .labelLng('lng')
+                    .labelText('label')
+                    .labelSize(0.5)
+                    .labelDotRadius(0.3)
+                    .labelColor(() => 'rgba(255, 255, 255, 0.9)')
+                    .labelAltitude(0.01) // Slightly above surface
                     .width(container.clientWidth)
-                    .height(500);
+                    .height(380);
 
                 // Load Country Borders
                 fetch('https://unpkg.com/world-atlas/countries-110m.json')
@@ -597,6 +634,11 @@
                 // Auto-rotate
                 world.controls().autoRotate = false;
                 world.controls().autoRotateSpeed = 0.5;
+
+                // Initial Zoom
+                world.pointOfView({
+                    altitude: 1.7
+                });
 
                 // Zoom limits
                 world.controls().minDistance = 150;

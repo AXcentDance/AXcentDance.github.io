@@ -7,10 +7,21 @@
   <title>Bachata Classes in Zurich – AXcent Dance</title>
   <link rel="canonical" href="https://axcentdance.com/">
   <meta name="description"
-    content="Meet new people and dance! Bachata Sensual classes in Zurich led by international instructors for all levels. No partner needed – join today!">
+    content="Join the best Bachata classes in Zurich at AXcent Dance. Beginner to advanced levels, no partner needed. Authentic Dominican & Sensual style training.">
+
+  <!-- Mobile & Social Meta Tags -->
+  <meta name="theme-color" content="#0f0518">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://axcentdance.com/">
+  <meta property="og:title" content="Bachata Classes in Zurich – AXcent Dance">
+  <meta property="og:description"
+    content="Join the best Bachata classes in Zurich. Beginner to advanced, no partner needed.">
+  <meta property="og:image" content="https://axcentdance.com/assets/images/hero.webp">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://axcentdance.com/assets/images/hero.webp">
 
   <!-- Styles -->
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.min.css">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
 
@@ -27,7 +38,7 @@
       "name": "AXcent Dance",
       "url": "https://axcentdance.com/",
       "logo": "https://axcentdance.com/assets/images/logo.png",
-      "image": "https://axcentdance.com/assets/images/hero.jpg",
+      "image": "https://axcentdance.com/assets/images/hero.webp",
       "description": "AXcent Dance is a Bachata dance school in Zurich Altstetten offering Bachata Sensual, Dominican Bachata, Salsa, and Latin dance classes for all levels, plus workshops and social events.",
       "telephone": "+41799668481",
       "email": "info@axcentdance.com",
@@ -151,6 +162,10 @@
 </head>
 
 <body>
+  <!-- Page Transition Loader -->
+  <div id="page-transition">
+    <img src="assets/images/logo.png" alt="AXcent Logo" class="transition-logo">
+  </div>
 
   <!-- Navigation Bar -->
   <header class="main-header">
@@ -170,6 +185,7 @@
           <div class="dropdown-content">
             <a href="room-rental.html"><span>Room Rental</span></a>
             <a href="collaborations.html"><span>Collaborations</span></a>
+            <a href="corporate-events.html"><span>Corporate Events</span></a>
             <a href="wedding-dance.html"><span>Wedding Dance</span></a>
             <a href="private-lessons.html"><span>Private Lessons</span></a>
             <a href="gallery.html"><span>Gallery</span></a>
@@ -235,12 +251,27 @@
 
         <!-- Re-opening Notice -->
         <div class="hero-notice-box"
-          style="background: rgba(255, 59, 48, 0.15); border: 1px solid var(--accent-start); border-radius: 12px; padding: 1rem; margin: 1.5rem auto; max-width: 600px; display: flex; align-items: center; gap: 1rem; text-align: left;">
-          <div style="font-size: 1.5rem;">🎉</div>
-          <div style="color: white; font-size: 0.95rem;">
-            <strong>New Season Starts Jan 7th!</strong><br>
-            We are moving to a new location: <strong>Hermetschloostrasse 73, 8048 Zurich Altstetten<br> 2 minute walking
-              from Tram 2 stop and Bus 31 stop</strong>.
+          style="background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 16px; padding: 1.25rem; margin: 2rem auto; max-width: 550px; text-align: left; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
+
+          <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem;">
+            <span
+              style="background: var(--accent-start); color: white; padding: 4px 10px; border-radius: 20px; font-weight: 800; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px; box-shadow: 0 4px 10px rgba(108, 92, 231, 0.3);">Week
+              of Jan 12</span>
+            <span style="color: white; font-weight: 700; font-size: 1.1rem; letter-spacing: -0.02em;">New Season
+              Starts!</span>
+          </div>
+
+          <div style="display: flex; gap: 0.75rem;">
+            <div style="font-size: 1.2rem; line-height: 1.4;">📍</div>
+            <div>
+              <div
+                style="color: #ffdd59; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 4px;">
+                NEW LOCATION</div>
+              <div style="color: rgba(255,255,255,0.95); font-weight: 600; font-size: 1rem; margin-bottom: 0.2rem;">
+                Hermetschloostrasse 73, Zurich Altstetten</div>
+              <div style="color: rgba(255,255,255,0.6); font-size: 0.85rem;">2 min walk from Tram 2 stop and Bus 31 stop
+              </div>
+            </div>
           </div>
         </div>
 
@@ -304,14 +335,13 @@
 
           <!-- Guide 3 -->
           <div class="guide-card glass-card">
-            <div class="guide-badge">OUR STYLE</div>
-            <div class="guide-icon">🔥</div>
-            <h3 class="guide-title">What is Bachata Sensual?</h3>
+            <div class="guide-badge">START HERE</div>
+            <div class="guide-icon">✨</div>
+            <h3 class="guide-title">Beginner Guide</h3>
             <p class="guide-excerpt">
-              A modern evolution of Bachata that focuses on body movement and expression. It's the style we specialize
-              in at AXcent.
+              New to dance? Here is everything you need to know about your first class, what to wear, and more.
             </p>
-            <a href="guide-bachata-sensual.html" class="guide-link">
+            <a href="beginner-guide.html" class="guide-link">
               READ GUIDE <span>→</span>
             </a>
           </div>
@@ -323,7 +353,7 @@
     <section id="schedule" class="schedule-section reveal">
       <div class="container">
         <div class="schedule-header">
-          <h2 class="section-title-modern">Weekly Schedule</h2>
+          <h2 class="section-title-modern">Weekly Bachata Classes in Zurich</h2>
           <p class="schedule-meta">Zurich Altstetten • English Taught</p>
         </div>
 
@@ -340,18 +370,27 @@
             <div class="time-slot">18:30</div>
 
             <!-- Wed Class -->
-            <div class="class-card">
+            <a href="class-bachata-beginner-0.html" class="class-card" style="overflow: visible;">
+              <div style="position: absolute; top: -10px; left: -10px; z-index: 10;">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"
+                    fill="#ffd700" stroke="rgba(255,255,255,0.2)" stroke-width="1" />
+                  <text x="50%" y="55%" text-anchor="middle" dominant-baseline="middle" fill="#000" font-size="5"
+                    font-weight="900" font-family="sans-serif">NEW</text>
+                </svg>
+              </div>
               <span class="level-tag tag-beginner">Beginner 0</span>
               <h4 class="class-name">Bachata Beginner 0</h4>
               <p class="class-instructor">with Ale y Alexia</p>
-            </div>
+            </a>
 
             <!-- Thu Class -->
-            <div class="class-card">
+            <a href="class-bachata-beginner-3.html" class="class-card">
               <span class="level-tag tag-beginner">Beginner 3</span>
               <h4 class="class-name">Bachata Beginner 3</h4>
               <p class="class-instructor">with Ale y Alexia</p>
-            </div>
+            </a>
           </div>
 
           <!-- Slot 2 -->
@@ -359,18 +398,18 @@
             <div class="time-slot">19:30</div>
 
             <!-- Wed Class -->
-            <div class="class-card">
+            <a href="class-bachata-sensual-foundation.html" class="class-card">
               <span class="level-tag tag-sensual">Foundation</span>
               <h4 class="class-name">Bachata Sensual Foundation</h4>
               <p class="class-instructor">with Ale y Xidan</p>
-            </div>
+            </a>
 
             <!-- Thu Class -->
-            <div class="class-card">
+            <a href="class-lady-styling.html" class="class-card">
               <span class="level-tag tag-styling">Open Level</span>
               <h4 class="class-name">Lady Styling</h4>
               <p class="class-instructor">with Xidan</p>
-            </div>
+            </a>
           </div>
 
           <!-- Slot 3 -->
@@ -378,18 +417,18 @@
             <div class="time-slot">20:30</div>
 
             <!-- Wed Class -->
-            <div class="class-card">
+            <a href="class-bachata-sensual-improver.html" class="class-card">
               <span class="level-tag tag-sensual">Improver</span>
               <h4 class="class-name">Bachata Sensual Improver</h4>
               <p class="class-instructor">with Ale y Xidan</p>
-            </div>
+            </a>
 
             <!-- Thu Class -->
-            <div class="class-card">
+            <a href="class-bachata-sensual-inter-adv.html" class="class-card">
               <span class="level-tag tag-sensual">Intermediate</span>
               <h4 class="class-name">Bachata Sensual Intermediate/Advanced</h4>
               <p class="class-instructor">with Ale y Xidan</p>
-            </div>
+            </a>
           </div>
         </div>
 
@@ -398,35 +437,44 @@
           <div class="mobile-schedule-day">
             <h3 class="mobile-day-title">Wednesday</h3>
             <div class="schedule-row">
-              <div class="class-card">
+              <a href="class-bachata-beginner-0.html" class="class-card" style="overflow: visible;">
+                <div style="position: absolute; top: -10px; left: -10px; z-index: 10;">
+                  <svg width="34" height="34" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"
+                      fill="#ffd700" />
+                    <text x="50%" y="55%" text-anchor="middle" dominant-baseline="middle" fill="#000" font-size="5"
+                      font-weight="900" font-family="sans-serif">NEW</text>
+                  </svg>
+                </div>
                 <div class="mobile-time">18:30</div>
                 <h4 class="class-name">Bachata Beginner 0</h4>
-              </div>
-              <div class="class-card">
+              </a>
+              <a href="class-bachata-sensual-foundation.html" class="class-card">
                 <div class="mobile-time">19:30</div>
                 <h4 class="class-name">Bachata Sensual Foundation</h4>
-              </div>
-              <div class="class-card">
+              </a>
+              <a href="class-bachata-sensual-improver.html" class="class-card">
                 <div class="mobile-time">20:30</div>
                 <h4 class="class-name">Bachata Sensual Improver</h4>
-              </div>
+              </a>
             </div>
           </div>
           <div class="mobile-schedule-day">
             <h3 class="mobile-day-title">Thursday</h3>
             <div class="schedule-row">
-              <div class="class-card">
+              <a href="class-bachata-beginner-3.html" class="class-card">
                 <div class="mobile-time">18:30</div>
                 <h4 class="class-name">Bachata Beginner 3</h4>
-              </div>
-              <div class="class-card">
+              </a>
+              <a href="class-lady-styling.html" class="class-card">
                 <div class="mobile-time">19:30</div>
                 <h4 class="class-name">Lady Styling</h4>
-              </div>
-              <div class="class-card">
+              </a>
+              <a href="class-bachata-sensual-inter-adv.html" class="class-card">
                 <div class="mobile-time">20:30</div>
                 <h4 class="class-name">Bachata Sensual Intermediate/Advanced</h4>
-              </div>
+              </a>
             </div>
           </div>
         </div>
@@ -443,16 +491,16 @@
           <h2 class="section-title-modern section-title-left">Our Moments</h2>
           <div class="gallery-grid">
             <div class="gallery-item">
-              <img src="assets/images/home/gallery_1.jpg" alt="Couple dancing Bachata">
+              <img src="assets/images/home/gallery_1.webp" alt="Couple dancing Bachata" loading="lazy">
             </div>
             <div class="gallery-item">
-              <img src="assets/images/home/gallery_2.png" alt="Group selfie at dance event">
+              <img src="assets/images/home/gallery_2.webp" alt="Group selfie at dance event" loading="lazy">
             </div>
             <div class="gallery-item">
-              <img src="assets/images/home/gallery_3.jpg" alt="Large group photo after class">
+              <img src="assets/images/home/gallery_3.webp" alt="Large group photo after class" loading="lazy">
             </div>
             <div class="gallery-item">
-              <img src="assets/images/home/gallery_4.jpg" alt="Stage performance at festival">
+              <img src="assets/images/home/gallery_4.webp" alt="Stage performance at festival" loading="lazy">
             </div>
           </div>
         </div>
@@ -515,6 +563,23 @@
                 </div>
               </div>
             </div>
+
+            <!-- Item 04 -->
+            <div class="value-item">
+              <div class="value-number">04</div>
+              <div class="value-content">
+                <div class="value-header">
+                  <h3 class="value-title">Exploration</h3>
+                  <div class="value-toggle">+</div>
+                </div>
+                <div class="value-details">
+                  <p class="value-desc">
+                    We travel regularly to international congresses to explore new styles, build community, and create
+                    memories. It's more than a dance school.
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -529,12 +594,12 @@
 
         <div class="reviews-slider-wrapper">
           <div class="reviews-grid">
-            <!-- Review 1 -->
+            <!-- Review 1: Alexia S -->
             <div class="review-card glass-card">
               <div class="review-header">
                 <div class="reviewer-info">
-                  <h4 class="reviewer-name">Alana F</h4>
-                  <span class="review-date">24/08/2025</span>
+                  <h4 class="reviewer-name">Alexia S</h4>
+                  <span class="review-date">Google Review</span>
                 </div>
                 <div class="google-badge" title="Verified Google Review">
                   <svg viewBox="0 0 24 24" width="16" height="16">
@@ -545,17 +610,18 @@
               </div>
               <div class="review-stars">★★★★★</div>
               <p class="review-text">
-                "Best bachata classes in Zurich. Ale and Xidan are amazing instructors that care about your improvement.
-                I’m so glad I found them!"
+                "Ale and Xidan have been my teachers for years. They are so passionate not only about dancing but
+                teaching. I love their focus on correct technique and their crazy depth of knowledge regarding how the
+                body moves."
               </p>
             </div>
 
-            <!-- Review 2 -->
+            <!-- Review 2: Neo M -->
             <div class="review-card glass-card">
               <div class="review-header">
                 <div class="reviewer-info">
-                  <h4 class="reviewer-name">Laura F</h4>
-                  <span class="review-date">23/08/2025</span>
+                  <h4 class="reviewer-name">Neo M</h4>
+                  <span class="review-date">Google Review</span>
                 </div>
                 <div class="google-badge" title="Verified Google Review">
                   <svg viewBox="0 0 24 24" width="16" height="16">
@@ -566,95 +632,274 @@
               </div>
               <div class="review-stars">★★★★★</div>
               <p class="review-text">
-                "I started at AXcent Dance as a complete beginner and after just a few weeks I can already social dance!
-                Ale and Xidan are fantastic teachers who make learning fun and clear."
+                "Such a welcoming community and environment, and the teachers at AXcent Dance are very knowledgeable. If
+                you are looking for Bachata dance classes in a place which really cares about you... this is the best
+                place in Zurich 🤩🤩"
               </p>
             </div>
 
-            <!-- Review 3 -->
+            <!-- Review 3: Valeria M -->
+            <div class="review-card glass-card">
+              <div class="review-header">
+                <div class="reviewer-info">
+                  <h4 class="reviewer-name">Valeria M</h4>
+                  <span class="review-date">Google Review</span>
+                </div>
+                <div class="google-badge" title="Verified Google Review"><svg viewBox="0 0 24 24" width="16"
+                    height="16">
+                    <path fill="currentColor"
+                      d="M21.35,11.1H12.18V13.83H18.69C18.36,17.64 15.19,19.27 12.19,19.27C8.36,19.27 5,16.25 5,12C5,7.9 8.2,4.73 12.2,4.73C15.29,4.73 17.1,6.7 17.1,6.7L19,4.72C19,4.72 16.56,2 12.1,2C6.42,2 2.03,6.8 2.03,12C2.03,17.05 6.16,22 12.25,22C17.6,22 21.5,18.33 21.5,12.91C21.5,11.76 21.35,11.1 21.35,11.1V11.1Z" />
+                  </svg></div>
+              </div>
+              <div class="review-stars">★★★★★</div>
+              <p class="review-text">
+                "Ale and Xidan are truly professional and attentive instructors... They’ve trained with the best in the
+                world and continue to hone their skills... I don’t think you’ll find more specialized teachers than
+                them."
+              </p>
+            </div>
+
+            <!-- Review 4: Steven M -->
+            <div class="review-card glass-card">
+              <div class="review-header">
+                <div class="reviewer-info">
+                  <h4 class="reviewer-name">Steven M</h4>
+                  <span class="review-date">Google Review</span>
+                </div>
+                <div class="google-badge" title="Verified Google Review"><svg viewBox="0 0 24 24" width="16"
+                    height="16">
+                    <path fill="currentColor"
+                      d="M21.35,11.1H12.18V13.83H18.69C18.36,17.64 15.19,19.27 12.19,19.27C8.36,19.27 5,16.25 5,12C5,7.9 8.2,4.73 12.2,4.73C15.29,4.73 17.1,6.7 17.1,6.7L19,4.72C19,4.72 16.56,2 12.1,2C6.42,2 2.03,6.8 2.03,12C2.03,17.05 6.16,22 12.25,22C17.6,22 21.5,18.33 21.5,12.91C21.5,11.76 21.35,11.1 21.35,11.1V11.1Z" />
+                  </svg></div>
+              </div>
+              <div class="review-stars">★★★★★</div>
+              <p class="review-text">
+                "Ale & Xidan are the best for bachata classes in Zurich! Their ability to spot the tiniest of details is
+                incredible. They take the guesswork out of improving, making every lesson a breakthrough!! 10/10"
+              </p>
+            </div>
+
+            <!-- Review 5: Miroslav -->
+            <div class="review-card glass-card">
+              <div class="review-header">
+                <div class="reviewer-info">
+                  <h4 class="reviewer-name">Miroslav</h4>
+                  <span class="review-date">Google Review</span>
+                </div>
+                <div class="google-badge" title="Verified Google Review"><svg viewBox="0 0 24 24" width="16"
+                    height="16">
+                    <path fill="currentColor"
+                      d="M21.35,11.1H12.18V13.83H18.69C18.36,17.64 15.19,19.27 12.19,19.27C8.36,19.27 5,16.25 5,12C5,7.9 8.2,4.73 12.2,4.73C15.29,4.73 17.1,6.7 17.1,6.7L19,4.72C19,4.72 16.56,2 12.1,2C6.42,2 2.03,6.8 2.03,12C2.03,17.05 6.16,22 12.25,22C17.6,22 21.5,18.33 21.5,12.91C21.5,11.76 21.35,11.1 21.35,11.1V11.1Z" />
+                  </svg></div>
+              </div>
+              <div class="review-stars">★★★★★</div>
+              <p class="review-text">
+                "Been learning from Ale and Xidan for almost two years now. Excellent teachers that give personalized
+                feedback. They put good emphasis on teaching proper technique... Would definitely recommend."
+              </p>
+            </div>
+
+            <!-- Review 6: Giulia P -->
+            <div class="review-card glass-card">
+              <div class="review-header">
+                <div class="reviewer-info">
+                  <h4 class="reviewer-name">Giulia P</h4>
+                  <span class="review-date">Google Review</span>
+                </div>
+                <div class="google-badge" title="Verified Google Review"><svg viewBox="0 0 24 24" width="16"
+                    height="16">
+                    <path fill="currentColor"
+                      d="M21.35,11.1H12.18V13.83H18.69C18.36,17.64 15.19,19.27 12.19,19.27C8.36,19.27 5,16.25 5,12C5,7.9 8.2,4.73 12.2,4.73C15.29,4.73 17.1,6.7 17.1,6.7L19,4.72C19,4.72 16.56,2 12.1,2C6.42,2 2.03,6.8 2.03,12C2.03,17.05 6.16,22 12.25,22C17.6,22 21.5,18.33 21.5,12.91C21.5,11.76 21.35,11.1 21.35,11.1V11.1Z" />
+                  </svg></div>
+              </div>
+              <div class="review-stars">★★★★★</div>
+              <p class="review-text">
+                "Great bachata classes in Zurich! I started dancing bachata about one year ago and it added so much
+                flavour to my life :) The teachers Ale and Xidan combine high technical skills with a warm and welcoming
+                environment."
+              </p>
+            </div>
+
+            <!-- Review 7: Leonard M -->
+            <div class="review-card glass-card">
+              <div class="review-header">
+                <div class="reviewer-info">
+                  <h4 class="reviewer-name">Leonard M</h4>
+                  <span class="review-date">Google Review</span>
+                </div>
+                <div class="google-badge" title="Verified Google Review"><svg viewBox="0 0 24 24" width="16"
+                    height="16">
+                    <path fill="currentColor"
+                      d="M21.35,11.1H12.18V13.83H18.69C18.36,17.64 15.19,19.27 12.19,19.27C8.36,19.27 5,16.25 5,12C5,7.9 8.2,4.73 12.2,4.73C15.29,4.73 17.1,6.7 17.1,6.7L19,4.72C19,4.72 16.56,2 12.1,2C6.42,2 2.03,6.8 2.03,12C2.03,17.05 6.16,22 12.25,22C17.6,22 21.5,18.33 21.5,12.91C21.5,11.76 21.35,11.1 21.35,11.1V11.1Z" />
+                  </svg></div>
+              </div>
+              <div class="review-stars">★★★★★</div>
+              <p class="review-text">
+                "Joining AXcent Dance has been the best decision I have made since moving to Zurich... The bachata
+                sensual classes are well structured so you really improve every week. It’s also a friendly community..."
+              </p>
+            </div>
+
+            <!-- Review 8: Federico M -->
             <div class="review-card glass-card">
               <div class="review-header">
                 <div class="reviewer-info">
                   <h4 class="reviewer-name">Federico M</h4>
-                  <span class="review-date">23/08/2025</span>
+                  <span class="review-date">Google Review</span>
                 </div>
-                <div class="google-badge" title="Verified Google Review">
-                  <svg viewBox="0 0 24 24" width="16" height="16">
+                <div class="google-badge" title="Verified Google Review"><svg viewBox="0 0 24 24" width="16"
+                    height="16">
                     <path fill="currentColor"
                       d="M21.35,11.1H12.18V13.83H18.69C18.36,17.64 15.19,19.27 12.19,19.27C8.36,19.27 5,16.25 5,12C5,7.9 8.2,4.73 12.2,4.73C15.29,4.73 17.1,6.7 17.1,6.7L19,4.72C19,4.72 16.56,2 12.1,2C6.42,2 2.03,6.8 2.03,12C2.03,17.05 6.16,22 12.25,22C17.6,22 21.5,18.33 21.5,12.91C21.5,11.76 21.35,11.1 21.35,11.1V11.1Z" />
-                  </svg>
-                </div>
+                  </svg></div>
               </div>
               <div class="review-stars">★★★★★</div>
               <p class="review-text">
-                "Ale and Xidan bachata classes in Zurich are amazing for beginners — the steps are explained clearly,
-                and
-                the atmosphere is super welcoming. It’s fun, social, and we’ve already made new friends."
+                "Ale and Xidan bachata classes in Zurich are amazing for beginners... the steps are explained clearly,
+                and the atmosphere is super welcoming. If you want to learn bachata sensual in a relaxed but
+                professional way, this is the place to go."
               </p>
             </div>
 
-            <!-- Review 4 -->
+            <!-- Review 9: Laura M -->
             <div class="review-card glass-card">
               <div class="review-header">
                 <div class="reviewer-info">
-                  <h4 class="reviewer-name">Anna H</h4>
-                  <span class="review-date">21/08/2025</span>
+                  <h4 class="reviewer-name">Laura M</h4>
+                  <span class="review-date">Google Review</span>
                 </div>
-                <div class="google-badge" title="Verified Google Review">
-                  <svg viewBox="0 0 24 24" width="16" height="16">
+                <div class="google-badge" title="Verified Google Review"><svg viewBox="0 0 24 24" width="16"
+                    height="16">
                     <path fill="currentColor"
                       d="M21.35,11.1H12.18V13.83H18.69C18.36,17.64 15.19,19.27 12.19,19.27C8.36,19.27 5,16.25 5,12C5,7.9 8.2,4.73 12.2,4.73C15.29,4.73 17.1,6.7 17.1,6.7L19,4.72C19,4.72 16.56,2 12.1,2C6.42,2 2.03,6.8 2.03,12C2.03,17.05 6.16,22 12.25,22C17.6,22 21.5,18.33 21.5,12.91C21.5,11.76 21.35,11.1 21.35,11.1V11.1Z" />
-                  </svg>
-                </div>
+                  </svg></div>
               </div>
               <div class="review-stars">★★★★★</div>
               <p class="review-text">
-                "Ale and Xidan are amazing teachers! They have a funny and understandable way to explain, and have
-                enormous knowledge about technique. Best bachata classes in Zurich!!"
+                "I started at AXcent Dance as a complete beginner and after just a few weeks I can already social
+                dance... The location in Zurich is easy to reach, and Ale and Xidan are fantastic teachers who make
+                learning fun and clear."
               </p>
             </div>
 
-            <!-- Review 5 -->
+            <!-- Review 10: Alex E -->
+            <div class="review-card glass-card">
+              <div class="review-header">
+                <div class="reviewer-info">
+                  <h4 class="reviewer-name">Alex E</h4>
+                  <span class="review-date">Google Review</span>
+                </div>
+                <div class="google-badge" title="Verified Google Review"><svg viewBox="0 0 24 24" width="16"
+                    height="16">
+                    <path fill="currentColor"
+                      d="M21.35,11.1H12.18V13.83H18.69C18.36,17.64 15.19,19.27 12.19,19.27C8.36,19.27 5,16.25 5,12C5,7.9 8.2,4.73 12.2,4.73C15.29,4.73 17.1,6.7 17.1,6.7L19,4.72C19,4.72 16.56,2 12.1,2C6.42,2 2.03,6.8 2.03,12C2.03,17.05 6.16,22 12.25,22C17.6,22 21.5,18.33 21.5,12.91C21.5,11.76 21.35,11.1 21.35,11.1V11.1Z" />
+                  </svg></div>
+              </div>
+              <div class="review-stars">★★★★★</div>
+              <p class="review-text">
+                "Ale and Xidan (and Alexia) are the most amazing bachata teachers I've ever had. They bring the perfect
+                balance of technique... and create a wonderful atmosphere to facilitate learning and make asking
+                questions easy!"
+              </p>
+            </div>
+
+            <!-- Review 11: Denis B -->
             <div class="review-card glass-card">
               <div class="review-header">
                 <div class="reviewer-info">
                   <h4 class="reviewer-name">Denis B</h4>
-                  <span class="review-date">19/08/2025</span>
+                  <span class="review-date">Google Review</span>
                 </div>
-                <div class="google-badge" title="Verified Google Review">
-                  <svg viewBox="0 0 24 24" width="16" height="16">
+                <div class="google-badge" title="Verified Google Review"><svg viewBox="0 0 24 24" width="16"
+                    height="16">
                     <path fill="currentColor"
                       d="M21.35,11.1H12.18V13.83H18.69C18.36,17.64 15.19,19.27 12.19,19.27C8.36,19.27 5,16.25 5,12C5,7.9 8.2,4.73 12.2,4.73C15.29,4.73 17.1,6.7 17.1,6.7L19,4.72C19,4.72 16.56,2 12.1,2C6.42,2 2.03,6.8 2.03,12C2.03,17.05 6.16,22 12.25,22C17.6,22 21.5,18.33 21.5,12.91C21.5,11.76 21.35,11.1 21.35,11.1V11.1Z" />
-                  </svg>
-                </div>
+                  </svg></div>
               </div>
               <div class="review-stars">★★★★★</div>
               <p class="review-text">
-                "It’s rare to find instructors who can teach Bachata Sensual at such an authentic level, week after
-                week.
-                In Zurich, they are without a doubt among the very best teachers."
+                "It’s rare to find instructors who can teach Bachata Sensual at such an authentic level... In Zurich,
+                they are without a doubt among the very best teachers for Bachata Sensual."
               </p>
             </div>
 
-            <!-- Review 6 -->
+            <!-- Review 12: Daiva M -->
+            <div class="review-card glass-card">
+              <div class="review-header">
+                <div class="reviewer-info">
+                  <h4 class="reviewer-name">Daiva M</h4>
+                  <span class="review-date">Google Review</span>
+                </div>
+                <div class="google-badge" title="Verified Google Review"><svg viewBox="0 0 24 24" width="16"
+                    height="16">
+                    <path fill="currentColor"
+                      d="M21.35,11.1H12.18V13.83H18.69C18.36,17.64 15.19,19.27 12.19,19.27C8.36,19.27 5,16.25 5,12C5,7.9 8.2,4.73 12.2,4.73C15.29,4.73 17.1,6.7 17.1,6.7L19,4.72C19,4.72 16.56,2 12.1,2C6.42,2 2.03,6.8 2.03,12C2.03,17.05 6.16,22 12.25,22C17.6,22 21.5,18.33 21.5,12.91C21.5,11.76 21.35,11.1 21.35,11.1V11.1Z" />
+                  </svg></div>
+              </div>
+              <div class="review-stars">★★★★★</div>
+              <p class="review-text">
+                "For a great mix of energy, fun, and correct dance technique, this is where you need to be. The classes
+                are entertaining, and the teachers bring top-level expertise you won’t find anywhere else in Zurich."
+              </p>
+            </div>
+
+            <!-- Review 13: Marco F -->
+            <div class="review-card glass-card">
+              <div class="review-header">
+                <div class="reviewer-info">
+                  <h4 class="reviewer-name">Marco F</h4>
+                  <span class="review-date">Google Review</span>
+                </div>
+                <div class="google-badge" title="Verified Google Review"><svg viewBox="0 0 24 24" width="16"
+                    height="16">
+                    <path fill="currentColor"
+                      d="M21.35,11.1H12.18V13.83H18.69C18.36,17.64 15.19,19.27 12.19,19.27C8.36,19.27 5,16.25 5,12C5,7.9 8.2,4.73 12.2,4.73C15.29,4.73 17.1,6.7 17.1,6.7L19,4.72C19,4.72 16.56,2 12.1,2C6.42,2 2.03,6.8 2.03,12C2.03,17.05 6.16,22 12.25,22C17.6,22 21.5,18.33 21.5,12.91C21.5,11.76 21.35,11.1 21.35,11.1V11.1Z" />
+                  </svg></div>
+              </div>
+              <div class="review-stars">★★★★★</div>
+              <p class="review-text">
+                "Teachers immensely humble and down to earth, they create a welcoming atmosphere where you can have fun
+                while learning. They are the top teachers of bachata in switzerland nowadays."
+              </p>
+            </div>
+
+            <!-- Review 14: Florian R -->
             <div class="review-card glass-card">
               <div class="review-header">
                 <div class="reviewer-info">
                   <h4 class="reviewer-name">Florian R</h4>
-                  <span class="review-date">19/08/2025</span>
+                  <span class="review-date">Google Review</span>
                 </div>
-                <div class="google-badge" title="Verified Google Review">
-                  <svg viewBox="0 0 24 24" width="16" height="16">
+                <div class="google-badge" title="Verified Google Review"><svg viewBox="0 0 24 24" width="16"
+                    height="16">
                     <path fill="currentColor"
                       d="M21.35,11.1H12.18V13.83H18.69C18.36,17.64 15.19,19.27 12.19,19.27C8.36,19.27 5,16.25 5,12C5,7.9 8.2,4.73 12.2,4.73C15.29,4.73 17.1,6.7 17.1,6.7L19,4.72C19,4.72 16.56,2 12.1,2C6.42,2 2.03,6.8 2.03,12C2.03,17.05 6.16,22 12.25,22C17.6,22 21.5,18.33 21.5,12.91C21.5,11.76 21.35,11.1 21.35,11.1V11.1Z" />
-                  </svg>
-                </div>
+                  </svg></div>
               </div>
               <div class="review-stars">★★★★★</div>
               <p class="review-text">
                 "I learned so much from Ale and Xidan. They are the most knowledgeable teachers around. If you are
-                looking
-                for high quality Bachata classes in Zurich, then look no further."
+                looking for high quality Bachata classes in Zurich, then look no further."
+              </p>
+            </div>
+
+            <!-- Review 15: Lenag M -->
+            <div class="review-card glass-card">
+              <div class="review-header">
+                <div class="reviewer-info">
+                  <h4 class="reviewer-name">Lenag M</h4>
+                  <span class="review-date">Google Review</span>
+                </div>
+                <div class="google-badge" title="Verified Google Review"><svg viewBox="0 0 24 24" width="16"
+                    height="16">
+                    <path fill="currentColor"
+                      d="M21.35,11.1H12.18V13.83H18.69C18.36,17.64 15.19,19.27 12.19,19.27C8.36,19.27 5,16.25 5,12C5,7.9 8.2,4.73 12.2,4.73C15.29,4.73 17.1,6.7 17.1,6.7L19,4.72C19,4.72 16.56,2 12.1,2C6.42,2 2.03,6.8 2.03,12C2.03,17.05 6.16,22 12.25,22C17.6,22 21.5,18.33 21.5,12.91C21.5,11.76 21.35,11.1 21.35,11.1V11.1Z" />
+                  </svg></div>
+              </div>
+              <div class="review-stars">★★★★★</div>
+              <p class="review-text">
+                "Best teachers!!! Not only are Ale and Xidan passionate and highly-skilled dancers, they are also very
+                welcoming and kind-hearted mentors."
               </p>
             </div>
 
@@ -676,9 +921,21 @@
     <!-- 4. Trial Class Form -->
     <section id="trial-form" class="trial-section reveal">
       <div class="container">
+
+        <!-- Moved CTA Header -->
+        <div class="footer-cta" style="background: transparent; padding: 0 0 3rem 0;">
+          <div class="cta-bg-text" style="color: rgba(255,255,255,0.03);">JOIN THE MOVEMENT</div>
+          <div class="cta-content" style="margin-top: -2rem;">
+            <h3 class="cta-title">Ready to Dance?</h3>
+            <p style="color: var(--text-muted); margin-bottom: 2rem;">Fill the form below to book your free trial class.
+            </p>
+          </div>
+        </div>
+
         <div class="form-wrapper">
-          <h2 class="section-title-modern">Book Your Free Trial</h2>
-          <p class="form-subtitle">Join us on the dance floor. No partner needed.</p>
+          <!-- <h2 class="section-title-modern">Book Your Free Trial</h2> -->
+          <!-- <p class="form-subtitle">Join us on the dance floor. No partner needed.</p> -->
+          <!-- Replaced by the CTA above -->
 
           <form class="trial-form" action="https://formsubmit.co/info@axcentdance.com" method="POST">
             <input type="hidden" name="_subject" value="New Trial Class Registration!">
@@ -793,25 +1050,7 @@
       </div>
     </section>
 
-    <!-- 5. Footer CTA -->
-    <section id="contact" class="footer-cta reveal">
-      <div class="container">
-        <div class="cta-bg-text">JOIN THE MOVEMENT</div>
-        <div class="cta-content">
-          <h3 class="cta-title">Ready to Dance?</h3>
-          <a href="contact.html" class="skew-button btn-primary">
-            <div>BOOK TRIAL CLASS</div>
-          </a>
-          <div class="footer-tags">
-            <span>Zurich</span>
-            <span>•</span>
-            <span>Community</span>
-            <span>•</span>
-            <span>Passion</span>
-          </div>
-        </div>
-      </div>
-    </section>
+    <!-- Footer CTA removed (moved above form) -->
   </main>
 
   <footer class="main-footer">
@@ -840,15 +1079,7 @@
         </div>
       </div>
 
-      <div class="footer-col footer-map-col">
-        <h4 class="footer-heading">Find Us</h4>
-        <div class="footer-map-wrapper">
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2701.567677685764!2d8.4844443!3d47.3861111!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47900a3910000001%3A0x1234567890abcdef!2sHermetschloostrasse%2073%2C%208048%20Z%C3%BCrich!5e0!3m2!1sen!2sch!4v1625000000000!5m2!1sen!2sch"
-            width="100%" height="150" style="border:0;" allowfullscreen="" loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </div>
-      </div>
+
 
       <!-- Quick Links (SEO) -->
       <div class="footer-col">
@@ -871,12 +1102,24 @@
         </ul>
       </div>
     </div>
+
+    <!-- Full Width Map for Index -->
+    <div class="container footer-map-full" style="margin-bottom: 2rem;">
+      <h4 class="footer-heading" style="margin-bottom: 1rem;">Find Us</h4>
+      <div class="footer-map-wrapper-large"
+        style="border-radius: 12px; overflow: hidden; border: 1px solid var(--glass-border);">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2701.567677685764!2d8.4844443!3d47.3861111!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47900a3910000001%3A0x1234567890abcdef!2sHermetschloostrasse%2073%2C%208048%20Z%C3%BCrich!5e0!3m2!1sen!2sch!4v1625000000000!5m2!1sen!2sch"
+          width="100%" height="250" style="border:0; width: 100%; display: block;" allowfullscreen="" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
     <div class="footer-bottom">
       <p>&copy; 2025 AXcent Dance. All rights reserved.</p>
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="script.min.js"></script>
 </body>
 
 </html>

@@ -8,9 +8,35 @@
     <link rel="canonical" href="https://axcentdance.com/registration">
     <meta name="description"
         content="Register for Bachata classes in Zurich with AXcent Dance. Choose your package and join the community.">
-    <link rel="stylesheet" href="style.css">
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="style.min.css">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+    <!-- Structured Data (Schema.org) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Register for Bachata Classes",
+      "description": "Registration for dance classes at AXcent Dance Studio in Zurich.",
+      "url": "https://axcentdance.com/registration",
+      "mainEntity": {
+        "@type": "Service",
+        "name": "Bachata Dance Classes",
+        "provider": {
+            "@type": "DanceSchool",
+            "name": "AXcent Dance"
+        },
+        "areaServed": "Zurich",
+        "offers": {
+            "@type": "Offer",
+            "priceCurrency": "CHF",
+            "price": "200.00",
+            "availability": "https://schema.org/InStock"
+        }
+      }
+    }
+    </script>
 
 
     <style>
@@ -175,6 +201,10 @@
 </head>
 
 <body>
+    <!-- Page Transition Loader -->
+    <div id="page-transition">
+        <img src="assets/images/logo.png" alt="AXcent Logo" class="transition-logo">
+    </div>
 
     <!-- Background Blobs -->
     <div class="blob blob-1"></div>
@@ -197,16 +227,17 @@
                 <div class="dropdown">
                     <button class="dropbtn">More ▾</button>
                     <div class="dropdown-content">
-                                                <a href="room-rental.html"><span>Room Rental</span></a>
-            <a href="collaborations.html"><span>Collaborations</span></a>
-            <a href="wedding-dance.html"><span>Wedding Dance</span></a>
-            <a href="private-lessons.html"><span>Private Lessons</span></a>
-            <a href="gallery.html"><span>Gallery</span></a>
+                        <a href="room-rental.html"><span>Room Rental</span></a>
+                        <a href="collaborations.html"><span>Collaborations</span></a>
+                        <a href="corporate-events.html"><span>Corporate Events</span></a>
+                        <a href="wedding-dance.html"><span>Wedding Dance</span></a>
+                        <a href="private-lessons.html"><span>Private Lessons</span></a>
+                        <a href="gallery.html"><span>Gallery</span></a>
                         <a href="education.html"><span>Education</span></a>
-            <a href="beginner-guide.html"><span>Beginner Guide</span></a>
-<a href="blog.html"><span>Blog</span></a>
-            <a href="faq.html"><span>FAQ</span></a>
-            <a href="etiquette.html"><span>Dance Etiquette</span></a>
+                        <a href="beginner-guide.html"><span>Beginner Guide</span></a>
+                        <a href="blog.html"><span>Blog</span></a>
+                        <a href="faq.html"><span>FAQ</span></a>
+                        <a href="etiquette.html"><span>Dance Etiquette</span></a>
                     </div>
                 </div>
                 <a href="index.html#trial-form" class="btn-header-cta">Book Free Trial</a>
@@ -257,7 +288,7 @@
                 <div class="notice-icon">🎉</div>
                 <div class="notice-content">
                     <strong>A New Season Starts!</strong><br>
-                    AXcent Dance will open on <strong>January 7th</strong> in our brand new location:
+                    AXcent Dance will open the <strong>week of January 12th</strong> in our brand new location:
                     <strong>Hermetschloostrasse 73, 8048 Zurich Altstetten<br> 2 minute walking from Tram 2 stop and Bus
                         31 stop</strong>.
                     <br>We can't wait to welcome you to our new home for an amazing year of dance!
@@ -272,7 +303,7 @@
 
                     <!-- 1. Personal Details -->
                     <div class="form-section">
-                        <h3 class="form-section-title">1. Personal Details</h3>
+                        <h2 class="form-section-title">1. Personal Details</h2>
                         <div class="form-grid">
                             <div class="form-group">
                                 <label for="firstname">First Name</label>
@@ -311,7 +342,7 @@
 
                     <!-- 2. Class Passes -->
                     <div class="form-section" style="margin-top: 3rem;">
-                        <h3 class="form-section-title">2. Class Passes</h3>
+                        <h2 class="form-section-title">2. Class Passes</h2>
                         <p style="color: var(--text-muted); margin-bottom: 1rem; font-size: 0.9rem;">
                             Select the package that fits your schedule.
                         </p>
@@ -394,7 +425,7 @@
 
                     <!-- 3. Select Classes -->
                     <div class="form-section" style="margin-top: 3rem;">
-                        <h3 class="form-section-title">3. Select Your Classes</h3>
+                        <h2 class="form-section-title">3. Select Your Classes</h2>
                         <p style="color: var(--text-muted); margin-bottom: 1rem; font-size: 0.9rem;">Please check the
                             classes you intend to join.</p>
 
@@ -547,8 +578,8 @@
                         <div class="form-group" style="margin-top: 0.5rem;">
                             <label class="checkbox-label" style="background: none; padding: 0;">
                                 <input type="checkbox" name="terms" required>
-                                <span style="font-size: 0.9rem; color: var(--text-muted);">I accept the <a
-                                        href="" target="_blank" style="color: var(--accent-light);">General
+                                <span style="font-size: 0.9rem; color: var(--text-muted);">I accept the <a href=""
+                                        target="_blank" style="color: var(--accent-light);">General
                                         Terms and Conditions</a>.</span>
                             </label>
                         </div>
@@ -591,17 +622,6 @@
                 </div>
             </div>
 
-            <div class="footer-col footer-map-col">
-                <h4 class="footer-heading">Find Us</h4>
-                <div class="footer-map-wrapper">
-                    <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2701.567677685764!2d8.4844443!3d47.3861111!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47900a3910000001%3A0x1234567890abcdef!2sHermetschloostrasse%2073%2C%208048%20Z%C3%BCrich!5e0!3m2!1sen!2sch!4v1625000000000!5m2!1sen!2sch"
-                        width="100%" height="150" style="border:0;" allowfullscreen="" loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade"></iframe>
-                </div>
-            </div>
-
-            <!-- Quick Links (SEO) -->
             <div class="footer-col">
                 <h4 class="footer-heading">Quick Links</h4>
                 <ul class="footer-links">
@@ -612,7 +632,6 @@
                 </ul>
             </div>
 
-            <!-- Legal -->
             <div class="footer-col">
                 <h4 class="footer-heading">Legal</h4>
                 <ul class="footer-links">
@@ -622,12 +641,23 @@
                 </ul>
             </div>
         </div>
+
+        <div class="container footer-map-full" style="margin-bottom: 2rem;">
+            <h4 class="footer-heading" style="margin-bottom: 1rem;">Find Us</h4>
+            <div class="footer-map-wrapper-large"
+                style="border-radius: 12px; overflow: hidden; border: 1px solid var(--glass-border);">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2701.567677685764!2d8.4844443!3d47.3861111!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47900a3910000001%3A0x1234567890abcdef!2sHermetschloostrasse%2073%2C%208048%20Z%C3%BCrich!5e0!3m2!1sen!2sch!4v1625000000000!5m2!1sen!2sch"
+                    width="100%" height="250" style="border:0; width: 100%; display: block;" allowfullscreen=""
+                    loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
         <div class="footer-bottom">
             <p>&copy; 2025 AXcent Dance. All rights reserved.</p>
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="script.min.js"></script>
     <script>
         // Pricing Toggle Logic
         function setPricing(type) {

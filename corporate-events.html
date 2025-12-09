@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corporate & Private Events | AXcent Dance Zurich</title>
+    <link rel="canonical" href="https://axcentdance.com/corporate-events">
+    <meta name="description"
+        content="Elevate your team spirit with dance! Teambuilding workshops, company Christmas parties, and private group classes in Zurich with AXcent Dance.">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.min.css">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+
+    <style>
+        .corporate-hero {
+            padding: 160px 20px 80px;
+            text-align: center;
+            background: linear-gradient(to bottom, rgba(5, 2, 8, 0.8), var(--bg-main)), url('assets/images/hero.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .section-container {
+            max-width: 1200px;
+            /* Expanded for Bento */
+            margin: 0 auto;
+            padding: 4rem 20px;
+        }
+
+        /* BENTO GRID SYSTEM */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin-bottom: 4rem;
+        }
+
+        @media (min-width: 900px) {
+            .bento-grid {
+                grid-template-columns: repeat(3, 1fr);
+                grid-auto-rows: minmax(300px, auto);
+                /* Consistent height */
+            }
+
+            .bento-span-2 {
+                grid-column: span 2;
+            }
+
+            .bento-row-span-2 {
+                grid-row: span 2;
+            }
+        }
+
+        .bento-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bento-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 59, 48, 0.3);
+            background: rgba(255, 255, 255, 0.05);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .bento-card h3 {
+            font-size: 1.75rem;
+            color: white;
+            margin-bottom: 1rem;
+            font-family: var(--font-heading);
+        }
+
+        .bento-card p {
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .bento-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+        }
+
+        /* Feature Image in Bento */
+        .bento-card-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0.4;
+            transition: transform 0.5s ease;
+            z-index: 0;
+        }
+
+        .bento-card:hover .bento-card-image {
+            transform: scale(1.05);
+            opacity: 0.5;
+        }
+
+        .bento-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* CTA as Bento Card */
+        .bento-cta {
+            background: linear-gradient(135deg, rgba(20, 10, 30, 0.8), rgba(255, 59, 48, 0.1));
+            border: 1px solid rgba(255, 59, 48, 0.3);
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .bento-cta:hover {
+            box-shadow: 0 0 30px rgba(255, 59, 48, 0.15);
+            border-color: var(--accent-start);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-start);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            color: white;
+            margin-bottom: 1rem;
+            font-family: var(--font-heading);
+        }
+
+        .service-card p {
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-box {
+            background: linear-gradient(45deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+            border-radius: 20px;
+            padding: 3rem;
+            text-align: center;
+            margin-top: 4rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at top right, rgba(255, 59, 48, 0.1), transparent 60%);
+            pointer-events: none;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Page Transition Loader -->
+    <div id="page-transition">
+        <img src="assets/images/logo.png" alt="AXcent Logo" class="transition-logo">
+    </div>
+
+    <!-- Navigation Bar -->
+    <header class="main-header">
+        <div class="container navbar">
+            <a href="index.html" class="logo">
+                <span class="logo-title">AXCENT</span><span class="logo-subtitle text-gradient">DANCE</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Toggle menu">MENU</button>
+            <nav class="nav-links">
+                <a href="about.html">About us</a>
+                <a href="schedule.html">Schedule</a>
+                <a href="events.html">Events</a>
+                <a href="registration.html">Registration</a>
+                <a href="contact.html">Contact</a>
+                <div class="dropdown">
+                    <button class="dropbtn">More ▾</button>
+                    <div class="dropdown-content">
+                        <a href="room-rental.html"><span>Room Rental</span></a>
+                        <a href="collaborations.html"><span>Collaborations</span></a>
+                        <a href="corporate-events.html"><span style="color: white; font-weight: 700;">Corporate
+                                Events</span></a>
+                        <a href="wedding-dance.html"><span>Wedding Dance</span></a>
+                        <a href="private-lessons.html"><span>Private Lessons</span></a>
+                        <a href="gallery.html"><span>Gallery</span></a>
+                        <a href="education.html"><span>Education</span></a>
+                        <a href="beginner-guide.html"><span>Beginner Guide</span></a>
+                        <a href="blog.html"><span>Blog</span></a>
+                        <a href="faq.html"><span>FAQ</span></a>
+                        <a href="etiquette.html"><span>Dance Etiquette</span></a>
+                    </div>
+                </div>
+                <a href="index.html#trial-form" class="btn-header-cta">Book Free Trial</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="corporate-hero">
+            <div class="container">
+                <div class="hero-badge">
+                    <span class="hero-badge-line"></span>
+                    <span class="hero-badge-text">BUSINESS & PRIVATE</span>
+                    <span class="hero-badge-line"></span>
+                </div>
+                <h1 class="page-title">Corporate & Private Events</h1>
+                <p class="hero-desc-border" style="border: none; padding: 0;">
+                    Bring energy, connection, and rhythm to your next event.
+                </p>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <!-- Bento Grid Services Section -->
+        <section class="section-container">
+            <div class="bento-grid">
+                <!-- 1. Teambuilding (1x1) -->
+                <div class="bento-card">
+                    <div class="bento-content">
+                        <span class="bento-icon">🤝</span>
+                        <h3>Teambuilding</h3>
+                        <p>
+                            Break the ice and strengthen team dynamics. Workshops focus on communication, trust, and
+                            leadership in a fun environment.
+                        </p>
+                        <ul
+                            style="text-align: left; color: var(--text-muted); margin-bottom: 0; list-style-type: none; font-size: 0.9em;">
+                            <li>✓ Improve Communication</li>
+                            <li>✓ Boost Team Spirit</li>
+                            <li>✓ Pure Fun & Connection</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 2. Company Parties (2x1 + Image) -->
+                <div class="bento-card bento-span-2">
+                    <img src="assets/images/corporate_event_placeholder.png" alt="Company Party Dancing"
+                        class="bento-card-image">
+                    <div class="bento-content">
+                        <h3>Company Parties</h3>
+                        <p style="max-width: 60%; text-shadow: 0 2px 4px rgba(0,0,0,0.8);">
+                            We provide <strong>crowd animation</strong> and beginner-friendly Bachata classes to get
+                            everyone moving and laughing!
+                        </p>
+                        <ul
+                            style="text-align: left; color: rgba(255,255,255,0.9); margin-bottom: 0; list-style-type: none; font-size: 0.9em; text-shadow: 0 2px 4px rgba(0,0,0,0.8);">
+                            <li>✓ Professional Show Performance</li>
+                            <li>✓ Interactive Crowd Animation</li>
+                            <li>✓ Beginner-Friendly Introduction</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 3. Private Groups (1x1) -->
+                <div class="bento-card">
+                    <div class="bento-content">
+                        <span class="bento-icon">✨</span>
+                        <h3>Private Groups</h3>
+                        <p>
+                            Celebrating a birthday or bachelorette party? Book a private group class tailored to your
+                            vibe.
+                        </p>
+                        <ul
+                            style="text-align: left; color: var(--text-muted); margin-bottom: 0; list-style-type: none; font-size: 0.9em;">
+                            <li>✓ Customized Playlist</li>
+                            <li>✓ Private Studio Use</li>
+                            <li>✓ Champagne Option</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 4. CTA (2x1) -->
+                <div class="bento-card bento-span-2 bento-cta">
+                    <div class="bento-content">
+                        <h2 style="font-size: 2rem; margin-bottom: 0.5rem; color: white;">Plan Your Event</h2>
+                        <p style="color: var(--text-muted); margin-bottom: 1.5rem; max-width: 600px;">
+                            Tell us about your event (date, group size) and we will create a custom proposal.
+                        </p>
+                        <a href="mailto:info@axcentdance.com?subject=Corporate%20Event%20Inquiry"
+                            class="btn-hero btn-hero-primary"
+                            style="background: var(--accent-start); border: none; padding: 1rem 2rem;">
+                            Request a Quote
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="main-footer">
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <a href="index.html" class="logo footer-logo"><span class="logo-title">AXCENT</span><span
+                        class="logo-subtitle text-gradient">DANCE</span></a>
+                <p class="footer-address">
+                    Hermetschloostrasse 73,<br>
+                    8048 Zurich Altstetten<br> 2 minute walking from Tram 2 stop and Bus 31 stop
+                </p>
+                <div class="footer-socials">
+                    <a href="https://www.instagram.com/axcent_dance/" target="_blank" aria-label="Instagram">
+                        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                        </svg>
+                    </a>
+                    <a href="mailto:info@axcentdance.com" aria-label="Email">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                            </path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Quick Links (SEO) -->
+            <div class="footer-col">
+                <h4 class="footer-heading">Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="guide-bachata.html">Bachata in Zurich</a></li>
+                    <li><a href="wedding-dance.html">Wedding Dance</a></li>
+                    <li><a href="private-lessons.html">Private Lessons</a></li>
+                    <li><a href="corporate-events.html">Corporate Events</a></li>
+                </ul>
+            </div>
+
+            <!-- Legal -->
+            <div class="footer-col">
+                <h4 class="footer-heading">Legal</h4>
+                <ul class="footer-links">
+                    <li><a href="terms.html">Terms & Conditions</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="imprint.html">Imprint</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 AXcent Dance. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.min.js"></script>
+</body>
+
+</html>

@@ -10,7 +10,7 @@
         content="Read the latest articles about Bachata, dance tips, music, and the dance community in Zurich.">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.min.css">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
 
@@ -19,7 +19,7 @@
         .blog-hero {
             padding: 160px 20px 80px;
             text-align: center;
-            background: linear-gradient(to bottom, rgba(5, 2, 8, 0.8), var(--bg-main)), url('assets/images/hero.jpg');
+            background: linear-gradient(to bottom, rgba(5, 2, 8, 0.8), var(--bg-main)), url('assets/images/hero.webp');
             background-size: cover;
             background-position: center;
         }
@@ -115,6 +115,10 @@
 </head>
 
 <body>
+    <!-- Page Transition Loader -->
+    <div id="page-transition">
+        <img src="assets/images/logo.png" alt="AXcent Logo" class="transition-logo">
+    </div>
 
     <!-- Background Elements -->
     <div class="blob blob-1"></div>
@@ -139,6 +143,7 @@
                     <div class="dropdown-content">
                         <a href="room-rental.html"><span>Room Rental</span></a>
                         <a href="collaborations.html"><span>Collaborations</span></a>
+                        <a href="corporate-events.html"><span>Corporate Events</span></a>
                         <a href="wedding-dance.html"><span>Wedding Dance</span></a>
                         <a href="private-lessons.html"><span>Private Lessons</span></a>
                         <a href="gallery.html"><span>Gallery</span></a>
@@ -174,7 +179,7 @@
         <div class="blog-featured reveal">
             <article class="featured-card">
                 <div class="featured-image-wrapper">
-                    <img src="assets/images/hero.jpg" alt="Romeo Santos and Prince Royce" class="featured-image">
+                    <img src="assets/images/hero.webp" alt="Romeo Santos and Prince Royce" class="featured-image">
                     <!-- Note: Using placeholder hero image as the specific post image wasn't provided, 
                          in production this should be the specific post image -->
                 </div>
@@ -207,12 +212,31 @@
         <section class="blog-container" style="padding-top: 0;">
             <div class="blog-grid-modern">
 
+                <article class="modern-card reveal" data-category="tips">
+                    <div class="card-image-wrap">
+                        <span class="card-category">Dance Tips</span>
+                        <img src="assets/images/schedule_hero_placeholder.webp" alt="What to wear for bachata"
+                            class="card-image">
+                    </div>
+                    <div class="card-body">
+                        <div class="card-date">Dec 9, 2025</div>
+                        <h2 class="card-title">What to Wear to Bachata Class: A Beginner's Guide</h2>
+                        <p class="card-desc">
+                            Wondering about shoes or clothes? Here is our complete guide to feeling comfortable and
+                            confident on the dance floor.
+                        </p>
+                        <a href="blog-posts/what-to-wear-bachata.html" class="card-link">
+                            Read Article <span style="font-size: 1.2em;">→</span>
+                        </a>
+                    </div>
+                </article>
+
 
 
                 <article class="modern-card reveal" data-category="tips">
                     <div class="card-image-wrap">
                         <span class="card-category">Dance Tips</span>
-                        <img src="assets/images/blog/connection-101.jpg" alt="Connection 101" class="card-image">
+                        <img src="assets/images/blog/connection-101.webp" alt="Connection 101" class="card-image">
                     </div>
                     <div class="card-body">
                         <div class="card-date">Dec 7, 2025</div>
@@ -230,7 +254,7 @@
                 <article class="modern-card reveal" data-category="education">
                     <div class="card-image-wrap">
                         <span class="card-category">Education</span>
-                        <img src="assets/images/blog/roots-of-bachata.jpg" alt="Bachata Roots" class="card-image">
+                        <img src="assets/images/blog/roots-of-bachata.webp" alt="Bachata Roots" class="card-image">
                     </div>
                     <div class="card-body">
                         <div class="card-date">Dec 7, 2025</div>
@@ -312,7 +336,7 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="script.min.js"></script>
 </body>
 
 </html>
