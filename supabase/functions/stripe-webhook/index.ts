@@ -1,101 +1,160 @@
+// Follow this setup guide to integrate the Deno language server with your editor:
+// https://deno.land/manual/getting_started/setup_your_environment
+// This enables autocomplete, go to definition, etc.
 
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts"
-import { createClient } from "https://esm.sh/@supabase/supabase-js@2"
-import Stripe from "https://esm.sh/stripe@11.1.0?target=deno"
-
-const stripe = new Stripe(Deno.env.get('STRIPE_SECRET_KEY') ?? '', {
-  apiVersion: '2022-11-15',
-  httpClient: Stripe.createFetchHttpClient(),
-})
+import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
+import Stripe from 'https://esm.sh/stripe@11.1.0?target=deno'
 
 console.log("Stripe Webhook Handler Started")
 
 serve(async (req) => {
   const signature = req.headers.get('Stripe-Signature')
 
+  // 1. Verify Request comes from Stripe
   if (!signature) {
     return new Response("No signature", { status: 400 })
   }
 
+  const stripe = new Stripe(Deno.env.get('STRIPE_SECRET_KEY') ?? '', {
+    apiVersion: '2022-11-15',
+    httpClient: Stripe.createFetchHttpClient(),
+  })
+
+  // Read the body as text for verification
+  const body = await req.text()
+  let event
+
   try {
-    const body = await req.text()
-    // Verify the event came from Stripe
-    // For simplicity in development, we might skip signature verification if strictly needed, 
-    // but in prod we use constructEvent.
-    // Note: To verify properly, we need the "Endpoint Secret" (whsec_...) 
-    // which we don't have yet until we create the webhook in Stripe Dashboard.
-    // For now, we will assume validity or use a try-catch for the basic parsing.
+    event = stripe.webhooks.constructEvent(
+      body,
+      signature,
+      Deno.env.get('STRIPE_WEBHOOK_SECRET') ?? ''
+    )
+  } catch (err) {
+    console.error(`Webhook signature verification failed: ${err.message}`)
+    return new Response(err.message, { status: 400 })
+  }
 
-    // TEMPORARY: Just parse JSON to get it working first (less secure but easier for setup)
-    const event = JSON.parse(body);
+  // 2. Handle the Event
+  if (event.type === 'checkout.session.completed') {
+    const session = event.data.object
+    const customerEmail = session.customer_details?.email
+    // You can also get custom fields if you added them in Stripe Checkout
+    // const customDate = session.custom_fields ... 
 
-    if (event.type === 'checkout.session.completed') {
-      const session = event.data.object
-      const email = session.customer_details?.email || session.customer_email
+    console.log(`Processing payment for: ${customerEmail}`)
 
-      if (!email) {
-        console.log("No email found in session")
-        return new Response(JSON.stringify({ received: true, error: "No email" }), { status: 200 })
-      }
-
-      console.log(`Processing purchase for ${email}`)
-
+    if (customerEmail) {
       // Initialize Supabase Admin Client
       const supabaseAdmin = createClient(
         Deno.env.get('SUPABASE_URL') ?? '',
         Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') ?? ''
       )
 
-      // Determine Course & Logic
-      // We will need to fetch line items if they aren't in the session object directly 
-      // (Stripe sessions usually require expansion for line_items).
-      // For now, let's look at amount or metadata if available. 
-      // Or we accept we might need to query Stripe API back for line items.
+      // 3. Find User ID
+      // We search the public profiles (or auth via admin API if you prefer)
+      // Note: This requires the user to have registered/logged in with this email already.
+      // If they haven't registered, we might create a 'pending' record or just log it.
 
-      // LOGIC MAPPING (Simplified by price amount or name if available)
-      // Since we don't have line items easily here without complex calls, 
-      // let's infer from the 'amount_total' if possible or log it as "Unknown Pass".
+      // Let's try to find their Auth ID
+      // Using listUsers is expensive, better to query a public table or use a specific RPC.
+      // For now, let's assume we have a 'profiles' table or we can query registrations.
 
-      let productName = "Dance Class Pass";
-      let hours = 0;
-      let stamps = 0;
+      // OPTION A: Search 'registrations' table (since we set that up earlier)
+      // OPTION B: Search 'auth.users' (requires specific permissions)
 
-      // You can refine this logic later by inspecting specific Price IDs
-      const amount = session.amount_total; // in cents
+      // Let's try to query the 'registrations' table we made in Phase 0
+      const { data: userRecord, error: userError } = await supabaseAdmin
+        .from('registrations')
+        .select('id, email') // We might not have the AUTH id here if they only filled the form but didn't sign up to portal
+        .eq('email', customerEmail)
+        .single()
 
-      // Heuristic Logic (Example)
-      // 1 Course (approx 260 CHF?)
-      if (amount > 10000) {
-        // Default assumptions for now
-        // We ideally want to update this code after seeing a real payload
-        hours = 8;
-        stamps = 1;
+      // Ideally we want the AUTH ID for the Portal. 
+      // If they don't have an account, we can't link it to the Portal yet.
+      // But we CAN create the pass record and link it later when they sign up?
+      // Or we just insert into 'user_passes' and look up the ID from auth.users via RPC?
+
+      // Simplified Logic: We assume they ARE registered in Auth for the Portal to work.
+      // We'll use a Supabase Admin function to look up user by email if possible, 
+      // OR just wait for them to claim it. 
+
+      // Better approach for MVP: 
+      // Insert into 'user_passes'. If we don't know the UUID, we might fail.
+      // Let's try to get the UUID from the profiles table (if you created one in Phase 1 plan? No, we skipped that).
+
+      // FALLBACK: We will assume we can query `auth.users`. 
+      // Supabase Edge Functions don't have direct access to `auth.users` via standard client unless we use the Admin API correctly.
+
+      const { data: { users }, error: authError } = await supabaseAdmin.auth.admin.listUsers()
+      const user = users.find(u => u.email === customerEmail)
+
+      // 5. Send Welcome Email via Resend
+      await sendWelcomeEmail(customerEmail, session.customer_details?.name || 'Dancer');
+
+      if (user) {
+        // 4. Create Pass (Existing Logic)
+        const { error: insertError } = await supabaseAdmin
+          .from('user_passes')
+          .insert({
+            user_id: user.id,
+            package_name: 'Bachata 8-Week Pass', // Placeholder
+            start_date: new Date().toISOString(),
+            status: 'active'
+          })
+
+        if (insertError) {
+          console.error('Error creating pass:', insertError)
+        } else {
+          console.log(`Pass created for user ${user.id}`)
+        }
       }
-
-      // Insert into Database
-      const { error } = await supabaseAdmin
-        .from('purchases')
-        .insert({
-          user_email: email,
-          course_name: productName,
-          amount: amount / 100, // Convert cents to CHF
-          hours_added: hours,
-          stamps_added: stamps,
-          date: new Date().toISOString()
-        })
-
-      if (error) {
-        console.error("Supabase Insert Error:", error)
-        return new Response(JSON.stringify({ error: error.message }), { status: 500 })
-      }
-
-      console.log("Purchase recorded successfully!")
     }
-
-    return new Response(JSON.stringify({ received: true }), { headers: { "Content-Type": "application/json" } })
-
-  } catch (err) {
-    console.error(`Webhook Error: ${err.message}`)
-    return new Response(`Webhook Error: ${err.message}`, { status: 400 })
   }
+
+  return new Response("Received", { status: 200 })
 })
+
+async function sendWelcomeEmail(email: string, name: string) {
+  const RESEND_API_KEY = 're_GYPUGxYZ_Luc2qMfSJ6BA2g6YwQL1YPoy'; // User provided key
+
+  try {
+    const res = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${RESEND_API_KEY}`
+      },
+      body: JSON.stringify({
+        from: 'AXcent Dance <info@axcentdance.com>', // Requires Domain Verification in Resend
+        to: [email],
+        subject: 'Welcome to the AXcent Family! 💃',
+        html: `
+          <div style="font-family: sans-serif; color: #333; line-height: 1.6;">
+            <h1>Welcome, ${name}!</h1>
+            <p>We are thrilled to have you join us at <strong>AXcent Dance</strong>.</p>
+            <p>Your registration and payment have been received successfully. You are all set to start your dance journey with us!</p>
+            
+            <div style="background: #f4f4f4; padding: 15px; border-radius: 8px; margin: 20px 0;">
+              <strong>Next Steps:</strong>
+              <ul>
+                <li>Check the <a href="https://axcentdance.com/schedule.html">Schedule</a> for your class times.</li>
+                <li>Visit the <a href="https://axcentdance.com/portal.html">Student Portal</a> to manage your pass.</li>
+              </ul>
+            </div>
+
+            <p>If you have any questions, just reply to this email.</p>
+            <p>See you on the dance floor!</p>
+            <p><em>Ale & Xidan</em><br>AXcent Dance Zurich</p>
+          </div>
+        `
+      })
+    });
+
+    const data = await res.json();
+    console.log('Email sent:', data);
+  } catch (err) {
+    console.error('Error sending email:', err);
+  }
+}

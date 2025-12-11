@@ -127,6 +127,20 @@
                                 turns, and basic partner connection.
                             </p>
                         </div>
+                        <!-- Compact Welcome Block -->
+                        <div class="course-info-block" style="margin-top: 2rem; padding: 1.5rem; background: rgba(255,59,48,0.08); border-radius: 12px; border-left: 4px solid var(--accent-start);">
+                            <h3 style="font-size: 1.25rem; color: white; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 10px;">
+                                <span>🫶</span> No Ego, Just Fun
+                            </h3>
+                            <p style="font-size: 0.95rem; line-height: 1.5; color: rgba(255,255,255,0.85); margin-bottom: 0.75rem;">
+                                We are here to support each other. Mistakes are part of the fun! 
+                                <br>Check out our guide to start with the right mindset.
+                            </p>
+                            <a href="beginner-guide.html" style="color: var(--accent-start); font-weight: 700; font-size: 0.9rem; text-decoration: none; display: inline-flex; align-items: center;">
+                                Read Beginner Guide <span style="margin-left:5px">→</span>
+                            </a>
+                        </div>
+
                     </div>
 
                     <!-- Right: Sticky CTA -->
@@ -149,6 +163,9 @@
                 </div>
             </div>
         </section>
+
+    
+        
 
     </main>
 
@@ -203,7 +220,7 @@
             <div class="footer-col">
                 <h4 class="footer-heading">Legal</h4>
                 <ul class="footer-links">
-                    <li><a href="">Terms & Conditions</a></li>
+                    <li><a href="terms.html">Terms & Conditions</a></li>
                     <li><a href="privacy.html">Privacy Policy</a></li>
                     <li><a href="imprint.html">Imprint</a></li>
                 </ul>
@@ -223,25 +240,32 @@
   
 
 
+  
+
+
+  
+
+
+  
+
+
   <!-- ==============================================
-       STICKY BOTTOM NAVIGATION + SLIDE UP MENU (FIXED V3)
+       MOBILE DRAWER NAVIGATION (ISOLATED V6)
        ============================================== -->
   <style>
     /* Default: Hidden on Desktop */
-    .mobile-bottom-nav {
+    .mobile-bottom-nav, 
+    .mobile-drawer-overlay, 
+    .mobile-drawer {
       display: none;
     }
 
     /* Mobile Styles */
     @media (max-width: 768px) {
-      .mobile-menu-btn {
-        display: none !important;
-      }
-      
-      body {
-        padding-bottom: 80px; 
-      }
+      .mobile-menu-btn { display: none !important; }
+      body { padding-bottom: 80px; }
 
+      /* --- BOTTOM BAR --- */
       .mobile-bottom-nav {
         display: flex !important;
         position: fixed !important;
@@ -253,7 +277,7 @@
         backdrop-filter: blur(15px);
         -webkit-backdrop-filter: blur(15px);
         border-top: 1px solid rgba(255, 255, 255, 0.1);
-        z-index: 99999 !important; /* Extremely High */
+        z-index: 99999 !important;
         justify-content: space-around;
         align-items: center;
         padding-bottom: 10px; 
@@ -272,51 +296,91 @@
         transition: color 0.3s ease;
       }
 
-      .nav-item.active {
-        color: var(--accent-light);
+      .nav-item.active { color: var(--accent-light); }
+      .nav-item svg { width: 24px; height: 24px; margin-bottom: 4px; fill: currentColor; }
+
+      /* --- NEW ISOLATED DRAWER --- */
+      .mobile-drawer-overlay {
+        display: none; /* Controlled via JS class "active" -> display: block */
+        position: fixed;
+        top: 0; left: 0; width: 100%; height: 100%;
+        background: rgba(0,0,0,0.5);
+        z-index: 99997;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+      .mobile-drawer-overlay.active {
+        display: block !important; 
+        opacity: 1;
       }
 
-      .nav-item svg {
-        width: 24px;
-        height: 24px;
-        margin-bottom: 4px;
-        fill: currentColor;
+      .mobile-drawer {
+        display: block !important; /* Visible layout on mobile, hidden via max-height */
+        position: fixed;
+        bottom: 70px; /* Sit on bar */
+        left: 0;
+        width: 100%;
+        max-height: 0; 
+        overflow: hidden;
+        background: rgba(15, 5, 24, 0.98);
+        backdrop-filter: blur(20px);
+        border-radius: 20px 20px 0 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+        z-index: 99998;
+        transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 -10px 40px rgba(0,0,0,0.5);
       }
 
-      /* === SLIDE UP DRAWER === */
-      .nav-links.active {
-        display: flex !important;
-        flex-direction: column !important;
-        position: fixed !important;
-        top: auto !important;
-        bottom: 70px !important;
-        left: 0 !important;
-        width: 100% !important;
-        height: auto !important;
-        max-height: 80vh !important;
-        overflow-y: auto !important;
-        
-        background: rgba(15, 5, 24, 0.98) !important;
-        backdrop-filter: blur(20px) !important;
-        border-radius: 20px 20px 0 0 !important;
-        border-top: 1px solid rgba(255, 255, 255, 0.2) !important;
-        box-shadow: 0 -10px 40px rgba(0,0,0,0.5) !important;
-        
-        z-index: 99998 !important;
-        
-        transform: none !important;
-        opacity: 1 !important;
-        visibility: visible !important;
-        
-        animation: slideUpDrawer 0.3s ease-out forwards;
+      .mobile-drawer.active {
+        max-height: 80vh; 
+        overflow-y: auto;
       }
-      
-      @keyframes slideUpDrawer {
-        0% { transform: translateY(100%); opacity: 0; }
-        100% { transform: translateY(0); opacity: 1; }
+
+      .drawer-content {
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
       }
+
+      .drawer-link {
+        font-size: 1.1rem;
+        color: white;
+        text-decoration: none;
+        padding: 10px;
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .drawer-link:last-child { border-bottom: none; }
+      .drawer-link span { opacity: 0.8; }
+      .drawer-link:hover span { opacity: 1; color: var(--accent-light); }
     }
   </style>
+
+  <div id="mobileDrawerOverlay" class="mobile-drawer-overlay"></div>
+
+  <div id="mobileDrawer" class="mobile-drawer">
+    <div class="drawer-content">
+      <a href="about.html" class="drawer-link"><span>About Us</span> <i>→</i></a>
+      <a href="events.html" class="drawer-link"><span>Events</span> <i>→</i></a>
+      <a href="contact.html" class="drawer-link"><span>Contact us</span> <i>→</i></a>
+      <a href="login.html" class="drawer-link" style="color:var(--accent-light);"><span>Log In</span> <i>→</i></a>
+      <hr style="border:0; border-top:1px solid rgba(255,255,255,0.1); margin: 5px 0;">
+      <a href="room-rental.html" class="drawer-link"><span>Room Rental</span></a>
+      <a href="collaborations.html" class="drawer-link"><span>Collaborations</span></a>
+      <a href="corporate-events.html" class="drawer-link"><span>Corporate Events</span></a>
+      <a href="wedding-dance.html" class="drawer-link"><span>Wedding Dance</span></a>
+      <a href="private-lessons.html" class="drawer-link"><span>Private Lessons</span></a>
+      <a href="gallery.html" class="drawer-link"><span>Gallery</span></a>
+      <a href="education.html" class="drawer-link"><span>Education</span></a>
+      <a href="beginner-guide.html" class="drawer-link"><span>Beginner Guide</span></a>
+      <a href="blog.html" class="drawer-link"><span>Blog</span></a>
+      <a href="faq.html" class="drawer-link"><span>FAQ</span></a>
+      <a href="etiquette.html" class="drawer-link"><span>Dance Etiquette</span></a>
+    </div>
+  </div>
 
   <nav class="mobile-bottom-nav">
     <a href="index.html" class="nav-item">
@@ -344,25 +408,33 @@
   <script>
     document.addEventListener("DOMContentLoaded", function() {
         const moreBtn = document.getElementById("mobileMoreBtn");
-        if(moreBtn) {
-            moreBtn.addEventListener("click", function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                const navLinks = document.querySelector(".nav-links");
-                if(navLinks) {
-                    navLinks.classList.toggle("active");
-                }
-            });
-            
-            // Close logic
-            const navLinks = document.querySelector(".nav-links");
-            if(navLinks) {
-                 navLinks.querySelectorAll("a").forEach(link => {
-                     link.addEventListener("click", () => {
-                         navLinks.classList.remove("active");
-                     });
-                 });
+        const drawer = document.getElementById("mobileDrawer");
+        const overlay = document.getElementById("mobileDrawerOverlay");
+        
+        function toggleDrawer(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            if(drawer) {
+                drawer.classList.toggle("active");
+                if(overlay) overlay.classList.toggle("active");
             }
+        }
+
+        if(moreBtn) {
+            moreBtn.addEventListener("click", toggleDrawer);
+        }
+        
+        if(overlay) {
+            overlay.addEventListener("click", toggleDrawer);
+        }
+
+        if(drawer) {
+             drawer.querySelectorAll("a").forEach(link => {
+                 link.addEventListener("click", () => {
+                     drawer.classList.remove("active");
+                     if(overlay) overlay.classList.remove("active");
+                 });
+             });
         }
     });
   </script>

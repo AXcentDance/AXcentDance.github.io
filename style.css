@@ -1482,12 +1482,12 @@ textarea {
 .time-slot {
     font-family: var(--font-display);
     font-size: 3.5rem;
-    /* Increased from 2.5rem */
-    color: var(--text-muted);
+    color: var(--text-main);
+    /* White for contrast */
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     line-height: 1;
     text-align: right;
     padding-top: 0.5rem;
-    /* Visual adjustment */
 }
 
 /* Hover Effect for Row */
@@ -1846,11 +1846,12 @@ textarea {
 }
 
 /* Submit Button */
+/* Submit Button */
 .btn-submit {
     margin-top: 1rem;
-    background: var(--grad);
+    background: rgba(255, 59, 48, 0.15);
+    border: 1px solid var(--accent-start);
     color: white;
-    border: none;
     padding: 1.25rem;
     border-radius: 1rem;
     font-weight: 900;
@@ -1862,6 +1863,7 @@ textarea {
 }
 
 .btn-submit:hover {
+    background: rgba(255, 59, 48, 0.3);
     transform: translateY(-2px);
     box-shadow: 0 20px 40px rgba(255, 59, 48, 0.4);
 }
@@ -2194,8 +2196,13 @@ textarea {
 }
 
 .mobile-time {
-    font-weight: 700;
-    color: var(--text-main);
+    font-family: var(--font-body);
+    /* Sans-serif for readability */
+    font-weight: 800;
+    font-size: 1.25rem;
+    letter-spacing: 0.05em;
+    color: var(--accent-start);
+    margin-bottom: 0.25rem;
 }
 
 /* FOOTER CTA */
@@ -2404,9 +2411,16 @@ textarea {
 }
 
 .btn-primary {
-    background: var(--grad);
+    background: rgba(255, 59, 48, 0.15);
+    border: 1px solid var(--accent-start);
     color: white;
     box-shadow: 0 10px 25px rgba(255, 59, 48, 0.25);
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background: rgba(255, 59, 48, 0.3);
+    transform: translateY(-2px);
 }
 
 .btn-secondary {
@@ -2911,7 +2925,7 @@ textarea {
 
 /* --- HOMEPAGE GUIDES SECTION --- */
 .guides-section {
-    padding: 3rem 0;
+    padding: 1.5rem 0;
     position: relative;
     background: linear-gradient(to bottom, var(--bg-main), var(--bg-secondary));
 }

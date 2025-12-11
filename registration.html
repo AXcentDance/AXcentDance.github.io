@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="style.min.css">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <!-- Supabase JS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
     <!-- Structured Data (Schema.org) -->
     <script type="application/ld+json">
@@ -424,11 +426,41 @@
                         </div>
                     </div>
 
+                    <!-- Pass Activation Date -->
+                    <div class="form-section" style="margin-top: 3rem;">
+                        <h2 class="form-section-title">2a. Activation Date</h2>
+                        <div class="form-group">
+                            <label for="activation_date"
+                                style="display: block; margin-bottom: 0.5rem; font-weight: bold;">When do you want to
+                                start?</label>
+                            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.5rem;">
+                                Choose the date your 8-week pass will effectively start.
+                            </p>
+                            <select id="activation_date" name="activation_date" class="form-select" required
+                                style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.05); color: white; -webkit-appearance: none; appearance: none;">
+                                <!-- Populated by JS -->
+                            </select>
+                        </div>
+
+                        <!-- Auto-computed End Date -->
+                        <div class="form-group" style="margin-top: 1rem;">
+                            <label for="pass_end_date"
+                                style="display: block; margin-bottom: 0.5rem; font-weight: bold; color: var(--accent-light);">Pass
+                                Valid Until (8 Weeks)</label>
+                            <input type="text" id="pass_end_date" name="pass_end_date" readonly
+                                style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.02); color: var(--text-muted); cursor: not-allowed;">
+                        </div>
+                    </div>
+
                     <!-- 3. Select Classes -->
                     <div class="form-section" style="margin-top: 3rem;">
                         <h2 class="form-section-title">3. Select Your Classes</h2>
-                        <p style="color: var(--text-muted); margin-bottom: 1rem; font-size: 0.9rem;">Please check the
-                            classes you intend to join.</p>
+                        <p
+                            style="color: var(--text-muted); margin-bottom: 1rem; font-size: 0.9rem; line-height: 1.5; background: rgba(255,255,255,0.05); padding: 15px; border-radius: 8px; border-left: 3px solid var(--accent-light);">
+                            <strong>Important:</strong> Please select the exact number of classes corresponding to your
+                            chosen package.<br>
+                            (e.g., If you selected "2 Classes/Week", please check exactly 2 boxes below).
+                        </p>
 
                         <div class="timetable-selection-grid">
                             <!-- Wednesday Column -->
@@ -636,7 +668,7 @@
             <div class="footer-col">
                 <h4 class="footer-heading">Legal</h4>
                 <ul class="footer-links">
-                    <li><a href="">Terms & Conditions</a></li>
+                    <li><a href="terms.html">Terms & Conditions</a></li>
                     <li><a href="privacy.html">Privacy Policy</a></li>
                     <li><a href="imprint.html">Imprint</a></li>
                 </ul>
@@ -660,8 +692,9 @@
 
     <script src="script.min.js"></script>
     <script>
-        // Pricing Toggle Logic
-        function setPricing(type) {
+        // Pricing Toggle Logic (Global)
+        // Moved out of module to ensure it loads reliably
+        window.setPricing = function (type) {
             const btnRegular = document.getElementById('btnRegular');
             const btnStudent = document.getElementById('btnStudent');
             const pricingInput = document.getElementById('pricingTier');
@@ -684,6 +717,96 @@
                 });
             }
         }
+
+        // Activation Date Logic (Specific for Jan 2026 Season)
+        function populateActivationDates() {
+            const select = document.getElementById('activation_date');
+            if (!select) return;
+
+            // Hardcoded start date for the new season as requested
+            // "First Wednesday and Thursday possible the 14/15 January"
+            // We want Jan 14, 15, 21, 22.
+
+            // Note: Months are 0-indexed in JS (0 = Jan)
+            const seasonStart = new Date(2026, 0, 14); // Jan 14, 2026
+
+            const options = [];
+
+            // Helper to format date: "Wed, Jan 14 2026"
+            const formatDate = (d) => {
+                return d.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' });
+            };
+
+            // Find next 2 Wednesdays starting from seasonStart
+            let d = new Date(seasonStart);
+            let wedCount = 0;
+            for (let i = 0; i < 30 && wedCount < 2; i++) {
+                if (d.getDay() === 3) { // Wednesday
+                    options.push({ date: new Date(d), label: formatDate(d) });
+                    wedCount++;
+                }
+                d.setDate(d.getDate() + 1);
+            }
+
+            // Find next 2 Thursdays starting from seasonStart
+            d = new Date(seasonStart);
+            let thuCount = 0;
+            for (let i = 0; i < 30 && thuCount < 2; i++) {
+                if (d.getDay() === 4) { // Thursday
+                    options.push({ date: new Date(d), label: formatDate(d) });
+                    thuCount++;
+                }
+                d.setDate(d.getDate() + 1);
+            }
+
+            // Sort chronologically
+            options.sort((a, b) => a.date - b.date);
+
+            // Add to select
+            options.forEach(opt => {
+                const el = document.createElement('option');
+                el.value = opt.label;
+                el.textContent = opt.label;
+                el.dataset.dateObj = opt.date.toISOString(); // Store real date for calc
+                select.appendChild(el);
+            });
+
+            // Initial End Date Calculation
+            updateEndDate();
+
+            // Listener
+            select.addEventListener('change', updateEndDate);
+        }
+
+        function updateEndDate() {
+            const select = document.getElementById('activation_date');
+            const endInput = document.getElementById('pass_end_date');
+            if (!select || !endInput) return;
+
+            // Get selected option's date
+            const selectedOption = select.options[select.selectedIndex];
+            if (!selectedOption) return;
+
+            // Parse date (we stored ISO or parse label)
+            // Using label "Wed, Jan 14 2026" works in most browsers, but let's be safe
+            // I added data-dateObj above for safety
+            let startDate = new Date(selectedOption.dataset.dateObj || selectedOption.value);
+
+            if (!isNaN(startDate.getTime())) {
+                // Add 8 weeks - 1 day (55 days)
+                const endDate = new Date(startDate);
+                endDate.setDate(endDate.getDate() + 55);
+
+                // Format: "Wed, Mar 11 2026"
+                endInput.value = endDate.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' });
+            }
+        }
+
+        // Run on load
+        document.addEventListener('DOMContentLoaded', populateActivationDates);
+    </script>
+    <script type="module">
+        import { supabase } from './assets/js/supabase-client.js';
 
         document.addEventListener('DOMContentLoaded', () => {
             // Role Selection Logic
@@ -716,7 +839,7 @@
             // Form Validation & Submission
             const validationForm = document.getElementById('registrationForm');
             if (validationForm) {
-                validationForm.addEventListener('submit', function (e) {
+                validationForm.addEventListener('submit', async function (e) {
                     e.preventDefault();
 
                     // 1. Validation
@@ -727,6 +850,8 @@
                         return;
                     }
 
+                    let rolesMap = {};
+
                     for (const checkbox of selectedClasses) {
                         const wrapper = checkbox.closest('.class-option-wrapper');
                         const roleSelected = wrapper.querySelector('.class-role-select input[type="radio"]:checked');
@@ -736,6 +861,10 @@
                             alert(`Please select a role (Leader/Follower) for ${className}.`);
                             return;
                         }
+                        // Map role to class name/value
+                        // Extract class name from value, e.g. "Wed 18:30 Beginner 0"
+                        const classVal = checkbox.value;
+                        rolesMap[classVal] = roleSelected.value;
                     }
 
                     // 2. Gather Data
@@ -747,6 +876,11 @@
                         alert("Please select a package.");
                         return;
                     }
+
+                    const button = validationForm.querySelector('button[type="submit"]');
+                    const originalText = button.innerHTML;
+                    button.disabled = true;
+                    button.innerHTML = '<div>Processing...</div>';
 
                     // 3. Determine Stripe Link
                     let stripeLink = '';
@@ -775,18 +909,72 @@
 
                     if (links[selectedPackage]) {
                         stripeLink = isStudent ? links[selectedPackage].student : links[selectedPackage].regular;
+                        // Pre-fill email to ensure webhook matching
+                        const userEmail = formData.get('email');
+                        if (userEmail) {
+                            stripeLink += '?prefilled_email=' + encodeURIComponent(userEmail);
+                        }
                     } else {
                         alert("Invalid package selection.");
+                        button.disabled = false;
+                        button.innerHTML = originalText;
                         return;
                     }
 
-                    // 4. Construct Email (Mailto)
-                    const subject = `Registration: ${formData.get('firstname')} ${formData.get('lastname')}`;
-                    const datesUnavailable = formData.get('dates_unavailable') || 'None';
-                    // formData.getAll('classes[]') might not work in all browsers if not supported, but usually fine.
-                    // Let's manually get classes for safety or use formData.
+                    // 4. Submit to Supabase & Google Sheets
+                    const datesUnavailable = formData.get('dates_unavailable') || null;
                     const classes = [];
                     document.querySelectorAll('input[name="classes[]"]:checked').forEach(cb => classes.push(cb.value));
+
+                    // Google Sheets URL
+                    const GOOGLE_SCRIPT_URL = "https://script.google.com/a/macros/axcentdance.com/s/AKfycbzDzMkSGAKHukwbblwrefJ9kSq2esnEWmTCeGvT0KtRZ9sfEdzRH9e7EsatC6y8qLKBUA/exec";
+
+                    const submissionPayload = {
+                        first_name: formData.get('firstname'),
+                        last_name: formData.get('lastname'),
+                        email: formData.get('email'),
+                        phone: formData.get('phone'),
+                        sex: formData.get('sex'),
+                        package_name: selectedPackage,
+                        is_student: isStudent,
+                        pass_start_date: formData.get('activation_date'),
+                        pass_end_date: document.getElementById('pass_end_date').value,
+                        dates_unavailable: datesUnavailable,
+                        selected_classes: classes,
+                        roles: rolesMap
+                    };
+
+                    try {
+                        // Parallel Submission: Supabase + Google Sheets
+                        const supabasePromise = supabase
+                            .from('registrations')
+                            .insert([{
+                                ...submissionPayload, // Reuse mapped fields
+                                status: 'pending_payment'
+                            }]);
+
+                        // Use no-cors for Google Sheets to avoid CORS blocks (Fire and Forget style)
+                        const googleSheetsPromise = fetch(GOOGLE_SCRIPT_URL, {
+                            method: "POST",
+                            mode: "no-cors",
+                            headers: { "Content-Type": "application/json" },
+                            body: JSON.stringify(submissionPayload)
+                        });
+
+                        const [{ data, error }, googleRes] = await Promise.all([supabasePromise, googleSheetsPromise]);
+
+                        if (error) {
+                            console.error('Supabase Error:', error);
+                            // Proceed anyway, payment is priority
+                        }
+                        console.log('Google Sheets Sync Initiated');
+
+                    } catch (err) {
+                        console.error('Submission Error:', err);
+                    }
+
+                    // 5. Construct Email (Mailto) - BACKUP
+                    const subject = `Registration: ${formData.get('firstname')} ${formData.get('lastname')}`;
 
                     const body = `
 Name: ${formData.get('firstname')} ${formData.get('lastname')}
@@ -795,7 +983,7 @@ Phone: ${formData.get('phone')}
 Sex: ${formData.get('sex')}
 Student: ${isStudent ? 'Yes' : 'No'}
 Package: ${selectedPackage}
-Dates Unavailable: ${datesUnavailable}
+Dates Unavailable: ${datesUnavailable || 'None'}
 
 Selected Classes:
 ${classes.join('\n')}
@@ -803,7 +991,7 @@ ${classes.join('\n')}
 
                     const mailtoLink = `mailto:slamitza@gmail.com,info@axcentdance.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
-                    // 5. Store Links & Redirect
+                    // 6. Store Links & Redirect
                     localStorage.setItem('axcent_stripe_link', stripeLink);
                     localStorage.setItem('axcent_mailto_link', mailtoLink);
 
@@ -813,156 +1001,254 @@ ${classes.join('\n')}
         });
     </script>
 
-  
-  
 
 
-  
 
 
-  <!-- ==============================================
-       STICKY BOTTOM NAVIGATION + SLIDE UP MENU (FIXED V3)
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- ==============================================
+       MOBILE DRAWER NAVIGATION (ISOLATED V6)
        ============================================== -->
-  <style>
-    /* Default: Hidden on Desktop */
-    .mobile-bottom-nav {
-      display: none;
-    }
+    <style>
+        /* Default: Hidden on Desktop */
+        .mobile-bottom-nav,
+        .mobile-drawer-overlay,
+        .mobile-drawer {
+            display: none;
+        }
 
-    /* Mobile Styles */
-    @media (max-width: 768px) {
-      .mobile-menu-btn {
-        display: none !important;
-      }
-      
-      body {
-        padding-bottom: 80px; 
-      }
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: none !important;
+            }
 
-      .mobile-bottom-nav {
-        display: flex !important;
-        position: fixed !important;
-        bottom: 0 !important;
-        left: 0 !important;
-        width: 100% !important;
-        height: 70px !important;
-        background: rgba(10, 5, 20, 0.98) !important;
-        backdrop-filter: blur(15px);
-        -webkit-backdrop-filter: blur(15px);
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
-        z-index: 99999 !important; /* Extremely High */
-        justify-content: space-around;
-        align-items: center;
-        padding-bottom: 10px; 
-      }
+            body {
+                padding-bottom: 80px;
+            }
 
-      .nav-item {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-decoration: none;
-        color: rgba(255, 255, 255, 0.6);
-        font-size: 0.75rem;
-        background: none;
-        border: none;
-        cursor: pointer;
-        transition: color 0.3s ease;
-      }
+            /* --- BOTTOM BAR --- */
+            .mobile-bottom-nav {
+                display: flex !important;
+                position: fixed !important;
+                bottom: 0 !important;
+                left: 0 !important;
+                width: 100% !important;
+                height: 70px !important;
+                background: rgba(10, 5, 20, 0.98) !important;
+                backdrop-filter: blur(15px);
+                -webkit-backdrop-filter: blur(15px);
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+                z-index: 99999 !important;
+                justify-content: space-around;
+                align-items: center;
+                padding-bottom: 10px;
+            }
 
-      .nav-item.active {
-        color: var(--accent-light);
-      }
+            .nav-item {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-decoration: none;
+                color: rgba(255, 255, 255, 0.6);
+                font-size: 0.75rem;
+                background: none;
+                border: none;
+                cursor: pointer;
+                transition: color 0.3s ease;
+            }
 
-      .nav-item svg {
-        width: 24px;
-        height: 24px;
-        margin-bottom: 4px;
-        fill: currentColor;
-      }
+            .nav-item.active {
+                color: var(--accent-light);
+            }
 
-      /* === SLIDE UP DRAWER === */
-      .nav-links.active {
-        display: flex !important;
-        flex-direction: column !important;
-        position: fixed !important;
-        top: auto !important;
-        bottom: 70px !important;
-        left: 0 !important;
-        width: 100% !important;
-        height: auto !important;
-        max-height: 80vh !important;
-        overflow-y: auto !important;
-        
-        background: rgba(15, 5, 24, 0.98) !important;
-        backdrop-filter: blur(20px) !important;
-        border-radius: 20px 20px 0 0 !important;
-        border-top: 1px solid rgba(255, 255, 255, 0.2) !important;
-        box-shadow: 0 -10px 40px rgba(0,0,0,0.5) !important;
-        
-        z-index: 99998 !important;
-        
-        transform: none !important;
-        opacity: 1 !important;
-        visibility: visible !important;
-        
-        animation: slideUpDrawer 0.3s ease-out forwards;
-      }
-      
-      @keyframes slideUpDrawer {
-        0% { transform: translateY(100%); opacity: 0; }
-        100% { transform: translateY(0); opacity: 1; }
-      }
-    }
-  </style>
+            .nav-item svg {
+                width: 24px;
+                height: 24px;
+                margin-bottom: 4px;
+                fill: currentColor;
+            }
 
-  <nav class="mobile-bottom-nav">
-    <a href="index.html" class="nav-item">
-      <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
-      <span>Home</span>
-    </a>
-    <a href="schedule.html" class="nav-item">
-      <svg viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2zm-7 5h5v5h-5z"/></svg>
-      <span>Schedule</span>
-    </a>
-    <a href="registration.html" class="nav-item">
-      <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
-      <span>Passes</span>
-    </a>
-    <a href="portal.html" class="nav-item">
-      <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg>
-      <span>Portal</span>
-    </a>
-    <button id="mobileMoreBtn" class="nav-item">
-      <svg viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
-      <span>More</span>
-    </button>
-  </nav>
+            /* --- NEW ISOLATED DRAWER --- */
+            .mobile-drawer-overlay {
+                display: none;
+                /* Controlled via JS class "active" -> display: block */
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.5);
+                z-index: 99997;
+                opacity: 0;
+                transition: opacity 0.3s ease;
+            }
 
-  <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const moreBtn = document.getElementById("mobileMoreBtn");
-        if(moreBtn) {
-            moreBtn.addEventListener("click", function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                const navLinks = document.querySelector(".nav-links");
-                if(navLinks) {
-                    navLinks.classList.toggle("active");
-                }
-            });
-            
-            // Close logic
-            const navLinks = document.querySelector(".nav-links");
-            if(navLinks) {
-                 navLinks.querySelectorAll("a").forEach(link => {
-                     link.addEventListener("click", () => {
-                         navLinks.classList.remove("active");
-                     });
-                 });
+            .mobile-drawer-overlay.active {
+                display: block !important;
+                opacity: 1;
+            }
+
+            .mobile-drawer {
+                display: block !important;
+                /* Visible layout on mobile, hidden via max-height */
+                position: fixed;
+                bottom: 70px;
+                /* Sit on bar */
+                left: 0;
+                width: 100%;
+                max-height: 0;
+                overflow: hidden;
+                background: rgba(15, 5, 24, 0.98);
+                backdrop-filter: blur(20px);
+                border-radius: 20px 20px 0 0;
+                border-top: 1px solid rgba(255, 255, 255, 0.2);
+                z-index: 99998;
+                transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.5);
+            }
+
+            .mobile-drawer.active {
+                max-height: 80vh;
+                overflow-y: auto;
+            }
+
+            .drawer-content {
+                padding: 20px;
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .drawer-link {
+                font-size: 1.1rem;
+                color: white;
+                text-decoration: none;
+                padding: 10px;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+
+            .drawer-link:last-child {
+                border-bottom: none;
+            }
+
+            .drawer-link span {
+                opacity: 0.8;
+            }
+
+            .drawer-link:hover span {
+                opacity: 1;
+                color: var(--accent-light);
             }
         }
-    });
-  </script>
+    </style>
+
+    <div id="mobileDrawerOverlay" class="mobile-drawer-overlay"></div>
+
+    <div id="mobileDrawer" class="mobile-drawer">
+        <div class="drawer-content">
+            <a href="about.html" class="drawer-link"><span>About Us</span> <i>→</i></a>
+            <a href="events.html" class="drawer-link"><span>Events</span> <i>→</i></a>
+            <a href="contact.html" class="drawer-link"><span>Contact us</span> <i>→</i></a>
+            <a href="login.html" class="drawer-link" style="color:var(--accent-light);"><span>Log In</span> <i>→</i></a>
+            <hr style="border:0; border-top:1px solid rgba(255,255,255,0.1); margin: 5px 0;">
+            <a href="room-rental.html" class="drawer-link"><span>Room Rental</span></a>
+            <a href="collaborations.html" class="drawer-link"><span>Collaborations</span></a>
+            <a href="corporate-events.html" class="drawer-link"><span>Corporate Events</span></a>
+            <a href="wedding-dance.html" class="drawer-link"><span>Wedding Dance</span></a>
+            <a href="private-lessons.html" class="drawer-link"><span>Private Lessons</span></a>
+            <a href="gallery.html" class="drawer-link"><span>Gallery</span></a>
+            <a href="education.html" class="drawer-link"><span>Education</span></a>
+            <a href="beginner-guide.html" class="drawer-link"><span>Beginner Guide</span></a>
+            <a href="blog.html" class="drawer-link"><span>Blog</span></a>
+            <a href="faq.html" class="drawer-link"><span>FAQ</span></a>
+            <a href="etiquette.html" class="drawer-link"><span>Dance Etiquette</span></a>
+        </div>
+    </div>
+
+    <nav class="mobile-bottom-nav">
+        <a href="index.html" class="nav-item">
+            <svg viewBox="0 0 24 24">
+                <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+            </svg>
+            <span>Home</span>
+        </a>
+        <a href="schedule.html" class="nav-item">
+            <svg viewBox="0 0 24 24">
+                <path
+                    d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2zm-7 5h5v5h-5z" />
+            </svg>
+            <span>Schedule</span>
+        </a>
+        <a href="registration.html" class="nav-item">
+            <svg viewBox="0 0 24 24">
+                <path
+                    d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+            </svg>
+            <span>Passes</span>
+        </a>
+        <a href="portal.html" class="nav-item">
+            <svg viewBox="0 0 24 24">
+                <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z" />
+            </svg>
+            <span>Portal</span>
+        </a>
+        <button id="mobileMoreBtn" class="nav-item">
+            <svg viewBox="0 0 24 24">
+                <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+            </svg>
+            <span>More</span>
+        </button>
+    </nav>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const moreBtn = document.getElementById("mobileMoreBtn");
+            const drawer = document.getElementById("mobileDrawer");
+            const overlay = document.getElementById("mobileDrawerOverlay");
+
+            function toggleDrawer(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                if (drawer) {
+                    drawer.classList.toggle("active");
+                    if (overlay) overlay.classList.toggle("active");
+                }
+            }
+
+            if (moreBtn) {
+                moreBtn.addEventListener("click", toggleDrawer);
+            }
+
+            if (overlay) {
+                overlay.addEventListener("click", toggleDrawer);
+            }
+
+            if (drawer) {
+                drawer.querySelectorAll("a").forEach(link => {
+                    link.addEventListener("click", () => {
+                        drawer.classList.remove("active");
+                        if (overlay) overlay.classList.remove("active");
+                    });
+                });
+            }
+        });
+    </script>
 
 </body>
 
