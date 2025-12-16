@@ -231,8 +231,12 @@ svg {
 @media (max-width: 767px) {
 
     .hero-title-large {
-        font-size: 3.5rem !important;
-        /* Prevent massive wrapping */
+        font-size: 5rem !important;
+        line-height: 0.85 !important;
+        display: flex !important;
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
     }
 
     .section-title-modern {
