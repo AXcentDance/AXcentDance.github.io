@@ -10,7 +10,7 @@
         content="Accelerate your Bachata progress with private lessons in Zurich. Personalized coaching for technique, styling, and wedding dances.">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="style.min.css">
+    <link rel="stylesheet" href="style.css">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
 
@@ -173,10 +173,10 @@
             <nav class="nav-links">
                 <a href="about.html">About us</a>
                 <a href="schedule.html">Schedule</a>
-                <a href="events.html">Events</a>
                 <a href="registration.html">Registration</a>
+                <a href="events.html">Events</a>
                 <a href="contact.html">Contact</a>
-                <a href="login.html" style="color:var(--accent-light);">Log In</a>
+                <!-- <a href="login.html" style="color:var(--accent-light);">Log In</a> -->
                 <div class="dropdown">
                     <button class="dropbtn">More ▾</button>
                     <div class="dropdown-content">
@@ -200,116 +200,262 @@
 
     <main>
         <!-- Hero Section -->
-        <section class="private-hero">
-            <div class="container">
-                <div class="hero-badge">
+        <section class="head-hero"
+            style="min-height: 80vh; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;">
+            <div class="hero-bg-overlay"
+                style="position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(5,2,8,0.3), var(--bg-main)), url('assets/images/private_lesson_hero.webp'); background-size: cover; background-position: center; z-index: 0;">
+            </div>
+
+            <div class="container relative-z" style="text-align: center; z-index: 1;">
+                <div class="hero-badge reveal">
                     <span class="hero-badge-line"></span>
                     <span class="hero-badge-text">PERSONAL COACHING</span>
                     <span class="hero-badge-line"></span>
                 </div>
-                <h1 class="page-title">Private Lessons</h1>
-                <p class="hero-desc-border" style="border: none; padding: 0;">
-                    Fast-track your progress with 1-on-1 coaching tailored to your goals.
+                <h1 class="hero-title reveal" style="font-size: clamp(3rem, 6vw, 6rem); line-height: 1;">
+                    PRIVATE<br><span class="text-stroke">LESSONS</span></h1>
+                <p class="hero-desc reveal"
+                    style="max-width: 600px; margin: 2rem auto; font-size: 1.2rem; color: var(--text-muted);">
+                    Fast-track your progress with 1-on-1 coaching tailored specifically to your unique goals and
+                    learning style.
                 </p>
+                <div class="hero-buttons-group reveal" style="justify-content: center;">
+                    <a href="contact.html" class="btn-hero btn-hero-secondary">CONTACT US</a>
+                </div>
             </div>
         </section>
 
-        <!-- Benefits Section -->
-        <section class="private-container">
-            <h2 class="section-title" style="margin-bottom: 2rem;">Why Choose Private Lessons?</h2>
-            <div class="benefits-grid">
-                <div class="benefit-card">
-                    <div class="benefit-icon">🚀</div>
-                    <h3>Accelerated Learning</h3>
-                    <p>
-                        Learn at your own pace. One hour of private coaching can be worth weeks of group classes as we
-                        focus 100% on you.
-                    </p>
+        <!-- Benefits Grid (Glassmorphism) -->
+        <section class="section-padding">
+            <div class="container">
+                <div class="section-header" style="text-align: center; margin-bottom: 4rem;">
+                    <h2 class="section-title-modern">Why Go Private?</h2>
+                    <p class="section-subtitle">Unlock your full potential with personalized attention.</p>
                 </div>
-                <div class="benefit-card">
-                    <div class="benefit-icon">🔍</div>
-                    <h3>Personalized Feedback</h3>
-                    <p>
-                        We identify your specific strengths and areas for improvement, correcting bad habits before they
-                        stick.
-                    </p>
-                </div>
-                <div class="benefit-card">
-                    <div class="benefit-icon">💃</div>
-                    <h3>Styling & Technique</h3>
-                    <p>
-                        Deep dive into body movement, musicality, and styling details that are often hard to cover in
-                        large groups.
-                    </p>
+
+                <div class="benefits-grid"
+                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                    <div class="glass-card" style="padding: 2.5rem; border-radius: 20px; text-align: left;">
+                        <div class="icon-glow"
+                            style="font-size: 3rem; margin-bottom: 1.5rem; background: var(--grad); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">
+                            🚀</div>
+                        <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: white;">Accelerated Learning</h3>
+                        <p style="color: var(--text-muted); line-height: 1.6;">
+                            One hour of private coaching can be worth weeks of group classes. We focus 100% on you,
+                            speeding up your muscle memory and understanding.
+                        </p>
+                    </div>
+                    <div class="glass-card" style="padding: 2.5rem; border-radius: 20px; text-align: left;">
+                        <div class="icon-glow"
+                            style="font-size: 3rem; margin-bottom: 1.5rem; background: var(--grad); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">
+                            💎</div>
+                        <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: white;">Detail & Styling</h3>
+                        <p style="color: var(--text-muted); line-height: 1.6;">
+                            Refine your movement quality. We dive deep into micro-movements, musicality, and styling
+                            that transform you from a good dancer to a great one.
+                        </p>
+                    </div>
+                    <div class="glass-card" style="padding: 2.5rem; border-radius: 20px; text-align: left;">
+                        <div class="icon-glow"
+                            style="font-size: 3rem; margin-bottom: 1.5rem; background: var(--grad); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">
+                            🎯</div>
+                        <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: white;">Custom Goals</h3>
+                        <p style="color: var(--text-muted); line-height: 1.6;">
+                            Whether you want to master the fundamentals, learn "that move you saw online", or refine
+                            your basic step and styling—we build the entire session around your personal goals.
+                        </p>
+                    </div>
                 </div>
             </div>
-
-            <!-- Pricing Section -->
-            <div class="pricing-section">
-                <h2 class="section-title">Investment</h2>
-                <div class="pricing-grid">
-
-                    <!-- Single Lesson -->
-                    <div class="pricing-card">
-                        <h3>Single Lesson</h3>
-                        <div class="price-amount">CHF 120<span class="price-unit">/hr</span></div>
-                        <ul class="price-features">
-                            <li>1 Hour Personal Coaching</li>
-                            <li>Individual or Couple</li>
-                            <li>Customized Plan</li>
-                            <li>Studio Rental Included</li>
-                        </ul>
-                        <a href="contact.html" class="btn-secondary"
-                            style="width: 100%; display: block; text-align: center; text-decoration: none; padding: 1rem; border-radius: 12px;">Book
-                            Now</a>
-                    </div>
-
-                    <!-- 5 Pack -->
-                    <div class="pricing-card featured">
-                        <h3>5-Lesson Pack</h3>
-                        <div class="price-amount">CHF 550<span class="price-unit">/pack</span></div>
-                        <ul class="price-features">
-                            <li>5 Hours Personal Coaching</li>
-                            <li>Save CHF 50</li>
-                            <li>Progress Tracking</li>
-                            <li>Flexible Scheduling</li>
-                        </ul>
-                        <a href="contact.html" class="btn-primary"
-                            style="width: 100%; display: block; text-align: center; text-decoration: none; padding: 1rem; border-radius: 12px;">Get
-                            Started</a>
-                    </div>
-
-                    <!-- 10 Pack -->
-                    <div class="pricing-card">
-                        <h3>10-Lesson Pack</h3>
-                        <div class="price-amount">CHF 1000<span class="price-unit">/pack</span></div>
-                        <ul class="price-features">
-                            <li>10 Hours Personal Coaching</li>
-                            <li>Save CHF 200</li>
-                            <li>Deep Technique Dive</li>
-                            <li>Video Analysis Included</li>
-                        </ul>
-                        <a href="contact.html" class="btn-secondary"
-                            style="width: 100%; display: block; text-align: center; text-decoration: none; padding: 1rem; border-radius: 12px;">Commit
-                            to Growth</a>
-                    </div>
-
-                </div>
-            </div>
-
-            <!-- CTA Box -->
-            <div class="cta-box">
-                <h2 style="font-size: 2rem; margin-bottom: 1rem; color: white;">Ready to level up?</h2>
-                <p
-                    style="color: var(--text-muted); margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">
-                    Contact us to schedule your first private lesson. Let us know your goals and availability.
-                </p>
-                <a href="contact.html" class="btn-primary"
-                    style="padding: 1rem 3rem; text-decoration: none; border-radius: 30px; font-weight: 700;">CONTACT
-                    US</a>
-            </div>
-
         </section>
+
+        <!-- Testimonial / Social Proof -->
+        <!-- Testimonial / Social Proof -->
+        <section class="section-padding">
+            <div class="container">
+                <div class="section-header" style="text-align: center; margin-bottom: 3rem;">
+                    <h2 class="section-title-modern">What Students Say</h2>
+                </div>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                    <!-- Testimonial 1 -->
+                    <div class="glass-card"
+                        style="padding: 2.5rem; border-radius: 20px; position: relative; overflow: hidden;">
+
+                        <p
+                            style="font-size: 1.1rem; color: white; margin-bottom: 1.5rem; line-height: 1.6; position: relative; z-index: 1;">
+                            I was struggling with my basic step for months. After just <strong>3 private
+                                lessons</strong> with Ale & Xidan, everything clicked. I feel so much more confident at
+                            socials now!
+                        </p>
+                        <div style="display: flex; align-items: center; gap: 1rem;">
+
+                            <div style="text-align: left;">
+                                <h4 style="color: white; font-size: 1rem; margin: 0;">Sarah K.</h4>
+                                <span style="color: var(--text-muted); font-size: 0.8rem;">Bachata Beginner</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 2 -->
+                    <div class="glass-card"
+                        style="padding: 2.5rem; border-radius: 20px; position: relative; overflow: hidden;">
+
+                        <p
+                            style="font-size: 1.1rem; color: white; margin-bottom: 1.5rem; line-height: 1.6; position: relative; z-index: 1;">
+                            I was nervous about leading, but the personalized feedback was a game changer. They spotted
+                            my bad habits immediately and helped me fix them.
+                        </p>
+                        <div style="display: flex; align-items: center; gap: 1rem;">
+
+                            <div style="text-align: left;">
+                                <h4 style="color: white; font-size: 1rem; margin: 0;">Michael T.</h4>
+                                <span style="color: var(--text-muted); font-size: 0.8rem;">Improver Leader</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 3 -->
+                    <div class="glass-card"
+                        style="padding: 2.5rem; border-radius: 20px; position: relative; overflow: hidden;">
+
+                        <p
+                            style="font-size: 1.1rem; color: white; margin-bottom: 1.5rem; line-height: 1.6; position: relative; z-index: 1;">
+                            The best decision for our wedding dance! They created a choreography that suited our song
+                            perfectly and made us look like pros in no time.
+                        </p>
+                        <div style="display: flex; align-items: center; gap: 1rem;">
+
+                            <div style="text-align: left;">
+                                <h4 style="color: white; font-size: 1rem; margin: 0;">Jessica & David</h4>
+                                <span style="color: var(--text-muted); font-size: 0.8rem;">Wedding Couple</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Accordion -->
+        <section class="section-padding" style="padding-top: 4rem; padding-bottom: 15rem;">
+            <div class="container" style="max-width: 800px;">
+                <h2 class="section-title-modern" style="text-align: center; margin-bottom: 3rem;">FAQs</h2>
+                <script type="application/ld+json">
+                {
+                  "@context": "https://schema.org",
+                  "@type": "FAQPage",
+                  "mainEntity": [{
+                    "@type": "Question",
+                    "name": "Do I need a dance partner?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "No partner required! Our instructors will dance with you, allowing you to focus purely on your own technique and leading/following skills."
+                    }
+                  }, {
+                    "@type": "Question",
+                    "name": "Can we prepare a Wedding Dance?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Absolutely. We specialize in creating beautiful, memorable wedding choreographies that match your song and skill level. Visit our Wedding Dance page for more details."
+                    }
+                  }, {
+                    "@type": "Question",
+                    "name": "What should I wear?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Comfortable clothing that allows movement. For shoes, standard dance shoes or clean indoor sneakers are best. Avoid heavy boots or flip-flops."
+                    }
+                  }, {
+                    "@type": "Question",
+                    "name": "How much does it cost?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "We will discuss the investment personally with you. Please fill out the contact form, and we will get back to you via WhatsApp or Email."
+                    }
+                  }, {
+                    "@type": "Question",
+                    "name": "Where do the lessons take place?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "All private lessons are held at our home base: AXcent Dance Studio (Hermetschloostrasse 73, Zurich)."
+                    }
+                  }]
+                }
+                </script>
+
+                <div class="faq-list" style="display: flex; flex-direction: column; gap: 1rem;">
+                    <!-- FAQ Item 1 -->
+                    <details class="glass-panel" style="border-radius: 12px; overflow: hidden;">
+                        <summary
+                            style="padding: 1.5rem; cursor: pointer; color: white; font-weight: 600; font-size: 1.1rem; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                            Do I need a dance partner?
+                            <span style="color: var(--accent-start);">+</span>
+                        </summary>
+                        <div style="padding: 0 1.5rem 1.5rem; color: var(--text-muted); line-height: 1.6;">
+                            No partner required! Our instructors will dance with you, allowing you to focus purely on
+                            your own technique and leading/following skills.
+                        </div>
+                    </details>
+
+                    <!-- FAQ Item 2 -->
+                    <details class="glass-panel" style="border-radius: 12px; overflow: hidden;">
+                        <summary
+                            style="padding: 1.5rem; cursor: pointer; color: white; font-weight: 600; font-size: 1.1rem; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                            Can we prepare a Wedding Dance?
+                            <span style="color: var(--accent-start);">+</span>
+                        </summary>
+                        <div style="padding: 0 1.5rem 1.5rem; color: var(--text-muted); line-height: 1.6;">
+                            Absolutely. We specialize in creating beautiful, memorable wedding choreographies that match
+                            your song and skill level. Visit our <a href="wedding-dance.html"
+                                style="color: var(--accent-start);">Wedding Dance page</a> for more details.
+                        </div>
+                    </details>
+
+                    <!-- FAQ Item 3 -->
+                    <!-- FAQ Item 3 -->
+                    <details class="glass-panel" style="border-radius: 12px; overflow: hidden;">
+                        <summary
+                            style="padding: 1.5rem; cursor: pointer; color: white; font-weight: 600; font-size: 1.1rem; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                            What should I wear?
+                            <span style="color: var(--accent-start);">+</span>
+                        </summary>
+                        <div style="padding: 0 1.5rem 1.5rem; color: var(--text-muted); line-height: 1.6;">
+                            Comfortable clothing that allows movement. For shoes, standard dance shoes or clean indoor
+                            sneakers are best. Avoid heavy boots or flip-flops.
+                        </div>
+                    </details>
+
+                    <!-- FAQ Item 4 (Price) -->
+                    <details class="glass-panel" style="border-radius: 12px; overflow: hidden;">
+                        <summary
+                            style="padding: 1.5rem; cursor: pointer; color: white; font-weight: 600; font-size: 1.1rem; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                            How much does it cost?
+                            <span style="color: var(--accent-start);">+</span>
+                        </summary>
+                        <div style="padding: 0 1.5rem 1.5rem; color: var(--text-muted); line-height: 1.6;">
+                            We will discuss the investment personally with you. Please fill out the <a
+                                href="contact.html" style="color: var(--accent-start);">contact form</a>, and we will
+                            get back to you via WhatsApp or Email.
+                        </div>
+                    </details>
+
+                    <!-- FAQ Item 5 (Location) -->
+                    <details class="glass-panel" style="border-radius: 12px; overflow: hidden;">
+                        <summary
+                            style="padding: 1.5rem; cursor: pointer; color: white; font-weight: 600; font-size: 1.1rem; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                            Where do the lessons take place?
+                            <span style="color: var(--accent-start);">+</span>
+                        </summary>
+                        <div style="padding: 0 1.5rem 1.5rem; color: var(--text-muted); line-height: 1.6;">
+                            All private lessons are held at our home base: <strong>AXcent Dance Studio</strong>
+                            (Hermetschloostrasse 73, Zurich).
+                        </div>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+
 
     </main>
 
@@ -381,211 +527,254 @@
 
     <script src="script.min.js"></script>
 
-  
-  
 
 
-  
 
 
-  
 
 
-  
 
 
-  
 
 
-  <!-- ==============================================
+
+
+
+
+
+
+    <!-- ==============================================
        MOBILE DRAWER NAVIGATION (ISOLATED V6)
        ============================================== -->
-  <style>
-    /* Default: Hidden on Desktop */
-    .mobile-bottom-nav, 
-    .mobile-drawer-overlay, 
-    .mobile-drawer {
-      display: none;
-    }
+    <style>
+        /* Default: Hidden on Desktop */
+        .mobile-bottom-nav,
+        .mobile-drawer-overlay,
+        .mobile-drawer {
+            display: none;
+        }
 
-    /* Mobile Styles */
-    @media (max-width: 768px) {
-      .mobile-menu-btn { display: none !important; }
-      body { padding-bottom: 80px; }
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: none !important;
+            }
 
-      /* --- BOTTOM BAR --- */
-      .mobile-bottom-nav {
-        display: flex !important;
-        position: fixed !important;
-        bottom: 0 !important;
-        left: 0 !important;
-        width: 100% !important;
-        height: 70px !important;
-        background: rgba(10, 5, 20, 0.98) !important;
-        backdrop-filter: blur(15px);
-        -webkit-backdrop-filter: blur(15px);
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
-        z-index: 99999 !important;
-        justify-content: space-around;
-        align-items: center;
-        padding-bottom: 10px; 
-      }
+            body {
+                padding-bottom: 80px;
+            }
 
-      .nav-item {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-decoration: none;
-        color: rgba(255, 255, 255, 0.6);
-        font-size: 0.75rem;
-        background: none;
-        border: none;
-        cursor: pointer;
-        transition: color 0.3s ease;
-      }
+            /* --- BOTTOM BAR --- */
+            .mobile-bottom-nav {
+                display: flex !important;
+                position: fixed !important;
+                bottom: 0 !important;
+                left: 0 !important;
+                width: 100% !important;
+                height: 70px !important;
+                background: rgba(10, 5, 20, 0.98) !important;
+                backdrop-filter: blur(15px);
+                -webkit-backdrop-filter: blur(15px);
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+                z-index: 99999 !important;
+                justify-content: space-around;
+                align-items: center;
+                padding-bottom: 10px;
+            }
 
-      .nav-item.active { color: var(--accent-light); }
-      .nav-item svg { width: 24px; height: 24px; margin-bottom: 4px; fill: currentColor; }
+            .nav-item {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-decoration: none;
+                color: rgba(255, 255, 255, 0.6);
+                font-size: 0.75rem;
+                background: none;
+                border: none;
+                cursor: pointer;
+                transition: color 0.3s ease;
+            }
 
-      /* --- NEW ISOLATED DRAWER --- */
-      .mobile-drawer-overlay {
-        display: none; /* Controlled via JS class "active" -> display: block */
-        position: fixed;
-        top: 0; left: 0; width: 100%; height: 100%;
-        background: rgba(0,0,0,0.5);
-        z-index: 99997;
-        opacity: 0;
-        transition: opacity 0.3s ease;
-      }
-      .mobile-drawer-overlay.active {
-        display: block !important; 
-        opacity: 1;
-      }
+            .nav-item.active {
+                color: var(--accent-light);
+            }
 
-      .mobile-drawer {
-        display: block !important; /* Visible layout on mobile, hidden via max-height */
-        position: fixed;
-        bottom: 70px; /* Sit on bar */
-        left: 0;
-        width: 100%;
-        max-height: 0; 
-        overflow: hidden;
-        background: rgba(15, 5, 24, 0.98);
-        backdrop-filter: blur(20px);
-        border-radius: 20px 20px 0 0;
-        border-top: 1px solid rgba(255, 255, 255, 0.2);
-        z-index: 99998;
-        transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        box-shadow: 0 -10px 40px rgba(0,0,0,0.5);
-      }
+            .nav-item svg {
+                width: 24px;
+                height: 24px;
+                margin-bottom: 4px;
+                fill: currentColor;
+            }
 
-      .mobile-drawer.active {
-        max-height: 80vh; 
-        overflow-y: auto;
-      }
+            /* --- NEW ISOLATED DRAWER --- */
+            .mobile-drawer-overlay {
+                display: none;
+                /* Controlled via JS class "active" -> display: block */
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.5);
+                z-index: 99997;
+                opacity: 0;
+                transition: opacity 0.3s ease;
+            }
 
-      .drawer-content {
-        padding: 20px;
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-      }
+            .mobile-drawer-overlay.active {
+                display: block !important;
+                opacity: 1;
+            }
 
-      .drawer-link {
-        font-size: 1.1rem;
-        color: white;
-        text-decoration: none;
-        padding: 10px;
-        border-bottom: 1px solid rgba(255,255,255,0.05);
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-      }
-      .drawer-link:last-child { border-bottom: none; }
-      .drawer-link span { opacity: 0.8; }
-      .drawer-link:hover span { opacity: 1; color: var(--accent-light); }
-    }
-  </style>
+            .mobile-drawer {
+                display: block !important;
+                /* Visible layout on mobile, hidden via max-height */
+                position: fixed;
+                bottom: 70px;
+                /* Sit on bar */
+                left: 0;
+                width: 100%;
+                max-height: 0;
+                overflow: hidden;
+                background: rgba(15, 5, 24, 0.98);
+                backdrop-filter: blur(20px);
+                border-radius: 20px 20px 0 0;
+                border-top: 1px solid rgba(255, 255, 255, 0.2);
+                z-index: 99998;
+                transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.5);
+            }
 
-  <div id="mobileDrawerOverlay" class="mobile-drawer-overlay"></div>
+            .mobile-drawer.active {
+                max-height: 80vh;
+                overflow-y: auto;
+            }
 
-  <div id="mobileDrawer" class="mobile-drawer">
-    <div class="drawer-content">
-      <a href="about.html" class="drawer-link"><span>About Us</span> <i>→</i></a>
-      <a href="events.html" class="drawer-link"><span>Events</span> <i>→</i></a>
-      <a href="contact.html" class="drawer-link"><span>Contact us</span> <i>→</i></a>
-      <a href="login.html" class="drawer-link" style="color:var(--accent-light);"><span>Log In</span> <i>→</i></a>
-      <hr style="border:0; border-top:1px solid rgba(255,255,255,0.1); margin: 5px 0;">
-      <a href="room-rental.html" class="drawer-link"><span>Room Rental</span></a>
-      <a href="collaborations.html" class="drawer-link"><span>Collaborations</span></a>
-      <a href="corporate-events.html" class="drawer-link"><span>Corporate Events</span></a>
-      <a href="wedding-dance.html" class="drawer-link"><span>Wedding Dance</span></a>
-      <a href="private-lessons.html" class="drawer-link"><span>Private Lessons</span></a>
-      <a href="gallery.html" class="drawer-link"><span>Gallery</span></a>
-      <a href="education.html" class="drawer-link"><span>Education</span></a>
-      <a href="beginner-guide.html" class="drawer-link"><span>Beginner Guide</span></a>
-      <a href="blog.html" class="drawer-link"><span>Blog</span></a>
-      <a href="faq.html" class="drawer-link"><span>FAQ</span></a>
-      <a href="etiquette.html" class="drawer-link"><span>Dance Etiquette</span></a>
-    </div>
-  </div>
+            .drawer-content {
+                padding: 20px;
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+            }
 
-  <nav class="mobile-bottom-nav">
-    <a href="index.html" class="nav-item">
-      <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
-      <span>Home</span>
-    </a>
-    <a href="schedule.html" class="nav-item">
-      <svg viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2zm-7 5h5v5h-5z"/></svg>
-      <span>Schedule</span>
-    </a>
-    <a href="registration.html" class="nav-item">
-      <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
-      <span>Passes</span>
-    </a>
-    <a href="portal.html" class="nav-item">
-      <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg>
-      <span>Portal</span>
-    </a>
-    <button id="mobileMoreBtn" class="nav-item">
-      <svg viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
-      <span>More</span>
-    </button>
-  </nav>
+            .drawer-link {
+                font-size: 1.1rem;
+                color: white;
+                text-decoration: none;
+                padding: 10px;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
 
-  <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const moreBtn = document.getElementById("mobileMoreBtn");
-        const drawer = document.getElementById("mobileDrawer");
-        const overlay = document.getElementById("mobileDrawerOverlay");
-        
-        function toggleDrawer(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            if(drawer) {
-                drawer.classList.toggle("active");
-                if(overlay) overlay.classList.toggle("active");
+            .drawer-link:last-child {
+                border-bottom: none;
+            }
+
+            .drawer-link span {
+                opacity: 0.8;
+            }
+
+            .drawer-link:hover span {
+                opacity: 1;
+                color: var(--accent-light);
             }
         }
+    </style>
 
-        if(moreBtn) {
-            moreBtn.addEventListener("click", toggleDrawer);
-        }
-        
-        if(overlay) {
-            overlay.addEventListener("click", toggleDrawer);
-        }
+    <div id="mobileDrawerOverlay" class="mobile-drawer-overlay"></div>
 
-        if(drawer) {
-             drawer.querySelectorAll("a").forEach(link => {
-                 link.addEventListener("click", () => {
-                     drawer.classList.remove("active");
-                     if(overlay) overlay.classList.remove("active");
-                 });
-             });
-        }
-    });
-  </script>
+    <div id="mobileDrawer" class="mobile-drawer">
+        <div class="drawer-content">
+            <a href="about.html" class="drawer-link"><span>About Us</span> <i>→</i></a>
+            <a href="registration.html" class="drawer-link"><span>Registration</span> <i>→</i></a>
+            <a href="contact.html" class="drawer-link"><span>Contact us</span> <i>→</i></a>
+            <!-- <a href="login.html" class="drawer-link" style="color:var(--accent-light);"><span>Log In</span> <i>→</i></a> -->
+            <hr style="border:0; border-top:1px solid rgba(255,255,255,0.1); margin: 5px 0;">
+            <a href="room-rental.html" class="drawer-link"><span>Room Rental</span></a>
+            <a href="collaborations.html" class="drawer-link"><span>Collaborations</span></a>
+            <a href="corporate-events.html" class="drawer-link"><span>Corporate Events</span></a>
+            <a href="wedding-dance.html" class="drawer-link"><span>Wedding Dance</span></a>
+            <a href="private-lessons.html" class="drawer-link"><span>Private Lessons</span></a>
+            <a href="gallery.html" class="drawer-link"><span>Gallery</span></a>
+            <a href="education.html" class="drawer-link"><span>Education</span></a>
+            <a href="beginner-guide.html" class="drawer-link"><span>Beginner Guide</span></a>
+            <a href="blog.html" class="drawer-link"><span>Blog</span></a>
+            <a href="faq.html" class="drawer-link"><span>FAQ</span></a>
+            <a href="etiquette.html" class="drawer-link"><span>Dance Etiquette</span></a>
+        </div>
+    </div>
+
+    <nav class="mobile-bottom-nav">
+        <a href="index.html" class="nav-item">
+            <svg viewBox="0 0 24 24">
+                <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+            </svg>
+            <span>Home</span>
+        </a>
+        <a href="schedule.html" class="nav-item">
+            <svg viewBox="0 0 24 24">
+                <path
+                    d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2zm-7 5h5v5h-5z" />
+            </svg>
+            <span>Schedule</span>
+        </a>
+        <a href="registration.html" class="nav-item">
+            <svg viewBox="0 0 24 24">
+                <path
+                    d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+            </svg>
+            <span>Passes</span>
+        </a>
+        <a href="portal.html" class="nav-item">
+            <svg viewBox="0 0 24 24">
+                <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z" />
+            </svg>
+            <span>Portal</span>
+        </a>
+        <button id="mobileMoreBtn" class="nav-item">
+            <svg viewBox="0 0 24 24">
+                <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+            </svg>
+            <span>More</span>
+        </button>
+    </nav>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const moreBtn = document.getElementById("mobileMoreBtn");
+            const drawer = document.getElementById("mobileDrawer");
+            const overlay = document.getElementById("mobileDrawerOverlay");
+
+            function toggleDrawer(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                if (drawer) {
+                    drawer.classList.toggle("active");
+                    if (overlay) overlay.classList.toggle("active");
+                }
+            }
+
+            if (moreBtn) {
+                moreBtn.addEventListener("click", toggleDrawer);
+            }
+
+            if (overlay) {
+                overlay.addEventListener("click", toggleDrawer);
+            }
+
+            if (drawer) {
+                drawer.querySelectorAll("a").forEach(link => {
+                    link.addEventListener("click", () => {
+                        drawer.classList.remove("active");
+                        if (overlay) overlay.classList.remove("active");
+                    });
+                });
+            }
+        });
+    </script>
 
 </body>
 

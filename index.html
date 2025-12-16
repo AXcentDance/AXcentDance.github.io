@@ -21,7 +21,7 @@
   <meta name="twitter:image" content="https://axcentdance.com/assets/images/hero.webp">
 
   <!-- Styles -->
-  <link rel="stylesheet" href="style.min.css">
+  <link rel="stylesheet" href="style.css">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
 
@@ -177,10 +177,10 @@
       <nav class="nav-links">
         <a href="about.html">About us</a>
         <a href="schedule.html">Schedule</a>
-        <a href="events.html">Events</a>
         <a href="registration.html">Registration</a>
+        <a href="events.html">Events</a>
         <a href="contact.html">Contact</a>
-        <a href="login.html" style="color:var(--accent-light);">Log In</a>
+        <!-- <a href="login.html" style="color:var(--accent-light);">Log In</a> -->
         <div class="dropdown">
           <button class="dropbtn">More ▾</button>
           <div class="dropdown-content">
@@ -245,9 +245,7 @@
         <!-- Description -->
         <div class="hero-desc-border" style="max-width: 800px;">
           <p style="margin-bottom: 0.5rem; margin-top: 0;">
-            Ready to start your dance journey? Discover a welcoming community in <a
-              href="https://maps.app.goo.gl/wJ1wQ1h1Q1h1Q1h1" target="_blank" class="hero-map-link">Zurich
-              Altstetten</a> where everyone
+            Ready to start your dance journey? Discover a welcoming community in Zurich Altstetten where everyone
             belongs.<br>
             <strong>No partner needed</strong> — just bring your smile!
           </p>
@@ -272,18 +270,20 @@
                 style="color: #ffdd59; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 4px;">
                 NEW LOCATION</div>
               <div style="color: rgba(255,255,255,0.95); font-weight: 600; font-size: 1rem; margin-bottom: 0.2rem;">
-                Hermetschloostrasse 73, Zurich Altstetten</div>
-              <div style="color: rgba(255,255,255,0.6); font-size: 0.85rem;">2 min walk from Tram 2 stop and Bus 31 stop
+                <a href="https://maps.app.goo.gl/hVPxCxL1eNT5tvXS6" target="_blank"
+                  style="color: white; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 4px;">Hermetschloostrasse
+                  73, Zurich Altstetten</a>
               </div>
+
             </div>
           </div>
         </div>
 
         <!-- Buttons -->
         <div class="hero-buttons-group">
-          <a href="contact.html" class="btn-hero btn-hero-primary">
+          <a href="#trial-form" class="btn-hero btn-hero-primary btn-rotating-border">
             <span class="btn-hero-content">
-              START FREE TRIAL
+              BOOK FREE TRIAL
               <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3">
                 </path>
@@ -384,14 +384,14 @@
                     font-weight="900" font-family="sans-serif">NEW</text>
                 </svg>
               </div>
-              <span class="level-tag tag-beginner">Beginner 0</span>
+              <span class="level-tag tag-beginner">Bachata</span>
               <h4 class="class-name">Bachata Beginner 0</h4>
               <p class="class-instructor">with Ale y Alexia</p>
             </a>
 
             <!-- Thu Class -->
             <a href="class-bachata-beginner-3.html" class="class-card">
-              <span class="level-tag tag-beginner">Beginner 3</span>
+              <span class="level-tag tag-beginner">Bachata</span>
               <h4 class="class-name">Bachata Beginner 3</h4>
               <p class="class-instructor">with Ale y Alexia</p>
             </a>
@@ -403,15 +403,15 @@
 
             <!-- Wed Class -->
             <a href="class-bachata-sensual-foundation.html" class="class-card">
-              <span class="level-tag tag-sensual">Foundation</span>
+              <span class="level-tag tag-sensual">Sensual Style</span>
               <h4 class="class-name">Bachata Sensual Foundation</h4>
               <p class="class-instructor">with Ale y Xidan</p>
             </a>
 
             <!-- Thu Class -->
             <a href="class-lady-styling.html" class="class-card">
-              <span class="level-tag tag-styling">Open Level</span>
-              <h4 class="class-name">Lady Styling</h4>
+              <span class="level-tag tag-styling">Styling</span>
+              <h4 class="class-name">Open Level Lady Style</h4>
               <p class="class-instructor">with Xidan</p>
             </a>
           </div>
@@ -422,14 +422,14 @@
 
             <!-- Wed Class -->
             <a href="class-bachata-sensual-improver.html" class="class-card">
-              <span class="level-tag tag-sensual">Improver</span>
+              <span class="level-tag tag-sensual">Sensual Style</span>
               <h4 class="class-name">Bachata Sensual Improver</h4>
               <p class="class-instructor">with Ale y Xidan</p>
             </a>
 
             <!-- Thu Class -->
             <a href="class-bachata-sensual-inter-adv.html" class="class-card">
-              <span class="level-tag tag-sensual">Intermediate</span>
+              <span class="level-tag tag-sensual">Sensual Style</span>
               <h4 class="class-name">Bachata Sensual Intermediate/Advanced</h4>
               <p class="class-instructor">with Ale y Xidan</p>
             </a>
@@ -456,11 +456,11 @@
               </a>
               <a href="class-bachata-sensual-foundation.html" class="class-card">
                 <div class="mobile-time">19:30</div>
-                <h4 class="class-name">Bachata Sensual Foundation</h4>
+                <h4 class="class-name">Bachata Sensual Foundation (Sensual Style)</h4>
               </a>
               <a href="class-bachata-sensual-improver.html" class="class-card">
                 <div class="mobile-time">20:30</div>
-                <h4 class="class-name">Bachata Sensual Improver</h4>
+                <h4 class="class-name">Bachata Sensual Improver (Sensual Style)</h4>
               </a>
             </div>
           </div>
@@ -473,11 +473,11 @@
               </a>
               <a href="class-lady-styling.html" class="class-card">
                 <div class="mobile-time">19:30</div>
-                <h4 class="class-name">Lady Styling</h4>
+                <h4 class="class-name">Open Level Lady Style (Styling)</h4>
               </a>
               <a href="class-bachata-sensual-inter-adv.html" class="class-card">
                 <div class="mobile-time">20:30</div>
-                <h4 class="class-name">Bachata Sensual Intermediate/Advanced</h4>
+                <h4 class="class-name">Bachata Sensual Intermediate/Advanced (Sensual Style)</h4>
               </a>
             </div>
           </div>
@@ -927,13 +927,13 @@
       <div class="container">
 
         <!-- Moved CTA Header -->
-        <div class="footer-cta" style="background: transparent; padding: 0 0 3rem 0;">
-          <div class="cta-bg-text" style="color: rgba(255,255,255,0.03);">JOIN THE MOVEMENT</div>
-          <div class="cta-content" style="margin-top: -2rem;">
-            <h3 class="cta-title">Ready to Dance?</h3>
-            <p style="color: var(--text-muted); margin-bottom: 2rem;">Fill the form below to book your free trial class.
-            </p>
+        <!-- Premium CTA Section -->
+        <div class="cta-premium-wrapper">
+          <div class="cta-premium-title">
+            <span class="cta-outline">READY TO</span>
+            <span class="cta-filled">DANCE?</span>
           </div>
+          <!-- <a href="#trial-form" class="cta-premium-btn">JOIN THE MOVEMENT</a> -->
         </div>
 
         <div class="form-wrapper">
@@ -941,7 +941,12 @@
           <!-- <p class="form-subtitle">Join us on the dance floor. No partner needed.</p> -->
           <!-- Replaced by the CTA above -->
 
-          <form id="trialForm" class="trial-form">
+          <form id="trialForm" class="trial-form" action="https://formsubmit.co/info@axcentdance.com" method="POST">
+            <!-- Formsubmit.co Configuration -->
+            <input type="hidden" name="_next" value="https://axcentdance.com/thankyou.html">
+            <input type="hidden" name="_subject" value="New Trial Class Registration!">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="text" name="_honey" style="display:none">
             <div class="form-grid">
               <div class="form-group">
                 <label for="firstname">First Name</label>
@@ -1130,6 +1135,9 @@
           <li><a href="registration.html">Gift Cards</a></li>
         </ul>
       </div>
+
+      <!-- Premium CTA Section -->
+
 
       <!-- Legal -->
       <div class="footer-col">
@@ -1325,7 +1333,7 @@
       <a href="about.html" class="drawer-link"><span>About Us</span> <i>→</i></a>
       <a href="events.html" class="drawer-link"><span>Events</span> <i>→</i></a>
       <a href="contact.html" class="drawer-link"><span>Contact us</span> <i>→</i></a>
-      <a href="login.html" class="drawer-link" style="color:var(--accent-light);"><span>Log In</span> <i>→</i></a>
+      <!-- <a href="login.html" class="drawer-link" style="color:var(--accent-light);"><span>Log In</span> <i>→</i></a> -->
       <hr style="border:0; border-top:1px solid rgba(255,255,255,0.1); margin: 5px 0;">
       <a href="room-rental.html" class="drawer-link"><span>Room Rental</span></a>
       <a href="collaborations.html" class="drawer-link"><span>Collaborations</span></a>

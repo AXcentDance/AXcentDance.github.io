@@ -10,7 +10,7 @@
         content="Meet Ale and Xidan, the founders of AXcent Dance Zurich. Learn about our teaching philosophy, our journey, and our passion for Bachata Sensual.">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="style.min.css">
+    <link rel="stylesheet" href="style.css">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
 
@@ -268,10 +268,10 @@
             <nav class="nav-links">
                 <a href="about.html">About us</a>
                 <a href="schedule.html">Schedule</a>
-                <a href="events.html">Events</a>
                 <a href="registration.html">Registration</a>
+                <a href="events.html">Events</a>
                 <a href="contact.html">Contact</a>
-                <a href="login.html" style="color:var(--accent-light);">Log In</a>
+                <!-- <a href="login.html" style="color:var(--accent-light);">Log In</a> -->
                 <div class="dropdown">
                     <button class="dropbtn">More ▾</button>
                     <div class="dropdown-content">
@@ -299,7 +299,7 @@
             <div class="container">
                 <div class="hero-badge">
                     <span class="hero-badge-line"></span>
-                    <span class="hero-badge-text">THE TEAM</span>
+                    <span class="hero-badge-text">AXcent Team</span>
                     <span class="hero-badge-line"></span>
                 </div>
                 <h1 class="page-title">Who We Are</h1>
@@ -373,11 +373,12 @@
                             and inspired to express themselves.
                         </p>
 
-                        <div class="highlight-box">
-                            <p class="highlight-text">
-                                "We are proud to be official judges for the Swiss Championship IDO."
-                            </p>
-                        </div>
+                        <p style="font-size: 1.1rem; color: rgba(255,255,255,0.9); margin-bottom: 2rem;">
+                            As <strong>international artists</strong>, we have shared our passion in over <strong>12
+                                countries</strong>. We are also proud to serve as <strong>official judges for the Swiss
+                                Championship IDO</strong> and are active <strong>event organizers</strong>, dedicated to
+                            elevating the dance community.
+                        </p>
 
                         <h3>Our Philosophy</h3>
                         <p>
@@ -386,10 +387,7 @@
                             style and fluidity. We draw inspiration from various dance styles to create a unique and
                             modern approach to Bachata.
                         </p>
-                        <p>
-                            Beyond the classroom, we are active organizers in the dance community, hosting workshops,
-                            socials, and events to bring dancers together.
-                        </p>
+
                     </div>
                 </div>
             </div>
@@ -397,25 +395,61 @@
 
 
 
-        <!-- Team Section -->
-        <section class="section-padding" style="background: var(--bg-secondary);">
-            <div class="container">
-                <div class="section-header" style="text-align: center; margin-bottom: 2rem;">
-                    <h2 class="section-title-modern">Our Instructors</h2>
+
+        <!-- As Organizers Section (Premium Design) -->
+        <section class="section-padding organizers-section">
+            <div class="organizers-bg-glow"></div>
+            <div class="container relative-z">
+                <div class="organizers-header reveal">
+                    <div class="hero-badge" style="justify-content: center; margin-bottom: 1rem;">
+                        <span class="hero-badge-line"></span>
+                        <span class="hero-badge-text">CONNECTING THE COMMUNITY</span>
+                        <span class="hero-badge-line"></span>
+                    </div>
+                    <h2 class="organizers-title">Curating World-Class Experiences</h2>
+                    <p class="organizers-desc">
+                        Beyond the studio, we strive to create exceptional dance experiences. From curating Zurich's
+                        largest Dominican event to co-organizing one of Italy's most prestigious congresses, we bring
+                        the community together with passion.
+                    </p>
                 </div>
 
-                <div class="team-grid">
-                    <!-- Team Member 1 -->
-                    <div class="team-card">
-                        <div class="team-placeholder">A</div>
-                        <div class="team-info">
-                            <h3 class="team-name">Alexia</h3>
-                            <div class="team-role">Instructor</div>
-                        </div>
+                <div class="organizers-grid">
+                    <!-- Event 1: Zurich -->
+                    <div class="organizer-card reveal">
+                        <a href="events.html"
+                            style="text-decoration: none; color: inherit; display: block; height: 100%;">
+                            <div class="organizer-card-content">
+                                <div class="organizer-badge">DOMINICAN BACHATA</div>
+                                <h3 class="organizer-event-title">Zurich's Premier Dominican Event</h3>
+                                <p class="organizer-event-desc">
+                                    We host the <strong>biggest Dominican event in Zurich</strong>, creating a home for
+                                    authentic culture and music in the heart of Switzerland.
+                                </p>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Event 2: Milano -->
+                    <div class="organizer-card reveal">
+                        <a href="Milano-Sensual-Congress-2026.html"
+                            style="text-decoration: none; color: inherit; display: block; height: 100%;">
+                            <div class="organizer-card-content">
+                                <div class="organizer-badge">INTERNATIONAL CONGRESS</div>
+                                <h3 class="organizer-event-title">Milano Sensual Congress</h3>
+                                <p class="organizer-event-desc">
+                                    Co-organizers of one of Italy's top Bachata Sensual congresses.
+                                    <br><span class="highlight-text">Top World Artists</span> • <span
+                                        class="highlight-text">4.5 Star Luxury Hotel</span>
+                                </p>
+                            </div>
+                        </a>
                     </div>
                 </div>
             </div>
         </section>
+
+
 
     </main>
 
@@ -827,9 +861,9 @@
     <div id="mobileDrawer" class="mobile-drawer">
         <div class="drawer-content">
             <a href="about.html" class="drawer-link"><span>About Us</span> <i>→</i></a>
-            <a href="events.html" class="drawer-link"><span>Events</span> <i>→</i></a>
+            <a href="registration.html" class="drawer-link"><span>Registration</span> <i>→</i></a>
             <a href="contact.html" class="drawer-link"><span>Contact us</span> <i>→</i></a>
-            <a href="login.html" class="drawer-link" style="color:var(--accent-light);"><span>Log In</span> <i>→</i></a>
+            <!-- <a href="login.html" class="drawer-link" style="color:var(--accent-light);"><span>Log In</span> <i>→</i></a> -->
             <hr style="border:0; border-top:1px solid rgba(255,255,255,0.1); margin: 5px 0;">
             <a href="room-rental.html" class="drawer-link"><span>Room Rental</span></a>
             <a href="collaborations.html" class="drawer-link"><span>Collaborations</span></a>

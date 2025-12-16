@@ -8,7 +8,7 @@
     <link rel="canonical" href="https://axcentdance.com/registration">
     <meta name="description"
         content="Register for Bachata classes in Zurich with AXcent Dance. Choose your package and join the community.">
-    <link rel="stylesheet" href="style.min.css">
+    <link rel="stylesheet" href="style.css">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <!-- Supabase JS CDN -->
@@ -49,13 +49,12 @@
         .reg-form-container {
             max-width: 800px;
             margin: 0 auto 80px;
-            background: rgba(20, 20, 20, 0.6);
-            /* Darker background for better contrast */
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 24px;
-            padding: 40px;
-            backdrop-filter: blur(20px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 2rem;
+            padding: 3rem 2rem;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
         }
 
         .form-section-title {
@@ -199,6 +198,187 @@
                 padding-top: 120px;
             }
         }
+
+        /* NEW SEASON BANNER STYLES */
+        .season-banner {
+            position: relative;
+            background: linear-gradient(135deg, rgba(20, 20, 30, 0.8) 0%, rgba(30, 30, 45, 0.9) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 2.5rem;
+            margin-bottom: 3rem;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .season-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-start), var(--accent-end));
+        }
+
+        .season-info {
+            flex: 1;
+        }
+
+        .season-label {
+            display: inline-block;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--accent-start);
+            background: rgba(108, 92, 231, 0.1);
+            padding: 6px 14px;
+            border-radius: 30px;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(108, 92, 231, 0.2);
+        }
+
+        .season-heading {
+            font-size: 2rem;
+            font-weight: 800;
+            color: white;
+            line-height: 1.1;
+            margin-bottom: 0.75rem;
+            letter-spacing: -0.5px;
+        }
+
+        .season-sub {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            line-height: 1.6;
+            margin-bottom: 0;
+        }
+
+        .season-location-wrap {
+            flex-shrink: 0;
+            width: 320px;
+        }
+
+        .location-card {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 1.25rem;
+            border-radius: 16px;
+            text-decoration: none;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .location-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-3px);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .loc-icon-box {
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+            border-radius: 12px;
+            font-size: 1.25rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .loc-info strong {
+            display: block;
+            font-size: 0.95rem;
+            margin-bottom: 2px;
+        }
+
+        .loc-info span {
+            display: block;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        @media (max-width: 768px) {
+            .season-banner {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 2rem 1.5rem;
+            }
+
+            .season-location-wrap {
+                width: 100%;
+            }
+        }
+
+        /* Pricing Table Styles */
+        .pricing-overview {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .pricing-table-wrapper {
+            overflow-x: auto;
+        }
+
+        .pricing-table {
+            width: 100%;
+            border-collapse: collapse;
+            color: var(--text-light);
+            min-width: 500px;
+        }
+
+        .pricing-table th {
+            text-align: left;
+            padding: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--accent-start);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .pricing-table td {
+            padding: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 1rem;
+        }
+
+        .pricing-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .price-regular {
+            font-weight: 700;
+            color: white;
+        }
+
+        .price-student {
+            color: var(--accent-light);
+            font-weight: 600;
+        }
+
+        .pass-name {
+            font-weight: 600;
+        }
+
+        .pass-duration {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            display: block;
+        }
     </style>
 </head>
 
@@ -223,10 +403,10 @@
             <nav class="nav-links">
                 <a href="about.html">About us</a>
                 <a href="schedule.html">Schedule</a>
-                <a href="events.html">Events</a>
                 <a href="registration.html" class="active">Registration</a>
+                <a href="events.html">Events</a>
                 <a href="contact.html">Contact</a>
-                <a href="login.html" style="color:var(--accent-light);">Log In</a>
+                <!-- <a href="login.html" style="color:var(--accent-light);">Log In</a> -->
                 <div class="dropdown">
                     <button class="dropbtn">More ▾</button>
                     <div class="dropdown-content">
@@ -288,28 +468,90 @@
 
             <!-- Winter Holiday Notice -->
             <!-- Winter Holiday Notice -->
-            <div class="notice-box"
-                style="background: rgba(108, 92, 231, 0.15); border: 1px solid var(--accent-start); border-radius: 12px; padding: 1.5rem; margin-bottom: 2rem; display: flex; gap: 1rem; align-items: start;">
-                <div class="notice-icon" style="font-size: 2rem;">🎉</div>
-                <div class="notice-content">
-                    <strong style="display: block; font-size: 1.25rem; color: #fff; margin-bottom: 0.5rem;">A New Season
-                        Starts!</strong>
-                    <p style="color: var(--text-light); line-height: 1.6;">
-                        AXcent Dance will open the <strong>week of January 12th</strong> in our brand new location:
-                    </p>
+            <!-- New Season Banner (Premium Redesign) -->
+            <div class="season-banner">
+                <div class="season-info">
+                    <span class="season-label">New Location</span>
+                    <h2 class="season-heading">New Dance Season Starts <br><span class="text-gradient">Week of Jan
+                            12th</span></h2>
+                    <p class="season-sub">We are moving! Join us in our brand new home for an amazing year of dance.</p>
+                </div>
+
+                <div class="season-location-wrap">
                     <a href="https://maps.google.com/?q=Hermetschloostrasse+73,+8048+Zurich+Altstetten" target="_blank"
-                        style="display: block; margin: 0.5rem 0; padding: 1rem; background: rgba(255,255,255,0.05); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); color: var(--accent-light); text-decoration: none; transition: background 0.2s;">
-                        <strong style="display: block; font-size: 1.1rem; margin-bottom: 0.2rem;">📍 Hermetschloostrasse
-                            73, 8048 Zurich Altstetten</strong>
-                        <span style="font-size: 0.9rem; color: var(--text-muted); display: block;">2 min walk from Tram
-                            2 & Bus 31 stop</span>
+                        class="location-card">
+                        <div class="loc-icon-box">📍</div>
+                        <div class="loc-info">
+                            <strong>Hermetschloostrasse 73</strong>
+                            <span>8048 Zurich Altstetten</span>
+                            <span style="font-size: 0.75rem; color: var(--accent-light); margin-top: 4px;">Tap to Open
+                                Map →</span>
+                        </div>
                     </a>
-                    <p style="color: var(--text-light);">We can't wait to welcome you to our new home for an amazing
-                        year of dance!</p>
+                </div>
+            </div>
+
+            <!-- Pricing Table -->
+            <div class="pricing-overview">
+                <h2 class="section-title-modern" style="margin-bottom: 2rem; font-size: 2.5rem; text-align: center;">
+                    Pass <span class="text-gradient">Prices</span></h2>
+                <div class="pricing-table-wrapper">
+                    <table class="pricing-table">
+                        <thead>
+                            <tr>
+                                <th>Pass Type</th>
+                                <th>Regular Price</th>
+                                <th>Student Price (-15%)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <span class="pass-name">1 Course / Week</span>
+                                    <span class="pass-duration">8 Weeks (8 Lessons)</span>
+                                </td>
+                                <td class="price-regular">200 CHF</td>
+                                <td class="price-student">170 CHF</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="pass-name">2 Classes / Week</span>
+                                    <span class="pass-duration">8 Weeks (16 Lessons)</span>
+                                </td>
+                                <td class="price-regular">318 CHF</td>
+                                <td class="price-student">270 CHF</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="pass-name">3 Classes / Week</span>
+                                    <span class="pass-duration">8 Weeks (24 Lessons)</span>
+                                </td>
+                                <td class="price-regular">395 CHF</td>
+                                <td class="price-student">335 CHF</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="pass-name">4 Classes / Week</span>
+                                    <span class="pass-duration">8 Weeks (32 Lessons)</span>
+                                </td>
+                                <td class="price-regular">460 CHF</td>
+                                <td class="price-student">390 CHF</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="pass-name">10-Class Flexi</span>
+                                    <span class="pass-duration">Valid for 1 Year</span>
+                                </td>
+                                <td class="price-regular">280 CHF</td>
+                                <td class="price-student">238 CHF</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
 
             <div class="form-wrapper reg-form-container">
+                <h2 class="section-title-modern" style="margin-bottom: 2rem; text-align: center;">Registration Form</h2>
 
                 <form class="registration-form" id="registrationForm">
                     <input type="hidden" name="pricing_tier" id="pricingTier" value="Regular">
@@ -629,8 +871,8 @@
                         </div>
                     </div>
 
-                    <button type="submit" class="skew-button btn-primary"
-                        style="width: 100%; margin-top: 2rem; border: none; font-size: 1.1rem;">
+                    <button type="submit" class="btn-header-cta" id="submitRegBtn"
+                        style="width: fit-content; margin: 2rem auto 0; border: 1px solid var(--accent-start); display: flex; justify-content: center; align-items: center; font-size: 1.1rem; padding: 1rem 3rem;">
                         <div>COMPLETE REGISTRATION</div>
                     </button>
 
@@ -1173,9 +1415,9 @@ ${classes.join('\n')}
     <div id="mobileDrawer" class="mobile-drawer">
         <div class="drawer-content">
             <a href="about.html" class="drawer-link"><span>About Us</span> <i>→</i></a>
-            <a href="events.html" class="drawer-link"><span>Events</span> <i>→</i></a>
+            <a href="registration.html" class="drawer-link"><span>Registration</span> <i>→</i></a>
             <a href="contact.html" class="drawer-link"><span>Contact us</span> <i>→</i></a>
-            <a href="login.html" class="drawer-link" style="color:var(--accent-light);"><span>Log In</span> <i>→</i></a>
+            <!-- <a href="login.html" class="drawer-link" style="color:var(--accent-light);"><span>Log In</span> <i>→</i></a> -->
             <hr style="border:0; border-top:1px solid rgba(255,255,255,0.1); margin: 5px 0;">
             <a href="room-rental.html" class="drawer-link"><span>Room Rental</span></a>
             <a href="collaborations.html" class="drawer-link"><span>Collaborations</span></a>
