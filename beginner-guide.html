@@ -13,99 +13,428 @@
     <link rel="stylesheet" href="style.min.css">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <!-- Import Outfit font for modern headings -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
 
 
     <style>
-        .guide-hero {
-            padding: 160px 20px 80px;
+        /* Modern Variables */
+        :root {
+            --font-display-modern: 'Outfit', sans-serif;
+            --glass-card-bg: rgba(255, 255, 255, 0.03);
+            --glass-card-border: rgba(255, 255, 255, 0.08);
+            --glass-card-hover: rgba(255, 255, 255, 0.06);
+            --accent-glow: rgba(224, 93, 68, 0.3);
+        }
+
+        /* 1. Immersive Hero */
+        .guide-modern-hero {
+            position: relative;
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             text-align: center;
-            background: linear-gradient(to bottom, rgba(5, 2, 8, 0.8), var(--bg-main)), url('assets/images/hero.webp');
-            background-size: cover;
+            overflow: hidden;
+            background: #050208;
+            padding-top: 80px;
+            /* Header clearance */
+        }
+
+        .hero-bg-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.4;
+            /* Using existing hero image or a placeholder if preferred */
+            background-image: url('assets/images/hero.webp');
             background-position: center;
+            background-size: cover;
+            filter: grayscale(30%) contrast(1.1);
+            z-index: 0;
         }
 
-        .guide-section {
-            padding: 4rem 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        .hero-gradient-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom,
+                    rgba(5, 2, 8, 0.7) 0%,
+                    rgba(5, 2, 8, 0.4) 50%,
+                    #050208 100%);
+            z-index: 1;
         }
 
-        .guide-section:last-child {
-            border-bottom: none;
-        }
-
-        .guide-content h2 {
-            font-size: 2.5rem;
-            color: white;
-            margin-bottom: 2rem;
-            font-family: var(--font-display);
-        }
-
-        .guide-content h3 {
-            font-size: 1.5rem;
-            color: var(--accent-start);
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        .guide-content p {
-            color: var(--text-muted);
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
-            font-size: 1.1rem;
-        }
-
-        .guide-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .guide-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
+        .hero-content-modern {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
             padding: 2rem;
         }
 
-        .guide-card h3 {
-            margin-top: 0;
-            font-size: 1.3rem;
-            color: white;
+        .modern-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1.2rem;
+            border-radius: 100px;
+            margin-bottom: 2rem;
+            animation: fadeInDown 0.8s ease-out;
         }
 
-        .guide-card p {
+        .modern-badge-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--accent-start);
+            box-shadow: 0 0 10px var(--accent-start);
+            animation: pulse 2s infinite;
+        }
+
+        .modern-badge-text {
+            color: #fff;
+            font-family: var(--font-display-modern);
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .hero-title-modern {
+            font-family: var(--font-display-modern);
+            font-weight: 800;
+            font-size: clamp(3rem, 8vw, 6rem);
+            line-height: 1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #fff 0%, #ccc 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            animation: fadeInUp 1s ease-out 0.2s backwards;
+        }
+
+        .hero-subtitle-modern {
+            font-size: 1.25rem;
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+            font-weight: 300;
+            animation: fadeInUp 1s ease-out 0.4s backwards;
+        }
+
+        /* 2. Layout & Sticky Nav */
+        .modern-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            /* Fixed Sidebar + Content */
+            gap: 4rem;
+            position: relative;
+        }
+
+        @media (max-width: 1024px) {
+            .modern-container {
+                display: block;
+                padding: 2rem 1rem;
+            }
+        }
+
+        /* Sticky Sidebar */
+        .sidebar-nav {
+            position: sticky;
+            top: 120px;
+            height: auto;
+            max-height: 70vh;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        @media (max-width: 1024px) {
+            .sidebar-nav {
+                display: none;
+                /* Can augment with horizontal scroll if needed, simpler to hide on mobile for now */
+            }
+        }
+
+        .nav-link-modern {
+            padding: 0.75rem 1rem;
+            color: rgba(255, 255, 255, 0.5);
+            text-decoration: none;
+            font-family: var(--font-display-modern);
             font-size: 1rem;
+            border-left: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link-modern:hover,
+        .nav-link-modern.active {
+            color: #fff;
+            border-left-color: var(--accent-start);
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0.03), transparent);
+        }
+
+        /* Content Sections */
+        .guide-article-section {
+            margin-bottom: 6rem;
+            scroll-margin-top: 120px;
+        }
+
+        .section-header-modern {
+            margin-bottom: 2rem;
+            border-left: 4px solid var(--accent-start);
+            padding-left: 1.5rem;
+        }
+
+        .section-header-modern h2 {
+            font-family: var(--font-display-modern);
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #fff;
+            margin: 0;
+        }
+
+        .section-desc {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+            line-height: 1.7;
+        }
+
+        /* 3. Premium Cards */
+        .modern-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .premium-card {
+            background: var(--glass-card-bg);
+            border: 1px solid var(--glass-card-border);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .premium-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at top right, var(--accent-glow), transparent 40%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .premium-card:hover {
+            transform: translateY(-5px);
+            background: var(--glass-card-hover);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .premium-card:hover::before {
+            opacity: 1;
+        }
+
+        .card-icon-wrapper {
+            width: 56px;
+            height: 56px;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-start);
+            position: relative;
+            z-index: 1;
+        }
+
+        .card-icon-wrapper svg {
+            width: 28px;
+            height: 28px;
+            stroke-width: 1.5;
+        }
+
+        .card-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .card-title {
+            font-family: var(--font-display-modern);
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 0.75rem;
+        }
+
+        .card-text {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.6;
+            font-size: 0.95rem;
             margin-bottom: 0;
         }
 
-        .icon-large {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            display: block;
+        .card-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            opacity: 0.8;
+            transition: opacity 0.2s;
         }
 
-        .shoe-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .shoe-item {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 12px;
-            padding: 1.5rem;
-            text-align: center;
-        }
-
-        .shoe-title {
+        .card-link:hover {
+            opacity: 1;
             color: var(--accent-start);
-            font-weight: 700;
-            font-size: 1.2rem;
+        }
+
+        /* Shoe Specifics */
+        .shoe-comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .shoe-card {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.05));
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            text-align: left;
+        }
+
+        .shoe-status {
+            font-size: 0.8rem;
+            font-weight: 800;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
             margin-bottom: 1rem;
-            display: block;
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 100px;
+        }
+
+        .status-yes {
+            background: rgba(16, 185, 129, 0.2);
+            color: #34d399;
+        }
+
+        .status-no {
+            background: rgba(239, 68, 68, 0.2);
+            color: #f87171;
+        }
+
+        .status-warn {
+            background: rgba(245, 158, 11, 0.2);
+            color: #fbbf24;
+        }
+
+        .shoe-name {
+            font-family: var(--font-display-modern);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Roles Visual */
+        .roles-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .role-box {
+            flex: 1;
+            min-width: 250px;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 2rem;
+            border-radius: 20px;
+            border-left: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .role-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .role-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(224, 93, 68, 0.7);
+            }
+
+            70% {
+                transform: scale(1);
+                box-shadow: 0 0 0 10px rgba(224, 93, 68, 0);
+            }
+
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(224, 93, 68, 0);
+            }
         }
     </style>
 </head>
@@ -115,6 +444,10 @@
     <div id="page-transition">
         <img src="assets/images/logo.png" alt="AXcent Logo" class="transition-logo">
     </div>
+
+    <!-- Background Elements for smooth vibe -->
+    <div class="blob blob-1" style="opacity: 0.4;"></div>
+    <div class="blob blob-2" style="opacity: 0.4;"></div>
 
     <!-- Navigation Bar -->
     <header class="main-header">
@@ -152,102 +485,204 @@
     </header>
 
     <main>
-        <!-- Hero Section -->
-        <section class="guide-hero">
-            <div class="container">
-                <span class="hero-badge-text"
-                    style="color: var(--accent-start); letter-spacing: 0.2em; font-size: 0.9rem; font-weight: 700; display: block; margin-bottom: 1rem;">NEW
-                    STUDENT RESOURCES</span>
-                <h1 class="page-title">Your First Class</h1>
-                <p class="hero-desc-border" style="border: none; padding: 0;">
+        <!-- 1. Hero Section -->
+        <section class="guide-modern-hero">
+            <div class="hero-bg-image"></div>
+            <div class="hero-gradient-overlay"></div>
+
+            <div class="hero-content-modern">
+                <div class="modern-badge">
+                    <div class="modern-badge-dot"></div>
+                    <span class="modern-badge-text">Beginner Resources</span>
+                </div>
+                <h1 class="hero-title-modern">YOUR FIRST<br>CLASS</h1>
+                <p class="hero-subtitle-modern">
                     Everything you need to know to feel confident on the dance floor.
+                    From what to wear to how to connect.
                 </p>
             </div>
         </section>
 
-        <div class="container guide-content">
+        <!-- 2. Main Content Grid -->
+        <div class="modern-container">
 
-            <!-- 1. What to Expect -->
-            <section class="guide-section">
-                <h2>What to Expect</h2>
-                <p>
-                    Walking into a dance studio for the first time can be intimidating, but at AXcent Dance, we make it
-                    easy. Our community is welcoming, and everyone was a beginner once!
-                </p>
+            <!-- Sidebar Navigation -->
+            <aside>
+                <nav class="sidebar-nav">
+                    <a href="#what-to-expect" class="nav-link-modern active">What to Expect</a>
+                    <a href="#shoes" class="nav-link-modern">Dance Shoes</a>
+                    <a href="#roles" class="nav-link-modern">Roles</a>
+                    <a href="#hygiene" class="nav-link-modern">Etiquette</a>
+                </nav>
+            </aside>
 
-                <div class="guide-grid">
-                    <div class="guide-card">
-                        <span class="icon-large">👕</span>
-                        <h3>What to Wear</h3>
-                        <p>Comfort is key! Wear clothes that allow you to move freely. Gym clothes, leggings, or casual
-                            wear (jeans/t-shirt) are all fine. Avoid anything too restrictive or too loose that might
-                            get caught.</p>
-                        <a href="blog-posts/what-to-wear-bachata.html"
-                            style="color: var(--accent-start); text-decoration: none; font-weight: 700; font-size: 0.9rem;">Read
-                            Full Guide →</a>
+            <!-- Content Area -->
+            <article class="content-area">
+
+                <!-- Section: What to Expect -->
+                <section id="what-to-expect" class="guide-article-section">
+                    <div class="section-header-modern">
+                        <h2>What to Expect</h2>
+                        <p class="section-desc">Walking into a dance studio for the first time can be intimidating, but
+                            at AXcent Dance, we make it easy.</p>
                     </div>
 
-                    <div class="guide-card">
-                        <span class="icon-large">👟</span>
-                        <h3>Shoes</h3>
-                        <p>Please bring a pair of <strong>clean indoor shoes</strong>. Street shoes are not allowed in
-                            the studio to protect the floor. If you don't have dance shoes yet, socks or comfortable
-                            sneakers are perfect for your first class.</p>
+                    <div class="modern-grid">
+                        <!-- Card 1 -->
+                        <div class="premium-card">
+                            <div class="card-icon-wrapper">
+                                <!-- Shirt Icon -->
+                                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z" />
+                                </svg>
+                            </div>
+                            <div class="card-content">
+                                <h3 class="card-title">What to Wear</h3>
+                                <p class="card-text">Comfort is key! Wear clothes that allow you to move freely. Gym
+                                    clothes, leggings, or casual wear like jeans are fine. Avoid anything too
+                                    restrictive.</p>
+                                <a href="blog-posts/what-to-wear-bachata.html" class="card-link">Read Full Guide →</a>
+                            </div>
+                        </div>
+
+                        <!-- Card 2 -->
+                        <div class="premium-card">
+                            <div class="card-icon-wrapper">
+                                <!-- Refresh Icon -->
+                                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
+                                </svg>
+                            </div>
+                            <div class="card-content">
+                                <h3 class="card-title">Partner Rotation</h3>
+                                <p class="card-text">In our classes, <strong>we highly suggest rotating
+                                        partners</strong>. It helps you learn faster and meet new people. If you prefer
+                                    to stay with your own partner, we respect that choice.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section: Shoes -->
+                <section id="shoes" class="guide-article-section">
+                    <div class="section-header-modern">
+                        <h2>Shoe Guide</h2>
+                        <p class="section-desc">Having the right tools makes a huge difference. Protect your knees and
+                            turn smoothly.</p>
                     </div>
 
-                    <div class="guide-card">
-                        <span class="icon-large">🔄</span>
-                        <h3>Partner Rotation</h3>
-                        <p>Bachata is a social partner dance. In our classes, <strong>we highly suggest rotating
-                                partners</strong>. It helps you learn faster and meet new people. However, if you come
-                            with a partner and prefer to stay together, we understand and respect that choice.</p>
+                    <div class="shoe-comparison-grid">
+
+                        <!-- Street Shoes -->
+                        <div class="shoe-card">
+                            <div class="shoe-status status-no">Not Recommended</div>
+                            <h3 class="shoe-name">Street Shoes</h3>
+                            <p class="card-text">
+                                Dirty soles damage the studio floor. Please always bring a separate pair of
+                                <strong>clean indoor shoes</strong>.
+                            </p>
+                        </div>
+
+                        <!-- Sneakers -->
+                        <div class="shoe-card">
+                            <div class="shoe-status status-yes">Great Start</div>
+                            <h3 class="shoe-name">Comfortable Sneakers</h3>
+                            <p class="card-text">
+                                Perfect for your first class! Any comfortable indoor sneaker works.
+                            </p>
+                        </div>
+
+                        <!-- Dance Sneakers -->
+                        <div class="shoe-card">
+                            <div class="shoe-status status-yes">Pro Choice</div>
+                            <h3 class="shoe-name">Dance Sneakers</h3>
+                            <p class="card-text">
+                                There are brands specialized in sneaker dancing shoes. These are highly recommended for
+                                leaders and followers.
+                                <strong>Ask us for a promo code.</strong>
+                            </p>
+                        </div>
+
+                        <!-- Heels -->
+                        <div class="shoe-card">
+                            <div class="shoe-status status-warn">Advanced Only</div>
+                            <h3 class="shoe-name">High Heels</h3>
+                            <p class="card-text">
+                                <strong>Not for beginners.</strong> Heels should only be worn once you have mastered
+                                your balance. Start with flats!
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section: Roles -->
+                <section id="roles" class="guide-article-section">
+                    <div class="section-header-modern">
+                        <h2>Roles</h2>
+                        <p class="section-desc">Bachata is a conversation between two people.</p>
                     </div>
 
-                    <div class="guide-card">
-                        <span class="icon-large">✨</span>
-                        <h3>Hygiene</h3>
-                        <p>Dancing is a close-contact activity. Please be mindful of your hygiene. Fresh breath (mints
-                            are great!), deodorant, and a fresh shirt go a long way in making the experience pleasant
-                            for everyone.</p>
+                    <div class="roles-wrapper">
+                        <!-- Lead -->
+                        <div class="role-box">
+                            <div class="role-header">
+                                <div class="role-icon">
+                                    <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                                    </svg>
+                                </div>
+                                <h3 class="shoe-name" style="margin:0">Leader</h3>
+                            </div>
+                            <p class="card-text">Guides the dance and suggests moves. They are responsible for
+                                navigation and safety.</p>
+                        </div>
+
+                        <!-- Follow -->
+                        <div class="role-box">
+                            <div class="role-header">
+                                <div class="role-icon">
+                                    <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z">
+                                        </path>
+                                    </svg>
+                                </div>
+                                <h3 class="shoe-name" style="margin:0">Follower</h3>
+                            </div>
+                            <p class="card-text">Interprets the signals and adds their own style. Nowadays anyone is
+                                welcome to choose either role.</p>
+                        </div>
                     </div>
-                </div>
-            </section>
+                </section>
 
-            <!-- 2. Dance Shoe Guide -->
-            <section class="guide-section">
-                <h2>Dance Shoe Guide</h2>
-                <p>As you progress, having the right tools makes a huge difference. Dance shoes are designed to protect
-                    your knees and allow for smooth turns.</p>
-
-                <div class="shoe-grid">
-                    <div class="shoe-item">
-                        <span class="shoe-title">Do I need heels?</span>
-                        <p style="color: var(--text-muted);">
-                            <strong>No!</strong> Especially not for beginners. Heels are optional for followers and
-                            should only be worn once you have mastered your balance. Flat dance shoes or sneakers are
-                            often better for learning technique.
-                        </p>
+                <!-- Section: Hygiene -->
+                <section id="hygiene" class="guide-article-section">
+                    <div class="section-header-modern">
+                        <h2>Etiquette & Hygiene</h2>
                     </div>
-
-                    <div class="shoe-item">
-                        <span class="shoe-title">Dance Sneakers</span>
-                        <p style="color: var(--text-muted);">
-                            Brands like <strong>Fuego</strong> or <strong>Taygra</strong> offer sneakers with special
-                            soles that spin easily on dance floors but look like street shoes. These are highly
-                            recommended for leaders and followers alike.
-                        </p>
+                    <div class="premium-card">
+                        <div class="card-icon-wrapper">
+                            <!-- Sparkles Icon -->
+                            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z" />
+                            </svg>
+                        </div>
+                        <div class="card-content">
+                            <p class="card-text" style="font-size: 1.1rem;">
+                                Dancing is a close-contact activity. Please be mindful of your hygiene. Fresh breath
+                                (mints are great!), deodorant, and a fresh shirt go a long way.
+                                <br><br>
+                                <strong>Please no chewing gum for safety reasons.</strong>
+                            </p>
+                        </div>
                     </div>
+                </section>
 
-                    <div class="shoe-item">
-                        <span class="shoe-title">Jazz Shoes</span>
-                        <p style="color: var(--text-muted);">
-                            Soft, flexible, and affordable. Jazz shoes are a great entry-level option if you want to
-                            feel the floor and have full foot articulation without breaking the bank.
-                        </p>
-                    </div>
-                </div>
-            </section>
-
+            </article>
         </div>
     </main>
 
@@ -274,6 +709,16 @@
                             </path>
                         </svg>
                     </a>
+                </div>
+            </div>
+
+            <div class="footer-col footer-map-col">
+                <h4 class="footer-heading">Find Us</h4>
+                <div class="footer-map-wrapper">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2701.567677685764!2d8.4844443!3d47.3861111!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47900a3910000001%3A0x1234567890abcdef!2sHermetschloostrasse 73%2C%208048%20Z%C3%BCrich!5e0!3m2!1sen!2sch!4v1625000000000!5m2!1sen!2sch"
+                        width="100%" height="150" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
 
@@ -305,212 +750,253 @@
 
     <script src="script.min.js"></script>
 
-  
-  
+    <!-- Mobile Drawer (Copied from existing theme) -->
+    <style>
+        /* [Mobile Drawer Styles omitted for brevity - assuming standard style.min.css handles basics, 
+           but re-including specific isolated styles just in case they aren't global yet] */
+        @media (max-width: 768px) {
+            .input-group {
+                margin-bottom: 15px;
+            }
 
+            /* ... reusing global styles ... */
+        }
+    </style>
+    <!-- Include the mobile drawer HTML if needed, or rely on script.min.js if it injects it. 
+         Based on previous files, it seems hardcoded in every page. 
+         I will re-add the standard mobile drawer block here for consistency. 
+    -->
+    <style>
+        .mobile-bottom-nav,
+        .mobile-drawer-overlay,
+        .mobile-drawer {
+            display: none;
+        }
 
-  
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: none !important;
+            }
 
+            body {
+                padding-bottom: 80px;
+            }
 
-  
+            .mobile-bottom-nav {
+                display: flex !important;
+                position: fixed !important;
+                bottom: 0 !important;
+                left: 0 !important;
+                width: 100% !important;
+                height: 70px !important;
+                background: rgba(10, 5, 20, 0.98) !important;
+                backdrop-filter: blur(15px);
+                -webkit-backdrop-filter: blur(15px);
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+                z-index: 99999 !important;
+                justify-content: space-around;
+                align-items: center;
+                padding-bottom: 10px;
+            }
 
+            .nav-item {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-decoration: none;
+                color: rgba(255, 255, 255, 0.6);
+                font-size: 0.75rem;
+                background: none;
+                border: none;
+                cursor: pointer;
+                transition: color 0.3s ease;
+            }
 
-  
+            .nav-item.active {
+                color: var(--accent-light);
+            }
 
+            .nav-item svg {
+                width: 24px;
+                height: 24px;
+                margin-bottom: 4px;
+                fill: currentColor;
+            }
 
-  
+            .mobile-drawer-overlay {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.5);
+                z-index: 99997;
+                opacity: 0;
+                transition: opacity 0.3s ease;
+            }
 
+            .mobile-drawer-overlay.active {
+                display: block !important;
+                opacity: 1;
+            }
 
-  <!-- ==============================================
-       MOBILE DRAWER NAVIGATION (ISOLATED V6)
-       ============================================== -->
-  <style>
-    /* Default: Hidden on Desktop */
-    .mobile-bottom-nav, 
-    .mobile-drawer-overlay, 
-    .mobile-drawer {
-      display: none;
-    }
+            .mobile-drawer {
+                display: block !important;
+                position: fixed;
+                bottom: 70px;
+                left: 0;
+                width: 100%;
+                max-height: 0;
+                overflow: hidden;
+                background: rgba(15, 5, 24, 0.98);
+                backdrop-filter: blur(20px);
+                border-radius: 20px 20px 0 0;
+                border-top: 1px solid rgba(255, 255, 255, 0.2);
+                z-index: 99998;
+                transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.5);
+            }
 
-    /* Mobile Styles */
-    @media (max-width: 768px) {
-      .mobile-menu-btn { display: none !important; }
-      body { padding-bottom: 80px; }
+            .mobile-drawer.active {
+                max-height: 80vh;
+                overflow-y: auto;
+            }
 
-      /* --- BOTTOM BAR --- */
-      .mobile-bottom-nav {
-        display: flex !important;
-        position: fixed !important;
-        bottom: 0 !important;
-        left: 0 !important;
-        width: 100% !important;
-        height: 70px !important;
-        background: rgba(10, 5, 20, 0.98) !important;
-        backdrop-filter: blur(15px);
-        -webkit-backdrop-filter: blur(15px);
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
-        z-index: 99999 !important;
-        justify-content: space-around;
-        align-items: center;
-        padding-bottom: 10px; 
-      }
+            .drawer-content {
+                padding: 20px;
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+            }
 
-      .nav-item {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-decoration: none;
-        color: rgba(255, 255, 255, 0.6);
-        font-size: 0.75rem;
-        background: none;
-        border: none;
-        cursor: pointer;
-        transition: color 0.3s ease;
-      }
+            .drawer-link {
+                font-size: 1.1rem;
+                color: white;
+                text-decoration: none;
+                padding: 10px;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
 
-      .nav-item.active { color: var(--accent-light); }
-      .nav-item svg { width: 24px; height: 24px; margin-bottom: 4px; fill: currentColor; }
+            .drawer-link:last-child {
+                border-bottom: none;
+            }
 
-      /* --- NEW ISOLATED DRAWER --- */
-      .mobile-drawer-overlay {
-        display: none; /* Controlled via JS class "active" -> display: block */
-        position: fixed;
-        top: 0; left: 0; width: 100%; height: 100%;
-        background: rgba(0,0,0,0.5);
-        z-index: 99997;
-        opacity: 0;
-        transition: opacity 0.3s ease;
-      }
-      .mobile-drawer-overlay.active {
-        display: block !important; 
-        opacity: 1;
-      }
+            .drawer-link span {
+                opacity: 0.8;
+            }
 
-      .mobile-drawer {
-        display: block !important; /* Visible layout on mobile, hidden via max-height */
-        position: fixed;
-        bottom: 70px; /* Sit on bar */
-        left: 0;
-        width: 100%;
-        max-height: 0; 
-        overflow: hidden;
-        background: rgba(15, 5, 24, 0.98);
-        backdrop-filter: blur(20px);
-        border-radius: 20px 20px 0 0;
-        border-top: 1px solid rgba(255, 255, 255, 0.2);
-        z-index: 99998;
-        transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        box-shadow: 0 -10px 40px rgba(0,0,0,0.5);
-      }
-
-      .mobile-drawer.active {
-        max-height: 80vh; 
-        overflow-y: auto;
-      }
-
-      .drawer-content {
-        padding: 20px;
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-      }
-
-      .drawer-link {
-        font-size: 1.1rem;
-        color: white;
-        text-decoration: none;
-        padding: 10px;
-        border-bottom: 1px solid rgba(255,255,255,0.05);
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-      }
-      .drawer-link:last-child { border-bottom: none; }
-      .drawer-link span { opacity: 0.8; }
-      .drawer-link:hover span { opacity: 1; color: var(--accent-light); }
-    }
-  </style>
-
-  <div id="mobileDrawerOverlay" class="mobile-drawer-overlay"></div>
-
-  <div id="mobileDrawer" class="mobile-drawer">
-    <div class="drawer-content">
-      <a href="about.html" class="drawer-link"><span>About Us</span> <i>→</i></a>
-      <a href="events.html" class="drawer-link"><span>Events</span> <i>→</i></a>
-      <a href="contact.html" class="drawer-link"><span>Contact us</span> <i>→</i></a>
-      <a href="login.html" class="drawer-link" style="color:var(--accent-light);"><span>Log In</span> <i>→</i></a>
-      <hr style="border:0; border-top:1px solid rgba(255,255,255,0.1); margin: 5px 0;">
-      <a href="room-rental.html" class="drawer-link"><span>Room Rental</span></a>
-      <a href="collaborations.html" class="drawer-link"><span>Collaborations</span></a>
-      <a href="corporate-events.html" class="drawer-link"><span>Corporate Events</span></a>
-      <a href="wedding-dance.html" class="drawer-link"><span>Wedding Dance</span></a>
-      <a href="private-lessons.html" class="drawer-link"><span>Private Lessons</span></a>
-      <a href="gallery.html" class="drawer-link"><span>Gallery</span></a>
-      <a href="education.html" class="drawer-link"><span>Education</span></a>
-      <a href="beginner-guide.html" class="drawer-link"><span>Beginner Guide</span></a>
-      <a href="blog.html" class="drawer-link"><span>Blog</span></a>
-      <a href="faq.html" class="drawer-link"><span>FAQ</span></a>
-      <a href="etiquette.html" class="drawer-link"><span>Dance Etiquette</span></a>
-    </div>
-  </div>
-
-  <nav class="mobile-bottom-nav">
-    <a href="index.html" class="nav-item">
-      <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
-      <span>Home</span>
-    </a>
-    <a href="schedule.html" class="nav-item">
-      <svg viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2zm-7 5h5v5h-5z"/></svg>
-      <span>Schedule</span>
-    </a>
-    <a href="registration.html" class="nav-item">
-      <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
-      <span>Passes</span>
-    </a>
-    <a href="portal.html" class="nav-item">
-      <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg>
-      <span>Portal</span>
-    </a>
-    <button id="mobileMoreBtn" class="nav-item">
-      <svg viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
-      <span>More</span>
-    </button>
-  </nav>
-
-  <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const moreBtn = document.getElementById("mobileMoreBtn");
-        const drawer = document.getElementById("mobileDrawer");
-        const overlay = document.getElementById("mobileDrawerOverlay");
-        
-        function toggleDrawer(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            if(drawer) {
-                drawer.classList.toggle("active");
-                if(overlay) overlay.classList.toggle("active");
+            .drawer-link:hover span {
+                opacity: 1;
+                color: var(--accent-light);
             }
         }
+    </style>
 
-        if(moreBtn) {
-            moreBtn.addEventListener("click", toggleDrawer);
-        }
-        
-        if(overlay) {
-            overlay.addEventListener("click", toggleDrawer);
-        }
+    <div id="mobileDrawerOverlay" class="mobile-drawer-overlay"></div>
+    <div id="mobileDrawer" class="mobile-drawer">
+        <div class="drawer-content">
+            <a href="about.html" class="drawer-link"><span>About Us</span> <i>→</i></a>
+            <a href="events.html" class="drawer-link"><span>Events</span> <i>→</i></a>
+            <a href="contact.html" class="drawer-link"><span>Contact us</span> <i>→</i></a>
+            <a href="login.html" class="drawer-link" style="color:var(--accent-light);"><span>Log In</span> <i>→</i></a>
+            <hr style="border:0; border-top:1px solid rgba(255,255,255,0.1); margin: 5px 0;">
+            <a href="room-rental.html" class="drawer-link"><span>Room Rental</span></a>
+            <a href="collaborations.html" class="drawer-link"><span>Collaborations</span></a>
+            <a href="corporate-events.html" class="drawer-link"><span>Corporate Events</span></a>
+            <a href="wedding-dance.html" class="drawer-link"><span>Wedding Dance</span></a>
+            <a href="private-lessons.html" class="drawer-link"><span>Private Lessons</span></a>
+            <a href="gallery.html" class="drawer-link"><span>Gallery</span></a>
+            <a href="education.html" class="drawer-link"><span>Education</span></a>
+            <a href="beginner-guide.html" class="drawer-link"><span>Beginner Guide</span></a>
+            <a href="blog.html" class="drawer-link"><span>Blog</span></a>
+            <a href="faq.html" class="drawer-link"><span>FAQ</span></a>
+            <a href="etiquette.html" class="drawer-link"><span>Dance Etiquette</span></a>
+        </div>
+    </div>
 
-        if(drawer) {
-             drawer.querySelectorAll("a").forEach(link => {
-                 link.addEventListener("click", () => {
-                     drawer.classList.remove("active");
-                     if(overlay) overlay.classList.remove("active");
-                 });
-             });
-        }
-    });
-  </script>
+    <nav class="mobile-bottom-nav">
+        <a href="index.html" class="nav-item">
+            <svg viewBox="0 0 24 24">
+                <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+            </svg><span>Home</span>
+        </a>
+        <a href="schedule.html" class="nav-item">
+            <svg viewBox="0 0 24 24">
+                <path
+                    d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2zm-7 5h5v5h-5z" />
+            </svg><span>Schedule</span>
+        </a>
+        <a href="registration.html" class="nav-item">
+            <svg viewBox="0 0 24 24">
+                <path
+                    d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+            </svg><span>Passes</span>
+        </a>
+        <a href="portal.html" class="nav-item">
+            <svg viewBox="0 0 24 24">
+                <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z" />
+            </svg><span>Portal</span>
+        </a>
+        <button id="mobileMoreBtn" class="nav-item">
+            <svg viewBox="0 0 24 24">
+                <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+            </svg><span>More</span>
+        </button>
+    </nav>
 
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const moreBtn = document.getElementById("mobileMoreBtn");
+            const drawer = document.getElementById("mobileDrawer");
+            const overlay = document.getElementById("mobileDrawerOverlay");
+
+            function toggleDrawer(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                if (drawer) {
+                    drawer.classList.toggle("active");
+                    if (overlay) overlay.classList.toggle("active");
+                }
+            }
+
+            if (moreBtn) moreBtn.addEventListener("click", toggleDrawer);
+            if (overlay) overlay.addEventListener("click", toggleDrawer);
+            if (drawer) {
+                drawer.querySelectorAll("a").forEach(link => {
+                    link.addEventListener("click", () => {
+                        drawer.classList.remove("active");
+                        if (overlay) overlay.classList.remove("active");
+                    });
+                });
+            }
+
+            // Highlight active sidebar link on scroll
+            const sections = document.querySelectorAll('.guide-article-section');
+            const navLinks = document.querySelectorAll('.nav-link-modern');
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    if (pageYOffset >= (sectionTop - 150)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').includes(current)) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>

@@ -159,6 +159,162 @@
             .event-title {
                 font-size: 2.5rem;
             }
+
+            .event-wrapper-overlap {
+                display: block !important;
+                /* Stack on mobile */
+            }
+
+            .event-card-floating {
+                margin: 2rem 0 0 0 !important;
+                background: none !important;
+                backdrop-filter: none !important;
+                padding: 0 !important;
+                border: none !important;
+                box-shadow: none !important;
+                width: 100% !important;
+            }
+
+            .event-image-wrapper-large {
+                width: 100% !important;
+            }
+        }
+
+        /* Overlap Layout (Side-by-Side) */
+        .event-wrapper-overlap {
+            position: relative;
+            display: flex;
+            align-items: flex-start;
+            /* Align top */
+            gap: 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Registration Form Styles */
+        .event-reg-form {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .event-input-group {
+            margin-bottom: 1rem;
+        }
+
+        .event-input-label {
+            display: block;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-bottom: 0.4rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .event-input {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 0.8rem 1rem;
+            color: white;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .event-input:focus {
+            outline: none;
+            border-color: var(--accent-start);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* More Events Section */
+        .more-events-section {
+            max-width: 1200px;
+            margin: 6rem auto 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 4rem;
+        }
+
+        .event-image-wrapper-large {
+            width: 50%;
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            /* aspect-ratio removed to prevent cropping vertical flyers */
+        }
+
+        .event-image-large {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .event-card-floating {
+            width: 50%;
+            margin-left: 0;
+            /* overlap removed */
+            position: relative;
+            z-index: 10;
+            background: rgba(18, 12, 28, 0.85);
+            /* Slightly darker/tinted backdrop */
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Big Numbers Typography */
+        .big-stat-block {
+            margin: 2rem 0;
+            display: inline-block;
+            position: relative;
+        }
+
+        .big-stat-number {
+            font-size: 5rem;
+            font-weight: 800;
+            line-height: 1;
+            font-family: var(--font-display);
+            color: transparent;
+            -webkit-text-stroke: 1px var(--accent-start);
+            display: block;
+        }
+
+        .big-stat-label {
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #fff;
+            margin-top: -10px;
+            display: block;
+        }
+
+        /* Layout Grid */
+        .events-layout {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 4rem;
+            max-width: 1400px;
+            margin: 0 auto 80px;
+        }
+
+        .events-main {
+            min-width: 0;
+            /* Prevent grid blowout */
+        }
+
+        .events-sidebar {
+            position: sticky;
+            top: 120px;
+            align-self: start;
+            padding-left: 2rem;
+            border-left: 1px solid rgba(255, 255, 255, 0.1);
         }
     </style>
 </head>
@@ -223,81 +379,171 @@
             </div>
         </section>
 
-        <section class="container">
-            <!-- Other Events Link (Moved to Top) -->
-            <div class="other-events-section"
-                style="padding-bottom: 2rem; border-bottom: 1px solid rgba(255, 255, 255, 0.1); margin-bottom: 3rem;">
-                <h2 style="margin-bottom: 1rem; font-size: 1.5rem;">More Events we Organize</h2>
+        <!-- Main Event Section -->
+        <section class="container" style="margin-bottom: 4rem;">
+            <div class="event-wrapper-overlap">
+                <!-- Large Image Background -->
+                <div class="event-image-wrapper-large">
+                    <img src="dominican_bootcamp.png" alt="Dominican Bachata Bootcamp" class="event-image-large">
+                </div>
+
+                <!-- Content Card with Registration Form -->
+                <div class="event-card-floating">
+                    <span class="event-tagline">2nd Edition • 3/4 October 2026</span>
+                    <h2 class="event-title" style="font-size: 2.5rem; margin-bottom: 1rem;">Dominican Bachata Bootcamp
+                    </h2>
+
+                    <p class="event-description" style="font-size: 1rem; margin-bottom: 1.5rem;">
+                        Join the <strong>Biggest Dominican Bachata Event in Zurich</strong> with international artists
+                        <strong>Aitor Gomez & Sarah La Morena</strong>.
+                    </p>
+
+                    <!-- Big Number Feature -->
+                    <div class="big-stat-block">
+                        <span class="big-stat-number">7 HOURS</span>
+                        <span class="big-stat-label">Intensive Training</span>
+                    </div>
+
+                    <div class="event-details-grid"
+                        style="grid-template-columns: 1fr; gap: 0.75rem; margin-bottom: 2rem;">
+                        <div
+                            style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.5rem;">
+                            <span style="color: var(--text-muted);">Instructors</span>
+                            <span>Aitor & Sarah</span>
+                        </div>
+                        <div
+                            style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.5rem;">
+                            <span style="color: var(--text-muted);">Format</span>
+                            <span>4h Partnerwork + 3h Styling</span>
+                        </div>
+                        <div
+                            style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.5rem;">
+                            <span style="color: var(--text-muted);">Date</span>
+                            <span>3/4 Oct 2026</span>
+                        </div>
+                        <div
+                            style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.5rem;">
+                            <span style="color: var(--text-muted);">Price</span>
+                            <span>115 CHF</span>
+                        </div>
+                    </div>
+
+                    <!-- Registration Form -->
+                    <div class="event-reg-form">
+                        <h4 style="margin-bottom: 1rem; color: #fff;">Register Now</h4>
+                        <form id="eventRegForm">
+                            <input type="hidden" name="selected_class" value="Dominican Bachata Bootcamp 2026">
+
+                            <div class="event-input-group">
+                                <label class="event-input-label" for="reg_firstname">First Name</label>
+                                <input type="text" id="reg_firstname" name="firstname" class="event-input" required
+                                    placeholder="Jane">
+                            </div>
+
+                            <div class="event-input-group">
+                                <label class="event-input-label" for="reg_lastname">Last Name</label>
+                                <input type="text" id="reg_lastname" name="lastname" class="event-input" required
+                                    placeholder="Doe">
+                            </div>
+
+                            <div class="event-input-group">
+                                <label class="event-input-label" for="reg_whatsapp">WhatsApp Number</label>
+                                <input type="tel" id="reg_whatsapp" name="phone" class="event-input" required
+                                    placeholder="+41 79 123 45 67">
+                                <!-- using 'phone' name to match existing script expectation -->
+                            </div>
+
+                            <div class="event-input-group" style="margin-top: 1rem;">
+                                <label class="checkbox-container">
+                                    <input type="checkbox" name="terms_agreed" required>
+                                    <span class="checkmark"></span>
+                                    <span class="checkbox-text">I agree to the <a href="terms.html"
+                                            target="_blank">Terms and Conditions</a></span>
+                                </label>
+                                <label class="checkbox-container" style="margin-top: 0.5rem;">
+                                    <input type="checkbox" name="privacy_agreed" required>
+                                    <span class="checkmark"></span>
+                                    <span class="checkbox-text">I have read the <a href="privacy.html"
+                                            target="_blank">Privacy Policy</a></span>
+                                </label>
+                            </div>
+
+                            <button type="submit" class="btn-hero btn-hero-secondary" id="submitRegBtn"
+                                style="width: 100%; justify-content: center; margin-top: 1rem;">
+                                <span class="btn-hero-content">PROCEED TO PAYMENT</span>
+                            </button>
+                        </form>
+                        <p style="margin-top: 1rem; font-size: 0.8rem; color: var(--text-muted); text-align: center;">
+                            * Redirects to secure Stripe payment
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- More Events Section (Moved to Bottom) -->
+        <section class="more-events-section container">
+            <h2 class="section-title-modern" style="font-size: 2rem; margin-bottom: 2rem; text-align: left;">More Events
+                we Organize</h2>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2rem;">
                 <a href="Milano-Sensual-Congress-2026.html" class="other-event-card"
-                    style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 15px; padding: 1rem; display: flex; align-items: center; gap: 1.5rem; transition: all 0.3s ease; text-decoration: none; color: white;">
+                    style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 16px; padding: 1.5rem; display: flex; align-items: center; gap: 1.5rem; transition: all 0.3s ease; text-decoration: none; color: white;">
                     <div
-                        style="width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                        style="width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
                         <img src="milano-sensual-congress-logo.png" alt="Milano Sensual Congress Logo"
                             style="width: 100%; height: 100%; object-fit: contain;">
                     </div>
                     <div class="other-event-info">
-                        <h4 style="font-size: 1.1rem; margin-bottom: 0.25rem;">Milano Sensual Congress</h4>
-                        <p style="color: var(--text-muted); font-size: 0.85rem;">International Congress • Jan 2026</p>
+                        <h4 style="font-size: 1.2rem; margin-bottom: 0.3rem;">Milano Sensual Congress</h4>
+                        <p style="color: var(--text-muted); font-size: 0.9rem;">Jan 2026 • International Congress</p>
                     </div>
-                    <div style="margin-left: auto; font-size: 1.25rem; color: var(--accent-start);">→</div>
+                    <div style="margin-left: auto; font-size: 1.5rem; color: var(--accent-start);">→</div>
                 </a>
             </div>
-
-            <div class="event-container">
-                <!-- Left: Image -->
-                <div class="event-image-wrapper">
-                    <img src="dominican_bootcamp.png" alt="Dominican Bachata Bootcamp Flyer" class="event-image">
-                </div>
-
-                <!-- Right: Content -->
-                <div class="event-content">
-                    <span class="event-tagline">2nd Edition • 3/4 October 2026 • <span
-                            style="color: var(--accent-start);">Limited Spots</span></span>
-                    <h2 class="event-title">Dominican Bachata Bootcamp</h2>
-
-                    <p class="event-description">
-                        Join us for the <strong>Biggest Dominican Bachata Event in Zurich</strong>!
-                        Immerse yourself in a 7-hour intensive bootcamp featuring international artists
-                        <strong>Aitor Gomez</strong> and <strong>Sarah La Morena</strong>.
-                        Take your skills to the next level with 4 hours of partnerwork and 3 hours of styling.
-                    </p>
-
-                    <div class="event-details-grid">
-                        <div class="detail-item">
-                            <div class="detail-label">Instructors</div>
-                            <div class="detail-value">Aitor & Sarah</div>
-                        </div>
-                        <div class="detail-item">
-                            <div class="detail-label">Format</div>
-                            <div class="detail-value">7 Hours Intensive</div>
-                        </div>
-                        <div class="detail-item">
-                            <div class="detail-label">Date</div>
-                            <div class="detail-value">3/4 Oct 2026</div>
-                        </div>
-                        <div class="detail-item">
-                            <div class="detail-label">Price</div>
-                            <div class="detail-value">115 CHF</div>
-                        </div>
-                    </div>
-
-                    <div class="cta-group">
-
-                        <a href="https://buy.stripe.com/8x214p2wDgyt2BV9cCfnO0a" class="btn-hero btn-hero-secondary"
-                            target="_blank">
-                            <span class="btn-hero-content">REGISTER ONLINE</span>
-                        </a>
-                    </div>
-                    <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-muted);">
-                        * After payment, we will add you to the event WhatsApp group chat.
-                    </p>
-                </div>
-            </div>
-
-
         </section>
 
     </main>
+
+    <!-- Form Submission Script -->
+    <script>
+        document.getElementById('eventRegForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const btn = document.getElementById('submitRegBtn');
+            const originalContent = btn.innerHTML;
+            btn.innerHTML = '<span class="btn-hero-content">Processing...</span>';
+            btn.disabled = true;
+
+            const formData = {
+                firstname: document.getElementById('reg_firstname').value,
+                lastname: document.getElementById('reg_lastname').value,
+                phone: document.getElementById('reg_whatsapp').value,
+                email: 'checkout@stripe.placeholder', // Placeholder as email isn't asked
+                selected_class: document.querySelector('input[name="selected_class"]').value
+            };
+
+            const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwPqLutAq-xa9OkSiT-rLm72DJCdQ2Xw10Yp4DvHexTq42HxCKJyJr8mJmZ0RuZSc7A5A/exec';
+
+            fetch(SCRIPT_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData)
+            })
+                .then(() => {
+                    // Redirect to Stripe on success
+                    window.location.href = 'https://buy.stripe.com/8x214p2wDgyt2BV9cCfnO0a';
+                })
+                .catch(err => {
+                    console.error('Error:', err);
+                    alert('Something went wrong. Please try again.');
+                    btn.innerHTML = originalContent;
+                    btn.disabled = false;
+                });
+        });
+    </script>
 
     <footer class="main-footer">
         <div class="container footer-grid">
@@ -362,211 +608,254 @@
 
     <script src="script.min.js"></script>
 
-  
-  
 
 
-  
 
 
-  
 
 
-  
 
 
-  
 
 
-  <!-- ==============================================
+
+
+
+
+
+
+    <!-- ==============================================
        MOBILE DRAWER NAVIGATION (ISOLATED V6)
        ============================================== -->
-  <style>
-    /* Default: Hidden on Desktop */
-    .mobile-bottom-nav, 
-    .mobile-drawer-overlay, 
-    .mobile-drawer {
-      display: none;
-    }
+    <style>
+        /* Default: Hidden on Desktop */
+        .mobile-bottom-nav,
+        .mobile-drawer-overlay,
+        .mobile-drawer {
+            display: none;
+        }
 
-    /* Mobile Styles */
-    @media (max-width: 768px) {
-      .mobile-menu-btn { display: none !important; }
-      body { padding-bottom: 80px; }
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: none !important;
+            }
 
-      /* --- BOTTOM BAR --- */
-      .mobile-bottom-nav {
-        display: flex !important;
-        position: fixed !important;
-        bottom: 0 !important;
-        left: 0 !important;
-        width: 100% !important;
-        height: 70px !important;
-        background: rgba(10, 5, 20, 0.98) !important;
-        backdrop-filter: blur(15px);
-        -webkit-backdrop-filter: blur(15px);
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
-        z-index: 99999 !important;
-        justify-content: space-around;
-        align-items: center;
-        padding-bottom: 10px; 
-      }
+            body {
+                padding-bottom: 80px;
+            }
 
-      .nav-item {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-decoration: none;
-        color: rgba(255, 255, 255, 0.6);
-        font-size: 0.75rem;
-        background: none;
-        border: none;
-        cursor: pointer;
-        transition: color 0.3s ease;
-      }
+            /* --- BOTTOM BAR --- */
+            .mobile-bottom-nav {
+                display: flex !important;
+                position: fixed !important;
+                bottom: 0 !important;
+                left: 0 !important;
+                width: 100% !important;
+                height: 70px !important;
+                background: rgba(10, 5, 20, 0.98) !important;
+                backdrop-filter: blur(15px);
+                -webkit-backdrop-filter: blur(15px);
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+                z-index: 99999 !important;
+                justify-content: space-around;
+                align-items: center;
+                padding-bottom: 10px;
+            }
 
-      .nav-item.active { color: var(--accent-light); }
-      .nav-item svg { width: 24px; height: 24px; margin-bottom: 4px; fill: currentColor; }
+            .nav-item {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-decoration: none;
+                color: rgba(255, 255, 255, 0.6);
+                font-size: 0.75rem;
+                background: none;
+                border: none;
+                cursor: pointer;
+                transition: color 0.3s ease;
+            }
 
-      /* --- NEW ISOLATED DRAWER --- */
-      .mobile-drawer-overlay {
-        display: none; /* Controlled via JS class "active" -> display: block */
-        position: fixed;
-        top: 0; left: 0; width: 100%; height: 100%;
-        background: rgba(0,0,0,0.5);
-        z-index: 99997;
-        opacity: 0;
-        transition: opacity 0.3s ease;
-      }
-      .mobile-drawer-overlay.active {
-        display: block !important; 
-        opacity: 1;
-      }
+            .nav-item.active {
+                color: var(--accent-light);
+            }
 
-      .mobile-drawer {
-        display: block !important; /* Visible layout on mobile, hidden via max-height */
-        position: fixed;
-        bottom: 70px; /* Sit on bar */
-        left: 0;
-        width: 100%;
-        max-height: 0; 
-        overflow: hidden;
-        background: rgba(15, 5, 24, 0.98);
-        backdrop-filter: blur(20px);
-        border-radius: 20px 20px 0 0;
-        border-top: 1px solid rgba(255, 255, 255, 0.2);
-        z-index: 99998;
-        transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        box-shadow: 0 -10px 40px rgba(0,0,0,0.5);
-      }
+            .nav-item svg {
+                width: 24px;
+                height: 24px;
+                margin-bottom: 4px;
+                fill: currentColor;
+            }
 
-      .mobile-drawer.active {
-        max-height: 80vh; 
-        overflow-y: auto;
-      }
+            /* --- NEW ISOLATED DRAWER --- */
+            .mobile-drawer-overlay {
+                display: none;
+                /* Controlled via JS class "active" -> display: block */
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.5);
+                z-index: 99997;
+                opacity: 0;
+                transition: opacity 0.3s ease;
+            }
 
-      .drawer-content {
-        padding: 20px;
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-      }
+            .mobile-drawer-overlay.active {
+                display: block !important;
+                opacity: 1;
+            }
 
-      .drawer-link {
-        font-size: 1.1rem;
-        color: white;
-        text-decoration: none;
-        padding: 10px;
-        border-bottom: 1px solid rgba(255,255,255,0.05);
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-      }
-      .drawer-link:last-child { border-bottom: none; }
-      .drawer-link span { opacity: 0.8; }
-      .drawer-link:hover span { opacity: 1; color: var(--accent-light); }
-    }
-  </style>
+            .mobile-drawer {
+                display: block !important;
+                /* Visible layout on mobile, hidden via max-height */
+                position: fixed;
+                bottom: 70px;
+                /* Sit on bar */
+                left: 0;
+                width: 100%;
+                max-height: 0;
+                overflow: hidden;
+                background: rgba(15, 5, 24, 0.98);
+                backdrop-filter: blur(20px);
+                border-radius: 20px 20px 0 0;
+                border-top: 1px solid rgba(255, 255, 255, 0.2);
+                z-index: 99998;
+                transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.5);
+            }
 
-  <div id="mobileDrawerOverlay" class="mobile-drawer-overlay"></div>
+            .mobile-drawer.active {
+                max-height: 80vh;
+                overflow-y: auto;
+            }
 
-  <div id="mobileDrawer" class="mobile-drawer">
-    <div class="drawer-content">
-      <a href="about.html" class="drawer-link"><span>About Us</span> <i>→</i></a>
-      <a href="events.html" class="drawer-link"><span>Events</span> <i>→</i></a>
-      <a href="contact.html" class="drawer-link"><span>Contact us</span> <i>→</i></a>
-      <a href="login.html" class="drawer-link" style="color:var(--accent-light);"><span>Log In</span> <i>→</i></a>
-      <hr style="border:0; border-top:1px solid rgba(255,255,255,0.1); margin: 5px 0;">
-      <a href="room-rental.html" class="drawer-link"><span>Room Rental</span></a>
-      <a href="collaborations.html" class="drawer-link"><span>Collaborations</span></a>
-      <a href="corporate-events.html" class="drawer-link"><span>Corporate Events</span></a>
-      <a href="wedding-dance.html" class="drawer-link"><span>Wedding Dance</span></a>
-      <a href="private-lessons.html" class="drawer-link"><span>Private Lessons</span></a>
-      <a href="gallery.html" class="drawer-link"><span>Gallery</span></a>
-      <a href="education.html" class="drawer-link"><span>Education</span></a>
-      <a href="beginner-guide.html" class="drawer-link"><span>Beginner Guide</span></a>
-      <a href="blog.html" class="drawer-link"><span>Blog</span></a>
-      <a href="faq.html" class="drawer-link"><span>FAQ</span></a>
-      <a href="etiquette.html" class="drawer-link"><span>Dance Etiquette</span></a>
-    </div>
-  </div>
+            .drawer-content {
+                padding: 20px;
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+            }
 
-  <nav class="mobile-bottom-nav">
-    <a href="index.html" class="nav-item">
-      <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
-      <span>Home</span>
-    </a>
-    <a href="schedule.html" class="nav-item">
-      <svg viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2zm-7 5h5v5h-5z"/></svg>
-      <span>Schedule</span>
-    </a>
-    <a href="registration.html" class="nav-item">
-      <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
-      <span>Passes</span>
-    </a>
-    <a href="portal.html" class="nav-item">
-      <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg>
-      <span>Portal</span>
-    </a>
-    <button id="mobileMoreBtn" class="nav-item">
-      <svg viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
-      <span>More</span>
-    </button>
-  </nav>
+            .drawer-link {
+                font-size: 1.1rem;
+                color: white;
+                text-decoration: none;
+                padding: 10px;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
 
-  <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const moreBtn = document.getElementById("mobileMoreBtn");
-        const drawer = document.getElementById("mobileDrawer");
-        const overlay = document.getElementById("mobileDrawerOverlay");
-        
-        function toggleDrawer(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            if(drawer) {
-                drawer.classList.toggle("active");
-                if(overlay) overlay.classList.toggle("active");
+            .drawer-link:last-child {
+                border-bottom: none;
+            }
+
+            .drawer-link span {
+                opacity: 0.8;
+            }
+
+            .drawer-link:hover span {
+                opacity: 1;
+                color: var(--accent-light);
             }
         }
+    </style>
 
-        if(moreBtn) {
-            moreBtn.addEventListener("click", toggleDrawer);
-        }
-        
-        if(overlay) {
-            overlay.addEventListener("click", toggleDrawer);
-        }
+    <div id="mobileDrawerOverlay" class="mobile-drawer-overlay"></div>
 
-        if(drawer) {
-             drawer.querySelectorAll("a").forEach(link => {
-                 link.addEventListener("click", () => {
-                     drawer.classList.remove("active");
-                     if(overlay) overlay.classList.remove("active");
-                 });
-             });
-        }
-    });
-  </script>
+    <div id="mobileDrawer" class="mobile-drawer">
+        <div class="drawer-content">
+            <a href="about.html" class="drawer-link"><span>About Us</span> <i>→</i></a>
+            <a href="events.html" class="drawer-link"><span>Events</span> <i>→</i></a>
+            <a href="contact.html" class="drawer-link"><span>Contact us</span> <i>→</i></a>
+            <a href="login.html" class="drawer-link" style="color:var(--accent-light);"><span>Log In</span> <i>→</i></a>
+            <hr style="border:0; border-top:1px solid rgba(255,255,255,0.1); margin: 5px 0;">
+            <a href="room-rental.html" class="drawer-link"><span>Room Rental</span></a>
+            <a href="collaborations.html" class="drawer-link"><span>Collaborations</span></a>
+            <a href="corporate-events.html" class="drawer-link"><span>Corporate Events</span></a>
+            <a href="wedding-dance.html" class="drawer-link"><span>Wedding Dance</span></a>
+            <a href="private-lessons.html" class="drawer-link"><span>Private Lessons</span></a>
+            <a href="gallery.html" class="drawer-link"><span>Gallery</span></a>
+            <a href="education.html" class="drawer-link"><span>Education</span></a>
+            <a href="beginner-guide.html" class="drawer-link"><span>Beginner Guide</span></a>
+            <a href="blog.html" class="drawer-link"><span>Blog</span></a>
+            <a href="faq.html" class="drawer-link"><span>FAQ</span></a>
+            <a href="etiquette.html" class="drawer-link"><span>Dance Etiquette</span></a>
+        </div>
+    </div>
+
+    <nav class="mobile-bottom-nav">
+        <a href="index.html" class="nav-item">
+            <svg viewBox="0 0 24 24">
+                <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+            </svg>
+            <span>Home</span>
+        </a>
+        <a href="schedule.html" class="nav-item">
+            <svg viewBox="0 0 24 24">
+                <path
+                    d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2zm-7 5h5v5h-5z" />
+            </svg>
+            <span>Schedule</span>
+        </a>
+        <a href="registration.html" class="nav-item">
+            <svg viewBox="0 0 24 24">
+                <path
+                    d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+            </svg>
+            <span>Passes</span>
+        </a>
+        <a href="portal.html" class="nav-item">
+            <svg viewBox="0 0 24 24">
+                <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z" />
+            </svg>
+            <span>Portal</span>
+        </a>
+        <button id="mobileMoreBtn" class="nav-item">
+            <svg viewBox="0 0 24 24">
+                <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+            </svg>
+            <span>More</span>
+        </button>
+    </nav>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const moreBtn = document.getElementById("mobileMoreBtn");
+            const drawer = document.getElementById("mobileDrawer");
+            const overlay = document.getElementById("mobileDrawerOverlay");
+
+            function toggleDrawer(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                if (drawer) {
+                    drawer.classList.toggle("active");
+                    if (overlay) overlay.classList.toggle("active");
+                }
+            }
+
+            if (moreBtn) {
+                moreBtn.addEventListener("click", toggleDrawer);
+            }
+
+            if (overlay) {
+                overlay.addEventListener("click", toggleDrawer);
+            }
+
+            if (drawer) {
+                drawer.querySelectorAll("a").forEach(link => {
+                    link.addEventListener("click", () => {
+                        drawer.classList.remove("active");
+                        if (overlay) overlay.classList.remove("active");
+                    });
+                });
+            }
+        });
+    </script>
 
 </body>
 
