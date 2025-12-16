@@ -231,7 +231,7 @@ svg {
 @media (max-width: 767px) {
 
     .hero-title-large {
-        font-size: 5rem !important;
+        font-size: 17vw !important;
         line-height: 0.85 !important;
         display: flex !important;
         flex-direction: column;
