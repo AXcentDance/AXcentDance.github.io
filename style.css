@@ -633,7 +633,7 @@ textarea {
 .btn-header-cta:hover {
     background: rgba(255, 59, 48, 0.3);
     transform: translateY(-2px);
-    box-shadow: 0 0 25px rgba(255, 59, 48, 0.4);
+    box-shadow: 0 0 15px rgba(255, 59, 48, 0.25);
     color: white;
 }
 
@@ -799,6 +799,150 @@ textarea {
     transform: translateY(110%);
     animation: revealUp 1.2s cubic-bezier(0.77, 0, 0.175, 1) forwards;
 }
+
+/* 
+   Improved Hero Notice Box 
+   Replaces inline styles with a structured component
+*/
+.hero-notice-box {
+    background: rgba(255, 255, 255, 0.05);
+    /* Slightly clearer than 0.08 for elegance */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 16px;
+    padding: 1.25rem 1.75rem;
+    margin: 0.75rem 0 1.5rem 0;
+    /* Aligned left on desktop usually, but centered on mobile */
+    max-width: 100%;
+    width: fit-content;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2rem;
+    position: relative;
+    overflow: hidden;
+    transition: transform var(--transition-medium), border-color var(--transition-medium);
+}
+
+.hero-notice-box:hover {
+    border-color: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateY(-2px);
+}
+
+/* Shine effect on hover */
+.hero-notice-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+    transform: skewX(-20deg);
+    transition: left 0.5s ease;
+}
+
+.hero-notice-box:hover::before {
+    left: 150%;
+    transition: left 0.7s ease;
+}
+
+.notice-group {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+}
+
+.notice-group+.notice-group {
+    padding-left: 2rem;
+    border-left: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.notice-label {
+    font-size: 0.7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    background: var(--accent-start);
+    /* Red badge background */
+    color: white;
+    padding: 0.35rem 0.8rem;
+    border-radius: 50px;
+    width: fit-content;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    box-shadow: 0 4px 12px rgba(255, 59, 48, 0.4);
+    /* Glow for button effect */
+    text-shadow: none;
+    -webkit-text-fill-color: initial;
+    background-clip: border-box;
+    -webkit-background-clip: border-box;
+}
+
+.notice-value {
+    color: white;
+    font-weight: 600;
+    font-size: 1.0rem;
+    line-height: 1.3;
+}
+
+.notice-value a {
+    color: white;
+    text-decoration: none;
+    background-image: linear-gradient(var(--accent-start), var(--accent-start));
+    background-size: 0% 1px;
+    background-repeat: no-repeat;
+    background-position: left bottom;
+    transition: background-size 0.3s ease;
+}
+
+.notice-value a:hover {
+    background-size: 100% 1px;
+    color: var(--accent-start);
+}
+
+/* Highlight Badge for "New Season" */
+.notice-badge {
+    background: var(--accent-start);
+    color: white;
+    padding: 0.25rem 0.6rem;
+    border-radius: 99px;
+    font-size: 0.7rem;
+    font-weight: 800;
+    margin-right: 0.5rem;
+    box-shadow: 0 2px 8px rgba(255, 59, 48, 0.4);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 767px) {
+    .hero-notice-box {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.25rem;
+        width: 100%;
+        max-width: 400px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .notice-group {
+        width: 100%;
+    }
+
+    .notice-group+.notice-group {
+        padding-left: 0;
+        border-left: none;
+        padding-top: 1.25rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+}
+
 
 /* Stagger the second line */
 .reveal-wrapper:nth-child(2) .reveal-content {
@@ -1925,7 +2069,7 @@ textarea {
 .btn-submit:hover {
     background: rgba(255, 59, 48, 0.3);
     transform: translateY(-2px);
-    box-shadow: 0 20px 40px rgba(255, 59, 48, 0.4);
+    box-shadow: 0 10px 25px rgba(255, 59, 48, 0.25);
 }
 
 @media (min-width: 768px) {
@@ -2257,12 +2401,36 @@ textarea {
 
 .mobile-time {
     font-family: var(--font-body);
-    /* Sans-serif for readability */
-    font-weight: 800;
-    font-size: 1.25rem;
+    font-weight: 700;
+    font-size: 1.1rem;
     letter-spacing: 0.05em;
-    color: var(--accent-start);
-    margin-bottom: 0.25rem;
+    color: white;
+    /* Clean white instead of red */
+    opacity: 0.9;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 2px 8px;
+    border-radius: 4px;
+    width: fit-content;
+    margin-bottom: 0.5rem;
+}
+
+.mobile-instructor {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-weight: 500;
+    margin-top: 0.25rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.mobile-instructor::before {
+    content: '';
+    display: block;
+    width: 20px;
+    height: 1px;
+    background: var(--accent-start);
+    opacity: 0.5;
 }
 
 /* FOOTER CTA */

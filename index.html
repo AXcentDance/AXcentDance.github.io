@@ -164,7 +164,7 @@
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-E2SYCF7R7X"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+    function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
 
     gtag('config', 'G-E2SYCF7R7X');
@@ -262,32 +262,28 @@
         </div>
 
         <!-- Re-opening Notice -->
-        <div class="hero-notice-box"
-          style="background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 16px; padding: 1.25rem; margin: 1rem auto; max-width: 550px; text-align: left; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
+        <div class="hero-notice-box">
 
-          <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem;">
-            <span
-              style="background: var(--accent-start); color: white; padding: 4px 10px; border-radius: 20px; font-weight: 800; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px; box-shadow: 0 4px 10px rgba(108, 92, 231, 0.3);">Week
-              of Jan 12</span>
-            <span style="color: white; font-weight: 700; font-size: 1.1rem; letter-spacing: -0.02em;">New Season
-              Starts!</span>
-          </div>
-
-          <div style="display: flex; gap: 0.75rem;">
-            <div style="font-size: 1.2rem; line-height: 1.4;">📍</div>
-            <div>
-              <div
-                style="color: #ffdd59; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 4px;">
-                NEW LOCATION</div>
-              <div style="color: rgba(255,255,255,0.95); font-weight: 600; font-size: 1rem; margin-bottom: 0.2rem;">
-                <a href="https://maps.app.goo.gl/hVPxCxL1eNT5tvXS6" target="_blank"
-                  style="color: white; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 4px;">Hermetschloostrasse
-                  73, Zurich Altstetten</a>
-              </div>
-
+          <div class="notice-group">
+            <div class="notice-label">
+              NEW SEASON
+            </div>
+            <div class="notice-value">
+              Classes start Week of Jan 12
             </div>
           </div>
+
+          <div class="notice-group">
+            <div class="notice-label">NEW LOCATION</div>
+            <div class="notice-value">
+              <a href="https://maps.app.goo.gl/hVPxCxL1eNT5tvXS6" target="_blank">
+                Hermetschloostrasse 73, Zurich Altstetten
+              </a>
+            </div>
+          </div>
+
         </div>
+
 
         <!-- Buttons -->
         <div class="hero-buttons-group">
@@ -463,14 +459,17 @@
                 </div>
                 <div class="mobile-time">18:30</div>
                 <h4 class="class-name">Bachata Beginner 0</h4>
+                <div class="mobile-instructor">with Ale y Alexia</div>
               </a>
               <a href="class-bachata-sensual-foundation.html" class="class-card">
                 <div class="mobile-time">19:30</div>
-                <h4 class="class-name">Bachata Sensual Foundation (Sensual Style)</h4>
+                <h4 class="class-name">Bachata Sensual Foundation</h4>
+                <div class="mobile-instructor">with Ale y Xidan</div>
               </a>
               <a href="class-bachata-sensual-improver.html" class="class-card">
                 <div class="mobile-time">20:30</div>
-                <h4 class="class-name">Bachata Sensual Improver (Sensual Style)</h4>
+                <h4 class="class-name">Bachata Sensual Improver</h4>
+                <div class="mobile-instructor">with Ale y Xidan</div>
               </a>
             </div>
           </div>
@@ -480,14 +479,17 @@
               <a href="class-bachata-beginner-3.html" class="class-card">
                 <div class="mobile-time">18:30</div>
                 <h4 class="class-name">Bachata Beginner 3</h4>
+                <div class="mobile-instructor">with Ale y Alexia</div>
               </a>
               <a href="class-lady-styling.html" class="class-card">
                 <div class="mobile-time">19:30</div>
-                <h4 class="class-name">Open Level Lady Style (Styling)</h4>
+                <h4 class="class-name">Open Level Lady Style</h4>
+                <div class="mobile-instructor">with Xidan</div>
               </a>
               <a href="class-bachata-sensual-inter-adv.html" class="class-card">
                 <div class="mobile-time">20:30</div>
-                <h4 class="class-name">Bachata Sensual Intermediate/Advanced (Sensual Style)</h4>
+                <h4 class="class-name">Bachata Sensual Int/Adv</h4>
+                <div class="mobile-instructor">with Ale y Xidan</div>
               </a>
             </div>
           </div>
@@ -550,12 +552,14 @@
                   <div class="value-toggle">+</div>
                 </div>
                 <div class="value-details">
-                  <p class="value-desc">
-                    First Bachata, then Sensual Foundation. We believe in a solid progression: learn the rules, master
-                    the
-                    rules, then break the rules. Build your unique style on a base of strong technique and authentic
-                    roots.
-                  </p>
+                  <div class="value-desc">
+                    Start with Bachata, then advance to Sensual.
+                    <ul style="list-style: disc; padding-left: 1.25rem; margin: 0.75rem 0; color: white;">
+                      <li style="margin-bottom: 0.25rem;"><strong>Learn the rules</strong></li>
+                      <li style="margin-bottom: 0.25rem;"><strong>Master the rules</strong></li>
+                      <li style="margin-bottom: 0.25rem;"><strong>Break the rules</strong></li>
+                    </ul>
+                  </div>
                 </div>
               </div>
             </div>
@@ -572,7 +576,7 @@
                   <p class="value-desc">
                     Take part in exciting regular intensives and workshops with international guest instructors. We
                     frequently
-                    host world-class artists to bring the best of Bachata and other dance styles directly to Zurich.
+                    host world-class artists to bring the best of dancing directly to Zurich.
                   </p>
                 </div>
               </div>
