@@ -2490,8 +2490,9 @@ textarea {
 }
 
 .btn-secondary:hover {
-    background-color: white !important;
-    color: var(--text-dark);
+    background-color: transparent !important;
+    border-color: var(--accent-start);
+    color: white;
 }
 
 /* Compact Class Selection (Trial Form) */
