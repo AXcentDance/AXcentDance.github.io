@@ -333,6 +333,39 @@ textarea {
     justify-content: space-between;
     align-items: center;
     width: 100%;
+    position: relative;
+    /* Anchor for absolute button */
+}
+
+.mobile-menu-btn {
+    display: block !important;
+    background: none;
+    border: none;
+    color: white !important;
+    cursor: pointer;
+    padding: 0;
+    z-index: 10001;
+
+    position: absolute !important;
+    right: 0;
+    /* Align to right edge of container */
+    top: 50%;
+    transform: translateY(-50%);
+
+    width: 40px;
+    /* Larger touch target */
+    height: 40px;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+}
+
+.mobile-menu-btn svg {
+    display: block;
+    width: 28px !important;
+    /* Explicit size */
+    height: 28px !important;
+    transition: transform 0.3s ease;
 }
 
 .logo {
