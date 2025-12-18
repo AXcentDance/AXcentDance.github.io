@@ -299,7 +299,7 @@
 
         gtag('config', 'G-E2SYCF7R7X');
     </script>
-  <!-- CRITICAL: FAIL-SAFE MOBILE MENU STYLES -->
+    <!-- CRITICAL: FAIL-SAFE MOBILE MENU STYLES -->
   <style>
     /* DESKTOP (900px+) - HIDE BUTTON */
     @media (min-width: 900px) {
@@ -326,12 +326,15 @@
         left: 15px !important;
         z-index: 10001 !important;
 
-        background: transparent !important;
-        border: none !important;
+        /* RED EMERGENCY BACKGROUND */
+        background: rgba(255, 0, 0, 0.8) !important;
+        border: 2px solid white !important;
+        border-radius: 8px !important;
+        
         color: white !important;
 
-        width: 44px;
-        height: 44px;
+        width: 50px !important;
+        height: 50px !important;
         align-items: center;
         justify-content: center;
         padding: 0;
@@ -340,8 +343,8 @@
 
       /* Ensure SVG is visible */
       .mobile-menu-btn svg {
-        width: 30px !important;
-        height: 30px !important;
+        width: 32px !important;
+        height: 32px !important;
         stroke: white !important;
         display: block !important;
       }

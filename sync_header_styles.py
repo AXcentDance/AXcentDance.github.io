@@ -2,6 +2,7 @@ import os
 import glob
 import re
 
+# EMERGENCY RED BUTTON STYLE
 STYLE_BLOCK = """  <!-- CRITICAL: FAIL-SAFE MOBILE MENU STYLES -->
   <style>
     /* DESKTOP (900px+) - HIDE BUTTON */
@@ -29,12 +30,15 @@ STYLE_BLOCK = """  <!-- CRITICAL: FAIL-SAFE MOBILE MENU STYLES -->
         left: 15px !important;
         z-index: 10001 !important;
 
-        background: transparent !important;
-        border: none !important;
+        /* RED EMERGENCY BACKGROUND */
+        background: rgba(255, 0, 0, 0.8) !important;
+        border: 2px solid white !important;
+        border-radius: 8px !important;
+        
         color: white !important;
 
-        width: 44px;
-        height: 44px;
+        width: 50px !important;
+        height: 50px !important;
         align-items: center;
         justify-content: center;
         padding: 0;
@@ -43,8 +47,8 @@ STYLE_BLOCK = """  <!-- CRITICAL: FAIL-SAFE MOBILE MENU STYLES -->
 
       /* Ensure SVG is visible */
       .mobile-menu-btn svg {
-        width: 30px !important;
-        height: 30px !important;
+        width: 32px !important;
+        height: 32px !important;
         stroke: white !important;
         display: block !important;
       }
@@ -59,15 +63,15 @@ def sync_styles():
             with open(file, 'r', encoding='utf-8') as f:
                 content = f.read()
 
-            # Remove existing block if present to avoid dupes (regex matches the comment start and </style> end)
+            # Remove existing block if present
             content = re.sub(r'<!-- CRITICAL: FAIL-SAFE MOBILE MENU STYLES -->.*?<\/style>\s*', '', content, flags=re.DOTALL)
             
             # Inject new block before </head>
             if '</head>' in content:
                 content = content.replace('</head>', STYLE_BLOCK + '\n</head>')
                 
-                # Update cache buster
-                content = re.sub(r'style\.css\?v=mobilefix\d+', 'style.css?v=mobilefix12', content)
+                # Update cache buster to v=mobilefix13
+                content = re.sub(r'style\.css\?v=mobilefix\d+', 'style.css?v=mobilefix13', content)
                 
                 with open(file, 'w', encoding='utf-8') as f:
                     f.write(content)
