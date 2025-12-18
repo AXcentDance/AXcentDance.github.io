@@ -347,14 +347,13 @@ textarea {
     z-index: 10001;
 
     position: absolute !important;
-    right: 0;
-    /* Align to right edge of container */
+    left: 1rem;
+    /* Move to Left */
     top: 50%;
     transform: translateY(-50%);
 
-    width: 40px;
-    /* Larger touch target */
-    height: 40px;
+    width: 44px;
+    height: 44px;
     display: flex !important;
     align-items: center;
     justify-content: center;
@@ -657,15 +656,12 @@ textarea {
     justify-content: center;
 }
 
-/* Center Logo on Mobile */
-@media (max-width: 900px) {
+/* Center Logo on Mobile Screens < 900px */
+@media (max-width: 899px) {
     .navbar {
-        justify-content: center !important;
+        justify-content: center;
     }
-}
 
-
-@media (max-width: 480px) {
     .logo-title {
         font-size: 2rem;
         /* Reduce logo size on small screens */
