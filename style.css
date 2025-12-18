@@ -754,20 +754,43 @@ textarea {
     font-weight: 700;
 }
 
-/* FIX MOBILE DROPDOWN (Expand/Flatten) */
+/* MOBILE DROPDOWN (Click to Toggle) */
 .nav-links.active .dropdown {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 1rem;
     width: 100%;
+
+    /* Separator Line Above 'More' */
+    margin-top: 1rem;
+    padding-top: 1.5rem;
+    position: relative;
+}
+
+.nav-links.active .dropdown::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    /* Stylish width */
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent-start), var(--accent-end), transparent);
+    opacity: 0.6;
 }
 
 .nav-links.active .dropbtn {
-    display: none;
-    /* Hide "More" label, show items directly */
+    display: block !important;
+    /* Show "More" button */
+    font-size: 1.5rem;
+    /* Match other links */
+    font-weight: 700;
+    cursor: pointer;
 }
 
+/* Dropdown Content - Collapsed by default */
 .nav-links.active .dropdown-content {
     position: static;
     display: flex;
@@ -779,21 +802,36 @@ textarea {
     box-shadow: none;
     padding: 0;
     min-width: auto;
-    opacity: 1;
-    visibility: visible;
+
+    /* Animation state: Hidden */
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    visibility: hidden;
     transform: none;
+
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
     border: none;
     backdrop-filter: none;
 }
 
+/* Dropdown Content - Expanded when Active */
+.nav-links.active .dropdown.active .dropdown-content {
+    max-height: 800px;
+    /* Large enough to fit content */
+    opacity: 1;
+    visibility: visible;
+    margin-top: 1rem;
+}
+
 .nav-links.active .dropdown-content a {
-    color: white;
-    font-size: 1.25rem;
-    /* Match mobile link size slightly smaller */
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.1rem;
     padding: 0;
     text-align: center;
     display: block;
-    font-weight: 600;
+    font-weight: 500;
 }
 
 /* Handle Dropdown on Mobile */

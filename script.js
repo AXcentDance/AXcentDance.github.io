@@ -14,6 +14,19 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Mobile Dropdown Toggle ("More" button)
+    const dropBtns = document.querySelectorAll('.dropbtn');
+    dropBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            // Only toggle on mobile (when nav-links is active) or check screen width
+            if (window.innerWidth < 900) {
+                e.preventDefault(); // Prevent default link behavior if any
+                const dropdown = btn.closest('.dropdown');
+                dropdown.classList.toggle('active');
+            }
+        });
+    });
+
     // Navbar Glassmorphism Scroll Effect
     const header = document.querySelector('.main-header');
     window.addEventListener('scroll', () => {
