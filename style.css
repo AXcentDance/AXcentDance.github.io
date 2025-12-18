@@ -309,59 +309,13 @@ textarea {
     pointer-events: none;
 }
 
+.main-header.header-hidden {
+    transform: translateY(-100%);
+}
+
 /* MOBILE BOTTOM NAVIGATION */
-.bottom-nav {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background: rgba(15, 5, 24, 0.95);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-top: 1px solid var(--glass-border);
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    padding: 0.75rem 0;
-    z-index: 9999;
-    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.4);
-}
+/* MOBILE BOTTOM NAVIGATION - Removed in favor of Smart Sticky Header */
 
-.bottom-nav-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-decoration: none;
-    color: var(--text-muted);
-    font-size: 0.7rem;
-    font-weight: 500;
-    gap: 4px;
-    transition: all 0.2s ease;
-}
-
-.bottom-nav-item svg {
-    width: 24px;
-    height: 24px;
-    stroke: currentColor;
-    fill: none;
-    stroke-width: 2;
-    transition: all 0.2s ease;
-}
-
-.bottom-nav-item.active {
-    color: var(--accent-start);
-}
-
-.bottom-nav-item.active svg {
-    stroke: var(--accent-start);
-    filter: drop-shadow(0 0 5px rgba(255, 59, 48, 0.4));
-}
-
-@media (min-width: 768px) {
-    .bottom-nav {
-        display: none;
-    }
-}
 
 .main-header.scrolled {
     background: rgba(15, 5, 24, 0.85);

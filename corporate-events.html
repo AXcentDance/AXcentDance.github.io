@@ -388,7 +388,7 @@
         </div>
     </footer>
 
-    <script src="script.min.js"></script>
+    <script src="script.js"></script>
 
 
 
@@ -545,99 +545,6 @@
             }
         }
     </style>
-
-    <div id="mobileDrawerOverlay" class="mobile-drawer-overlay"></div>
-
-    <div id="mobileDrawer" class="mobile-drawer">
-        <div class="drawer-content">
-            <a href="about.html" class="drawer-link"><span>About Us</span> <i>→</i></a>
-            <a href="registration.html" class="drawer-link"><span>Registration</span> <i>→</i></a>
-            <a href="contact.html" class="drawer-link"><span>Contact us</span> <i>→</i></a>
-            <!-- <a href="login.html" class="drawer-link" style="color:var(--accent-light);"><span>Log In</span> <i>→</i></a> -->
-            <hr style="border:0; border-top:1px solid rgba(255,255,255,0.1); margin: 5px 0;">
-            <a href="room-rental.html" class="drawer-link"><span>Room Rental</span></a>
-            <a href="collaborations.html" class="drawer-link"><span>Collaborations</span></a>
-            <a href="corporate-events.html" class="drawer-link"><span>Corporate Events</span></a>
-            <a href="wedding-dance.html" class="drawer-link"><span>Wedding Dance</span></a>
-            <a href="private-lessons.html" class="drawer-link"><span>Private Lessons</span></a>
-            <a href="gallery.html" class="drawer-link"><span>Gallery</span></a>
-            <a href="education.html" class="drawer-link"><span>Education</span></a>
-            <a href="beginner-guide.html" class="drawer-link"><span>Beginner Guide</span></a>
-            <a href="blog.html" class="drawer-link"><span>Blog</span></a>
-            <a href="faq.html" class="drawer-link"><span>FAQ</span></a>
-            <a href="etiquette.html" class="drawer-link"><span>Dance Etiquette</span></a>
-        </div>
-    </div>
-
-    <nav class="mobile-bottom-nav">
-        <a href="index.html" class="nav-item">
-            <svg viewBox="0 0 24 24">
-                <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
-            </svg>
-            <span>Home</span>
-        </a>
-        <a href="schedule.html" class="nav-item">
-            <svg viewBox="0 0 24 24">
-                <path
-                    d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2zm-7 5h5v5h-5z" />
-            </svg>
-            <span>Schedule</span>
-        </a>
-        <a href="registration.html" class="nav-item">
-            <svg viewBox="0 0 24 24">
-                <path
-                    d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
-            </svg>
-            <span>Passes</span>
-        </a>
-        <a href="portal.html" class="nav-item">
-            <svg viewBox="0 0 24 24">
-                <path
-                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z" />
-            </svg>
-            <span>Portal</span>
-        </a>
-        <button id="mobileMoreBtn" class="nav-item">
-            <svg viewBox="0 0 24 24">
-                <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
-            </svg>
-            <span>More</span>
-        </button>
-    </nav>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const moreBtn = document.getElementById("mobileMoreBtn");
-            const drawer = document.getElementById("mobileDrawer");
-            const overlay = document.getElementById("mobileDrawerOverlay");
-
-            function toggleDrawer(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                if (drawer) {
-                    drawer.classList.toggle("active");
-                    if (overlay) overlay.classList.toggle("active");
-                }
-            }
-
-            if (moreBtn) {
-                moreBtn.addEventListener("click", toggleDrawer);
-            }
-
-            if (overlay) {
-                overlay.addEventListener("click", toggleDrawer);
-            }
-
-            if (drawer) {
-                drawer.querySelectorAll("a").forEach(link => {
-                    link.addEventListener("click", () => {
-                        drawer.classList.remove("active");
-                        if (overlay) overlay.classList.remove("active");
-                    });
-                });
-            }
-        });
-    </script>
 
 </body>
 

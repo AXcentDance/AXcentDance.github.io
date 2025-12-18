@@ -127,32 +127,37 @@ if (filterBtns.length > 0 && blogCards.length > 0) {
 }
 
 /* MOBILE BOTTOM NAV INJECTION */
+/* MOBILE BOTTOM NAV REPLACEMENT */
 document.addEventListener('DOMContentLoaded', () => {
-    if (window.innerWidth < 768) {
-        const bottomNavHTML = `
-        <nav class="bottom-nav">
-            <a href="index.html" class="bottom-nav-item ${window.location.pathname.endsWith('index.html') || window.location.pathname === '/' ? 'active' : ''}">
-                <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
-                Home
-            </a>
-            <a href="schedule.html" class="bottom-nav-item ${window.location.pathname.includes('schedule') ? 'active' : ''}">
-                 <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-                Schedule
-            </a>
-            <a href="registration.html" class="bottom-nav-item ${window.location.pathname.includes('registration') ? 'active' : ''}">
-                <svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><line x1="20" y1="8" x2="20" y2="14"></line><line x1="23" y1="11" x2="17" y2="11"></line></svg>
-                Registration
-            </a>
-            <a href="contact.html" class="bottom-nav-item ${window.location.pathname.includes('contact') ? 'active' : ''}">
-                <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-                Contact
-            </a>
-        </nav>
-        `;
-        document.body.insertAdjacentHTML('beforeend', bottomNavHTML);
+    // Smart Sticky Header Logic
+    let lastScrollY = window.scrollY;
+    const mainHeader = document.querySelector('.main-header');
 
-        // Add padding to body to prevent content from being hidden behind nav
-        document.body.style.paddingBottom = '60px';
+    if (mainHeader) {
+        window.addEventListener('scroll', () => {
+            const currentScrollY = window.scrollY;
+
+            // Only apply effect if we've scrolled down a bit
+            if (currentScrollY > 100) {
+                if (currentScrollY > lastScrollY) {
+                    // Scrolling DOWN -> Hide Header
+                    mainHeader.classList.add('header-hidden');
+                } else {
+                    // Scrolling UP -> Show Header
+                    mainHeader.classList.remove('header-hidden');
+                }
+            } else {
+                // At the top -> Show Header
+                mainHeader.classList.remove('header-hidden');
+            }
+
+            lastScrollY = currentScrollY;
+        });
+    }
+
+    // Validating cleanup of old nav injection
+    if (document.body.style.paddingBottom === '60px') {
+        document.body.style.paddingBottom = '';
     }
 
     // Review Slider Scroll Logic
