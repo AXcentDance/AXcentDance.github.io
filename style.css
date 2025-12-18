@@ -310,7 +310,8 @@ textarea {
 }
 
 .main-header.header-hidden {
-    transform: translateY(-100%);
+    /* transform: translateY(-100%); DISABLED AUTO-HIDE */
+    transform: none !important;
 }
 
 /* MOBILE BOTTOM NAVIGATION */
