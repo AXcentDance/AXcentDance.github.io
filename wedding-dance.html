@@ -29,6 +29,54 @@
 
         gtag('config', 'G-E2SYCF7R7X');
     </script>
+  <!-- CRITICAL: FAIL-SAFE MOBILE MENU STYLES -->
+  <style>
+    /* DESKTOP (900px+) - HIDE BUTTON */
+    @media (min-width: 900px) {
+      .mobile-menu-btn {
+        display: none !important;
+      }
+    }
+
+    /* MOBILE (<900px) - SHOW BUTTON ABSOLUTE LEFT */
+    @media (max-width: 899px) {
+      .navbar {
+        position: relative !important;
+        /* Ensure anchor */
+        justify-content: center !important;
+        /* Center logo */
+      }
+
+      .mobile-menu-btn {
+        display: flex !important;
+        position: absolute !important;
+        /* Absolute to navbar */
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+        left: 15px !important;
+        z-index: 10001 !important;
+
+        background: transparent !important;
+        border: none !important;
+        color: white !important;
+
+        width: 44px;
+        height: 44px;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        cursor: pointer;
+      }
+
+      /* Ensure SVG is visible */
+      .mobile-menu-btn svg {
+        width: 30px !important;
+        height: 30px !important;
+        stroke: white !important;
+        display: block !important;
+      }
+    }
+  </style>
 </head>
 
 <body>
