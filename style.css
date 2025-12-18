@@ -664,7 +664,28 @@ textarea {
 
     .logo-title {
         font-size: 2rem;
-        /* Reduce logo size on small screens */
+    }
+
+    /* Enforce Mobile Menu Visibility ONLY here */
+    .mobile-menu-btn {
+        display: flex !important;
+        position: fixed !important;
+        /* Keep fixed as it worked for user */
+        top: 18px !important;
+        /* (80px header - 44px button) / 2 = 18px */
+        left: 1rem !important;
+        z-index: 10001 !important;
+
+        background: none !important;
+        /* Remove blue box */
+        border: none !important;
+        color: white !important;
+
+        width: 44px;
+        height: 44px;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
     }
 }
 
