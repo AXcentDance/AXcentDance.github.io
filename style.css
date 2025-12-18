@@ -630,24 +630,39 @@ textarea {
     }
 }
 
+/* Mobile Menu Button - Left Side */
 .mobile-menu-btn {
     display: block !important;
     background: none;
     border: none;
     color: white !important;
-    /* Force white color */
     cursor: pointer;
     padding: 0;
+    /* Remove padding to avoid hitbox size issues with absolute */
     z-index: 10001;
+    /* High z-index */
 
-    /* NUCLEAR POSITIONING FIX */
+    /* Position Left */
     position: absolute !important;
-    right: 1.5rem;
+    left: 1rem;
+    /* 16px from left */
     top: 50%;
     transform: translateY(-50%);
 
-    width: 32px;
-    height: 32px;
+    width: 44px;
+    /* Explicit size */
+    height: 44px;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Center Logo on Mobile */
+@media (max-width: 900px) {
+    .navbar {
+        justify-content: center !important;
+    }
+}
 }
 
 @media (max-width: 480px) {
