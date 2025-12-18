@@ -21,7 +21,7 @@
   <meta name="twitter:image" content="https://axcentdance.com/assets/images/hero.webp">
 
   <!-- Styles -->
-  <link rel="stylesheet" href="style.css?v=mobilefix9">
+  <link rel="stylesheet" href="style.css?v=mobilefix10">
   <link rel="stylesheet" href="assets/css/cookie-consent.css">
   <script src="assets/js/cookie-consent.js" defer></script>
 
@@ -34,16 +34,23 @@
       }
     }
 
-    /* MOBILE (<900px) - SHOW BUTTON FIXED LEFT */
+    /* MOBILE (<900px) - SHOW BUTTON ABSOLUTE LEFT */
     @media (max-width: 899px) {
+      .navbar {
+        position: relative !important;
+        /* Ensure anchor */
+        justify-content: center !important;
+        /* Center logo */
+      }
+
       .mobile-menu-btn {
         display: flex !important;
-        position: fixed !important;
-        top: 20px !important;
-        /* Vertically centered in 80px header approx */
+        position: absolute !important;
+        /* Absolute to navbar */
+        top: 50% !important;
+        transform: translateY(-50%) !important;
         left: 15px !important;
-        z-index: 999999 !important;
-        /* Max Z-Index */
+        z-index: 10001 !important;
 
         background: transparent !important;
         border: none !important;
@@ -59,8 +66,8 @@
 
       /* Ensure SVG is visible */
       .mobile-menu-btn svg {
-        width: 32px !important;
-        height: 32px !important;
+        width: 30px !important;
+        height: 30px !important;
         stroke: white !important;
         display: block !important;
       }
@@ -198,6 +205,7 @@
       },
       "knowsAbout": [
         "Bachata Dance Zurich",
+        "Dance",
         "Dance",
         "Bachata Sensual",
         "Dominican Bachata",
