@@ -21,7 +21,51 @@
   <meta name="twitter:image" content="https://axcentdance.com/assets/images/hero.webp">
 
   <!-- Styles -->
-  <link rel="stylesheet" href="style.css?v=mobilefix4">
+  <link rel="stylesheet" href="style.css?v=mobilefix9">
+  <link rel="stylesheet" href="assets/css/cookie-consent.css">
+  <script src="assets/js/cookie-consent.js" defer></script>
+
+  <!-- CRITICAL: FAIL-SAFE MOBILE MENU STYLES -->
+  <style>
+    /* DESKTOP (900px+) - HIDE BUTTON */
+    @media (min-width: 900px) {
+      .mobile-menu-btn {
+        display: none !important;
+      }
+    }
+
+    /* MOBILE (<900px) - SHOW BUTTON FIXED LEFT */
+    @media (max-width: 899px) {
+      .mobile-menu-btn {
+        display: flex !important;
+        position: fixed !important;
+        top: 20px !important;
+        /* Vertically centered in 80px header approx */
+        left: 15px !important;
+        z-index: 999999 !important;
+        /* Max Z-Index */
+
+        background: transparent !important;
+        border: none !important;
+        color: white !important;
+
+        width: 44px;
+        height: 44px;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        cursor: pointer;
+      }
+
+      /* Ensure SVG is visible */
+      .mobile-menu-btn svg {
+        width: 32px !important;
+        height: 32px !important;
+        stroke: white !important;
+        display: block !important;
+      }
+    }
+  </style>
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
 
