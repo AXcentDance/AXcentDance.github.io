@@ -753,6 +753,48 @@ textarea {
     font-weight: 700;
 }
 
+/* FIX MOBILE DROPDOWN (Expand/Flatten) */
+.nav-links.active .dropdown {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+}
+
+.nav-links.active .dropbtn {
+    display: none;
+    /* Hide "More" label, show items directly */
+}
+
+.nav-links.active .dropdown-content {
+    position: static;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+
+    background: transparent;
+    box-shadow: none;
+    padding: 0;
+    min-width: auto;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    border: none;
+    backdrop-filter: none;
+}
+
+.nav-links.active .dropdown-content a {
+    color: white;
+    font-size: 1.25rem;
+    /* Match mobile link size slightly smaller */
+    padding: 0;
+    text-align: center;
+    display: block;
+    font-weight: 600;
+}
+
 /* Handle Dropdown on Mobile */
 .nav-links.active .dropdown {
     width: 100%;
