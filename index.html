@@ -673,9 +673,13 @@
     <section id="reviews" class="reviews-section reveal">
       <div class="container">
         <h2 class="section-title-modern">Student Stories</h2>
-        <p class="section-subtitle">Real vibes from the Zurich Bachata community.</p>
+        <p class="section-subtitle">
+          <span style="color: #ffd700; letter-spacing: 2px; margin-right: 8px;">★★★★★</span>
+          Top Rated Dance School in Zurich
+        </p>
 
         <div class="reviews-slider-wrapper">
+          <!-- ... reviews grid ... -->
           <div class="reviews-grid">
             <!-- Review 1: Alexia S -->
             <div class="review-card glass-card">
@@ -997,192 +1001,179 @@
           </div>
         </div>
 
-        <!-- Top Rated Badge -->
-        <div class="top-rated-badge reveal" style="text-align: center; margin-top: 3rem; padding-bottom: 2rem;">
-          <div style="font-size: 1.5rem; color: #ffd700; margin-bottom: 0.5rem; letter-spacing: 4px;">★★★★★</div>
-          <p
-            style="font-size: 1.2rem; color: var(--text-light); opacity: 0.9; letter-spacing: 1px; font-weight: 300; text-transform: uppercase;">
-            Top Rated Dance School in Zurich
-          </p>
-        </div>
-      </div>
-    </section>
+        <!-- 4. Trial Class Form -->
+        <section id="trial-form" class="trial-section reveal">
+          <div class="container">
 
+            <!-- Moved CTA Header -->
+            <!-- Premium CTA Section -->
+            <div class="cta-premium-wrapper">
+              <div class="cta-premium-title">
+                <span class="cta-outline">READY TO</span>
+                <span class="cta-filled">DANCE?</span>
+              </div>
+              <!-- <a href="#trial-form" class="cta-premium-btn">JOIN THE MOVEMENT</a> -->
+            </div>
 
+            <div class="form-wrapper">
+              <!-- <h2 class="section-title-modern">Book Your Free Trial</h2> -->
+              <!-- <p class="form-subtitle">Join us on the dance floor. No partner needed.</p> -->
+              <!-- Replaced by the CTA above -->
 
-    <!-- 4. Trial Class Form -->
-    <section id="trial-form" class="trial-section reveal">
-      <div class="container">
+              <form id="trialForm" class="trial-form" action="https://formsubmit.co/info@axcentdance.com" method="POST">
+                <!-- Formsubmit.co Configuration -->
+                <input type="hidden" name="_next" value="https://axcentdance.com/thankyou.html">
+                <input type="hidden" name="_subject" value="New Trial Class Registration!">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="text" name="_honey" style="display:none">
+                <div class="form-grid">
+                  <div class="form-group">
+                    <label for="firstname">First Name</label>
+                    <input type="text" id="firstname" name="firstname" required placeholder="Jane">
+                  </div>
+                  <div class="form-group">
+                    <label for="lastname">Last Name</label>
+                    <input type="text" id="lastname" name="lastname" required placeholder="Doe">
+                  </div>
+                </div>
 
-        <!-- Moved CTA Header -->
-        <!-- Premium CTA Section -->
-        <div class="cta-premium-wrapper">
-          <div class="cta-premium-title">
-            <span class="cta-outline">READY TO</span>
-            <span class="cta-filled">DANCE?</span>
+                <div class="form-grid">
+                  <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" required placeholder="+41 79 123 45 67">
+                  </div>
+                  <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required placeholder="jane@example.com">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label>Select a Class to Try</label>
+                  <div class="class-selection-grid">
+                    <!-- Wednesday Column -->
+                    <div class="day-column">
+                      <h4 class="day-title">Wednesday</h4>
+                      <div class="compact-class-list">
+                        <label class="compact-option">
+                          <input type="radio" name="class-select" value="Wednesday 18:30 - Beginner 0">
+                          <div class="compact-card">
+                            <span class="compact-time">18:30</span>
+                            <span class="compact-name">Bachata Beginner 0</span>
+                          </div>
+                        </label>
+
+                        <label class="compact-option">
+                          <input type="radio" name="class-select" value="Wednesday 19:30 - Foundation" required>
+                          <div class="compact-card">
+                            <span class="compact-time">19:30</span>
+                            <span class="compact-name">Bachata Sensual Foundation</span>
+                          </div>
+                        </label>
+
+                        <label class="compact-option">
+                          <input type="radio" name="class-select" value="Wednesday 20:30 - Improver">
+                          <div class="compact-card">
+                            <span class="compact-time">20:30</span>
+                            <span class="compact-name">Bachata Sensual Improver</span>
+                          </div>
+                        </label>
+                      </div>
+                    </div>
+
+                    <!-- Thursday Column -->
+                    <div class="day-column">
+                      <h4 class="day-title">Thursday</h4>
+                      <div class="compact-class-list">
+                        <label class="compact-option">
+                          <input type="radio" name="class-select" value="Thursday 18:30 - Beginner 3">
+                          <div class="compact-card">
+                            <span class="compact-time">18:30</span>
+                            <span class="compact-name">Bachata Beginner 2</span>
+                          </div>
+                        </label>
+
+                        <label class="compact-option">
+                          <input type="radio" name="class-select" value="Thursday 19:30 - Lady Styling">
+                          <div class="compact-card">
+                            <span class="compact-time">19:30</span>
+                            <span class="compact-name">Lady Styling</span>
+                          </div>
+                        </label>
+
+                        <label class="compact-option">
+                          <input type="radio" name="class-select" value="Thursday 20:30 - Int/Adv">
+                          <div class="compact-card">
+                            <span class="compact-time">20:30</span>
+                            <span class="compact-name">Bachata Sensual Int/Adv</span>
+                          </div>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-checkboxes">
+                  <label class="checkbox-container">
+                    <input type="checkbox" name="terms_agreed" required>
+                    <span class="checkmark"></span>
+                    <span class="checkbox-text">I agree to the <a href="terms.html">Terms and Conditions</a></span>
+                  </label>
+                  <label class="checkbox-container">
+                    <input type="checkbox" name="privacy_agreed" required>
+                    <span class="checkmark"></span>
+                    <span class="checkbox-text">I have read the <a href="privacy.html">Privacy Policy</a></span>
+                  </label>
+                </div>
+
+                <button type="submit" class="btn-submit" id="submitTrialBtn">
+                  <span>CONFIRM BOOKING</span>
+                </button>
+              </form>
+            </div>
           </div>
-          <!-- <a href="#trial-form" class="cta-premium-btn">JOIN THE MOVEMENT</a> -->
-        </div>
+        </section>
 
-        <div class="form-wrapper">
-          <!-- <h2 class="section-title-modern">Book Your Free Trial</h2> -->
-          <!-- <p class="form-subtitle">Join us on the dance floor. No partner needed.</p> -->
-          <!-- Replaced by the CTA above -->
+        <!-- Google Sheets Submission Logic -->
+        <script>
+          document.getElementById('trialForm').addEventListener('submit', function (e) {
+            e.preventDefault();
 
-          <form id="trialForm" class="trial-form" action="https://formsubmit.co/info@axcentdance.com" method="POST">
-            <!-- Formsubmit.co Configuration -->
-            <input type="hidden" name="_next" value="https://axcentdance.com/thankyou.html">
-            <input type="hidden" name="_subject" value="New Trial Class Registration!">
-            <input type="hidden" name="_captcha" value="false">
-            <input type="text" name="_honey" style="display:none">
-            <div class="form-grid">
-              <div class="form-group">
-                <label for="firstname">First Name</label>
-                <input type="text" id="firstname" name="firstname" required placeholder="Jane">
-              </div>
-              <div class="form-group">
-                <label for="lastname">Last Name</label>
-                <input type="text" id="lastname" name="lastname" required placeholder="Doe">
-              </div>
-            </div>
+            const btn = document.getElementById('submitTrialBtn');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<span>Processing...</span>';
+            btn.disabled = true;
 
-            <div class="form-grid">
-              <div class="form-group">
-                <label for="phone">Phone Number</label>
-                <input type="tel" id="phone" name="phone" required placeholder="+41 79 123 45 67">
-              </div>
-              <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" required placeholder="jane@example.com">
-              </div>
-            </div>
+            const formData = {
+              firstname: document.getElementById('firstname').value,
+              lastname: document.getElementById('lastname').value,
+              phone: document.getElementById('phone').value,
+              email: document.getElementById('email').value,
+              selected_class: document.querySelector('input[name="class-select"]:checked').value
+            };
 
-            <div class="form-group">
-              <label>Select a Class to Try</label>
-              <div class="class-selection-grid">
-                <!-- Wednesday Column -->
-                <div class="day-column">
-                  <h4 class="day-title">Wednesday</h4>
-                  <div class="compact-class-list">
-                    <label class="compact-option">
-                      <input type="radio" name="class-select" value="Wednesday 18:30 - Beginner 0">
-                      <div class="compact-card">
-                        <span class="compact-time">18:30</span>
-                        <span class="compact-name">Bachata Beginner 0</span>
-                      </div>
-                    </label>
+            const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwPqLutAq-xa9OkSiT-rLm72DJCdQ2Xw10Yp4DvHexTq42HxCKJyJr8mJmZ0RuZSc7A5A/exec';
 
-                    <label class="compact-option">
-                      <input type="radio" name="class-select" value="Wednesday 19:30 - Foundation" required>
-                      <div class="compact-card">
-                        <span class="compact-time">19:30</span>
-                        <span class="compact-name">Bachata Sensual Foundation</span>
-                      </div>
-                    </label>
-
-                    <label class="compact-option">
-                      <input type="radio" name="class-select" value="Wednesday 20:30 - Improver">
-                      <div class="compact-card">
-                        <span class="compact-time">20:30</span>
-                        <span class="compact-name">Bachata Sensual Improver</span>
-                      </div>
-                    </label>
-                  </div>
-                </div>
-
-                <!-- Thursday Column -->
-                <div class="day-column">
-                  <h4 class="day-title">Thursday</h4>
-                  <div class="compact-class-list">
-                    <label class="compact-option">
-                      <input type="radio" name="class-select" value="Thursday 18:30 - Beginner 3">
-                      <div class="compact-card">
-                        <span class="compact-time">18:30</span>
-                        <span class="compact-name">Bachata Beginner 2</span>
-                      </div>
-                    </label>
-
-                    <label class="compact-option">
-                      <input type="radio" name="class-select" value="Thursday 19:30 - Lady Styling">
-                      <div class="compact-card">
-                        <span class="compact-time">19:30</span>
-                        <span class="compact-name">Lady Styling</span>
-                      </div>
-                    </label>
-
-                    <label class="compact-option">
-                      <input type="radio" name="class-select" value="Thursday 20:30 - Int/Adv">
-                      <div class="compact-card">
-                        <span class="compact-time">20:30</span>
-                        <span class="compact-name">Bachata Sensual Int/Adv</span>
-                      </div>
-                    </label>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="form-checkboxes">
-              <label class="checkbox-container">
-                <input type="checkbox" name="terms_agreed" required>
-                <span class="checkmark"></span>
-                <span class="checkbox-text">I agree to the <a href="terms.html">Terms and Conditions</a></span>
-              </label>
-              <label class="checkbox-container">
-                <input type="checkbox" name="privacy_agreed" required>
-                <span class="checkmark"></span>
-                <span class="checkbox-text">I have read the <a href="privacy.html">Privacy Policy</a></span>
-              </label>
-            </div>
-
-            <button type="submit" class="btn-submit" id="submitTrialBtn">
-              <span>CONFIRM BOOKING</span>
-            </button>
-          </form>
-        </div>
-      </div>
-    </section>
-
-    <!-- Google Sheets Submission Logic -->
-    <script>
-      document.getElementById('trialForm').addEventListener('submit', function (e) {
-        e.preventDefault();
-
-        const btn = document.getElementById('submitTrialBtn');
-        const originalText = btn.innerHTML;
-        btn.innerHTML = '<span>Processing...</span>';
-        btn.disabled = true;
-
-        const formData = {
-          firstname: document.getElementById('firstname').value,
-          lastname: document.getElementById('lastname').value,
-          phone: document.getElementById('phone').value,
-          email: document.getElementById('email').value,
-          selected_class: document.querySelector('input[name="class-select"]:checked').value
-        };
-
-        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwPqLutAq-xa9OkSiT-rLm72DJCdQ2Xw10Yp4DvHexTq42HxCKJyJr8mJmZ0RuZSc7A5A/exec';
-
-        fetch(SCRIPT_URL, {
-          method: 'POST',
-          mode: 'no-cors',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(formData)
-        })
-          .then(() => {
-            // Success (since no-cors is opaque, we assume success if no network error)
-            window.location.href = 'thankyou.html';
-          })
-          .catch(err => {
-            console.error('Error:', err);
-            alert('Something went wrong. Please try again or contact us via WhatsApp.');
-            btn.innerHTML = originalText;
-            btn.disabled = false;
+            fetch(SCRIPT_URL, {
+              method: 'POST',
+              mode: 'no-cors',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(formData)
+            })
+              .then(() => {
+                // Success (since no-cors is opaque, we assume success if no network error)
+                window.location.href = 'thankyou.html';
+              })
+              .catch(err => {
+                console.error('Error:', err);
+                alert('Something went wrong. Please try again or contact us via WhatsApp.');
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+              });
           });
-      });
-    </script>
+        </script>
 
-    <!-- Footer CTA removed (moved above form) -->
+        <!-- Footer CTA removed (moved above form) -->
   </main>
 
   <footer class="main-footer">
