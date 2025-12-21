@@ -381,69 +381,69 @@
         }
     </style>
 
-  <!-- Cookie Consent -->
-  <link rel="stylesheet" href="assets/css/cookie-consent.css">
-  <script src="assets/js/cookie-consent.js" defer></script>
+    <!-- Cookie Consent -->
+    <link rel="stylesheet" href="assets/css/cookie-consent.css">
+    <script src="assets/js/cookie-consent.js" defer></script>
 
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-E2SYCF7R7X"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-E2SYCF7R7X"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
 
-    gtag('config', 'G-E2SYCF7R7X');
-  </script>
-      <!-- CRITICAL: FAIL-SAFE MOBILE MENU STYLES -->
-  <style>
-    /* DESKTOP (900px+) - HIDE BUTTON */
-    @media (min-width: 900px) {
-      .mobile-menu-btn {
-        display: none !important;
-      }
-    }
+        gtag('config', 'G-E2SYCF7R7X');
+    </script>
+    <!-- CRITICAL: FAIL-SAFE MOBILE MENU STYLES -->
+    <style>
+        /* DESKTOP (900px+) - HIDE BUTTON */
+        @media (min-width: 900px) {
+            .mobile-menu-btn {
+                display: none !important;
+            }
+        }
 
-    /* MOBILE (<900px) - SHOW BUTTON ABSOLUTE LEFT */
-    @media (max-width: 899px) {
-      .navbar {
-        position: relative !important;
-        /* Ensure anchor */
-        justify-content: center !important;
-        /* Center logo */
-      }
+        /* MOBILE (<900px) - SHOW BUTTON ABSOLUTE LEFT */
+        @media (max-width: 899px) {
+            .navbar {
+                position: relative !important;
+                /* Ensure anchor */
+                justify-content: center !important;
+                /* Center logo */
+            }
 
-      .mobile-menu-btn {
-        display: flex !important;
-        position: absolute !important;
-        /* Absolute to navbar */
-        top: 50% !important;
-        transform: translateY(-50%) !important;
-        left: 15px !important;
-        z-index: 10001 !important;
+            .mobile-menu-btn {
+                display: flex !important;
+                position: absolute !important;
+                /* Absolute to navbar */
+                top: 50% !important;
+                transform: translateY(-50%) !important;
+                left: 15px !important;
+                z-index: 10001 !important;
 
-        /* FINAL PRODUCTION STYLE: Transparent */
-        background: transparent !important;
-        border: none !important;
-        
-        color: white !important;
+                /* FINAL PRODUCTION STYLE: Transparent */
+                background: transparent !important;
+                border: none !important;
 
-        width: 44px;
-        height: 44px;
-        align-items: center;
-        justify-content: center;
-        padding: 0;
-        cursor: pointer;
-      }
+                color: white !important;
 
-      /* Ensure SVG is visible */
-      .mobile-menu-btn svg {
-        width: 30px !important;
-        height: 30px !important;
-        stroke: white !important;
-        display: block !important;
-      }
-    }
-  </style>
+                width: 44px;
+                height: 44px;
+                align-items: center;
+                justify-content: center;
+                padding: 0;
+                cursor: pointer;
+            }
+
+            /* Ensure SVG is visible */
+            .mobile-menu-btn svg {
+                width: 30px !important;
+                height: 30px !important;
+                stroke: white !important;
+                display: block !important;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -464,12 +464,13 @@
                 <span class="logo-title">AXCENT</span><span class="logo-subtitle text-gradient">DANCE</span>
             </a>
             <button class="mobile-menu-btn" aria-label="Toggle menu">
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <line x1="3" y1="12" x2="21" y2="12" class="line-middle"></line>
-        <line x1="3" y1="6" x2="21" y2="6" class="line-top"></line>
-        <line x1="3" y1="18" x2="21" y2="18" class="line-bottom"></line>
-    </svg>
-</button>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="3" y1="12" x2="21" y2="12" class="line-middle"></line>
+                    <line x1="3" y1="6" x2="21" y2="6" class="line-top"></line>
+                    <line x1="3" y1="18" x2="21" y2="18" class="line-bottom"></line>
+                </svg>
+            </button>
             <nav class="nav-links">
                 <a href="about.html">About us</a>
                 <a href="schedule.html">Schedule</a>
@@ -984,7 +985,7 @@
                     <li><a href="guide-bachata.html">Bachata in Zurich</a></li>
                     <li><a href="wedding-dance.html">Wedding Dance</a></li>
                     <li><a href="private-lessons.html">Private Lessons</a></li>
-                    
+
                 </ul>
             </div>
 
@@ -1041,17 +1042,10 @@
             }
         }
 
-        // Activation Date Logic (Specific for Jan 2026 Season)
+        // Activation Date Logic (Global)
         function populateActivationDates() {
             const select = document.getElementById('activation_date');
             if (!select) return;
-
-            // Hardcoded start date for the new season as requested
-            // "First Wednesday and Thursday possible the 14/15 January"
-            // We want Jan 14, 15, 21, 22.
-
-            // Note: Months are 0-indexed in JS (0 = Jan)
-            const seasonStart = new Date(2026, 0, 14); // Jan 14, 2026
 
             const options = [];
 
@@ -1060,27 +1054,21 @@
                 return d.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' });
             };
 
-            // Find next 2 Wednesdays starting from seasonStart
-            let d = new Date(seasonStart);
-            let wedCount = 0;
-            for (let i = 0; i < 30 && wedCount < 2; i++) {
-                if (d.getDay() === 3) { // Wednesday
-                    options.push({ date: new Date(d), label: formatDate(d) });
-                    wedCount++;
-                }
-                d.setDate(d.getDate() + 1);
-            }
+            // Generate all Wednesdays (3) and Thursdays (4) in Jan (0) and Feb (1) 2026
+            const year = 2026;
+            const targetMonths = [0, 1]; // Jan, Feb
 
-            // Find next 2 Thursdays starting from seasonStart
-            d = new Date(seasonStart);
-            let thuCount = 0;
-            for (let i = 0; i < 30 && thuCount < 2; i++) {
-                if (d.getDay() === 4) { // Thursday
-                    options.push({ date: new Date(d), label: formatDate(d) });
-                    thuCount++;
+            targetMonths.forEach(month => {
+                const daysInMonth = new Date(year, month + 1, 0).getDate();
+                for (let day = 1; day <= daysInMonth; day++) {
+                    const date = new Date(year, month, day);
+                    const dayOfWeek = date.getDay();
+
+                    if (dayOfWeek === 3 || dayOfWeek === 4) {
+                        options.push({ date: date, label: formatDate(date) });
+                    }
                 }
-                d.setDate(d.getDate() + 1);
-            }
+            });
 
             // Sort chronologically
             options.sort((a, b) => a.date - b.date);
@@ -1340,7 +1328,7 @@ ${classes.join('\n')}
 
 
 
-    
+
 
 </body>
 
