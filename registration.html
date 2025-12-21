@@ -1061,6 +1061,8 @@
             targetMonths.forEach(month => {
                 const daysInMonth = new Date(year, month + 1, 0).getDate();
                 for (let day = 1; day <= daysInMonth; day++) {
+                    // Check start: Jan 14
+                    if (month === 0 && day < 14) continue;
                     // Check cutoff: Feb 12
                     if (month === 1 && day > 12) continue;
 
