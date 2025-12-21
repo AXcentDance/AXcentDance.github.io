@@ -1054,17 +1054,15 @@
                 return d.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' });
             };
 
-            // Generate all Wednesdays (3) and Thursdays (4) in Jan (0) and Feb (1) 2026
+            // Generate all Wednesdays (3) and Thursdays (4) in Jan (0) 2026
             const year = 2026;
-            const targetMonths = [0, 1]; // Jan, Feb
+            const targetMonths = [0]; // Jan only
 
             targetMonths.forEach(month => {
                 const daysInMonth = new Date(year, month + 1, 0).getDate();
                 for (let day = 1; day <= daysInMonth; day++) {
                     // Check start: Jan 14
                     if (month === 0 && day < 14) continue;
-                    // Check cutoff: Feb 12
-                    if (month === 1 && day > 12) continue;
 
                     const date = new Date(year, month, day);
                     const dayOfWeek = date.getDay();
