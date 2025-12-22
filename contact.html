@@ -232,11 +232,7 @@
                 <div class="contact-form">
                     <h3 class="value-title" style="font-size: 2rem; margin-bottom: 2rem;">Send a Message</h3>
 
-                    <form action="https://formsubmit.co/slamitza@gmail.com" method="POST">
-                        <input type="hidden" name="_next" value="https://axcentdance.com/thankyou-contact.html">
-                        <input type="hidden" name="_subject" value="New Contact Message from Axcent Dance">
-                        <input type="hidden" name="_captcha" value="false">
-                        <input type="text" name="_honey" style="display:none">
+                    <form id="contactForm">
 
                         <div class="form-group">
                             <label for="name" class="form-label">Name</label>
@@ -251,12 +247,17 @@
                         </div>
 
                         <div class="form-group">
+                            <label for="phone" class="form-label">Phone / WhatsApp</label>
+                            <input type="tel" id="phone" name="phone" class="form-input" placeholder="+41 79 123 45 67">
+                        </div>
+
+                        <div class="form-group">
                             <label for="message" class="form-label">Message</label>
                             <textarea id="message" name="message" class="form-textarea"
                                 placeholder="How can we help you?" required></textarea>
                         </div>
 
-                        <button type="submit" class="btn-primary"
+                        <button type="submit" id="submitContactBtn" class="btn-primary"
                             style="width: 100%; border: 1px solid var(--accent-start); border-radius: 20px; padding: 1rem; font-weight: 700; cursor: pointer; transition: all 0.3s ease;">
                             SEND MESSAGE
                         </button>

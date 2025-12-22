@@ -254,5 +254,55 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
         console.error('Trial form not found in DOM');
     }
+
+    // Contact Form Logic
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+        console.log('Contact form found, attaching listener');
+        contactForm.addEventListener('submit', e => {
+            e.preventDefault();
+
+            const submitBtn = document.getElementById('submitContactBtn');
+            const originalBtnContent = submitBtn.innerHTML;
+
+            // 1. Show Loading State
+            submitBtn.innerHTML = '<span>Sending...</span>';
+            submitBtn.disabled = true;
+            submitBtn.style.opacity = '0.7';
+            submitBtn.style.cursor = 'not-allowed';
+
+            // 2. Gather Data
+            const rawFormData = new FormData(contactForm);
+            const data = {
+                name: rawFormData.get('name'),
+                email: rawFormData.get('email'),
+                phone: rawFormData.get('phone'),
+                message: rawFormData.get('message')
+            };
+
+            // 3. Send to Google Script (Contact Form)
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbxOYwPUSX0twewRAHIA-7k4Cyds8oH9i6wUuFDLcTM68ZyWK9MO1RF2wQ7rYUUBDbgrZw/exec';
+
+            fetch(scriptURL, {
+                method: 'POST',
+                body: JSON.stringify(data),
+                mode: 'no-cors'
+            })
+                .then(() => {
+                    // 4. Success -> Redirect to Thank You page
+                    window.location.href = 'thankyou-contact.html';
+                })
+                .catch(error => {
+                    console.error('Error!', error.message);
+                    alert('Something went wrong sending your message. Please try again later.');
+
+                    // Reset button state
+                    submitBtn.innerHTML = originalBtnContent;
+                    submitBtn.disabled = false;
+                    submitBtn.style.opacity = '1';
+                    submitBtn.style.cursor = 'pointer';
+                });
+        });
+    }
 });
 
