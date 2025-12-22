@@ -186,3 +186,73 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+/* GOOGLE SHEETS FORM SUBMISSION */
+document.addEventListener('DOMContentLoaded', () => {
+    const trialForm = document.getElementById('trialForm');
+
+    if (trialForm) {
+        console.log('Trial form found, attaching listener');
+        trialForm.addEventListener('submit', e => {
+            e.preventDefault();
+
+            const submitBtn = document.getElementById('submitTrialBtn');
+            const originalBtnContent = submitBtn.innerHTML;
+
+            // 1. Show Loading State
+            submitBtn.innerHTML = '<span>Submitting...</span>';
+            submitBtn.disabled = true;
+            submitBtn.style.opacity = '0.7';
+            submitBtn.style.cursor = 'not-allowed';
+
+            // 2. Gather Data
+            const rawFormData = new FormData(trialForm);
+            const data = {
+                firstname: rawFormData.get('firstname'),
+                lastname: rawFormData.get('lastname'),
+                phone: rawFormData.get('phone'),
+                email: rawFormData.get('email'),
+                selected_class: rawFormData.get('class-select') // Users script expects 'selected_class'
+            };
+
+            // 3. Send to Google Script
+            // IMPORTANT: PASTE YOUR WEB APP URL BELOW
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbwPqLutAq-xa9OkSiT-rLm72DJCdQ2Xw10Yp4DvHexTq42HxCKJyJr8mJmZ0RuZSc7A5A/exec';
+
+            if (scriptURL === 'REPLACE_ME_WITH_YOUR_WEB_APP_URL') {
+                alert('Configuration missing: Please paste your Google Web App URL in script.js (Line ~206)');
+                submitBtn.innerHTML = originalBtnContent;
+                submitBtn.disabled = false;
+                submitBtn.style.opacity = '1';
+                submitBtn.style.cursor = 'pointer';
+                return;
+            }
+
+            fetch(scriptURL, {
+                method: 'POST',
+                body: JSON.stringify(data),
+                // transformRequest: [function (data, headers) { delete headers.common['Content-Type']; return data; }] // Start with simple fetch first
+                mode: 'no-cors' // Often needed for Google Scripts to avoid CORS errors if not handling OPTIONS
+            })
+                // NOTE: With mode 'no-cors', we receive an opaque response. We cannot read the status or JSON.
+                // We assume success if it doesn't throw.
+                .then(() => {
+                    // 4. Success -> Redirect to existing Thank You page
+                    window.location.href = 'thankyou.html';
+                })
+                .catch(error => {
+                    console.error('Error!', error.message);
+                    alert('Something went wrong submitting the form. Please try again or contact us directly at info@axcentdance.com.');
+
+                    // Reset button state
+                    submitBtn.innerHTML = originalBtnContent;
+                    submitBtn.disabled = false;
+                    submitBtn.style.opacity = '1';
+                    submitBtn.style.cursor = 'pointer';
+                });
+        });
+    } else {
+        console.error('Trial form not found in DOM');
+    }
+});
+
