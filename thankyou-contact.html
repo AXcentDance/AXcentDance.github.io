@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You – AXcent Dance</title>
+    <link rel="canonical" href="https://axcentdance.com/thankyou-contact">
+    <meta name="description" content="Thank you for contacting AXcent Dance. We will be in touch soon.">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css?v=mobilefix">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+
+    <style>
+        /* Specific styles for Thank You page to center content */
+        .thank-you-section {
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            padding-top: calc(var(--header-height) + 2rem);
+            position: relative;
+            z-index: 1;
+        }
+
+        .thank-you-content {
+            max-width: 600px;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            padding: 3rem;
+            border-radius: 20px;
+            border: 1px solid rgba(224, 93, 68, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 20px rgba(224, 93, 68, 0.1);
+        }
+
+        .thank-you-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: var(--grad);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .thank-you-message {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .btn-home {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: var(--grad);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 700;
+            transition: transform 0.3s ease;
+        }
+
+        .btn-home:hover {
+            transform: translateY(-3px);
+        }
+    </style>
+
+    <!-- Cookie Consent -->
+    <link rel="stylesheet" href="assets/css/cookie-consent.css">
+    <script src="assets/js/cookie-consent.js" defer></script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-E2SYCF7R7X"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-E2SYCF7R7X');
+    </script>
+    <!-- CRITICAL: FAIL-SAFE MOBILE MENU STYLES -->
+    <style>
+        /* DESKTOP (900px+) - HIDE BUTTON */
+        @media (min-width: 900px) {
+            .mobile-menu-btn {
+                display: none !important;
+            }
+        }
+
+        /* MOBILE (<900px) - SHOW BUTTON ABSOLUTE LEFT */
+        @media (max-width: 899px) {
+            .navbar {
+                position: relative !important;
+                /* Ensure anchor */
+                justify-content: center !important;
+                /* Center logo */
+            }
+
+            .mobile-menu-btn {
+                display: flex !important;
+                position: absolute !important;
+                /* Absolute to navbar */
+                top: 50% !important;
+                transform: translateY(-50%) !important;
+                left: 15px !important;
+                z-index: 10001 !important;
+
+                /* FINAL PRODUCTION STYLE: Transparent */
+                background: transparent !important;
+                border: none !important;
+
+                color: white !important;
+
+                width: 44px;
+                height: 44px;
+                align-items: center;
+                justify-content: center;
+                padding: 0;
+                cursor: pointer;
+            }
+
+            /* Ensure SVG is visible */
+            .mobile-menu-btn svg {
+                width: 30px !important;
+                height: 30px !important;
+                stroke: white !important;
+                display: block !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Page Transition Loader -->
+    <div id="page-transition">
+        <img src="assets/images/logo.png" alt="AXcent Logo" class="transition-logo">
+    </div>
+
+    <!-- Background Elements -->
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+
+    <!-- Navigation Bar -->
+    <header class="main-header">
+        <div class="container navbar">
+            <a href="index.html" class="logo">
+                <span class="logo-title">AXCENT</span><span class="logo-subtitle text-gradient">DANCE</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Toggle menu">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="3" y1="12" x2="21" y2="12" class="line-middle"></line>
+                    <line x1="3" y1="6" x2="21" y2="6" class="line-top"></line>
+                    <line x1="3" y1="18" x2="21" y2="18" class="line-bottom"></line>
+                </svg>
+            </button>
+            <nav class="nav-links">
+                <a href="about.html">About us</a>
+                <a href="schedule.html">Schedule</a>
+                <a href="registration.html">Registration</a>
+                <a href="events.html">Events</a>
+                <a href="contact.html">Contact</a>
+                <!-- <a href="login.html" style="color:var(--accent-light);">Log In</a> -->
+                <div class="dropdown">
+                    <button class="dropbtn">More ▾</button>
+                    <div class="dropdown-content">
+                        <a href="room-rental.html"><span>Room Rental</span></a>
+                        <a href="collaborations.html"><span>Collaborations</span></a>
+                        <a href="corporate-events.html"><span>Corporate Events</span></a>
+                        <a href="wedding-dance.html"><span>Wedding Dance</span></a>
+                        <a href="private-lessons.html"><span>Private Lessons</span></a>
+                        <a href="gallery.html"><span>Gallery</span></a>
+                        <a href="education.html"><span>Education</span></a>
+                        <a href="beginner-guide.html"><span>Beginner Guide</span></a>
+                        <a href="blog.html"><span>Blog</span></a>
+                        <a href="faq.html"><span>FAQ</span></a>
+                        <a href="etiquette.html"><span>Dance Etiquette</span></a>
+                    </div>
+                </div>
+                <a href="index.html#trial-form" class="btn-header-cta">Book Free Trial</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="thank-you-section">
+            <div class="thank-you-content">
+                <h1 class="thank-you-title">Thank You!</h1>
+                <p class="thank-you-message">
+                    We received it and we will get back to you within 24h.
+                </p>
+                <a href="index.html" class="btn-home">Return to Home</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <a href="index.html" class="logo footer-logo"><span class="logo-title">AXCENT</span><span
+                        class="logo-subtitle text-gradient">DANCE</span></a>
+                <p class="footer-address">
+                    Hermetschloostrasse 73,<br>
+                    8048 Zurich Altstetten<br> 2 minute walking from Tram 2 stop and Bus 31 stop
+                </p>
+                <div class="footer-socials">
+                    <a href="https://www.instagram.com/axcent_dance/" target="_blank" aria-label="Instagram">
+                        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                        </svg>
+                    </a>
+                    <a href="mailto:info@axcentdance.com" aria-label="Email">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                            </path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+
+            <!-- Quick Links (SEO) -->
+            <div class="footer-col">
+                <h4 class="footer-heading">Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="guide-bachata.html">Bachata in Zurich</a></li>
+                    <li><a href="wedding-dance.html">Wedding Dance</a></li>
+                    <li><a href="private-lessons.html">Private Lessons</a></li>
+
+                </ul>
+            </div>
+
+            <!-- Legal -->
+            <div class="footer-col">
+                <h4 class="footer-heading">Legal</h4>
+                <ul class="footer-links">
+                    <li><a href="terms.html">Terms & Conditions</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="imprint.html">Imprint</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 AXcent Dance. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const moreBtn = document.getElementById("mobileMoreBtn");
+            const drawer = document.getElementById("mobileDrawer");
+            const overlay = document.getElementById("mobileDrawerOverlay");
+
+            function toggleDrawer(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                if (drawer) {
+                    drawer.classList.toggle("active");
+                    if (overlay) overlay.classList.toggle("active");
+                }
+            }
+
+            if (moreBtn) {
+                moreBtn.addEventListener("click", toggleDrawer);
+            }
+
+            if (overlay) {
+                overlay.addEventListener("click", toggleDrawer);
+            }
+
+            if (drawer) {
+                drawer.querySelectorAll("a").forEach(link => {
+                    link.addEventListener("click", () => {
+                        drawer.classList.remove("active");
+                        if (overlay) overlay.classList.remove("active");
+                    });
+                });
+            }
+        });
+    </script>
+
+</body>
+
+</html>
