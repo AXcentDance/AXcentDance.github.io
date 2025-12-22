@@ -1134,43 +1134,7 @@
         </section>
 
         <!-- Google Sheets Submission Logic -->
-        <script>
-          document.getElementById('trialForm').addEventListener('submit', function (e) {
-            e.preventDefault();
 
-            const btn = document.getElementById('submitTrialBtn');
-            const originalText = btn.innerHTML;
-            btn.innerHTML = '<span>Processing...</span>';
-            btn.disabled = true;
-
-            const formData = {
-              firstname: document.getElementById('firstname').value,
-              lastname: document.getElementById('lastname').value,
-              phone: document.getElementById('phone').value,
-              email: document.getElementById('email').value,
-              selected_class: document.querySelector('input[name="class-select"]:checked').value
-            };
-
-            const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwPqLutAq-xa9OkSiT-rLm72DJCdQ2Xw10Yp4DvHexTq42HxCKJyJr8mJmZ0RuZSc7A5A/exec';
-
-            fetch(SCRIPT_URL, {
-              method: 'POST',
-              mode: 'no-cors',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify(formData)
-            })
-              .then(() => {
-                // Success (since no-cors is opaque, we assume success if no network error)
-                window.location.href = 'thankyou.html';
-              })
-              .catch(err => {
-                console.error('Error:', err);
-                alert('Something went wrong. Please try again or contact us via WhatsApp.');
-                btn.innerHTML = originalText;
-                btn.disabled = false;
-              });
-          });
-        </script>
 
         <!-- Footer CTA removed (moved above form) -->
   </main>
