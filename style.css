@@ -1420,9 +1420,10 @@ textarea {
 /* Framed Hero Image Style */
 .framed-hero-wrapper {
     position: relative;
+    position: relative;
     padding: 2rem;
-    transform: scale(1.15);
-    /* Made picture & decorations bigger */
+    transform: scale(1.25) translateY(30px);
+    /* Bigger & Lower */
     /* Space for frames */
 }
 
