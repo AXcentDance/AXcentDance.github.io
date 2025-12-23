@@ -3118,8 +3118,8 @@ textarea {
 
 .reviews-grid {
     display: grid;
-    grid-template-rows: repeat(2, 1fr);
-    /* Force 2 rows */
+    /* grid-template-rows: repeat(2, 1fr); Removed to prevent overlap */
+    /* grid-auto-flow: column; Kept for horizontal scroll */
     grid-auto-flow: column;
     /* Flow sideways */
     grid-auto-columns: 85%;
