@@ -111,9 +111,12 @@
     order: 1;
     /* Image on top on mobile */
     position: relative;
-    height: 300px;
-    /* Reduced height for mobile */
+    height: auto;
     width: 100%;
+    max-width: 80%;
+    /* Make it smaller on mobile */
+    margin: 0 auto;
+    /* Center it */
 }
 
 .arch-bg {
