@@ -329,26 +329,51 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Link Prefetching on Hover
-    const prefetchLink = (url) => {
-        if (!url || url.includes('#') || url.startsWith('mailto:') || url.startsWith('tel:')) return;
+    // PERFORMANCE OPTIMIZATION
+    // Strategy: Use Speculation Rules (Prerender) if supported (Chrome/Edge).
+    // Fallback: Use Link Prefetching for Safri/Firefox.
 
-        // check if already prefetched
-        if (document.head.querySelector(`link[href="${url}"]`)) return;
+    if (HTMLScriptElement.supports && HTMLScriptElement.supports('speculationrules')) {
+        console.log('Browser supports Speculation Rules. Enabling Prerendering.');
+        const specScript = document.createElement('script');
+        specScript.type = 'speculationrules';
+        const specRules = {
+            prerender: [{
+                source: "document",
+                where: {
+                    and: [
+                        { href_matches: "/*" }, // Match all internal links
+                        { not: { href_matches: "*#*" } } // Exclude anchors
+                    ]
+                },
+                eagerness: "moderate" // Prerender on hover (>200ms)
+            }]
+        };
+        specScript.textContent = JSON.stringify(specRules);
+        document.body.appendChild(specScript);
+    } else {
+        // Fallback: Link Prefetching on Hover
+        console.log('Browser does not support Speculation Rules. Using Link Prefetch fallback.');
+        const prefetchLink = (url) => {
+            if (!url || url.includes('#') || url.startsWith('mailto:') || url.startsWith('tel:')) return;
 
-        const link = document.createElement('link');
-        link.rel = 'prefetch';
-        link.href = url;
-        document.head.appendChild(link);
-        // console.log(`Prefetching: ${url}`);
-    };
+            // check if already prefetched
+            if (document.head.querySelector(`link[href="${url}"]`)) return;
 
-    const links = document.querySelectorAll('a');
-    links.forEach(link => {
-        link.addEventListener('mouseenter', () => {
-            const href = link.getAttribute('href');
-            if (href) prefetchLink(href);
+            const link = document.createElement('link');
+            link.rel = 'prefetch';
+            link.href = url;
+            document.head.appendChild(link);
+            // console.log(`Prefetching: ${url}`);
+        };
+
+        const links = document.querySelectorAll('a');
+        links.forEach(link => {
+            link.addEventListener('mouseenter', () => {
+                const href = link.getAttribute('href');
+                if (href) prefetchLink(href);
+            });
         });
-    });
+    }
 });
 
