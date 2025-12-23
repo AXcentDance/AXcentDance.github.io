@@ -328,5 +328,27 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
         });
     }
+
+    // Link Prefetching on Hover
+    const prefetchLink = (url) => {
+        if (!url || url.includes('#') || url.startsWith('mailto:') || url.startsWith('tel:')) return;
+
+        // check if already prefetched
+        if (document.head.querySelector(`link[href="${url}"]`)) return;
+
+        const link = document.createElement('link');
+        link.rel = 'prefetch';
+        link.href = url;
+        document.head.appendChild(link);
+        // console.log(`Prefetching: ${url}`);
+    };
+
+    const links = document.querySelectorAll('a');
+    links.forEach(link => {
+        link.addEventListener('mouseenter', () => {
+            const href = link.getAttribute('href');
+            if (href) prefetchLink(href);
+        });
+    });
 });
 
