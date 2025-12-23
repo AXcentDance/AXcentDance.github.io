@@ -733,12 +733,9 @@ textarea {
     left: 0;
     width: 100%;
     height: 100vh;
-    background: rgba(20, 10, 35, 0.65);
-    /* Softer, translucent deep purple/black */
-    backdrop-filter: blur(40px);
-    /* Heavy frosted glass effect */
-    -webkit-backdrop-filter: blur(40px);
-    /* Safari support */
+    background: rgba(20, 10, 35, 1);
+    /* Solid background ("Thick") */
+    /* Removed transparent/blur effect */
     padding: 6rem 2rem 2rem;
     /* Top padding for header space */
     border-bottom: none;
