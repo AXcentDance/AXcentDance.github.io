@@ -1591,18 +1591,14 @@ textarea {
     border-color: var(--accent-start);
 }
 
-.gallery-item.item-2 {
-    background-image: url('https://images.unsplash.com/photo-1545959570-a94197c16417?q=80&w=800&auto=format&fit=crop');
-    margin-top: 2rem;
-}
+/* Removed legacy gallery item background images */
 
-.gallery-item.item-3 {
-    background-image: url('https://images.unsplash.com/photo-1504609773096-104ff2c73ba4?q=80&w=800&auto=format&fit=crop');
-    margin-top: -2rem;
-}
-
-.gallery-item.item-4 {
-    background-image: url('https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?q=80&w=800&auto=format&fit=crop');
+/* Gallery Hero - No Background Image */
+.gallery-hero {
+    background: var(--bg-main);
+    padding: 6rem 0 2rem 0;
+    position: relative;
+    /* Ensure no inherited backgrounds show */
 }
 
 
