@@ -105,6 +105,8 @@
     order: 2;
     /* Text below image on mobile */
     text-align: center;
+    margin-top: 4rem;
+    /* Push text lower to clear scaled image */
 }
 
 .hero-content-right {
@@ -154,6 +156,7 @@
     .hero-content-left {
         order: 1;
         text-align: left;
+        margin-top: 0;
     }
 
     .hero-content-right {
