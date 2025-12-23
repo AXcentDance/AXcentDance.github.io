@@ -4514,14 +4514,14 @@ textarea {
    SECTION DIVIDER (Reviews -> Form)
    ------------------------------------------------------------------ */
 .section-divider-glow {
-    height: 120px;
+    height: 1px;
     width: 100%;
-    /* Accent glow matching brand colors */
-    background: radial-gradient(ellipse at center, rgba(255, 59, 48, 0.15) 0%, transparent 60%);
-    margin: -4rem auto 1rem auto;
-    /* Negative margin to pull sections closer */
+    max-width: 600px;
+    /* Limit width for elegance */
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    margin: 2rem auto 4rem auto;
+    /* Ample space */
     position: relative;
     z-index: 5;
-    pointer-events: none;
-    opacity: 0.8;
+    opacity: 1;
 }
