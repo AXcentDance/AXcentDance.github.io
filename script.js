@@ -375,5 +375,47 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+
+    // Timeline Scanner Fade Effect
+    const timeline = document.querySelector('.timeline');
+    const scanner = document.querySelector('.timeline-scanner');
+
+    if (timeline && scanner) {
+        const updateScannerOpacity = () => {
+            const rect = timeline.getBoundingClientRect();
+            const viewportHeight = window.innerHeight;
+            const center = viewportHeight / 2;
+            const fadeRange = 150; // Pixels distance to fade in/out
+
+            // Distance from center line
+            const distTop = center - rect.top;
+            const distBottom = rect.bottom - center;
+
+            let opacity = 1;
+
+            if (distTop < 0) {
+                // Top of timeline is below center
+                opacity = 0;
+            } else if (distTop < fadeRange) {
+                // Fading in from top
+                opacity = distTop / fadeRange;
+            } else if (distBottom < 0) {
+                // Bottom of timeline is above center
+                opacity = 0;
+            } else if (distBottom < fadeRange) {
+                // Fading out to bottom
+                opacity = distBottom / fadeRange;
+            }
+
+            scanner.style.opacity = Math.max(0, Math.min(1, opacity));
+        };
+
+        window.addEventListener('scroll', () => {
+            requestAnimationFrame(updateScannerOpacity);
+        });
+        window.addEventListener('resize', updateScannerOpacity);
+        // Initial check
+        updateScannerOpacity();
+    }
 });
 
