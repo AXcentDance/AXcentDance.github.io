@@ -4509,3 +4509,19 @@ textarea {
         -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3);
     }
 }
+
+/* ------------------------------------------------------------------
+   SECTION DIVIDER (Reviews -> Form)
+   ------------------------------------------------------------------ */
+.section-divider-glow {
+    height: 120px;
+    width: 100%;
+    /* Accent glow matching brand colors */
+    background: radial-gradient(ellipse at center, rgba(255, 59, 48, 0.15) 0%, transparent 60%);
+    margin: -4rem auto 1rem auto;
+    /* Negative margin to pull sections closer */
+    position: relative;
+    z-index: 5;
+    pointer-events: none;
+    opacity: 0.8;
+}
