@@ -1421,6 +1421,8 @@ textarea {
 .framed-hero-wrapper {
     position: relative;
     padding: 2rem;
+    transform: scale(1.15);
+    /* Made picture & decorations bigger */
     /* Space for frames */
 }
 
