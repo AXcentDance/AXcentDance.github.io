@@ -33,6 +33,12 @@
 - [Beginner Guide](https://axcentdance.com/beginner-guide) - First class tips, what to wear, and shoe guide.
 - [Dance Etiquette](https://axcentdance.com/etiquette) - Rules and guidelines for social dancing.
 - [Education](https://axcentdance.com/education) - History, styles, musicality, and glossary.
+- [Corporate Events](https://axcentdance.com/corporate-events) - Company parties and team building.
+- [Collaborations](https://axcentdance.com/collaborations) - Partner projects and guest artists.
+- [FAQ](https://axcentdance.com/faq) - Frequently Asked Questions.
+- [Gallery](https://axcentdance.com/gallery) - Photos and videos from our events.
+- [Milano Congress 2026](https://axcentdance.com/Milano-Sensual-Congress-2026) - Jan 2026 details.
+- [Milano Congress Spring 2026](https://axcentdance.com/Milano-Sensual-Congress-Spring-2026) - Spring edition details.
 
 ## Blog
 
@@ -43,3 +49,4 @@
 - [Security Policy](https://axcentdance.com/.well-known/security.txt)
 - [Humans.txt](https://axcentdance.com/humans.txt)
 - [Manifest](https://axcentdance.com/manifest.json)
+
