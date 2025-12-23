@@ -280,16 +280,40 @@ document.addEventListener('DOMContentLoaded', () => {
                 message: rawFormData.get('message')
             };
 
-            // 3. Send to Google Script (Contact Form)
-            const scriptURL = 'https://script.google.com/macros/s/AKfycbxOYwPUSX0twewRAHIA-7k4Cyds8oH9i6wUuFDLcTM68ZyWK9MO1RF2wQ7rYUUBDbgrZw/exec';
+            // 3. Send to Google Script AND FormSubmit (Parallel)
+            const googleScriptURL = 'https://script.google.com/macros/s/AKfycbxOYwPUSX0twewRAHIA-7k4Cyds8oH9i6wUuFDLcTM68ZyWK9MO1RF2wQ7rYUUBDbgrZw/exec';
+            const formSubmitEmail = 'info@axcentdance.com'; // Using FormSubmit for reliable emails
+            const formSubmitURL = `https://formsubmit.co/ajax/${formSubmitEmail}`;
 
-            fetch(scriptURL, {
+            // Prepare FormSubmit Data (Needs hidden fields for configuration)
+            const formSubmitData = {
+                _subject: `New Contact from ${data.name}`,
+                _template: 'table', // or 'box'
+                _captcha: 'false',  // Disable captcha if you want instant submission
+                name: data.name,
+                email: data.email,
+                phone: data.phone,
+                message: data.message
+            };
+
+            const p1 = fetch(googleScriptURL, {
                 method: 'POST',
                 body: JSON.stringify(data),
                 mode: 'no-cors'
-            })
-                .then(() => {
-                    // 4. Success -> Redirect to Thank You page
+            });
+
+            const p2 = fetch(formSubmitURL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(formSubmitData)
+            });
+
+            Promise.allSettled([p1, p2])
+                .then((results) => {
+                    // We redirect regardless because no-cors acts opaque
                     window.location.href = 'thankyou-contact.html';
                 })
                 .catch(error => {
