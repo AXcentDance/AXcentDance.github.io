@@ -140,6 +140,28 @@
             color: var(--text-muted);
             line-height: 1.5;
             font-weight: 400;
+            margin-bottom: auto;
+            /* Push button to bottom */
+        }
+
+        .guide-read-more {
+            margin-top: 1rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--accent-start);
+            background: rgba(255, 255, 255, 0.05);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .guide-card-mini:hover .guide-read-more {
+            background: var(--accent-start);
+            color: white;
+            box-shadow: 0 4px 12px rgba(224, 93, 68, 0.3);
         }
     </style>
 
@@ -275,16 +297,19 @@
                         <span class="guide-name-mini">Beginner Guide</span>
                         <span class="guide-desc">New to dance? Here is everything you need to know about your first
                             class.</span>
+                        <div class="guide-read-more">Read More →</div>
                     </a>
                     <a href="guide-social-dancing.html" class="guide-card-mini">
                         <span class="guide-icon-mini">🎉</span>
                         <span class="guide-name-mini">What is Social Dancing?</span>
                         <span class="guide-desc">A fun, inclusive way to meet people and express yourself.</span>
+                        <div class="guide-read-more">Read More →</div>
                     </a>
                     <a href="guide-bachata.html" class="guide-card-mini">
                         <span class="guide-icon-mini">💃</span>
                         <span class="guide-name-mini">What is Bachata?</span>
                         <span class="guide-desc">Discover the history, styles, and classes of Bachata in Zurich.</span>
+                        <div class="guide-read-more">Read More →</div>
                     </a>
                 </div>
             </div>
