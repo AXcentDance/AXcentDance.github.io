@@ -110,4 +110,18 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
-</urlset>
+  <url>
+    <loc>https://axcentdance.com/thank-you</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.1</priority>
+  </url>
+  <url>
+    <loc>https://axcentdance.com/thank-you-contact</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.1</priority>
+  </url>
+  <url>
+    <loc>https://axcentdance.com/thank-you-trial</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.1</priority>
+  </url>

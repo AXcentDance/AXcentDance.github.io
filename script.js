@@ -314,7 +314,7 @@ document.addEventListener('DOMContentLoaded', () => {
             Promise.allSettled([p1, p2])
                 .then((results) => {
                     // We redirect regardless because no-cors acts opaque
-                    window.location.href = 'thankyou-contact.html';
+                    window.location.href = 'thank-you-contact.html';
                 })
                 .catch(error => {
                     console.error('Error!', error.message);
