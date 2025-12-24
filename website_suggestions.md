@@ -19,9 +19,7 @@ Based on a review of the current project structure and content, here is a priori
 - **Open Graph Image Verification**: Ensure `assets/images/hero.webp` (referenced in your meta tags) exists and is optimized for link previews.
 
 ## 4. Performance
-- **Image Formats**: Ensure *all* images are served as WebP or AVIF.
-- **Lazy Loading**: Verify that off-screen images have `loading="lazy"` attributes.
-- **Resource Caching**: Optimize browser caching strategies where possible.
+(Completed: Lazy Loading & Asset Versioning)
 
 ## 5. Functionality & Architecture
 - **Form Migration to Supabase**: You are using `FormSubmit` (email) and Google Sheets, but also have Supabase initialized. Migrating contact/registration forms to Supabase would provide better data reliability and enable real-time admin dashboard updates.
