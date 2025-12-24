@@ -29,4 +29,4 @@ Based on a review of the current project structure and content, here is a priori
 (Completed: Formatting & Git Ignore)
 
 ## 7. Security
-- **Content Security Policy (CSP)**: Add a CSP `<meta>` tag to prevent XSS attacks.
+(Completed: Content Security Policy)
