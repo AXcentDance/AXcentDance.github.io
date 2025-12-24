@@ -8,12 +8,71 @@
     <link rel="canonical" href="https://axcentdance.com/faq">
     <meta name="description"
         content="Find answers to common questions about our Bachata classes in Zurich. Partner requirements, clothing, pricing, and more.">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com https://placehold.co https://*.googleapis.com https://*.gstatic.com; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://script.google.com https://formsubmit.co https://*.supabase.co; frame-src 'self' https://www.google.com; object-src 'none'; base-uri 'self';">
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com https://placehold.co https://*.googleapis.com https://*.gstatic.com; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://script.google.com https://formsubmit.co https://*.supabase.co; frame-src 'self' https://www.google.com; object-src 'none'; base-uri 'self';">
 
     <!-- Styles -->
     <link rel="stylesheet" href="style.css?v=2.2">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
     <link rel="icon" href="/favicon.png" type="image/png">
+
+    <!-- Structured Data (FAQPage) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Do I need a partner to join?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No, you don't need a partner! We rotate partners frequently during class. This is the best way to learn how to lead and follow different people, and it's a great way to make new friends. Of course, if you come with a partner and prefer to stay together, that is also allowed."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What should I wear?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Wear comfortable clothing that allows you to move freely. For shoes, we recommend dance shoes or sneakers with a smooth sole that allows you to turn easily. Avoid heavy boots or shoes with too much grip."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "I have never danced before. Can I join?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Absolutely! Our Beginner 0 courses are designed specifically for people with no prior dance experience. We start from the very basics and guide you step-by-step."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I pay for classes?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We accept payments via Twint, Cash, or Bank Transfer. You can pay for a single drop-in class, a 10-class pass, or sign up for a monthly subscription for the best value."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is there parking available?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, there are public parking spots available nearby (Blue Zone) and a parking garage at the Letzipark shopping center, which is a short walk away. We are also easily accessible by public transport (Tram 2, Bus 31)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What if I miss a class?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "If you have a subscription or a class pass, please let us know in advance if you cannot make it. Depending on availability, you might be able to make up the class on another day of the same week, but please check with us first."
+          }
+        }
+      ]
+    }
+    </script>
 
 
     <style>
@@ -84,67 +143,67 @@
         }
     </style>
 
-  <!-- Cookie Consent -->
+    <!-- Cookie Consent -->
 
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-E2SYCF7R7X"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-E2SYCF7R7X"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
 
-    gtag('config', 'G-E2SYCF7R7X');
-  </script>
-      <!-- CRITICAL: FAIL-SAFE MOBILE MENU STYLES -->
-  <style>
-    /* DESKTOP (900px+) - HIDE BUTTON */
-    @media (min-width: 900px) {
-      .mobile-menu-btn {
-        display: none !important;
-      }
-    }
+        gtag('config', 'G-E2SYCF7R7X');
+    </script>
+    <!-- CRITICAL: FAIL-SAFE MOBILE MENU STYLES -->
+    <style>
+        /* DESKTOP (900px+) - HIDE BUTTON */
+        @media (min-width: 900px) {
+            .mobile-menu-btn {
+                display: none !important;
+            }
+        }
 
-    /* MOBILE (<900px) - SHOW BUTTON ABSOLUTE LEFT */
-    @media (max-width: 899px) {
-      .navbar {
-        position: relative !important;
-        /* Ensure anchor */
-        justify-content: center !important;
-        /* Center logo */
-      }
+        /* MOBILE (<900px) - SHOW BUTTON ABSOLUTE LEFT */
+        @media (max-width: 899px) {
+            .navbar {
+                position: relative !important;
+                /* Ensure anchor */
+                justify-content: center !important;
+                /* Center logo */
+            }
 
-      .mobile-menu-btn {
-        display: flex !important;
-        position: absolute !important;
-        /* Absolute to navbar */
-        top: 50% !important;
-        transform: translateY(-50%) !important;
-        left: 15px !important;
-        z-index: 10001 !important;
+            .mobile-menu-btn {
+                display: flex !important;
+                position: absolute !important;
+                /* Absolute to navbar */
+                top: 50% !important;
+                transform: translateY(-50%) !important;
+                left: 15px !important;
+                z-index: 10001 !important;
 
-        /* FINAL PRODUCTION STYLE: Transparent */
-        background: transparent !important;
-        border: none !important;
-        
-        color: white !important;
+                /* FINAL PRODUCTION STYLE: Transparent */
+                background: transparent !important;
+                border: none !important;
 
-        width: 44px;
-        height: 44px;
-        align-items: center;
-        justify-content: center;
-        padding: 0;
-        cursor: pointer;
-      }
+                color: white !important;
 
-      /* Ensure SVG is visible */
-      .mobile-menu-btn svg {
-        width: 30px !important;
-        height: 30px !important;
-        stroke: white !important;
-        display: block !important;
-      }
-    }
-  </style>
+                width: 44px;
+                height: 44px;
+                align-items: center;
+                justify-content: center;
+                padding: 0;
+                cursor: pointer;
+            }
+
+            /* Ensure SVG is visible */
+            .mobile-menu-btn svg {
+                width: 30px !important;
+                height: 30px !important;
+                stroke: white !important;
+                display: block !important;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -161,12 +220,13 @@
                 <span class="logo-title">AXCENT</span><span class="logo-subtitle text-gradient">DANCE</span>
             </a>
             <button class="mobile-menu-btn" aria-label="Toggle menu">
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <line x1="3" y1="12" x2="21" y2="12" class="line-middle"></line>
-        <line x1="3" y1="6" x2="21" y2="6" class="line-top"></line>
-        <line x1="3" y1="18" x2="21" y2="18" class="line-bottom"></line>
-    </svg>
-</button>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="3" y1="12" x2="21" y2="12" class="line-middle"></line>
+                    <line x1="3" y1="6" x2="21" y2="6" class="line-top"></line>
+                    <line x1="3" y1="18" x2="21" y2="18" class="line-bottom"></line>
+                </svg>
+            </button>
             <nav class="nav-links">
                 <a href="about.html">About us</a>
                 <a href="schedule.html">Schedule</a>
@@ -286,73 +346,73 @@
     </main>
 
     <footer class="main-footer">
-    <div class="container footer-grid">
-      <div class="footer-col">
-        <a href="index.html" class="logo footer-logo"><span class="logo-title">AXCENT</span><span
-            class="logo-subtitle text-gradient">DANCE</span></a>
-        <p class="footer-address">
-          Hermetschloostrasse 73,<br>
-          8048 Zurich Altstetten<br> 2 minute walking from Tram 2 stop and Bus 31 stop
-        </p>
-        <div class="footer-socials">
-          <a href="https://www.instagram.com/axcent_dance/" target="_blank" aria-label="Instagram">
-            <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-              <path
-                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-            </svg>
-          </a>
-          <a href="mailto:info@axcentdance.com" aria-label="Email">
-            <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
-              </path>
-            </svg>
-          </a>
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <a href="index.html" class="logo footer-logo"><span class="logo-title">AXCENT</span><span
+                        class="logo-subtitle text-gradient">DANCE</span></a>
+                <p class="footer-address">
+                    Hermetschloostrasse 73,<br>
+                    8048 Zurich Altstetten<br> 2 minute walking from Tram 2 stop and Bus 31 stop
+                </p>
+                <div class="footer-socials">
+                    <a href="https://www.instagram.com/axcent_dance/" target="_blank" aria-label="Instagram">
+                        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                        </svg>
+                    </a>
+                    <a href="mailto:info@axcentdance.com" aria-label="Email">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                            </path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+
+
+            <!-- Quick Links (SEO) -->
+            <div class="footer-col">
+                <h4 class="footer-heading">Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="guide-bachata.html">Bachata in Zurich</a></li>
+                    <li><a href="wedding-dance.html">Wedding Dance</a></li>
+                    <li><a href="private-lessons.html">Private Lessons</a></li>
+
+                </ul>
+            </div>
+
+            <!-- Premium CTA Section -->
+
+
+            <!-- Legal -->
+            <div class="footer-col">
+                <h4 class="footer-heading">Legal</h4>
+                <ul class="footer-links">
+                    <li><a href="terms.html">Terms & Conditions</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="imprint.html">Imprint</a></li>
+                </ul>
+            </div>
         </div>
-      </div>
 
-
-
-      <!-- Quick Links (SEO) -->
-      <div class="footer-col">
-        <h4 class="footer-heading">Quick Links</h4>
-        <ul class="footer-links">
-          <li><a href="guide-bachata.html">Bachata in Zurich</a></li>
-          <li><a href="wedding-dance.html">Wedding Dance</a></li>
-          <li><a href="private-lessons.html">Private Lessons</a></li>
-
-        </ul>
-      </div>
-
-      <!-- Premium CTA Section -->
-
-
-      <!-- Legal -->
-      <div class="footer-col">
-        <h4 class="footer-heading">Legal</h4>
-        <ul class="footer-links">
-          <li><a href="terms.html">Terms & Conditions</a></li>
-          <li><a href="privacy.html">Privacy Policy</a></li>
-          <li><a href="imprint.html">Imprint</a></li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- Full Width Map for Index -->
-    <div class="container footer-map-full" style="margin-bottom: 2rem;">
-      <h4 class="footer-heading" style="margin-bottom: 1rem;">Find Us</h4>
-      <div class="footer-map-wrapper-large"
-        style="border-radius: 12px; overflow: hidden; border: 1px solid var(--glass-border);">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2701.567677685764!2d8.4844443!3d47.3861111!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47900a3910000001%3A0x1234567890abcdef!2sHermetschloostrasse%2073%2C%208048%20Z%C3%BCrich!5e0!3m2!1sen!2sch!4v1625000000000!5m2!1sen!2sch"
-          width="100%" height="250" style="border:0; width: 100%; display: block;" allowfullscreen="" loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"></iframe>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>&copy; 2025 AXcent Dance. All rights reserved.</p>
-    </div>
-  </footer>
+        <!-- Full Width Map for Index -->
+        <div class="container footer-map-full" style="margin-bottom: 2rem;">
+            <h4 class="footer-heading" style="margin-bottom: 1rem;">Find Us</h4>
+            <div class="footer-map-wrapper-large"
+                style="border-radius: 12px; overflow: hidden; border: 1px solid var(--glass-border);">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2701.567677685764!2d8.4844443!3d47.3861111!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47900a3910000001%3A0x1234567890abcdef!2sHermetschloostrasse%2073%2C%208048%20Z%C3%BCrich!5e0!3m2!1sen!2sch!4v1625000000000!5m2!1sen!2sch"
+                    width="100%" height="250" style="border:0; width: 100%; display: block;" allowfullscreen=""
+                    loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 AXcent Dance. All rights reserved.</p>
+        </div>
+    </footer>
 
     <script>
         // Accordion Functionality
@@ -371,59 +431,59 @@
     </script>
     <script src="script.js?v=2.1"></script>
 
-  
-  
 
 
-  
 
 
-  
 
 
-  
 
 
-  
 
 
-  
 
-  
 
-  <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const moreBtn = document.getElementById("mobileMoreBtn");
-        const drawer = document.getElementById("mobileDrawer");
-        const overlay = document.getElementById("mobileDrawerOverlay");
-        
-        function toggleDrawer(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            if(drawer) {
-                drawer.classList.toggle("active");
-                if(overlay) overlay.classList.toggle("active");
+
+
+
+
+
+
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const moreBtn = document.getElementById("mobileMoreBtn");
+            const drawer = document.getElementById("mobileDrawer");
+            const overlay = document.getElementById("mobileDrawerOverlay");
+
+            function toggleDrawer(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                if (drawer) {
+                    drawer.classList.toggle("active");
+                    if (overlay) overlay.classList.toggle("active");
+                }
             }
-        }
 
-        if(moreBtn) {
-            moreBtn.addEventListener("click", toggleDrawer);
-        }
-        
-        if(overlay) {
-            overlay.addEventListener("click", toggleDrawer);
-        }
+            if (moreBtn) {
+                moreBtn.addEventListener("click", toggleDrawer);
+            }
 
-        if(drawer) {
-             drawer.querySelectorAll("a").forEach(link => {
-                 link.addEventListener("click", () => {
-                     drawer.classList.remove("active");
-                     if(overlay) overlay.classList.remove("active");
-                 });
-             });
-        }
-    });
-  </script>
+            if (overlay) {
+                overlay.addEventListener("click", toggleDrawer);
+            }
+
+            if (drawer) {
+                drawer.querySelectorAll("a").forEach(link => {
+                    link.addEventListener("click", () => {
+                        drawer.classList.remove("active");
+                        if (overlay) overlay.classList.remove("active");
+                    });
+                });
+            }
+        });
+    </script>
 
 </body>
 
