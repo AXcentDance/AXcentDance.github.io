@@ -1206,7 +1206,7 @@
                         // Pre-fill email to ensure webhook matching
                         const userEmail = formData.get('email');
                         if (userEmail) {
-                            stripeLink += '?prefilled_email=' + encodeURIComponent(userEmail);
+                            stripeLink += '?prefilled_email=' + encodeURIComponent(userEmail) + '&client_reference_id=' + encodeURIComponent(userEmail);
                         }
                     } else {
                         alert("Invalid package selection.");
