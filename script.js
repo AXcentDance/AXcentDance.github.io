@@ -238,7 +238,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // We assume success if it doesn't throw.
                 .then(() => {
                     // 4. Success -> Redirect to existing Thank You page
-                    window.location.href = 'thank-you.html';
+                    window.location.href = 'thank-you-trial.html';
                 })
                 .catch(error => {
                     console.error('Error!', error.message);
