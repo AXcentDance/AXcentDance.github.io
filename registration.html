@@ -900,7 +900,7 @@
                     <div class="form-section" style="margin-top: 3rem;">
                         <div class="form-group">
                             <label class="checkbox-label" style="background: none; padding: 0;">
-                                <input type="checkbox" name="newsletter" value="yes" checked>
+                                <input type="checkbox" name="axcent_news" value="yes" checked>
                                 <span style="font-size: 0.9rem; color: var(--text-muted);">I want to stay connected
                                     with
                                     AXcent Dance news and events.</span>
@@ -1223,21 +1223,22 @@
                     document.querySelectorAll('input[name="classes[]"]:checked').forEach(cb => classes.push(cb.value));
 
                     // Google Sheets URL
-                    const GOOGLE_SCRIPT_URL = "https://script.google.com/a/macros/axcentdance.com/s/AKfycbzDzMkSGAKHukwbblwrefJ9kSq2esnEWmTCeGvT0KtRZ9sfEdzRH9e7EsatC6y8qLKBUA/exec";
+                    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzAQ5KsD_VOfrkeOVlD42uES5yC-EMaQhOBoi-kGkt80cjHqKTaJ5RhxAqRU8p8jugh/exec";
 
                     const submissionPayload = {
                         first_name: formData.get('firstname'),
                         last_name: formData.get('lastname'),
                         email: formData.get('email'),
                         phone: formData.get('phone'),
-                        sex: formData.get('sex'),
-                        package_name: selectedPackage,
+                        // sex: formData.get('sex'), // Removed from form
+                        pass_type: selectedPackage,
                         is_student: isStudent,
                         pass_start_date: formData.get('activation_date'),
                         pass_end_date: document.getElementById('pass_end_date').value,
                         dates_unavailable: datesUnavailable,
-                        selected_classes: classes,
-                        roles: rolesMap
+                        axcent_news: formData.get('axcent_news') ? 'Yes' : 'No',
+                        // combine classes and roles into a single readable string for the sheet
+                        selected_classes: Object.entries(rolesMap).map(([className, role]) => `${className} (${role})`).join(', ')
                     };
 
                     try {
@@ -1283,6 +1284,7 @@
                         Student: isStudent ? 'Yes' : 'No',
                         Package: selectedPackage,
                         DatesUnavailable: datesUnavailable || 'None',
+                        NewsSubscription: formData.get('axcent_news') ? 'Yes' : 'No',
                         SelectedClasses: Object.entries(rolesMap).map(([className, role]) => `${className} (${role})`).join('\n')
                     };
 
