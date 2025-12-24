@@ -26,8 +26,7 @@ Based on a review of the current project structure and content, here is a priori
 - **Test Suite**: Add automated tests (Stick with Playwright or Cypress) to verify critical flows (Registration, Schedule loading).
 
 ## 6. Developer Experience (DX)
-- **Formatting & Linting**: Add `.prettierrc` and `.eslintrc` to ensure consistent code style.
-- **Git Ignore**: Ensure large media files are managed properly.
+(Completed: Formatting & Git Ignore)
 
 ## 7. Security
 - **Content Security Policy (CSP)**: Add a CSP `<meta>` tag to prevent XSS attacks.
