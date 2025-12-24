@@ -646,19 +646,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group" style="margin-top: 1rem;">
-                            <label>Sex</label>
-                            <div class="radio-group" style="display: flex; gap: 2rem;">
-                                <label class="checkbox-label" style="flex: 1; justify-content: center;">
-                                    <input type="radio" name="sex" value="Male" required>
-                                    <span>Male 👨</span>
-                                </label>
-                                <label class="checkbox-label" style="flex: 1; justify-content: center;">
-                                    <input type="radio" name="sex" value="Female" required>
-                                    <span>Female 👩</span>
-                                </label>
-                            </div>
-                        </div>
+
                     </div>
 
                     <!-- 2. Class Passes -->
@@ -1281,27 +1269,42 @@
                         console.error('Submission Error:', err);
                     }
 
-                    // 5. Construct Email (Mailto) - BACKUP
-                    const subject = `Registration: ${formData.get('firstname')} ${formData.get('lastname')}`;
+                    // 5. Send Email via FormSubmit (Replaces Mailto)
+                    const formSubmitEmail = 'slamitza@gmail.com';
+                    const formSubmitURL = `https://formsubmit.co/ajax/${formSubmitEmail}`;
 
-                    const body = `
-Name: ${formData.get('firstname')} ${formData.get('lastname')}
-Email: ${formData.get('email')}
-Phone: ${formData.get('phone')}
-Sex: ${formData.get('sex')}
-Student: ${isStudent ? 'Yes' : 'No'}
-Package: ${selectedPackage}
-Dates Unavailable: ${datesUnavailable || 'None'}
+                    const formSubmitData = {
+                        _subject: `New Registration: ${formData.get('firstname')} ${formData.get('lastname')}`,
+                        _template: 'table',
+                        _captcha: 'false',
+                        Name: `${formData.get('firstname')} ${formData.get('lastname')}`,
+                        Email: formData.get('email'),
+                        Phone: formData.get('phone'),
+                        Student: isStudent ? 'Yes' : 'No',
+                        Package: selectedPackage,
+                        DatesUnavailable: datesUnavailable || 'None',
+                        SelectedClasses: Object.entries(rolesMap).map(([className, role]) => `${className} (${role})`).join('\n')
+                    };
 
-Selected Classes:
-${classes.join('\n')}
-                    `.trim();
+                    try {
+                        await fetch(formSubmitURL, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'Accept': 'application/json'
+                            },
+                            body: JSON.stringify(formSubmitData)
+                        });
+                        console.log('Email sent via FormSubmit');
+                    } catch (emailErr) {
+                        console.error('FormSubmit Error:', emailErr);
+                        // We continue to redirect even if email fails
+                    }
 
-                    const mailtoLink = `mailto:slamitza@gmail.com,info@axcentdance.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
                     // 6. Store Links & Redirect
                     localStorage.setItem('axcent_stripe_link', stripeLink);
-                    localStorage.setItem('axcent_mailto_link', mailtoLink);
+                    localStorage.removeItem('axcent_mailto_link'); // Clean up old data
 
                     window.location.href = 'cart.html';
                 });
