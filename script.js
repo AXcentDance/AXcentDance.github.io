@@ -231,8 +231,11 @@ document.addEventListener('DOMContentLoaded', () => {
             fetch(scriptURL, {
                 method: 'POST',
                 body: JSON.stringify(data),
-                // transformRequest: [function (data, headers) { delete headers.common['Content-Type']; return data; }] // Start with simple fetch first
-                mode: 'no-cors' // Often needed for Google Scripts to avoid CORS errors if not handling OPTIONS
+                headers: {
+                    "Content-Type": "text/plain;charset=utf-8"
+                },
+                mode: 'no-cors',
+                credentials: 'omit'
             })
                 // NOTE: With mode 'no-cors', we receive an opaque response. We cannot read the status or JSON.
                 // We assume success if it doesn't throw.
@@ -241,8 +244,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     window.location.href = 'thank-you-trial.html';
                 })
                 .catch(error => {
-                    console.error('Error!', error.message);
-                    alert('Something went wrong submitting the form. Please try again or contact us directly at info@axcentdance.com.');
+                    console.error('Error!', error);
+                    alert('Something went wrong submitting the form. Please try again or contact us directly at info@axcentdance.com.\n\nError details: ' + error.message);
 
                     // Reset button state
                     submitBtn.innerHTML = originalBtnContent;
