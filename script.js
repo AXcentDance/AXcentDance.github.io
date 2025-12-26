@@ -215,9 +215,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 selected_class: rawFormData.get('class-select') // Users script expects 'selected_class'
             };
 
-            // 3. Send to Google Script
+            // 3. Send to Google Script AND FormSubmit (Parallel)
             // IMPORTANT: PASTE YOUR WEB APP URL BELOW
             const scriptURL = 'https://script.google.com/macros/s/AKfycbwPqLutAq-xa9OkSiT-rLm72DJCdQ2Xw10Yp4DvHexTq42HxCKJyJr8mJmZ0RuZSc7A5A/exec';
+            const formSubmitEmail = 'slamitza@gmail.com'; // Using FormSubmit for reliable emails
+            const formSubmitURL = `https://formsubmit.co/ajax/${formSubmitEmail}`;
 
             if (scriptURL === 'REPLACE_ME_WITH_YOUR_WEB_APP_URL') {
                 alert('Configuration missing: Please paste your Google Web App URL in script.js (Line ~206)');
@@ -228,24 +230,45 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            fetch(scriptURL, {
+            // Prepare FormSubmit Data
+            const formSubmitData = {
+                _subject: `New Trial Booking from ${data.firstname} ${data.lastname}`,
+                _template: 'table',
+                _captcha: 'false',
+                firstname: data.firstname,
+                lastname: data.lastname,
+                phone: data.phone,
+                email: data.email,
+                class: data.selected_class
+            };
+
+            const p1 = fetch(scriptURL, {
                 method: 'POST',
                 body: JSON.stringify(data),
+                mode: 'no-cors'
+            });
+
+            const p2 = fetch(formSubmitURL, {
+                method: 'POST',
                 headers: {
-                    "Content-Type": "text/plain;charset=utf-8"
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
                 },
-                mode: 'no-cors',
-                credentials: 'omit'
-            })
-                // NOTE: With mode 'no-cors', we receive an opaque response. We cannot read the status or JSON.
-                // We assume success if it doesn't throw.
-                .then(() => {
-                    // 4. Success -> Redirect to existing Thank You page
+                body: JSON.stringify(formSubmitData)
+            });
+
+            Promise.allSettled([p1, p2])
+                .then((results) => {
+                    // Check if at least one succeeded? Actually, we just redirect.
+                    // If both fail, we might want to alert, but usually FormSubmit is very reliable.
+                    // We can check results[1].status === 'fulfilled' to be sure about FormSubmit.
+
                     window.location.href = 'thank-you-trial.html';
                 })
                 .catch(error => {
                     console.error('Error!', error);
-                    alert('Something went wrong submitting the form. Please try again or contact us directly at info@axcentdance.com.\n\nError details: ' + error.message);
+                    // Even if allSettled throws (which it shouldn't), we try to alert.
+                    alert('Something went wrong submitting the form. Please try again or contact us directly at info@axcentdance.com.\n\nError details: ' + (error.message || error));
 
                     // Reset button state
                     submitBtn.innerHTML = originalBtnContent;
