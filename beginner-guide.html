@@ -1004,6 +1004,43 @@
             }
         }
     </style>
+    </style>
+
+    <!-- Active Scroll Spy Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('.guide-article-section');
+            const navLinks = document.querySelectorAll('.nav-link-modern');
+
+            // Options to trigger when section is in the middle of viewport
+            const observerOptions = {
+                root: null,
+                // Trigger when section top is 150px from top, or when it covers 40% of screen
+                rootMargin: '-100px 0px -60% 0px',
+                threshold: 0
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Remove active class from all
+                        navLinks.forEach(link => link.classList.remove('active'));
+
+                        // Add active class to current
+                        const id = entry.target.getAttribute('id');
+                        const activeLink = document.querySelector(`.nav-link-modern[href="#${id}"]`);
+                        if (activeLink) {
+                            activeLink.classList.add('active');
+                        }
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
 </body>
 
 </html>

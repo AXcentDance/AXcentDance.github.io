@@ -21,9 +21,7 @@
         .education-hero {
             padding: 160px 20px 80px;
             text-align: center;
-            background: linear-gradient(to bottom, rgba(5, 2, 8, 0.8), var(--bg-main)), url('assets/images/hero.jpg');
-            background-size: cover;
-            background-position: center;
+            /* background: removed for SEO img refactor */
         }
 
         .edu-nav-container {
@@ -270,8 +268,13 @@
 
     <main>
         <!-- Hero Section -->
-        <section class="education-hero">
-            <div class="container">
+        <!-- Hero Section -->
+        <section class="education-hero relative-container">
+            <!-- Hero Image (SEO) -->
+            <img src="assets/images/bachata_education_book.webp" srcset="assets/images/bachata_education_book_480w.webp 480w, assets/images/bachata_education_book_800w.webp 800w, assets/images/bachata_education_book_1200w.webp 1200w" sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px" alt="Bachata Dance Education Book and Instruments" width="1024" height="1024" class="hero-bg-img" style="opacity: 0.5;" >
+            <div class="hero-overlay"></div>
+
+            <div class="container hero-content-z">
 
                 <span class="hero-badge-text"
                     style="color: var(--accent-start); letter-spacing: 0.2em; font-size: 0.9rem; font-weight: 700; display: block; margin-bottom: 1rem;">KNOWLEDGE

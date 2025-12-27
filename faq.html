@@ -79,9 +79,7 @@
         .faq-hero {
             padding: 160px 20px 40px;
             text-align: center;
-            background: linear-gradient(to bottom, rgba(5, 2, 8, 0.8), var(--bg-main)), url('assets/images/hero.jpg');
-            background-size: cover;
-            background-position: center;
+            /* background: removed for SEO img refactor */
         }
 
         .faq-container {
@@ -273,8 +271,13 @@
 
     <main>
         <!-- Hero Section -->
-        <section class="faq-hero">
-            <div class="container">
+        <!-- Hero Section -->
+        <section class="faq-hero relative-container">
+            <!-- Hero Image (SEO) -->
+            <img src="assets/images/faq_artistic_motion.webp" srcset="assets/images/faq_artistic_motion_480w.webp 480w, assets/images/faq_artistic_motion_800w.webp 800w, assets/images/faq_artistic_motion_1200w.webp 1200w" sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px" alt="Artistic Motion Blur of Couple Dancing Bachata" width="1024" height="1024" class="hero-bg-img" style="opacity: 0.6;" >
+            <div class="hero-overlay"></div>
+
+            <div class="container hero-content-z">
 
                 <div class="hero-badge">
                     <span class="hero-badge-line"></span>
