@@ -51,10 +51,6 @@
             height: 100%;
             object-fit: cover;
             opacity: 0.4;
-            /* Using existing hero image or a placeholder if preferred */
-            background-image: url('assets/images/bachata_class_zurich.webp');
-            background-position: center;
-            background-size: cover;
             filter: grayscale(30%) contrast(1.1);
             z-index: 0;
         }
@@ -600,7 +596,8 @@
     <main>
         <!-- 1. Hero Section -->
         <section class="guide-modern-hero">
-            <div class="hero-bg-image"></div>
+            <!-- Background Image (SEO) -->
+            <img src="assets/images/bachata_class_zurich.webp" srcset="assets/images/bachata_class_zurich_480w.webp 480w, assets/images/bachata_class_zurich_800w.webp 800w, assets/images/bachata_class_zurich_1200w.webp 1200w" sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px" alt="Bachata Classes in Zurich" width="1024" height="1024" class="hero-bg-image" >
             <div class="hero-gradient-overlay"></div>
 
             <div class="hero-content-modern">

@@ -1,5 +1,5 @@
 # AXcent Dance Website - Clean SEO Report
-**Generated:** 2025-12-27 13:45:53
+**Generated:** 2025-12-27 14:39:03
 **Location:** `System/SEO_Audit_Report.md`
 
 ## 1. SEO Metadata Audit
@@ -86,23 +86,14 @@ Checking for Image Count, Alt Text, and Responsive Attributes...
 ```text
 File                                     | Issue                          | Details
 ------------------------------------------------------------------------------------------------------------------------
-guide-social-dancing.html                | No Images Found              | Page has 0 <img> tags
 admin.html                               | No Images Found              | Page has 0 <img> tags
 contact.html                             | No Images Found              | Page has 0 <img> tags
-beginner-guide.html                      | No Images Found              | Page has 0 <img> tags
 thank-you-contact.html                   | No Images Found              | Page has 0 <img> tags
 terms.html                               | No Images Found              | Page has 0 <img> tags
 404.html                                 | No Images Found              | Page has 0 <img> tags
 portal.html                              | No Images Found              | Page has 0 <img> tags
-bachata-beginner-2.html                  | No Images Found              | Page has 0 <img> tags
-guide-bachata-sensual.html               | No Images Found              | Page has 0 <img> tags
-lady-styling.html                        | No Images Found              | Page has 0 <img> tags
 imprint.html                             | No Images Found              | Page has 0 <img> tags
-bachata-sensual-inter-adv.html           | No Images Found              | Page has 0 <img> tags
-bachata-sensual-improver.html            | No Images Found              | Page has 0 <img> tags
-bachata-sensual-foundation.html          | No Images Found              | Page has 0 <img> tags
 etiquette.html                           | No Images Found              | Page has 0 <img> tags
-bachata-beginner-0.html                  | No Images Found              | Page has 0 <img> tags
 education.html                           | No Images Found              | Page has 0 <img> tags
 cart.html                                | No Images Found              | Page has 0 <img> tags
 private-lessons.html                     | No Images Found              | Page has 0 <img> tags
@@ -117,6 +108,6 @@ blog-posts/roots-of-bachata.html         | No Images Found              | Page h
 blog-posts/blog-new-location.html        | No Images Found              | Page has 0 <img> tags
 ------------------------------------------------------------------------------------------------------------------------
 Total files checked: 46
-Total potential improvements found: 29
+Total potential improvements found: 20
 ```
 
