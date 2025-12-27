@@ -1,5 +1,5 @@
 # AXcent Dance Website - Clean SEO Report
-**Generated:** 2025-12-27 14:39:03
+**Generated:** 2025-12-27 15:03:12
 **Location:** `System/SEO_Audit_Report.md`
 
 ## 1. SEO Metadata Audit
@@ -86,28 +86,12 @@ Checking for Image Count, Alt Text, and Responsive Attributes...
 ```text
 File                                     | Issue                          | Details
 ------------------------------------------------------------------------------------------------------------------------
-admin.html                               | No Images Found              | Page has 0 <img> tags
 contact.html                             | No Images Found              | Page has 0 <img> tags
-thank-you-contact.html                   | No Images Found              | Page has 0 <img> tags
-terms.html                               | No Images Found              | Page has 0 <img> tags
-404.html                                 | No Images Found              | Page has 0 <img> tags
-portal.html                              | No Images Found              | Page has 0 <img> tags
-imprint.html                             | No Images Found              | Page has 0 <img> tags
 etiquette.html                           | No Images Found              | Page has 0 <img> tags
 education.html                           | No Images Found              | Page has 0 <img> tags
-cart.html                                | No Images Found              | Page has 0 <img> tags
-private-lessons.html                     | No Images Found              | Page has 0 <img> tags
 faq.html                                 | No Images Found              | Page has 0 <img> tags
-thank-you.html                           | No Images Found              | Page has 0 <img> tags
-privacy.html                             | No Images Found              | Page has 0 <img> tags
-thank-you-trial.html                     | No Images Found              | Page has 0 <img> tags
-blog-posts/what-to-wear-bachata.html     | No Images Found              | Page has 0 <img> tags
-blog-posts/christmas-break-2025.html     | No Images Found              | Page has 0 <img> tags
-blog-posts/connection-101.html           | No Images Found              | Page has 0 <img> tags
-blog-posts/roots-of-bachata.html         | No Images Found              | Page has 0 <img> tags
-blog-posts/blog-new-location.html        | No Images Found              | Page has 0 <img> tags
 ------------------------------------------------------------------------------------------------------------------------
 Total files checked: 46
-Total potential improvements found: 20
+Total potential improvements found: 4
 ```
 

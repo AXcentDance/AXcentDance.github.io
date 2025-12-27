@@ -30,7 +30,19 @@ def check_advanced_image_quality():
             img_tags = re.findall(r'<img\s+([^>]+)>', content, re.IGNORECASE)
             
             # Skip check for specific utility files if needed (e.g., partials starting with _)
+            
+            # Exclusion list for "No Images" check (Utility/Legal/Error pages)
+            # FAQ is explicitly KEPT in the check.
+            IGNORED_NO_IMAGES = [
+                '404.html', 'terms.html', 'imprint.html', 'privacy.html', 
+                'admin.html', 'thank-you.html', 'thank-you-contact.html', 
+                'thank-you-trial.html', 'portal.html', 'cart.html'
+            ]
+            
             if not img_tags and not file.startswith("_"):
+                if file in IGNORED_NO_IMAGES:
+                    continue # Skip checking these files entirely for image issues
+                    
                 # Also check if there are no background images in style blocks? No, user asked for "picture"
                 print(f"{rel_path:<40} | No Images Found              | Page has 0 <img> tags")
                 issues_count += 1

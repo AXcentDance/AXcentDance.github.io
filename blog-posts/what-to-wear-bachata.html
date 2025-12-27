@@ -48,7 +48,7 @@
         .post-hero {
             padding: 160px 20px 80px;
             text-align: center;
-            background: linear-gradient(to bottom, rgba(5, 2, 8, 0.8), var(--bg-main)), url('../assets/images/bachata_essentials_flatlay.webp');
+            background: none;
             background-size: cover;
             background-position: center;
         }
@@ -166,8 +166,10 @@
 
     <main>
         <!-- Hero Section -->
-        <section class="post-hero">
-            <div class="container">
+        <section class="post-hero relative-container" style="background: none;">
+      <img src="../assets/images/bachata_essentials_flatlay.webp" srcset="../assets/images/bachata_essentials_flatlay_480w.webp 480w, ../assets/images/bachata_essentials_flatlay_800w.webp 800w, ../assets/images/bachata_essentials_flatlay_1200w.webp 1200w" sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px" alt="What to Wear to Bachata Class: A Beginner" width="1024" height="1024" class="hero-bg-img" >
+      <div class="hero-overlay"></div>
+      <div class="container hero-content-z">
                 <span class="post-meta">Dance Tips / Beginner • December 9, 2025 • Written by <a href="../about"
                         style="color: inherit; text-decoration: none;">Ale & Xidan</a></span>
                 <h1 class="page-title">What to Wear to Bachata Class</h1>
