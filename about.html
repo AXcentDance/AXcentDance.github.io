@@ -394,7 +394,7 @@
                 <a href="registration">Registration</a>
                 <a href="events">Events</a>
                 <a href="contact">Contact</a>
-                <!-- <a href="login" style="color:var(--accent-light);">Log In</a> -->
+                <!-- <a href="_login" style="color:var(--accent-light);">Log In</a> -->
                 <div class="dropdown">
                     <button class="dropbtn">More ▾</button>
                     <div class="dropdown-content">
@@ -439,9 +439,9 @@
                     <div style="display: flex; width: 100%; align-items: center; gap: 2rem; flex-wrap: wrap;">
                         <!-- Legend Side -->
                         <div class="globe-legend" style="text-align: left;">
-                            <h3 style="font-size: 1.5rem; color: white; margin-bottom: 1rem; text-align: left;">Our
-                                Global Footprint</h3>
-                            <p style="color: var(--text-muted); margin-bottom: 1.5rem; font-size: 0.95rem;">
+                            <h2 style="font-size: 1.5rem; color: white; margin-bottom: 1rem; text-align: left;">Our
+                                Mission</h2>
+                            <p class="mission-text">
                                 We are honored to have been invited to teach and share our passion with dance
                                 communities across the globe.
                             </p>
@@ -499,14 +499,14 @@
                             and inspired to express themselves.
                         </p>
 
-                        <h3>As International Artists</h3>
+                        <h2>As International Artists</h2>
                         <p>
                             We have shared our passion in over 12 countries. We are also proud to serve as
                             official judges for the Swiss Championship IDO and are active event organizers, dedicated to
                             elevating the dance community.
                         </p>
 
-                        <h3>Our Philosophy</h3>
+                        <h2>Our Philosophy</h2>
                         <p>
                             Our teaching methodology is built on a strong foundation of technique, musicality, and
                             connection. We don't just teach you <em>what</em> to do, but <em>how</em> to do it with
@@ -546,11 +546,12 @@
                         <a href="events" style="text-decoration: none; color: inherit; display: block; height: 100%;">
                             <div class="organizer-card-content">
                                 <div class="organizer-badge">DOMINICAN BACHATA INTENSIVE BOOTCAMP</div>
-                                <h3 class="organizer-event-title">Zurich's Premier Dominican Event</h3>
-                                <p class="organizer-event-desc">
-                                    We host the <strong>biggest Dominican event in Zurich</strong>, creating a home for
-                                    authentic culture and music in the heart of Switzerland.
-                                </p>
+                                <h2 class="organizer-event-title">Zurich's Premier Dominican Event</h3>
+                                    <p class="organizer-event-desc">
+                                        We host the <strong>biggest Dominican event in Zurich</strong>, creating a home
+                                        for
+                                        authentic culture and music in the heart of Switzerland.
+                                    </p>
                             </div>
                         </a>
                     </div>
@@ -561,12 +562,12 @@
                             style="text-decoration: none; color: inherit; display: block; height: 100%;">
                             <div class="organizer-card-content">
                                 <div class="organizer-badge">INTERNATIONAL CONGRESS</div>
-                                <h3 class="organizer-event-title">Milano Sensual Congress</h3>
-                                <p class="organizer-event-desc">
-                                    Co-organizers of one of Italy's top Bachata Sensual congresses.
-                                    <br><span class="highlight-text">Top World Artists</span> • <span
-                                        class="highlight-text">4.5 Star Luxury Hotel</span>
-                                </p>
+                                <h2 class="organizer-event-title">Milano Sensual Congress</h3>
+                                    <p class="organizer-event-desc">
+                                        Co-organizers of one of Italy's top Bachata Sensual congresses.
+                                        <br><span class="highlight-text">Top World Artists</span> • <span
+                                            class="highlight-text">4.5 Star Luxury Hotel</span>
+                                    </p>
                             </div>
                         </a>
                     </div>
@@ -605,17 +606,18 @@
             </div>
 
             <div class="footer-col">
-                <h4 class="footer-heading">Quick Links</h4>
+                <h2 class="footer-heading">Quick Links</h2>
                 <ul class="footer-links">
-                    <li><a href="guide-bachata">Bachata in Zurich</a></li>
-                    <li><a href="wedding-dance">Wedding Dance</a></li>
-                    <li><a href="private-lessons">Private Lessons</a></li>
+                    <li><a href="guide-bachata">What is Bachata</a></li>
+                    <li><a href="blog-posts/roots-of-bachata">Roots of Bachata</a></li>
+                    <li><a href="schedule">Class Schedule</a></li>
+                    <li><a href="blog">Our Blog</a></li>
 
                 </ul>
             </div>
 
             <div class="footer-col">
-                <h4 class="footer-heading">Legal</h4>
+                <h2 class="footer-heading">Legal</h2>
                 <ul class="footer-links">
                     <li><a href="terms">Terms & Conditions</a></li>
                     <li><a href="privacy">Privacy Policy</a></li>
@@ -626,7 +628,7 @@
 
         <!-- Full Width Map -->
         <div class="container footer-map-full" style="margin-bottom: 2rem;">
-            <h4 class="footer-heading" style="margin-bottom: 1rem;">Find Us</h4>
+            <h2 class="footer-heading" style="margin-bottom: 1rem;">Find Us</h2>
             <div class="footer-map-wrapper-large"
                 style="border-radius: 12px; overflow: hidden; border: 1px solid var(--glass-border);">
                 <iframe title="Google Maps Location of AXcent Dance"
@@ -762,7 +764,7 @@
                             }
 
                             // Build List
-                            let listHtml = '<h4 style="margin-bottom:10px; color:var(--accent-light);">🇨🇭 Switzerland</h4><ul style="list-style:none; padding:0; margin:0; line-height:1.6;">';
+                            let listHtml = '<h2 style="margin-bottom:10px; color:var(--accent-light);">🇨🇭 Switzerland</h2><ul style="list-style:none; padding:0; margin:0; line-height:1.6;">';
                             point.cities.forEach(city => {
                                 listHtml += `<li>${city}</li>`;
                             });

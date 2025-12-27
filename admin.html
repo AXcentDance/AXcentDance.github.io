@@ -174,11 +174,11 @@
         <!-- 1. LIVE CHECK-INS -->
         <div id="live" class="dashboard-section active">
             <div class="stat-card">
-                <h3>Checked In Today</h3>
-                <h1 id="checkInCount" style="font-size: 3rem; color: var(--accent-start);">0</h1>
+                <h2>Checked In Today</h2>
+                <div id="checkInCount" style="font-size: 3rem; color: var(--accent-start);">0</div>
             </div>
 
-            <h3>Recent Activity</h3>
+            <h2>Recent Activity</h2>
             <table id="liveTable">
                 <thead>
                     <tr>
@@ -199,7 +199,7 @@
         <!-- 2. ACTIVE STUDENTS (Filtered) -->
         <div id="active-students" class="dashboard-section">
             <div style="display: flex; justify-content: space-between; align-items: center;">
-                <h3>Currently Active Passes</h3>
+                <h2>Currently Active Passes</h2>
                 <button onclick="window.print()"
                     style="background: rgba(255,255,255,0.1); border:none; color: white; padding: 5px 10px; border-radius: 5px; cursor: pointer;">Print
                     List</button>
@@ -225,7 +225,7 @@
 
         <!-- 3. ALL HISTORY -->
         <div id="all-students" class="dashboard-section">
-            <h3>Full Student Database</h3>
+            <h2>Full Student Database</h2>
             <table id="allTable">
                 <thead>
                     <tr>
@@ -254,7 +254,7 @@
                 return;
             }
             if (user.email !== 'info@axcentdance.com') { // ⚠️ Hardcoded Security Check (Matches DB Policy)
-                document.body.innerHTML = '<div class="container" style="padding-top:100px"><h1>Access Denied 🚫</h1><p>You are not an authorized administrator.</p></div>';
+                document.body.innerHTML = '<div class="container" style="padding-top:100px"><h2>Access Denied 🚫</h2><p>You are not an authorized administrator.</p></div>';
                 return;
             }
             document.getElementById('adminUserDisplay').textContent = `Logged in as: ${user.email}`;

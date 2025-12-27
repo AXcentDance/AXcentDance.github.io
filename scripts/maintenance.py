@@ -1,25 +1,7 @@
 import os
 import re
 
-def minify_css(content):
-    # Remove comments
-    content = re.sub(r'/\*[\s\S]*?\*/', '', content)
-    # Remove whitespace
-    content = re.sub(r'\s+', ' ', content)
-    content = re.sub(r'\s*([:;{}])\s*', r'\1', content)
-    return content.strip()
 
-def minify_js(content):
-    # Simple JS minification (removes comments and extra whitespace)
-    # Note: This is a basic minifier. For production complexities, a proper tool is recommended.
-    # Remove single line comments
-    content = re.sub(r'//.*', '', content)
-    # Remove multi-line comments
-    content = re.sub(r'/\*[\s\S]*?\*/', '', content)
-    # Remove whitespace
-    content = re.sub(r'\s+', ' ', content)
-    content = re.sub(r'\s*([=+\-*/{}();,])\s*', r'\1', content)
-    return content.strip()
 
 def strip_html(content):
     # Remove script and style tags and their content
@@ -83,28 +65,6 @@ def generate_llms_full(root_dir, output_file):
 def main():
     root_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     
-    # Minify CSS
-    css_path = os.path.join(root_dir, 'style.css')
-    min_css_path = os.path.join(root_dir, 'style.min.css')
-    if os.path.exists(css_path):
-        print("Minifying style.css...")
-        with open(css_path, 'r', encoding='utf-8') as f:
-            css_content = f.read()
-        min_css = minify_css(css_content)
-        with open(min_css_path, 'w', encoding='utf-8') as f:
-            f.write(min_css)
-    
-    # Minify JS
-    js_path = os.path.join(root_dir, 'script.js')
-    min_js_path = os.path.join(root_dir, 'script.min.js')
-    if os.path.exists(js_path):
-        print("Minifying script.js...")
-        with open(js_path, 'r', encoding='utf-8') as f:
-            js_content = f.read()
-        min_js = minify_js(js_content)
-        with open(min_js_path, 'w', encoding='utf-8') as f:
-            f.write(min_js)
-
     # Generate llms-full.txt
     generate_llms_full(root_dir, os.path.join(root_dir, 'llms-full.txt'))
 
