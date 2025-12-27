@@ -8,6 +8,7 @@ import seo_audit
 import broken_link_checker
 import image_seo_checker
 import heading_structure_checker
+import advanced_image_checker
 
 # Define output path
 ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -49,6 +50,12 @@ def main():
             print("Validating H1-H6 hierarchy order...")
             print("```text")
             heading_structure_checker.check_headings()
+            print("```\n")
+            
+            print("## 5. Advanced Image Quality Audit")
+            print("Checking for Image Count, Alt Text, and Responsive Attributes...")
+            print("```text")
+            advanced_image_checker.check_advanced_image_quality()
             print("```\n")
             
     except Exception as e:
