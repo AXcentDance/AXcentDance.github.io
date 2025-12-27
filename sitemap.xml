@@ -95,11 +95,6 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
-  <url>
-    <loc>https://axcentdance.com/collaborations</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
 
   <url>
     <loc>https://axcentdance.com/blog-posts/what-to-wear-bachata</loc>

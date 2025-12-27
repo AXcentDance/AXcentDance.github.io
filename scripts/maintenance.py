@@ -50,7 +50,6 @@ def generate_llms_full(root_dir, output_file):
         ('beginner-guide.html', 'Beginner Guide'),
         ('etiquette.html', 'Dance Etiquette'),
         ('corporate-events.html', 'Corporate Events'),
-        ('collaborations.html', 'Collaborations'),
         ('faq.html', 'FAQ'),
         ('gallery.html', 'Gallery'),
     ]
