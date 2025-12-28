@@ -21,7 +21,6 @@
 | Page | File | Breadcrumb Path |
 | :--- | :--- | :--- |
 | **Events Overview** | `events.html` | Home > Events |
-
 | **Milano Congress** | `Milano-Sensual-Congress-2026.html` | Home > Events > Milano Sensual Congress 2026 |
 
 ## Education & Guides
