@@ -336,9 +336,19 @@ info@axcentdance.com`,
                 _subject: `New Contact from ${data.name}`,
                 _template: 'table', // or 'box'
                 _captcha: 'false',  // Disable captcha if you want instant submission
-                _autoresponse: `Thank you for submitting the contact form!
+                _autoresponse: `Thank you for contacting AXcent Dance!
 
-We will get back to you shortly via email or WhatsApp.
+We have received your message and will get back to you shortly via email or WhatsApp.
+
+Here are our contact details if you need to reach us urgently:
+Phone/WhatsApp: +41 79 966 84 81
+Email: info@axcentdance.com
+
+Location:
+AXcent Dance Studio
+Hermetschloostrasse 73
+8048 Zurich Altstetten
+(1st Floor)
 
 Best regards,
 The AXcent Dance Team
