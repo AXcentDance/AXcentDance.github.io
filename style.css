@@ -1553,15 +1553,12 @@ textarea {
 .framed-hero-inner::before {
     content: '';
     position: absolute;
-    inset: -25px;
-    border: 1px solid var(--accent-start);
-    /* Changed to brand color */
+    inset: -18px;
+    border: 2px solid var(--accent-start);
     border-radius: 35px;
-    transform: rotate(2deg);
+    transform: rotate(3deg);
     z-index: -2;
     pointer-events: none;
-    opacity: 0.05;
-    /* Added opacity for better look */
 }
 
 .floating-element {

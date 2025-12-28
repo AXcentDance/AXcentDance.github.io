@@ -235,6 +235,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 _subject: `New Trial Booking from ${data.firstname} ${data.lastname}`,
                 _template: 'table',
                 _captcha: 'false',
+                _autoresponse: `Thank you for submitting the trial form!
+
+We will contact you shortly via WhatsApp (or email if we can't find you on WhatsApp).
+We are looking forward to having you join our dance family!
+
+Location:
+AXcent Dance Studio
+Hermetschloostrasse 73
+8048 Zurich Altstetten
+
+Best regards,
+The AXcent Dance Team
+info@axcentdance.com`,
                 firstname: data.firstname,
                 lastname: data.lastname,
                 phone: data.phone,
@@ -259,10 +272,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
             Promise.allSettled([p1, p2])
                 .then((results) => {
-                    // Check if at least one succeeded? Actually, we just redirect.
-                    // If both fail, we might want to alert, but usually FormSubmit is very reliable.
-                    // We can check results[1].status === 'fulfilled' to be sure about FormSubmit.
+                    const formSubmitResult = results[1];
+                    if (formSubmitResult.status === 'fulfilled') {
+                        console.log('FormSubmit status:', formSubmitResult.value.status);
+                        if (!formSubmitResult.value.ok) {
+                            alert('Warning: FormSubmit email service returned an error. Please check the console.');
+                        }
+                    } else {
+                        console.error('FormSubmit Network Error:', formSubmitResult.reason);
+                    }
 
+                    // Give a moment to see logs before redirect (optional, or just redirect)
                     window.location.href = 'thank-you-trial.html';
                 })
                 .catch(error => {
@@ -316,6 +336,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 _subject: `New Contact from ${data.name}`,
                 _template: 'table', // or 'box'
                 _captcha: 'false',  // Disable captcha if you want instant submission
+                _autoresponse: `Thank you for submitting the contact form!
+
+We will get back to you shortly via email or WhatsApp.
+
+Best regards,
+The AXcent Dance Team
+info@axcentdance.com`,
                 name: data.name,
                 email: data.email,
                 phone: data.phone,
