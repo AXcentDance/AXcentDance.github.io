@@ -327,60 +327,21 @@ info@axcentdance.com`,
             };
 
             // 3. Send to Google Script AND FormSubmit (Parallel)
+            // 3. Send to Google Script ONLY (Handles Email & Sheet)
+            // Ensure this URL matches your deployed Web App URL
             const googleScriptURL = 'https://script.google.com/macros/s/AKfycbxOYwPUSX0twewRAHIA-7k4Cyds8oH9i6wUuFDLcTM68ZyWK9MO1RF2wQ7rYUUBDbgrZw/exec';
-            const formSubmitEmail = 'slamitza@gmail.com'; // Using FormSubmit for reliable emails
-            const formSubmitURL = `https://formsubmit.co/ajax/${formSubmitEmail}`;
 
-            // Prepare FormSubmit Data (Needs hidden fields for configuration)
-            const formSubmitData = {
-                _subject: `New Contact from ${data.name}`,
-                _template: 'table', // or 'box'
-                _captcha: 'false',  // Disable captcha if you want instant submission
-                _autoresponse: `Thank you for contacting AXcent Dance!
-
-We have received your message and will get back to you shortly via email or WhatsApp.
-
-Here are our contact details if you need to reach us urgently:
-Phone/WhatsApp: +41 79 966 84 81
-Email: info@axcentdance.com
-
-Location:
-AXcent Dance Studio
-Hermetschloostrasse 73
-8048 Zurich Altstetten
-(1st Floor)
-
-Best regards,
-The AXcent Dance Team
-info@axcentdance.com`,
-                name: data.name,
-                email: data.email,
-                phone: data.phone,
-                message: data.message
-            };
-
-            const p1 = fetch(googleScriptURL, {
+            fetch(googleScriptURL, {
                 method: 'POST',
                 body: JSON.stringify(data),
                 mode: 'no-cors'
-            });
-
-            const p2 = fetch(formSubmitURL, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: JSON.stringify(formSubmitData)
-            });
-
-            Promise.allSettled([p1, p2])
-                .then((results) => {
-                    // We redirect regardless because no-cors acts opaque
+            })
+                .then(() => {
+                    // With no-cors, we assume success if the request completes
                     window.location.href = 'thank-you-contact.html';
                 })
                 .catch(error => {
-                    console.error('Error!', error.message);
+                    console.error('Error!', error);
                     alert('Something went wrong sending your message. Please try again later.');
 
                     // Reset button state
