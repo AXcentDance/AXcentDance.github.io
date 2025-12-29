@@ -215,22 +215,67 @@ document.addEventListener('DOMContentLoaded', () => {
                 selected_class: rawFormData.get('class-select') // Users script expects 'selected_class'
             };
 
-            // 3. Send to Google Apps Script (Unified)
-            // Using the same Web App URL as the Contact Form
+            // 3. Send to Google Script AND FormSubmit (Parallel)
+            // IMPORTANT: PASTE YOUR WEB APP URL BELOW
             const scriptURL = 'https://script.google.com/macros/s/AKfycbwPqLutAq-xa9OkSiT-rLm72DJCdQ2Xw10Yp4DvHexTq42HxCKJyJr8mJmZ0RuZSc7A5A/exec';
+            const formSubmitEmail = 'slamitza@gmail.com'; // Using FormSubmit for reliable emails
+            const formSubmitURL = `https://formsubmit.co/ajax/${formSubmitEmail}`;
 
-            fetch(scriptURL, {
+            if (scriptURL === 'REPLACE_ME_WITH_YOUR_WEB_APP_URL') {
+                alert('Configuration missing: Please paste your Google Web App URL in script.js (Line ~206)');
+                submitBtn.innerHTML = originalBtnContent;
+                submitBtn.disabled = false;
+                submitBtn.style.opacity = '1';
+                submitBtn.style.cursor = 'pointer';
+                return;
+            }
+
+            // Prepare FormSubmit Data
+            const formSubmitData = {
+                _subject: `New Trial Booking from ${data.firstname} ${data.lastname}`,
+                _template: 'table',
+                _captcha: 'false',
+                firstname: data.firstname,
+                lastname: data.lastname,
+                phone: data.phone,
+                email: data.email,
+                class: data.selected_class
+            };
+
+            const p1 = fetch(scriptURL, {
                 method: 'POST',
                 body: JSON.stringify(data),
                 mode: 'no-cors'
-            })
-                .then(() => {
-                    // With no-cors, we assume success
+            });
+
+            const p2 = fetch(formSubmitURL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(formSubmitData)
+            });
+
+            Promise.allSettled([p1, p2])
+                .then((results) => {
+                    const formSubmitResult = results[1];
+                    if (formSubmitResult.status === 'fulfilled') {
+                        console.log('FormSubmit status:', formSubmitResult.value.status);
+                        if (!formSubmitResult.value.ok) {
+                            alert('Warning: FormSubmit email service returned an error. Please check the console.');
+                        }
+                    } else {
+                        console.error('FormSubmit Network Error:', formSubmitResult.reason);
+                    }
+
+                    // Give a moment to see logs before redirect (optional, or just redirect)
                     window.location.href = 'thank-you-trial.html';
                 })
                 .catch(error => {
                     console.error('Error!', error);
-                    alert('Something went wrong submitting the form. Please try again or contact us directly at info@axcentdance.com.');
+                    // Even if allSettled throws (which it shouldn't), we try to alert.
+                    alert('Something went wrong submitting the form. Please try again or contact us directly at info@axcentdance.com.\n\nError details: ' + (error.message || error));
 
                     // Reset button state
                     submitBtn.innerHTML = originalBtnContent;
@@ -268,22 +313,62 @@ document.addEventListener('DOMContentLoaded', () => {
                 message: rawFormData.get('message')
             };
 
-            // 3. Send to Google Apps Script (Single Source of Truth)
-            // Updated URL provided by user (replaces previous Trial Form script)
-            const googleScriptURL = 'https://script.google.com/macros/s/AKfycbwPqLutAq-xa9OkSiT-rLm72DJCdQ2Xw10Yp4DvHexTq42HxCKJyJr8mJmZ0RuZSc7A5A/exec';
+            // 3. Send to Google Script AND FormSubmit (Parallel)
+            const googleScriptURL = 'https://script.google.com/macros/s/AKfycbxOYwPUSX0twewRAHIA-7k4Cyds8oH9i6wUuFDLcTM68ZyWK9MO1RF2wQ7rYUUBDbgrZw/exec';
+            const formSubmitEmail = 'slamitza@gmail.com'; // Using FormSubmit for reliable emails
+            const formSubmitURL = `https://formsubmit.co/ajax/${formSubmitEmail}`;
 
-            fetch(googleScriptURL, {
+            // Prepare FormSubmit Data (Needs hidden fields for configuration)
+            const formSubmitData = {
+                _subject: `New Contact from ${data.name}`,
+                _template: 'table', // or 'box'
+                _captcha: 'false',  // Disable captcha if you want instant submission
+                _autoresponse: `Thank you for contacting AXcent Dance!
+
+We have received your message and will get back to you shortly via email or WhatsApp.
+
+Here are our contact details if you need to reach us urgently:
+Phone/WhatsApp: +41 79 966 84 81
+Email: info@axcentdance.com
+
+Location:
+AXcent Dance Studio
+Hermetschloostrasse 73
+8048 Zurich Altstetten
+(1st Floor)
+
+Best regards,
+The AXcent Dance Team
+info@axcentdance.com`,
+                name: data.name,
+                email: data.email,
+                phone: data.phone,
+                message: data.message
+            };
+
+            const p1 = fetch(googleScriptURL, {
                 method: 'POST',
                 body: JSON.stringify(data),
-                mode: 'no-cors' // 'no-cors' is required for simple GAS web apps
-            })
-                .then(() => {
-                    // With no-cors, we cannot identify errors, so we assume success
+                mode: 'no-cors'
+            });
+
+            const p2 = fetch(formSubmitURL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(formSubmitData)
+            });
+
+            Promise.allSettled([p1, p2])
+                .then((results) => {
+                    // We redirect regardless because no-cors acts opaque
                     window.location.href = 'thank-you-contact.html';
                 })
                 .catch(error => {
-                    console.error('Error!', error);
-                    alert('Something went wrong sending your message. Please try again later or email us at info@axcentdance.com.');
+                    console.error('Error!', error.message);
+                    alert('Something went wrong sending your message. Please try again later.');
 
                     // Reset button state
                     submitBtn.innerHTML = originalBtnContent;
