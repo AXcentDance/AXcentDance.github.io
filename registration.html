@@ -540,7 +540,10 @@
                 <div class="hero-content-right">
                     <div class="framed-hero-wrapper">
                         <div class="framed-hero-inner">
-                            <img src="assets/images/registration_hero_placeholder.webp" srcset="assets/images/registration_hero_placeholder_480w.webp 480w, assets/images/registration_hero_placeholder_800w.webp 800w, assets/images/registration_hero_placeholder_1200w.webp 1200w" sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px" alt="Bachata Dance Class Placeholder" width="1024" height="1024" >
+                            <img src="assets/images/registration_hero_placeholder.webp"
+                                srcset="assets/images/registration_hero_placeholder_480w.webp 480w, assets/images/registration_hero_placeholder_800w.webp 800w, assets/images/registration_hero_placeholder_1200w.webp 1200w"
+                                sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px"
+                                alt="Bachata Dance Class Placeholder" width="1024" height="1024">
                         </div>
                     </div>
                 </div>
@@ -789,23 +792,85 @@
                         </p>
 
                         <div class="timetable-selection-grid">
+                            <!-- Tuesday Column -->
+                            <div class="timetable-col">
+                                <h3 class="timetable-day-header">Tuesday</h3>
+
+                                <!-- Spacer for 18:30 Alignment -->
+                                <div class="class-option-wrapper" style="visibility: hidden; pointer-events: none;">
+                                    <label class="class-option">
+                                        <input type="checkbox" disabled>
+                                        <div class="class-option-card">
+                                            <span class="time">18:30</span>
+                                            <div class="class-details">
+                                                <span class="name">Spacer Class</span>
+                                                <span class="class-instructor-small">Spacer</span>
+                                            </div>
+                                        </div>
+                                    </label>
+                                    <div class="class-role-select">
+                                        <label><input type="radio" disabled><span>Leader</span></label>
+                                        <label><input type="radio" disabled><span>Follower</span></label>
+                                    </div>
+                                </div>
+
+                                <div class="class-option-wrapper">
+                                    <label class="class-option">
+                                        <input type="checkbox" name="classes[]" value="Tue 19:30 Beginner 0">
+                                        <div class="class-option-card">
+                                            <span class="time">19:30</span>
+                                            <div class="class-details">
+                                                <span class="name">Bachata Beginner 0</span>
+                                                <span class="class-instructor-small">with Ale y Alexia</span>
+                                            </div>
+                                        </div>
+                                    </label>
+                                    <div class="class-role-select">
+                                        <label><input type="radio" name="role_Tue_1930_Beginner_0"
+                                                value="Leader"><span>Leader</span></label>
+                                        <label><input type="radio" name="role_Tue_1930_Beginner_0"
+                                                value="Follower"><span>Follower</span></label>
+                                    </div>
+                                </div>
+
+                                <!-- Spacer for 20:30 Alignment -->
+                                <div class="class-option-wrapper" style="visibility: hidden; pointer-events: none;">
+                                    <label class="class-option">
+                                        <input type="checkbox" disabled>
+                                        <div class="class-option-card">
+                                            <span class="time">20:30</span>
+                                            <div class="class-details">
+                                                <span class="name">Spacer Class</span>
+                                                <span class="class-instructor-small">Spacer</span>
+                                            </div>
+                                        </div>
+                                    </label>
+                                    <div class="class-role-select">
+                                        <label><input type="radio" disabled><span>Leader</span></label>
+                                        <label><input type="radio" disabled><span>Follower</span></label>
+                                    </div>
+                                </div>
+                            </div>
+
                             <!-- Wednesday Column -->
                             <div class="timetable-col">
                                 <h3 class="timetable-day-header">Wednesday</h3>
 
-                                <div class="class-option-wrapper">
+                                <!-- Spacer for 18:30 Alignment -->
+                                <div class="class-option-wrapper" style="visibility: hidden; pointer-events: none;">
                                     <label class="class-option">
-                                        <input type="checkbox" name="classes[]" value="Wed 18:30 Beginner 0">
+                                        <input type="checkbox" disabled>
                                         <div class="class-option-card">
                                             <span class="time">18:30</span>
-                                            <span class="name">Bachata Beginner 0</span>
+                                            <div class="class-details">
+                                                <span class="name">Spacer Class</span>
+                                                <span class="class-instructor-small">Spacer</span>
+                                            </div>
                                         </div>
                                     </label>
                                     <div class="class-role-select">
-                                        <label><input type="radio" name="role_Wed_1830_Beginner_0"
-                                                value="Leader"><span>Leader</span></label>
-                                        <label><input type="radio" name="role_Wed_1830_Beginner_0"
-                                                value="Follower"><span>Follower</span></label>
+                                        <label><input type="radio" disabled><span>Leader</span></label>
+                                        <label><input type="radio" disabled><span>Follower</span></label>
                                     </div>
                                 </div>
 
@@ -814,7 +879,10 @@
                                         <input type="checkbox" name="classes[]" value="Wed 19:30 Sensual Foundation">
                                         <div class="class-option-card">
                                             <span class="time">19:30</span>
-                                            <span class="name">Bachata Sensual Foundation</span>
+                                            <div class="class-details">
+                                                <span class="name">Bachata Sensual Foundation</span>
+                                                <span class="class-instructor-small">with Ale y Xidan</span>
+                                            </div>
                                         </div>
                                     </label>
                                     <div class="class-role-select">
@@ -830,7 +898,10 @@
                                         <input type="checkbox" name="classes[]" value="Wed 20:30 Sensual Improver">
                                         <div class="class-option-card">
                                             <span class="time">20:30</span>
-                                            <span class="name">Bachata Sensual Improver</span>
+                                            <div class="class-details">
+                                                <span class="name">Bachata Sensual Improver</span>
+                                                <span class="class-instructor-small">with Ale y Xidan</span>
+                                            </div>
                                         </div>
                                     </label>
                                     <div class="class-role-select">
@@ -851,7 +922,10 @@
                                         <input type="checkbox" name="classes[]" value="Thu 18:30 Beginner 3">
                                         <div class="class-option-card">
                                             <span class="time">18:30</span>
-                                            <span class="name">Bachata Beginner 2</span>
+                                            <div class="class-details">
+                                                <span class="name">Bachata Beginner 2</span>
+                                                <span class="class-instructor-small">with Ale y Alexia</span>
+                                            </div>
                                         </div>
                                     </label>
                                     <div class="class-role-select">
@@ -867,7 +941,10 @@
                                         <input type="checkbox" name="classes[]" value="Thu 19:30 Lady Styling">
                                         <div class="class-option-card">
                                             <span class="time">19:30</span>
-                                            <span class="name">Lady Styling</span>
+                                            <div class="class-details">
+                                                <span class="name">Lady Styling</span>
+                                                <span class="class-instructor-small">with Xidan</span>
+                                            </div>
                                         </div>
                                     </label>
                                     <!-- No role select for Lady Styling as it's solo/styling usually, but user asked for it next to EACH course. Adding for consistency or maybe skip? 
@@ -889,10 +966,13 @@
                                             value="Thu 20:30 Sensual Intermediate/Advanced">
                                         <div class="class-option-card">
                                             <span class="time">20:30</span>
-                                            <span class="name">Bachata Sensual Int/Adv</span>
-                                            <span
-                                                style="display: block; font-size: 0.7rem; color: var(--accent-start); margin-top: 0.2rem;">*
-                                                Instructor approval required</span>
+                                            <div class="class-details">
+                                                <span class="name">Bachata Sensual Int/Adv</span>
+                                                <span class="class-instructor-small">with Ale y Xidan</span>
+                                                <span
+                                                    style="display: block; font-size: 0.7rem; color: var(--accent-start); margin-top: 0.2rem;">*
+                                                    Instructor approval required</span>
+                                            </div>
                                         </div>
                                     </label>
                                     <div class="class-role-select">
@@ -1129,32 +1209,7 @@
         import { supabase } from './assets/js/supabase-client.js';
 
         document.addEventListener('DOMContentLoaded', () => {
-            // Role Selection Logic
-            const classCheckboxes = document.querySelectorAll('.class-option input[type="checkbox"]');
-
-            function updateRoleState(checkbox) {
-                const wrapper = checkbox.closest('.class-option-wrapper');
-                const roleRadios = wrapper.querySelectorAll('.class-role-select input[type="radio"]');
-                const roleLabels = wrapper.querySelectorAll('.class-role-select label');
-
-                if (checkbox.checked) {
-                    roleRadios.forEach(radio => radio.disabled = false);
-                    roleLabels.forEach(label => label.style.opacity = '1');
-                    roleLabels.forEach(label => label.style.pointerEvents = 'auto');
-                } else {
-                    roleRadios.forEach(radio => {
-                        radio.disabled = true;
-                        radio.checked = false; // Uncheck if class is deselected
-                    });
-                    roleLabels.forEach(label => label.style.opacity = '0.5');
-                    roleLabels.forEach(label => label.style.pointerEvents = 'none');
-                }
-            }
-
-            classCheckboxes.forEach(cb => {
-                updateRoleState(cb);
-                cb.addEventListener('change', () => updateRoleState(cb));
-            });
+            // Role Selection Logic - MOVED TO SCRIPT.JS
 
             // Form Validation & Submission
             const validationForm = document.getElementById('registrationForm');

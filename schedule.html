@@ -458,7 +458,10 @@
                 <div class="hero-content-right">
                     <div class="framed-hero-wrapper">
                         <div class="framed-hero-inner">
-                            <img src="assets/images/gallery/gallery_6.webp" srcset="assets/images/gallery/gallery_6_480w.webp 480w, assets/images/gallery/gallery_6_800w.webp 800w, assets/images/gallery/gallery_6_1200w.webp 1200w" sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px" alt="Bachata Dance Class Atmosphere" width="1024" height="682" >
+                            <img src="assets/images/gallery/gallery_6.webp"
+                                srcset="assets/images/gallery/gallery_6_480w.webp 480w, assets/images/gallery/gallery_6_800w.webp 800w, assets/images/gallery/gallery_6_1200w.webp 1200w"
+                                sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px"
+                                alt="Bachata Dance Class Atmosphere" width="1024" height="682">
                         </div>
                     </div>
                 </div>
@@ -478,6 +481,7 @@
                 <!-- Desktop Grid Header -->
                 <div class="schedule-grid-header">
                     <div class="col-header time">Start</div>
+                    <div class="col-header day">Tuesday</div>
                     <div class="col-header day">Wednesday</div>
                     <div class="col-header day">Thursday</div>
                 </div>
@@ -487,7 +491,25 @@
                     <div class="schedule-row">
                         <div class="time-slot">18:30</div>
 
-                        <!-- Wed Class -->
+                        <!-- Tue Class (Empty) -->
+                        <div>&nbsp;</div>
+
+                        <!-- Wed Class (Was Bachata 0, now empty) -->
+                        <div>&nbsp;</div>
+
+                        <!-- Thu Class -->
+                        <a href="bachata-beginner-2" class="class-card">
+                            <span class="level-tag tag-beginner">Bachata</span>
+                            <h3 class="class-name">Bachata Beginner 2</h3>
+                            <p class="class-instructor">with Ale y Alexia</p>
+                        </a>
+                    </div>
+
+                    <!-- Slot 2 -->
+                    <div class="schedule-row">
+                        <div class="time-slot">19:30</div>
+
+                        <!-- Tue Class -->
                         <a href="bachata-beginner-0" class="class-card" style="overflow: visible;">
                             <div style="position: absolute; top: -10px; left: -10px; z-index: 10;">
                                 <svg width="40" height="40" viewBox="0 0 24 24" fill="none"
@@ -503,18 +525,6 @@
                             <h3 class="class-name">Bachata Beginner 0</h3>
                             <p class="class-instructor">with Ale y Alexia</p>
                         </a>
-
-                        <!-- Thu Class -->
-                        <a href="bachata-beginner-2" class="class-card">
-                            <span class="level-tag tag-beginner">Bachata</span>
-                            <h3 class="class-name">Bachata Beginner 2</h3>
-                            <p class="class-instructor">with Ale y Alexia</p>
-                        </a>
-                    </div>
-
-                    <!-- Slot 2 -->
-                    <div class="schedule-row">
-                        <div class="time-slot">19:30</div>
 
                         <!-- Wed Class -->
                         <a href="bachata-sensual-foundation" class="class-card">
@@ -534,6 +544,9 @@
                     <!-- Slot 3 -->
                     <div class="schedule-row">
                         <div class="time-slot">20:30</div>
+
+                        <!-- Tue Class (Empty) -->
+                        <div>&nbsp;</div>
 
                         <!-- Wed Class -->
                         <a href="bachata-sensual-improver" class="class-card">
@@ -557,7 +570,7 @@
                 <!-- Mobile Schedule Fallback -->
                 <div class="hidden-desktop">
                     <div class="mobile-schedule-day">
-                        <h3 class="mobile-day-title">Wednesday</h3>
+                        <h3 class="mobile-day-title">Tuesday</h3>
                         <div class="schedule-row">
                             <div class="class-card" style="overflow: visible;">
                                 <div style="position: absolute; top: -10px; left: -10px; z-index: 10;">
@@ -571,9 +584,15 @@
                                             font-family="sans-serif">NEW</text>
                                     </svg>
                                 </div>
-                                <div class="mobile-time">18:30</div>
+                                <div class="mobile-time">19:30</div>
                                 <h3 class="class-name">Bachata Beginner 0</h3>
                             </div>
+                        </div>
+                    </div>
+                    <div class="mobile-schedule-day">
+                        <h3 class="mobile-day-title">Wednesday</h3>
+                        <div class="schedule-row">
+
                             <div class="class-card">
                                 <div class="mobile-time">19:30</div>
                                 <h3 class="class-name">Bachata Sensual Foundation (Sensual Style)</h3>

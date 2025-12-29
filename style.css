@@ -2101,7 +2101,7 @@ textarea {
 }
 
 .form-wrapper {
-    max-width: 800px;
+    max-width: 900px;
     margin: 0 auto;
     background: var(--glass-bg);
     backdrop-filter: blur(12px);
@@ -2115,6 +2115,10 @@ textarea {
     .form-wrapper {
         padding: 4rem;
     }
+}
+
+.reg-form-container {
+    max-width: 1050px !important;
 }
 
 .form-subtitle {
@@ -2205,7 +2209,7 @@ textarea {
 
 @media (min-width: 768px) {
     .class-selection-grid {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     }
 }
 
@@ -2235,7 +2239,7 @@ textarea {
 
 @media (min-width: 768px) {
     .timetable-selection-grid {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
         gap: 3rem;
     }
 }
@@ -2282,6 +2286,20 @@ textarea {
     transition: all 0.2s ease;
     min-height: 5.5rem;
     /* Ensure consistent height for alignment */
+}
+
+.class-details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    text-align: right;
+}
+
+.class-instructor-small {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    font-weight: 400;
+    margin-top: 0.25rem;
 }
 
 .class-option:hover .class-option-card {
@@ -4050,7 +4068,7 @@ textarea {
 @media (min-width: 900px) {
     .schedule-grid-header {
         display: grid;
-        grid-template-columns: 100px 1fr 1fr;
+        grid-template-columns: 100px 1fr 1fr 1fr;
         gap: 2rem;
         margin-bottom: 2rem;
         padding: 0 1rem;
@@ -4071,7 +4089,7 @@ textarea {
     }
 
     .schedule-row {
-        grid-template-columns: 100px 1fr 1fr;
+        grid-template-columns: 100px 1fr 1fr 1fr;
         gap: 2rem;
         align-items: stretch;
         /* Equal height cards */

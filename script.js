@@ -235,6 +235,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 _subject: `New Trial Booking from ${data.firstname} ${data.lastname}`,
                 _template: 'table',
                 _captcha: 'false',
+                _autoresponse: `Thank you for submitting the trial form!
+
+We will contact you shortly via WhatsApp (or email if we can't find you on WhatsApp).
+We are looking forward to having you join our dance family!
+
+Location:
+AXcent Dance Studio
+Hermetschloostrasse 73
+8048 Zurich Altstetten
+
+Best regards,
+The AXcent Dance Team
+info@axcentdance.com`,
                 firstname: data.firstname,
                 lastname: data.lastname,
                 phone: data.phone,
@@ -323,19 +336,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 _subject: `New Contact from ${data.name}`,
                 _template: 'table', // or 'box'
                 _captcha: 'false',  // Disable captcha if you want instant submission
-                _autoresponse: `Thank you for contacting AXcent Dance!
+                _autoresponse: `Thank you for submitting the contact form!
 
-We have received your message and will get back to you shortly via email or WhatsApp.
-
-Here are our contact details if you need to reach us urgently:
-Phone/WhatsApp: +41 79 966 84 81
-Email: info@axcentdance.com
-
-Location:
-AXcent Dance Studio
-Hermetschloostrasse 73
-8048 Zurich Altstetten
-(1st Floor)
+We will get back to you shortly via email or WhatsApp.
 
 Best regards,
 The AXcent Dance Team
@@ -379,7 +382,42 @@ info@axcentdance.com`,
         });
     }
 
+
+
     // Registration Form Logic
+    // Moved from inline script to ensure reliability
+    const classCheckboxes = document.querySelectorAll('.class-option input[type="checkbox"]');
+
+    function updateRoleState(checkbox) {
+        const wrapper = checkbox.closest('.class-option-wrapper');
+        // Guard clause for spacers or malformed structure
+        if (!wrapper) return;
+
+        const roleRadios = wrapper.querySelectorAll('.class-role-select input[type="radio"]');
+        const roleLabels = wrapper.querySelectorAll('.class-role-select label');
+
+        if (checkbox.checked) {
+            roleRadios.forEach(radio => radio.disabled = false);
+            roleLabels.forEach(label => label.style.opacity = '1');
+            roleLabels.forEach(label => label.style.pointerEvents = 'auto');
+        } else {
+            roleRadios.forEach(radio => {
+                radio.disabled = true;
+                radio.checked = false; // Uncheck if class is deselected
+            });
+            roleLabels.forEach(label => label.style.opacity = '0.5');
+            roleLabels.forEach(label => label.style.pointerEvents = 'none');
+        }
+    }
+
+    if (classCheckboxes.length > 0) {
+        classCheckboxes.forEach(cb => {
+            // Initial state check
+            updateRoleState(cb);
+            // Listener
+            cb.addEventListener('change', () => updateRoleState(cb));
+        });
+    }
 
 
     // PERFORMANCE OPTIMIZATION

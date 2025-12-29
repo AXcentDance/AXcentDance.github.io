@@ -399,6 +399,7 @@
         <!-- Desktop Grid Header -->
         <div class="schedule-grid-header">
           <div class="col-header time">Start</div>
+          <div class="col-header day">Tuesday</div>
           <div class="col-header day">Wednesday</div>
           <div class="col-header day">Thursday</div>
         </div>
@@ -408,7 +409,25 @@
           <div class="schedule-row">
             <div class="time-slot">18:30</div>
 
-            <!-- Wed Class -->
+            <!-- Tue Class (Empty) -->
+            <div>&nbsp;</div>
+
+            <!-- Wed Class (Was Bachata 0, now empty) -->
+            <div>&nbsp;</div>
+
+            <!-- Thu Class -->
+            <a href="bachata-beginner-2" class="class-card">
+              <span class="level-tag tag-beginner">Bachata</span>
+              <h3 class="class-name">Bachata Beginner 2</h3>
+              <p class="class-instructor">with Ale y Alexia</p>
+            </a>
+          </div>
+
+          <!-- Slot 2 -->
+          <div class="schedule-row">
+            <div class="time-slot">19:30</div>
+
+            <!-- Tue Class -->
             <a href="bachata-beginner-0" class="class-card" style="overflow: visible;">
               <div style="position: absolute; top: -10px; left: -25px; z-index: 10;">
                 <svg width="50" height="50" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -423,18 +442,6 @@
               <h3 class="class-name">Bachata Beginner 0</h3>
               <p class="class-instructor">with Ale y Alexia</p>
             </a>
-
-            <!-- Thu Class -->
-            <a href="bachata-beginner-2" class="class-card">
-              <span class="level-tag tag-beginner">Bachata</span>
-              <h3 class="class-name">Bachata Beginner 2</h3>
-              <p class="class-instructor">with Ale y Alexia</p>
-            </a>
-          </div>
-
-          <!-- Slot 2 -->
-          <div class="schedule-row">
-            <div class="time-slot">19:30</div>
 
             <!-- Wed Class -->
             <a href="bachata-sensual-foundation" class="class-card">
@@ -455,6 +462,9 @@
           <div class="schedule-row">
             <div class="time-slot">20:30</div>
 
+            <!-- Tue Class (Empty) -->
+            <div>&nbsp;</div>
+
             <!-- Wed Class -->
             <a href="bachata-sensual-improver" class="class-card">
               <span class="level-tag tag-sensual">Sensual Style</span>
@@ -474,7 +484,7 @@
         <!-- Mobile Schedule Fallback -->
         <div class="hidden-desktop">
           <div class="mobile-schedule-day">
-            <h3 class="mobile-day-title">Wednesday</h3>
+            <h3 class="mobile-day-title">Tuesday</h3>
             <div class="schedule-row">
               <a href="bachata-beginner-0" class="class-card" style="overflow: visible;">
                 <div style="position: absolute; top: -10px; left: -10px; z-index: 10;">
@@ -486,10 +496,15 @@
                       font-weight="900" font-family="sans-serif">NEW</text>
                   </svg>
                 </div>
-                <div class="mobile-time">18:30</div>
+                <div class="mobile-time">19:30</div>
                 <h3 class="class-name">Bachata Beginner 0</h3>
                 <div class="mobile-instructor">with Ale y Alexia</div>
               </a>
+            </div>
+          </div>
+          <div class="mobile-schedule-day">
+            <h3 class="mobile-day-title">Wednesday</h3>
+            <div class="schedule-row">
               <a href="bachata-sensual-foundation" class="class-card">
                 <div class="mobile-time">19:30</div>
                 <h3 class="class-name">Bachata Sensual Foundation</h3>
@@ -536,16 +551,28 @@
           <h2 class="section-title-modern section-title-left">Our Moments</h2>
           <div class="gallery-grid">
             <div class="gallery-item">
-              <img src="assets/images/home/gallery_1.webp" srcset="assets/images/home/gallery_1_480w.webp 480w, assets/images/home/gallery_1_800w.webp 800w, assets/images/home/gallery_1_1200w.webp 1200w" sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px" alt="Couple dancing Bachata" width="682" height="1024" >
+              <img src="assets/images/home/gallery_1.webp"
+                srcset="assets/images/home/gallery_1_480w.webp 480w, assets/images/home/gallery_1_800w.webp 800w, assets/images/home/gallery_1_1200w.webp 1200w"
+                sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px" alt="Couple dancing Bachata"
+                width="682" height="1024">
             </div>
             <div class="gallery-item">
-              <img src="assets/images/home/gallery_2.webp" srcset="assets/images/home/gallery_2_480w.webp 480w, assets/images/home/gallery_2_800w.webp 800w, assets/images/home/gallery_2_1200w.webp 1200w" sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px" alt="Group selfie at dance event" width="1024" height="707" >
+              <img src="assets/images/home/gallery_2.webp"
+                srcset="assets/images/home/gallery_2_480w.webp 480w, assets/images/home/gallery_2_800w.webp 800w, assets/images/home/gallery_2_1200w.webp 1200w"
+                sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px" alt="Group selfie at dance event"
+                width="1024" height="707">
             </div>
             <div class="gallery-item">
-              <img src="assets/images/home/gallery_3.webp" srcset="assets/images/home/gallery_3_480w.webp 480w, assets/images/home/gallery_3_800w.webp 800w, assets/images/home/gallery_3_1200w.webp 1200w" sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px" alt="Large group photo after class" width="1024" height="768" loading="lazy" >
+              <img src="assets/images/home/gallery_3.webp"
+                srcset="assets/images/home/gallery_3_480w.webp 480w, assets/images/home/gallery_3_800w.webp 800w, assets/images/home/gallery_3_1200w.webp 1200w"
+                sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px" alt="Large group photo after class"
+                width="1024" height="768" loading="lazy">
             </div>
             <div class="gallery-item">
-              <img src="assets/images/home/gallery_4.webp" srcset="assets/images/home/gallery_4_480w.webp 480w, assets/images/home/gallery_4_800w.webp 800w, assets/images/home/gallery_4_1200w.webp 1200w" sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px" alt="Stage performance at festival" width="1024" height="707" loading="lazy" >
+              <img src="assets/images/home/gallery_4.webp"
+                srcset="assets/images/home/gallery_4_480w.webp 480w, assets/images/home/gallery_4_800w.webp 800w, assets/images/home/gallery_4_1200w.webp 1200w"
+                sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px" alt="Stage performance at festival"
+                width="1024" height="707" loading="lazy">
             </div>
           </div>
         </div>
@@ -1011,17 +1038,25 @@
             <div class="form-group">
               <label>Select a Class to Try</label>
               <div class="class-selection-grid">
+                <!-- Tuesday Column -->
+                <div class="day-column">
+                  <h3 class="day-title">Tuesday</h3>
+                  <div class="compact-class-list">
+                    <label class="compact-option">
+                      <input type="radio" name="class-select" value="Tuesday 19:30 - Beginner 0">
+                      <div class="compact-card">
+                        <span class="compact-time">19:30</span>
+                        <span class="compact-name">Bachata<br>Beginner 0</span>
+                      </div>
+                    </label>
+                  </div>
+                </div>
+
                 <!-- Wednesday Column -->
                 <div class="day-column">
                   <h3 class="day-title">Wednesday</h3>
                   <div class="compact-class-list">
-                    <label class="compact-option">
-                      <input type="radio" name="class-select" value="Wednesday 18:30 - Beginner 0">
-                      <div class="compact-card">
-                        <span class="compact-time">18:30</span>
-                        <span class="compact-name">Bachata Beginner 0</span>
-                      </div>
-                    </label>
+
 
                     <label class="compact-option">
                       <input type="radio" name="class-select" value="Wednesday 19:30 - Foundation" required>
@@ -1077,12 +1112,12 @@
               <label class="checkbox-container">
                 <input type="checkbox" name="terms_agreed" required>
                 <span class="checkmark"></span>
-                <span class="checkbox-text">I agree to the <a href="terms">Terms and Conditions</a></span>
+                <span class="checkbox-text">I agree to the Terms and Conditions</span>
               </label>
               <label class="checkbox-container">
                 <input type="checkbox" name="privacy_agreed" required>
                 <span class="checkmark"></span>
-                <span class="checkbox-text">I have read the <a href="privacy">Privacy Policy</a></span>
+                <span class="checkbox-text">I have read the Privacy Policy</span>
               </label>
             </div>
 
