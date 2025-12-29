@@ -215,80 +215,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 selected_class: rawFormData.get('class-select') // Users script expects 'selected_class'
             };
 
-            // 3. Send to Google Script AND FormSubmit (Parallel)
-            // IMPORTANT: PASTE YOUR WEB APP URL BELOW
+            // 3. Send to Google Apps Script (Unified)
+            // Using the same Web App URL as the Contact Form
             const scriptURL = 'https://script.google.com/macros/s/AKfycbwPqLutAq-xa9OkSiT-rLm72DJCdQ2Xw10Yp4DvHexTq42HxCKJyJr8mJmZ0RuZSc7A5A/exec';
-            const formSubmitEmail = 'slamitza@gmail.com'; // Using FormSubmit for reliable emails
-            const formSubmitURL = `https://formsubmit.co/ajax/${formSubmitEmail}`;
 
-            if (scriptURL === 'REPLACE_ME_WITH_YOUR_WEB_APP_URL') {
-                alert('Configuration missing: Please paste your Google Web App URL in script.js (Line ~206)');
-                submitBtn.innerHTML = originalBtnContent;
-                submitBtn.disabled = false;
-                submitBtn.style.opacity = '1';
-                submitBtn.style.cursor = 'pointer';
-                return;
-            }
-
-            // Prepare FormSubmit Data
-            const formSubmitData = {
-                _subject: `New Trial Booking from ${data.firstname} ${data.lastname}`,
-                _template: 'table',
-                _captcha: 'false',
-                _autoresponse: `Thank you for submitting the trial form!
-
-We will contact you shortly via WhatsApp (or email if we can't find you on WhatsApp).
-We are looking forward to having you join our dance family!
-
-Location:
-AXcent Dance Studio
-Hermetschloostrasse 73
-8048 Zurich Altstetten
-
-Best regards,
-The AXcent Dance Team
-info@axcentdance.com`,
-                firstname: data.firstname,
-                lastname: data.lastname,
-                phone: data.phone,
-                email: data.email,
-                class: data.selected_class
-            };
-
-            const p1 = fetch(scriptURL, {
+            fetch(scriptURL, {
                 method: 'POST',
                 body: JSON.stringify(data),
                 mode: 'no-cors'
-            });
-
-            const p2 = fetch(formSubmitURL, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: JSON.stringify(formSubmitData)
-            });
-
-            Promise.allSettled([p1, p2])
-                .then((results) => {
-                    const formSubmitResult = results[1];
-                    if (formSubmitResult.status === 'fulfilled') {
-                        console.log('FormSubmit status:', formSubmitResult.value.status);
-                        if (!formSubmitResult.value.ok) {
-                            alert('Warning: FormSubmit email service returned an error. Please check the console.');
-                        }
-                    } else {
-                        console.error('FormSubmit Network Error:', formSubmitResult.reason);
-                    }
-
-                    // Give a moment to see logs before redirect (optional, or just redirect)
+            })
+                .then(() => {
+                    // With no-cors, we assume success
                     window.location.href = 'thank-you-trial.html';
                 })
                 .catch(error => {
                     console.error('Error!', error);
-                    // Even if allSettled throws (which it shouldn't), we try to alert.
-                    alert('Something went wrong submitting the form. Please try again or contact us directly at info@axcentdance.com.\n\nError details: ' + (error.message || error));
+                    alert('Something went wrong submitting the form. Please try again or contact us directly at info@axcentdance.com.');
 
                     // Reset button state
                     submitBtn.innerHTML = originalBtnContent;
