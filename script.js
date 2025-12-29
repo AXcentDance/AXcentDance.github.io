@@ -326,23 +326,22 @@ info@axcentdance.com`,
                 message: rawFormData.get('message')
             };
 
-            // 3. Send to Google Script AND FormSubmit (Parallel)
-            // 3. Send to Google Script ONLY (Handles Email & Sheet)
-            // Ensure this URL matches your deployed Web App URL
-            const googleScriptURL = 'https://script.google.com/macros/s/AKfycbxOYwPUSX0twewRAHIA-7k4Cyds8oH9i6wUuFDLcTM68ZyWK9MO1RF2wQ7rYUUBDbgrZw/exec';
+            // 3. Send to Google Apps Script (Single Source of Truth)
+            // Updated URL provided by user (replaces previous Trial Form script)
+            const googleScriptURL = 'https://script.google.com/macros/s/AKfycbwPqLutAq-xa9OkSiT-rLm72DJCdQ2Xw10Yp4DvHexTq42HxCKJyJr8mJmZ0RuZSc7A5A/exec';
 
             fetch(googleScriptURL, {
                 method: 'POST',
                 body: JSON.stringify(data),
-                mode: 'no-cors'
+                mode: 'no-cors' // 'no-cors' is required for simple GAS web apps
             })
                 .then(() => {
-                    // With no-cors, we assume success if the request completes
+                    // With no-cors, we cannot identify errors, so we assume success
                     window.location.href = 'thank-you-contact.html';
                 })
                 .catch(error => {
                     console.error('Error!', error);
-                    alert('Something went wrong sending your message. Please try again later.');
+                    alert('Something went wrong sending your message. Please try again later or email us at info@axcentdance.com.');
 
                     // Reset button state
                     submitBtn.innerHTML = originalBtnContent;
