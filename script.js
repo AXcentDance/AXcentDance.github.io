@@ -174,16 +174,46 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Review Slider Scroll Logic
-    const scrollIndicator = document.querySelector('.scroll-indicator');
+    // Review Slider Scroll Logic
+    const scrollLeftBtn = document.getElementById('scrollLeftBtn');
+    const scrollRightBtn = document.getElementById('scrollRightBtn');
     const reviewsGrid = document.querySelector('.reviews-grid');
 
-    if (scrollIndicator && reviewsGrid) {
-        scrollIndicator.addEventListener('click', () => {
-            reviewsGrid.scrollBy({
-                left: 300,
-                behavior: 'smooth'
+    if (reviewsGrid) {
+        // Right Scroll
+        if (scrollRightBtn) {
+            scrollRightBtn.addEventListener('click', () => {
+                reviewsGrid.scrollBy({
+                    left: 300,
+                    behavior: 'smooth'
+                });
             });
-        });
+        }
+
+        // Left Scroll
+        if (scrollLeftBtn) {
+            scrollLeftBtn.addEventListener('click', () => {
+                reviewsGrid.scrollBy({
+                    left: -300,
+                    behavior: 'smooth'
+                });
+            });
+        }
+
+        // Visibility Logic (Show left arrow only when scrolled)
+        const updateArrows = () => {
+            if (scrollLeftBtn) {
+                if (reviewsGrid.scrollLeft > 10) { // Threshold to avoid flickering
+                    scrollLeftBtn.style.display = 'flex';
+                } else {
+                    scrollLeftBtn.style.display = 'none';
+                }
+            }
+        };
+
+        reviewsGrid.addEventListener('scroll', updateArrows);
+        // Initial check
+        updateArrows();
     }
 });
 

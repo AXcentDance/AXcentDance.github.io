@@ -3142,6 +3142,13 @@ textarea {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
+.scroll-indicator.left {
+    right: auto;
+    left: 0.5rem;
+    animation: none;
+    /* No bounce for left arrow usually, or maybe reverse it? */
+}
+
 @keyframes bounceRight {
 
     0%,
