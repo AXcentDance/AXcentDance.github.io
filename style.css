@@ -3211,7 +3211,9 @@ textarea {
     height: 100%;
     display: flex;
     flex-direction: column;
-    min-width: 100%;
+    /* min-width: 100%; Removed to fix Safari grid sizing */
+    width: 100%;
+    min-width: 0;
     scroll-snap-align: center;
     transition: all 0.3s ease;
     /* Prevent overlap */
