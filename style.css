@@ -4657,34 +4657,50 @@ textarea {
         display: flex;
     }
 
+    /* Force Wrapper Constraints */
+    .pricing-table-wrapper {
+        width: 100%;
+        overflow: hidden;
+        /* Prevent ANY scroll */
+        padding: 0 0.5rem;
+        /* Small side padding for breathing room */
+    }
+
     /* Force Table to Fit Screen */
     .pricing-table {
         table-layout: fixed;
         width: 100%;
         min-width: 0;
-        /* override potential defaults */
+        border-collapse: collapse;
+        /* Ensure no extra spacing */
     }
 
     .pricing-table th,
     .pricing-table td {
         white-space: normal;
-        /* Allow wrapping */
         word-wrap: break-word;
-        padding: 0.75rem 0.5rem;
-        /* Compact padding */
+        /* Force wrap */
+        padding: 0.5rem 0.25rem;
+        /* Very tight padding */
+        font-size: 0.85rem;
+        /* Smaller text for mobile */
+        vertical-align: middle;
     }
 
-    /* Adjust Column Widths */
+    /* Adjust Column Widths - 65% / 35% Split */
     .pricing-table th:nth-child(1),
     .pricing-table td:nth-child(1) {
-        width: 60%;
+        width: 65%;
+        text-align: left;
     }
 
     .pricing-table th:nth-child(2),
     .pricing-table td:nth-child(2),
     .pricing-table th:nth-child(3),
     .pricing-table td:nth-child(3) {
-        width: 40%;
+        width: 35%;
+        text-align: right;
+        /* Align price to right */
     }
 
     /* Column Visibility Logic */
