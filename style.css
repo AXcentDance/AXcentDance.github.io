@@ -3089,6 +3089,13 @@ textarea {
     letter-spacing: 0.05em;
 }
 
+
+@media (max-width: 768px) {
+    .timetable-spacer {
+        display: none !important;
+    }
+}
+
 /* REVIEWS SECTION */
 .reviews-section {
     padding: 8rem 0;
@@ -4556,7 +4563,9 @@ textarea {
 .reviews-section {
     padding-bottom: 8rem !important;
     /* Increased spacing */
-}/* --- LEGAL PAGES (Imprint, Privacy, Terms) --- */
+}
+
+/* --- LEGAL PAGES (Imprint, Privacy, Terms) --- */
 .legal-content {
     max-width: 800px;
     margin: 0 auto;
