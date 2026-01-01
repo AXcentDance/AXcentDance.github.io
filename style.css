@@ -4605,3 +4605,59 @@ textarea {
 .legal-content ul {
     padding-left: 1.5rem;
 }
+
+/* PRICING TABLE TOGGLE (MOBILE) */
+.pricing-table-toggle {
+    display: none;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.pricing-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-muted);
+    padding: 0.6rem 1.2rem;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.pricing-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+.pricing-btn.active {
+    background: var(--accent-start);
+    color: white;
+    border-color: var(--accent-start);
+    box-shadow: 0 4px 15px rgba(255, 59, 48, 0.3);
+}
+
+@media (max-width: 768px) {
+    .pricing-table-toggle {
+        display: flex;
+    }
+
+    /* Column Visibility Logic */
+    /* By default (Regular active): Hide Student (col 3) */
+    .pricing-table th:nth-child(3),
+    .pricing-table td:nth-child(3) {
+        display: none !important;
+    }
+
+    /* When Student active: Hide Regular (col 2), Show Student (col 3) */
+    .pricing-table.show-student th:nth-child(2),
+    .pricing-table.show-student td:nth-child(2) {
+        display: none !important;
+    }
+
+    .pricing-table.show-student th:nth-child(3),
+    .pricing-table.show-student td:nth-child(3) {
+        display: table-cell !important;
+    }
+}

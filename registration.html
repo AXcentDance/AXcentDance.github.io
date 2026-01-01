@@ -599,6 +599,31 @@
                 <h2 class="section-title-modern" style="margin-bottom: 2rem; font-size: 2.5rem; text-align: center;">
                     Pass <span class="text-gradient">Prices</span></h2>
                 <div class="pricing-table-wrapper">
+                    <!-- Mobile Toggle for Table -->
+                    <div class="pricing-table-toggle">
+                        <button type="button" class="pricing-btn active" id="btnTableRegular"
+                            onclick="setTablePricing('regular')">Regular</button>
+                        <button type="button" class="pricing-btn" id="btnTableStudent"
+                            onclick="setTablePricing('student')">Student (-15%)</button>
+                    </div>
+
+                    <script>
+                        function setTablePricing(mode) {
+                            const table = document.querySelector('.pricing-table');
+                            const btnRegular = document.getElementById('btnTableRegular');
+                            const btnStudent = document.getElementById('btnTableStudent');
+
+                            if (mode === 'student') {
+                                table.classList.add('show-student');
+                                btnStudent.classList.add('active');
+                                btnRegular.classList.remove('active');
+                            } else {
+                                table.classList.remove('show-student');
+                                btnRegular.classList.add('active');
+                                btnStudent.classList.remove('active');
+                            }
+                        }
+                    </script>
                     <table class="pricing-table">
                         <thead>
                             <tr>
