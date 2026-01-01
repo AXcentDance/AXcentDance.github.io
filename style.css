@@ -3656,15 +3656,6 @@ textarea {
     }
 }
 
-.guide-link {
-    color: white;
-    font-weight: 700;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    transition: gap 0.3s ease;
-}
 
 .guide-card:hover .guide-link {
     gap: 1rem;
