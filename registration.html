@@ -601,10 +601,12 @@
                 <div class="pricing-table-wrapper">
                     <!-- Mobile Toggle for Table -->
                     <div class="pricing-table-toggle">
-                        <button type="button" class="pricing-btn active" id="btnTableRegular"
-                            onclick="setTablePricing('regular')">Regular</button>
-                        <button type="button" class="pricing-btn" id="btnTableStudent"
-                            onclick="setTablePricing('student')">Student (-15%)</button>
+                        <div class="pricing-switch-container">
+                            <button type="button" class="pricing-switch-btn active" id="btnTableRegular"
+                                onclick="setTablePricing('regular')">Regular</button>
+                            <button type="button" class="pricing-switch-btn" id="btnTableStudent"
+                                onclick="setTablePricing('student')">Student (-15%)</button>
+                        </div>
                     </div>
 
                     <script>
