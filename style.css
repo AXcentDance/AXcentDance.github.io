@@ -3136,7 +3136,7 @@ textarea {
     background: rgba(15, 5, 24, 0.8);
     border-radius: 50%;
     padding: 0.5rem;
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: center;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
