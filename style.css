@@ -4657,6 +4657,36 @@ textarea {
         display: flex;
     }
 
+    /* Force Table to Fit Screen */
+    .pricing-table {
+        table-layout: fixed;
+        width: 100%;
+        min-width: 0;
+        /* override potential defaults */
+    }
+
+    .pricing-table th,
+    .pricing-table td {
+        white-space: normal;
+        /* Allow wrapping */
+        word-wrap: break-word;
+        padding: 0.75rem 0.5rem;
+        /* Compact padding */
+    }
+
+    /* Adjust Column Widths */
+    .pricing-table th:nth-child(1),
+    .pricing-table td:nth-child(1) {
+        width: 60%;
+    }
+
+    .pricing-table th:nth-child(2),
+    .pricing-table td:nth-child(2),
+    .pricing-table th:nth-child(3),
+    .pricing-table td:nth-child(3) {
+        width: 40%;
+    }
+
     /* Column Visibility Logic */
     /* By default (Regular active): Hide Student (col 3) */
     .pricing-table th:nth-child(3),
