@@ -1191,26 +1191,52 @@
         function updateEndDate() {
             const select = document.getElementById('activation_date');
             const endInput = document.getElementById('pass_end_date');
+            const endLabel = document.querySelector('label[for="pass_end_date"]'); // Get label to update text
             if (!select || !endInput) return;
 
             // Get selected option's date
             const selectedOption = select.options[select.selectedIndex];
             if (!selectedOption) return;
 
-            // Parse date (we stored ISO or parse label)
-            // Using label "Wed, Jan 14 2026" works in most browsers, but let's be safe
-            // I added data-dateObj above for safety
+            // Check selected package
+            const packageRadios = document.querySelectorAll('input[name="package"]');
+            let is10Pass = false;
+            packageRadios.forEach(radio => {
+                if (radio.checked && radio.value === '10-Class Flexible Pack') {
+                    is10Pass = true;
+                }
+            });
+
+            // Parse date
             let startDate = new Date(selectedOption.dataset.dateObj || selectedOption.value);
 
             if (!isNaN(startDate.getTime())) {
-                // Add 8 weeks - 1 day (55 days)
                 const endDate = new Date(startDate);
-                endDate.setDate(endDate.getDate() + 55);
+
+                if (is10Pass) {
+                    // Add 1 Year (365 days)
+                    endDate.setFullYear(endDate.getFullYear() + 1);
+                    // Update Label Text
+                    if (endLabel) endLabel.textContent = "Pass Valid Until (1 Year)";
+                } else {
+                    // Add 8 weeks - 1 day (55 days)
+                    endDate.setDate(endDate.getDate() + 55);
+                    // Update Label Text
+                    if (endLabel) endLabel.textContent = "Pass Valid Until (8 Weeks)";
+                }
 
                 // Format: "Wed, Mar 11 2026"
                 endInput.value = endDate.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' });
             }
         }
+
+        // Add listeners to package radios to update date immediately
+        document.addEventListener('DOMContentLoaded', () => {
+            const packageRadios = document.querySelectorAll('input[name="package"]');
+            packageRadios.forEach(radio => {
+                radio.addEventListener('change', updateEndDate);
+            });
+        });
 
         // Run on load
         document.addEventListener('DOMContentLoaded', populateActivationDates);
