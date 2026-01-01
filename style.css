@@ -3600,6 +3600,8 @@ textarea {
     align-items: center;
     gap: 0.5rem;
     transition: gap 0.2s ease;
+    white-space: nowrap;
+    flex-shrink: 0;
 }
 
 .guide-link span {
