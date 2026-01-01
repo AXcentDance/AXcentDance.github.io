@@ -1,57 +1,42 @@
 import os
 
-ROOT_DIR = "/Users/slamitza/AXcentWebsiteGitHub"
-
-def fix_links():
+def bulk_replace(root_dir):
+    print("Starting bulk replacement...")
     count = 0
     
-    for root, dirs, files in os.walk(ROOT_DIR):
-        if ".git" in root or "node_modules" in root or "scripts" in root or "System" in root:
+    replacements = [
+        ('href="/favicon.png"', 'href="/favicon-v2.png"'),
+        ('href="/apple-touch-icon.png"', 'href="/apple-touch-icon-v2.png"'),
+        # Remove broken cookie consent lines
+        ('<link rel="stylesheet" href="../assets/css/cookie-consent.css">', ''),
+        ('<script src="../assets/js/cookie-consent.js" defer></script>', '')
+    ]
+    
+    for root, dirs, files in os.walk(root_dir):
+        if 'node_modules' in root or '.git' in root:
             continue
             
         for file in files:
-            if not file.endswith(".html"):
-                continue
+            if file.endswith(".html"):
+                path = os.path.join(root, file)
                 
-            filepath = os.path.join(root, file)
-            
-            with open(filepath, 'r', encoding='utf-8') as f:
-                content = f.read()
-            
-            original_content = content
-            
-            # 1. Fix Login/Signup links (add underscore)
-            # Handle both relative and root links
-            content = content.replace('href="login"', 'href="_login"')
-            content = content.replace('href="../login"', 'href="../_login"')
-            
-            content = content.replace('href="signup"', 'href="_signup"')
-            content = content.replace('href="../signup"', 'href="../_signup"')
-            
-            # 2. Fix Collaborations (Missing file) -> Point to nothing or hide
-            # Used in mobile drawer
-            # <a href="../collaborations" class="drawer-link"><span>Collaborations</span></a>
-            # We will comment it out or just make it dead but valid
-            content = content.replace('href="../collaborations"', 'href="#" style="display:none;"')
-            content = content.replace('href="collaborations"', 'href="#" style="display:none;"')
-            
-            # 3. Specific fixes for romeo-prince-collaboration-2025.html (and others if copied)
-            # <li><a href="../">Terms & Conditions</a></li> -> href="../terms"
-            # <li><a href="../pr">Privacy Policy</a></li> -> href="../privacy"
-            # <li><a href="../im">Imprint</a></li> -> href="../imprint"
-            
-            if "blog-posts" in root:
-                 content = content.replace('<li><a href="../">Terms & Conditions</a></li>', '<li><a href="../terms">Terms & Conditions</a></li>')
-                 content = content.replace('href="../pr"', 'href="../privacy"')
-                 content = content.replace('href="../im"', 'href="../imprint"')
+                with open(path, 'r', encoding='utf-8') as f:
+                    content = f.read()
+                
+                new_content = content
+                for old, new in replacements:
+                    new_content = new_content.replace(old, new)
+                
+                # Also clean up empty lines if we removed scripts
+                # This is a simple clean up
+                
+                if new_content != content:
+                    print(f"Updating {file}...")
+                    with open(path, 'w', encoding='utf-8') as f:
+                        f.write(new_content)
+                    count += 1
 
-            if content != original_content:
-                with open(filepath, 'w', encoding='utf-8') as f:
-                    f.write(content)
-                print(f"Fixed links in: {file}")
-                count += 1
-                
-    print(f"Total files updated: {count}")
+    print(f"Updated {count} files.")
 
 if __name__ == "__main__":
-    fix_links()
+    bulk_replace(os.getcwd())
