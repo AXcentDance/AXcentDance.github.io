@@ -4607,6 +4607,14 @@ textarea {
 }
 
 /* PRICING TABLE TOGGLE (MOBILE) */
+/* Inline Price Logic */
+.mobile-price-regular,
+.mobile-price-student {
+    display: none;
+    font-weight: 700;
+    color: white;
+}
+
 .pricing-table-toggle {
     display: none;
     /* Hidden on Desktop */
@@ -4680,44 +4688,43 @@ textarea {
         white-space: normal;
         word-wrap: break-word;
         /* Force wrap */
-        padding: 0.5rem 0.25rem;
-        /* Very tight padding */
-        font-size: 0.85rem;
-        /* Smaller text for mobile */
+        padding: 0.75rem 0.25rem;
+        /* Tighter padding */
+        font-size: 0.9rem;
+        /* Slightly larger text */
         vertical-align: middle;
     }
 
-    /* Adjust Column Widths - 65% / 35% Split */
+    /* Single Column Layout on Mobile */
     .pricing-table th:nth-child(1),
     .pricing-table td:nth-child(1) {
-        width: 65%;
+        width: 100%;
         text-align: left;
     }
 
+    /* Hide Original Price Columns entirely on mobile */
     .pricing-table th:nth-child(2),
     .pricing-table td:nth-child(2),
     .pricing-table th:nth-child(3),
     .pricing-table td:nth-child(3) {
-        width: 35%;
-        text-align: right;
-        /* Align price to right */
-    }
-
-    /* Column Visibility Logic */
-    /* By default (Regular active): Hide Student (col 3) */
-    .pricing-table th:nth-child(3),
-    .pricing-table td:nth-child(3) {
         display: none !important;
     }
 
-    /* When Student active: Hide Regular (col 2), Show Student (col 3) */
-    .pricing-table.show-student th:nth-child(2),
-    .pricing-table.show-student td:nth-child(2) {
-        display: none !important;
+    /* Inline Price Visibility Logic */
+    /* Default (Regular): Show Regular inline, Hide Student inline */
+    .mobile-price-regular {
+        display: inline;
+        color: var(--accent-start);
+        /* Highlighting the price */
     }
 
-    .pricing-table.show-student th:nth-child(3),
-    .pricing-table.show-student td:nth-child(3) {
-        display: table-cell !important;
+    /* When Student Active: Hide Regular inline, Show Student inline */
+    .pricing-table.show-student .mobile-price-regular {
+        display: none;
+    }
+
+    .pricing-table.show-student .mobile-price-student {
+        display: inline;
+        color: var(--accent-start);
     }
 }
