@@ -124,7 +124,8 @@ Use modern, clean sans-serif fonts available via Google Fonts.
 - **Context**:
     - `FAQPage` for FAQ sections.
     - `BreadcrumbList` for hierarchy.
-    - `Article` for blog posts.
+    - `Article` for blog posts (MUST include `"image"` field).
+    - ensure `og:image` and `twitter:image` tags are present for all pages.
     - `Product` for items/services.
 
 ## 6. SEO Guidelines (Yoast)
