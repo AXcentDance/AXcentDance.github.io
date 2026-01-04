@@ -54,12 +54,12 @@ def check_advanced_image_quality():
                 alt_match = re.search(r'alt=["\'](.*?)["\']', attrs, re.IGNORECASE)
                 width_match = re.search(r'width=["\'](.*?)["\']', attrs, re.IGNORECASE)
                 height_match = re.search(r'height=["\'](.*?)["\']', attrs, re.IGNORECASE)
-                srcset_match = re.search(r'srcset=["\'](.*?)["\']', attrs, re.IGNORECASE)
+                srcset_match = re.search(r'srcset=["\'](.*?)["\']', attrs, re.IGNORECASE | re.S)
                 
                 src = src_match.group(1) if src_match else "UNKNOWN"
                 
                 # Filter out SVGs or tracking pixels often used without dimensions
-                if src.endswith(".svg"):
+                if src.endswith(".svg") or "facebook.com/tr" in src:
                     continue
                 
                 # Check 2: Alt Text

@@ -5,12 +5,7 @@ ROOT_DIR = "/Users/slamitza/AXcentWebsiteGitHub"
 
 # List of images to optimize (relative to repo root)
 IMAGES_TO_CONVERT = [
-    "assets/images/blog/dance-tips-1-title.png",
-    "assets/images/MilanoSensualCongress2026.jpg",
-    "assets/images/dominican_bootcamp.png",
-    "assets/images/blog/dance-tips-1-intro.png",
-    "assets/images/blog/dance-tips-1-good-frame.png",
-    "assets/images/blog/dance-tips-1-bad-frame.png"
+    "assets/images/hero_new.jpg"
 ]
 
 def convert_and_update():

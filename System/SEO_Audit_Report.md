@@ -1,5 +1,5 @@
 # AXcent Dance Website - Clean SEO Report
-**Generated:** 2025-12-27 22:12:03
+**Generated:** 2026-01-04 17:29:11
 **Location:** `System/SEO_Audit_Report.md`
 
 ## 1. SEO Metadata Audit
@@ -47,6 +47,7 @@ privacy.html                                       | Privacy Policy – AXcent D
 guide-bachata.html                                 | Bachata in Zurich: History, Styles & Cla | Discover Bachata in Zurich. Learn about the history, styles (Dominican & Sensual), and join the best Bachata classes at AXcent Dance Studio.
 thank-you-trial.html                               | Thank You – AXcent Dance                 | Thank you for your interest in AXcent Dance. We will be in touch soon.
 blog-posts/what-to-wear-bachata.html               | What to Wear to Bachata Class: A Beginne | Wondering what to wear for your first Bachata class? Here is our complete guide on clothes, shoes, and hygiene to make you feel confident and comfortable.
+blog-posts/science-of-dance-mental-health.html     | Stress Less, Dance More: The Science Beh | Discover the science behind how partner dancing like Bachata lowers cortisol, boosts endorphins, and improves mental health. Escaping burnout has never been this fun.
 blog-posts/christmas-break-2025.html               | Christmas Break & New Season 2025 | AXce | AXcent Dance Studio Christmas Break dates: Dec 22 - Jan 11. Re-opening Monday, Jan 12. Merry Christmas and Happy New Year!
 blog-posts/romeo-prince-collaboration-2025.html    | The Kings Unite: Romeo Santos & Prince R | The wait is over! Romeo Santos and Prince Royce have released their first collaborative album
 blog-posts/connection-101.html                     | Connection 101: How to Improve Your Soci | It is not about the moves, it is about the feeling. 3 simple tips to instantly improve your connection with any partner.
@@ -87,7 +88,7 @@ Checking for Image Count, Alt Text, and Responsive Attributes...
 File                                     | Issue                          | Details
 ------------------------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------------------------------
-Total files checked: 46
+Total files checked: 47
 Total potential improvements found: 0
 ```
 

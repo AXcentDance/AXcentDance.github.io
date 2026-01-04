@@ -33,6 +33,10 @@ def check_image_seo():
                 
                 src = src_match.group(1) if src_match else "UNKNOWN_SRC"
                 
+                # Ignore Facebook Pixel
+                if "facebook.com/tr" in src:
+                    continue
+                
                 # Check 1: Missing or empty alt
                 if not alt_match:
                     print(f"{rel_path:<40} | Missing Alt Text              | Src: {src if src else 'UNKNOWN_SRC'}")
