@@ -105,6 +105,8 @@ Use modern, clean sans-serif fonts available via Google Fonts.
 
 ### 5.3. Semantic HTML5 Architecture
 - **Header & Footer**: Consistent components.
+    - **Source of Truth**: The `index.html` file is the master reference for the Header and Footer. Any changes made to the Header or Footer must be first applied to `index.html` and then propagated to ALL other HTML files.
+    - **Consistency**: They must be identical across all pages (except for necessary relative path adjustments in links and resources).
     - Header: Semantic `<nav>`, Logo (H1 on Home, Span/Div on subpages).
     - Footer: Copyright, Sitemap, Privacy, Terms, Socials, Address (Schema wrapped).
 - **Headings**:
