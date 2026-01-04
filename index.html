@@ -265,10 +265,46 @@
     <!-- 1. Hero Section -->
     <section id="hero" class="hero">
       <!-- Video Background -->
-      <video autoplay muted loop playsinline class="hero-video">
-        <source src="assets/videos/HeroVideoAleXidan.mp4" type="video/mp4">
+      <!-- Video Background with HLS -->
+      <video id="hero-video" autoplay muted loop playsinline class="hero-video" poster="assets/images/hero-poster.webp">
+        <!-- Fallback for Safari (Native HLS) -->
+        <source src="assets/videos/hls/playlist.m3u8" type="application/x-mpegURL">
+        <!-- Fallback for legacy (Mobile MP4) -->
+        <source src="assets/videos/HeroVideo_mobile.mp4" type="video/mp4">
         Your browser does not support the video tag.
       </video>
+
+      <!-- HLS.js Integration -->
+      <script src="https://cdn.jsdelivr.net/npm/hls.js@1"></script>
+      <script>
+        document.addEventListener('DOMContentLoaded', () => {
+          const video = document.getElementById('hero-video');
+          const videoSrc = 'assets/videos/hls/playlist.m3u8';
+
+          if (Hls.isSupported()) {
+            const hls = new Hls({
+              capLevelToPlayerSize: true, // Auto-select quality based on size
+              autoStartLoad: true
+            });
+            hls.loadSource(videoSrc);
+            hls.attachMedia(video);
+            hls.on(Hls.Events.MANIFEST_PARSED, function () {
+              video.play().catch(() => {
+                // Autoplay might be blocked, handle if needed
+                console.log("Autoplay blocked - awaiting interaction");
+              });
+            });
+          }
+          // HLS.js is not supported on platforms that do not have Media Source Extensions (MSE),
+          // notably iOS Safari. However, iOS Safari has native HLS support.
+          else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+            video.src = videoSrc;
+            video.addEventListener('loadedmetadata', function () {
+              video.play();
+            });
+          }
+        });
+      </script>
 
       <!-- Overlay -->
       <div class="hero-overlay"></div>
