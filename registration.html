@@ -1201,7 +1201,7 @@
                 return d.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' });
             };
 
-            // Generate all Wednesdays (3) and Thursdays (4) in Jan (0) 2026
+            // Generate all Tuesdays (2), Wednesdays (3) and Thursdays (4) in Jan (0) 2026
             const year = 2026;
             const targetMonths = [0]; // Jan only
 
@@ -1214,7 +1214,7 @@
                     const date = new Date(year, month, day);
                     const dayOfWeek = date.getDay();
 
-                    if (dayOfWeek === 3 || dayOfWeek === 4) {
+                    if (dayOfWeek === 2 || dayOfWeek === 3 || dayOfWeek === 4) {
                         options.push({ date: date, label: formatDate(date) });
                     }
                 }
@@ -1303,203 +1303,203 @@
             if (validationForm) {
                 validationForm.addEventListener('submit', async function (e) {
                     e.preventDefault();
+                    try {
+                        // 1. Validation
+                        const selectedClasses = document.querySelectorAll('.class-option input[type="checkbox"]:checked');
 
-                    // 1. Validation
-                    const selectedClasses = document.querySelectorAll('.class-option input[type="checkbox"]:checked');
-
-                    if (selectedClasses.length === 0) {
-                        alert('Please select at least one class to register.');
-                        return;
-                    }
-
-                    let rolesMap = {};
-
-                    for (const checkbox of selectedClasses) {
-                        const wrapper = checkbox.closest('.class-option-wrapper');
-                        const roleSelected = wrapper.querySelector('.class-role-select input[type="radio"]:checked');
-
-                        if (!roleSelected) {
-                            const className = wrapper.querySelector('.name').textContent;
-                            alert(`Please select a role (Leader/Follower) for ${className}.`);
+                        if (selectedClasses.length === 0) {
+                            alert('Please select at least one class to register.');
                             return;
                         }
-                        // Map role to class name/value
-                        // Extract class name from value, e.g. "Wed 18:30 Beginner 0"
-                        const classVal = checkbox.value;
-                        rolesMap[classVal] = roleSelected.value;
-                    }
 
-                    // 2. Gather Data
-                    const formData = new FormData(validationForm);
-                    const isStudent = document.getElementById('pricingTier').value === 'Student';
-                    const selectedPackage = formData.get('package');
+                        let rolesMap = {};
 
-                    if (!selectedPackage) {
-                        alert("Please select a package.");
-                        return;
-                    }
+                        for (const checkbox of selectedClasses) {
+                            const wrapper = checkbox.closest('.class-option-wrapper');
+                            const roleSelected = wrapper.querySelector('.class-role-select input[type="radio"]:checked');
 
-                    const button = validationForm.querySelector('button[type="submit"]');
-                    const originalText = button.innerHTML;
-                    button.disabled = true;
-                    button.innerHTML = '<div>Processing...</div>';
-
-                    // 3. Determine Stripe Link
-                    let stripeLink = '';
-                    const links = {
-                        "10-Class Flexible Pack": {
-                            student: "https://buy.stripe.com/aFa00l1sz1Dz90jewWfnO09",
-                            regular: "https://buy.stripe.com/8x2cN71szaa5b8r88yfnO08"
-                        },
-                        "4 Classes/Week (8 Weeks)": {
-                            student: "https://buy.stripe.com/dRmdRbdbh4PLccv74ufnO07",
-                            regular: "https://buy.stripe.com/00w14p9Z59610tN1KafnO06"
-                        },
-                        "3 Classes/Week (8 Weeks)": {
-                            student: "https://buy.stripe.com/aFabJ37QXgyt90j60qfnO05",
-                            regular: "https://buy.stripe.com/cNiaEZ8V13LH90j74ufnO04"
-                        },
-                        "2 Classes/Week (8 Weeks)": {
-                            student: "https://buy.stripe.com/aFaeVf4ELeqla4n3SifnO03",
-                            regular: "https://buy.stripe.com/eVqeVf9Z581X1xR60qfnO02"
-                        },
-                        "1 Course (8 Weeks)": {
-                            student: "https://buy.stripe.com/cNidRb9Z56XTccv0G6fnO01",
-                            regular: "https://buy.stripe.com/eVq28tb395TP5O7agGfnO00"
+                            if (!roleSelected) {
+                                const className = wrapper.querySelector('.name').textContent;
+                                alert(`Please select a role (Leader/Follower) for ${className}.`);
+                                return;
+                            }
+                            // Map role to class name/value
+                            // Extract class name from value, e.g. "Wed 18:30 Beginner 0"
+                            const classVal = checkbox.value;
+                            rolesMap[classVal] = roleSelected.value;
                         }
-                    };
 
-                    if (links[selectedPackage]) {
-                        stripeLink = isStudent ? links[selectedPackage].student : links[selectedPackage].regular;
-                        // Pre-fill email to ensure webhook matching
-                        const userEmail = formData.get('email');
-                        if (userEmail) {
-                            stripeLink += '?prefilled_email=' + encodeURIComponent(userEmail) + '&client_reference_id=' + encodeURIComponent(userEmail);
+                        // 2. Gather Data
+                        const formData = new FormData(validationForm);
+                        const isStudent = document.getElementById('pricingTier').value === 'Student';
+                        const selectedPackage = formData.get('package');
+
+                        if (!selectedPackage) {
+                            alert("Please select a package.");
+                            return;
                         }
-                    } else {
-                        alert("Invalid package selection.");
-                        button.disabled = false;
-                        button.innerHTML = originalText;
-                        return;
-                    }
 
-                    // 4. Submit to Supabase & Google Sheets
-                    const datesUnavailable = formData.get('dates_unavailable') || null;
-                    const classes = [];
-                    document.querySelectorAll('input[name="classes[]"]:checked').forEach(cb => classes.push(cb.value));
+                        const button = validationForm.querySelector('button[type="submit"]');
+                        const originalText = button.innerHTML;
+                        button.disabled = true;
+                        button.innerHTML = '<div>Processing...</div>';
 
-                    // Google Sheets URL
-                    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzAQ5KsD_VOfrkeOVlD42uES5yC-EMaQhOBoi-kGkt80cjHqKTaJ5RhxAqRU8p8jugh/exec";
-
-                    const submissionPayload = {
-                        first_name: formData.get('firstname'),
-                        last_name: formData.get('lastname'),
-                        email: formData.get('email'),
-                        phone: formData.get('phone'),
-                        // sex: formData.get('sex'), // Removed from form
-                        pass_type: selectedPackage,
-                        is_student: isStudent,
-                        pass_start_date: formData.get('activation_date'),
-                        pass_end_date: document.getElementById('pass_end_date').value,
-                        dates_unavailable: datesUnavailable,
-                        axcent_news: formData.get('axcent_news') ? 'Yes' : 'No',
-                        // combine classes and roles into a single readable string for the sheet
-                        selected_classes: Object.entries(rolesMap).map(([className, role]) => `${className} (${role})`).join(', ')
-                    };
-
-                    try {
-                        // Parallel Submission: Supabase + Google Sheets
-                        // Use a timeout to ensure we don't hang if a service is down
-                        const timeout = (ms) => new Promise((_, reject) => setTimeout(() => reject(new Error('Timeout')), ms));
-
-                        const supabasePromise = supabase
-                            .from('registrations')
-                            .insert([{
-                                ...submissionPayload,
-                                status: 'pending_payment'
-                            }]);
-
-                        const googleSheetsPromise = fetch(GOOGLE_SCRIPT_URL, {
-                            method: "POST",
-                            mode: "no-cors",
-                            headers: { "Content-Type": "application/json" },
-                            body: JSON.stringify(submissionPayload)
-                        });
-
-                        // Race with a 5-second timeout for background tasks
-                        await Promise.race([
-                            Promise.allSettled([supabasePromise, googleSheetsPromise]),
-                            timeout(5000)
-                        ]);
-
-                        console.log('Background submissions completed or timed out');
-                    } catch (err) {
-                        console.error('Submission Error (Background Tasks):', err);
-                        // We proceed to redirect even if these fail
-                    }
-
-                    // 5. Send Email via FormSubmit
-                    try {
-                        const formSubmitEmail = 'slamitza@gmail.com';
-                        const formSubmitURL = `https://formsubmit.co/ajax/${formSubmitEmail}`;
-
-                        const formSubmitData = {
-                            _subject: `New Registration: ${formData.get('firstname')} ${formData.get('lastname')}`,
-                            _template: 'table',
-                            _captcha: 'false',
-                            Name: `${formData.get('firstname')} ${formData.get('lastname')}`,
-                            Email: formData.get('email'),
-                            Phone: formData.get('phone'),
-                            Student: isStudent ? 'Yes' : 'No',
-                            Package: selectedPackage,
-                            DatesUnavailable: datesUnavailable || 'None',
-                            NewsSubscription: formData.get('axcent_news') ? 'Yes' : 'No',
-                            SelectedClasses: Object.entries(rolesMap).map(([className, role]) => `${className} (${role})`).join('\n')
+                        // 3. Determine Stripe Link
+                        let stripeLink = '';
+                        const links = {
+                            "10-Class Flexible Pack": {
+                                student: "https://buy.stripe.com/aFa00l1sz1Dz90jewWfnO09",
+                                regular: "https://buy.stripe.com/8x2cN71szaa5b8r88yfnO08"
+                            },
+                            "4 Classes/Week (8 Weeks)": {
+                                student: "https://buy.stripe.com/dRmdRbdbh4PLccv74ufnO07",
+                                regular: "https://buy.stripe.com/00w14p9Z59610tN1KafnO06"
+                            },
+                            "3 Classes/Week (8 Weeks)": {
+                                student: "https://buy.stripe.com/aFabJ37QXgyt90j60qfnO05",
+                                regular: "https://buy.stripe.com/cNiaEZ8V13LH90j74ufnO04"
+                            },
+                            "2 Classes/Week (8 Weeks)": {
+                                student: "https://buy.stripe.com/aFaeVf4ELeqla4n3SifnO03",
+                                regular: "https://buy.stripe.com/eVqeVf9Z581X1xR60qfnO02"
+                            },
+                            "1 Course (8 Weeks)": {
+                                student: "https://buy.stripe.com/cNidRb9Z56XTccv0G6fnO01",
+                                regular: "https://buy.stripe.com/eVq28tb395TP5O7agGfnO00"
+                            }
                         };
 
-                        await Promise.race([
-                            fetch(formSubmitURL, {
-                                method: 'POST',
-                                headers: {
-                                    'Content-Type': 'application/json',
-                                    'Accept': 'application/json'
-                                },
-                                body: JSON.stringify(formSubmitData)
-                            }),
-                            new Promise((_, reject) => setTimeout(() => reject(new Error('Timeout')), 3000))
-                        ]);
-                        console.log('Email sent or timed out');
-                    } catch (emailErr) {
-                        console.error('FormSubmit Error:', emailErr);
+                        if (links[selectedPackage]) {
+                            stripeLink = isStudent ? links[selectedPackage].student : links[selectedPackage].regular;
+                            // Pre-fill email to ensure webhook matching
+                            const userEmail = formData.get('email');
+                            if (userEmail) {
+                                stripeLink += '?prefilled_email=' + encodeURIComponent(userEmail) + '&client_reference_id=' + encodeURIComponent(userEmail);
+                            }
+                        } else {
+                            alert("Invalid package selection.");
+                            button.disabled = false;
+                            button.innerHTML = originalText;
+                            return;
+                        }
+
+                        // 4. Submit to Supabase & Google Sheets
+                        const datesUnavailable = formData.get('dates_unavailable') || null;
+                        const classes = [];
+                        document.querySelectorAll('input[name="classes[]"]:checked').forEach(cb => classes.push(cb.value));
+
+                        // Google Sheets URL
+                        const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzAQ5KsD_VOfrkeOVlD42uES5yC-EMaQhOBoi-kGkt80cjHqKTaJ5RhxAqRU8p8jugh/exec";
+
+                        const submissionPayload = {
+                            first_name: formData.get('firstname'),
+                            last_name: formData.get('lastname'),
+                            email: formData.get('email'),
+                            phone: formData.get('phone'),
+                            // sex: formData.get('sex'), // Removed from form
+                            pass_type: selectedPackage,
+                            is_student: isStudent,
+                            pass_start_date: formData.get('activation_date'),
+                            pass_end_date: document.getElementById('pass_end_date').value,
+                            dates_unavailable: datesUnavailable,
+                            axcent_news: formData.get('axcent_news') ? 'Yes' : 'No',
+                            // combine classes and roles into a single readable string for the sheet
+                            selected_classes: Object.entries(rolesMap).map(([className, role]) => `${className} (${role})`).join(', ')
+                        };
+
+                        try {
+                            // Parallel Submission: Supabase + Google Sheets
+                            // Use a timeout to ensure we don't hang if a service is down
+                            const timeout = (ms) => new Promise((_, reject) => setTimeout(() => reject(new Error('Timeout')), ms));
+
+                            const supabasePromise = supabase
+                                .from('registrations')
+                                .insert([{
+                                    ...submissionPayload,
+                                    status: 'pending_payment'
+                                }]);
+
+                            const googleSheetsPromise = fetch(GOOGLE_SCRIPT_URL, {
+                                method: "POST",
+                                mode: "no-cors",
+                                headers: { "Content-Type": "application/json" },
+                                body: JSON.stringify(submissionPayload)
+                            });
+
+                            // Race with a 5-second timeout for background tasks
+                            await Promise.race([
+                                Promise.allSettled([supabasePromise, googleSheetsPromise]),
+                                timeout(5000)
+                            ]);
+
+                            console.log('Background submissions completed or timed out');
+                        } catch (err) {
+                            console.error('Submission Error (Background Tasks):', err);
+                            // We proceed to redirect even if these fail
+                        }
+
+                        // 5. Send Email via FormSubmit
+                        try {
+                            const formSubmitEmail = 'slamitza@gmail.com';
+                            const formSubmitURL = `https://formsubmit.co/ajax/${formSubmitEmail}`;
+
+                            const formSubmitData = {
+                                _subject: `New Registration: ${formData.get('firstname')} ${formData.get('lastname')}`,
+                                _template: 'table',
+                                _captcha: 'false',
+                                Name: `${formData.get('firstname')} ${formData.get('lastname')}`,
+                                Email: formData.get('email'),
+                                Phone: formData.get('phone'),
+                                Student: isStudent ? 'Yes' : 'No',
+                                Package: selectedPackage,
+                                DatesUnavailable: datesUnavailable || 'None',
+                                NewsSubscription: formData.get('axcent_news') ? 'Yes' : 'No',
+                                SelectedClasses: Object.entries(rolesMap).map(([className, role]) => `${className} (${role})`).join('\n')
+                            };
+
+                            await Promise.race([
+                                fetch(formSubmitURL, {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/json',
+                                        'Accept': 'application/json'
+                                    },
+                                    body: JSON.stringify(formSubmitData)
+                                }),
+                                new Promise((_, reject) => setTimeout(() => reject(new Error('Timeout')), 3000))
+                            ]);
+                            console.log('Email sent or timed out');
+                        } catch (emailErr) {
+                            console.error('FormSubmit Error:', emailErr);
+                        }
+
+                        // 6. Store Links & Redirect
+                        try {
+                            localStorage.setItem('axcent_stripe_link', stripeLink);
+                            localStorage.removeItem('axcent_mailto_link');
+
+                            if (formData.get('email')) sessionStorage.setItem('lead_email', formData.get('email'));
+                            if (formData.get('phone')) sessionStorage.setItem('lead_phone', formData.get('phone'));
+                        } catch (storageErr) {
+                            console.error('Storage Error:', storageErr);
+                        }
+
+                        // FINAL REDIRECT (Safety Net)
+                        window.location.href = 'cart.html';
+                    } catch (generalErr) {
+                        console.error('General Submission Error:', generalErr);
+                        // Force redirect as absolute last resort
+                        window.location.href = 'cart.html';
+                    } finally {
+                        // Just in case redirect fails, re-enable button after a long delay
+                        setTimeout(() => {
+                            button.disabled = false;
+                            button.innerHTML = originalText;
+                        }, 10000);
                     }
-
-                    // 6. Store Links & Redirect
-                    try {
-                        localStorage.setItem('axcent_stripe_link', stripeLink);
-                        localStorage.removeItem('axcent_mailto_link');
-
-                        if (formData.get('email')) sessionStorage.setItem('lead_email', formData.get('email'));
-                        if (formData.get('phone')) sessionStorage.setItem('lead_phone', formData.get('phone'));
-                    } catch (storageErr) {
-                        console.error('Storage Error:', storageErr);
-                    }
-
-                    // FINAL REDIRECT (Safety Net)
-                    window.location.href = 'cart.html';
-                } catch (generalErr) {
-                    console.error('General Submission Error:', generalErr);
-                    // Force redirect as absolute last resort
-                    window.location.href = 'cart.html';
-                } finally {
-                    // Just in case redirect fails, re-enable button after a long delay
-                    setTimeout(() => {
-                        button.disabled = false;
-                        button.innerHTML = originalText;
-                    }, 10000);
-                }
-            });
-        }
-    });
+                });
+            }
+        });
     </script>
 
 
