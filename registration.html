@@ -1208,8 +1208,8 @@
             targetMonths.forEach(month => {
                 const daysInMonth = new Date(year, month + 1, 0).getDate();
                 for (let day = 1; day <= daysInMonth; day++) {
-                    // Check start: Jan 14
-                    if (month === 0 && day < 14) continue;
+                    // Check start: Jan 13
+                    if (month === 0 && day < 13) continue;
 
                     const date = new Date(year, month, day);
                     const dayOfWeek = date.getDay();
