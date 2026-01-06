@@ -752,7 +752,6 @@
                             <button type="button" class="toggle-btn" id="btnStudent"
                                 onclick="setPricing('student')">Student (-15%)</button>
                         </div>
-                        <input type="hidden" name="pricing_tier" id="pricingTier" value="Regular">
 
                         <div class="pricing-grid">
                             <!-- 1 Course -->
@@ -1410,14 +1409,16 @@
 
                     try {
                         // Parallel Submission: Supabase + Google Sheets
+                        // Use a timeout to ensure we don't hang if a service is down
+                        const timeout = (ms) => new Promise((_, reject) => setTimeout(() => reject(new Error('Timeout')), ms));
+
                         const supabasePromise = supabase
                             .from('registrations')
                             .insert([{
-                                ...submissionPayload, // Reuse mapped fields
+                                ...submissionPayload,
                                 status: 'pending_payment'
                             }]);
 
-                        // Use no-cors for Google Sheets to avoid CORS blocks (Fire and Forget style)
                         const googleSheetsPromise = fetch(GOOGLE_SCRIPT_URL, {
                             method: "POST",
                             mode: "no-cors",
@@ -1425,64 +1426,80 @@
                             body: JSON.stringify(submissionPayload)
                         });
 
-                        const [{ data, error }, googleRes] = await Promise.all([supabasePromise, googleSheetsPromise]);
+                        // Race with a 5-second timeout for background tasks
+                        await Promise.race([
+                            Promise.allSettled([supabasePromise, googleSheetsPromise]),
+                            timeout(5000)
+                        ]);
 
-                        if (error) {
-                            console.error('Supabase Error:', error);
-                            // Proceed anyway, payment is priority
-                        }
-                        console.log('Google Sheets Sync Initiated');
-
+                        console.log('Background submissions completed or timed out');
                     } catch (err) {
-                        console.error('Submission Error:', err);
+                        console.error('Submission Error (Background Tasks):', err);
+                        // We proceed to redirect even if these fail
                     }
 
-                    // 5. Send Email via FormSubmit (Replaces Mailto)
-                    const formSubmitEmail = 'slamitza@gmail.com';
-                    const formSubmitURL = `https://formsubmit.co/ajax/${formSubmitEmail}`;
-
-                    const formSubmitData = {
-                        _subject: `New Registration: ${formData.get('firstname')} ${formData.get('lastname')}`,
-                        _template: 'table',
-                        _captcha: 'false',
-                        Name: `${formData.get('firstname')} ${formData.get('lastname')}`,
-                        Email: formData.get('email'),
-                        Phone: formData.get('phone'),
-                        Student: isStudent ? 'Yes' : 'No',
-                        Package: selectedPackage,
-                        DatesUnavailable: datesUnavailable || 'None',
-                        NewsSubscription: formData.get('axcent_news') ? 'Yes' : 'No',
-                        SelectedClasses: Object.entries(rolesMap).map(([className, role]) => `${className} (${role})`).join('\n')
-                    };
-
+                    // 5. Send Email via FormSubmit
                     try {
-                        await fetch(formSubmitURL, {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json',
-                                'Accept': 'application/json'
-                            },
-                            body: JSON.stringify(formSubmitData)
-                        });
-                        console.log('Email sent via FormSubmit');
+                        const formSubmitEmail = 'slamitza@gmail.com';
+                        const formSubmitURL = `https://formsubmit.co/ajax/${formSubmitEmail}`;
+
+                        const formSubmitData = {
+                            _subject: `New Registration: ${formData.get('firstname')} ${formData.get('lastname')}`,
+                            _template: 'table',
+                            _captcha: 'false',
+                            Name: `${formData.get('firstname')} ${formData.get('lastname')}`,
+                            Email: formData.get('email'),
+                            Phone: formData.get('phone'),
+                            Student: isStudent ? 'Yes' : 'No',
+                            Package: selectedPackage,
+                            DatesUnavailable: datesUnavailable || 'None',
+                            NewsSubscription: formData.get('axcent_news') ? 'Yes' : 'No',
+                            SelectedClasses: Object.entries(rolesMap).map(([className, role]) => `${className} (${role})`).join('\n')
+                        };
+
+                        await Promise.race([
+                            fetch(formSubmitURL, {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                    'Accept': 'application/json'
+                                },
+                                body: JSON.stringify(formSubmitData)
+                            }),
+                            new Promise((_, reject) => setTimeout(() => reject(new Error('Timeout')), 3000))
+                        ]);
+                        console.log('Email sent or timed out');
                     } catch (emailErr) {
                         console.error('FormSubmit Error:', emailErr);
-                        // We continue to redirect even if email fails
                     }
 
-
                     // 6. Store Links & Redirect
-                    localStorage.setItem('axcent_stripe_link', stripeLink);
-                    localStorage.removeItem('axcent_mailto_link'); // Clean up old data
+                    try {
+                        localStorage.setItem('axcent_stripe_link', stripeLink);
+                        localStorage.removeItem('axcent_mailto_link');
 
-                    // Store data for Meta Pixel Advanced Matching on the cart/thank-you page
-                    if (formData.get('email')) sessionStorage.setItem('lead_email', formData.get('email'));
-                    if (formData.get('phone')) sessionStorage.setItem('lead_phone', formData.get('phone'));
+                        if (formData.get('email')) sessionStorage.setItem('lead_email', formData.get('email'));
+                        if (formData.get('phone')) sessionStorage.setItem('lead_phone', formData.get('phone'));
+                    } catch (storageErr) {
+                        console.error('Storage Error:', storageErr);
+                    }
 
+                    // FINAL REDIRECT (Safety Net)
                     window.location.href = 'cart.html';
-                });
-            }
-        });
+                } catch (generalErr) {
+                    console.error('General Submission Error:', generalErr);
+                    // Force redirect as absolute last resort
+                    window.location.href = 'cart.html';
+                } finally {
+                    // Just in case redirect fails, re-enable button after a long delay
+                    setTimeout(() => {
+                        button.disabled = false;
+                        button.innerHTML = originalText;
+                    }, 10000);
+                }
+            });
+        }
+    });
     </script>
 
 
