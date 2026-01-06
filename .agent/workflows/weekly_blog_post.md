@@ -2,36 +2,110 @@
 description: Automate the weekly creation and publishing of a blog post for AXcent Dance Studio, including AI-generated imagery.
 ---
 
-# Weekly Blog Post Automation
+Workflow: Weekly Blog Post Automation
+TRIGGER: Run weekly or on command. GOAL: Create a high-energy, visually complex, and SEO-optimized blog post for AXcent Dance. STRICT CONSTRAINT: No "walls of text." The output must be a visual experience using Bento Grids, Collages, and Feature Cards.
 
-This workflow automates the research, writing, image generation, publishing, and notification process for the weekly blog post.
+1. Topic Selection & Research
+Select Topic Category: Choose ONE of the following tags (rotate weekly to ensure variety):
 
-## 1. Research Phase
-1.  **Search the Web**: Use `search_web` to find current trends in Bachata and Latin Dance.
-    *   *Queries*: "trending bachata songs this week", "latin dance challenges [current month]", "beginner dance tips motivation", "bachata sensual news".
-    *   *Goal*: Select one high-potential topic (e.g., a new song, a common beginner struggle, or a trending style).
+Music
 
-## 2. Content Creation
-1.  **Draft the Post**: Based on the research, write a 600-word blog post.
-    *   *Tone*: Energetic, welcoming, knowledgeable.
-    *   *Structure*:
-        *   **Catchy Title** (SEO optimized).
-        *   **Introduction** (Hook).
-        *   **Main Body** (3-4 sections with headers).
-        *   **Conclusion** (Encouraging).
-        *   **Call to Action**: "Ready to move? Join us at Axcent Dance Studio this week!"
-    *   *Format*: HTML (ready to be inserted into a file).
+Dance Tips
 
+Community
 
-## 3. Publishing
-1.  **Create New File**: Create a new HTML file for the post (e.g., `blog-posts/post-[topic-slug].html`).
-    *   *Template*: Use the standard header/footer from `index.html` and the blog post layout.
-    *   *Content*: Insert the drafted text.
-3.  **Update Blog Listing**: Add a new entry to the top of the grid in `blog.html` linking to the new file.
-    *   *Details*: Include the Title, Date/Category, Excerpt, and Link.
+Education
 
-## 4. Notification
-1.  **Notify User**: Use `notify_user` to simulate the email notification.
-    *   *Subject*: "[Published] Weekly Blog Post: [Post Title]"
-    *   *Body*: Link to the new post and a brief summary.
-    *   *Note*: If any errors occur, provide the draft text in the notification.
+Wellness
+
+Events
+
+Contextual Search: Use search_web to find trending angles.
+
+Scope: Global Bachata trends + Local Zurich Context (e.g., is there a holiday, festival, or season change in Zurich?).
+
+Queries: "trending bachata songs [current month]", "benefits of dance for mental health research", "social dance etiquette tips 2024".
+
+Define the Hook: Select a specific angle (e.g., instead of "Bachata Tips," use "Why Your Basic Step Feels Stiff & How to Fix It").
+
+2. Visual Architecture (The Layout)
+CRITICAL: Do not write a standard article. Construct the HTML using these "Content Modules" to break up the flow.
+
+Module A: The Hero Header
+
+Full-width background image (Dark/Fiery).
+
+Title in <h1> with gradient text (var(--grad)).
+
+Tag displayed prominently (e.g., <span class="badge badge--music">Music</span>).
+
+Module B: The Bento Grid (.bento-grid)
+
+Use this for lists or tips.
+
+Create a CSS Grid layout with mix of square and tall cards.
+
+Content: Icons, short stats, or "Quick Wins."
+
+Module C: The Collage Section (.collage-section)
+
+Use this for storytelling or vibes.
+
+Cluster 3-4 images with varying rotations/overlaps to create a "scrapbook" feel.
+
+Module D: The Call to Action (.cta-section)
+
+Glassmorphism background (var(--glass-bg)).
+
+Button: "Join the Dance Floor" (var(--accent-start)).
+
+3. Drafting the Content
+Word Count: ~600 words (split across modules).
+
+Tone: Energetic, Welcoming, Knowledgeable.
+
+Language Constraint: NO CONTRACTIONS (Use "It is" not "It's").
+
+Writing Style:
+
+Short sentences.
+
+Max 3 lines of text per visual block.
+
+Use "Power Words" (e.g., Ignite, Connect, Flow, Rhythm).
+
+4. Technical Implementation (HTML Construction)
+File Creation: Generate blog-posts/post-[topic-slug].html.
+
+Master Template Inheritance:
+
+COPY the <header> and <footer> exactly from index.html.
+
+Ensure all CSS variables (--bg-main, --text-main) are active.
+
+Images:
+
+Use semantic placeholder src attributes so I can replace them later.
+
+Example: <img src="assets/images/placeholder-[topic]-bento-1.jpg" alt="Description of what should be here" class="bento__img">
+
+Metadata:
+
+Generate a unique Title Tag and Meta Description (following the SEO Audit rules).
+
+5. Publishing & Notification
+Update Index: Add the new post to the top of the grid in blog.html.
+
+Include: Thumbnail, Date, Tag, Title, and a 1-sentence excerpt.
+
+Validation: Verify the file structure.
+
+Check: Does the H1 match the Title Tag?
+
+Check: Are there any dead links?
+
+Notify User: Output a summary.
+
+Subject: "🔥 New Post Live: [Title]"
+
+Action Item: "Review the placeholders in the Bento Grid and upload matching images to assets/images/."
