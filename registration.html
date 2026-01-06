@@ -1475,6 +1475,10 @@
                     localStorage.setItem('axcent_stripe_link', stripeLink);
                     localStorage.removeItem('axcent_mailto_link'); // Clean up old data
 
+                    // Store data for Meta Pixel Advanced Matching on the cart/thank-you page
+                    if (formData.get('email')) sessionStorage.setItem('lead_email', formData.get('email'));
+                    if (formData.get('phone')) sessionStorage.setItem('lead_phone', formData.get('phone'));
+
                     window.location.href = 'cart.html';
                 });
             }
