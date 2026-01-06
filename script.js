@@ -312,6 +312,10 @@ info@axcentdance.com`,
                         console.error('FormSubmit Network Error:', formSubmitResult.reason);
                     }
 
+                    // Store data for Meta Pixel Advanced Matching on the thank-you page
+                    if (data.email) sessionStorage.setItem('lead_email', data.email);
+                    if (data.phone) sessionStorage.setItem('lead_phone', data.phone);
+
                     // Give a moment to see logs before redirect (optional, or just redirect)
                     window.location.href = 'thank-you-trial.html';
                 })

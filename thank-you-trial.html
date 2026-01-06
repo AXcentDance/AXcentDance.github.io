@@ -185,7 +185,22 @@
             'https://connect.facebook.net/en_US/fbevents.js');
         fbq('init', '1427661435456369');
         fbq('track', 'PageView');
-        fbq('track', 'Lead'); // Track successful trial sign-up
+
+        // Advanced Matching for Lead Event
+        const leadEmail = sessionStorage.getItem('lead_email');
+        const leadPhone = sessionStorage.getItem('lead_phone');
+
+        if (leadEmail || leadPhone) {
+            fbq('track', 'Lead', {
+                em: leadEmail ? leadEmail.toLowerCase().trim() : undefined,
+                ph: leadPhone ? leadPhone.replace(/\D/g, '') : undefined
+            });
+            // Clear to avoid double tracking on refresh
+            sessionStorage.removeItem('lead_email');
+            sessionStorage.removeItem('lead_phone');
+        } else {
+            fbq('track', 'Lead'); // Fallback if no session data
+        }
     </script>
     <noscript><img height="1" width="1" style="display:none"
             src="https://www.facebook.com/tr?id=1427661435456369&ev=PageView&noscript=1" /></noscript>
