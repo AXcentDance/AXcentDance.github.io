@@ -3773,11 +3773,19 @@ textarea {
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 12px;
     padding: 1rem;
-    color: white;
+    color: white !important;
+    /* Force white text */
     font-family: var(--font-body);
     font-size: 1rem;
     transition: all 0.3s ease;
     outline: none;
+}
+
+/* Fix for default red validation */
+.form-input-modern:required:invalid,
+.form-textarea-modern:required:invalid {
+    border-color: rgba(255, 255, 255, 0.1);
+    box-shadow: none;
 }
 
 .form-textarea-modern {

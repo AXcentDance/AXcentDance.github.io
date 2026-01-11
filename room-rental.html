@@ -171,7 +171,10 @@
         <section class="hero rental-hero">
             <!-- Background Image -->
             <div class="rental-bg-image">
-                <img src="assets/images/home/gallery_1.webp" srcset="assets/images/home/gallery_1_480w.webp 480w, assets/images/home/gallery_1_800w.webp 800w, assets/images/home/gallery_1_1200w.webp 1200w" sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px" alt="Dance Studio" width="682" height="1024" >
+                <img src="assets/images/home/gallery_1.webp"
+                    srcset="assets/images/home/gallery_1_480w.webp 480w, assets/images/home/gallery_1_800w.webp 800w, assets/images/home/gallery_1_1200w.webp 1200w"
+                    sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px" alt="Dance Studio" width="682"
+                    height="1024">
             </div>
 
             <div class="container" style="position: relative; z-index: 2;">
@@ -205,10 +208,25 @@
 
                         <!-- Left: Form -->
                         <div class="rental-form-col">
-                            <h2 class="section-title-modern" style="font-size: 2.5rem; margin-bottom: 2rem;">Rental
+                            <h2 class="section-title-modern" style="font-size: 2.5rem; margin-bottom: 1rem;">Rental
                                 Inquiry</h2>
+                            <p style="color: var(--text-muted); margin-bottom: 1rem; line-height: 1.6;">
+                                We offer different pricing packages depending on how you wish to utilize the room:
+                            </p>
+                            <ul
+                                style="color: var(--text-muted); margin-bottom: 1.5rem; padding-left: 1.5rem; line-height: 1.6; list-style-type: disc;">
+                                <li>Events (Workshops, Parties)</li>
+                                <li>Regular Classes</li>
+                                <li>Training / Practice</li>
+                                <li>Private Lessons</li>
+                                <li>Photoshooting / Videoshooting</li>
+                            </ul>
+                            <p style="color: white; margin-bottom: 2rem;">
+                                <strong>Please specify the purpose of your rental and whether it is a one-time or
+                                    recurring booking.</strong>
+                            </p>
 
-                            <form action="https://formsubmit.co/slamitza@gmail.com" method="POST">
+                            <form action="https://formsubmit.co/info@axcentdance.com" method="POST">
                                 <input type="hidden" name="_subject" value="New Room Rental Inquiry!">
                                 <input type="hidden" name="_captcha" value="false">
                                 <input type="hidden" name="_next" value="https://axcentdance.com/thank-you.html">
@@ -247,35 +265,41 @@
                                     </div>
                                 </div>
 
-                                <div class="form-group" style="margin-bottom: 2rem;">
-                                    <label class="form-label-static"
-                                        style="display: block; margin-bottom: 1rem; color: var(--text-muted); font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 700;">Type
-                                        of Rental</label>
-                                    <div class="rental-type-grid"
-                                        style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
-                                        <label class="rental-card-option">
-                                            <input type="radio" name="rental_type" value="Day" required>
-                                            <div class="rental-card-content">
-                                                <span class="icon">📅</span>
-                                                <span class="title">One-time Event</span>
-                                                <span class="desc">Workshops, parties, or single rehearsals.</span>
-                                            </div>
-                                        </label>
-                                        <label class="rental-card-option">
-                                            <input type="radio" name="rental_type" value="Weekly" required>
-                                            <div class="rental-card-content">
-                                                <span class="icon">🔄</span>
-                                                <span class="title">Recurring</span>
-                                                <span class="desc">Weekly classes or regular practice slots.</span>
-                                            </div>
-                                        </label>
+                                <div class="form-grid"
+                                    style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2rem;">
+
+                                    <!-- Purpose Dropdown -->
+                                    <div class="form-group floating-label">
+                                        <select id="rental_purpose" name="rental_purpose" class="form-input-modern"
+                                            required style="padding-top: 1.25rem;">
+                                            <option value="" disabled selected hidden></option>
+                                            <option value="Event">Event (Workshop/Party)</option>
+                                            <option value="Regular Class">Regular Class</option>
+                                            <option value="Training">Training / Practice</option>
+                                            <option value="Private Lesson">Private Lesson</option>
+                                            <option value="Production">Photo / Video Shoot</option>
+                                            <option value="Other">Other</option>
+                                        </select>
+                                        <label for="rental_purpose" style="color: white !important;">Purpose of
+                                            Rental</label>
+                                    </div>
+
+                                    <!-- Frequency Dropdown -->
+                                    <div class="form-group floating-label">
+                                        <select id="frequency" name="frequency" class="form-input-modern" required
+                                            style="padding-top: 1.25rem;">
+                                            <option value="" disabled selected hidden></option>
+                                            <option value="One-time">One-time</option>
+                                            <option value="Recurring">Recurring</option>
+                                        </select>
+                                        <label for="frequency" style="color: white !important;">Frequency</label>
                                     </div>
                                 </div>
 
                                 <div class="form-group floating-label" style="margin-bottom: 1.5rem;">
                                     <input type="text" id="timing" name="timing" class="form-input-modern"
                                         placeholder=" " required>
-                                    <label for="timing">Preferred Date & Time</label>
+                                    <label for="timing">Date(s) and Time</label>
                                 </div>
 
                                 <div class="form-group floating-label" style="margin-bottom: 2rem;">
