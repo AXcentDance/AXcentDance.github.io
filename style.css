@@ -3918,7 +3918,7 @@ textarea {
 
 /* Featured Section */
 .blog-featured {
-    max-width: 900px;
+    max-width: 800px;
     margin: -3rem auto 3rem;
     /* Negative margin to pull up into hero slightly */
     padding: 0 20px;
@@ -3963,7 +3963,7 @@ textarea {
 }
 
 .featured-content {
-    padding: 1.5rem;
+    padding: 1.25rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -3979,41 +3979,39 @@ textarea {
     text-transform: uppercase;
     letter-spacing: 0.05em;
     align-self: flex-start;
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.5rem;
     box-shadow: 0 4px 15px rgba(255, 59, 48, 0.3);
 }
 
 .featured-title {
     font-family: var(--font-heading);
-    font-size: 1.75rem;
+    font-size: 1.5rem;
     line-height: 1.2;
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.5rem;
     color: white;
 }
 
 .featured-excerpt {
     color: var(--text-muted);
-    font-size: 1.05rem;
+    font-size: 0.95rem;
     line-height: 1.6;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
 }
 
 @media (min-width: 900px) {
     .featured-card {
-        grid-template-columns: 1fr 1fr;
-        min-height: 200px;
-        /* Reduced min-height */
+        grid-template-columns: 2fr 3fr;
+        /* More space for text */
+        min-height: 240px;
     }
 
     .featured-image-wrapper {
         height: 100%;
-        min-height: 200px;
-        /* Reduced min-height */
+        min-height: 240px;
     }
 
     .featured-content {
-        padding: 1.5rem;
-        /* Reduced padding */
+        padding: 1.5rem 2rem;
     }
 }
 
