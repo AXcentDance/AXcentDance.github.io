@@ -48,6 +48,14 @@
         /* Registration Specific Styles */
         /* .reg-hero removed in favor of .schedule-hero-modern */
 
+        /* Fix for select dropdown options in dark mode */
+        select#activation_date option {
+            background-color: #0f0816;
+            /* Fallback */
+            background-color: var(--bg-secondary);
+            color: white;
+        }
+
         .reg-form-container {
             max-width: 800px;
             margin: 0 auto 80px;
@@ -1201,15 +1209,17 @@
                 return d.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' });
             };
 
-            // Generate all Tuesdays (2), Wednesdays (3) and Thursdays (4) in Jan (0) 2026
+            // Generate all Tuesdays (2), Wednesdays (3) and Thursdays (4) in Jan (0) and Feb (1) 2026
             const year = 2026;
-            const targetMonths = [0]; // Jan only
+            const targetMonths = [0, 1]; // Jan and Feb
 
             targetMonths.forEach(month => {
                 const daysInMonth = new Date(year, month + 1, 0).getDate();
                 for (let day = 1; day <= daysInMonth; day++) {
                     // Check start: Jan 13
                     if (month === 0 && day < 13) continue;
+                    // Check limit: Mid Feb (approx Feb 20)
+                    if (month === 1 && day > 20) continue;
 
                     const date = new Date(year, month, day);
                     const dayOfWeek = date.getDay();
