@@ -3,5 +3,4 @@ Allow: /
 Allow: /llms.txt
 Allow: /llms-full.txt
 
-
 Sitemap: https://axcentdance.com/sitemap.xml
