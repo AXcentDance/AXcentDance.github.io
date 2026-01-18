@@ -115,6 +115,75 @@
                 display: block !important;
             }
         }
+
+        /* Pricing Table Styles */
+        .pricing-section {
+            margin: 2rem 0;
+            overflow-x: auto;
+        }
+
+        .pricing-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--bg-secondary);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid var(--glass-border);
+        }
+
+        .pricing-table th,
+        .pricing-table td {
+            padding: 1.2rem;
+            text-align: left;
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .pricing-table th {
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+        }
+
+        .pricing-table td {
+            font-size: 0.9rem;
+        }
+
+        .pricing-table th:nth-child(2),
+        .pricing-table td:nth-child(2) {
+            min-width: 140px;
+        }
+
+        .pricing-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .pricing-table .rate-cell {
+            font-weight: 700;
+            color: var(--text-main);
+            font-size: 1.1rem;
+        }
+
+        .pricing-table .highlight-text {
+            background: var(--grad);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .discount-note {
+            margin-top: 1rem;
+            padding: 1.2rem;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
     </style>
 </head>
 
@@ -210,17 +279,43 @@
                         <div class="rental-form-col">
                             <h2 class="section-title-modern" style="font-size: 2.5rem; margin-bottom: 1rem;">Rental
                                 Inquiry</h2>
-                            <p style="color: var(--text-muted); margin-bottom: 1rem; line-height: 1.6;">
-                                We offer different pricing packages depending on how you wish to utilize the room:
-                            </p>
-                            <ul
-                                style="color: var(--text-muted); margin-bottom: 1.5rem; padding-left: 1.5rem; line-height: 1.6; list-style-type: disc;">
-                                <li>Events (Workshops, Parties)</li>
-                                <li>Regular Classes</li>
-                                <li>Training / Practice</li>
-                                <li>Private Lessons</li>
-                                <li>Photoshooting / Videoshooting</li>
-                            </ul>
+
+                            <div class="pricing-section">
+                                <table class="pricing-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Usage Type</th>
+                                            <th>Rate</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><strong>AXcent Students</strong><br><span
+                                                    style="font-size: 0.8rem; color: var(--text-muted);">For personal
+                                                    practice. Valid with an active course pass</span></td>
+                                            <td class="rate-cell">15 CHF / hr</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Outsider Practice</strong><br><span
+                                                    style="font-size: 0.8rem; color: var(--text-muted);">For any
+                                                    activities which do not earn money for the outsiders</span></td>
+                                            <td class="rate-cell">25 CHF / hr</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Workshops / Regular Classes</strong><br><span
+                                                    style="font-size: 0.8rem; color: var(--text-muted);">For activities
+                                                    where you charge clients</span></td>
+                                            <td class="rate-cell">55 CHF / hr</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div class="discount-note">
+                                    ✨ <strong>Planning a multiple hour event?</strong> We offer a <strong>discount for
+                                        longer bookings</strong>.
+                                    Mention it in your inquiry below!
+                                </div>
+                            </div>
+
                             <p style="color: white; margin-bottom: 2rem;">
                                 <strong>Please specify the purpose of your rental and whether it is a one-time or
                                     recurring booking.</strong>
@@ -328,8 +423,8 @@
                                         style="width: 40px; height: 40px; background: rgba(255,59,48,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--accent-start);">📐</span>
                                     <div>
                                         <strong style="display: block; color: white;">~140m² Space</strong>
-                                        <span style="color: var(--text-muted); font-size: 0.9rem;">Floor fit for all
-                                            dance styles</span>
+                                        <span style="color: var(--text-muted); font-size: 0.9rem;">High quality dance
+                                            floor for all styles</span>
                                     </div>
                                 </li>
                                 <li style="display: flex; align-items: center; gap: 1rem;">
@@ -337,8 +432,17 @@
                                         style="width: 40px; height: 40px; background: rgba(255,59,48,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--accent-start);">🪞</span>
                                     <div class="rental-feature-text">
                                         <strong style="display: block; color: white;">9 Meters of Mirrors</strong>
-                                        <span style="color: var(--text-muted); font-size: 0.9rem;">High quality
-                                            glass</span>
+                                        <span style="color: var(--text-muted); font-size: 0.9rem;">Full-height
+                                            professional glass</span>
+                                    </div>
+                                </li>
+                                <li style="display: flex; align-items: center; gap: 1rem;">
+                                    <span
+                                        style="width: 40px; height: 40px; background: rgba(255,59,48,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--accent-start);">⏫</span>
+                                    <div>
+                                        <strong style="display: block; color: white;">2.9m High Ceiling</strong>
+                                        <span style="color: var(--text-muted); font-size: 0.9rem;">Ideal for lifts and
+                                            high-energy energy</span>
                                     </div>
                                 </li>
                                 <li style="display: flex; align-items: center; gap: 1rem;">
@@ -352,31 +456,30 @@
                                 </li>
                                 <li style="display: flex; align-items: center; gap: 1rem;">
                                     <span
+                                        style="width: 40px; height: 40px; background: rgba(255,59,48,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--accent-start);">🛋️</span>
+                                    <div>
+                                        <strong style="display: block; color: white;">Modern Lounge</strong>
+                                        <span style="color: var(--text-muted); font-size: 0.9rem;">Entrance space for
+                                            networking & relaxation</span>
+                                    </div>
+                                </li>
+                                <li style="display: flex; align-items: center; gap: 1rem;">
+                                    <span
                                         style="width: 40px; height: 40px; background: rgba(255,59,48,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--accent-start);">☀️</span>
                                     <div>
                                         <strong style="display: block; color: white;">Natural Light</strong>
-                                        <span style="color: var(--text-muted); font-size: 0.9rem;">12 meters of windows,
-                                            wall to wall</span>
+                                        <span style="color: var(--text-muted); font-size: 0.9rem;">12 meters of
+                                            wall-to-wall windows</span>
                                     </div>
                                 </li>
                                 <li style="display: flex; align-items: center; gap: 1rem;">
                                     <span
                                         style="width: 40px; height: 40px; background: rgba(255,59,48,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--accent-start);">💡</span>
                                     <div>
-                                        <strong style="display: block; color: white;">Flexible Lighting</strong>
-                                        <span style="color: var(--text-muted); font-size: 0.9rem;">System fit for any
-                                            occasion</span>
+                                        <strong style="display: block; color: white;">Advanced Lighting System</strong>
+                                        <span style="color: var(--text-muted); font-size: 0.9rem;">Customizable colors,
+                                            intensity, and warm tones fit for any occasion</span>
                                     </div>
-                                </li>
-                                <li style="display: flex; align-items: center; gap: 1rem;">
-                                    <span
-                                        style="width: 40px; height: 40px; background: rgba(255,59,48,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--accent-start);">✨</span>
-                                    <div>
-                                        <strong style="display: block; color: white;">Event Ready</strong>
-                                        <span style="color: var(--text-muted); font-size: 0.9rem;">Professional
-                                            decorations for warmth & hospitality</span>
-                                    </div>
-                                </li>
                                 </li>
                             </ul>
                         </div>
