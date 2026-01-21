@@ -450,7 +450,10 @@
                 <div class="hero-content-right">
                     <div class="framed-hero-wrapper">
                         <div class="framed-hero-inner">
-                            <img src="assets/images/registration_hero_placeholder.webp" srcset="assets/images/registration_hero_placeholder_480w.webp 480w, assets/images/registration_hero_placeholder_800w.webp 800w, assets/images/registration_hero_placeholder_1200w.webp 1200w" sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px" alt="Bachata Dance Class Placeholder" width="1024" height="1024" >
+                            <img src="assets/images/registration_hero_placeholder.webp"
+                                srcset="assets/images/registration_hero_placeholder_480w.webp 480w, assets/images/registration_hero_placeholder_800w.webp 800w, assets/images/registration_hero_placeholder_1200w.webp 1200w"
+                                sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px"
+                                alt="Bachata Dance Class Placeholder" width="1024" height="1024">
                         </div>
                     </div>
                 </div>
@@ -1058,8 +1061,8 @@
             targetMonths.forEach(month => {
                 const daysInMonth = new Date(year, month + 1, 0).getDate();
                 for (let day = 1; day <= daysInMonth; day++) {
-                    // Check start: Jan 15 (remove 13/14)
-                    if (month === 0 && day < 15) continue;
+                    // Start exactly on Tuesday Jan 27 (remove all previous)
+                    if (month === 0 && day < 27) continue;
                     // Check limit: Mid Feb (approx Feb 20)
                     if (month === 1 && day > 20) continue;
 
