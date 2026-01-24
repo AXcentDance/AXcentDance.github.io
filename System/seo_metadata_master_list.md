@@ -17,31 +17,32 @@ This file tracks the Title Tags and Meta Descriptions for all pages on the AXcen
 | Page | File | Title Tag | Meta Description |
 | :--- | :--- | :--- | :--- |
 | **Room Rental** | `room-rental.html` | Room Rental | AXcent Dance | Rent our dance studio room for your own events or classes. Contact us for availability and rates. |
-| **Corporate Events** | `corporate-events.html` | Corporate & Private Events | AXcent Dance | The perfect venue for Team Building in Zurich! Book AXcent Dance for corporate entertainment, staff parties, show acts, and interactive group dance workshops. |
-| **Wedding Dance** | `wedding-dance.html` | Wedding Dance Choreography | AXcent Dance Zurich | Prepare for your special day with a custom wedding dance choreography. Private lessons tailored to your song and style. |
-| **Private Lessons** | `private-lessons.html` | Private Lessons | AXcent Dance Zurich | Accelerate your learning with private Bachata lessons. One-on-one coaching to refine your technique and styling. |
+| **Corporate Events** | `corporate-events.html` | Corporate & Private Events | AXcent Dance Zurich | The perfect venue for Team Building in Zurich! Book AXcent Dance for corporate entertainment, staff parties, show acts, and interactive group dance workshops. |
+| **Wedding Dance** | `wedding-dance.html` | Wedding Dance Choreography | AXcent Dance Zurich | Make your first dance unforgettable. Custom wedding dance choreography in Zurich for Bachata, Salsa, or your favorite song. Book a consultation today. |
+| **Private Lessons** | `private-lessons.html` | Private Lessons | AXcent Dance Zurich | Accelerate your Bachata progress with private lessons in Zurich. Personalized coaching for technique, styling, and wedding dances. |
 
 ## Events
 | Page | File | Title Tag | Meta Description |
 | :--- | :--- | :--- | :--- |
 | **Events Overview** | `events.html` | Events & Workshops – AXcent Dance Zurich | The Biggest Dominican Bachata Event in Zurich. 7 Hours Intensive with Aitor Gomez & Sarah La Morena. |
 | **Milano Congress** | `Milano-Sensual-Congress-2026.html` | Milano Sensual Congress 2026 – AXcent Dance | Join AXcent Dance at the Milano Sensual Congress 2026. Get your tickets and join the Zurich group for this amazing event. |
+| **Milano Congress Spring** | `Milano-Sensual-Congress-Spring-2026.html` | Milano Sensual Congress Spring Edition 2026 | The Spring Edition of the Milano Sensual Congress 2026. Experience the magic of Bachata in Italy. Exclusive offers for AXcent Dance members. |
 
 ## Education & Guides
 | Page | File | Title Tag | Meta Description |
 | :--- | :--- | :--- | :--- |
 | **Education Hub** | `education.html` | Bachata Education: History, Styles & Musicality | AXcent Dance Zurich | Master the theory behind the dance. Learn about the history of Bachata, the differences between Dominican and Sensual styles, musicality instruments, and common dance terminology. |
-| **Bachata Guide** | `guide-bachata.html` | Bachata in Zurich: History, Styles & Classes | AXcent Dance | Complete guide to Bachata. Learn about its Dominican roots, modern evolution, and where to dance in Zurich. |
+| **Bachata Guide** | `guide-bachata.html` | Bachata in Zurich: History, Styles & Classes | AXcent Dance | Discover Bachata in Zurich. Learn about the history, styles (Dominican & Sensual), and join the best Bachata classes at AXcent Dance Studio. |
 | **Bachata Sensual** | `guide-bachata-sensual.html` | What is Bachata Sensual? | AXcent Dance Zurich | Learn about Bachata Sensual, a modern fusion style focusing on body movement and connection. The main style taught at AXcent Dance Zurich. |
-| **Social Dancing** | `guide-social-dancing.html` | Social Dancing Guide | AXcent Dance | Everything you need to know about social dancing in Zurich. Where to go, what to expect, and how to have fun. |
-| **Beginner Guide** | `beginner-guide.html` | Beginner's Guide to Bachata | AXcent Dance | New to dance? Start here. Our comprehensive guide for absolute beginners covers rhythm, basic steps, and what you need to start. |
+| **Social Dancing** | `guide-social-dancing.html` | What is Social Dancing? | AXcent Dance Zurich | Learn about social dancing, a fun and inclusive way to meet people and express yourself. Perfect for beginners in Zurich. |
+| **Beginner Guide** | `beginner-guide.html` | Beginner Guide: Your First Bachata Class | AXcent Dance Zurich | Nervous about your first dance class? Don't be! Here is everything you need to know about what to wear, dance shoes, partner rotation, and class etiquette. |
 
 ## Resources
 | Page | File | Title Tag | Meta Description |
 | :--- | :--- | :--- | :--- |
-| **Blog** | `blog.html` | AXcent Dance Blog – News & Tips | Stay updated with the latest news, dance tips, and community stories from AXcent Dance Zurich. |
+| **Blog** | `blog.html` | Blog | AXcent Dance Zurich | Read the latest articles about Bachata, dance tips, music, and the dance community in Zurich. |
 | **Gallery** | `gallery.html` | Gallery | AXcent Dance Zurich | See the AXcent Dance community in action. Photos and videos from our Bachata classes, socials, and events in Zurich. |
-| **FAQ** | `faq.html` | FAQ - Frequently Asked Questions | AXcent Dance Zurich | Answers to common questions about our classes, pricing, clothes, and studio policies. |
+| **FAQ** | `faq.html` | FAQ - Frequently Asked Questions | AXcent Dance Zurich | Find answers to common questions about our Bachata classes in Zurich. Partner requirements, clothing, pricing, and more. |
 | **Etiquette** | `etiquette.html` | Dance Etiquette | AXcent Dance Zurich | Learn the essential rules of social dancing. A guide to dance floor etiquette, hygiene, and respect for the Bachata community. |
 
 ## Classes
@@ -70,6 +71,8 @@ This file tracks the Title Tags and Meta Descriptions for all pages on the AXcen
 | **Roots of Bachata** | `roots-of-bachata.html` | Roots of Bachata | Discover where Bachata was born, why it was prohibited in the past, and its history from Dominican roots to a global dance phenomenon. |
 | **New Location** | `blog-new-location.html` | New Location Announcement | AXcent Dance is moving to a new location at Hermetschloostrasse 73, 8048 Zurich. A beautiful 138sqm space opening January 12th, 2025. |
 | **Christmas Break** | `christmas-break-2025.html` | Christmas Break 2025 | AXcent Dance Studio Christmas Break dates: Dec 22 - Jan 11. Re-opening Monday, Jan 12. Merry Christmas and Happy New Year! |
+| **First Week** | `first-week-new-studio.html` | First Week Magic: Celebrating Our New Home in Zurich | The energy was electric! A huge thank you to everyone who joined us for our first week of classes at our brand new studio in Zurich Altstetten. |
+| **Mental Health** | `science-of-dance-mental-health.html` | Less Stress, More Dancing: The Science Behind "Dancer's High" | Discover the science of how partner dancing like Bachata lowers cortisol, releases endorphins, and improves mental health. Escaping burnout has never been this fun. |
 
 ## System Pages
 | Page | File | Title Tag | Meta Description |

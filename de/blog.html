@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog | AXcent Dance Zürich</title>
+    <link rel="canonical" href="https://axcentdance.com/blog">
+  <link rel="alternate" hreflang="en" href="https://axcentdance.com/blog" />
+  <link rel="alternate" hreflang="x-default" href="https://axcentdance.com/blog" />
+  <link rel="alternate" hreflang="de" href="https://axcentdance.com/de/blog" />
+    <meta name="description"
+        content="Lies die neuesten Artikel über Bachata, Tanz-Tipps, Musik und die Tanz-Community in Zürich.">
+    <meta property="og:description" content="Lies die neuesten Artikel über Bachata, Tanz-Tipps, Musik und die Tanz-Community in Zürich.">
+    <meta property="og:locale" content="de_CH">
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://cdn.jsdelivr.net https://connect.facebook.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com https://placehold.co https://*.googleapis.com https://*.gstatic.com https://www.facebook.com; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://script.google.com https://formsubmit.co https://www.facebook.com https://connect.facebook.net; frame-src 'self' https://www.google.com; object-src 'none'; base-uri 'self'; media-src 'self' blob:; worker-src 'self' blob:;">
+    <!-- Meta Pixel Code -->
+    <script>
+        !function (f, b, e, v, n, t, s) {
+            if (f.fbq) return; n = f.fbq = function () {
+                n.callMethod ?
+                    n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+            };
+            if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+            n.queue = []; t = b.createElement(e); t.async = !0;
+            t.src = v; s = b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t, s)
+        }(window, document, 'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '1427661435456369');
+        fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+            src="https://www.facebook.com/tr?id=1427661435456369&ev=PageView&noscript=1" /></noscript>
+    <!-- End Meta Pixel Code -->
+
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../style.css?v=2.2">
+    <link rel="apple-touch-icon" href="/apple-touch-icon-v2.png">
+    <link rel="icon" href="/favicon-v2.png" type="image/png">
+
+
+    <style>
+        .blog-hero {
+            padding: 160px 20px 80px;
+            text-align: center;
+            background: linear-gradient(to bottom, rgba(5, 2, 8, 0.8), var(--bg-main));
+            /* background-image removed per user request */
+        }
+
+        .blog-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 4rem 20px;
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .blog-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-start);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .blog-image {
+            width: 100%;
+            height: 200px;
+            background: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .blog-content {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .blog-meta {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .blog-title {
+            font-size: 1.3rem;
+            color: white;
+            margin-bottom: 1rem;
+            line-height: 1.4;
+        }
+
+        .blog-excerpt {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .read-more {
+            color: var(--accent-start);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            transition: transform 0.3s ease;
+        }
+
+        .read-more:hover {
+            transform: translateX(5px);
+        }
+
+        .read-more::after {
+            content: '→';
+            margin-left: 5px;
+        }
+    </style>
+
+    <!-- Cookie Consent -->
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-E2SYCF7R7X"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-E2SYCF7R7X');
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Startseite",
+        "item": "https://axcentdance.com/de/"
+      },{
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Blog",
+        "item": "https://axcentdance.com/de/blog"
+      }]
+    }
+    </script>
+    <!-- CRITICAL: FAIL-SAFE MOBILE MENU STYLES -->
+    <style>
+        /* DESKTOP (900px+) - HIDE BUTTON */
+        @media (min-width: 900px) {
+            .mobile-menu-btn {
+                display: none !important;
+            }
+        }
+
+        /* MOBILE (<900px) - SHOW BUTTON ABSOLUTE LEFT */
+        @media (max-width: 899px) {
+            .navbar {
+                position: relative !important;
+                /* Ensure anchor */
+                justify-content: center !important;
+                /* Center logo */
+            }
+
+            .mobile-menu-btn {
+                display: flex !important;
+                position: absolute !important;
+                /* Absolute to navbar */
+                top: 50% !important;
+                transform: translateY(-50%) !important;
+                left: 15px !important;
+                z-index: 10001 !important;
+
+                /* FINAL PRODUCTION STYLE: Transparent */
+                background: transparent !important;
+                border: none !important;
+
+                color: white !important;
+
+                width: 44px;
+                height: 44px;
+                align-items: center;
+                justify-content: center;
+                padding: 0;
+                cursor: pointer;
+            }
+
+            /* Ensure SVG is visible */
+            .mobile-menu-btn svg {
+                width: 30px !important;
+                height: 30px !important;
+                stroke: white !important;
+                display: block !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Background Elements -->
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+
+    <!-- Navigation Bar -->
+    <header class="main-header">
+        <div class="container navbar">
+            <a href="index.html" class="logo">
+                <span class="logo-title">AXCENT</span><span class="logo-subtitle text-gradient">DANCE</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Toggle menu">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="3" y1="12" x2="21" y2="12" class="line-middle"></line>
+                    <line x1="3" y1="6" x2="21" y2="6" class="line-top"></line>
+                    <line x1="3" y1="18" x2="21" y2="18" class="line-bottom"></line>
+                </svg>
+            </button>
+            <nav class="nav-links">
+                <a href="about.html">Über uns</a>
+                <a href="schedule.html">Stundenplan</a>
+                <a href="registration.html">Anmeldung</a>
+                <a href="events.html">Events</a>
+                <a href="contact.html">Kontakt</a>
+                
+                <div class="dropdown">
+                    <button class="dropbtn">Mehr ▾</button>
+                    <div class="dropdown-content">
+                        <a href="room-rental.html"><span>Raumvermietung</span></a>
+                        <a href="corporate-events.html"><span>Firmenevents</span></a>
+                        <a href="wedding-dance.html"><span>Hochzeitstanz</span></a>
+                        <a href="private-lessons.html"><span>Privatstunden</span></a>
+                        <a href="gallery.html"><span>Galerie</span></a>
+                        <a href="education.html"><span>Ausbildung</span></a>
+                        <a href="beginner-guide.html"><span>Anfänger Guide</span></a>
+                        <a href="blog.html"><span>Blog</span></a>
+                        <a href="faq.html"><span>FAQ</span></a>
+                        <a href="etiquette.html"><span>Tanzetikette</span></a>
+                    </div>
+                </div>
+                <div class="lang-switch"
+                    style="display: inline-flex; gap: 6px; margin-left: 10px; margin-right: 10px; align-items: center; font-weight: 500; font-size: 0.95rem;">
+                    <a href="../blog.html"
+                        style="color: rgba(255,255,255,0.7); text-decoration: none; transition: color 0.2s;">EN</a>
+                    <span style="color: rgba(255,255,255,0.4);">|</span>
+                    <span
+                        style="color: white; border-bottom: 2px solid var(--accent-start); padding-bottom: 2px;">DE</span>
+                </div>
+                <a href="#trial-form" class="btn-header-cta">Probelektion</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="blog-hero">
+            <div class="container">
+
+                <div class="hero-badge">
+                    <span class="hero-badge-line"></span>
+                    <span class="hero-badge-text">EINBLICKE</span>
+                    <span class="hero-badge-line"></span>
+                </div>
+                <h1 class="page-title">Dance Blog</h1>
+                <p class="hero-desc-border" style="border: none; padding: 0;">
+                    Tipps, Geschichten und Inspiration für deine Tanzreise.
+                </p>
+            </div>
+        </section>
+
+        <!-- Featured Article -->
+        <div class="blog-featured reveal">
+            <article class="featured-card" data-category="education">
+                <div class="featured-image-wrapper">
+                    <img src="../assets/images/blog/dance-tips-1-title.webp"
+                        srcset="../assets/images/blog/dance-tips-1-title_480w.webp 480w, ../assets/images/blog/dance-tips-1-title_800w.webp 800w, ../assets/images/blog/dance-tips-1-title_1200w.webp 1200w"
+                        sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px" alt="Rahmen-Technik"
+                        width="819" height="1024" class="featured-image">
+                </div>
+                <div class="featured-content">
+                    <span class="featured-badge">Bildung</span>
+                    <h2 class="featured-title">Der Rahmen im Bachata: Dance Tips Ep. 1</h2>
+                    <p class="featured-excerpt">
+                        Kleine Dinge machen einen großen Unterschied. Lerne die korrekte Rahmen-Technik, um dein Leading
+                        und Following sofort zu verbessern.
+                    </p>
+                    <a href="blog-posts/dance-tips-1-frame" class="read-more">Ganzen Artikel lesen</a>
+                </div>
+            </article>
+        </div>
+
+        <!-- Filter Bar -->
+        <div class="container">
+            <div class="blog-filters reveal">
+                <button class="filter-btn active" data-filter="all">Alle</button>
+                <button class="filter-btn" data-filter="music">Musik</button>
+                <button class="filter-btn" data-filter="tips">Tanz-Tipps</button>
+                <button class="filter-btn" data-filter="community">Community</button>
+                <button class="filter-btn" data-filter="education">Bildung</button>
+                <button class="filter-btn" data-filter="wellness">Wellness</button>
+                <button class="filter-btn" data-filter="events">Events</button>
+            </div>
+        </div>
+
+        <!-- Blog Grid -->
+        <section class="blog-container" style="padding-top: 0;">
+            <div class="blog-grid-modern">
+                <!-- First Week Success -->
+                <article class="modern-card reveal" data-category="community">
+                    <div class="card-image-wrap">
+                        <span class="card-category">Community</span>
+                        <img src="../assets/images/blog/first-week-new-studio.webp"
+                            srcset="../assets/images/blog/first-week-new-studio_480w.webp 480w, ../assets/images/blog/first-week-new-studio_800w.webp 800w, ../assets/images/blog/first-week-new-studio_1200w.webp 1200w"
+                            sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px"
+                            alt="Erste Woche im neuen AXcent Dance Studio" width="1024" height="768" loading="lazy"
+                            class="card-image">
+                    </div>
+                    <div class="card-body">
+                        <div class="card-date">18. Jan 2026</div>
+                        <h2 class="card-title">Erste Woche: Unser neues Zuhause in Zürich feiern</h2>
+                        <p class="card-desc">
+                            Was für eine Woche! Danke an alle, die in unserer ersten Kurswoche dabei waren.
+                            Die Energie im neuen Studio war elektrisierend.
+                        </p>
+                        <a href="blog-posts/first-week-new-studio" class="card-link">
+                            Artikel lesen <span style="font-size: 1.2em;">→</span>
+                        </a>
+                    </div>
+                </article>
+
+
+
+
+                <!-- Romeo Santos Tour Post -->
+                <article class="modern-card reveal" data-category="music">
+                    <div class="card-image-wrap">
+                        <span class="card-category">Music</span>
+                        <img src="../assets/images/blog/romeo-prince-tour-2026.webp"
+                            srcset="../assets/images/blog/romeo-prince-tour-2026_480w.webp 480w, ../assets/images/blog/romeo-prince-tour-2026_800w.webp 800w, ../assets/images/blog/romeo-prince-tour-2026_1200w.webp 1200w"
+                            sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px"
+                            alt="Romeo Santos Tour 2026" width="838" height="1024" loading="lazy" class="card-image">
+                    </div>
+                    <div class="card-body">
+                        <div class="card-date">10. Jan 2026</div>
+                        <h2 class="card-title">Romeo Santos Tour 2026: Offizielle Daten</h2>
+                        <p class="card-desc">
+                            Die Könige des Bachata touren durch Europa! Entdecke die bestätigten Daten für Mailand,
+                            Paris und
+                            erfahre mehr über Zürich.
+                        </p>
+                        <a href="blog-posts/romeo-prince-tour-2026" class="card-link">
+                            Artikel lesen <span style="font-size: 1.2em;">→</span>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Mental Health Post -->
+                <article class="modern-card reveal" data-category="wellness">
+                    <div class="card-image-wrap">
+                        <span class="card-category">Wellness</span>
+                        <img src="../assets/images/blog/science-of-dance-mental-health.webp"
+                            srcset="../assets/images/blog/science-of-dance-mental-health_480w.webp 480w, ../assets/images/blog/science-of-dance-mental-health_800w.webp 800w, ../assets/images/blog/science-of-dance-mental-health_1200w.webp 1200w"
+                            sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px"
+                            alt="Weniger Stress, Mehr Tanzen" width="1024" height="1024" loading="lazy" class="card-image">
+                    </div>
+                    <div class="card-body">
+                        <div class="card-date">4. Jan 2026</div>
+                        <h2 class="card-title">Weniger Stress, mehr Tanzen: Die Wissenschaft hinter dem 'Dancer's High'
+                        </h2>
+                        <p class="card-desc">
+                            Burnout? Angst? Die Wissenschaft sagt, die Heilung könnte auf der Tanzfläche liegen.
+                            Entdecke, wie Bachata
+                            Cortisol senkt und deine Stimmung hebt.
+                        </p>
+                        <a href="blog-posts/science-of-dance-mental-health" class="card-link">
+                            Artikel lesen <span style="font-size: 1.2em;">→</span>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- We Are Moving Post -->
+                <article class="modern-card reveal" data-category="community">
+                    <div class="card-image-wrap">
+                        <span class="card-category">News</span>
+                        <img src="../assets/images/empty_studio_mirrors.webp"
+                            srcset="../assets/images/empty_studio_mirrors_480w.webp 480w, ../assets/images/empty_studio_mirrors_800w.webp 800w, ../assets/images/empty_studio_mirrors_1200w.webp 1200w"
+                            sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px" alt="Neuer Standort Zürich"
+                            width="1024" height="1024" loading="lazy" class="card-image">
+                    </div>
+                    <div class="card-body">
+                        <div class="card-date">12. Jan 2025</div>
+                        <h2 class="card-title">Wir ziehen um! Neues Studio in Zürich Altstetten</h2>
+                        <p class="card-desc">
+                            Große Neuigkeiten! AXcent Dance zieht an einen wunderschönen neuen 138m² großen Standort an
+                            der Hermetschloostrasse
+                            73.
+                        </p>
+                        <a href="blog-posts/blog-new-location" class="card-link">
+                            Artikel lesen <span style="font-size: 1.2em;">→</span>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Christmas Break moved to grid -->
+                <article class="modern-card reveal" data-category="community">
+                    <div class="card-image-wrap">
+                        <span class="card-category">News</span>
+                        <img src="../assets/images/christmas_break_2025.webp"
+                            srcset="../assets/images/christmas_break_2025_480w.webp 480w, ../assets/images/christmas_break_2025_800w.webp 800w, ../assets/images/christmas_break_2025_1200w.webp 1200w"
+                            sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px" alt="Weihnachtspause"
+                            width="1024" height="1024" loading="lazy" class="card-image">
+                    </div>
+                    <div class="card-body">
+                        <div class="card-date">16. Dez 2025</div>
+                        <h2 class="card-title">Weihnachtspause & Neue Saison 2025</h2>
+                        <p class="card-desc">
+                            Studio geschlossen 22. Dez - 11. Jan. Wiedereröffnung 12. Jan. Check die Daten und mach dich
+                            bereit für
+                            2025!
+                        </p>
+                        <a href="blog-posts/christmas-break-2025" class="card-link">
+                            Artikel lesen <span style="font-size: 1.2em;">→</span>
+                        </a>
+                    </div>
+                </article>
+
+                <article class="modern-card reveal" data-category="music">
+                    <div class="card-image-wrap">
+                        <span class="card-category">Music</span>
+                        <img src="../assets/images/romeo_santos.webp"
+                            srcset="../assets/images/romeo_santos_480w.webp 480w, ../assets/images/romeo_santos_800w.webp 800w, ../assets/images/romeo_santos_1200w.webp 1200w"
+                            sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px"
+                            alt="Romeo Santos and Prince Royce" width="1024" height="1024" loading="lazy"
+                            class="card-image">
+                    </div>
+                    <div class="card-body">
+                        <div class="card-date">12. Dez 2025</div>
+                        <h2 class="card-title">Die Könige vereint: Romeo Santos & Prince Royce veröffentlichen
+                            Überraschungsalbum</h2>
+                        <p class="card-desc">
+                            Das Warten hat ein Ende! Romeo Santos und Prince Royce haben ihr erstes gemeinsames Album
+                            'Better Late Than Never' veröffentlicht.
+                        </p>
+                        <a href="blog-posts/romeo-prince-collaboration-2025" class="card-link">
+                            Artikel lesen <span style="font-size: 1.2em;">→</span>
+                        </a>
+                    </div>
+                </article>
+
+                <article class="modern-card reveal" data-category="tips">
+                    <div class="card-image-wrap">
+                        <span class="card-category">Dance Tips</span>
+                        <img src="../assets/images/bachata_essentials_flatlay.webp"
+                            srcset="../assets/images/bachata_essentials_flatlay_480w.webp 480w, ../assets/images/bachata_essentials_flatlay_800w.webp 800w, ../assets/images/bachata_essentials_flatlay_1200w.webp 1200w"
+                            sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px"
+                            alt="Tanz-Essentials Flatlay" width="1024" height="1024" loading="lazy" class="card-image">
+                    </div>
+                    <div class="card-body">
+                        <div class="card-date">9. Dez 2025</div>
+                        <h2 class="card-title">Kleidung für Bachata: Ein Anfänger-Guide</h2>
+                        <p class="card-desc">
+                            Fragst du dich, was du anziehen sollst? Hier ist unser kompletter Guide, um dich auf der
+                            Tanzfläche wohl
+                            und selbstbewusst zu fühlen.
+                        </p>
+                        <a href="blog-posts/what-to-wear-bachata" class="card-link">
+                            Artikel lesen <span style="font-size: 1.2em;">→</span>
+                        </a>
+                    </div>
+                </article>
+
+
+
+                <article class="modern-card reveal" data-category="tips">
+                    <div class="card-image-wrap">
+                        <span class="card-category">Dance Tips</span>
+                        <img src="../assets/images/blog/connection-101.webp"
+                            srcset="../assets/images/blog/connection-101_480w.webp 480w, ../assets/images/blog/connection-101_800w.webp 800w, ../assets/images/blog/connection-101_1200w.webp 1200w"
+                            sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px" alt="Verbindung 101"
+                            width="1024" height="1024" loading="lazy" class="card-image">
+                    </div>
+                    <div class="card-body">
+                        <div class="card-date">7. Dez 2025</div>
+                        <h2 class="card-title">Verbindung 101: Wie du dein Social Dancing verbesserst</h2>
+                        <p class="card-desc">
+                            Es geht nicht um die Figuren, es geht um das Gefühl. 3 einfache Tipps, um deine Verbindung
+                            mit jedem
+                            Partner sofort zu verbessern.
+                        </p>
+                        <a href="blog-posts/connection-101" class="card-link">
+                            Artikel lesen <span style="font-size: 1.2em;">→</span>
+                        </a>
+                    </div>
+                </article>
+
+                <article class="modern-card reveal" data-category="education">
+                    <div class="card-image-wrap">
+                        <span class="card-category">Education</span>
+                        <img src="../assets/images/blog/roots-of-bachata.webp"
+                            srcset="../assets/images/blog/roots-of-bachata_480w.webp 480w, ../assets/images/blog/roots-of-bachata_800w.webp 800w, ../assets/images/blog/roots-of-bachata_1200w.webp 1200w"
+                            sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px" alt="Bachata Wurzeln"
+                            width="1024" height="1024" loading="lazy" class="card-image">
+                    </div>
+                    <div class="card-body">
+                        <div class="card-date">7. Dez 2025</div>
+                        <h2 class="card-title">Die Wurzeln des Bachata: Von der Dom. Rep. in die Welt</h2>
+                        <p class="card-desc">
+                            Entdecke die bescheidenen Ursprünge des Bachata in der Dominikanischen Republik und seine
+                            Reise zu
+                            einem globalen Tanzphänomen.
+                        </p>
+                        <a href="blog-posts/roots-of-bachata.html" class="card-link">
+                            Artikel lesen <span style="font-size: 1.2em;">→</span>
+                        </a>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+    </main>
+
+        <footer class="main-footer">
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <a href="index.html" class="logo footer-logo"><span class="logo-title">AXCENT</span><span
+                        class="logo-subtitle text-gradient">DANCE</span></a>
+                <p class="footer-address">
+                    Hermetschloostrasse 73,<br>
+                    8048 Zurich Altstetten<br> 2 Minuten zu Fuss von Tram 2 und Bus 31 Haltestelle
+                </p>
+                <div class="footer-socials">
+                    <a href="https://www.instagram.com/axcent_dance/" target="_blank" aria-label="Instagram">
+                        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                        </svg>
+                    </a>
+                    <a href="mailto:info@axcentdance.com" aria-label="Email">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                            </path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h2 class="footer-heading">Schnellzugriff</h2>
+                <ul class="footer-links">
+                    <li><a href="guide-bachata.html">Was ist Bachata</a></li>
+                    <li><a href="blog-posts/roots-of-bachata.html">Wurzeln des Bachatas</a></li>
+                    <li><a href="schedule.html">Stundenplan</a></li>
+                    <li><a href="blog.html">Unser Blog</a></li>
+
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h2 class="footer-heading">Rechtliches</h2>
+                <ul class="footer-links">
+                    <li><a href="terms.html">AGB</a></li>
+                    <li><a href="privacy.html">Datenschutz</a></li>
+                    <li><a href="imprint.html">Impressum</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="container footer-map-full" style="margin-bottom: 2rem;">
+            <h2 class="footer-heading" style="margin-bottom: 1rem;">Finde uns</h2>
+            <div class="footer-map-wrapper-large"
+                style="border-radius: 12px; overflow: hidden; border: 1px solid var(--glass-border);">
+                <iframe title="Google Maps Standort von AXcent Dance"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2701.567677685764!2d8.4844443!3d47.3861111!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47900a3910000001%3A0x1234567890abcdef!2sHermetschloostrasse%2073%2C%208048%20Z%C3%BCrich!5e0!3m2!1sen!2sch!4v1625000000000!5m2!1sen!2sch&hl=de"
+                    width="100%" height="250" style="border:0; width: 100%; display: block;" allowfullscreen=""
+                    loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 AXcent Dance. Alle Rechte vorbehalten.</p>
+        </div>
+    </footer>
+
+    <script src="../script.js?v=2.1"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

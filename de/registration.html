@@ -1,0 +1,1387 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anmeldung Bachata Kurs Zürich | AXcent Dance</title>
+    <link rel="canonical" href="https://axcentdance.com/registration">
+    <link rel="alternate" hreflang="en" href="https://axcentdance.com/registration" />
+    <link rel="alternate" hreflang="x-default" href="https://axcentdance.com/registration" />
+    <link rel="alternate" hreflang="de" href="https://axcentdance.com/de/registration" />
+    <meta name="description"
+        content="Melde dich jetzt für deinen Bachata Tanzkurs in Zürich an. Werde Teil der AXcent Dance Community und lerne Bachata in Altstetten.">
+    <meta property="og:description"
+        content="Melde dich jetzt für deinen Bachata Tanzkurs in Zürich an. Werde Teil der AXcent Dance Community und lerne Bachata in Altstetten.">
+    <meta property="og:locale" content="de_CH">
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://cdn.jsdelivr.net https://connect.facebook.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com https://placehold.co https://*.googleapis.com https://*.gstatic.com https://www.facebook.com; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://script.google.com https://formsubmit.co https://www.facebook.com https://connect.facebook.net; frame-src 'self' https://www.google.com; object-src 'none'; base-uri 'self'; media-src 'self' blob:; worker-src 'self' blob:;">
+    <link rel="stylesheet" href="../style.css?v=2.2">
+    <link rel="apple-touch-icon" href="/apple-touch-icon-v2.png">
+    <link rel="icon" href="/favicon-v2.png" type="image/png">
+    <!-- Supabase JS CDN -->
+
+    <!-- Structured Data (Schema.org) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Register for Bachata Classes",
+      "description": "Registration for dance classes at AXcent Dance Studio in Zurich.",
+      "url": "https://axcentdance.com/de/registration",
+      "mainEntity": {
+        "@type": "Service",
+        "name": "Bachata Dance Classes",
+        "provider": {
+            "@type": "DanceSchool",
+            "name": "Startseite"
+        },
+        "areaServed": "Zurich",
+        "offers": {
+            "@type": "Offer",
+            "priceCurrency": "CHF",
+            "price": "200.00",
+            "availability": "https://schema.org/InStock"
+        }
+      }
+    }
+    </script>
+
+
+    <style>
+        /* Registration Specific Styles */
+        /* Registration Specific Styles */
+        /* .reg-hero removed in favor of .schedule-hero-modern */
+
+        /* Fix for select dropdown options in dark mode */
+        select#activation_date option {
+            background-color: #0f0816;
+            /* Fallback */
+            background-color: var(--bg-secondary);
+            color: white;
+        }
+
+        .reg-form-container {
+            max-width: 800px;
+            margin: 0 auto 80px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 2rem;
+            padding: 3rem 2rem;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        .form-section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--text-light);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 0.5rem;
+        }
+
+        .price-toggle {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 10px;
+            border-radius: 50px;
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .toggle-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            padding: 8px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .toggle-btn.active {
+            background: var(--accent-start);
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(108, 92, 231, 0.4);
+        }
+
+        .package-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .package-option {
+            cursor: pointer;
+            position: relative;
+        }
+
+        .package-option input {
+            position: absolute;
+            opacity: 0;
+        }
+
+        .package-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 2rem 1.5rem;
+            border-radius: 16px;
+            text-align: center;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .package-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .package-option input:checked+.package-card {
+            border-color: var(--accent-start);
+            background: rgba(108, 92, 231, 0.15);
+            box-shadow: 0 0 30px rgba(108, 92, 231, 0.3);
+            transform: scale(1.02);
+        }
+
+        .pkg-name {
+            display: block;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .pkg-price {
+            display: block;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--accent-light);
+        }
+
+        .pkg-desc {
+            display: block;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+        }
+
+        .class-checkbox-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1rem;
+        }
+
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .checkbox-label:hover {
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .checkbox-label input {
+            accent-color: var(--accent-start);
+            width: 18px;
+            height: 18px;
+        }
+
+        @media (max-width: 768px) {
+            .reg-form-container {
+                padding: 20px;
+            }
+
+            .reg-hero {
+                padding-top: 120px;
+            }
+        }
+
+
+
+        /* Pricing Table Styles */
+        .pricing-overview {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .pricing-table-wrapper {
+            overflow-x: auto;
+        }
+
+        .pricing-table {
+            width: 100%;
+            border-collapse: collapse;
+            color: var(--text-light);
+            min-width: 500px;
+        }
+
+        .pricing-table th {
+            text-align: left;
+            padding: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--accent-start);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .pricing-table td {
+            padding: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 1rem;
+        }
+
+        .pricing-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .price-regular {
+            font-weight: 700;
+            color: white;
+        }
+
+        .price-student {
+            color: var(--accent-light);
+            font-weight: 600;
+        }
+
+        .pass-name {
+            font-weight: 600;
+        }
+
+        .pass-duration {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            display: block;
+        }
+    </style>
+
+    <!-- Cookie Consent -->
+
+    <!-- Meta Pixel Code -->
+    <script>
+        !function (f, b, e, v, n, t, s) {
+            if (f.fbq) return; n = f.fbq = function () {
+                n.callMethod ?
+                    n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+            };
+            if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+            n.queue = []; t = b.createElement(e); t.async = !0;
+            t.src = v; s = b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t, s)
+        }(window, document, 'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '1427661435456369');
+        fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+            src="https://www.facebook.com/tr?id=1427661435456369&ev=PageView&noscript=1" /></noscript>
+    <!-- End Meta Pixel Code -->
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-E2SYCF7R7X"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-E2SYCF7R7X');
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Startseite",
+        "item": "https://axcentdance.com/de/"
+      },{
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Anmeldung",
+        "item": "https://axcentdance.com/de/registration"
+      }]
+    }
+    </script>
+    <!-- CRITICAL: FAIL-SAFE MOBILE MENU STYLES -->
+    <style>
+        /* DESKTOP (900px+) - HIDE BUTTON */
+        @media (min-width: 900px) {
+            .mobile-menu-btn {
+                display: none !important;
+            }
+        }
+
+        /* MOBILE (<900px) - SHOW BUTTON ABSOLUTE LEFT */
+        @media (max-width: 899px) {
+            .navbar {
+                position: relative !important;
+                /* Ensure anchor */
+                justify-content: center !important;
+                /* Center logo */
+            }
+
+            .mobile-menu-btn {
+                display: flex !important;
+                position: absolute !important;
+                /* Absolute to navbar */
+                top: 50% !important;
+                transform: translateY(-50%) !important;
+                left: 15px !important;
+                z-index: 10001 !important;
+
+                /* FINAL PRODUCTION STYLE: Transparent */
+                background: transparent !important;
+                border: none !important;
+
+                color: white !important;
+
+                width: 44px;
+                height: 44px;
+                align-items: center;
+                justify-content: center;
+                padding: 0;
+                cursor: pointer;
+            }
+
+            /* Ensure SVG is visible */
+            .mobile-menu-btn svg {
+                width: 30px !important;
+                height: 30px !important;
+                stroke: white !important;
+                display: block !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Background Blobs -->
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+
+    <!-- Navigation -->
+    <header class="main-header">
+        <div class="container navbar">
+            <a href="index.html" class="logo">
+                <span class="logo-title">AXCENT</span><span class="logo-subtitle text-gradient">DANCE</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Toggle menu">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="3" y1="12" x2="21" y2="12" class="line-middle"></line>
+                    <line x1="3" y1="6" x2="21" y2="6" class="line-top"></line>
+                    <line x1="3" y1="18" x2="21" y2="18" class="line-bottom"></line>
+                </svg>
+            </button>
+            <nav class="nav-links">
+                <a href="about.html">Über uns</a>
+                <a href="schedule.html">Stundenplan</a>
+                <a href="registration.html" class="active">Anmeldung</a>
+                <a href="events.html">Events</a>
+                <a href="contact.html">Kontakt</a>
+
+                <div class="dropdown">
+                    <button class="dropbtn">Mehr ▾</button>
+                    <div class="dropdown-content">
+                        <a href="room-rental.html"><span>Raumvermietung</span></a>
+                        <a href="corporate-events.html"><span>Firmenevents</span></a>
+                        <a href="wedding-dance.html"><span>Hochzeitstanz</span></a>
+                        <a href="private-lessons.html"><span>Privatstunden</span></a>
+                        <a href="gallery.html"><span>Galerie</span></a>
+                        <a href="education.html"><span>Ausbildung</span></a>
+                        <a href="beginner-guide.html"><span>Anfänger Guide</span></a>
+                        <a href="blog.html"><span>Blog</span></a>
+                        <a href="faq.html"><span>FAQ</span></a>
+                        <a href="etiquette.html"><span>Tanzetikette</span></a>
+                    </div>
+                </div>
+                <div class="lang-switch"
+                    style="display: inline-flex; gap: 6px; margin-left: 10px; margin-right: 10px; align-items: center; font-weight: 500; font-size: 0.95rem;">
+                    <a href="../registration.html"
+                        style="color: rgba(255,255,255,0.7); text-decoration: none; transition: color 0.2s;">EN</a>
+                    <span style="color: rgba(255,255,255,0.4);">|</span>
+                    <span
+                        style="color: white; border-bottom: 2px solid var(--accent-start); padding-bottom: 2px;">DE</span>
+                </div>
+                <a href="#trial-form" class="btn-header-cta">Probelektion</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section (Modern Split) -->
+    <section class="schedule-hero-modern">
+        <div class="container">
+            <div class="hero-grid">
+                <!-- Left: Text Content -->
+                <div class="hero-content-left">
+                    <!-- Visual Breadcrumbs -->
+
+
+                    <div class="hero-badge">
+                        <div class="hero-badge-line"></div>
+                        <div class="hero-badge-text">TRITT DER BEWEGUNG BEI</div>
+                    </div>
+                    <h1 class="page-title" style="margin-bottom: 1rem;">
+                        ANMELDUNG
+                    </h1>
+
+                    <p class="hero-desc-border" style="border: none; padding: 0; margin: 0; max-width: 500px;">
+                        Melde dich jetzt für Bachata Sensual Kurse in Zürich an. Partnerwork und Ladystyle.
+                        <strong>Kein Partner nötig.</strong>
+                    </p>
+                    <div class="reg-description" style="margin-top: 1.5rem; color: var(--text-muted);">
+                        <p>Alle Kurse laufen fortlaufend. Jeder Pass ist <strong>8 Wochen</strong> gültig.</p>
+                    </div>
+                </div>
+
+                <!-- Right: Image -->
+                <div class="hero-content-right">
+                    <div class="framed-hero-wrapper">
+                        <div class="framed-hero-inner">
+                            <img src="../assets/images/registration_hero_placeholder.webp"
+                                srcset="../assets/images/registration_hero_placeholder_480w.webp 480w, ../assets/images/registration_hero_placeholder_800w.webp 800w, ../assets/images/registration_hero_placeholder_1200w.webp 1200w"
+                                sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px"
+                                alt="Bachata Dance Class Placeholder" width="1024" height="1024">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main>
+        <section class="container" style="margin-top: 4rem;">
+
+
+
+
+            <!-- Pricing Table -->
+            <div class="pricing-overview">
+                <h2 class="section-title-modern" style="margin-bottom: 2rem; font-size: 2.5rem; text-align: center;">
+                    Paket <span class="text-gradient">Preise</span></h2>
+                <div class="pricing-table-wrapper">
+                    <!-- Mobile Toggle for Table -->
+                    <div class="pricing-table-toggle">
+                        <div class="pricing-switch-container">
+                            <button type="button" class="pricing-switch-btn active" id="btnTableRegular"
+                                onclick="setTablePricing('regular')">Regular</button>
+                            <button type="button" class="pricing-switch-btn" id="btnTableStudent"
+                                onclick="setTablePricing('student')">Student (-15%)</button>
+                        </div>
+                    </div>
+
+                    <script>
+                        function setTablePricing(mode) {
+                            const table = document.querySelector('.pricing-table');
+                            const btnRegular = document.getElementById('btnTableRegular');
+                            const btnStudent = document.getElementById('btnTableStudent');
+
+                            if (mode === 'student') {
+                                table.classList.add('show-student');
+                                btnStudent.classList.add('active');
+                                btnRegular.classList.remove('active');
+                            } else {
+                                table.classList.remove('show-student');
+                                btnRegular.classList.add('active');
+                                btnStudent.classList.remove('active');
+                            }
+                        }
+                    </script>
+                    <table class="pricing-table">
+                        <thead>
+                            <tr>
+                                <th>Abotyp</th>
+                                <th>Regulärer Preis</th>
+                                <th>Studentenpreis (-15%)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <span class="pass-name">1 Kurs / Woche <span class="mobile-price-regular">- 200
+                                            CHF</span><span class="mobile-price-student">- 170 CHF</span></span>
+                                    <span class="pass-duration">8 Wochen (8 Lektionen)</span>
+                                </td>
+                                <td class="price-regular">200 CHF</td>
+                                <td class="price-student">170 CHF</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="pass-name">2 Kurse / Woche <span class="mobile-price-regular">- 318
+                                            CHF</span><span class="mobile-price-student">- 270 CHF</span></span>
+                                    <span class="pass-duration">8 Wochen (16 Lektionen)</span>
+                                </td>
+                                <td class="price-regular">318 CHF</td>
+                                <td class="price-student">270 CHF</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="pass-name">3 Kurse / Woche <span class="mobile-price-regular">- 395
+                                            CHF</span><span class="mobile-price-student">- 335 CHF</span></span>
+                                    <span class="pass-duration">8 Wochen (24 Lektionen)</span>
+                                </td>
+                                <td class="price-regular">395 CHF</td>
+                                <td class="price-student">335 CHF</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="pass-name">4 Kurse / Woche <span class="mobile-price-regular">- 430
+                                            CHF</span><span class="mobile-price-student">- 365 CHF</span></span>
+                                    <span class="pass-duration">8 Wochen (32 Lektionen)</span>
+                                </td>
+                                <td class="price-regular">430 CHF</td>
+                                <td class="price-student">365 CHF</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="pass-name">10er Flex-Abo <span class="mobile-price-regular">- 280
+                                            CHF</span><span class="mobile-price-student">- 238 CHF</span></span>
+                                    <span class="pass-duration">Gültig für 1 Jahr</span>
+                                </td>
+                                <td class="price-regular">280 CHF</td>
+                                <td class="price-student">238 CHF</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="form-wrapper reg-form-container">
+                <h2 class="section-title-modern" style="margin-bottom: 2rem; text-align: center;">Anmeldeformular</h2>
+
+                <form class="registration-form" id="registrationForm">
+                    <input type="hidden" name="pricing_tier" id="pricingTier" value="Regular">
+                    <!-- Removed formsubmit inputs as we handle submission via JS -->
+
+                    <!-- 1. Personal Details -->
+                    <div class="form-section">
+                        <h2 class="form-section-title">1. Persönliche Angaben</h2>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="firstname">Vorname</label>
+                                <input type="text" id="firstname" name="firstname" required placeholder="Jane">
+                            </div>
+                            <div class="form-group">
+                                <label for="lastname">Nachname</label>
+                                <input type="text" id="lastname" name="lastname" required placeholder="Doe">
+                            </div>
+                        </div>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="email">E-Mail</label>
+                                <input type="email" id="email" name="email" required placeholder="jane@example.com">
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Telefon</label>
+                                <input type="tel" id="phone" name="phone" required placeholder="+41 79 123 45 67">
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <!-- 2. Class Passes -->
+                    <div class="form-section" style="margin-top: 3rem;">
+                        <h2 class="form-section-title">2. Kurs-Pässe</h2>
+                        <p style="color: var(--text-muted); margin-bottom: 1rem; font-size: 0.9rem;">
+                            Wähle das Paket, das zu deinem Zeitplan passt.
+                        </p>
+
+                        <div class="price-toggle" style="margin-bottom: 2rem;">
+                            <button type="button" class="toggle-btn active" id="btnRegular"
+                                onclick="setPricing('regular')">Regulär</button>
+                            <button type="button" class="toggle-btn" id="btnStudent"
+                                onclick="setPricing('student')">Studenten (-15%)</button>
+                        </div>
+
+                        <div class="pricing-grid">
+                            <!-- 1 Course -->
+                            <label class="pricing-option">
+                                <input type="radio" name="package" value="1 Course (8 Weeks)" required>
+                                <div class="pricing-card">
+                                    <div class="pricing-header">
+                                        <span class="pricing-title">1 Kurs/Woche</span>
+                                        <span class="pricing-duration">8 Wochen</span>
+                                    </div>
+                                    <div class="pricing-price" data-reg="200 CHF" data-stu="170 CHF">200 CHF</div>
+                                    <div class="pricing-desc">8 Lektionen Total</div>
+                                </div>
+                            </label>
+
+                            <!-- 2 Classes/Week -->
+                            <label class="pricing-option">
+                                <input type="radio" name="package" value="2 Classes/Week (8 Weeks)">
+                                <div class="pricing-card">
+                                    <div class="pricing-header">
+                                        <span class="pricing-title">2 Kurse/Woche</span>
+                                        <span class="pricing-duration">8 Wochen</span>
+                                    </div>
+                                    <div class="pricing-price" data-reg="318 CHF" data-stu="270 CHF">318 CHF</div>
+                                    <div class="pricing-desc">16 Lektionen Total</div>
+                                </div>
+                            </label>
+
+                            <!-- 3 Classes/Week -->
+                            <label class="pricing-option">
+                                <input type="radio" name="package" value="3 Classes/Week (8 Weeks)">
+                                <div class="pricing-card">
+                                    <div class="pricing-header">
+                                        <span class="pricing-title">3 Kurse/Woche</span>
+                                        <span class="pricing-duration">8 Wochen</span>
+                                    </div>
+                                    <div class="pricing-price" data-reg="395 CHF" data-stu="335 CHF">395 CHF</div>
+                                    <div class="pricing-desc">24 Lektionen Total</div>
+                                </div>
+                            </label>
+
+                            <!-- 4 Classes/Week -->
+                            <label class="pricing-option">
+                                <input type="radio" name="package" value="4 Classes/Week (8 Weeks)">
+                                <div class="pricing-card">
+                                    <div class="pricing-header">
+                                        <span class="pricing-title">4 Kurse/Woche</span>
+                                        <span class="pricing-duration">8 Wochen</span>
+                                    </div>
+                                    <div class="pricing-price" data-reg="430 CHF" data-stu="365 CHF">430 CHF</div>
+                                    <div class="pricing-desc">32 Lektionen Total</div>
+                                </div>
+                            </label>
+
+                            <!-- 10 Class Pass -->
+                            <label class="pricing-option full-width">
+                                <input type="radio" name="package" value="10-Class Flexible Pack">
+                                <div class="pricing-card">
+                                    <div class="pricing-header">
+                                        <span class="pricing-title">10er Flex-Abo</span>
+                                        <span class="pricing-duration">Gültig für 1 Jahr</span>
+                                    </div>
+                                    <div class="pricing-price" data-reg="280 CHF" data-stu="238 CHF">280 CHF</div>
+                                    <div class="pricing-desc">Flexible Teilnahme für 1 Jahr</div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Pass Activation Date -->
+                    <div class="form-section" style="margin-top: 3rem;">
+                        <h2 class="form-section-title">2a. Startdatum</h2>
+                        <div class="form-group">
+                            <label for="activation_date"
+                                style="display: block; margin-bottom: 0.5rem; font-weight: bold;">Wann möchtest du
+                                starten?</label>
+                            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.5rem;">
+                                Wähle das Datum, an dem dein 8-Wochen-Pass effektiv beginnt.
+                            </p>
+                            <select id="activation_date" name="activation_date" class="form-select" required
+                                style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.05); color: white; -webkit-appearance: none; appearance: none;">
+                                <!-- Populated by JS -->
+                            </select>
+                        </div>
+
+                        <!-- Auto-computed End Date -->
+                        <div class="form-group" style="margin-top: 1rem;">
+                            <label for="pass_end_date"
+                                style="display: block; margin-bottom: 0.5rem; font-weight: bold; color: var(--accent-light);">
+                                Gültigkeit des Passes (8 Wochen)
+                            </label>
+                            <input type="text" id="pass_end_date" name="pass_end_date" readonly
+                                style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.02); color: var(--text-muted); cursor: not-allowed;">
+                        </div>
+                    </div>
+
+                    <!-- 3. Select Classes -->
+                    <div class="form-section" style="margin-top: 3rem;">
+                        <h2 class="form-section-title">3. Wähle deine Kurse</h2>
+                        <p
+                            style="color: var(--text-muted); margin-bottom: 1rem; font-size: 0.9rem; line-height: 1.5; background: rgba(255,255,255,0.05); padding: 15px; border-radius: 8px; border-left: 3px solid var(--accent-light);">
+                            <strong>Wichtig:</strong> Bitte wähle genau die Anzahl Kurse, die deinem gewählten Paket
+                            entsprechen.<br>
+                            (z.B. Wenn du "2 Kurse/Woche" gewählt hast, wähle bitte genau 2 Boxen aus).
+                        </p>
+
+                        <div class="timetable-selection-grid">
+                            <!-- Dienstag Column -->
+                            <div class="timetable-col">
+                                <h3 class="timetable-day-header">Dienstag</h3>
+
+                                <!-- Spacer for 18:30 Alignment -->
+                                <div class="class-option-wrapper" style="visibility: hidden; pointer-events: none;">
+                                    <label class="class-option">
+                                        <input type="checkbox" disabled>
+                                        <div class="class-option-card">
+                                            <span class="time">18:30</span>
+                                            <div class="class-details">
+                                                <span class="name">Spacer Class</span>
+                                                <span class="class-instructor-small">Spacer</span>
+                                            </div>
+                                        </div>
+                                    </label>
+                                    <div class="class-role-select">
+                                        <label><input type="radio" disabled><span>Leader</span></label>
+                                        <label><input type="radio" disabled><span>Follower</span></label>
+                                    </div>
+                                </div>
+
+                                <div class="class-option-wrapper">
+                                    <label class="class-option">
+                                        <input type="checkbox" name="classes[]" value="Tue 19:30 Beginner 0">
+                                        <div class="class-option-card">
+                                            <span class="time">19:30</span>
+                                            <div class="class-details">
+                                                <span class="name">Bachata Anfänger 0</span>
+                                                <span class="class-instructor-small">mit Ale y Alexia</span>
+                                            </div>
+                                        </div>
+                                    </label>
+                                    <div class="class-role-select">
+                                        <label><input type="radio" name="role_Tue_1930_Beginner_0"
+                                                value="Leader"><span>Leader</span></label>
+                                        <label><input type="radio" name="role_Tue_1930_Beginner_0"
+                                                value="Follower"><span>Follower</span></label>
+                                    </div>
+                                </div>
+
+                                <!-- Spacer for 20:30 Alignment -->
+                                <div class="class-option-wrapper" style="visibility: hidden; pointer-events: none;">
+                                    <label class="class-option">
+                                        <input type="checkbox" disabled>
+                                        <div class="class-option-card">
+                                            <span class="time">20:30</span>
+                                            <div class="class-details">
+                                                <span class="name">Spacer Class</span>
+                                                <span class="class-instructor-small">Spacer</span>
+                                            </div>
+                                        </div>
+                                    </label>
+                                    <div class="class-role-select">
+                                        <label><input type="radio" disabled><span>Leader</span></label>
+                                        <label><input type="radio" disabled><span>Follower</span></label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Mittwoch Column -->
+                            <div class="timetable-col">
+                                <h3 class="timetable-day-header">Mittwoch</h3>
+
+                                <!-- Spacer for 18:30 Alignment -->
+                                <div class="class-option-wrapper" style="visibility: hidden; pointer-events: none;">
+                                    <label class="class-option">
+                                        <input type="checkbox" disabled>
+                                        <div class="class-option-card">
+                                            <span class="time">18:30</span>
+                                            <div class="class-details">
+                                                <span class="name">Spacer Class</span>
+                                                <span class="class-instructor-small">Spacer</span>
+                                            </div>
+                                        </div>
+                                    </label>
+                                    <div class="class-role-select">
+                                        <label><input type="radio" disabled><span>Leader</span></label>
+                                        <label><input type="radio" disabled><span>Follower</span></label>
+                                    </div>
+                                </div>
+
+                                <div class="class-option-wrapper">
+                                    <label class="class-option">
+                                        <input type="checkbox" name="classes[]" value="Wed 19:30 Sensual Foundation">
+                                        <div class="class-option-card">
+                                            <span class="time">19:30</span>
+                                            <div class="class-details">
+                                                <span class="name">Bachata Sensual Grundlagen</span>
+                                                <span class="class-instructor-small">mit Ale y Xidan</span>
+                                            </div>
+                                        </div>
+                                    </label>
+                                    <div class="class-role-select">
+                                        <label><input type="radio" name="role_Wed_1930_Sensual_Foundation"
+                                                value="Leader"><span>Leader</span></label>
+                                        <label><input type="radio" name="role_Wed_1930_Sensual_Foundation"
+                                                value="Follower"><span>Follower</span></label>
+                                    </div>
+                                </div>
+
+                                <div class="class-option-wrapper">
+                                    <label class="class-option">
+                                        <input type="checkbox" name="classes[]" value="Wed 20:30 Sensual Improver">
+                                        <div class="class-option-card">
+                                            <span class="time">20:30</span>
+                                            <div class="class-details">
+                                                <span class="name">Bachata Sensual Aufbau</span>
+                                                <span class="class-instructor-small">mit Ale y Xidan</span>
+                                            </div>
+                                        </div>
+                                    </label>
+                                    <div class="class-role-select">
+                                        <label><input type="radio" name="role_Wed_2030_Sensual_Improver"
+                                                value="Leader"><span>Leader</span></label>
+                                        <label><input type="radio" name="role_Wed_2030_Sensual_Improver"
+                                                value="Follower"><span>Follower</span></label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Donnerstag Column -->
+                            <div class="timetable-col">
+                                <h3 class="timetable-day-header">Donnerstag</h3>
+
+                                <div class="class-option-wrapper">
+                                    <label class="class-option">
+                                        <input type="checkbox" name="classes[]" value="Thu 18:30 Beginner 3">
+                                        <div class="class-option-card">
+                                            <span class="time">18:30</span>
+                                            <div class="class-details">
+                                                <span class="name">Bachata Anfänger 2</span>
+                                                <span class="class-instructor-small">mit Ale y Alexia</span>
+                                            </div>
+                                        </div>
+                                    </label>
+                                    <div class="class-role-select">
+                                        <label><input type="radio" name="role_Thu_1830_Beginner_3"
+                                                value="Leader"><span>Leader</span></label>
+                                        <label><input type="radio" name="role_Thu_1830_Beginner_3"
+                                                value="Follower"><span>Follower</span></label>
+                                    </div>
+                                </div>
+
+                                <div class="class-option-wrapper">
+                                    <label class="class-option">
+                                        <input type="checkbox" name="classes[]" value="Thu 19:30 Lady Styling">
+                                        <div class="class-option-card">
+                                            <span class="time">19:30</span>
+                                            <div class="class-details">
+                                                <span class="name">Lady Styling</span>
+                                                <span class="class-instructor-small">mit Xidan</span>
+                                            </div>
+                                        </div>
+                                    </label>
+                                    <!-- No role select for Lady Styling as it's solo/styling usually, but user asked for it next to EACH course. Adding for consistency or maybe skip? 
+                                         User said "each person can maybe have a course as lead and another as follow". Lady styling implies no partner. 
+                                         I will add it but maybe it's redundant. Actually, Lady Styling is usually solo. 
+                                         Let's add it for consistency but maybe hide it or just not include it for styling? 
+                                         User said "Next to each course". I'll add it. -->
+                                    <div class="class-role-select">
+                                        <label><input type="radio" name="role_Thu_1930_Lady_Styling"
+                                                value="Leader"><span>Leader</span></label>
+                                        <label><input type="radio" name="role_Thu_1930_Lady_Styling"
+                                                value="Follower"><span>Follower</span></label>
+                                    </div>
+                                </div>
+
+                                <div class="class-option-wrapper">
+                                    <label class="class-option">
+                                        <input type="checkbox" name="classes[]"
+                                            value="Thu 20:30 Sensual Intermediate/Advanced">
+                                        <div class="class-option-card">
+                                            <span class="time">20:30</span>
+                                            <div class="class-details">
+                                                <span class="name">Bachata Sensual Mittel./Fortg.</span>
+                                                <span class="class-instructor-small">mit Ale y Xidan</span>
+                                                <span
+                                                    style="display: block; font-size: 0.7rem; color: var(--accent-start); margin-top: 0.2rem;">*
+                                                    Nur mit Bestätigung der Lehrer</span>
+                                            </div>
+                                        </div>
+                                    </label>
+                                    <div class="class-role-select">
+                                        <label><input type="radio" name="role_Thu_2030_Sensual_Int_Adv"
+                                                value="Leader"><span>Leader</span></label>
+                                        <label><input type="radio" name="role_Thu_2030_Sensual_Int_Adv"
+                                                value="Follower"><span>Follower</span></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group" style="margin-top: 2rem;">
+                            <label for="dates_unavailable"
+                                style="line-height: 1.4; display: block; margin-bottom: 0.5rem;">
+                                Dein Pass ist 8 Wochen lang gültig. Wenn es Tage gibt, an denen du nicht teilnehmen
+                                kannst (bis zu 2), schreibe sie hier, damit wir deinen Pass verlängern können. (Gilt
+                                nicht für den 10er Pass)
+                            </label>
+                            <textarea id="dates_unavailable" name="dates_unavailable" rows="2"
+                                placeholder="z.B. 25. Dez, 1. Jan..."></textarea>
+                        </div>
+                    </div>
+
+                    <!-- 4. Agreements -->
+                    <div class="form-section" style="margin-top: 3rem;">
+                        <div class="form-group">
+                            <label class="checkbox-label" style="background: none; padding: 0;">
+                                <input type="checkbox" name="axcent_news" value="yes" checked>
+                                <span style="font-size: 0.9rem; color: var(--text-muted);">Ich möchte über AXcent Dance
+                                    News und Events informiert bleiben.</span>
+                            </label>
+                        </div>
+                        <div class="form-group" style="margin-top: 1rem;">
+                            <label class="checkbox-label" style="background: none; padding: 0;">
+                                <input type="checkbox" name="privacy_policy" required checked>
+                                <span style="font-size: 0.9rem; color: var(--text-muted);">Ich akzeptiere die
+                                    Datenschutzbestimmungen.</span>
+                            </label>
+                        </div>
+                        <div class="form-group" style="margin-top: 0.5rem;">
+                            <label class="checkbox-label" style="background: none; padding: 0;">
+                                <input type="checkbox" name="terms" required checked>
+                                <span style="font-size: 0.9rem; color: var(--text-muted);">Ich akzeptiere die
+                                    Allgemeinen Geschäftsbedingungen.</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-header-cta" id="submitRegBtn"
+                        style="width: fit-content; margin: 2rem auto 0; border: 1px solid var(--accent-start); display: flex; justify-content: center; align-items: center; font-size: 1.1rem; padding: 1rem 3rem;">
+                        <div>ANMELDUNG ABSCHLIESSEN</div>
+                    </button>
+
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="main-footer">
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <a href="index.html" class="logo footer-logo"><span class="logo-title">AXCENT</span><span
+                        class="logo-subtitle text-gradient">DANCE</span></a>
+                <p class="footer-address">
+                    Hermetschloostrasse 73,<br>
+                    8048 Zurich Altstetten<br> 2 minute walking from Tram 2 stop and Bus 31 stop
+                </p>
+                <div class="footer-socials">
+                    <a href="https://www.instagram.com/axcent_dance/" target="_blank" aria-label="Instagram">
+                        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                        </svg>
+                    </a>
+                    <a href="mailto:info@axcentdance.com" aria-label="Email">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                            </path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h2 class="footer-heading">Schnellzugriff</h2>
+                <ul class="footer-links">
+                    <li><a href="guide-bachata.html">Was ist Bachata</a></li>
+                    <li><a href="blog-posts/roots-of-bachata.html">Wurzeln des Bachatas</a></li>
+                    <li><a href="schedule.html">Stundenplan</a></li>
+                    <li><a href="blog.html">Unser Blog</a></li>
+
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h2 class="footer-heading">Rechtliches</h2>
+                <ul class="footer-links">
+                    <li><a href="terms.html">AGB</a></li>
+                    <li><a href="privacy.html">Datenschutz</a></li>
+                    <li><a href="imprint.html">Impressum</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="container footer-map-full" style="margin-bottom: 2rem;">
+            <h2 class="footer-heading" style="margin-bottom: 1rem;">Finde uns</h2>
+            <div class="footer-map-wrapper-large"
+                style="border-radius: 12px; overflow: hidden; border: 1px solid var(--glass-border);">
+                <iframe title="Google Maps Location of AXcent Dance"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2701.567677685764!2d8.4844443!3d47.3861111!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47900a3910000001%3A0x1234567890abcdef!2sHermetschloostrasse%2073%2C%208048%20Z%C3%BCrich!5e0!3m2!1sen!2sch!4v1625000000000!5m2!1sen!2sch&hl=de"
+                    width="100%" height="250" style="border:0; width: 100%; display: block;" allowfullscreen=""
+                    loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 AXcent Dance. Alle Rechte vorbehalten.</p>
+        </div>
+    </footer>
+
+    <script src="../script.js?v=2.1"></script>
+    <script>
+        // Pricing Toggle Logic (Global)
+        // Moved out of module to ensure it loads reliably
+        window.setPricing = function (type) {
+            const btnRegular = document.getElementById('btnRegular');
+            const btnStudent = document.getElementById('btnStudent');
+            const pricingInput = document.getElementById('pricingTier');
+
+            if (type === 'regular') {
+                btnRegular.classList.add('active');
+                btnStudent.classList.remove('active');
+                pricingInput.value = 'Regular';
+
+                document.querySelectorAll('.pricing-price').forEach(el => {
+                    el.textContent = el.getAttribute('data-reg');
+                });
+            } else {
+                btnRegular.classList.remove('active');
+                btnStudent.classList.add('active');
+                pricingInput.value = 'Student';
+
+                document.querySelectorAll('.pricing-price').forEach(el => {
+                    el.textContent = el.getAttribute('data-stu');
+                });
+            }
+        }
+
+        // Activation Date Logic (Global)
+        function populateActivationDates() {
+            const select = document.getElementById('activation_date');
+            if (!select) return;
+
+            const options = [];
+
+            // Helper to format date: "Wed, Jan 14 2026"
+            const formatDate = (d) => {
+                return d.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' });
+            };
+
+            // Generate all Dienstags (2), Mittwochs (3) and Donnerstags (4) in Jan (0) and Feb (1) 2026
+            const year = 2026;
+            const targetMonths = [0, 1]; // Jan and Feb
+
+            targetMonths.forEach(month => {
+                const daysInMonth = new Date(year, month + 1, 0).getDate();
+                for (let day = 1; day <= daysInMonth; day++) {
+                    // Start exactly on Dienstag Jan 27 (remove all previous)
+                    if (month === 0 && day < 27) continue;
+                    // Check limit: Mid Feb (approx Feb 20)
+                    if (month === 1 && day > 20) continue;
+
+                    const date = new Date(year, month, day);
+                    const dayOfWeek = date.getDay();
+
+                    if (dayOfWeek === 2 || dayOfWeek === 3 || dayOfWeek === 4) {
+                        options.push({ date: date, label: formatDate(date) });
+                    }
+                }
+            });
+
+            // Sort chronologically
+            options.sort((a, b) => a.date - b.date);
+
+            // Add to select
+            options.forEach(opt => {
+                const el = document.createElement('option');
+                el.value = opt.label;
+                el.textContent = opt.label;
+                el.dataset.dateObj = opt.date.toISOString(); // Store real date for calc
+                select.appendChild(el);
+            });
+
+            // Initial End Date Calculation
+            updateEndDate();
+
+            // Listener
+            select.addEventListener('change', updateEndDate);
+        }
+
+        function updateEndDate() {
+            const select = document.getElementById('activation_date');
+            const endInput = document.getElementById('pass_end_date');
+            const endLabel = document.querySelector('label[for="pass_end_date"]'); // Get label to update text
+            if (!select || !endInput) return;
+
+            // Get selected option's date
+            const selectedOption = select.options[select.selectedIndex];
+            if (!selectedOption) return;
+
+            // Check selected package
+            const packageRadios = document.querySelectorAll('input[name="package"]');
+            let is10Pass = false;
+            packageRadios.forEach(radio => {
+                if (radio.checked && radio.value === '10-Class Flexible Pack') {
+                    is10Pass = true;
+                }
+            });
+
+            // Parse date
+            let startDate = new Date(selectedOption.dataset.dateObj || selectedOption.value);
+
+            if (!isNaN(startDate.getTime())) {
+                const endDate = new Date(startDate);
+
+                if (is10Pass) {
+                    // Add 1 Year (365 days)
+                    endDate.setFullYear(endDate.getFullYear() + 1);
+                    // Update Label Text
+                    if (endLabel) endLabel.textContent = "Pass Valid Until (1 Year)";
+                } else {
+                    // Add 8 weeks - 1 day (55 days)
+                    endDate.setDate(endDate.getDate() + 55);
+                    // Update Label Text
+                    if (endLabel) endLabel.textContent = "Pass Valid Until (8 Weeks)";
+                }
+
+                // Format: "Wed, Mar 11 2026"
+                endInput.value = endDate.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' });
+            }
+        }
+
+        // Add listeners to package radios to update date immediately
+        document.addEventListener('DOMContentLoaded', () => {
+            const packageRadios = document.querySelectorAll('input[name="package"]');
+            packageRadios.forEach(radio => {
+                radio.addEventListener('change', updateEndDate);
+            });
+        });
+
+        // Run on load
+        document.addEventListener('DOMContentLoaded', populateActivationDates);
+    </script>
+    <script type="module">
+        import { supabase } from './assets/js/supabase-client.js';
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Role Selection Logic - MOVED TO SCRIPT.JS
+
+            // Form Validation & Submission
+            const validationForm = document.getElementById('registrationForm');
+            if (validationForm) {
+                validationForm.addEventListener('submit', async function (e) {
+                    e.preventDefault();
+                    try {
+                        // 1. Validation
+                        const selectedClasses = document.querySelectorAll('.class-option input[type="checkbox"]:checked');
+
+                        if (selectedClasses.length === 0) {
+                            alert('Please select at least one class to register.');
+                            return;
+                        }
+
+                        let rolesMap = {};
+
+                        for (const checkbox of selectedClasses) {
+                            const wrapper = checkbox.closest('.class-option-wrapper');
+                            const roleSelected = wrapper.querySelector('.class-role-select input[type="radio"]:checked');
+
+                            if (!roleSelected) {
+                                const className = wrapper.querySelector('.name').textContent;
+                                alert(`Please select a role (Leader/Follower) for ${className}.`);
+                                return;
+                            }
+                            // Map role to class name/value
+                            // Extract class name from value, e.g. "Wed 18:30 Beginner 0"
+                            const classVal = checkbox.value;
+                            rolesMap[classVal] = roleSelected.value;
+                        }
+
+                        // 2. Gather Data
+                        const formData = new FormData(validationForm);
+                        const isStudent = document.getElementById('pricingTier').value === 'Student';
+                        const selectedPackage = formData.get('package');
+
+                        if (!selectedPackage) {
+                            alert("Please select a package.");
+                            return;
+                        }
+
+                        const button = validationForm.querySelector('button[type="submit"]');
+                        const originalText = button.innerHTML;
+                        button.disabled = true;
+                        button.innerHTML = '<div>Processing...</div>';
+
+                        // 3. Determine Stripe Link
+                        let stripeLink = '';
+                        const links = {
+                            "10-Class Flexible Pack": {
+                                student: "https://buy.stripe.com/aFa00l1sz1Dz90jewWfnO09",
+                                regular: "https://buy.stripe.com/8x2cN71szaa5b8r88yfnO08"
+                            },
+                            "4 Classes/Week (8 Weeks)": {
+                                student: "https://buy.stripe.com/dRmdRbdbh4PLccv74ufnO07",
+                                regular: "https://buy.stripe.com/00w14p9Z59610tN1KafnO06"
+                            },
+                            "3 Classes/Week (8 Weeks)": {
+                                student: "https://buy.stripe.com/aFabJ37QXgyt90j60qfnO05",
+                                regular: "https://buy.stripe.com/cNiaEZ8V13LH90j74ufnO04"
+                            },
+                            "2 Classes/Week (8 Weeks)": {
+                                student: "https://buy.stripe.com/aFaeVf4ELeqla4n3SifnO03",
+                                regular: "https://buy.stripe.com/eVqeVf9Z581X1xR60qfnO02"
+                            },
+                            "1 Course (8 Weeks)": {
+                                student: "https://buy.stripe.com/cNidRb9Z56XTccv0G6fnO01",
+                                regular: "https://buy.stripe.com/eVq28tb395TP5O7agGfnO00"
+                            }
+                        };
+
+                        if (links[selectedPackage]) {
+                            stripeLink = isStudent ? links[selectedPackage].student : links[selectedPackage].regular;
+                            // Pre-fill email to ensure webhook matching
+                            const userEmail = formData.get('email');
+                            if (userEmail) {
+                                stripeLink += '?prefilled_email=' + encodeURIComponent(userEmail) + '&client_reference_id=' + encodeURIComponent(userEmail);
+                            }
+                        } else {
+                            alert("Invalid package selection.");
+                            button.disabled = false;
+                            button.innerHTML = originalText;
+                            return;
+                        }
+
+                        // 4. Submit to Supabase & Google Sheets
+                        const datesUnavailable = formData.get('dates_unavailable') || null;
+                        const classes = [];
+                        document.querySelectorAll('input[name="classes[]"]:checked').forEach(cb => classes.push(cb.value));
+
+                        // Google Sheets URL
+                        const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzAQ5KsD_VOfrkeOVlD42uES5yC-EMaQhOBoi-kGkt80cjHqKTaJ5RhxAqRU8p8jugh/exec";
+
+                        const submissionPayload = {
+                            first_name: formData.get('firstname'),
+                            last_name: formData.get('lastname'),
+                            email: formData.get('email'),
+                            phone: formData.get('phone'),
+                            // sex: formData.get('sex'), // Removed from form
+                            pass_type: selectedPackage,
+                            is_student: isStudent,
+                            pass_start_date: formData.get('activation_date'),
+                            pass_end_date: document.getElementById('pass_end_date').value,
+                            dates_unavailable: datesUnavailable,
+                            axcent_news: formData.get('axcent_news') ? 'Yes' : 'No',
+                            // combine classes and roles into a single readable string for the sheet
+                            selected_classes: Object.entries(rolesMap).map(([className, role]) => `${className} (${role})`).join(', ')
+                        };
+
+                        try {
+                            // Parallel Submission: Google Sheets Only
+                            // Use a timeout to ensure we don't hang if a service is down
+                            const timeout = (ms) => new Promise((_, reject) => setTimeout(() => reject(new Error('Timeout')), ms));
+
+                            const googleSheetsPromise = fetch(GOOGLE_SCRIPT_URL, {
+                                method: "POST",
+                                mode: "no-cors",
+                                headers: { "Content-Type": "application/json" },
+                                body: JSON.stringify(submissionPayload)
+                            });
+
+                            // Race with a 5-second timeout for background tasks
+                            await Promise.race([
+                                googleSheetsPromise,
+                                timeout(5000)
+                            ]);
+
+                            console.log('Background submissions completed or timed out');
+                        } catch (err) {
+                            console.error('Submission Error (Background Tasks):', err);
+                            // We proceed to redirect even if these fail
+                        }
+
+                        // 5. Send Email via FormSubmit
+                        try {
+                            const formSubmitEmail = 'slamitza@gmail.com';
+                            const formSubmitURL = `https://formsubmit.co/ajax/${formSubmitEmail}`;
+
+                            const formSubmitData = {
+                                _subject: `New Registration: ${formData.get('firstname')} ${formData.get('lastname')}`,
+                                _template: 'table',
+                                _captcha: 'false',
+                                Name: `${formData.get('firstname')} ${formData.get('lastname')}`,
+                                Email: formData.get('email'),
+                                Phone: formData.get('phone'),
+                                Student: isStudent ? 'Yes' : 'No',
+                                Package: selectedPackage,
+                                DatesUnavailable: datesUnavailable || 'None',
+                                NewsSubscription: formData.get('axcent_news') ? 'Yes' : 'No',
+                                SelectedClasses: Object.entries(rolesMap).map(([className, role]) => `${className} (${role})`).join('\n')
+                            };
+
+                            await Promise.race([
+                                fetch(formSubmitURL, {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/json',
+                                        'Accept': 'application/json'
+                                    },
+                                    body: JSON.stringify(formSubmitData)
+                                }),
+                                new Promise((_, reject) => setTimeout(() => reject(new Error('Timeout')), 3000))
+                            ]);
+                            console.log('Email sent or timed out');
+                        } catch (emailErr) {
+                            console.error('FormSubmit Error:', emailErr);
+                        }
+
+                        // 6. Store Links & Redirect
+                        try {
+                            localStorage.setItem('axcent_stripe_link', stripeLink);
+                            localStorage.removeItem('axcent_mailto_link');
+
+                            if (formData.get('email')) sessionStorage.setItem('lead_email', formData.get('email'));
+                            if (formData.get('phone')) sessionStorage.setItem('lead_phone', formData.get('phone'));
+                        } catch (storageErr) {
+                            console.error('Storage Error:', storageErr);
+                        }
+
+                        // FINAL REDIRECT (Safety Net)
+                        window.location.href = 'cart.html';
+                    } catch (generalErr) {
+                        console.error('General Submission Error:', generalErr);
+                        // Force redirect as absolute last resort
+                        window.location.href = 'cart.html';
+                    } finally {
+                        // Just in case redirect fails, re-enable button after a long delay
+                        setTimeout(() => {
+                            button.disabled = false;
+                            button.innerHTML = originalText;
+                        }, 10000);
+                    }
+                });
+            }
+        });
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

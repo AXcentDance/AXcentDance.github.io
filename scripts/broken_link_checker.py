@@ -2,12 +2,13 @@ import os
 import re
 from urllib.parse import unquote
 
-ROOT_DIR = "/Users/slamitza/AXcentWebsiteGitHub"
+ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 def check_broken_links():
     print("Checking for broken internal links...")
     print("-" * 60)
     
+
     # First, gather all existing files to validate against
     all_files = set()
     for root, dirs, files in os.walk(ROOT_DIR):
@@ -15,6 +16,7 @@ def check_broken_links():
             path = os.path.join(root, file)
             all_files.add(path)
             
+
     issues_found = 0
     
     for root, dirs, files in os.walk(ROOT_DIR):
@@ -74,6 +76,7 @@ def check_broken_links():
                 target_path_html = os.path.normpath(target_path_html)
                 
                 # Verify existence
+
                 if target_path_html not in all_files and not os.path.exists(target_path_html):
                     # One last check: might be a directory with index.html
                     if os.path.isdir(target_path):

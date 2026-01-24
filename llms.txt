@@ -44,6 +44,36 @@
 
 - [Blog](https://axcentdance.com/blog) - Latest news, music tips, and dance advice.
 
+## Deutsch (German Version)
+
+Die deutsche Version der Website ist unter [axcentdance.com/de/](https://axcentdance.com/de/) verfügbar.
+
+### Core Business-Seiten (DE)
+- [Home (DE)](https://axcentdance.com/de/) - Übersicht, Anmeldung zur Probelektion und aktuelle News.
+- [Stundenplan](https://axcentdance.com/de/schedule) - Wöchentlicher Kursplan und Preisoptionen.
+- [Events](https://axcentdance.com/de/events) - Workshops, Bootcamps und Social Dance Nächte.
+- [Über uns](https://axcentdance.com/de/about) - Lernen Sie Ale & Xidan und unsere Philosophie kennen.
+- [Kontakt](https://axcentdance.com/de/contact) - Standortkarte und Kontaktformular.
+- [Privatstunden](https://axcentdance.com/de/private-lessons) - 1-zu-1 Coaching für schnelle Fortschritte.
+- [Hochzeitstanz](https://axcentdance.com/de/wedding-dance) - Individuelle Choreografie für Hochzeitspaare.
+- [Raumvermietung](https://axcentdance.com/de/room-rental) - Studioräume zur Miete verfügbar.
+
+### Kurse & Guides (DE)
+- [Anfänger Guide](https://axcentdance.com/de/beginner-guide) - Tipps für die erste Stunde, Kleidung und Schuh-Guide.
+- [Tanzetikette](https://axcentdance.com/de/etiquette) - Regeln und Richtlinien für Social Dancing.
+- [Ausbildung](https://axcentdance.com/de/education) - Geschichte, Stile, Musikalität und Glossar.
+- [Was ist Bachata?](https://axcentdance.com/de/guide-bachata) - Ursprung, Geschichte und Stile des Tanzes.
+- [Social Dancing Guide](https://axcentdance.com/de/guide-social-dancing) - Einführung in die Welt des Social Dancing.
+- [Firmenevents](https://axcentdance.com/de/corporate-events) - Firmenfeiern und Teambuilding.
+- [FAQ](https://axcentdance.com/de/faq) - Häufig gestellte Fragen (DE).
+- [Galerie](https://axcentdance.com/de/gallery) - Fotos und Videos von unseren Events.
+- [Anmeldung](https://axcentdance.com/de/registration) - Anmeldung für Kurse und Workshops.
+- [Milano Congress 2026](https://axcentdance.com/de/Milano-Sensual-Congress-2026) - Details zum Event im Januar 2026.
+- [Milano Congress Spring 2026](https://axcentdance.com/de/Milano-Sensual-Congress-Spring-2026) - Details zur Spring Edition.
+
+### Blog (DE)
+- [Blog (DE)](https://axcentdance.com/de/blog) - Aktuelle News, Musiktipps und Tanzberatung auf Deutsch.
+
 ## Meta & Technical
 
 - [Security Policy](https://axcentdance.com/.well-known/security.txt)
