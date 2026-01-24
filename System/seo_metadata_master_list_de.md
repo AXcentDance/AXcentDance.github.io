@@ -5,7 +5,7 @@ This file tracks the Title Tags and Meta Descriptions for all German pages on th
 ## Core Pages
 | Page | File | Title Tag | Meta Description |
 | :--- | :--- | :--- | :--- |
-| **Home** | `index.html` | Bachata Zürich: Deine Tanzschule für Bachata Sensual & Dominican | Lerne Bachata in Zürich bei AXcent Dance – der Tanzschule für Sensual & Dominican. Kurse für Anfänger & Fortgeschrittene in Herzens Zürich. |
+| **Home** | `index.html` | Bachata Tanzkurse Zürich: Kurse für Anfänger & Fortgeschrittene | Lerne Bachata in Zürich bei AXcent Dance – der Tanzschule für Sensual & Dominican. Kurse für Anfänger & Fortgeschrittene in Herzens Zürich. |
 | **Über uns** | `about.html` | Über AXcent Dance: Deine Bachata Tanzschule in Zürich | Lerne das Team von AXcent Dance Zürich kennen: Erfahrene Tanzlehrer für Bachata Sensual. Entdecke unsere Philosophie und Leidenschaft für Tanz. |
 | **Kontakt** | `contact.html` | Kontakt AXcent Dance - Deine Tanzschule in Zürich Altstetten | Besuche unser Bachata Studio in Zürich Altstetten. Kontaktiere uns für Infos zu Tanzkursen, Events und Probelektionen. |
 | **Stundenplan** | `schedule.html` | Bachata Kursplan Zürich: Alle Tanzkurse & Termine | Unser aktueller Bachata Stundenplan in Zürich. Finde den passenden Bachata Kurs für dein Niveau – von Anfänger bis Intermediate. |
