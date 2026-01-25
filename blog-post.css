@@ -1,0 +1,195 @@
+/* 
+   AXcent Dance - Blog Post Styles
+   Specific styles for modern blog posts (Latin Dance School, etc.)
+*/
+
+/* --- HERO SECTION --- */
+.post-header {
+    padding-top: calc(var(--header-height) + 2rem);
+    padding-bottom: 2rem;
+    text-align: center;
+    background: radial-gradient(circle at top center, rgba(82, 45, 128, 0.2), transparent 70%);
+}
+
+.badge-wrapper {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.badge--education {
+    background: rgba(255, 59, 48, 0.15);
+    color: var(--accent-start);
+    border: 1px solid rgba(255, 59, 48, 0.3);
+}
+
+.post-date {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+}
+
+.post-title {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media (min-width: 768px) {
+    .post-title {
+        font-size: 3.5rem;
+    }
+}
+
+.post-hero-image {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+}
+
+.post-hero-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.post-hero-image figcaption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(4px);
+    color: rgba(255, 255, 255, 0.8);
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+    text-align: left;
+}
+
+/* --- CONTENT GENERAL --- */
+.post-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    font-size: 1.125rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.lead-text {
+    font-size: 1.35rem;
+    line-height: 1.6;
+    color: white;
+    margin-bottom: 2rem;
+    font-weight: 300;
+}
+
+.post-content h2 {
+    font-family: var(--font-heading);
+    color: white;
+    font-size: 2rem;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+}
+
+.post-content p {
+    margin-bottom: 1.5rem;
+}
+
+/* --- BENTO GRID MODULE --- */
+.bento-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+}
+
+@media (min-width: 768px) {
+    .bento-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.bento-card {
+    padding: 2rem;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    height: 100%;
+}
+
+.bento-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+}
+
+.bento-card h3 {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: white;
+}
+
+.bento-card p {
+    font-size: 1rem;
+    color: var(--text-muted);
+    margin-bottom: 0;
+}
+
+.highlight-card {
+    background: linear-gradient(135deg, rgba(255, 59, 48, 0.1), rgba(15, 8, 22, 0.6));
+    border-color: rgba(255, 59, 48, 0.3);
+}
+
+/* --- COLLAGE MODULE --- */
+.collage-section {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.collage-text {
+    margin-bottom: 1rem;
+}
+
+.collage-img {
+    transition: transform 0.3s ease;
+}
+
+.collage-img:hover {
+    transform: scale(1.02);
+}
+
+/* --- CTA SECTION --- */
+.cta-section {
+    background: radial-gradient(circle at center, rgba(82, 45, 128, 0.4), transparent 80%);
+}
