@@ -43,6 +43,41 @@
       }
     }
     </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [{
+        "@type": "Question",
+        "name": "What payment methods do you accept?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We accept Twint, Cash, and Bank Transfer. Payment details will be sent to you after registration."
+        }
+      }, {
+        "@type": "Question",
+        "name": "What if I miss a class? Can I catch up?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We understand that life can get busy! If you miss a class, don't worry—you won't fall behind. We allow you to catch up by attending a similar level class on a different day within the same course period. Plus, if you know your dates in advance, you can let us know during registration, and we'll prorate the cost for pre-planned absences. Please also refer to our Terms & Conditions for the full policy."
+        }
+      }, {
+        "@type": "Question",
+        "name": "Is the registration binding?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, registration secures your spot in the course. Please review our terms regarding cancellations."
+        }
+      }, {
+        "@type": "Question",
+        "name": "Do you offer trial classes?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes! You can book a free trial class for our beginner courses. Visit our home page or contact us to arrange one."
+        }
+      }]
+    }
+    </script>
 
 
     <style>
@@ -568,6 +603,11 @@
             </div>
 
             <div class="form-wrapper reg-form-container">
+                <!-- FAQ Section (Inside Container or Before?) - Let's put it AFTER the pricing container but BEFORE form container or INSIDE form container? 
+                     User asked "Add a FAQs in Registration ... aiming at words that I am weak it." 
+                     Best place is likely below the form or pricing. Let's put it at the very bottom of the main container.
+                -->
+
                 <h2 class="section-title-modern" style="margin-bottom: 2rem; text-align: center;">Registration Form</h2>
 
                 <form class="registration-form" id="registrationForm">
@@ -959,7 +999,130 @@
             </div>
         </section>
 
+        <!-- FAQ Section -->
+        <section class="max-w-4xl mx-auto mb-20 mt-16 px-5" style="max-width: 800px; margin: 4rem auto 6rem;">
+            <h2 class="section-title-modern" style="text-align: center; margin-bottom: 3rem;">Frequently Asked Questions
+            </h2>
+            <div class="faq-list" style="display: flex; flex-direction: column; gap: 1rem;">
+                <!-- FAQ Item 1 -->
+                <details class="glass-panel" style="border-radius: 12px; overflow: hidden;">
+                    <summary
+                        style="padding: 1.5rem; cursor: pointer; color: white; font-weight: 600; font-size: 1.1rem; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                        What payment methods do you accept?
+                        <span style="color: var(--accent-start); font-size: 1.5rem;">+</span>
+                    </summary>
+                    <div style="padding: 0 1.5rem 1.5rem; color: var(--text-muted); line-height: 1.6;">
+                        We accept Twint, Cash, and Bank Transfer. Payment details will be sent to you via email
+                        immediately after registration.
+                    </div>
+                </details>
+
+                <!-- FAQ Item 2 -->
+                <details class="glass-panel" style="border-radius: 12px; overflow: hidden;">
+                    <summary
+                        style="padding: 1.5rem; cursor: pointer; color: white; font-weight: 600; font-size: 1.1rem; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                        What if I miss a class?
+                        <span style="color: var(--accent-start); font-size: 1.5rem;">+</span>
+                    </summary>
+                    <div style="padding: 0 1.5rem 1.5rem; color: var(--text-muted); line-height: 1.6;">
+                        We understand that life can get busy! If you miss a class, don't worry—you won't fall behind. We
+                        allow you to catch up by attending a similar level class on a different day within the same
+                        course period. Plus, if you know your dates in advance, you can let us know during registration,
+                        and we'll prorate the cost for pre-planned absences. Please also refer to our <a
+                            href="terms.html" style="color: var(--accent-start);">Terms & Conditions</a> for the full
+                        policy.
+                    </div>
+                </details>
+
+                <!-- FAQ Item 3 -->
+                <details class="glass-panel" style="border-radius: 12px; overflow: hidden;">
+                    <summary
+                        style="padding: 1.5rem; cursor: pointer; color: white; font-weight: 600; font-size: 1.1rem; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                        Is the registration binding?
+                        <span style="color: var(--accent-start); font-size: 1.5rem;">+</span>
+                    </summary>
+                    <div style="padding: 0 1.5rem 1.5rem; color: var(--text-muted); line-height: 1.6;">
+                        Yes, registration secures your spot in the course, which helps us ensure balanced classes with
+                        an equal number of leaders and followers. Please review our <a href="terms.html"
+                            style="color: var(--accent-start);">Terms & Conditions</a> regarding cancellations.
+                    </div>
+                </details>
+
+                <!-- FAQ Item 4 -->
+                <details class="glass-panel" style="border-radius: 12px; overflow: hidden;">
+                    <summary
+                        style="padding: 1.5rem; cursor: pointer; color: white; font-weight: 600; font-size: 1.1rem; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                        Do you offer trial classes?
+                        <span style="color: var(--accent-start); font-size: 1.5rem;">+</span>
+                    </summary>
+                    <div style="padding: 0 1.5rem 1.5rem; color: var(--text-muted); line-height: 1.6;">
+                        Yes! You can book a free trial class for our beginner courses. Visit our <a href="#trial-form"
+                            style="color: var(--accent-start);">trial booking section</a> or contact us to arrange one.
+                    </div>
+                </details>
+            </div>
+        </section>
     </main>
+
+    <section class="container" style="max-width: 800px; margin-bottom: 6rem; margin-top: 4rem;">
+        <h2 class="section-title-modern" style="text-align: center; margin-bottom: 3rem;">Frequently Asked Questions
+        </h2>
+        <div class="faq-list" style="display: flex; flex-direction: column; gap: 1rem;">
+            <!-- FAQ Item 1 -->
+            <details class="glass-panel" style="border-radius: 12px; overflow: hidden;">
+                <summary
+                    style="padding: 1.5rem; cursor: pointer; color: white; font-weight: 600; font-size: 1.1rem; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                    What payment methods do you accept?
+                    <span style="color: var(--accent-start); font-size: 1.5rem;">+</span>
+                </summary>
+                <div style="padding: 0 1.5rem 1.5rem; color: var(--text-muted); line-height: 1.6;">
+                    We accept <strong>Twint</strong>, <strong>Cash</strong>, and <strong>Bank Transfer</strong>. Payment
+                    details will be sent to you via email/WhatsApp after you complete your registration.
+                </div>
+            </details>
+
+            <!-- FAQ Item 2 -->
+            <details class="glass-panel" style="border-radius: 12px; overflow: hidden;">
+                <summary
+                    style="padding: 1.5rem; cursor: pointer; color: white; font-weight: 600; font-size: 1.1rem; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                    What if I miss a class? Can I catch up?
+                    <span style="color: var(--accent-start); font-size: 1.5rem;">+</span>
+                </summary>
+                <div style="padding: 0 1.5rem 1.5rem; color: var(--text-muted); line-height: 1.6;">
+                    No worries! Life happens. You can make up missed classes within your 8-week period by attending
+                    another class of your level (or lower). Just let us know in advance so we can check availability.
+                </div>
+            </details>
+
+            <!-- FAQ Item 3 -->
+            <details class="glass-panel" style="border-radius: 12px; overflow: hidden;">
+                <summary
+                    style="padding: 1.5rem; cursor: pointer; color: white; font-weight: 600; font-size: 1.1rem; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                    Is the registration binding?
+                    <span style="color: var(--accent-start); font-size: 1.5rem;">+</span>
+                </summary>
+                <div style="padding: 0 1.5rem 1.5rem; color: var(--text-muted); line-height: 1.6;">
+                    Yes, registration secures your spot in the course, which is often limited to ensure quality. Please
+                    review our <a href="terms.html" style="color: var(--accent-start);">Terms & Conditions</a> regarding
+                    cancellations.
+                </div>
+            </details>
+
+            <!-- FAQ Item 4 -->
+            <details class="glass-panel" style="border-radius: 12px; overflow: hidden;">
+                <summary
+                    style="padding: 1.5rem; cursor: pointer; color: white; font-weight: 600; font-size: 1.1rem; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                    Do you offer trial classes?
+                    <span style="color: var(--accent-start); font-size: 1.5rem;">+</span>
+                </summary>
+                <div style="padding: 0 1.5rem 1.5rem; color: var(--text-muted); line-height: 1.6;">
+                    Yes! For our beginner courses, we often offer free trial classes before the cycle starts. You can
+                    also book a specific trial session via our <a href="index.html#trial-form"
+                        style="color: var(--accent-start);">Home Page</a> form.
+                </div>
+            </details>
+        </div>
+    </section>
 
     <footer class="main-footer">
         <div class="container footer-grid">
@@ -971,7 +1134,7 @@
                     8048 Zurich Altstetten<br> 2 minute walking from Tram 2 stop and Bus 31 stop
                 </p>
                 <div class="footer-socials">
-                    <a href="https://www.instagram.com/axcent_dance/"                        target="_blank" aria-label="Instagram">
+                    <a href="https://www.instagram.com/axcent_dance/" target="_blank" aria-label="Instagram">
                         <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
                             <path
                                 d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
