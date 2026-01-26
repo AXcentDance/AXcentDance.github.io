@@ -1,82 +1,80 @@
 # AXcent Dance Zurich
 
-> Premier Bachata and Latin dance studio in Zurich. Join our community for classes, workshops, and social events.
+> Premier Bachata and Latin dance studio in Zurich Altstetten. We offer high-quality dance education, community events, and professional performances. Founders: Ale & Xidan.
 
-[Full Website Content](https://axcentdance.com/llms-full.txt)
+## AI Resources
 
-## Core Business Pages offer classes for all levels, from absolute beginners to advanced dancers, as well as private lessons, wedding dance choreography, and event hosting.
+- [Full Website Content (llms-full.txt)](https://axcentdance.com/llms-full.txt) - The complete text content of the entire website (EN & DE) in a single file. **Primary source for RAG/Context.**
 
-## Key Information
+## Core Information
 
-- **Location**: Hermetschloostrasse 73, 8048 Zurich Altstetten (2 min from Tram 2 / Bus 31).
-- **Instructors**: Ale & Xidan (Founders).
-- **Team**: We are a team of **international teachers** bringing global dance expertise to Zurich.
-- **Languages**: Classes are taught in English and German.
-- **Levels**: Absolute Beginner to Advanced/Masterclass.
+- **Location**: Hermetschloostrasse 73, 8048 Zurich Altstetten.
+- **Offerings**: Bachata Classes (Beginner-Advanced), Lady Styling, Private Lessons, Wedding Dance, Corporate Events.
+- **Instructors**: Ale & Xidan (International Artists), Alexia.
+- **Languages**: English (Primary), German (Deutsch).
 
-## Core Business Pages
+## English Pages (EN)
 
-- [Home](https://axcentdance.com/) - Overview, trial registration, and latest news.
-- [Schedule](https://axcentdance.com/schedule) - Weekly timetable and pricing options.
-- [Events](https://axcentdance.com/events) - Workshops, bootcamps, and social dance nights.
-- [About Us](https://axcentdance.com/about) - Meet Ale & Xidan and our philosophy.
-- [Contact](https://axcentdance.com/contact) - Location map and contact form.
-- [Private Lessons](https://axcentdance.com/private-lessons) - 1-on-1 coaching for rapid improvement.
-- [Wedding Dance](https://axcentdance.com/wedding-dance) - Custom choreography for wedding couples.
-- [Room Rental](https://axcentdance.com/room-rental) - Studio space available for rent.
+### Main Navigation
+- [Home](https://axcentdance.com/) - Overview, trial booking, latest news.
+- [Schedule](https://axcentdance.com/schedule) - Weekly class timetable and levels.
+- [Registration](https://axcentdance.com/registration) - Pricing packages and class sign-up.
+- [Events](https://axcentdance.com/events) - Workshops, socials, and dance camps.
+- [About Us](https://axcentdance.com/about) - Founders' bio and school philosophy.
+- [Contact](https://axcentdance.com/contact) - Address, map, and contact form.
 
-## Classes & Guides
+### Services
+- [Private Lessons](https://axcentdance.com/private-lessons) - 1-on-1 coaching details.
+- [Wedding Dance](https://axcentdance.com/wedding-dance) - Custom choreography services.
+- [Room Rental](https://axcentdance.com/room-rental) - Studio rental information.
+- [Corporate Events](https://axcentdance.com/corporate-events) - Team building and show acts.
 
-- [Bachata Beginner](https://axcentdance.com/class-bachata-beginner-0) - Course details for new dancers.
-- [Bachata Sensual](https://axcentdance.com/class-bachata-sensual-foundation) - Foundation and technique for Sensual style.
-- [Lady Styling](https://axcentdance.com/class-bachata-lady-styling) - Solo styling classes.
-- [Beginner Guide](https://axcentdance.com/beginner-guide) - First class tips, what to wear, and shoe guide.
-- [Dance Etiquette](https://axcentdance.com/etiquette) - Rules and guidelines for social dancing.
-- [Education](https://axcentdance.com/education) - History, styles, musicality, and glossary.
-- [Corporate Events](https://axcentdance.com/corporate-events) - Company parties and team building.
-- [Collaborations](https://axcentdance.com/collaborations) - Partner projects and guest artists.
-- [FAQ](https://axcentdance.com/faq) - Frequently Asked Questions.
-- [Gallery](https://axcentdance.com/gallery) - Photos and videos from our events.
-- [Milano Congress 2026](https://axcentdance.com/Milano-Sensual-Congress-2026) - Jan 2026 details.
-- [Milano Congress Spring 2026](https://axcentdance.com/Milano-Sensual-Congress-Spring-2026) - Spring edition details.
+### Education & Guides
+- [Beginner Guide](https://axcentdance.com/beginner-guide) - "What to wear" and first-class tips.
+- [Dance Etiquette](https://axcentdance.com/etiquette) - Social dancing rules and hygiene.
+- [Education Hub](https://axcentdance.com/education) - History of Bachata, musicality, and terminology.
+- [What is Bachata?](https://axcentdance.com/guide-bachata) - In-depth guide to the genre.
+- [What is Social Dancing?](https://axcentdance.com/guide-social-dancing) - Introduction to the community aspect.
+- [Bachata Sensual](https://axcentdance.com/guide-bachata-sensual) - Explanation of the specific style we teach.
+- [Lady Styling](https://axcentdance.com/lady-styling) - Dedicated course for styling.
+- [FAQ](https://axcentdance.com/faq) - Common questions.
 
-## Blog
+### Community & Media
+- [Gallery](https://axcentdance.com/gallery) - Photos and videos.
+- [Blog](https://axcentdance.com/blog) - Articles on dance tips, music, and studio news.
 
-- [Blog](https://axcentdance.com/blog) - Latest news, music tips, and dance advice.
+## German Pages (DE)
 
-## Deutsch (German Version)
+### Hauptnavigation
+- [Startseite (DE)](https://axcentdance.com/de/) - Übersicht und Probelektion.
+- [Stundenplan](https://axcentdance.com/de/schedule) - Wochenplan und Level-Übersicht.
+- [Anmeldung](https://axcentdance.com/de/registration) - Preise und Kursanmeldung.
+- [Events](https://axcentdance.com/de/events) - Workshops und Socials.
+- [Über uns](https://axcentdance.com/de/about) - Das Team und unsere Philosophie.
+- [Kontakt](https://axcentdance.com/de/contact) - Standort und Kontaktformular.
 
-Die deutsche Version der Website ist unter [axcentdance.com/de/](https://axcentdance.com/de/) verfügbar.
+### Dienstleistungen
+- [Privatstunden](https://axcentdance.com/de/private-lessons) - Einzelunterricht.
+- [Hochzeitstanz](https://axcentdance.com/de/wedding-dance) - Choreografien für Hochzeiten.
+- [Raumvermietung](https://axcentdance.com/de/room-rental) - Studio mieten.
+- [Firmenevents](https://axcentdance.com/de/corporate-events) - Teambuilding und Shows.
 
-### Core Business-Seiten (DE)
-- [Home (DE)](https://axcentdance.com/de/) - Übersicht, Anmeldung zur Probelektion und aktuelle News.
-- [Stundenplan](https://axcentdance.com/de/schedule) - Wöchentlicher Kursplan und Preisoptionen.
-- [Events](https://axcentdance.com/de/events) - Workshops, Bootcamps und Social Dance Nächte.
-- [Über uns](https://axcentdance.com/de/about) - Lernen Sie Ale & Xidan und unsere Philosophie kennen.
-- [Kontakt](https://axcentdance.com/de/contact) - Standortkarte und Kontaktformular.
-- [Privatstunden](https://axcentdance.com/de/private-lessons) - 1-zu-1 Coaching für schnelle Fortschritte.
-- [Hochzeitstanz](https://axcentdance.com/de/wedding-dance) - Individuelle Choreografie für Hochzeitspaare.
-- [Raumvermietung](https://axcentdance.com/de/room-rental) - Studioräume zur Miete verfügbar.
+### Bildung & Guides
+- [Anfänger Guide](https://axcentdance.com/de/beginner-guide) - Tipps für den Start.
+- [Tanzetikette](https://axcentdance.com/de/etiquette) - Regeln auf der Tanzfläche.
+- [Ausbildung](https://axcentdance.com/de/education) - Bachata Wissen und Geschichte.
+- [Was ist Bachata?](https://axcentdance.com/de/guide-bachata) - Der Tanz erklärt.
+- [Social Dancing](https://axcentdance.com/de/guide-social-dancing) - Was ist das?
+- [Bachata Sensual](https://axcentdance.com/de/guide-bachata-sensual) - Unser Stil erklärt.
+- [Lady Styling](https://axcentdance.com/de/lady-styling) - Styling Kurse.
+- [FAQ (DE)](https://axcentdance.com/de/faq) - Häufige Fragen.
 
-### Kurse & Guides (DE)
-- [Anfänger Guide](https://axcentdance.com/de/beginner-guide) - Tipps für die erste Stunde, Kleidung und Schuh-Guide.
-- [Tanzetikette](https://axcentdance.com/de/etiquette) - Regeln und Richtlinien für Social Dancing.
-- [Ausbildung](https://axcentdance.com/de/education) - Geschichte, Stile, Musikalität und Glossar.
-- [Was ist Bachata?](https://axcentdance.com/de/guide-bachata) - Ursprung, Geschichte und Stile des Tanzes.
-- [Social Dancing Guide](https://axcentdance.com/de/guide-social-dancing) - Einführung in die Welt des Social Dancing.
-- [Firmenevents](https://axcentdance.com/de/corporate-events) - Firmenfeiern und Teambuilding.
-- [FAQ](https://axcentdance.com/de/faq) - Häufig gestellte Fragen (DE).
-- [Galerie](https://axcentdance.com/de/gallery) - Fotos und Videos von unseren Events.
-- [Anmeldung](https://axcentdance.com/de/registration) - Anmeldung für Kurse und Workshops.
-- [Milano Congress 2026](https://axcentdance.com/de/Milano-Sensual-Congress-2026) - Details zum Event im Januar 2026.
-- [Milano Congress Spring 2026](https://axcentdance.com/de/Milano-Sensual-Congress-Spring-2026) - Details zur Spring Edition.
+### Community
+- [Galerie](https://axcentdance.com/de/gallery) - Fotos und Impressionen.
+- [Blog (DE)](https://axcentdance.com/de/blog) - Artikel und News.
 
-### Blog (DE)
-- [Blog (DE)](https://axcentdance.com/de/blog) - Aktuelle News, Musiktipps und Tanzberatung auf Deutsch.
-
-## Meta & Technical
-
-- [Security Policy](https://axcentdance.com/.well-known/security.txt)
-- [Humans.txt](https://axcentdance.com/humans.txt)
-- [Manifest](https://axcentdance.com/manifest.json)
-
+## Technical & Legal
+- [Imprint](https://axcentdance.com/imprint)
+- [Privacy Policy](https://axcentdance.com/privacy)
+- [Terms & Conditions](https://axcentdance.com/terms)
+- [Security.txt](https://axcentdance.com/.well-known/security.txt)
