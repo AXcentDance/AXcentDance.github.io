@@ -104,6 +104,92 @@
             }
         }
     </style>
+    <style>
+        /* Specific styles for Cart page */
+        .cart-section {
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cart-content {
+            max-width: 600px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            padding: 3rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .cart-logo {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 3rem;
+            letter-spacing: -0.02em;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+            display: inline-block;
+        }
+
+        .cart-logo span {
+            color: var(--primary-color);
+        }
+
+        .cart-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, #fff, #ccc);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .cart-message {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 2.5rem;
+            line-height: 1.6;
+        }
+
+        .payment-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: #635bff;
+            /* Stripe Blurple */
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            max-width: 300px;
+            margin: 0 auto;
+        }
+
+        .payment-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(99, 91, 255, 0.3);
+        }
+
+        .loading-spinner {
+            display: none;
+            margin-bottom: 1rem;
+            color: var(--text-muted);
+        }
+    </style>
 </head>
 
 <body>
@@ -162,88 +248,38 @@
         </div>
     </header>
 
-    <main class="container" style="padding-top: 120px; min-height: 80vh;">
-        <h1 class="page-title" style="text-align: center; margin-bottom: 2rem;">Anmeldung abschliessen</h1>
+    <main>
+        <section class="cart-section">
+            <div class="cart-content">
+                <div class="cart-logo"><span class="logo-title">AXCENT</span><span
+                        class="logo-subtitle text-gradient">DANCE</span></div>
+                <h1 class="cart-title">Registrierung abschliessen</h1>
 
-        <!-- Checkout Steps -->
-        <div class="checkout-steps"
-            style="display: flex; justify-content: center; gap: 2rem; margin-bottom: 3rem; color: var(--text-muted);">
-            <div class="step">1. Kurs wählen</div>
-            <div class="step active" style="color: var(--accent-start); font-weight: bold;">2. Details & Bezahlung</div>
-            <div class="step">3. Bestätigung</div>
-        </div>
+                <div id="cart-details">
+                    <p class="cart-message">
+                        Vielen Dank für deine Anmeldung! Um deinen Platz zu sichern, schliesse bitte die Zahlung sicher
+                        über Stripe ab.
+                    </p>
 
-        <div class="cart-container"
-            style="background: var(--glass-bg); padding: 2rem; border-radius: 24px; border: 1px solid var(--glass-border); max-width: 800px; margin: 0 auto;">
-
-            <!-- Empty Cart Message -->
-            <div id="cart-empty-msg" style="display: none; text-align: center;">
-                <p>Dein Warenkorb ist leer.</p>
-                <a href="schedule.html" class="btn-primary" style="margin-top: 1rem; display: inline-block;">Zum
-                    Stundenplan</a>
-            </div>
-
-            <!-- Cart Content -->
-            <div id="cart-content">
-                <div id="cart-items" class="cart-items">
-                    <!-- Items defined by JS -->
+                    <a href="#" id="stripe-payment-btn" class="payment-btn">
+                        Mit Karte bezahlen
+                    </a>
                 </div>
 
-                <div class="cart-total" id="cart-total"
-                    style="text-align: right; margin-top: 1rem; font-size: 1.5rem; font-weight: bold; color: white; border-top: 1px solid var(--glass-border); padding-top: 1rem;">
-                    Gesamt: 0 CHF
+                <div id="cart-error" style="display: none;">
+                    <p class="cart-message" style="color: #ff4444;">
+                        Keine Anmeldedaten gefunden. Bitte gehe zurück und melde dich erneut an.
+                    </p>
+                    <a href="registration.html" class="btn-tilted btn-tilted-primary">
+                        <span class="btn-tilted-content">ZUR ANMELDUNG</span>
+                    </a>
                 </div>
 
-                <form id="checkout-form" style="margin-top: 2rem;">
-                    <h2 style="font-size: 1.5rem; margin-bottom: 1rem;">Persönliche Daten</h2>
-                    <div class="form-grid">
-                        <div class="form-group">
-                            <label for="firstName">Vorname</label>
-                            <input type="text" id="firstName" name="firstName" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="lastName">Nachname</label>
-                            <input type="text" id="lastName" name="lastName" required>
-                        </div>
-                    </div>
-                    <div class="form-grid">
-                        <div class="form-group">
-                            <label for="email">E-Mail</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="phone">Telefon</label>
-                            <input type="tel" id="phone" name="phone" required>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="partnerName">Tanzpartner (Optional, falls Anmeldung als Paar)</label>
-                        <input type="text" id="partnerName" name="partnerName">
-                    </div>
-
-                    <div class="form-group checkbox-group"
-                        style="display: flex; align-items: flex-start; gap: 10px; margin-top: 1rem;">
-                        <input type="checkbox" id="terms" name="terms" required style="margin-top: 5px;">
-                        <label for="terms" style="font-size: 0.9rem; color: var(--text-muted);">
-                            Ich akzeptiere die <a href="terms.html" target="_blank"
-                                style="color: var(--accent-start);">AGB</a> und <a href="privacy.html" target="_blank"
-                                style="color: var(--accent-start);">Datenschutzbestimmungen</a>.
-                        </label>
-                    </div>
-
-                    <div class="form-actions" style="margin-top: 2rem; display: flex; gap: 1rem; flex-wrap: wrap;">
-                        <a href="schedule.html" class="btn-secondary"
-                            style="text-decoration: none; text-align: center; flex: 1;">Zurück zum Stundenplan</a>
-                        <button type="submit" class="btn-primary" style="flex: 1; border: none; cursor: pointer;">
-                            Kostenpflichtig anmelden
-                        </button>
-                    </div>
-                </form>
             </div>
-        </div>
+        </section>
     </main>
 
-        <footer class="main-footer">
+    <footer class="main-footer">
         <div class="container footer-grid">
             <div class="footer-col">
                 <a href="index.html" class="logo footer-logo"><span class="logo-title">AXCENT</span><span
@@ -306,6 +342,28 @@
     </footer>
 
     <script src="../script.js?v=2.1"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const stripeLink = localStorage.getItem('axcent_stripe_link');
+            // const mailtoLink = localStorage.getItem('axcent_mailto_link'); // Unused
+
+            const paymentBtn = document.getElementById('stripe-payment-btn');
+            const cartDetails = document.getElementById('cart-details');
+            const cartError = document.getElementById('cart-error');
+
+            if (stripeLink) {
+                paymentBtn.href = stripeLink;
+
+                // Track "InitiateCheckout" when they click to pay
+                paymentBtn.addEventListener('click', function () {
+                    fbq('track', 'InitiateCheckout');
+                });
+            } else {
+                cartDetails.style.display = 'none';
+                cartError.style.display = 'block';
+            }
+        });
+    </script>
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {
