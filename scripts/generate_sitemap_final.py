@@ -2,7 +2,8 @@
 import os
 import re
 import datetime
-from urllib.parse import quote
+from urllib.parse import quote, urljoin
+from bs4 import BeautifulSoup
 
 ROOT_DIR = '/Users/slamitza/AXcentWebsiteGitHub'
 DOMAIN = 'https://axcentdance.com'
@@ -42,10 +43,67 @@ def get_url_path(filepath):
     
     return '/' + rel_path
 
+def get_page_images(filepath):
+    """Extracts images from an HTML file for sitemap."""
+    images = []
+    try:
+        with open(filepath, 'r', encoding='utf-8') as f:
+            soup = BeautifulSoup(f, 'html.parser')
+            
+        seen_src = set()
+        
+        for img in soup.find_all('img'):
+            src = img.get('src')
+            if not src:
+                continue
+                
+            # Skip external images, tracking pixels, or data URIs
+            if src.startswith(('http', '//', 'data:', 'blob:')):
+                continue
+                
+            # Convert relative path to absolute URL
+            # Logic: If src is absolute path (starts with /), append to domain
+            # If relative, resolve based on file directory (complex) 
+            # BUT for this site, images are mostly in assets/
+            
+            # Simple handle for /assets
+            if src.startswith('/'):
+                img_url = DOMAIN + src
+            else:
+                # Resolve relative to current page location if possible
+                # Or simplistic assumption: most used as relative from root?
+                # Actually, standard is to map strictly.
+                # Let's clean it up: remove ../ if present
+                clean_src = src.replace('../', '').replace('./', '')
+                if clean_src.startswith('assets/'):
+                    img_url = f"{DOMAIN}/{clean_src}"
+                else:
+                    # Fallback for images in same dir
+                    # But sitemap needs absolute
+                   continue
+
+            if img_url in seen_src:
+                continue
+                
+            img_data = {
+                'loc': img_url
+            }
+            
+            # Add caption (alt) and title if available
+            alt = img.get('alt')
+            if alt:
+                img_data['title'] = alt # Use alt as title/caption for sitemap
+                
+            images.append(img_data)
+            seen_src.add(img_url)
+            
+    except Exception as e:
+        print(f"Error parsing images for {filepath}: {e}")
+        
+    return images
+
 def generate_sitemap():
-    print("Generating sitemap.xml...")
-    
-    pages = [] # List of dicts { 'loc': ..., 'lastmod': ..., 'alternates': [...] }
+    print("Generating sitemap.xml with images...")
     
     # 1. Walk and collect all indexable HTML files
     all_files = []
@@ -85,7 +143,8 @@ def generate_sitemap():
 
     # 3. Build XML entries
     xml_output = '<?xml version="1.0" encoding="UTF-8"?>\n'
-    xml_output += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n'
+    # Add Image Namespace
+    xml_output += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n'
     
     # Iterate through map to build URL entries
     for key, variants in page_map.items():
@@ -118,6 +177,17 @@ def generate_sitemap():
                 de_url = DOMAIN + get_url_path(variants['de'])
                 xml_output += f'    <xhtml:link rel="alternate" hreflang="de" href="{de_url}" />\n'
                 
+            # IMAGE SITEMAP ENTRIES
+            page_images = get_page_images(filepath)
+            for img in page_images:
+                xml_output += '    <image:image>\n'
+                xml_output += f'      <image:loc>{img["loc"]}</image:loc>\n'
+                if 'title' in img:
+                     # Escape XML characters
+                    safe_title = img['title'].replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;').replace('"', '&quot;').replace("'", "&apos;")
+                    xml_output += f'      <image:title>{safe_title}</image:title>\n'
+                xml_output += '    </image:image>\n'
+                
             xml_output += '  </url>\n'
 
     xml_output += '</urlset>'
@@ -125,7 +195,7 @@ def generate_sitemap():
     with open(os.path.join(ROOT_DIR, 'sitemap.xml'), 'w', encoding='utf-8') as f:
         f.write(xml_output)
     
-    print(f"Sitemap generated with {len(all_files)} URLs.")
+    print(f"Sitemap generated with {len(all_files)} URLs and comprehensive image definitions.")
 
 if __name__ == "__main__":
     generate_sitemap()
