@@ -493,7 +493,7 @@
 
                         <!-- Form -->
                         <div class="rental-form-col" style="width: 100%; max-width: 800px;">
-                            <h2 class="section-title-modern" style="font-size: 2.5rem; margin-bottom: 1rem;">Mietanfrage
+                            <h2 class="section-title-modern" style="font-size: 2.5rem; margin-bottom: 1rem;">Mietpreise
                             </h2>
 
                             <div class="pricing-section">
@@ -532,100 +532,133 @@
                                 </div>
                             </div>
 
-                            <p style="color: white; margin-bottom: 2rem;">
-                                <strong>Bitte gib den Zweck deiner Miete an und ob es sich um eine einmalige oder
-                                    wiederkehrende Buchung handelt.</strong>
-                            </p>
+                            <div class="rental-inquiry-box">
+                                <h3 class="section-title-modern"
+                                    style="font-size: 2rem; text-align: center; margin-bottom: 1.5rem;">Mietanfrage</h3>
+                                <p style="color: white; margin-bottom: 2rem;">
+                                    <strong>Bitte gib den Zweck deiner Miete an und ob es sich um eine einmalige oder
+                                        wiederkehrende Buchung handelt.</strong>
+                                </p>
 
-                            <form action="https://formsubmit.co/info@axcentdance.com" method="POST">
-                                <input type="hidden" name="_cc" value="slamitza@gmail.com">
-                                <input type="hidden" name="_webhook"
-                                    value="https://script.google.com/macros/s/AKfycbytxnGMTaV1WfB9_DV7R1euJWhtqjBt10lHK-8bUnoQ76j2xypd5J7rIBJzW6S_cBPk/exec">
-                                <input type="hidden" name="_subject" value="New Room Rental Inquiry!">
-                                <input type="hidden" name="_captcha" value="false">
-                                <input type="hidden" name="_next" value="https://axcentdance.com/de/thank-you.html">
+                                <form action="https://formsubmit.co/info@axcentdance.com" method="POST">
+                                    <input type="hidden" name="_cc" value="slamitza@gmail.com">
+                                    <input type="hidden" name="_webhook"
+                                        value="https://script.google.com/macros/s/AKfycbytxnGMTaV1WfB9_DV7R1euJWhtqjBt10lHK-8bUnoQ76j2xypd5J7rIBJzW6S_cBPk/exec">
+                                    <input type="hidden" name="_subject" value="New Room Rental Inquiry!">
+                                    <input type="hidden" name="_captcha" value="false">
+                                    <input type="hidden" name="_next" value="https://axcentdance.com/de/thank-you.html">
 
-                                <div class="form-grid"
-                                    style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;">
-                                    <div class="form-group floating-label">
-                                        <input type="text" id="firstname" name="firstname" class="form-input-modern"
+                                    <div class="form-grid"
+                                        style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;">
+                                        <div class="form-group floating-label">
+                                            <input type="text" id="firstname" name="firstname" class="form-input-modern"
+                                                placeholder=" " required>
+                                            <label for="firstname">Vorname</label>
+                                        </div>
+                                        <div class="form-group floating-label">
+                                            <input type="text" id="lastname" name="lastname" class="form-input-modern"
+                                                placeholder=" " required>
+                                            <label for="lastname">Nachname</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group floating-label" style="margin-bottom: 1.5rem;">
+                                        <input type="text" id="businessname" name="businessname"
+                                            class="form-input-modern" placeholder=" ">
+                                        <label for="businessname">Firmenname (Optional)</label>
+                                    </div>
+
+                                    <div class="form-grid"
+                                        style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;">
+                                        <div class="form-group floating-label">
+                                            <input type="tel" id="phone" name="phone" class="form-input-modern"
+                                                placeholder=" " required>
+                                            <label for="phone">Telefonnummer</label>
+                                        </div>
+                                        <div class="form-group floating-label">
+                                            <input type="email" id="email" name="email" class="form-input-modern"
+                                                placeholder=" " required>
+                                            <label for="email">E-Mail</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-grid"
+                                        style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2rem;">
+
+                                        <!-- Purpose Dropdown -->
+                                        <div class="form-group floating-label">
+                                            <select id="rental_purpose" name="rental_purpose" class="form-input-modern"
+                                                required style="padding-top: 1.25rem;">
+                                                <option value="" disabled selected hidden></option>
+                                                <option value="Event">Event (Workshop/Party)</option>
+                                                <option value="Regular Class">Regulärer Kurs</option>
+                                                <option value="Training">Training / Probe</option>
+                                                <option value="Private Lesson">Privatstunden</option>
+                                                <option value="Production">Foto / Video Shoot</option>
+                                                <option value="Other">Anderes</option>
+                                            </select>
+                                            <label for="rental_purpose"
+                                                style="color: white !important;">Mietzweck</label>
+                                        </div>
+
+                                        <!-- Frequency Dropdown -->
+                                        <div class="form-group floating-label">
+                                            <select id="frequency" name="frequency" class="form-input-modern" required
+                                                style="padding-top: 1.25rem;">
+                                                <option value="" disabled selected hidden></option>
+                                                <option value="One-time">Einmalig</option>
+                                                <option value="Recurring">Wiederkehrend</option>
+                                            </select>
+                                            <label for="frequency" style="color: white !important;">Häufigkeit</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group floating-label" style="margin-bottom: 1.5rem;">
+                                        <input type="text" id="timing" name="timing" class="form-input-modern"
                                             placeholder=" " required>
-                                        <label for="firstname">Vorname</label>
-                                    </div>
-                                    <div class="form-group floating-label">
-                                        <input type="text" id="lastname" name="lastname" class="form-input-modern"
-                                            placeholder=" " required>
-                                        <label for="lastname">Nachname</label>
-                                    </div>
-                                </div>
-
-                                <div class="form-group floating-label" style="margin-bottom: 1.5rem;">
-                                    <input type="text" id="businessname" name="businessname" class="form-input-modern"
-                                        placeholder=" ">
-                                    <label for="businessname">Firmenname (Optional)</label>
-                                </div>
-
-                                <div class="form-grid"
-                                    style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;">
-                                    <div class="form-group floating-label">
-                                        <input type="tel" id="phone" name="phone" class="form-input-modern"
-                                            placeholder=" " required>
-                                        <label for="phone">Telefonnummer</label>
-                                    </div>
-                                    <div class="form-group floating-label">
-                                        <input type="email" id="email" name="email" class="form-input-modern"
-                                            placeholder=" " required>
-                                        <label for="email">E-Mail</label>
-                                    </div>
-                                </div>
-
-                                <div class="form-grid"
-                                    style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2rem;">
-
-                                    <!-- Purpose Dropdown -->
-                                    <div class="form-group floating-label">
-                                        <select id="rental_purpose" name="rental_purpose" class="form-input-modern"
-                                            required style="padding-top: 1.25rem;">
-                                            <option value="" disabled selected hidden></option>
-                                            <option value="Event">Event (Workshop/Party)</option>
-                                            <option value="Regular Class">Regulärer Kurs</option>
-                                            <option value="Training">Training / Probe</option>
-                                            <option value="Private Lesson">Privatstunden</option>
-                                            <option value="Production">Foto / Video Shoot</option>
-                                            <option value="Other">Anderes</option>
-                                        </select>
-                                        <label for="rental_purpose" style="color: white !important;">Mietzweck</label>
+                                        <label for="timing">Datum und Zeit</label>
                                     </div>
 
-                                    <!-- Frequency Dropdown -->
-                                    <div class="form-group floating-label">
-                                        <select id="frequency" name="frequency" class="form-input-modern" required
-                                            style="padding-top: 1.25rem;">
-                                            <option value="" disabled selected hidden></option>
-                                            <option value="One-time">Einmalig</option>
-                                            <option value="Recurring">Wiederkehrend</option>
-                                        </select>
-                                        <label for="frequency" style="color: white !important;">Häufigkeit</label>
+                                    <div class="form-group floating-label" style="margin-bottom: 2rem;">
+                                        <textarea id="message" name="message" class="form-textarea-modern"
+                                            placeholder=" " style="min-height: 120px;"></textarea>
+                                        <label for="message">Erzähl uns von deinem Event...</label>
                                     </div>
-                                </div>
 
-                                <div class="form-group floating-label" style="margin-bottom: 1.5rem;">
-                                    <input type="text" id="timing" name="timing" class="form-input-modern"
-                                        placeholder=" " required>
-                                    <label for="timing">Datum und Zeit</label>
-                                </div>
+                                    <button type="submit" class="btn-hero btn-hero-primary"
+                                        style="width: 100%; border-radius: 12px;">
+                                        <span class="btn-hero-content">ANFRAGE SENDEN</span>
+                                    </button>
+                                </form>
+                            </div>
+                            <style>
+                                .rental-inquiry-box {
+                                    background: linear-gradient(145deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+                                    border: 1px solid rgba(255, 255, 255, 0.1);
+                                    border-radius: 24px;
+                                    padding: 2.5rem;
+                                    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+                                    position: relative;
+                                    overflow: hidden;
+                                    margin-top: 3rem;
+                                }
 
-                                <div class="form-group floating-label" style="margin-bottom: 2rem;">
-                                    <textarea id="message" name="message" class="form-textarea-modern" placeholder=" "
-                                        style="min-height: 120px;"></textarea>
-                                    <label for="message">Erzähl uns von deinem Event...</label>
-                                </div>
+                                .rental-inquiry-box::before {
+                                    content: '';
+                                    position: absolute;
+                                    top: 0;
+                                    left: 0;
+                                    width: 100%;
+                                    height: 4px;
+                                    background: var(--grad);
+                                }
 
-                                <button type="submit" class="btn-hero btn-hero-primary"
-                                    style="width: 100%; border-radius: 12px;">
-                                    <span class="btn-hero-content">ANFRAGE SENDEN</span>
-                                </button>
-                            </form>
+                                @media (max-width: 600px) {
+                                    .rental-inquiry-box {
+                                        padding: 1.5rem;
+                                    }
+                                }
+                            </style>
                         </div>
 
 

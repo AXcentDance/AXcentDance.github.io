@@ -489,10 +489,9 @@
                     <!-- Desktop: Centered single-column Layout -->
                     <div class="rental-grid" style="display: flex; justify-content: center;">
 
-                        <!-- Form -->
                         <div class="rental-form-col" style="width: 100%; max-width: 800px;">
                             <h2 class="section-title-modern" style="font-size: 2.5rem; margin-bottom: 1rem;">Rental
-                                Inquiry</h2>
+                                Prices</h2>
 
                             <div class="pricing-section">
                                 <table class="pricing-table">
@@ -530,101 +529,134 @@
                                 </div>
                             </div>
 
-                            <p style="color: white; margin-bottom: 2rem;">
-                                <strong>Please specify the purpose of your rental and whether it is a one-time or
-                                    recurring booking.</strong>
-                            </p>
+                            <div class="rental-inquiry-box">
+                                <h3 class="section-title-modern"
+                                    style="font-size: 2rem; text-align: center; margin-bottom: 1.5rem;">Rental Inquiry
+                                </h3>
+                                <p style="color: white; margin-bottom: 2rem;">
+                                    <strong>Please specify the purpose of your rental and whether it is a one-time or
+                                        recurring booking.</strong>
+                                </p>
 
-                            <form action="https://formsubmit.co/info@axcentdance.com" method="POST">
-                                <input type="hidden" name="_cc" value="slamitza@gmail.com">
-                                <input type="hidden" name="_webhook"
-                                    value="https://script.google.com/macros/s/AKfycbytxnGMTaV1WfB9_DV7R1euJWhtqjBt10lHK-8bUnoQ76j2xypd5J7rIBJzW6S_cBPk/exec">
-                                <input type="hidden" name="_subject" value="New Room Rental Inquiry!">
-                                <input type="hidden" name="_captcha" value="false">
-                                <input type="hidden" name="_next" value="https://axcentdance.com/thank-you.html">
+                                <form action="https://formsubmit.co/info@axcentdance.com" method="POST">
+                                    <input type="hidden" name="_cc" value="slamitza@gmail.com">
+                                    <input type="hidden" name="_webhook"
+                                        value="https://script.google.com/macros/s/AKfycbytxnGMTaV1WfB9_DV7R1euJWhtqjBt10lHK-8bUnoQ76j2xypd5J7rIBJzW6S_cBPk/exec">
+                                    <input type="hidden" name="_subject" value="New Room Rental Inquiry!">
+                                    <input type="hidden" name="_captcha" value="false">
+                                    <input type="hidden" name="_next" value="https://axcentdance.com/thank-you.html">
 
-                                <div class="form-grid"
-                                    style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;">
-                                    <div class="form-group floating-label">
-                                        <input type="text" id="firstname" name="firstname" class="form-input-modern"
+                                    <div class="form-grid"
+                                        style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;">
+                                        <div class="form-group floating-label">
+                                            <input type="text" id="firstname" name="firstname" class="form-input-modern"
+                                                placeholder=" " required>
+                                            <label for="firstname">First Name</label>
+                                        </div>
+                                        <div class="form-group floating-label">
+                                            <input type="text" id="lastname" name="lastname" class="form-input-modern"
+                                                placeholder=" " required>
+                                            <label for="lastname">Last Name</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group floating-label" style="margin-bottom: 1.5rem;">
+                                        <input type="text" id="businessname" name="businessname"
+                                            class="form-input-modern" placeholder=" ">
+                                        <label for="businessname">Business Name (Optional)</label>
+                                    </div>
+
+                                    <div class="form-grid"
+                                        style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;">
+                                        <div class="form-group floating-label">
+                                            <input type="tel" id="phone" name="phone" class="form-input-modern"
+                                                placeholder=" " required>
+                                            <label for="phone">Phone Number</label>
+                                        </div>
+                                        <div class="form-group floating-label">
+                                            <input type="email" id="email" name="email" class="form-input-modern"
+                                                placeholder=" " required>
+                                            <label for="email">Email</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-grid"
+                                        style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2rem;">
+
+                                        <!-- Purpose Dropdown -->
+                                        <div class="form-group floating-label">
+                                            <select id="rental_purpose" name="rental_purpose" class="form-input-modern"
+                                                required style="padding-top: 1.25rem;">
+                                                <option value="" disabled selected hidden></option>
+                                                <option value="Event">Event (Workshop/Party)</option>
+                                                <option value="Regular Class">Regular Class</option>
+                                                <option value="Training">Training / Practice</option>
+                                                <option value="Private Lesson">Private Lesson</option>
+                                                <option value="Production">Photo / Video Shoot</option>
+                                                <option value="Other">Other</option>
+                                            </select>
+                                            <label for="rental_purpose" style="color: white !important;">Purpose of
+                                                Rental</label>
+                                        </div>
+
+                                        <!-- Frequency Dropdown -->
+                                        <div class="form-group floating-label">
+                                            <select id="frequency" name="frequency" class="form-input-modern" required
+                                                style="padding-top: 1.25rem;">
+                                                <option value="" disabled selected hidden></option>
+                                                <option value="One-time">One-time</option>
+                                                <option value="Recurring">Recurring</option>
+                                            </select>
+                                            <label for="frequency" style="color: white !important;">Frequency</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group floating-label" style="margin-bottom: 1.5rem;">
+                                        <input type="text" id="timing" name="timing" class="form-input-modern"
                                             placeholder=" " required>
-                                        <label for="firstname">First Name</label>
-                                    </div>
-                                    <div class="form-group floating-label">
-                                        <input type="text" id="lastname" name="lastname" class="form-input-modern"
-                                            placeholder=" " required>
-                                        <label for="lastname">Last Name</label>
-                                    </div>
-                                </div>
-
-                                <div class="form-group floating-label" style="margin-bottom: 1.5rem;">
-                                    <input type="text" id="businessname" name="businessname" class="form-input-modern"
-                                        placeholder=" ">
-                                    <label for="businessname">Business Name (Optional)</label>
-                                </div>
-
-                                <div class="form-grid"
-                                    style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;">
-                                    <div class="form-group floating-label">
-                                        <input type="tel" id="phone" name="phone" class="form-input-modern"
-                                            placeholder=" " required>
-                                        <label for="phone">Phone Number</label>
-                                    </div>
-                                    <div class="form-group floating-label">
-                                        <input type="email" id="email" name="email" class="form-input-modern"
-                                            placeholder=" " required>
-                                        <label for="email">Email</label>
-                                    </div>
-                                </div>
-
-                                <div class="form-grid"
-                                    style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2rem;">
-
-                                    <!-- Purpose Dropdown -->
-                                    <div class="form-group floating-label">
-                                        <select id="rental_purpose" name="rental_purpose" class="form-input-modern"
-                                            required style="padding-top: 1.25rem;">
-                                            <option value="" disabled selected hidden></option>
-                                            <option value="Event">Event (Workshop/Party)</option>
-                                            <option value="Regular Class">Regular Class</option>
-                                            <option value="Training">Training / Practice</option>
-                                            <option value="Private Lesson">Private Lesson</option>
-                                            <option value="Production">Photo / Video Shoot</option>
-                                            <option value="Other">Other</option>
-                                        </select>
-                                        <label for="rental_purpose" style="color: white !important;">Purpose of
-                                            Rental</label>
+                                        <label for="timing">Date(s) and Time</label>
                                     </div>
 
-                                    <!-- Frequency Dropdown -->
-                                    <div class="form-group floating-label">
-                                        <select id="frequency" name="frequency" class="form-input-modern" required
-                                            style="padding-top: 1.25rem;">
-                                            <option value="" disabled selected hidden></option>
-                                            <option value="One-time">One-time</option>
-                                            <option value="Recurring">Recurring</option>
-                                        </select>
-                                        <label for="frequency" style="color: white !important;">Frequency</label>
+                                    <div class="form-group floating-label" style="margin-bottom: 2rem;">
+                                        <textarea id="message" name="message" class="form-textarea-modern"
+                                            placeholder=" " style="min-height: 120px;"></textarea>
+                                        <label for="message">Tell us about your event...</label>
                                     </div>
-                                </div>
 
-                                <div class="form-group floating-label" style="margin-bottom: 1.5rem;">
-                                    <input type="text" id="timing" name="timing" class="form-input-modern"
-                                        placeholder=" " required>
-                                    <label for="timing">Date(s) and Time</label>
-                                </div>
+                                    <button type="submit" class="btn-hero btn-hero-primary"
+                                        style="width: 100%; border-radius: 12px;">
+                                        <span class="btn-hero-content">SEND INQUIRY</span>
+                                    </button>
+                                </form>
+                            </div>
+                            <style>
+                                .rental-inquiry-box {
+                                    background: linear-gradient(145deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+                                    border: 1px solid rgba(255, 255, 255, 0.1);
+                                    border-radius: 24px;
+                                    padding: 2.5rem;
+                                    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+                                    position: relative;
+                                    overflow: hidden;
+                                    margin-top: 3rem;
+                                }
 
-                                <div class="form-group floating-label" style="margin-bottom: 2rem;">
-                                    <textarea id="message" name="message" class="form-textarea-modern" placeholder=" "
-                                        style="min-height: 120px;"></textarea>
-                                    <label for="message">Tell us about your event...</label>
-                                </div>
+                                .rental-inquiry-box::before {
+                                    content: '';
+                                    position: absolute;
+                                    top: 0;
+                                    left: 0;
+                                    width: 100%;
+                                    height: 4px;
+                                    background: var(--grad);
+                                }
 
-                                <button type="submit" class="btn-hero btn-hero-primary"
-                                    style="width: 100%; border-radius: 12px;">
-                                    <span class="btn-hero-content">SEND INQUIRY</span>
-                                </button>
-                            </form>
+                                @media (max-width: 600px) {
+                                    .rental-inquiry-box {
+                                        padding: 1.5rem;
+                                    }
+                                }
+                            </style>
                         </div>
 
 
