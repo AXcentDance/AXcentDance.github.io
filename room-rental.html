@@ -92,7 +92,7 @@
         "name": "Is there parking available?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes, there are visitor parking spots available, and public transport is just 2 minutes away."
+          "text": "Yes, there is street parking available on the same street as the school. Public transport (Tram 2, Bus 31) is just 2 minutes walking distance."
         }
       }]
     }
@@ -277,12 +277,7 @@
         <!-- Hero Section -->
         <section class="hero rental-hero">
             <!-- Background Image -->
-            <div class="rental-bg-image">
-                <img src="assets/images/home/gallery_1.webp"
-                    srcset="assets/images/home/gallery_1_480w.webp 480w, assets/images/home/gallery_1_800w.webp 800w, assets/images/home/gallery_1_1200w.webp 1200w"
-                    sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px" alt="Dance Studio" width="682"
-                    height="1024">
-            </div>
+
 
             <div class="container" style="position: relative; z-index: 2;">
                 <div class="hero-content reveal" style="text-align: center; margin: 0 auto;">
@@ -304,17 +299,198 @@
             </div>
         </section>
 
+        <!-- Studio Gallery Section -->
+        <section class="reveal" style="margin-bottom: 4rem;">
+            <div class="container">
+                <h2 class="section-title-modern" style="text-align: center; margin-bottom: 2rem;">The Studio</h2>
+                <div class="gallery-grid"
+                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
+
+                    <!-- Image 1 -->
+                    <div class="gallery-item-wrapper"
+                        style="border-radius: 12px; overflow: hidden; border: 1px solid var(--glass-border); box-shadow: 0 4px 20px rgba(0,0,0,0.3);">
+                        <img src="assets/images/studio/studio_room_view_1.jpg" srcset="assets/images/studio/studio_room_view_1_480w.jpg 480w,
+                                     assets/images/studio/studio_room_view_1_800w.jpg 800w,
+                                     assets/images/studio/studio_room_view_1_1200w.jpg 1200w"
+                            sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 600px"
+                            alt="Spacious dance studio with purple ceiling and mirrors" loading="lazy" width="1200"
+                            height="800"
+                            style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; display: block;">
+                    </div>
+
+                    <!-- Image 2 -->
+                    <div class="gallery-item-wrapper"
+                        style="border-radius: 12px; overflow: hidden; border: 1px solid var(--glass-border); box-shadow: 0 4px 20px rgba(0,0,0,0.3);">
+                        <img src="assets/images/studio/studio_room_view_2.png" srcset="assets/images/studio/studio_room_view_2_480w.png 480w,
+                                     assets/images/studio/studio_room_view_2_800w.png 800w,
+                                     assets/images/studio/studio_room_view_2_1200w.png 1200w"
+                            sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 600px"
+                            alt="Wide angle view of the AXcent Dance studio hall" loading="lazy" width="1200"
+                            height="800"
+                            style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; display: block;">
+                    </div>
+
+                </div>
+            </div>
+            <style>
+                .gallery-item-wrapper:hover img {
+                    transform: scale(1.05);
+                }
+            </style>
+        </section>
+
+        <!-- Studio Specs Section -->
+        <section class="reveal" style="margin-bottom: 4rem;">
+            <div class="container" style="max-width: 800px;">
+                <h3 class="section-title-modern" style="font-size: 2rem; text-align: center; margin-bottom: 2rem;">
+                    Studio Specs</h3>
+                <div class="specs-grid"
+                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
+
+                    <!-- Spec Item -->
+                    <div class="spec-card glass-panel"
+                        style="padding: 1.5rem; display: flex; align-items: center; gap: 1.2rem; border-radius: 16px; border: 1px solid var(--glass-border); transition: transform 0.3s ease; position: relative; overflow: hidden;">
+                        <div
+                            style="position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--grad);">
+                        </div>
+                        <span
+                            style="width: 50px; height: 50px; background: rgba(255,59,48,0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">📐</span>
+                        <div>
+                            <strong
+                                style="display: block; color: white; font-size: 1.1rem; margin-bottom: 0.2rem;">140m²
+                                Total Space</strong>
+                            <span
+                                style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.4; display: block;">Approx.
+                                110m² dance floor. High quality floor for all styles</span>
+                        </div>
+                    </div>
+
+                    <!-- Spec Item -->
+                    <div class="spec-card glass-panel"
+                        style="padding: 1.5rem; display: flex; align-items: center; gap: 1.2rem; border-radius: 16px; border: 1px solid var(--glass-border); transition: transform 0.3s ease; position: relative; overflow: hidden;">
+                        <div
+                            style="position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--grad);">
+                        </div>
+                        <span
+                            style="width: 50px; height: 50px; background: rgba(255,59,48,0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">🪞</span>
+                        <div>
+                            <strong style="display: block; color: white; font-size: 1.1rem; margin-bottom: 0.2rem;">9
+                                Meters of Mirrors</strong>
+                            <span
+                                style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.4; display: block;">Full-height
+                                professional glass wall</span>
+                        </div>
+                    </div>
+
+                    <!-- Spec Item -->
+                    <div class="spec-card glass-panel"
+                        style="padding: 1.5rem; display: flex; align-items: center; gap: 1.2rem; border-radius: 16px; border: 1px solid var(--glass-border); transition: transform 0.3s ease; position: relative; overflow: hidden;">
+                        <div
+                            style="position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--grad);">
+                        </div>
+                        <span
+                            style="width: 50px; height: 50px; background: rgba(255,59,48,0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">⏫</span>
+                        <div>
+                            <strong style="display: block; color: white; font-size: 1.1rem; margin-bottom: 0.2rem;">2.9m
+                                High Ceiling</strong>
+                            <span
+                                style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.4; display: block;">Ideal
+                                for lifts and aerial work</span>
+                        </div>
+                    </div>
+
+                    <!-- Spec Item -->
+                    <div class="spec-card glass-panel"
+                        style="padding: 1.5rem; display: flex; align-items: center; gap: 1.2rem; border-radius: 16px; border: 1px solid var(--glass-border); transition: transform 0.3s ease; position: relative; overflow: hidden;">
+                        <div
+                            style="position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--grad);">
+                        </div>
+                        <span
+                            style="width: 50px; height: 50px; background: rgba(255,59,48,0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">🔊</span>
+                        <div>
+                            <strong style="display: block; color: white; font-size: 1.1rem; margin-bottom: 0.2rem;">Pro
+                                Sound System</strong>
+                            <span
+                                style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.4; display: block;">Bluetooth
+                                & AUX ready connectivity</span>
+                        </div>
+                    </div>
+
+                    <!-- Spec Item -->
+                    <div class="spec-card glass-panel"
+                        style="padding: 1.5rem; display: flex; align-items: center; gap: 1.2rem; border-radius: 16px; border: 1px solid var(--glass-border); transition: transform 0.3s ease; position: relative; overflow: hidden;">
+                        <div
+                            style="position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--grad);">
+                        </div>
+                        <span
+                            style="width: 50px; height: 50px; background: rgba(255,59,48,0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">🛋️</span>
+                        <div>
+                            <strong
+                                style="display: block; color: white; font-size: 1.1rem; margin-bottom: 0.2rem;">Modern
+                                Lounge</strong>
+                            <span
+                                style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.4; display: block;">Entrance
+                                space for networking & chill</span>
+                        </div>
+                    </div>
+
+                    <!-- Spec Item -->
+                    <div class="spec-card glass-panel"
+                        style="padding: 1.5rem; display: flex; align-items: center; gap: 1.2rem; border-radius: 16px; border: 1px solid var(--glass-border); transition: transform 0.3s ease; position: relative; overflow: hidden;">
+                        <div
+                            style="position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--grad);">
+                        </div>
+                        <span
+                            style="width: 50px; height: 50px; background: rgba(255,59,48,0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">☀️</span>
+                        <div>
+                            <strong
+                                style="display: block; color: white; font-size: 1.1rem; margin-bottom: 0.2rem;">Natural
+                                Light</strong>
+                            <span
+                                style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.4; display: block;">12
+                                meters of wall-to-wall windows</span>
+                        </div>
+                    </div>
+
+                    <!-- Spec Item -->
+                    <div class="spec-card glass-panel"
+                        style="padding: 1.5rem; display: flex; align-items: center; gap: 1.2rem; border-radius: 16px; border: 1px solid var(--glass-border); transition: transform 0.3s ease; position: relative; overflow: hidden;">
+                        <div
+                            style="position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--grad);">
+                        </div>
+                        <span
+                            style="width: 50px; height: 50px; background: rgba(255,59,48,0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">💡</span>
+                        <div>
+                            <strong
+                                style="display: block; color: white; font-size: 1.1rem; margin-bottom: 0.2rem;">Lighting
+                                System</strong>
+                            <span
+                                style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.4; display: block;">Customizable
+                                colors & warm tones</span>
+                        </div>
+                    </div>
+                </div>
+                <style>
+                    .spec-card:hover {
+                        transform: translateY(-5px);
+                        background: rgba(255, 255, 255, 0.08);
+                        /* Slightly lighter on hover */
+                    }
+                </style>
+            </div>
+        </section>
+
         <!-- Rental Form Section -->
         <section class="rental-contact-section reveal">
             <div class="container">
 
                 <div class="rental-glass-panel">
 
-                    <!-- Desktop: Split Layout -->
-                    <div class="rental-grid">
+                    <!-- Desktop: Centered single-column Layout -->
+                    <div class="rental-grid" style="display: flex; justify-content: center;">
 
-                        <!-- Left: Form -->
-                        <div class="rental-form-col">
+                        <!-- Form -->
+                        <div class="rental-form-col" style="width: 100%; max-width: 800px;">
                             <h2 class="section-title-modern" style="font-size: 2.5rem; margin-bottom: 1rem;">Rental
                                 Inquiry</h2>
 
@@ -334,7 +510,7 @@
                                             <td class="rate-cell">15 CHF / hr</td>
                                         </tr>
                                         <tr>
-                                            <td><strong>Outsider Practice</strong><br><span
+                                            <td><strong>Outsiders Rental</strong><br><span
                                                     style="font-size: 0.8rem; color: var(--text-muted);">For any
                                                     activities which do not earn money for the outsiders</span></td>
                                             <td class="rate-cell">25 CHF / hr</td>
@@ -451,81 +627,14 @@
                             </form>
                         </div>
 
-                        <!-- Right: Info/Image (Hidden on mobile initially, or stacked) -->
-                        <div class="rental-info-col hidden-mobile">
-                            <h3 class="section-title-modern" style="font-size: 2rem;">Studio Specs</h3>
-                            <ul class="specs-list"
-                                style="margin-top: 2rem; display: flex; flex-direction: column; gap: 1.5rem;">
-                                <li style="display: flex; align-items: center; gap: 1rem;">
-                                    <span
-                                        style="width: 40px; height: 40px; background: rgba(255,59,48,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--accent-start);">📐</span>
-                                    <div>
-                                        <strong style="display: block; color: white;">~140m² Space</strong>
-                                        <span style="color: var(--text-muted); font-size: 0.9rem;">High quality dance
-                                            floor for all styles</span>
-                                    </div>
-                                </li>
-                                <li style="display: flex; align-items: center; gap: 1rem;">
-                                    <span
-                                        style="width: 40px; height: 40px; background: rgba(255,59,48,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--accent-start);">🪞</span>
-                                    <div class="rental-feature-text">
-                                        <strong style="display: block; color: white;">9 Meters of Mirrors</strong>
-                                        <span style="color: var(--text-muted); font-size: 0.9rem;">Full-height
-                                            professional glass</span>
-                                    </div>
-                                </li>
-                                <li style="display: flex; align-items: center; gap: 1rem;">
-                                    <span
-                                        style="width: 40px; height: 40px; background: rgba(255,59,48,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--accent-start);">⏫</span>
-                                    <div>
-                                        <strong style="display: block; color: white;">2.9m High Ceiling</strong>
-                                        <span style="color: var(--text-muted); font-size: 0.9rem;">Ideal for lifts and
-                                            high-energy energy</span>
-                                    </div>
-                                </li>
-                                <li style="display: flex; align-items: center; gap: 1rem;">
-                                    <span
-                                        style="width: 40px; height: 40px; background: rgba(255,59,48,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--accent-start);">🔊</span>
-                                    <div>
-                                        <strong style="display: block; color: white;">Pro Sound System</strong>
-                                        <span style="color: var(--text-muted); font-size: 0.9rem;">Bluetooth & AUX
-                                            ready</span>
-                                    </div>
-                                </li>
-                                <li style="display: flex; align-items: center; gap: 1rem;">
-                                    <span
-                                        style="width: 40px; height: 40px; background: rgba(255,59,48,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--accent-start);">🛋️</span>
-                                    <div>
-                                        <strong style="display: block; color: white;">Modern Lounge</strong>
-                                        <span style="color: var(--text-muted); font-size: 0.9rem;">Entrance space for
-                                            networking & relaxation</span>
-                                    </div>
-                                </li>
-                                <li style="display: flex; align-items: center; gap: 1rem;">
-                                    <span
-                                        style="width: 40px; height: 40px; background: rgba(255,59,48,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--accent-start);">☀️</span>
-                                    <div>
-                                        <strong style="display: block; color: white;">Natural Light</strong>
-                                        <span style="color: var(--text-muted); font-size: 0.9rem;">12 meters of
-                                            wall-to-wall windows</span>
-                                    </div>
-                                </li>
-                                <li style="display: flex; align-items: center; gap: 1rem;">
-                                    <span
-                                        style="width: 40px; height: 40px; background: rgba(255,59,48,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--accent-start);">💡</span>
-                                    <div>
-                                        <strong style="display: block; color: white;">Advanced Lighting System</strong>
-                                        <span style="color: var(--text-muted); font-size: 0.9rem;">Customizable colors,
-                                            intensity, and warm tones fit for any occasion</span>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
+
 
                     </div>
                 </div>
             </div>
         </section>
+
+
 
 
 
@@ -568,8 +677,9 @@
                         <span style="color: var(--accent-start); font-size: 1.5rem;">+</span>
                     </summary>
                     <div style="padding: 0 1.5rem 1.5rem; color: var(--text-muted); line-height: 1.6;">
-                        Yes, there are some visitor parking spots available at the building. Public transport (Tram 2,
-                        Bus 31) is also just 2 minutes walking distance.
+                        Yes, there is street parking available on the same street as the school. Public transport (Tram
+                        2,
+                        Bus 31) is just 2 minutes walking distance.
                     </div>
                 </details>
             </div>
