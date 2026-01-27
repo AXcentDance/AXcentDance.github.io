@@ -19,7 +19,7 @@ def process_file(filepath):
         # If it's relative, we process it.
         # If it's external (not axcentdance.com), we skip.
         
-        is_absolute_internal = url.startswith('https://axcentdance.com/') or url.startswith('http://axcentdance.com/')
+        is_absolute_internal = url.startswith('https://axcentdance.com/') or url.startswith('http://axcentdance.com/') or url.startswith('https://www.axcentdance.com/') or url.startswith('http://www.axcentdance.com/')
         is_external = (url.startswith('http://') or url.startswith('https://') or url.startswith('//')) and not is_absolute_internal
         
         if is_external or url.startswith('mailto:') or url.startswith('tel:') or url.startswith('#') or url.startswith('javascript:'):
@@ -67,8 +67,8 @@ def process_file(filepath):
         if 'index.html' in url:
              if url.endswith('/index.html'):
                  return url[:-10]
-             if url == 'https://axcentdance.com/index.html':
-                 return 'https://axcentdance.com/'
+             if url == 'https://axcentdance.com/index.html' or url == 'https://www.axcentdance.com/index.html':
+                 return url.replace('/index.html', '/')
         
         if url.endswith('.html'):
             return url[:-5]
@@ -76,9 +76,9 @@ def process_file(filepath):
         return url
 
     # Regex for absolute URLs appearing anywhere (like in json-ld or meta content)
-    # We look for https://axcentdance.com/[something].html
+    # We look for https://axcentdance.com/[something].html or https://www.axcentdance.com/[something].html
     # Be careful with boundaries.
-    content = re.sub(r'https://axcentdance\.com/[a-zA-Z0-9_\-/]+\.html', replace_absolute, content)
+    content = re.sub(r'https://(www\.)?axcentdance\.com/[a-zA-Z0-9_\-/]+\.html', replace_absolute, content)
 
     if content != original_content:
         print(f"Updating {filepath}")
