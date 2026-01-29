@@ -343,12 +343,7 @@
           }
           // HLS.js is not supported on platforms that do not have Media Source Extensions (MSE),
           // notably iOS Safari. However, iOS Safari has native HLS support.
-          else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-            video.src = videoSrc;
-            video.addEventListener('loadedmetadata', function () {
-              video.play();
-            });
-          }
+
         });
       </script>
 
