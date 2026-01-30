@@ -100,56 +100,7 @@
       }]
     }
     </script>
-    <!-- CRITICAL: FAIL-SAFE MOBILE MENU STYLES -->
     <style>
-        /* DESKTOP (900px+) - HIDE BUTTON */
-        @media (min-width: 900px) {
-            .mobile-menu-btn {
-                display: none !important;
-            }
-        }
-
-        /* MOBILE (<900px) - SHOW BUTTON ABSOLUTE LEFT */
-        @media (max-width: 899px) {
-            .navbar {
-                position: relative !important;
-                /* Ensure anchor */
-                justify-content: center !important;
-                /* Center logo */
-            }
-
-            .mobile-menu-btn {
-                display: flex !important;
-                position: absolute !important;
-                /* Absolute to navbar */
-                top: 50% !important;
-                transform: translateY(-50%) !important;
-                left: 15px !important;
-                z-index: 10001 !important;
-
-                /* FINAL PRODUCTION STYLE: Transparent */
-                background: transparent !important;
-                border: none !important;
-
-                color: white !important;
-
-                width: 44px;
-                height: 44px;
-                align-items: center;
-                justify-content: center;
-                padding: 0;
-                cursor: pointer;
-            }
-
-            /* Ensure SVG is visible */
-            .mobile-menu-btn svg {
-                width: 30px !important;
-                height: 30px !important;
-                stroke: white !important;
-                display: block !important;
-            }
-        }
-
         /* Pricing Table Styles */
         .pricing-section {
             margin: 2rem 0;
@@ -317,8 +268,7 @@
                                      ../assets/images/studio/studio_room_view_1_800w.webp 800w,
                                      ../assets/images/studio/studio_room_view_1_1200w.webp 1200w"
                             sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 600px"
-                            alt="Geräumiges Tanzstudio mit violetter Decke und Spiegeln" loading="lazy" width="1200"
-                            height="800"
+                            alt="Geräumiges Tanzstudio mit violetter Decke und Spiegeln" width="1200" height="800"
                             style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; display: block;">
                     </div>
 
@@ -667,6 +617,7 @@
 
 
 
+            </div>
         </section>
 
 
