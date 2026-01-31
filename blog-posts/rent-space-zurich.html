@@ -232,61 +232,180 @@
         </section>
 
         <!-- Content -->
+        <!-- Custom Styles for this Post -->
+        <style>
+            .use-case-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 1.5rem;
+                margin-top: 2rem;
+                margin-bottom: 3rem;
+            }
+
+            .use-case-card {
+                background: rgba(255, 255, 255, 0.03);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                border-radius: 16px;
+                padding: 1.5rem;
+                transition: transform 0.3s ease, background 0.3s ease;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .use-case-card:hover {
+                transform: translateY(-5px);
+                background: rgba(255, 255, 255, 0.06);
+                border-color: var(--accent-start);
+            }
+
+            .card-icon {
+                font-size: 2rem;
+                margin-bottom: 1rem;
+                background: rgba(255, 59, 48, 0.1);
+                width: 50px;
+                height: 50px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 12px;
+            }
+
+            .use-case-title {
+                color: white;
+                font-size: 1.2rem;
+                font-weight: 700;
+                margin-bottom: 0.5rem;
+                font-family: 'Outfit', sans-serif;
+            }
+
+            .use-case-desc {
+                color: var(--text-muted);
+                font-size: 0.95rem;
+                line-height: 1.6;
+            }
+
+            .feature-highlight {
+                background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                border-radius: 20px;
+                padding: 2rem;
+                margin: 3rem 0;
+                display: flex;
+                align-items: center;
+                gap: 2rem;
+            }
+
+            @media (max-width: 768px) {
+                .feature-highlight {
+                    flex-direction: column;
+                    text-align: center;
+                }
+            }
+        </style>
+
+        <!-- Content -->
         <article class="post-container post-content">
             <p>
                 When you hear "AXcent Dance," you probably think of Bachata, Salsa, and energetic evenings. But our
-                beautiful 138-square-meter studio in Zurich Altstetten is designed to be a versatile sanctuary for all
-                kinds of creatives, movers, and organizers.
+                beautiful
+                138-square-meter studio in Zurich Altstetten is designed to be a versatile sanctuary for all kinds of
+                creatives,
+                movers, and organizers.
             </p>
+
+            <!-- Second Image Inserted Here -->
+            <div
+                style="margin: 3rem 0; border-radius: 16px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 4px 20px rgba(0,0,0,0.3);">
+                <img src="../assets/images/studio/studio_room_view_2.webp"
+                    srcset="../assets/images/studio/studio_room_view_2_480w.webp 480w, ../assets/images/studio/studio_room_view_2_800w.webp 800w, ../assets/images/studio/studio_room_view_2_1200w.webp 1200w"
+                    sizes="(max-width: 800px) 100vw, 800px" alt="Wide view of the studio with mirrors"
+                    style="width: 100%; display: block;" loading="lazy">
+            </div>
+
             <p>
                 Whether you are looking for a place to find your zen, capture the perfect shot, or host a workshop, here
-                are five ways you can rent and make the most of our space.
+                are five
+                ways you can rent and make the most of our space.
             </p>
 
-            <h3>1. Yoga & Pilates Classes</h3>
-            <p>
-                Our studio is a haven for wellness. With wall-to-wall mirrors, natural light, and a calm atmosphere, it
-                is the perfect setting for Yoga, Pilates, or meditation sessions. The high-quality floor is gentle on
-                joints, and our sound system allows you to create the perfect ambient playlist for your students.
-            </p>
+            <div class="use-case-grid">
+                <!-- Card 1 -->
+                <div class="use-case-card">
+                    <div class="card-icon">🧘‍♀️</div>
+                    <h3 class="use-case-title">Yoga & Pilates</h3>
+                    <p class="use-case-desc">
+                        A haven for wellness with wall-to-wall mirrors, natural light, and a calm atmosphere. Our
+                        high-quality floor
+                        is gentle on joints, perfect for barefoot practices.
+                    </p>
+                </div>
 
-            <h3>2. Photo & Video Shoots</h3>
-            <p>
-                Need a professional backdrop? The studio features a clean, modern aesthetic with specific lighting
-                options that can set the mood, from bright and airy to dramatic and moody. It's an ideal location for:
-            </p>
-            <ul>
-                <li>Dance reels and promotional videos</li>
-                <li>Fitness photography</li>
-                <li>Fashion editorials</li>
-                <li>Content creation for social media</li>
-            </ul>
+                <!-- Card 2 -->
+                <div class="use-case-card">
+                    <div class="card-icon">📸</div>
+                    <h3 class="use-case-title">Photo & Video Shoots</h3>
+                    <p class="use-case-desc">
+                        Clean, modern aesthetic ideal for dance reels, fitness photography, and fashion editorials.
+                        Create professional
+                        content in a spacious setting.
+                    </p>
+                </div>
 
-            <h3>3. Private Rehearsals</h3>
-            <p>
-                For dancers, actors, and performers, space is freedom. Rent the hall for your private rehearsals to
-                prepare for competitions, shows, or auditions. The full-length mirrors and spacious floor plan allow you
-                to see every detail of your movement and perfect your choreography without constraints.
-            </p>
+                <!-- Card 3 -->
+                <div class="use-case-card">
+                    <div class="card-icon">💃</div>
+                    <h3 class="use-case-title">Private Rehearsals</h3>
+                    <p class="use-case-desc">
+                        Space is freedom. Prepare for competitions, shows, or auditions. The full-length mirrors allow
+                        you to perfect
+                        every detail of your movement.
+                    </p>
+                </div>
 
-            <h3>4. Workshops & Seminars</h3>
-            <p>
-                Planning a weekend workshop? Our space is adaptable. We have a lounge area for breaks and networking,
-                making it suitable for educational seminars, theater workshops, or fitness bootcamps. The location in
-                Altstetten is accessible, with public transport just minutes away.
-            </p>
+                <!-- Card 4 -->
+                <div class="use-case-card">
+                    <div class="card-icon">🎤</div>
+                    <h3 class="use-case-title">Workshops & Seminars</h3>
+                    <p class="use-case-desc">
+                        Adaptable space with a lounge area for breaks. Suitable for educational seminars, theater
+                        workshops, or
+                        fitness bootcamps. Easy access in Altstetten.
+                    </p>
+                </div>
 
-            <h3>5. Fitness & Personal Training</h3>
-            <p>
-                Personal trainers looking for a premium space to train clients will find everything they need. There is
-                plenty of room for functional training, bodyweight exercises, and mobility work. Give your clients a
-                private, high-end experience away from crowded commercial gyms.
-            </p>
+                <!-- Card 5 -->
+                <div class="use-case-card">
+                    <div class="card-icon">💪</div>
+                    <h3 class="use-case-title">Personal Training</h3>
+                    <p class="use-case-desc">
+                        Premium space for functional training and mobility work. Give your clients a private, high-end
+                        experience
+                        away from crowded commercial gyms.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Lighting Feature Highlight -->
+            <div class="feature-highlight">
+                <div style="font-size: 3rem;">🌈</div>
+                <div>
+                    <h3 style="color: white; margin-top: 0; margin-bottom: 0.5rem; font-size: 1.5rem;">Create Any
+                        Ambience</h3>
+                    <p style="margin-bottom: 0; color: var(--text-muted);">
+                        Our studio features a <strong>customizable multicolored LED lighting system</strong>. Whether
+                        you need bright
+                        white light for a seminar, warm tones for yoga, or dynamic colors for a dance video, you can
+                        control the mood
+                        instantly.
+                    </p>
+                </div>
+            </div>
 
             <h2>Ready to Create?</h2>
             <p>
                 We offer flexible rental options for one-time events or recurring bookings. Our goal is to support the
-                vibrant community of artists and movers in Zurich.
+                vibrant
+                community of artists and movers in Zurich.
             </p>
 
             <div class="cta-box">
