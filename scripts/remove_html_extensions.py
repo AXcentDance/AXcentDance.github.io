@@ -1,100 +1,80 @@
+
 import os
 import re
 
-ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-def process_file(filepath):
-    with open(filepath, 'r', encoding='utf-8') as f:
-        content = f.read()
-
-    original_content = content
+def remove_html_extensions(directory):
+    """
+    Recursively remove .html extension from internal links in all HTML files.
+    """
+    # Regex to find href="... .html" but ignore external links (http/https) and anchors
+    # It captures:
+    # Group 1: href=" or href='
+    # Group 2: The filename part
+    # Group 3: .html
+    # Group 4: Optional anchor (#...)
+    # Group 5: Closing quote
     
-    # 1. Handle href attributes using the smart logic from before
-    def replace_href(match):
-        start_quote = match.group(1)
-        url = match.group(2)
-        end_quote = match.group(3)
+    # We want to match: href="page.html" -> href="page"
+    # match: href="./page.html" -> href="./page"
+    # match: href="folder/page.html" -> href="folder/page"
+    
+    pattern = re.compile(r'(href=["\'])(?!http|https|//|#)([^"\']+\.html)(["\'])')
+    
+    # helper for replacement
+    def replacer(match):
+        prefix = match.group(1)
+        full_path = match.group(2)
+        suffix = match.group(3) # This is the closing quote
         
-        # If it's an absolute URL for our domain, we process it.
-        # If it's relative, we process it.
-        # If it's external (not axcentdance.com), we skip.
-        
-        is_absolute_internal = url.startswith('https://axcentdance.com/') or url.startswith('http://axcentdance.com/') or url.startswith('https://www.axcentdance.com/') or url.startswith('http://www.axcentdance.com/')
-        is_external = (url.startswith('http://') or url.startswith('https://') or url.startswith('//')) and not is_absolute_internal
-        
-        if is_external or url.startswith('mailto:') or url.startswith('tel:') or url.startswith('#') or url.startswith('javascript:'):
-            return match.group(0)
-
-        # Handle valid relative or absolute-internal links containing .html
-        if '.html' in url:
-            base_path = url.split('?')[0].split('#')[0]
-            suffix = url[len(base_path):]
-            
-            if base_path.endswith('.html'):
-                # Handle index specifically
-                if base_path.endswith('/index.html') or base_path == 'index.html':
-                     # index.html -> ./ or /
-                     # path/index.html -> path/
-                     # https://site.com/index.html -> https://site.com/
+        # Check if it ends in .html
+        if full_path.endswith('.html'):
+             # Replace only the last occurrence of .html
+             new_path = full_path[:-5] 
+             
+             # Special case: index.html -> ./
+             if new_path == "index" or new_path.endswith("/index"):
+                 if new_path == "index":
+                     new_path = "./"
+                 else:
+                     new_path = new_path[:-5] # remove "index" -> leave folder/
                      
-                     if base_path == 'index.html':
-                         new_base = './'
-                     else:
-                         new_base = base_path[:-10] # remove index.html, leave trailing slash (or empty if it was just /index.html... wait /index.html is len 11, index.html is 10)
-                         if base_path == '/index.html':
-                             new_base = '/'
-                         elif base_path.endswith('/index.html'):
-                             new_base = base_path[:-10] # .../index.html -> .../
-                else:
-                    new_base = base_path[:-5] # remove .html
-                
-                new_url = new_base + suffix
-                return f'href={start_quote}{new_url}{end_quote}'
-        
+             return f"{prefix}{new_path}{suffix}"
         return match.group(0)
 
-    content = re.sub(r'href=(["\'])(.*?)(["\'])', replace_href, content)
-
-    # 2. Handle Absolute URLs in general (including content="...", "url": "..." in JSON-LD)
-    # Target https://axcentdance.com/....html
-    # We warn to be careful not to break assets if they were .html (unlikely for assets)
-    
-    def replace_absolute(match):
-        url = match.group(0)
-        # Check if it ends in .html or .html? or .html#
-        # Regex capture ensures we match the whole URL
-        
-        if 'index.html' in url:
-             if url.endswith('/index.html'):
-                 return url[:-10]
-             if url == 'https://axcentdance.com/index.html' or url == 'https://www.axcentdance.com/index.html':
-                 return url.replace('/index.html', '/')
-        
-        if url.endswith('.html'):
-            return url[:-5]
-            
-        return url
-
-    # Regex for absolute URLs appearing anywhere (like in json-ld or meta content)
-    # We look for https://axcentdance.com/[something].html or https://www.axcentdance.com/[something].html
-    # Be careful with boundaries.
-    content = re.sub(r'https://(www\.)?axcentdance\.com/[a-zA-Z0-9_\-/]+\.html', replace_absolute, content)
-
-    if content != original_content:
-        print(f"Updating {filepath}")
-        with open(filepath, 'w', encoding='utf-8') as f:
-            f.write(content)
-
-def main():
-    print("Starting Clean URLs processing (Phase 2: Absolute & cleanup)...")
-    for root, dirs, files in os.walk(ROOT_DIR):
-        if ".git" in root or "node_modules" in root or ".agent" in root:
-            continue
-            
+    for root, dirs, files in os.walk(directory):
         for file in files:
             if file.endswith(".html"):
-                process_file(os.path.join(root, file))
-    print("Done.")
+                file_path = os.path.join(root, file)
+                
+                with open(file_path, 'r', encoding='utf-8') as f:
+                    content = f.read()
+                
+                # Careful replacement
+                # We also need to handle Canonical tags: <link rel="canonical" href="... .html" />
+                # But typically those are absolute URLs. Let's do a separate regex for canonical if needed.
+                # For now, let's focus on relative internal links.
+                
+                # Also handle canonical definition within the head often looks like:
+                # <link rel="canonical" href="https://axcentdance.com/page.html" />
+                # We should strip .html from there too.
+                
+                canonical_pattern = re.compile(r'(<link\s+rel=["\']canonical["\']\s+href=["\'])(.*?\.html)(["\'])')
+                
+                def canonical_replacer(match):
+                    prefix = match.group(1)
+                    url = match.group(2)
+                    suffix = match.group(3)
+                    if url.endswith('.html'):
+                         return f"{prefix}{url[:-5]}{suffix}"
+                    return match.group(0)
+
+                new_content = pattern.sub(replacer, content)
+                new_content = canonical_pattern.sub(canonical_replacer, new_content)
+                
+                if new_content != content:
+                    print(f"Updating {file_path}")
+                    with open(file_path, 'w', encoding='utf-8') as f:
+                        f.write(new_content)
 
 if __name__ == "__main__":
-    main()
+    remove_html_extensions(".")
