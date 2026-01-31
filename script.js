@@ -545,28 +545,4 @@ info@axcentdance.com`,
 });
 
 
-// Back to Top Button Logic
-const backToTopBtn = document.createElement('button');
-backToTopBtn.classList.add('back-to-top');
-backToTopBtn.ariaLabel = 'Back to top';
-backToTopBtn.innerHTML = `
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M18 15l-6-6-6 6"/>
-    </svg>
-`;
-document.body.appendChild(backToTopBtn);
 
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 500) {
-        backToTopBtn.classList.add('visible');
-    } else {
-        backToTopBtn.classList.remove('visible');
-    }
-});
-
-backToTopBtn.addEventListener('click', () => {
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-    });
-});
