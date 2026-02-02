@@ -84,9 +84,13 @@ Structure: strictly use <header>, <nav>, <main>, <section>, <article>, <footer>.
 
 Images:
 
-Hero: loading="eager", fetchpriority="high".
+Images:
 
-Others: loading="lazy", decoding="async", explicit width/height.
+First Image (LCP Candidate/Above Fold): loading="eager", fetchpriority="high".
+
+All Others (Below Fold): loading="lazy", decoding="async", explicit width/height.
+
+Constraint: Maximize SEO & Load Speed by strictly eager-loading ONLY the single most prominent visual element visible on load.
 
 Alt Text: Mandatory.
 
@@ -192,3 +196,11 @@ print("Checking for Image Count, Alt Text, and Responsive Attributes...")
 print("```text")
 advanced_image_checker.check_advanced_image_quality()
 print("```\n")
+
+## 8. Pre-Delivery Checklist
+Before marking any task as complete, you MUST verify:
+1.  **Heading Hierarchy**: Run `heading_structure_checker.py`. Ensure NO skipped levels (e.g., H1 -> H3 is forbidden).
+2.  **Broken Links**: Run `broken_link_checker.py`. Ensure 0 errors.
+3.  **Image Quality**: Run `advanced_image_checker.py`. Ensure no LCP lazy-loading or missing dimensions.
+4.  **Mobile View**: Mentally verify that no hover interactions are critical for navigation (since hover doesn't exist on touch).
+5.  **Project Rules**: Review this file to ensure compliance with design and code standards.
