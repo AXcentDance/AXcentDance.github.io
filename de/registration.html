@@ -1233,16 +1233,19 @@
             // Generate all Dienstags (2), Mittwochs (3) and Donnerstags (4) in Jan (0) and Feb (1) 2026
             const year = 2026;
             const targetMonths = [0, 1]; // Jan and Feb
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
 
             targetMonths.forEach(month => {
                 const daysInMonth = new Date(year, month + 1, 0).getDate();
                 for (let day = 1; day <= daysInMonth; day++) {
-                    // Start exactly on Dienstag Jan 27 (remove all previous)
-                    if (month === 0 && day < 27) continue;
                     // Check limit: Mid Feb (approx Feb 20)
                     if (month === 1 && day > 20) continue;
 
                     const date = new Date(year, month, day);
+                    // Filter out past dates (keep today)
+                    if (date < today) continue;
+
                     const dayOfWeek = date.getDay();
 
                     if (dayOfWeek === 2 || dayOfWeek === 3 || dayOfWeek === 4) {
