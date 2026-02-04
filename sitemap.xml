@@ -1288,4 +1288,28 @@
       <image:title>Erste Woche im neuen AXcent Dance Studio</image:title>
     </image:image>
   </url>
+  <url>
+    <loc>https://axcentdance.com/blog-posts/sensation-night-congress-2026</loc>
+    <lastmod>2026-02-04</lastmod>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/blog-posts/sensation-night-congress-2026" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/blog-posts/sensation-night-congress-2026" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/blog-posts/sensation-night-congress-2026" />
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/blog/sensation-hero.webp</image:loc>
+      <image:title>Sensation Night Congress 2026: Join Us &amp; The Stars!</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://axcentdance.com/de/blog-posts/sensation-night-congress-2026</loc>
+    <lastmod>2026-02-04</lastmod>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/blog-posts/sensation-night-congress-2026" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/blog-posts/sensation-night-congress-2026" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/blog-posts/sensation-night-congress-2026" />
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/blog/sensation-hero.webp</image:loc>
+      <image:title>Sensation Night Congress 2026: Komm mit den Stars!</image:title>
+    </image:image>
+  </url>
 </urlset>
