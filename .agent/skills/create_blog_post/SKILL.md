@@ -92,3 +92,5 @@ You must link the new post on the main blog listing page.
 ## 4. Verification
 1.  **Design Check**: Does the page look premium? Are there 2+ images in the body? Is the text broken up by grids/cards?
 2.  **Technical Check**: Clean URLs? Hreflangs correct? Sitemap updated?
+
+
