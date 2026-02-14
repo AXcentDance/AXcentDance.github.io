@@ -1344,4 +1344,36 @@
       <image:title>Sensation Night Congress 2026: Komm mit den Stars!</image:title>
     </image:image>
   </url>
+  <url>
+    <loc>https://axcentdance.com/blog-posts/salsa-vs-bachata</loc>
+    <lastmod>2026-02-14</lastmod>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/blog-posts/salsa-vs-bachata" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/blog-posts/salsa-vs-bachata" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/blog-posts/salsa-vs-bachata" />
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/blog/salsa_vs_bachata_hero.webp</image:loc>
+      <image:title>Salsa vs Bachata: Key Differences Every Dancer Should Know</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/blog/salsa_bachata_music.webp</image:loc>
+      <image:title>Comparison of Salsa and Bachata instruments</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://axcentdance.com/de/blog-posts/salsa-vs-bachata</loc>
+    <lastmod>2026-02-14</lastmod>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/blog-posts/salsa-vs-bachata" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/blog-posts/salsa-vs-bachata" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/blog-posts/salsa-vs-bachata" />
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/blog/salsa_vs_bachata_hero.webp</image:loc>
+      <image:title>Salsa vs Bachata: Die wichtigsten Unterschiede im Vergleich</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/blog/salsa_bachata_music.webp</image:loc>
+      <image:title>Vergleich der Salsa- und Bachata-Instrumente</image:title>
+    </image:image>
+  </url>
 </urlset>
