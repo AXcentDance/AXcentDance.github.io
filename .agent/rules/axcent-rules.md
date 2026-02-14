@@ -130,20 +130,28 @@ Standard: transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0
 5. SEO & Schema Architecture
 5.1. On-Page SEO
 
-Title: [Topic] | [Benefit/Context] | AXcent Dance Zurich
+Title: [Topic] | [Benefit/Context] | AXcent Dance Zurich. MUST be between 50 and 60 characters (no shorter, no longer).
 
 Heading Hierarchy: Strictly one <h1>. Logical <h2> -> <h3>.
+
+Blog Post Updates: Whenever ANY change is made to a blog post, the `dateModified` property in the blog post's schema (JSON-LD) MUST be updated to the current date (format: YYYY-MM-DD).
 
 5.2. Local SEO & Schema (JSON-LD)
 
 Homepage: Must include LocalBusiness (specifically DanceSchool) schema with Zurich address.
+
+5.3. Forbidden Schema Types (Do NOT Implement)
+
+HowTo Schema: Google deprecated HowTo rich results in September 2023. Never add HowTo structured data — it is ignored entirely.
+
+AggregateRating on LocalBusiness: Google penalizes self-served review markup. Never add AggregateRating to LocalBusiness schema. Focus on collecting organic Google Business Profile reviews instead.
 
 6. Automated Quality Assurance (QA) Pipeline
 MANDATORY: All code produced must be able to pass the 5-Step Python Audit Suite.
 
 6.1. SEO Metadata Audit (seo_audit.py)
 
-Check: Verifies Title (30-60 chars) and Meta Description (120-156 chars). Checks for duplicates.
+Check: Verifies Title (50-60 chars) and Meta Description (120-156 chars). Checks for duplicates.
 
 6.2. Broken Internal Links (broken_link_checker.py)
 
