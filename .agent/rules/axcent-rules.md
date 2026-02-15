@@ -94,6 +94,8 @@ Constraint: Maximize SEO & Load Speed by strictly eager-loading ONLY the single 
 
 Alt Text: Mandatory.
 
+Google Discover Optimization: Every blog post MUST have a hero image that is at least 1200×675px (16:9 aspect ratio). This is required for large image cards in Google Discover. Avoid using the site logo as the hero image — use vibrant, story-driven photography instead.
+
 3.2. CSS Architecture
 
 Methodology: BEM (Block Element Modifier) is mandatory (e.g., .card__title, .nav--active).
@@ -135,6 +137,10 @@ Title: [Topic] | [Benefit/Context] | AXcent Dance Zurich. MUST be between 50 and
 Heading Hierarchy: Strictly one <h1>. Logical <h2> -> <h3>.
 
 Blog Post Updates: Whenever ANY change is made to a blog post, the `dateModified` property in the blog post's schema (JSON-LD) MUST be updated to the current date (format: YYYY-MM-DD).
+
+Blog Post Headlines: Use curiosity-driven, emotionally engaging headlines that naturally include target keywords. Headlines should spark interest and encourage clicks in Google Discover and Search. Example: Instead of "Bachata Classes Zurich Beginner," use "This Zurich Dance Class Changed My Social Life." Always include at least one target keyword (e.g., Zurich, Bachata, dance, hobby, social) in the headline.
+
+Blog Post Internal Links: Every blog post MUST include 2-4 contextual internal links within the article body text, linking to other relevant pages on the site (e.g., schedule, registration, beginner-guide, guide-bachata, events, private-lessons). Links must be woven naturally into the flow of thought — never forced or out of context. Use descriptive anchor text (e.g., "check our weekly Bachata schedule" instead of "click here"). These contextual body links are weighted 5-10x more by Google than navigation links.
 
 5.2. Local SEO & Schema (JSON-LD)
 

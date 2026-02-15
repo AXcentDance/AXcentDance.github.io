@@ -4859,3 +4859,17 @@ textarea {
         height: 24px;
     }
 }
+
+/* --- BLOG POST BODY LINKS (Internal Link Styling) --- */
+.post-content a {
+    color: var(--accent-start);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-color: rgba(255, 59, 48, 0.4);
+    transition: color 0.3s ease, text-decoration-color 0.3s ease;
+}
+
+.post-content a:hover {
+    color: var(--accent-end);
+    text-decoration-color: var(--accent-end);
+}
