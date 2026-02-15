@@ -725,10 +725,10 @@ textarea {
     /* Enforce Mobile Menu Visibility ONLY here */
     .mobile-menu-btn {
         display: flex !important;
-        position: fixed !important;
-        /* Keep fixed as it worked for user */
-        top: 18px !important;
-        /* (80px header - 44px button) / 2 = 18px */
+        position: absolute !important;
+        /* Absolute relative to fixed header */
+        top: 50% !important;
+        transform: translateY(-50%) !important;
         left: 1rem !important;
         z-index: 10001 !important;
 
