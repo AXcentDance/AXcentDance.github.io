@@ -1231,29 +1231,27 @@
                 return d.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' });
             };
 
-            // Generate all Dienstags (2), Mittwochs (3) and Donnerstags (4) in Jan (0) and Feb (1) 2026
-            const year = 2026;
-            const targetMonths = [0, 1]; // Jan and Feb
+            // Dynamically generate Tue/Wed/Thu from today through 2 full weeks after the current week
             const today = new Date();
             today.setHours(0, 0, 0, 0);
 
-            targetMonths.forEach(month => {
-                const daysInMonth = new Date(year, month + 1, 0).getDate();
-                for (let day = 1; day <= daysInMonth; day++) {
-                    // Check limit: Mid Feb (approx Feb 20)
-                    if (month === 1 && day > 20) continue;
+            // Calculate end date: end of Sunday, 2 weeks from current week
+            const currentDay = today.getDay(); // 0=Sun, 1=Mon...
+            const daysUntilMonday = currentDay === 0 ? 1 : (currentDay === 1 ? 0 : 8 - currentDay);
+            const thisMonday = new Date(today);
+            thisMonday.setDate(today.getDate() + daysUntilMonday);
+            const endDate = new Date(thisMonday);
+            endDate.setDate(thisMonday.getDate() + 13); // Monday + 13 = Sunday of 1 week after
 
-                    const date = new Date(year, month, day);
-                    // Filter out past dates (keep today)
-                    if (date < today) continue;
-
-                    const dayOfWeek = date.getDay();
-
-                    if (dayOfWeek === 2 || dayOfWeek === 3 || dayOfWeek === 4) {
-                        options.push({ date: date, label: formatDate(date) });
-                    }
+            // Iterate from today to endDate
+            const cursor = new Date(today);
+            while (cursor <= endDate) {
+                const dayOfWeek = cursor.getDay();
+                if (dayOfWeek === 2 || dayOfWeek === 3 || dayOfWeek === 4) {
+                    options.push({ date: new Date(cursor), label: formatDate(cursor) });
                 }
-            });
+                cursor.setDate(cursor.getDate() + 1);
+            }
 
             // Sort chronologically
             options.sort((a, b) => a.date - b.date);
