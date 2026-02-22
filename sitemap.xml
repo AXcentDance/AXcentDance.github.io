@@ -100,7 +100,7 @@
       <image:title>Dance Essentials Flatlay</image:title>
     </image:image>
     <image:image>
-      <image:loc>https://axcentdance.com/assets/images/blog/connection-101.webp</image:loc>
+      <image:loc>https://axcentdance.com/assets/images/home/gallery_new_1.webp</image:loc>
       <image:title>Connection 101</image:title>
     </image:image>
     <image:image>
@@ -152,7 +152,7 @@
       <image:title>Tanz-Essentials Flatlay</image:title>
     </image:image>
     <image:image>
-      <image:loc>https://axcentdance.com/assets/images/blog/connection-101.webp</image:loc>
+      <image:loc>https://axcentdance.com/assets/images/home/gallery_new_1.webp</image:loc>
       <image:title>Verbindung 101</image:title>
     </image:image>
     <image:image>
@@ -760,7 +760,7 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/etiquette" />
     <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/etiquette" />
     <image:image>
-      <image:loc>https://axcentdance.com/assets/images/blog/connection-101.webp</image:loc>
+      <image:loc>https://axcentdance.com/assets/images/home/gallery_new_1.webp</image:loc>
       <image:title>Dance Floor Etiquette and Connection</image:title>
     </image:image>
   </url>
@@ -772,7 +772,7 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/etiquette" />
     <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/etiquette" />
     <image:image>
-      <image:loc>https://axcentdance.com/assets/images/blog/connection-101.webp</image:loc>
+      <image:loc>https://axcentdance.com/assets/images/home/gallery_new_1.webp</image:loc>
       <image:title>Dance Floor Etiquette and Connection</image:title>
     </image:image>
   </url>
@@ -1176,7 +1176,7 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/blog-posts/connection-101" />
     <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/blog-posts/connection-101" />
     <image:image>
-      <image:loc>https://axcentdance.com/assets/images/blog/connection-101.webp</image:loc>
+      <image:loc>https://axcentdance.com/assets/images/home/gallery_new_1.webp</image:loc>
       <image:title>Connection 101: How to Improve Your Social Dancing</image:title>
     </image:image>
   </url>
@@ -1188,7 +1188,7 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/blog-posts/connection-101" />
     <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/blog-posts/connection-101" />
     <image:image>
-      <image:loc>https://axcentdance.com/assets/images/blog/connection-101.webp</image:loc>
+      <image:loc>https://axcentdance.com/assets/images/home/gallery_new_1.webp</image:loc>
       <image:title>Verbindung 101: Wie du dein Social Dancing verbesserst</image:title>
     </image:image>
   </url>
@@ -1374,6 +1374,46 @@
     <image:image>
       <image:loc>https://axcentdance.com/assets/images/blog/salsa_bachata_music.webp</image:loc>
       <image:title>Vergleich der Salsa- und Bachata-Instrumente</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://axcentdance.com/blog-posts/start-new-hobby-meet-people-zurich</loc>
+    <lastmod>2026-02-22</lastmod>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/blog-posts/start-new-hobby-meet-people-zurich" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/blog-posts/start-new-hobby-meet-people-zurich" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/blog-posts/start-new-hobby-meet-people-zurich" />
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/blog/first-week-new-studio.webp</image:loc>
+      <image:title>Start a New Hobby &amp; Meet People in Zurich</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/home/gallery_new_1.webp</image:loc>
+      <image:title>Meeting people at dance classes</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/blog/latin_salsa.webp</image:loc>
+      <image:title>Enjoying a new hobby</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://axcentdance.com/de/blog-posts/start-new-hobby-meet-people-zurich</loc>
+    <lastmod>2026-02-22</lastmod>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/blog-posts/start-new-hobby-meet-people-zurich" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/blog-posts/start-new-hobby-meet-people-zurich" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/blog-posts/start-new-hobby-meet-people-zurich" />
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/blog/first-week-new-studio.webp</image:loc>
+      <image:title>Neues Hobby anfangen und Leute in Zürich kennenlernen</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/home/gallery_new_1.webp</image:loc>
+      <image:title>Leute kennenlernen im Tanzkurs</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/blog/latin_salsa.webp</image:loc>
+      <image:title>Ein neues Hobby geniessen</image:title>
     </image:image>
   </url>
 </urlset>
