@@ -7,10 +7,10 @@ This file tracks the Title Tags and Meta Descriptions for all pages on the AXcen
 | :--- | :--- | :--- | :--- |
 | Role | Page | File | Title Tag | Meta Description |
 | :--- | :--- | :--- | :--- | :--- |
-| **Home** | `index.html` | AXcent Dance Zurich Altstetten - Bachata & Latin Dance School | Learn Bachata in Zurich Altstetten with AXcent Dance. We offer classes for all levels, from absolute beginners to advanced. Key styles: Bachata Sensual & Dominican. |
-| **About Us** | `about.html` | About AXcent Dance Zurich Altstetten - Our Story & Team | Meet the team behind AXcent Dance in Zurich Altstetten. Learn about our philosophy, our instructors Ale and Xidan, and our passion for Latin dance. |
-| **Contact** | `contact.html` | Contact Us – AXcent Dance Zurich Altstetten | Get in touch with AXcent Dance in Zurich Altstetten. Visit our studio, check opening hours, and contact us for inquiries about classes and events. |
-| **Schedule** | `schedule.html` | Class Schedule – AXcent Dance Zurich Altstetten | Weekly Schedule for Bachata classes in Zurich Altstetten. Check timings for Beginner, Improver, and Intermediate/Advanced levels. |
+| **Home** | `index.html` | Bachata Classes in Zurich | Free Trial Class | AXcent Dance | Join 200+ dancers in the best Bachata classes in Zurich. International instructors, all levels from absolute beginner to advanced. No partner needed. Book your free trial today! |
+| **About Us** | `about.html` | About AXcent Dance Zurich - Our Story & Team | Meet the team behind AXcent Dance in Zurich. Learn about our philosophy, our instructors Ale and Xidan, and our passion for teaching Bachata Sensual & Dominican. |
+| **Contact** | `contact.html` | Contact AXcent Dance Studio Zurich Altstetten | Get in touch with the top Bachata school in Zurich. Visit our studio in Altstetten, check opening hours, and contact us for inquiries about dance classes and events. |
+| **Schedule** | `schedule.html` | Bachata Class Schedule Zurich | AXcent Dance | Check this week's Bachata class schedule in Zurich Altstetten. 5 levels, Mon–Thu evenings. No partner needed. Find the perfect class for your level. |
 | **Registration** | `registration.html` | Register for Classes | AXcent Dance Zurich Altstetten | Register for Bachata classes in Zurich Altstetten with AXcent Dance. Choose your package and join the community. |
 
 ## Services

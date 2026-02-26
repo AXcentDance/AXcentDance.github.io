@@ -35,7 +35,18 @@ Static UIs are forbidden.
 - **Transitions**: Use `transition-all duration-300 ease-in-out` on interactive elements.
 - **States**: Explicitly define `hover:`, `focus-visible:`, and `disabled:` states.
 
+## SEO Optimization & Context Synchronization
+
+When the user asks to modify pages to target different search terms or improve rankings for specific keywords (e.g., "bachata classes"):
+
+1.  **Analyze & Update Content**: Modify the HTML meta tags (title, description), heading hierarchy (H1, H2), and body content to reflect the new search intent.
+2.  **Synchronize Context Files**: Immediately update the following "Source of Truth" files for AI RAG systems:
+    -   `llms.txt`: Update the high-level summary and page descriptions.
+    -   `llms-full.txt`: Reflect the content changes in the full text dump to ensure AI assistants provide consistent information.
+3.  **Cross-Language Consistency**: Ensure that if an SEO goal changes for the English version, the German version (`/de/`) is updated equivalently.
+
 ## Constraints
 - **NO** "Lorem Ipsum". Use realistic copy relative to the user's business.
 - **NO** arbitrary values (e.g., `w-[357px]`). Use Tailwind scale (`w-96`, `w-full`).
 - **NO** purely decorative elements that block content on mobile.
+- **MANDATORY**: Always keep `llms.txt` and `llms-full.txt` in sync with website changes.
