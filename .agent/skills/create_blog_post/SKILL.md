@@ -30,10 +30,18 @@ You must create **two** files:
 2.  **Hreflang Tags**: MUST exist and cross-reference each other.
 3.  **Canonical**: MUST point to the clean URL (NO `.html`).
 4.  **Clean Links**: All internal links must NOT have `.html`.
-5.  **Schema Markup**: MUST include `BreadcrumbList` schema.
+3.  **Schema & Breadcrumb Requirements**: MUST include `BreadcrumbList` schema.
     *   Level 1: Home (`/`)
     *   Level 2: Blog (`/blog`)
     *   Level 3: Post Title (`/blog-posts/[slug]`)
+4.  **Automation**: After creating the HTML files, run the update scripts. These scripts automatically handle titles, language (EN/DE), breadcrumbs, and SEO dates.
+    ```bash
+    # 1. Inject/Update Breadcrumbs
+    python3 scripts/inject_breadcrumbs.py
+
+    # 2. Sync dateModified with file timestamp
+    python3 scripts/sync_blog_dates.py
+    ```
 
 ### **Design & Layout Requirements (Mandatory)**
 Do NOT create a "Wall of Text". You must use the following CSS components from `blog-post.css`:
@@ -69,9 +77,20 @@ You must link the new post on the main blog listing page.
     *   Link to the *Clean URL*.
 
 ## 4. Update Sitemap (Final Step)
-**After** the files are created and verified, you MUST add them to `sitemap.xml`.
+**After** the files are created and verified, you MUST update `sitemap.xml`. You have two options:
 
-### Snippets to Append (Insert before `</urlset>`)
+### Option A: Automated Generation (Recommended)
+Run the final sitemap generator script. This automatically handles image discovery, Clean URLs, hreflang tags, and **proper XML character escaping** (e.g., converting `&` to `&amp;`).
+
+```bash
+python3 scripts/generate_sitemap_final.py
+```
+
+### Option B: Manual Update
+If you must update manually, insert the new URLs before `</urlset>`. 
+
+**CRITICAL: You MUST escape special characters in `<image:title>` (e.g., `&` becomes `&amp;`, `<` becomes `&lt;`). Failure to do this will break the sitemap parsing.**
+
 **English Block:**
 ```xml
   <url>
@@ -83,14 +102,23 @@ You must link the new post on the main blog listing page.
     <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/blog-posts/[SLUG]" />
     <image:image>
       <image:loc>https://axcentdance.com/[IMAGE_PATH]</image:loc>
-      <image:title>[TITLE_EN]</image:title>
+      <image:title>[TITLE_EN_ESCAPED]</image:title>
     </image:image>
   </url>
 ```
-*(Repeat structure for German block with `/de/` links)*
+*(Repeat structure for German block with `/de/` links and localized titles)*
 
-## 4. Verification
-1.  **Design Check**: Does the page look premium? Are there 2+ images in the body? Is the text broken up by grids/cards?
-2.  **Technical Check**: Clean URLs? Hreflangs correct? Sitemap updated?
+## 5. Verification
+1.  **Sitemap Validation**: Run a quick check to ensure the XML is well-formed.
+    ```bash
+    python3 -c "import xml.etree.ElementTree as ET; ET.parse('sitemap.xml')"
+    ```
+2.  **Design Check**: Does the page look premium? Are there 2+ images in the body? Is the text broken up by grids/cards?
+3.  **Technical Check**: 
+    *   Clean URLs and correct Hreflangs?
+    *   `sitemap.xml` contains no bare `&` characters?
+    *   `dateModified` in schema match current date? (Run `python3 scripts/sync_blog_dates.py`)
+    *   Breadcrumb Schema present and unique? (Run `python3 scripts/breadcrumb_audit.py`)
+
 
 
