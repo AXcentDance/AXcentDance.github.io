@@ -17,8 +17,9 @@ Ask the user for (or generate based on topic):
     *   **Hero Image**: Absolute path (e.g., `assets/images/blog/hero.webp`).
     *   **Body Images**: **At least 2 additional images** relevant to the content.
 6.  **Content Strategy**:
-    *   **Tone**: Catchy but serious. Relevant and relatable. avoid generic fluff.
+    *   **Tone**: Catchy but serious. Relevant and relatable. Avoid generic fluff.
     *   **Structure**: Must include "interesting formatting" (grids, highlights, quotes), not just text.
+    *   **Internal Linking**: MUST include **2-4 contextual internal links** within the body text (e.g., linking to `schedule`, `registration`, or `beginner-guide`). Use descriptive anchor text; do NOT use "click here". Links must be woven naturally into the content.
 
 ## 2. Generate HTML Files
 You must create **two** files:
