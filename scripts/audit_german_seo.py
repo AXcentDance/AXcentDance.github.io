@@ -5,14 +5,30 @@ def parse_master_list(file_path):
     with open(file_path, 'r', encoding='utf-8') as f:
         content = f.read()
     
-    # Simple regex to find table rows | **Name** | `file` | Title | Desc |
-    matches = re.findall(r'\| \*\*.*?\*\* \| `(.*?)` \| (.*?) \| (.*?) \|', content)
+    # Updated regex to handle escaped pipes within columns
+    # It matches | **Name** | `file` | Title | Desc |
+    # Using [^|]* for title/desc and handling \| specifically is tricky with simple regex
+    # Switching to a more robust row parser
     master_data = {}
-    for file, title, desc in matches:
-        master_data[file.strip()] = {
-            'title': title.strip().replace('\\|', '|'),
-            'desc': desc.strip().replace('\\|', '|')
-        }
+    lines = content.split('\n')
+    for line in lines:
+        if line.startswith('| **'):
+            columns = re.split(r'(?<!\\)\|', line)
+            if len(columns) >= 5:
+                # columns[0] is empty (before first |)
+                # columns[1] is **Name**
+                # columns[2] is `file`
+                # columns[3] is Title
+                # columns[4] is Desc
+                file_match = re.search(r'`(.*?)`', columns[2])
+                if file_match:
+                    file_name = file_match.group(1).strip()
+                    title = columns[3].strip().replace('\\|', '|')
+                    desc = columns[4].strip().replace('\\|', '|')
+                    master_data[file_name] = {
+                        'title': title,
+                        'desc': desc
+                    }
     return master_data
 
 def audit_german_pages(de_root, master_data):
