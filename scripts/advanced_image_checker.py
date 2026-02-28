@@ -76,32 +76,9 @@ def check_advanced_image_quality():
                     print(f"{rel_path:<40} | Missing Width/Height         | Src: {src[:30]}...")
                     issues_count += 1
                 
-                # Check 4: Responsive Sizing (srcset or picture tag)
-                
-                is_responsive = False
-                if srcset_match:
-                    srcset_val = srcset_match.group(1)
-                    # Check for 3 distinct sizes (comma separated) AND that they are WebP
-                    # e.g. "a.webp 500w, b.webp 1000w, c.webp 1500w" matches 3
-                    entries = [x for x in srcset_val.split(',') if x.strip()]
-                    
-                    # Filter for WebP
-                    webp_entries = [x for x in entries if '.webp' in x.lower() or '/webp' in x.lower()]
-                    
-                    if len(webp_entries) >= 3:
-                        is_responsive = True
-                    else:
-                        print(f"{rel_path:<40} | Weak Responsive (<3 WebP sizes)| Src: {src[:30]}...")
-                        issues_count += 1
-                        is_responsive = True # Handled, prevent falling into "No srcset" error
-                
-                if not is_responsive:
-                     # Check if <picture> exists nearby? Hard. 
-                     # Let's flag it if no srcset is found, as modern responsive images usually use it.
-                     # Unless it's a small icon?
-                     if "icon" not in src and "logo" not in src:
-                        print(f"{rel_path:<40} | Non-Responsive (No srcset)   | Src: {src[:30]}...")
-                        issues_count += 1
+                # Check 4: Responsive Sizing (REMOVED - Project follows Simple & Good Defaults)
+                # We no longer require multiple srcset variants for every image.
+                pass
 
                 # Check 5: Lazy Loading (Context Aware)
                 loading_match = re.search(r'loading=["\'](.*?)["\']', attrs, re.IGNORECASE)

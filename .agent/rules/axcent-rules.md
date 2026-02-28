@@ -174,9 +174,12 @@ Check: All images must have alt tags.
 
 Check: strict hierarchy <h1> -> <h2> -> <h3>. No skipping levels.
 
-6.5. Advanced Image Quality (advanced_image_checker.py)
+6.5. Image Optimization (Simple & Good Defaults)
 
-Check: Verifies srcset (responsiveness) and explicit width/height (CLS prevention).
+Check: Ensure images are in **WebP format**, maximum **1200px wide**, and ideally between **60-80KB**. Complex `srcset` or `sizes` attributes are NOT required unless specifically requested for a flagship hero.
+
+Explicit Dimensions: Always include `width` and `height` to prevent CLS.
+Lazy Loading: Use `loading="lazy"` for all images except the first LCP candidate.
 
 7. Python Audit Scripts (Reference)
 Use these scripts to self-correct code before outputting.

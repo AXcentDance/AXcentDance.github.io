@@ -60,13 +60,13 @@ Do NOT create a "Wall of Text". You must use the following CSS components from `
     *   **Highlight Box**: Use `.bento-card.highlight-card` for key takeaways.
     *   **FAQ Section**: Use `.faq-section` (from `style.css`) for Q&A style content.
 
-### **Image Optimization Rules (Strict)**
-1.  **Format**: MUST be `.webp` only.
-2.  **Responsiveness**: MUST use `srcset` for all images (Hero & Body).
-    *   Example: `srcset="image_480w.webp 480w, image_800w.webp 800w, image_1200w.webp 1200w"`
-    *   Sizes: `sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px"`
-3.  **Alt Text**: Mandatory and descriptive for every single image.
-4.  **Dimensions**: Explicit `width` and `height` attributes to prevent CLS.
+### **Image Optimization Rules (Simple & Good Defaults)**
+1.  **Format**: MUST be **WebP** only.
+2.  **Size**: **1200px wide maximum**. Target file size between **60-80KB**.
+3.  **No `srcset`**: Complex `srcset` or `sizes` attributes are NOT required.
+4.  **Alt Text**: Mandatory and descriptive for every single image.
+5.  **Dimensions**: Explicit `width` and `height` attributes to prevent CLS.
+6.  **Lazy Loading**: Use `loading="lazy"` for all images except the first LCP candidate.
 
 ## 3. Update Main Blog Page (`blog.html` and `de/blog.html`)
 You must link the new post on the main blog listing page.
