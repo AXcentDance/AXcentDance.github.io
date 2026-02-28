@@ -48,6 +48,9 @@ def check_advanced_image_quality():
                 issues_count += 1
                 continue # If no images, skip other checks for this file
             
+            # Check for image preloads in the head (Architectural optimization)
+            has_image_preload = re.search(r'<link[^>]*rel=["\']preload["\'][^>]*as=["\']image["\']', content, re.IGNORECASE) is not None
+
             # Check 2 & 3: Individual Image Attributes
             for index, attrs in enumerate(img_tags):
                 src_match = re.search(r'src=["\'](.*?)["\']', attrs, re.IGNORECASE)
@@ -91,7 +94,6 @@ def check_advanced_image_quality():
                         print(f"{rel_path:<40} | Weak Responsive (<3 WebP sizes)| Src: {src[:30]}...")
                         issues_count += 1
                         is_responsive = True # Handled, prevent falling into "No srcset" error
-
                 
                 if not is_responsive:
                      # Check if <picture> exists nearby? Hard. 
@@ -106,8 +108,9 @@ def check_advanced_image_quality():
                 is_lazy = loading_match and loading_match.group(1).lower() == 'lazy'
                 
                 if index < 2:
-                    # Top of page (LCP candidates): Should NOT be lazy
-                    if is_lazy:
+                    # Top of page (LCP candidates): Should NOT be lazy,
+                    # UNLESS there's an explicit image preload in the head (Architectural optimization)
+                    if is_lazy and not has_image_preload:
                         print(f"{rel_path:<40} | LCP Image Lazy Loaded (Bad)| Src: {src[:30]}...")
                         issues_count += 1
                 else:

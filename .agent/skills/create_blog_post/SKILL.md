@@ -31,17 +31,17 @@ You must create **two** files:
 2.  **Hreflang Tags**: MUST exist and cross-reference each other.
 3.  **Canonical**: MUST point to the clean URL (NO `.html`).
 4.  **Clean Links**: All internal links must NOT have `.html`.
-3.  **Schema & Breadcrumb Requirements**: MUST include `BreadcrumbList` schema.
+3.  **Schema & Breadcrumb Requirements**: MUST include `BreadcrumbList` schema in the `<head>`. Visual breadcrumbs are NOT required.
     *   Level 1: Home (`/`)
     *   Level 2: Blog (`/blog`)
     *   Level 3: Post Title (`/blog-posts/[slug]`)
-4.  **Automation**: After creating the HTML files, run the update scripts. These scripts automatically handle titles, language (EN/DE), breadcrumbs, and SEO dates.
+4.  **Automation**: After creating the HTML files, run the update scripts. These scripts handle internal link cleanup, image optimization discovery, and SEO date synchronization.
     ```bash
-    # 1. Inject/Update Breadcrumbs
-    python3 scripts/inject_breadcrumbs.py
-
-    # 2. Sync dateModified with file timestamp
+    # 1. Sync dateModified with file timestamp
     python3 scripts/sync_blog_dates.py
+
+    # 2. Audit Breadcrumb Schema (Head ONLY)
+    python3 scripts/breadcrumb_audit.py
     ```
 
 ### **Design & Layout Requirements (Mandatory)**

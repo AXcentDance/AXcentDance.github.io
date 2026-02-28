@@ -136,6 +136,9 @@ Title: [Topic] | [Benefit/Context] | AXcent Dance Zurich. MUST be between 50 and
 
 Heading Hierarchy: Strictly one <h1>. Logical <h2> -> <h3>.
 
+Breadcrumbs: Every subpage (blog, guide, course) MUST have:
+1.  **JSON-LD BreadcrumbList**: In the `<head>`, correctly reflecting the site hierarchy for SEO rich snippets. Visual breadcrumbs are NOT required.
+
 Blog Post Updates: Whenever ANY change is made to a blog post, the `dateModified` property in the blog post's schema (JSON-LD) MUST be updated to the current date (format: YYYY-MM-DD).
 
 Blog Post Headlines: Use curiosity-driven, emotionally engaging headlines that naturally include target keywords. Headlines should spark interest and encourage clicks in Google Discover and Search. Example: Instead of "Bachata Classes Zurich Beginner," use "This Zurich Dance Class Changed My Social Life." Always include at least one target keyword (e.g., Zurich, Bachata, dance, hobby, social) in the headline.

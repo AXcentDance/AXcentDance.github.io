@@ -39,11 +39,21 @@ Static UIs are forbidden.
 
 When the user asks to modify pages to target different search terms or improve rankings for specific keywords (e.g., "bachata classes"):
 
-1.  **Analyze & Update Content**: Modify the HTML meta tags (title, description), heading hierarchy (H1, H2), and body content to reflect the new search intent.
-2.  **Synchronize Context Files**: Immediately update the following "Source of Truth" files for AI RAG systems:
+### 5.1. On-Page SEO
+
+-   **Title**: `[Topic] | [Benefit/Context] | AXcent Dance Zurich`. MUST be between 50 and 60 characters (no shorter, no longer).
+-   **Heading Hierarchy**: Strictly one `<h1>`. Logical `<h2>` -> `<h3>`.
+-   **Breadcrumbs**: Every subpage (blog, guide, course) MUST have both:
+    1.  **JSON-LD BreadcrumbList**: In the `<head>`, correctly reflecting the site hierarchy.
+    2.  **Visual Breadcrumbs**: A `<nav class="breadcrumb-nav">` component placed within the Hero section, clearly displaying the navigation path (e.g., Home > Blog > Post Title).
+-   **Blog Post Updates**: Whenever ANY change is made to a blog post, the `dateModified` property in the blog post's schema (JSON-LD) MUST be updated to the current date (format: YYYY-MM-DD).
+
+### 5.2. Context Synchronization
+
+1.  **Synchronize Context Files**: Immediately update the following "Source of Truth" files for AI RAG systems:
     -   `llms.txt`: Update the high-level summary and page descriptions.
     -   `llms-full.txt`: Reflect the content changes in the full text dump to ensure AI assistants provide consistent information.
-3.  **Cross-Language Consistency**: Ensure that if an SEO goal changes for the English version, the German version (`/de/`) is updated equivalently.
+2.  **Cross-Language Consistency**: Ensure that if an SEO goal changes for the English version, the German version (`/de/`) is updated equivalently.
 
 ## Constraints
 - **NO** "Lorem Ipsum". Use realistic copy relative to the user's business.

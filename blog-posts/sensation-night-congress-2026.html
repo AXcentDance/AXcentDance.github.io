@@ -152,6 +152,10 @@
         <!-- Hero Section -->
         <section class="post-hero relative-container"
             style="background-image: url('../assets/images/blog/sensation-hero.webp');">
+            <!-- Responsive Source Set for Performance -->
+            <link rel="preload" as="image" href="../assets/images/blog/sensation-hero.webp"
+                imagesrcset="../assets/images/blog/sensation-hero_480w.webp 480w, ../assets/images/blog/sensation-hero_800w.webp 800w, ../assets/images/blog/sensation-hero_1200w.webp 1200w"
+                imagesizes="100vw" fetchpriority="high">
             <div class="hero-overlay"></div>
             <div class="container hero-content-z post-header">
                 <div class="badge-wrapper">
@@ -206,8 +210,10 @@
             <!-- Visual Breakpoint 1 -->
             <figure class="post-hero-image" style="margin: 3rem auto; max-width: 80%;">
                 <img src="../assets/images/blog/sensation-body1.webp"
-                    srcset="../assets/images/blog/sensation-body1.webp 800w" sizes="(max-width: 900px) 100vw, 800px"
-                    alt="Ale and Xidan performing at Sensation Night Congress poster" width="800" height="1000">
+                    srcset="../assets/images/blog/sensation-body1_480w.webp 480w, ../assets/images/blog/sensation-body1_800w.webp 800w, ../assets/images/blog/sensation-body1_1200w.webp 1200w"
+                    sizes="(max-width: 900px) 100vw, 800px"
+                    alt="Ale and Xidan performing at Sensation Night Congress poster" width="800" height="1000"
+                    loading="lazy">
                 <figcaption>Ale & Xidan - Ready to represent Zurich!</figcaption>
             </figure>
 

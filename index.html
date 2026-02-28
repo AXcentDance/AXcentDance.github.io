@@ -15,6 +15,7 @@
   <!-- Preconnect for Performance -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="image" href="assets/images/hero-poster.webp" fetchpriority="high">
   <link rel="dns-prefetch" href="https://connect.facebook.net">
   <link rel="dns-prefetch" href="https://www.googletagmanager.com">
 
@@ -220,7 +221,7 @@
           "@type": "Course",
           "position": 1,
           "name": "Bachata Beginner 1",
-          "description": "Improve your foundation and learn Sensual style elements.",
+          "description": "Perfect start into the world of Bachata or to improve your foundation, rhytm and figures.",
           "provider": {
             "@type": "Organization",
             "name": "AXcent Dance",
@@ -372,29 +373,49 @@
           const video = document.getElementById('hero-video');
           const videoSrc = 'assets/videos/hls/playlist.m3u8';
 
+          // Attempt to play with a muted inline video
+          function attemptPlay() {
+            video.muted = true;
+            video.play().catch(() => { });
+          }
+
           if (Hls.isSupported()) {
             const hls = new Hls({
-              capLevelToPlayerSize: true, // Auto-select quality based on size
+              capLevelToPlayerSize: true,
               autoStartLoad: true
             });
             hls.loadSource(videoSrc);
             hls.attachMedia(video);
             hls.on(Hls.Events.MANIFEST_PARSED, function () {
-              video.play().catch(() => {
-                // Autoplay might be blocked, handle if needed
-                console.log("Autoplay blocked - awaiting interaction");
-              });
+              attemptPlay();
             });
           }
-          // HLS.js is not supported on platforms that do not have Media Source Extensions (MSE),
-          // notably iOS Safari. However, iOS Safari has native HLS support.
+          // iOS Safari: native HLS support without MSE
           else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+            // Must set muted BEFORE assigning src so iOS allows inline autoplay
+            video.muted = true;
             video.src = videoSrc;
+            video.load();
             video.addEventListener('loadedmetadata', function () {
-              video.muted = true; // Explicitly ensure muted
-              video.play().catch(e => console.log("Native HLS autoplay rejected:", e));
+              attemptPlay();
             });
           }
+          // Fallback MP4 path (any remaining browser)
+          else {
+            video.muted = true;
+            video.load();
+            attemptPlay();
+          }
+
+          // One-shot touchstart fallback: if the first user touch finds the video paused,
+          // resume it silently (handles the rare case iOS still blocks before first gesture)
+          document.addEventListener('touchstart', function resumeOnTouch() {
+            if (video.paused) {
+              video.muted = true;
+              video.play().catch(() => { });
+            }
+            document.removeEventListener('touchstart', resumeOnTouch);
+          }, { once: true, passive: true });
 
         });
       </script>
