@@ -16,6 +16,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="image" href="assets/images/hero-poster.webp" fetchpriority="high">
+  <link rel="preload" href="assets/videos/hls/desktop_segment_000.ts" as="fetch" crossorigin="anonymous">
   <link rel="dns-prefetch" href="https://connect.facebook.net">
   <link rel="dns-prefetch" href="https://www.googletagmanager.com">
 
@@ -367,56 +368,63 @@
       </video>
 
       <!-- HLS.js Integration -->
-      <script src="https://cdn.jsdelivr.net/npm/hls.js@1"></script>
+      <script src="https://cdn.jsdelivr.net/npm/hls.js@1.5.15/dist/hls.min.js"></script>
       <script>
         document.addEventListener('DOMContentLoaded', () => {
           const video = document.getElementById('hero-video');
           const videoSrc = 'assets/videos/hls/playlist.m3u8';
 
-          // Attempt to play with a muted inline video
           function attemptPlay() {
             video.muted = true;
-            video.play().catch(() => { });
+            const playPromise = video.play();
+            if (playPromise !== undefined) {
+              playPromise.then(_ => {
+                // Autoplay started!
+              }).catch(error => {
+                // Autoplay was prevented
+                console.log("Autoplay prevented, waiting for interaction");
+              });
+            }
           }
 
           if (Hls.isSupported()) {
             const hls = new Hls({
               capLevelToPlayerSize: true,
-              autoStartLoad: true
+              autoStartLoad: true,
+              lowLatencyMode: true
             });
             hls.loadSource(videoSrc);
             hls.attachMedia(video);
-            hls.on(Hls.Events.MANIFEST_PARSED, function () {
+            hls.on(Hls.Events.MANIFEST_PARSED, () => {
               attemptPlay();
             });
+            // Fallback if HLS fails to load
+            hls.on(Hls.Events.ERROR, (event, data) => {
+              if (data.fatal) {
+                console.warn('HLS fatal error, falling back to MP4');
+                hls.destroy();
+                video.src = 'assets/videos/HeroVideo_mobile.mp4';
+                attemptPlay();
+              }
+            });
           }
-          // iOS Safari: native HLS support without MSE
           else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-            // Must set muted BEFORE assigning src so iOS allows inline autoplay
-            video.muted = true;
             video.src = videoSrc;
-            video.load();
-            video.addEventListener('loadedmetadata', function () {
-              attemptPlay();
-            });
+            video.addEventListener('loadedmetadata', attemptPlay);
           }
-          // Fallback MP4 path (any remaining browser)
           else {
-            video.muted = true;
-            video.load();
+            // Standard fallback
             attemptPlay();
           }
 
-          // One-shot touchstart fallback: if the first user touch finds the video paused,
-          // resume it silently (handles the rare case iOS still blocks before first gesture)
-          document.addEventListener('touchstart', function resumeOnTouch() {
-            if (video.paused) {
-              video.muted = true;
-              video.play().catch(() => { });
-            }
-            document.removeEventListener('touchstart', resumeOnTouch);
-          }, { once: true, passive: true });
-
+          // Global touchstart fallback
+          const startVideo = () => {
+            if (video.paused) attemptPlay();
+            document.removeEventListener('touchstart', startVideo);
+            document.removeEventListener('click', startVideo);
+          };
+          document.addEventListener('touchstart', startVideo, { once: true, passive: true });
+          document.addEventListener('click', startVideo, { once: true, passive: true });
         });
       </script>
 
