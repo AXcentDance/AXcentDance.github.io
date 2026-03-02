@@ -17,7 +17,7 @@
         content="Das grösste Dominican Bachata Event in Zürich. 7 Stunden Intensiv mit Aitor Gomez & Sarah La Morena.">
     <meta property="og:locale" content="de_CH">
     <meta http-equiv="Content-Security-Policy"
-        content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://cdn.jsdelivr.net https://connect.facebook.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com https://placehold.co https://*.googleapis.com https://*.gstatic.com https://www.facebook.com https://connect.facebook.net; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://script.google.com https://formsubmit.co https://www.facebook.com https://connect.facebook.net; frame-src 'self' https://www.google.com; object-src 'none'; base-uri 'self'; media-src 'self' blob:; worker-src 'self' blob:;">
+        content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://cdn.jsdelivr.net https://connect.facebook.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com https://placehold.co https://*.googleapis.com https://*.gstatic.com https://www.facebook.com https://connect.facebook.net; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://script.google.com https://script.googleusercontent.com https://formsubmit.co https://www.facebook.com https://connect.facebook.net; frame-src 'self' https://www.google.com; object-src 'none'; base-uri 'self'; media-src 'self' blob:; worker-src 'self' blob:;">
     <!-- Meta Pixel Code -->
     <script>
         !function (f, b, e, v, n, t, s) {
@@ -704,6 +704,12 @@
                             </div>
 
                             <div class="event-input-group">
+                                <label class="event-input-label" for="reg_email">E-Mail Adresse</label>
+                                <input type="email" id="reg_email" name="email" class="event-input" required
+                                    placeholder="jane.doe@example.com">
+                            </div>
+
+                            <div class="event-input-group">
                                 <label class="event-input-label" for="reg_whatsapp">WhatsApp Nummer</label>
                                 <input type="tel" id="reg_whatsapp" name="phone" class="event-input" required
                                     placeholder="+41 79 123 45 67">
@@ -837,40 +843,49 @@
 
     <!-- Form Submission Script -->
     <script>
-        document.getElementById('eventRegForm').addEventListener('submit', function (e) {
+        document.getElementById('eventRegForm').addEventListener('submit', async function (e) {
             e.preventDefault();
 
             const btn = document.getElementById('submitRegBtn');
             const originalContent = btn.innerHTML;
-            btn.innerHTML = '<span class="btn-hero-content">Processing...</span>';
+            btn.innerHTML = '<span class="btn-hero-content">Wird verarbeitet...</span>';
             btn.disabled = true;
 
             const formData = {
                 firstname: document.getElementById('reg_firstname').value,
                 lastname: document.getElementById('reg_lastname').value,
                 phone: document.getElementById('reg_whatsapp').value,
-                email: 'checkout@stripe.placeholder', // Placeholder as email isn't asked
+                email: document.getElementById('reg_email').value,
                 selected_class: document.querySelector('input[name="selected_class"]').value
             };
 
             const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwPqLutAq-xa9OkSiT-rLm72DJCdQ2Xw10Yp4DvHexTq42HxCKJyJr8mJmZ0RuZSc7A5A/exec';
+            const stripeLink = 'https://buy.stripe.com/8x214p2wDgyt2BV9cCfnO0a';
 
-            fetch(SCRIPT_URL, {
+            // Store for pixel tracking on possible thank-you pages
+            try {
+                sessionStorage.setItem('lead_email', formData.email);
+                sessionStorage.setItem('lead_phone', formData.phone);
+            } catch (e) { }
+
+            // Fail-safe redirect logic: 
+            // We race the sheet submission with a 3-second timeout.
+            const timeout = (ms) => new Promise((resolve) => setTimeout(() => resolve({ timeout: true }), ms));
+
+            const sheetPromise = fetch(SCRIPT_URL, {
                 method: 'POST',
                 mode: 'no-cors',
-                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formData)
-            })
-                .then(() => {
-                    // Redirect to Stripe on success
-                    window.location.href = 'https://buy.stripe.com/8x214p2wDgyt2BV9cCfnO0a';
-                })
-                .catch(err => {
-                    console.error('Error:', err);
-                    alert('Something went wrong. Please try again.');
-                    btn.innerHTML = originalContent;
-                    btn.disabled = false;
-                });
+            }).then(() => ({ success: true })).catch(() => ({ error: true }));
+
+            try {
+                await Promise.race([sheetPromise, timeout(3000)]);
+            } catch (err) {
+                console.error('Submission background error:', err);
+            }
+
+            // Final Redirect to Stripe
+            window.location.href = stripeLink;
         });
     </script>
 
