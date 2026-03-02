@@ -824,8 +824,26 @@
                 body: JSON.stringify(formData)
             }).then(() => ({ success: true })).catch(() => ({ error: true }));
 
+            const emailPromise = fetch('https://formsubmit.co/ajax/info@axcentdance.com', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                body: JSON.stringify({
+                    _subject: `New Dominican Bootcamp Registration: ${formData.firstname} ${formData.lastname}`,
+                    _template: 'table',
+                    _captcha: 'false',
+                    Name: `${formData.firstname} ${formData.lastname}`,
+                    Email: formData.email,
+                    WhatsApp: formData.phone,
+                    Event: formData.selected_class
+                })
+            }).then(() => ({ success: true })).catch(() => ({ error: true }));
+
             try {
-                await Promise.race([sheetPromise, timeout(3000)]);
+                // Wait for both results OR timeout after 3s
+                await Promise.race([
+                    Promise.allSettled([sheetPromise, emailPromise]),
+                    timeout(3000)
+                ]);
             } catch (err) {
                 console.error('Submission background error:', err);
             }
