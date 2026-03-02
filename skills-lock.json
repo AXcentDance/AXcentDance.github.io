@@ -6,6 +6,11 @@
       "sourceType": "github",
       "computedHash": "e757322d30da1ed1592dfb0c0ca5e5ce0d6644de422c8b17e46a7cc8c6763265"
     },
+    "find-keywords": {
+      "source": "calm-north/seojuice-skills",
+      "sourceType": "github",
+      "computedHash": "57ee45205794397994320374741794bf8863419ec92e549fa56279ef871b8e53"
+    },
     "frontend-design": {
       "source": "anthropics/skills",
       "sourceType": "github",

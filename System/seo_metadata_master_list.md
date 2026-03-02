@@ -73,6 +73,7 @@ This file tracks the Title Tags and Meta Descriptions for all pages on the AXcen
 | **Christmas Break** | `christmas-break-2025.html` | Christmas Break 2025 | AXcent Dance Studio Christmas Break dates: Dec 22 - Jan 11. Re-opening Monday, Jan 12. Merry Christmas and Happy New Year! |
 | **First Week** | `first-week-new-studio.html` | First Week Magic: Celebrating Our New Home in Zurich | The energy was electric! A huge thank you to everyone who joined us for our first week of classes at our brand new studio in Zurich Altstetten. |
 | **Mental Health** | `science-of-dance-mental-health.html` | Less Stress, More Dancing: The Science Behind "Dancer's High" | Discover the science of how partner dancing like Bachata lowers cortisol, releases endorphins, and improves mental health. Escaping burnout has never been this fun. |
+| **Bachata Parties** | `bachata-parties-zurich-guide.html` | Guide to Bachata Parties in Zurich: Where to Dance Every Night | Discover the best Bachata parties and social dance events in Zurich. From Club Silbando to Burkliplatz, find out where to dance every night of the week. |
 
 ## System Pages
 | Page | File | Title Tag | Meta Description |
