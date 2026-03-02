@@ -40,10 +40,13 @@ You must create **two** files:
     # 1. Sync dateModified with file timestamp
     python3 scripts/sync_blog_dates.py
 
-    # 2. Audit Breadcrumb Schema (Head ONLY)
+    # 2. Inject/Update Breadcrumb Schema (JSON-LD)
+    python3 scripts/inject_breadcrumb_schema.py
+
+    # 3. Audit Breadcrumb Schema (Head ONLY)
     python3 scripts/breadcrumb_audit.py
 
-    # 3. Update LLM context (llms-full.txt)
+    # 4. Update LLM context (llms-full.txt)
     python3 scripts/generate_llms_txt.py
     ```
 
@@ -122,7 +125,7 @@ If you must update manually, insert the new URLs before `</urlset>`.
     *   Clean URLs and correct Hreflangs?
     *   `sitemap.xml` contains no bare `&` characters?
     *   `dateModified` in schema match current date? (Run `python3 scripts/sync_blog_dates.py`)
-    *   Breadcrumb Schema present and unique? (Run `python3 scripts/breadcrumb_audit.py`)
+    *   Breadcrumb Schema injected and valid? (Run `python3 scripts/inject_breadcrumb_schema.py` then `python3 scripts/breadcrumb_audit.py`)
     *   `llms-full.txt` updated with new content? (Run `python3 scripts/generate_llms_txt.py`)
 
 
