@@ -42,6 +42,9 @@ You must create **two** files:
 
     # 2. Audit Breadcrumb Schema (Head ONLY)
     python3 scripts/breadcrumb_audit.py
+
+    # 3. Update LLM context (llms-full.txt)
+    python3 scripts/generate_llms_txt.py
     ```
 
 ### **Design & Layout Requirements (Mandatory)**
@@ -120,6 +123,7 @@ If you must update manually, insert the new URLs before `</urlset>`.
     *   `sitemap.xml` contains no bare `&` characters?
     *   `dateModified` in schema match current date? (Run `python3 scripts/sync_blog_dates.py`)
     *   Breadcrumb Schema present and unique? (Run `python3 scripts/breadcrumb_audit.py`)
+    *   `llms-full.txt` updated with new content? (Run `python3 scripts/generate_llms_txt.py`)
 
 
 
