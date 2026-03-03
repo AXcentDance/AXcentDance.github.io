@@ -16,7 +16,7 @@ This file tracks the Title Tags and Meta Descriptions for all German pages on th
 | Page | File | Title Tag | Meta Description |
 | :--- | :--- | :--- | :--- |
 | **Beginner 0** | `bachata-beginner-0.html` | Bachata Anfänger Kurs Zürich (Level 0) \| AXcent Dance | Starte deine Tanzreise mit dem besten Bachata Anfängerkurs in Zürich. Kein Tanzpartner nötig, tolle Atmosphäre. |
-| **Beginner 2** | `bachata-beginner-2.html` | Bachata Beginner 2 Kurs - AXcent Dance \| Weiter geht's | Komm zu unserem Bachata Beginner 2 Kurs bei AXcent Dance. Perfekt für Anfänger mit Vorkenntnissen. Festige deine Grundlagen und lerne neue Figuren. |
+
 | **Sensual Foundation** | `bachata-sensual-foundation.html` | Bachata Sensual Foundation Kurse Zürich \| AXcent Dance | Meistere die Grundlagen von Bachata Sensual in Zürich. Lerne Körperbewegung, Isolation und Verbindungstechniken. |
 | **Sensual Improver** | `bachata-sensual-improver.html` | Bachata Sensual Improver \| AXcent Dance Zürich | Verfeinere deine Bachata Sensual Fähigkeiten in Zürich. Fokus auf komplexe Bewegungen, Musikalität und geschmeidiges Führen/Folgen. |
 | **Sensual Inter/Adv** | `bachata-sensual-inter-adv.html` | Bachata Sensual Mittelstufe/Fortgeschritten \| AXcent Dance Zürich | Fordere dich heraus mit Bachata Sensual Mittelstufe/Fortgeschritten in Zürich. Komplexe Figuren, Musikalität und fortgeschrittene Technik. |

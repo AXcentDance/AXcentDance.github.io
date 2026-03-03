@@ -51,7 +51,7 @@
 | Page | File | Breadcrumb Path |
 | :--- | :--- | :--- |
 | **Bachata Beginner 0** | `class-bachata-beginner-0.html` | Home > Schedule > Bachata Beginner 0 |
-| **Bachata Beginner 2** | `class-bachata-beginner-2.html` | Home > Schedule > Bachata Beginner 2 |
+
 | **Sensual Foundation** | `class-bachata-sensual-foundation.html` | Home > Schedule > Bachata Sensual Foundation |
 | **Sensual Improver** | `class-bachata-sensual-improver.html` | Home > Schedule > Bachata Sensual Improver |
 | **Sensual Inter/Adv** | `class-bachata-sensual-inter-adv.html` | Home > Schedule > Bachata Sensual Inter/Adv |
