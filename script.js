@@ -416,7 +416,75 @@ info@axcentdance.com`,
         });
     }
 
+    // Event Registration Form Logic (Dominican Bootcamp)
+    const eventRegForm = document.getElementById('eventRegForm');
+    if (eventRegForm) {
+        console.log('Event Reg form found, attaching listener');
+        eventRegForm.addEventListener('submit', e => {
+            e.preventDefault();
 
+            const submitBtn = document.getElementById('submitRegBtn');
+            const originalBtnContent = submitBtn.innerHTML;
+
+            // 1. Show Loading State
+            submitBtn.innerHTML = '<span class="btn-hero-content">Wait...</span>';
+            submitBtn.disabled = true;
+            submitBtn.style.opacity = '0.7';
+            submitBtn.style.cursor = 'not-allowed';
+
+            // 2. Gather Data
+            const rawFormData = new FormData(eventRegForm);
+            const data = {
+                firstname: rawFormData.get('firstname'),
+                lastname: rawFormData.get('lastname'),
+                email: rawFormData.get('email'),
+                phone: rawFormData.get('phone'),
+                selected_class: rawFormData.get('selected_class')
+            };
+
+            // 3. Send to Google Script AND FormSubmit (Parallel)
+            // REPLACE THIS URL with the one generated from your Google Apps Script
+            const googleScriptURL = 'REPLACE_ME_WITH_YOUR_NEW_EVENT_WEB_APP_URL';
+            const formSubmitEmail = 'slamitza@gmail.com';
+            const formSubmitURL = `https://formsubmit.co/ajax/${formSubmitEmail}`;
+
+            // Prepare FormSubmit Data
+            const formSubmitData = {
+                _subject: `New Bootcamp Registration from ${data.firstname} ${data.lastname}`,
+                _template: 'table',
+                _captcha: 'false',
+                _autoresponse: `Thank you for registering for the Dominican Bachata Bootcamp!\n\nIf you haven't completed your payment yet, please use this secure link: https://buy.stripe.com/8x214p2wDgyt2BV9cCfnO0a\n\nBest regards,\nThe AXcent Dance Team`,
+                firstname: data.firstname,
+                lastname: data.lastname,
+                email: data.email,
+                phone: data.phone,
+                event: data.selected_class
+            };
+
+            const p1 = googleScriptURL !== 'REPLACE_ME_WITH_YOUR_NEW_EVENT_WEB_APP_URL'
+                ? fetch(googleScriptURL, { method: 'POST', body: JSON.stringify(data), mode: 'no-cors' })
+                : Promise.resolve();
+
+            const p2 = fetch(formSubmitURL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(formSubmitData)
+            });
+
+            Promise.allSettled([p1, p2])
+                .then((results) => {
+                    // Redirect to secure Stripe payment
+                    window.location.href = 'https://buy.stripe.com/8x214p2wDgyt2BV9cCfnO0a';
+                })
+                .catch(error => {
+                    console.error('Error!', error.message);
+                    window.location.href = 'https://buy.stripe.com/8x214p2wDgyt2BV9cCfnO0a';
+                });
+        });
+    }
 
     // Registration Form Logic
     // Moved from inline script to ensure reliability
