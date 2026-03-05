@@ -247,7 +247,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // 3. Send to Google Script AND FormSubmit (Parallel)
             // IMPORTANT: PASTE YOUR WEB APP URL BELOW
-            const scriptURL = 'https://script.google.com/macros/s/AKfycby8afi6chnCIBjEtrgGWmy1qqrUfrdMrZ0JYcaIrO6mzBfW6C219hYBgD-jPMfnoHWlbw/exec';
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbwPqLutAq-xa9OkSiT-rLm72DJCdQ2Xw10Yp4DvHexTq42HxCKJyJr8mJmZ0RuZSc7A5A/exec';
             const formSubmitEmail = 'slamitza@gmail.com'; // Using FormSubmit for reliable emails
             const formSubmitURL = `https://formsubmit.co/ajax/${formSubmitEmail}`;
 
