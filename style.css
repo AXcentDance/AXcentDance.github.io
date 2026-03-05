@@ -4956,3 +4956,10 @@ textarea {
         height: 300px;
     }
 }
+
+/* Hide 'Sensual Style' tag on mobile schedule */
+@media (max-width: 768px) {
+    .tag-sensual {
+        display: none;
+    }
+}
