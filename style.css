@@ -1168,6 +1168,7 @@ textarea {
     margin-bottom: 0.5rem;
     letter-spacing: 0.02em;
     color: white;
+    text-transform: uppercase;
     /* Ensure white text on video */
     text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
 }
