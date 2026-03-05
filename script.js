@@ -445,7 +445,7 @@ info@axcentdance.com`,
             // 3. Send to Google Script AND FormSubmit (Parallel)
             // REPLACE THIS URL with the one generated from your Google Apps Script
             const googleScriptURL = 'https://script.google.com/macros/s/AKfycby8afi6chnCIBjEtrgGWmy1qqrUfrdMrZ0JYcaIrO6mzBfW6C219hYBgD-jPMfnoHWlbw/exec';
-            const formSubmitEmail = 'slamitza@gmail.com';
+            const formSubmitEmail = 'info@axcentdance.com';
             const formSubmitURL = `https://formsubmit.co/ajax/${formSubmitEmail}`;
 
             // Prepare FormSubmit Data
