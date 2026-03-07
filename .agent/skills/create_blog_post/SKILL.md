@@ -20,6 +20,9 @@ Ask the user for (or generate based on topic):
     *   **Tone**: Catchy but serious. Relevant and relatable. Avoid generic fluff.
     *   **Structure**: Must include "interesting formatting" (grids, highlights, quotes), not just text.
     *   **Internal Linking**: MUST include **2-4 contextual internal links** within the body text (e.g., linking to `schedule`, `registration`, or `beginner-guide`). Use descriptive anchor text; do NOT use "click here". Links must be woven naturally into the content.
+    *   **Anti-Cannibalization Check**: If the post's topic is already the primary SEO objective of another "Authority" page (e.g., an Event landing page like `dominican-bootcamp`), you MUST:
+        1.  **Differentiate Intent**: Change the blog's Title/H1 to be Informational (e.g., "What to expect at...", "Behind the scenes", "Recap") rather than Transactional.
+        2.  **Preserve Authority**: Include a link in the first paragraph using the target "Head Keyword" as anchor text pointing to the Authority page.
 
 ## 2. Generate HTML Files
 You must create **two** files:
