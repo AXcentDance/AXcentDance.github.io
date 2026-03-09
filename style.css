@@ -503,11 +503,28 @@ textarea {
 .lang-switch {
     display: inline-flex;
     gap: 8px;
-    margin-left: 10px;
-    margin-right: 10px;
     align-items: center;
     font-weight: 500;
     font-size: 0.95rem;
+    z-index: 10001;
+}
+
+@media (min-width: 900px) {
+    .lang-switch {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+}
+
+@media (max-width: 899px) {
+    .lang-switch {
+        position: absolute !important;
+        right: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+        gap: 6px;
+        font-size: 0.85rem;
+    }
 }
 
 .lang-switch span,
@@ -1005,6 +1022,8 @@ textarea {
 
     .nav-links {
         display: flex;
+        margin-left: auto;
+        /* Push nav and following lang-switch to the right */
     }
 
 
