@@ -64,7 +64,7 @@
     "@type": "BlogPosting",
     "headline": "Connection 101: How to Improve Your Social Dancing",
     "datePublished": "2025-12-07",
-    "dateModified": "2026-03-07",
+    "dateModified": "2026-03-09",
     "author": {
         "@type": "Person",
         "name": "Ale & Xidan",
@@ -184,7 +184,14 @@
       <a href="../" class="logo">
         <span class="logo-title">AXCENT</span><span class="logo-subtitle text-gradient">DANCE</span>
       </a>
-      <button class="mobile-menu-btn" aria-label="Toggle menu">MENU</button>
+      <button class="mobile-menu-btn" aria-label="Toggle menu">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="3" y1="12" x2="21" y2="12" class="line-middle"></line>
+                    <line x1="3" y1="6" x2="21" y2="6" class="line-top"></line>
+                    <line x1="3" y1="18" x2="21" y2="18" class="line-bottom"></line>
+                </svg>
+            </button>
       <nav class="nav-links">
         <a href="../about">Über uns</a>
         <a href="../schedule">Stundenplan</a>
@@ -207,14 +214,12 @@
           </div>
         </div>
         <!-- Lang Switch -->
-        <div class="lang-switch"
-          style="display: inline-flex; gap: 6px; margin-left: 10px; margin-right: 10px; align-items: center; font-weight: 500; font-size: 0.95rem;">
-          <a href="../../blog-posts/connection-101"
-            style="color: rgba(255,255,255,0.7); text-decoration: none; transition: color 0.2s;">EN</a>
-          <span style="color: rgba(255,255,255,0.4);">|</span>
-          <span style="color: white; border-bottom: 2px solid var(--accent-start); padding-bottom: 2px;">DE</span>
+                                                                <a href="../#trial-form" class="btn-header-cta" >Probelektion</a>
+        <div class="lang-switch">
+          <a href="../../blog-posts/connection-101">EN</a>
+          <span class="divider">|</span>
+          <span class="active">DE</span>
         </div>
-        <a href="../#trial-form" class="btn-header-cta">Probelektion</a>
       </nav>
     </div>
   </header>
@@ -326,7 +331,7 @@
             </svg>
           </a>
           <a href="mailto:info@axcentdance.com" aria-label="Email">
-            <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg width="24" height="24" fill="none" stroke="white" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                 d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
               </path>
@@ -401,10 +406,7 @@
     }
 
     /* Mobile Styles */
-    @media (max-width: 768px) {
-      .mobile-menu-btn {
-        display: none !important;
-      }
+    @media (max-width: 768px) { .mobile-menu-btn { display: flex !important; }
 
       body {
         padding-bottom: 80px;

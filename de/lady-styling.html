@@ -89,56 +89,7 @@
         gtag('config', 'G-E2SYCF7R7X');
     </script>
     
-    <!-- CRITICAL: FAIL-SAFE MOBILE MENU STYLES -->
-    <style>
-        /* DESKTOP (900px+) - HIDE BUTTON */
-        @media (min-width: 900px) {
-            .mobile-menu-btn {
-                display: none !important;
-            }
-        }
-
-        /* MOBILE (<900px) - SHOW BUTTON ABSOLUTE LEFT */
-        @media (max-width: 899px) {
-            .navbar {
-                position: relative !important;
-                /* Ensure anchor */
-                justify-content: center !important;
-                /* Center logo */
-            }
-
-            .mobile-menu-btn {
-                display: flex !important;
-                position: absolute !important;
-                /* Absolute to navbar */
-                top: 50% !important;
-                transform: translateY(-50%) !important;
-                left: 15px !important;
-                z-index: 10001 !important;
-
-                /* FINAL PRODUCTION STYLE: Transparent */
-                background: transparent !important;
-                border: none !important;
-
-                color: white !important;
-
-                width: 44px;
-                height: 44px;
-                align-items: center;
-                justify-content: center;
-                padding: 0;
-                cursor: pointer;
-            }
-
-            /* Ensure SVG is visible */
-            .mobile-menu-btn svg {
-                width: 30px !important;
-                height: 30px !important;
-                stroke: white !important;
-                display: block !important;
-            }
-        }
-    </style>
+    
 <script type="application/ld+json">
     {
     "@context": "https://schema.org",
@@ -180,8 +131,8 @@
             <a href="./" class="logo">
                 <span class="logo-title">AXCENT</span><span class="logo-subtitle text-gradient">DANCE</span>
             </a>
-            <button class="mobile-menu-btn" aria-label="Menü umschalten">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"
+            <button class="mobile-menu-btn" aria-label="Toggle menu">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"
                     stroke-linecap="round" stroke-linejoin="round">
                     <line x1="3" y1="12" x2="21" y2="12" class="line-middle"></line>
                     <line x1="3" y1="6" x2="21" y2="6" class="line-top"></line>
@@ -210,15 +161,12 @@
                     </div>
                 </div>
                 <!-- Language Switcher -->
-                <div class="lang-switch"
-                    style="display: inline-flex; gap: 6px; margin-left: 10px; margin-right: 10px; align-items: center; font-weight: 500; font-size: 0.95rem;">
-                    <a href="../lady-styling"
-                        style="color: rgba(255,255,255,0.7); text-decoration: none; transition: color 0.2s;">EN</a>
-                    <span style="color: rgba(255,255,255,0.4);">|</span>
-                    <span
-                        style="color: white; border-bottom: 2px solid var(--accent-start); padding-bottom: 2px;">DE</span>
-                </div>
-                <a href="/de/#trial-form" class="btn-header-cta">Probelektion</a>
+                                                                        <a href="/de/#trial-form" class="btn-header-cta" >Probelektion</a>
+        <div class="lang-switch">
+          <a href="../lady-styling">EN</a>
+          <span class="divider">|</span>
+          <span class="active">DE</span>
+        </div>
             </nav>
         </div>
     </header>

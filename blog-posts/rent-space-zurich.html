@@ -63,7 +63,7 @@
     "@type": "BlogPosting",
     "headline": "More Than a Dance Studio: 5 Ways to Use Our Space",
     "datePublished": "2026-01-31",
-    "dateModified": "2026-03-07",
+    "dateModified": "2026-03-09",
     "author": {
         "@type": "Organization",
         "name": "AXcent Dance",
@@ -213,7 +213,14 @@
             <a href="../" class="logo">
                 <span class="logo-title">AXCENT</span><span class="logo-subtitle text-gradient">DANCE</span>
             </a>
-            <button class="mobile-menu-btn" aria-label="Toggle menu">MENU</button>
+            <button class="mobile-menu-btn" aria-label="Toggle menu">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="3" y1="12" x2="21" y2="12" class="line-middle"></line>
+                    <line x1="3" y1="6" x2="21" y2="6" class="line-top"></line>
+                    <line x1="3" y1="18" x2="21" y2="18" class="line-bottom"></line>
+                </svg>
+            </button>
             <nav class="nav-links">
                 <a href="../about">About us</a>
                 <a href="../schedule">Schedule</a>
@@ -234,14 +241,12 @@
                         <a href="../etiquette"><span>Dance Etiquette</span></a>
                     </div>
                 </div>
-                <div class="lang-switch"
-                    style="display: inline-flex; gap: 6px; margin-left: 10px; margin-right: 10px; align-items: center; font-weight: 500; font-size: 0.95rem;">
-                    <span
-                        style="color: white; border-bottom: 2px solid var(--accent-start); padding-bottom: 2px;">EN</span>
-                    <span style="color: rgba(255,255,255,0.4);">|</span>
-                    <a href="../de/blog-posts/rent-space-zurich"
-                        style="color: rgba(255,255,255,0.7); text-decoration: none; transition: color 0.2s;">DE</a>
-                </div><a href="../#trial-form" class="btn-header-cta">Book Free Trial</a>
+                                                                        <a href="../#trial-form" class="btn-header-cta" >Book Free Trial</a>
+        <div class="lang-switch">
+          <span class="active">EN</span>
+          <span class="divider">|</span>
+          <a href="../de/blog-posts/rent-space-zurich">DE</a>
+        </div>
             </nav>
         </div>
     </header>
@@ -497,7 +502,7 @@
                         </svg>
                     </a>
                     <a href="mailto:info@axcentdance.com" aria-label="Email">
-                        <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg width="24" height="24" fill="none" stroke="white" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
                             </path>
@@ -556,10 +561,7 @@
         }
 
         /* Mobile Styles */
-        @media (max-width: 768px) {
-            .mobile-menu-btn {
-                display: none !important;
-            }
+        @media (max-width: 768px) { .mobile-menu-btn { display: flex !important; }
 
             body {
                 padding-bottom: 80px;
