@@ -38,6 +38,7 @@ You must create **two** files:
     *   Level 1: Home (`/`)
     *   Level 2: Blog (`/blog`)
     *   Level 3: Post Title (`/blog-posts/[slug]`)
+4.  **Schema Synchronization**: Whenever any factual information (Dates, Artists, Locations, etc.) is changed on a page, you MUST check and update the corresponding JSON-LD Schema to ensure it remains accurate and is not contradicting what is shown to the user.
 4.  **Automation**: After creating the HTML files, run the update scripts. These scripts handle internal link cleanup, image optimization discovery, and SEO date synchronization.
     ```bash
     # 1. Sync dateModified with file timestamp
@@ -86,15 +87,23 @@ You must link the new post on the main blog listing page.
     *   Include Title & Short Excerpt.
     *   Link to the *Clean URL*.
 
-## 4. Update Sitemap (Final Step)
-**After** the files are created and verified, you MUST update `sitemap.xml`. You have two options:
+## 4. Update Site Indexing & AI Context (Final Step)
+**After** any new page is created or content is modified, you MUST update both the search engine index (sitemap) and the AI crawler context (llms-full.txt). These are the two primary ways the site is discovered by both humans and LLMs.
 
-### Option A: Automated Generation (Recommended)
-Run the final sitemap generator script. This automatically handles image discovery, Clean URLs, hreflang tags, and **proper XML character escaping** (e.g., converting `&` to `&amp;`).
+### Automated Synchronization (Recommended)
+Run these two scripts to ensure everything is synchronized correctly:
 
 ```bash
+# 1. Update Sitemap (XML for Search Engines)
 python3 scripts/generate_sitemap_final.py
+
+# 2. Update LLM context (llms-full.txt for AI Crawlers)
+python3 scripts/generate_llms_txt.py
 ```
+
+### Technical Note
+*   The Sitemap generator handles Clean URLs, hreflang tags, and escapes special characters (e.g., `&` becomes `&amp;`).
+*   The LLM generator (llms-full.txt) strips scripts/styles and provides a clean, text-only feed of all pages for RAG systems.
 
 ### Option B: Manual Update
 If you must update manually, insert the new URLs before `</urlset>`. 

@@ -127,6 +127,7 @@ Use modern, clean sans-serif fonts available via Google Fonts.
     - `Article` for blog posts (MUST include `"image"` field).
     - ensure `og:image` and `twitter:image` tags are present for all pages.
     - `Product` for items/services.
+- **Schema Synchronization**: MANDATORY. Whenever any factual or transactional information (Dates, Prices, Artists, Locations, or event details) is changed in the page body, the corresponding JSON-LD Schema in the `<head>` MUST be updated immediately to ensure 100% parity between what the human sees and what the AI/Google reads.
 
 ## 6. SEO Guidelines (Yoast)
 

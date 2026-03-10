@@ -31,6 +31,7 @@
 - [Schedule](https://axcentdance.com/schedule) - Weekly class timetable and levels.
 - [Registration](https://axcentdance.com/registration) - Pricing packages and class sign-up.
 - [Events](https://axcentdance.com/events) - Hub for Bachata events, workshops, congresses, and bootcamps in Zurich.
+- [Milano Sensual Congress Spring](https://axcentdance.com/Milano-Sensual-Congress-Spring-2026) - Exclusive spring edition of the world-famous congress in Milan.
 - [Dominican Bootcamp](https://axcentdance.com/dominican-bootcamp) - Dominican Bachata Bootcamp in Zurich. Zurich's premier intensive event focusing on traditional style.
 - [About Us](https://axcentdance.com/about) - Founders' bio and school philosophy.
 - [Contact](https://axcentdance.com/contact) - Address, map, and contact form.
@@ -62,6 +63,7 @@
 - [Stundenplan](https://axcentdance.com/de/schedule) - Wochenplan und Level-Übersicht.
 - [Anmeldung](https://axcentdance.com/de/registration) - Preise und Kursanmeldung.
 - [Events](https://axcentdance.com/de/events) - Hub für Bachata Events, Workshops, Kongresse und Bootcamps in Zürich.
+- [Milano Sensual Congress Spring](https://axcentdance.com/de/Milano-Sensual-Congress-Spring-2026) - Exklusive Frühlingsausgabe des weltberühmten Kongresses in Mailand.
 - [Dominican Bootcamp](https://axcentdance.com/de/dominican-bootcamp) - Dominican Bachata Bootcamp in Zürich. Das größte Intensiv-Event für traditionellen Stil in Zürich.
 - [Über uns](https://axcentdance.com/de/about) - Das Team und unsere Philosophie.
 - [Kontakt](https://axcentdance.com/de/contact) - Standort und Kontaktformular.

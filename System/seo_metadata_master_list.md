@@ -26,7 +26,7 @@ This file tracks the Title Tags and Meta Descriptions for all pages on the AXcen
 | :--- | :--- | :--- | :--- |
 | **Events Overview** | `events.html` | Events & Workshops – AXcent Dance Zurich | The Biggest Dominican Bachata Event in Zurich. 7 Hours Intensive with Aitor Gomez & Sarah La Morena. |
 | **Milano Congress** | `Milano-Sensual-Congress-2026.html` | Milano Sensual Congress 2026 – AXcent Dance | Join AXcent Dance at the Milano Sensual Congress 2026. Get your tickets and join the Zurich group for this amazing event. |
-
+| **Milano Congress Spring** | `Milano-Sensual-Congress-Spring-2026.html` | Milano Sensual Congress Spring Edition 2026 | The Spring Edition of the Milano Sensual Congress 2026. Experience the magic of Bachata in Italy. Exclusive offers for AXcent Dance members. |
 
 ## Education & Guides
 | Page | File | Title Tag | Meta Description |

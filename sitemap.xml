@@ -256,7 +256,46 @@
       <image:title>Bootcamp</image:title>
     </image:image>
   </url>
-
+  <url>
+    <loc>https://axcentdance.com/Milano-Sensual-Congress-Spring-2026</loc>
+    <lastmod>2026-03-10</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/Milano-Sensual-Congress-Spring-2026" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/Milano-Sensual-Congress-Spring-2026" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/Milano-Sensual-Congress-Spring-2026" />
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/MilanoSensualCongressSpring2026.webp</image:loc>
+      <image:title>Milano Sensual Congress Spring Edition Flyer</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/MilanoSensualCongress2026_Nov.webp</image:loc>
+      <image:title>Milano Sensual Congress Logo</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/dominican_bootcamp.webp</image:loc>
+      <image:title>Bootcamp</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://axcentdance.com/de/Milano-Sensual-Congress-Spring-2026</loc>
+    <lastmod>2026-03-10</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/Milano-Sensual-Congress-Spring-2026" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/Milano-Sensual-Congress-Spring-2026" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/Milano-Sensual-Congress-Spring-2026" />
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/MilanoSensualCongressSpring2026.webp</image:loc>
+      <image:title>Milano Sensual Congress Spring Edition Flyer</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/MilanoSensualCongress2026_Nov.webp</image:loc>
+      <image:title>Milano Sensual Congress Logo</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/dominican_bootcamp.webp</image:loc>
+      <image:title>Bootcamp</image:title>
+    </image:image>
+  </url>
   <url>
     <loc>https://axcentdance.com/about</loc>
     <lastmod>2026-03-06</lastmod>
@@ -852,7 +891,10 @@
       <image:loc>https://axcentdance.com/assets/images/dominican_bootcamp.webp</image:loc>
       <image:title>Dominican Bachata Bootcamp</image:title>
     </image:image>
-
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/MilanoSensualCongress2026.webp</image:loc>
+      <image:title>MSC Spring Logo</image:title>
+    </image:image>
     <image:image>
       <image:loc>https://axcentdance.com/assets/images/MilanoSensualCongress2026_Nov.webp</image:loc>
       <image:title>Milano Sensual Congress Logo</image:title>
@@ -869,7 +911,10 @@
       <image:loc>https://axcentdance.com/assets/images/dominican_bootcamp.webp</image:loc>
       <image:title>Dominican Bachata Bootcamp</image:title>
     </image:image>
-
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/MilanoSensualCongress2026.webp</image:loc>
+      <image:title>MSC Spring Logo</image:title>
+    </image:image>
     <image:image>
       <image:loc>https://axcentdance.com/assets/images/MilanoSensualCongress2026_Nov.webp</image:loc>
       <image:title>Milano Sensual Congress Logo</image:title>

@@ -8,7 +8,7 @@ DE_DIR = os.path.join(ROOT_DIR, 'de')
 ALT_TRANSLATIONS = {
     # Events
     "Milano Sensual Congress 2026 Flyer": "Milano Sensual Congress 2026 Flyer", # Keep mostly same or add details
-
+    "Milano Sensual Congress Spring Edition Flyer": "Milano Sensual Congress Spring Edition Flyer",
     "Bootcamp": "Bootcamp", # German understands Bootcamp
     "MSC Nov 2026": "MSC Nov 2026",
     
