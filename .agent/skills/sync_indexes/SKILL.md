@@ -16,6 +16,10 @@ python3 scripts/generate_sitemap_final.py
 
 # Update AI Context (for LLMs/AI Crawlers)
 python3 scripts/generate_llms_txt.py
+
+# Audit Internal Links (Suggestions for older pages)
+# Replace <path_to_page> with the relative path of the new/changed page
+python3 scripts/internal_link_auditor.py <path_to_page>
 ```
 
 ## 2. Verify Updates
@@ -25,6 +29,7 @@ python3 scripts/generate_llms_txt.py
     ```
 2.  **LLM Context**: Verify the new page appears in `llms-full.txt`.
 3.  **JSON-LD Schema**: Ensure the JSON-LD schema in the `<head>` of the updated page(s) has been synchronized with any factual changes made to the body text (Dates, Prices, Artists, etc.).
+4.  **Internal Links**: Review the output of the `internal_link_auditor.py` and implement suggested links in older authoritative pages to boost the new page's SEO.
 
 ## When to use this:
 - After adding any new `.html` file.
