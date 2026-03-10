@@ -7,20 +7,28 @@ document.addEventListener('DOMContentLoaded', () => {
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
     const navLinks = document.querySelector('.nav-links');
 
-    if (mobileMenuBtn) {
-        mobileMenuBtn.addEventListener('click', () => {
+    if (mobileMenuBtn && navLinks) {
+        mobileMenuBtn.addEventListener('click', (e) => {
+            e.preventDefault();
             navLinks.classList.toggle('active');
             mobileMenuBtn.classList.toggle('active');
         });
     }
 
-    // Mobile Dropdown Toggle ("More" button)
+    // Close menu when clicking links
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            if (navLinks) navLinks.classList.remove('active');
+            if (mobileMenuBtn) mobileMenuBtn.classList.remove('active');
+        });
+    });
+
+    // Mobile Dropdown Toggle in nav-links
     const dropBtns = document.querySelectorAll('.dropbtn');
     dropBtns.forEach(btn => {
         btn.addEventListener('click', (e) => {
-            // Only toggle on mobile (when nav-links is active) or check screen width
             if (window.innerWidth < 900) {
-                e.preventDefault(); // Prevent default link behavior if any
+                e.preventDefault();
                 const dropdown = btn.closest('.dropdown');
                 dropdown.classList.toggle('active');
             }

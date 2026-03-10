@@ -233,6 +233,7 @@
                 </svg>
             </button>
             <nav class="nav-links">
+        <a href="../">Home</a>
         <a href="about">Über uns</a>
                 <a href="schedule">Stundenplan</a>
                 <a href="registration">Anmeldung</a>
@@ -477,39 +478,7 @@
 
 
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const moreBtn = document.getElementById("mobileMoreBtn");
-            const drawer = document.getElementById("mobileDrawer");
-            const overlay = document.getElementById("mobileDrawerOverlay");
-
-            function toggleDrawer(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                if (drawer) {
-                    drawer.classList.toggle("active");
-                    if (overlay) overlay.classList.toggle("active");
-                }
-            }
-
-            if (moreBtn) {
-                moreBtn.addEventListener("click", toggleDrawer);
-            }
-
-            if (overlay) {
-                overlay.addEventListener("click", toggleDrawer);
-            }
-
-            if (drawer) {
-                drawer.querySelectorAll("a").forEach(link => {
-                    link.addEventListener("click", () => {
-                        drawer.classList.remove("active");
-                        if (overlay) overlay.classList.remove("active");
-                    });
-                });
-            }
-        });
-    </script>
+    
 
 </body>
 
