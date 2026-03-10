@@ -11,7 +11,7 @@ guide-social-dancing.html                          | What is Social Dancing? | A
 blog.html                                          | Blog | AXcent Dance Zurich               | Read the latest articles about Bachata, dance tips, music, and the dance community in Zurich.
 index.html                                         | Bachata Classes Zurich: Dance Classes fo | Looking for Bachata classes in Zurich? Learn Bachata with international teachers at AXcent Dance. Beginner to advanced levels. Book your free trial.
 Milano-Sensual-Congress-2026.html                  | Milano Sensual Congress 2026 – AXcent Da | Join AXcent Dance at the Milano Sensual Congress 2026. Get your tickets and join the Zurich group for this amazing event.
-Milano-Sensual-Congress-Spring-2026.html           | Milano Sensual Congress Spring Edition 2 | The Spring Edition of the Milano Sensual Congress 2026. Experience the magic of Bachata in Italy. Exclusive offers for AXcent Dance members.
+
 about.html                                         | Our Team & Philosophy | Meet the Best Da | Meet the best dance teachers in Zurich at AXcent Dance. Learn about our philosophy, our instructors, and our passion for Latin dance.
 contact.html                                       | Contact Us | AXcent Dance Studio Zurich  | Contact our dance school in Zurich. Find our location in Altstetten, opening hours, and get in touch for Bachata classes.
 beginner-guide.html                                | Bachata for Beginners | The Ultimate Gui | Start your dance journey with our Bachata for Beginners guide. Learn what to wear, etiquette, and how to join our Zurich community.
@@ -58,7 +58,7 @@ de/guide-social-dancing.html                       | Was ist Social Dancing? Der
 de/blog.html                                       | Blog | AXcent Dance Zürich               | Lies die neuesten Artikel über Bachata, Tanz-Tipps, Musik und die Tanz-Community in Zürich.
 de/index.html                                      | Bachata Zürich: Tanzschule für Alle | Gr | Willkommen bei AXcent Dance, deiner Adresse für Bachata in Zürich. Lerne Bachata Sensual & Dominican mit internationalen Lehrern. Gratis Probelektion buchen!
 de/Milano-Sensual-Congress-2026.html               | Milano Sensual Congress 2026 – AXcent Da | Sei dabei beim Milano Sensual Congress 2026. Top-Künstler, Workshops und Partys in Mailand. Buche jetzt deinen Pass mit AXcent Dance.
-de/Milano-Sensual-Congress-Spring-2026.html        | Milano Sensual Congress Spring Edition 2 | Die Spring Edition des Milano Sensual Congress 2026. Erleben Sie die Magie des Bachata in Italien. Exklusive Angebote für AXcent Dance Mitglieder.
+
 de/about.html                                      | Unser Team & Philosophie | Die besten Ta | Triff die besten Tanzlehrer in Zürich bei AXcent Dance. Erfahre mehr über unsere Philosophie, unsere Instruktoren und unsere Leidenschaft.
 de/contact.html                                    | Kontakt | AXcent Tanzschule Zürich Altst | Kontaktiere unsere Tanzschule in Zürich. Finde unseren Standort in Altstetten, Öffnungszeiten und Infos zu Bachata Kursen.
 de/beginner-guide.html                             | Bachata für Anfänger | Der ultimative Gu | Starte deine Tanzreise mit unserem Bachata für Anfänger Guide. Alles über Kleidung, Etikette und wie du mitmachen kannst.

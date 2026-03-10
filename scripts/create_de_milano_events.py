@@ -75,30 +75,7 @@ def main():
         subs1
     )
 
-    # 2. Milano Spring 2026
-    subs2 = {
-        'Upcoming Events': 'Bevorstehende Events',
-        'Join the AXcent Dance family for a special Spring Edition of the Milano Sensual Congress.': 'Tritt der AXcent Dance Familie bei für eine spezielle Spring Edition des Milano Sensual Congress.',
-        'Group Trip • May 15-17, 2026 • <span style="color: var(--accent-start);">Join Us</span>': 'Gruppenreise • 15.-17. Mai 2026 • <span style="color: var(--accent-start);">Sei dabei</span>',
-        'Get ready for the <strong>Spring Edition</strong> of the Milano Sensual Congress!': 'Mach dich bereit für die <strong>Spring Edition</strong> des Milano Sensual Congress!',
-        'We are bringing you another unforgettable experience': 'Wir bescheren dir ein weiteres unvergessliches Erlebnis',
-        'with some of the best artists in the world': 'mit einigen der besten Künstler der Welt',
-        'Location': 'Ort',
-        'Type': 'Typ',
-        'Date': 'Datum',
-        'Discount Code': 'Rabatt-Code',
-        'BUY NOW': 'JETZT KAUFEN',
-        'More Events': 'Weitere Events',
-        'Milan, Italy': 'Mailand, Italien'
-    }
-    # Add common navigation translations to subs2
-    subs2.update({k: v for k, v in subs1.items() if k not in subs2})
 
-    create_de_event_page(
-        os.path.join(root, 'Milano-Sensual-Congress-Spring-2026.html'),
-        os.path.join(root, 'de', 'Milano-Sensual-Congress-Spring-2026.html'),
-        subs2
-    )
 
 if __name__ == "__main__":
     main()
