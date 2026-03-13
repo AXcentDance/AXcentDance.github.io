@@ -251,38 +251,40 @@
 
         /* Pricing Table Styles */
         .pricing-overview {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: linear-gradient(135deg, rgba(255, 59, 48, 0.08) 0%, rgba(15, 8, 22, 0.4) 100%);
+            border: 1px solid rgba(255, 59, 48, 0.2);
             border-radius: 20px;
-            padding: 2rem;
+            padding: 1.25rem;
             margin-bottom: 3rem;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         }
 
         .pricing-table-wrapper {
-            overflow-x: auto;
+            overflow-x: hidden;
         }
 
         .pricing-table {
             width: 100%;
             border-collapse: collapse;
             color: var(--text-light);
-            min-width: 500px;
+            min-width: 0;
         }
 
         .pricing-table th {
             text-align: left;
-            padding: 1rem;
+            padding: 0.5rem;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             color: var(--accent-start);
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             text-transform: uppercase;
             letter-spacing: 0.05em;
         }
 
         .pricing-table td {
-            padding: 1rem;
+            padding: 0.5rem;
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            font-size: 1rem;
+            font-size: 0.95rem;
         }
 
         .pricing-table tr:last-child td {
@@ -299,6 +301,13 @@
             font-weight: 600;
         }
 
+        /* Desktop: Show all columns, Hide toggle */
+        @media (min-width: 769px) {
+            .pricing-table-toggle {
+                display: none;
+            }
+        }
+
         .pass-name {
             font-weight: 600;
         }
@@ -307,6 +316,73 @@
             font-size: 0.8rem;
             color: var(--text-muted);
             display: block;
+        }
+
+        /* Surgical Compact Passes Overrides */
+        .pricing-grid {
+            gap: 0.75rem !important;
+        }
+
+        .pricing-card {
+            padding: 0.75rem 1rem !important;
+        }
+
+        .pricing-header {
+            margin-bottom: 0 !important;
+        }
+
+        .pricing-title {
+            font-size: 1rem !important;
+        }
+
+        .pricing-price {
+            font-size: 1.4rem !important;
+            margin-bottom: 0 !important;
+            line-height: 1.2 !important;
+        }
+
+        .pricing-desc {
+            font-size: 0.8rem !important;
+            opacity: 0.8;
+        }
+
+        /* Section 3 Compact Overrides */
+        .timetable-selection-grid {
+            gap: 1.5rem !important;
+        }
+
+        .timetable-col {
+            gap: 0.5rem !important;
+        }
+
+        .timetable-day-header {
+            margin-bottom: 0.25rem !important;
+            font-size: 1.1rem !important;
+        }
+
+        .class-option-wrapper {
+            padding: 0.5rem !important;
+            gap: 0.25rem !important;
+        }
+
+        .class-option-card {
+            min-height: 4.5rem !important;
+            padding: 0.5rem 0.75rem !important;
+        }
+
+        .class-role-select {
+            margin-top: 0.25rem !important;
+        }
+
+        .form-section {
+            margin-top: 1.5rem !important;
+        }
+
+        /* Hide spacers on mobile for compactness */
+        @media (max-width: 768px) {
+            .desktop-only-spacer {
+                display: none !important;
+            }
         }
     </style>
 
@@ -546,7 +622,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <span class="pass-name">10-Class Flexi <span class="mobile-price-regular">- 280
+                                    <span class="pass-name">10-Class Flexible Package <span class="mobile-price-regular">- 280
                                             CHF</span><span class="mobile-price-student">- 238 CHF</span></span>
                                     <span class="pass-duration">Valid for 1 Year</span>
                                 </td>
@@ -666,10 +742,10 @@
 
                             <!-- 10 Class Pass -->
                             <label class="pricing-option full-width">
-                                <input type="radio" name="package" value="10-Class Flexible Pack">
+                                <input type="radio" name="package" value="10-Class Flexible Package">
                                 <div class="pricing-card">
                                     <div class="pricing-header">
-                                        <span class="pricing-title">10-Class Flexible Pack</span>
+                                        <span class="pricing-title">10-Class Flexible Package</span>
                                         <span class="pricing-duration">1 Year Validity</span>
                                     </div>
                                     <div class="pricing-price" data-reg="280 CHF" data-stu="238 CHF">280 CHF</div>
@@ -759,7 +835,7 @@
                                 </div>
 
                                 <!-- Spacer for 20:30 Alignment -->
-                                <div class="class-option-wrapper" style="visibility: hidden; pointer-events: none;">
+                                <div class="class-option-wrapper desktop-only-spacer" style="visibility: hidden; pointer-events: none;">
                                     <label class="class-option">
                                         <input type="checkbox" disabled>
                                         <div class="class-option-card">
@@ -782,7 +858,7 @@
                                 <h3 class="timetable-day-header">Wednesday</h3>
 
                                 <!-- Spacer for 18:30 Alignment -->
-                                <div class="class-option-wrapper" style="visibility: hidden; pointer-events: none;">
+                                <div class="class-option-wrapper desktop-only-spacer" style="visibility: hidden; pointer-events: none;">
                                     <label class="class-option">
                                         <input type="checkbox" disabled>
                                         <div class="class-option-card">
@@ -843,7 +919,7 @@
                                 <h3 class="timetable-day-header">Thursday</h3>
 
                                 <!-- Spacer for 18:30 Alignment -->
-                                <div class="class-option-wrapper" style="visibility: hidden; pointer-events: none;">
+                                <div class="class-option-wrapper desktop-only-spacer" style="visibility: hidden; pointer-events: none;">
                                     <label class="class-option">
                                         <input type="checkbox" disabled>
                                         <div class="class-option-card">
@@ -1179,7 +1255,7 @@
             const packageRadios = document.querySelectorAll('input[name="package"]');
             let is10Pass = false;
             packageRadios.forEach(radio => {
-                if (radio.checked && radio.value === '10-Class Flexible Pack') {
+                if (radio.checked && radio.value === '10-Class Flexible Package') {
                     is10Pass = true;
                 }
             });
@@ -1272,7 +1348,7 @@
                         // 3. Determine Stripe Link
                         let stripeLink = '';
                         const links = {
-                            "10-Class Flexible Pack": {
+                            "10-Class Flexible Package": {
                                 student: "https://buy.stripe.com/aFa00l1sz1Dz90jewWfnO09",
                                 regular: "https://buy.stripe.com/8x2cN71szaa5b8r88yfnO08"
                             },
