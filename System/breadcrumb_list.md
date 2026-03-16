@@ -52,7 +52,8 @@
 | :--- | :--- | :--- |
 
 
-| **Sensual Foundation** | `class-bachata-sensual-foundation.html` | Home > Schedule > Bachata Sensual Foundation |
-| **Sensual Improver** | `class-bachata-sensual-improver.html` | Home > Schedule > Bachata Sensual Improver |
-| **Sensual Inter/Adv** | `class-bachata-sensual-inter-adv.html` | Home > Schedule > Bachata Sensual Inter/Adv |
-| **Lady Styling** | `class-lady-styling.html` | Home > Schedule > Lady Styling |
+| **Bachata Beginner 1** | `bachata-beginner-1.html` | Home > Schedule > Bachata Beginner 1 |
+| **Sensual Foundation** | `bachata-sensual-foundation.html` | Home > Schedule > Bachata Sensual Foundation |
+| **Sensual Improver** | `bachata-sensual-improver.html` | Home > Schedule > Bachata Sensual Improver |
+| **Sensual Inter/Adv** | `bachata-sensual-inter-adv.html` | Home > Schedule > Bachata Sensual Inter/Adv |
+| **Lady Styling** | `lady-styling.html` | Home > Schedule > Lady Styling |

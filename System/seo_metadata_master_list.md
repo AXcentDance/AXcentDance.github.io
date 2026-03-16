@@ -49,11 +49,10 @@ This file tracks the Title Tags and Meta Descriptions for all pages on the AXcen
 | Page | File | Title Tag | Meta Description |
 | :--- | :--- | :--- | :--- |
 | **Bachata Beginner 1** | `bachata-beginner-1.html` | Bachata Beginner 1 Class | AXcent Dance | Improve your flow and master the foundation of Bachata Sensual. Perfect for those with 3-6 months of experience. |
-
-| **Sensual Foundation** | `class-bachata-sensual-foundation.html` | Bachata Sensual Foundation Classes Zurich | AXcent Dance | detailed foundation course for Bachata Sensual. Learn body waves, isolations, and connection. |
-| **Sensual Improver** | `class-bachata-sensual-improver.html` | Bachata Sensual Improver | AXcent Dance Zurich | Improve your flow and complex figures. For dancers with a solid foundation. |
-| **Sensual Inter/Adv** | `class-bachata-sensual-inter-adv.html` | Bachata Sensual Inter/Adv | AXcent Dance Zurich | Advanced combinations and musicality for experienced dancers. Challenge yourself. |
-| **Lady Styling** | `class-lady-styling.html` | Bachata Lady Styling Classes Zurich | AXcent Dance | Focus on your elegance, arm styling, and body movement. Classes designated for followers. |
+| **Sensual Foundation** | `bachata-sensual-foundation.html` | Bachata Sensual Foundation Classes Zurich | AXcent Dance | detailed foundation course for Bachata Sensual. Learn body waves, isolations, and connection. |
+| **Sensual Improver** | `bachata-sensual-improver.html` | Bachata Sensual Improver | AXcent Dance Zurich | Improve your flow and complex figures. For dancers with a solid foundation. |
+| **Sensual Inter/Adv** | `bachata-sensual-inter-adv.html` | Bachata Sensual Inter/Adv | AXcent Dance Zurich | Advanced combinations and musicality for experienced dancers. Challenge yourself. |
+| **Lady Styling** | `lady-styling.html` | Bachata Lady Styling Classes Zurich | AXcent Dance | Focus on your elegance, arm styling, and body movement. Classes designated for followers. |
 
 ## Legal
 | Page | File | Title Tag | Meta Description |
