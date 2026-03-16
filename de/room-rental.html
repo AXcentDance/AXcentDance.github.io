@@ -341,6 +341,107 @@
                     }
                 }
             </style>
+        </section>
+
+        <!-- Studio Spezifikationen & Zwecke -->
+        <section class="reveal" style="padding-bottom: 4rem;">
+            <div class="container">
+                <div class="studio-details-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start;">
+                    
+                    <!-- Links: Technische Details -->
+                    <div class="specs-column">
+                        <h2 class="section-title-modern" style="font-size: 2rem; margin-bottom: 2rem;">Studio Spezifikationen</h2>
+                        <div class="specs-list" style="display: flex; flex-direction: column; gap: 1.5rem;">
+                            
+                            <div class="spec-item-mini" style="display: flex; align-items: center; gap: 1rem;">
+                                <span style="font-size: 1.5rem; background: rgba(255,255,255,0.05); width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; border-radius: 10px; border: 1px solid var(--glass-border);">📐</span>
+                                <div>
+                                    <strong style="color: white; display: block;">140m² Gesamtfläche</strong>
+                                    <span style="color: var(--text-muted); font-size: 0.9rem;">Ca. 100m² hochwertige Tanzfläche.</span>
+                                </div>
+                            </div>
+
+                            <div class="spec-item-mini" style="display: flex; align-items: center; gap: 1rem;">
+                                <span style="font-size: 1.5rem; background: rgba(255,255,255,0.05); width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; border-radius: 10px; border: 1px solid var(--glass-border);">💡</span>
+                                <div>
+                                    <strong style="color: white; display: block;">Profi-Lichtsystem</strong>
+                                    <span style="color: var(--text-muted); font-size: 0.9rem;">Verschiedene Intensitäten und anpassbare Farben für jede Stimmung.</span>
+                                </div>
+                            </div>
+
+                            <div class="spec-item-mini" style="display: flex; align-items: center; gap: 1rem;">
+                                <span style="font-size: 1.5rem; background: rgba(255,255,255,0.05); width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; border-radius: 10px; border: 1px solid var(--glass-border);">🔊</span>
+                                <div>
+                                    <strong style="color: white; display: block;">High-Fidelity Sound</strong>
+                                    <span style="color: var(--text-muted); font-size: 0.9rem;">Professionelles Audiosystem mit Bluetooth- und AUX-Anschluss.</span>
+                                </div>
+                            </div>
+
+                            <div class="spec-item-mini" style="display: flex; align-items: center; gap: 1rem;">
+                                <span style="font-size: 1.5rem; background: rgba(255,255,255,0.05); width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; border-radius: 10px; border: 1px solid var(--glass-border);">🔇</span>
+                                <div>
+                                    <strong style="color: white; display: block;">Hervorragende Akustik</strong>
+                                    <span style="color: var(--text-muted); font-size: 0.9rem;">Integrierte Schallschutzpaneele für optimalen Klang.</span>
+                                </div>
+                            </div>
+
+                            <div class="spec-item-mini" style="display: flex; align-items: center; gap: 1rem;">
+                                <span style="font-size: 1.5rem; background: rgba(255,255,255,0.05); width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; border-radius: 10px; border: 1px solid var(--glass-border);">🛋️</span>
+                                <div>
+                                    <strong style="color: white; display: block;">Separate Lounge</strong>
+                                    <span style="color: var(--text-muted); font-size: 0.9rem;">Eigener Eingangsbereich für persönliches Gepäck und Pausen.</span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Rechts: Zwecke / Ideal für -->
+                    <div class="purposes-column">
+                        <h2 class="section-title-modern" style="font-size: 2rem; margin-bottom: 2rem;">Ideal für</h2>
+                        <div class="purpose-tags" style="display: flex; flex-wrap: wrap; gap: 0.8rem;">
+                            <span class="purpose-tag">Tanztraining</span>
+                            <span class="purpose-tag">Proben</span>
+                            <span class="purpose-tag">Workshops</span>
+                            <span class="purpose-tag">Fotoshootings</span>
+                            <span class="purpose-tag">Videoproduktionen</span>
+                            <span class="purpose-tag">Yoga-Klassen</span>
+                            <span class="purpose-tag">Pilates</span>
+                            <span class="purpose-tag">Seminare</span>
+                            <span class="purpose-tag">Privatstunden</span>
+                            <span class="purpose-tag">Castings</span>
+                            <span class="purpose-tag">Fitnesstraining</span>
+                            <span class="purpose-tag">Teambuilding</span>
+                        </div>
+                        <p style="color: var(--text-muted); margin-top: 1.5rem; line-height: 1.6;">
+                            Unser vielseitiger Raum passt sich Ihren kreativen und professionellen Bedürfnissen an. Ob für einen energiegeladenen Workshop oder eine fokussierte Produktion – AXcent Dance bietet das passende Premium-Umfeld.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+            <style>
+                .purpose-tag {
+                    background: rgba(255, 59, 48, 0.1);
+                    color: white;
+                    padding: 0.5rem 1.2rem;
+                    border-radius: 30px;
+                    border: 1px solid rgba(255, 59, 48, 0.2);
+                    font-size: 0.9rem;
+                    transition: all 0.3s ease;
+                }
+                .purpose-tag:hover {
+                    background: var(--grad);
+                    border-color: transparent;
+                    transform: translateY(-2px);
+                }
+                @media (max-width: 900px) {
+                    .studio-details-grid {
+                        grid-template-columns: 1fr;
+                        gap: 3rem;
+                    }
+                }
+            </style>
         </section>      </div>
 
 
