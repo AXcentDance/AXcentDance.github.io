@@ -802,16 +802,15 @@
                             <div class="timetable-col">
                                 <h3 class="timetable-day-header">Dienstag</h3>
 
-                                <!-- Dienstag 18:30 - Full -->
-                                <div class="class-option-wrapper" style="opacity: 0.6; cursor: not-allowed;">
+                                <!-- Dienstag 18:30 - Leer -->
+                                <div class="class-option-wrapper desktop-only-spacer" style="visibility: hidden; pointer-events: none;">
                                     <label class="class-option">
                                         <input type="checkbox" disabled>
                                         <div class="class-option-card">
                                             <span class="time">18:30</span>
                                             <div class="class-details">
-                                                <span class="name">Bachata Anfänger 0</span>
-                                                <span class="class-instructor-small"
-                                                    style="color: #ff3b30; font-weight: 700;">DERZEIT AUSGEBUCHT</span>
+                                                <span class="name">Spacer Class</span>
+                                                <span class="class-instructor-small">Spacer</span>
                                             </div>
                                         </div>
                                     </label>
@@ -1342,7 +1341,7 @@
                                 return;
                             }
                             // Map role to class name/value
-                            // Extract class name from value, e.g. "Wed 18:30 Beginner 0"
+                            // Extract class name from value, e.g. "Wed 18:30 Beginner 1"
                             const classVal = checkbox.value;
                             rolesMap[classVal] = roleSelected.value;
                         }
