@@ -65,6 +65,7 @@
       "@context": "https://schema.org",
       "@graph": [
         {
+          "inLanguage": "de",
           "@type": "WebPage",
           "@id": "https://axcentdance.com/de/blog-posts/dance-tips-1-frame#webpage",
           "url": "https://axcentdance.com/de/blog-posts/dance-tips-1-frame",
@@ -74,17 +75,17 @@
           "inLanguage": "de"
         },
         {
+          "inLanguage": "de",
           "@type": "BlogPosting",
           "@id": "https://axcentdance.com/de/blog-posts/dance-tips-1-frame#article",
           "isPartOf": { "@id": "https://axcentdance.com/de/blog-posts/dance-tips-1-frame#webpage" },
           "headline": "Rahmen-Technik im Bachata: Tanz-Tipps Ep. 1",
           "datePublished": "2025-12-27",
           "dateModified": "2026-03-10",
-          "author": {
-              "@type": "Person",
-              "name": "Ale & Xidan",
-              "url": "https://axcentdance.com/de/about"
-          },
+          "author": [
+          { "@id": "https://axcentdance.com/#person1" },
+          { "@id": "https://axcentdance.com/#person2" }
+        ],
           "publisher": {
               "@type": "Organization",
               "name": "AXcent Dance",
@@ -94,7 +95,12 @@
               }
           },
           "description": "Verbessere dein Bachata Führen und Folgen mit besserer Rahmen-Technik. Lerne die Do's und Don'ts für Positionierung und Verbindung.",
-          "image": "https://axcentdance.com/assets/images/hero_new.webp",
+          "image": {
+            "@type": "ImageObject",
+            "url": "https://axcentdance.com/assets/images/hero_new.webp",
+            "width": 1024,
+            "height": 768
+          },
           "mainEntityOfPage": { "@id": "https://axcentdance.com/de/blog-posts/dance-tips-1-frame#webpage" }
         },
         {

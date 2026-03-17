@@ -466,6 +466,7 @@
       "@context": "https://schema.org",
       "@graph": [
         {
+          "inLanguage": "en",
           "@type": "WebPage",
           "@id": "https://axcentdance.com/beginner-guide#webpage",
           "url": "https://axcentdance.com/beginner-guide",
@@ -511,22 +512,29 @@
           }
         },
         {
+          "inLanguage": "en",
           "@type": "Article",
+          "@id": "https://axcentdance.com/beginner-guide#article",
           "headline": "Beginner Guide: Your First Bachata Class",
           "datePublished": "2025-10-01",
           "dateModified": "2026-03-17",
-          "author": {
-            "@type": "Person",
-            "name": "Ale & Xidan",
-            "url": "https://axcentdance.com/about"
-          },
+          "author": [
+          { "@id": "https://axcentdance.com/#person1" },
+          { "@id": "https://axcentdance.com/#person2" }
+        ],
           "publisher": { "@id": "https://axcentdance.com/#organization" },
           "description": "Everything you need to know for your first dance class: what to wear, shoes, and etiquette.",
           "mainEntityOfPage": { "@id": "https://axcentdance.com/beginner-guide#webpage" },
-          "image": "https://axcentdance.com/assets/images/bachata_class_zurich.webp"
+          "image": {
+            "@type": "ImageObject",
+            "url": "https://axcentdance.com/assets/images/bachata_class_zurich.webp",
+            "width": 1024,
+            "height": 1024
+          }
         },
         {
           "@type": "BreadcrumbList",
+          "@id": "https://axcentdance.com/beginner-guide#breadcrumb",
           "itemListElement": [
             {
               "@type": "ListItem",
@@ -544,11 +552,6 @@
         }
       ]
     }
-    </script>
-            "item": "https://axcentdance.com/beginner-guide"
-        }
-    ]
-}
     </script>
 </head>
 

@@ -184,25 +184,39 @@
         gtag('config', 'G-E2SYCF7R7X');
     </script>
     
-<script type="application/ld+json">
+    <!-- Structured Data (@graph) -->
+    <script type="application/ld+json">
     {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
+      "@context": "https://schema.org",
+      "@graph": [
         {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Home",
-            "item": "https://axcentdance.com/"
+          "@type": "WebPage",
+          "@id": "https://axcentdance.com/thank-you#webpage",
+          "url": "https://axcentdance.com/thank-you",
+          "name": "Thank You \u2013 AXcent Dance",
+          "isPartOf": { "@id": "https://axcentdance.com/#website" },
+          "description": "Thank you for your interest in AXcent Dance. We will be in touch soon."
         },
         {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "Thank You \u2013 AXcent Dance",
-            "item": "https://axcentdance.com/thank-you"
+          "@type": "BreadcrumbList",
+          "@id": "https://axcentdance.com/thank-you#breadcrumb",
+          "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://axcentdance.com/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Thank You \u2013 AXcent Dance",
+                "item": "https://axcentdance.com/thank-you"
+            }
+          ]
         }
-    ]
-}
+      ]
+    }
     </script>
 </head>
 

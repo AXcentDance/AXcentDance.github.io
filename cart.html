@@ -154,26 +154,39 @@
 
         gtag('config', 'G-E2SYCF7R7X');
     </script>
-    
-<script type="application/ld+json">
+    <!-- Structured Data (@graph) -->
+    <script type="application/ld+json">
     {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
+      "@context": "https://schema.org",
+      "@graph": [
         {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Home",
-            "item": "https://axcentdance.com/"
+          "@type": "WebPage",
+          "@id": "https://axcentdance.com/cart#webpage",
+          "url": "https://axcentdance.com/cart",
+          "name": "Complete Registration \u2013 AXcent Dance",
+          "isPartOf": { "@id": "https://axcentdance.com/#website" },
+          "description": "Complete your registration for AXcent Dance classes."
         },
         {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "Complete Registration \u2013 AXcent Dance",
-            "item": "https://axcentdance.com/cart"
+          "@type": "BreadcrumbList",
+          "@id": "https://axcentdance.com/cart#breadcrumb",
+          "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://axcentdance.com/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Complete Registration \u2013 AXcent Dance",
+                "item": "https://axcentdance.com/cart"
+            }
+          ]
         }
-    ]
-}
+      ]
+    }
     </script>
 </head>
 

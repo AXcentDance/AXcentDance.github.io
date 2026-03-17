@@ -45,37 +45,69 @@
 
 
 
-    <!-- Schema Markup -->
+    <!-- Structured Data (@graph) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Article",
-      "headline": "Was ist Bachata? Geschichte, Stile & Grundlagen",
-      "datePublished": "2025-10-01",
-      "dateModified": "2026-03-09",
-      "author": {
-        "@type": "Person",
-        "name": "Ale & Xidan",
-        "url": "https://axcentdance.com/de/about"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "Startseite",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://axcentdance.com/assets/images/logo.webp"
+      "@graph": [
+        {
+          "inLanguage": "de",
+          "@type": "WebPage",
+          "@id": "https://axcentdance.com/de/guide-bachata#webpage",
+          "url": "https://axcentdance.com/de/guide-bachata",
+          "name": "Was ist Bachata? | Guide Z\u00fcrich | AXcent Dance",
+          "isPartOf": { "@id": "https://axcentdance.com/#website" },
+          "description": "Erfahre alles \u00fcber Bachata-Musik und Tanz. Von den dominikanischen Wurzeln bis hin zur Sensual-Technik, Geschichte und Instrumenten. Der Guide f\u00fcr T\u00e4nzer in Z\u00fcrich."
+        },
+        {
+          "inLanguage": "de",
+          "@type": "Article",
+          "@id": "https://axcentdance.com/de/guide-bachata#article",
+          "headline": "Was ist Bachata? Geschichte, Stile & Grundlagen",
+          "datePublished": "2025-10-01",
+          "dateModified": "2026-03-17",
+          "author": [
+          { "@id": "https://axcentdance.com/#person1" },
+          { "@id": "https://axcentdance.com/#person2" }
+        ],
+          "publisher": {
+            "@type": "Organization",
+            "name": "AXcent Dance",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://axcentdance.com/assets/images/logo.webp"
+            }
+          },
+          "description": "Entdecke Bachata: seine Geschichte, Stile (Dominican & Sensual) und wie man mit dem Tanzen beginnt.",
+          "mainEntityOfPage": { "@id": "https://axcentdance.com/de/guide-bachata#webpage" },
+          "image": {
+            "@type": "ImageObject",
+            "url": "https://axcentdance.com/assets/images/bachata_requinto_v2.webp",
+            "width": 1024,
+            "height": 1024
+          }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://axcentdance.com/de/guide-bachata#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Startseite",
+              "item": "https://axcentdance.com/de/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Bachata Guide",
+              "item": "https://axcentdance.com/de/guide-bachata"
+            }
+          ]
         }
-      },
-      "description": "Entdecke Bachata: seine Geschichte, Stile (Dominican & Sensual) und wie man mit dem Tanzen beginnt.",
-      "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "https://axcentdance.com/de/guide-bachata"
-      },
-      "image": "https://axcentdance.com/assets/images/bachata_requinto_v2.webp"
+      ]
     }
     </script>
-
-    <!-- Cookie Consent -->
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-E2SYCF7R7X"></script>
@@ -85,28 +117,6 @@
         gtag('js', new Date());
 
         gtag('config', 'G-E2SYCF7R7X');
-    </script>
-
-    
-    <script type="application/ld+json">
-    {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-        {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Startseite",
-            "item": "https://axcentdance.com/de/"
-        },
-        {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "Bachata Guide Z\u00fcrich: Alles \u00fcber den Tanz, Stile & Kurse",
-            "item": "https://axcentdance.com/de/guide-bachata"
-        }
-    ]
-}
     </script>
 </head>
 

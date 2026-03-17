@@ -40,67 +40,98 @@
     <link rel="apple-touch-icon" href="/apple-touch-icon-v2.png">
     <link rel="icon" href="/favicon-v2.png" type="image/png">
 
-    <!-- Structured Data (FAQPage) -->
+    <!-- Structured Data (@graph) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
+      "@graph": [
         {
-          "@type": "Question",
-          "name": "Do I need a partner to join?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "No, you don't need a partner! We rotate partners frequently during class. This is the best way to learn how to lead and follow different people, and it's a great way to make new friends. Of course, if you come with a partner and prefer to stay together, that is also allowed."
-          }
+          "@type": "WebPage",
+          "@id": "https://axcentdance.com/faq#webpage",
+          "url": "https://axcentdance.com/faq",
+          "name": "FAQ - Frequently Asked Questions | AXcent Dance Zurich",
+          "isPartOf": { "@id": "https://axcentdance.com/#website" },
+          "description": "Find answers to common questions about our Bachata classes in Zurich. Partner requirements, clothing, pricing, and more."
         },
         {
-          "@type": "Question",
-          "name": "What should I wear?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Wear comfortable clothing that allows you to move freely. For shoes, we recommend dance shoes or sneakers with a smooth sole that allows you to turn easily. Avoid heavy boots or shoes with too much grip."
-          }
+          "@type": "FAQPage",
+          "@id": "https://axcentdance.com/faq#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Do I need a partner to join?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "No, you don't need a partner! We rotate partners frequently during class. This is the best way to learn how to lead and follow different people, and it's a great way to make new friends. Of course, if you come with a partner and prefer to stay together, that is also allowed."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What should I wear?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Wear comfortable clothing that allows you to move freely. For shoes, we recommend dance shoes or sneakers with a smooth sole that allows you to turn easily. Avoid heavy boots or shoes with too much grip."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "I have never danced before. Can I join?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes! Our Beginner 1 course is perfect for those with approx. 3-6 months of experience. If you are an absolute beginner, please check our upcoming schedule for new course start dates."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How do I pay for classes?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "We accept payments via Twint, Cash, or Bank Transfer. You can pay for a single drop-in class, a 10-class pass, or sign up for a monthly subscription for the best value."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Is there parking available?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes, there are public parking spots available nearby (Blue Zone) and a parking garage at the Letzipark shopping center, which is a short walk away. We are also easily accessible by public transport (Tram 2, Bus 31)."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What if I miss a class?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "If you have a subscription or a class pass, please let us know in advance if you cannot make it. Depending on availability, you might be able to make up the class on another day of the same week, but please check with us first."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Do you host Dominican Bachata events?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes! We host intensive training events focusing on traditional style. Check out our upcoming <a href=\"https://axcentdance.com/dominican-bootcamp\">Dominican Bachata Bootcamp in Zurich</a>."
+              }
+            }
+          ]
         },
         {
-          "@type": "Question",
-          "name": "I have never danced before. Can I join?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes! Our Beginner 1 course is perfect for those with approx. 3-6 months of experience. If you are an absolute beginner, please check our upcoming schedule for new course start dates."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How do I pay for classes?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "We accept payments via Twint, Cash, or Bank Transfer. You can pay for a single drop-in class, a 10-class pass, or sign up for a monthly subscription for the best value."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Is there parking available?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes, there are public parking spots available nearby (Blue Zone) and a parking garage at the Letzipark shopping center, which is a short walk away. We are also easily accessible by public transport (Tram 2, Bus 31)."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What if I miss a class?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "If you have a subscription or a class pass, please let us know in advance if you cannot make it. Depending on availability, you might be able to make up the class on another day of the same week, but please check with us first."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Do you host Dominican Bachata events?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes! We host intensive training events focusing on traditional style. Check out our upcoming <a href=\"https://axcentdance.com/dominican-bootcamp\">Dominican Bachata Bootcamp in Zurich</a>."
-          }
+          "@type": "BreadcrumbList",
+          "@id": "https://axcentdance.com/faq#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://axcentdance.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "FAQ",
+              "item": "https://axcentdance.com/faq"
+            }
+          ]
         }
       ]
     }
@@ -185,26 +216,6 @@
         gtag('config', 'G-E2SYCF7R7X');
     </script>
 
-    
-    <script type="application/ld+json">
-    {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-        {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Home",
-            "item": "https://axcentdance.com/"
-        },
-        {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "FAQ",
-            "item": "https://axcentdance.com/faq"
-        }
-    ]
-}
     </script>
 </head>
 

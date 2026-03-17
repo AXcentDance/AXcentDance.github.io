@@ -63,104 +63,67 @@
     </script>
 
     <!-- Breadcrumb Schema -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-            {
-                "@type": "ListItem",
-                "position": 1,
-                "name": "Home",
-                "item": "https://axcentdance.com/"
-            },
-            {
-                "@type": "ListItem",
-                "position": 2,
-                "name": "Blog",
-                "item": "https://axcentdance.com/blog"
-            },
-            {
-                "@type": "ListItem",
-                "position": 3,
-                "name": "Salsa vs Bachata",
-                "item": "https://axcentdance.com/blog-posts/salsa-vs-bachata"
-            }
-        ]
-    }
-    </script>
+    
 
-    <!-- Article Schema -->
+    <!-- Structured Data (@graph) -->
     <script type="application/ld+json">
     {
-        "@context": "https://schema.org",
-        "@type": "Article",
-        "headline": "Salsa vs Bachata: Key Differences Every Dancer Should Know",
-        "description": "A comprehensive comparison of Salsa and Bachata covering music, rhythm, dance technique, and cultural origins.",
-        "image": "https://axcentdance.com/assets/images/blog/salsa_vs_bachata_hero.webp",
-        "author": {
-            "@type": "Organization",
-            "name": "AXcent Dance",
-            "url": "https://axcentdance.com"
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "inLanguage": "en",
+          "@type": "WebPage",
+          "@id": "https://axcentdance.com/blog-posts/salsa-vs-bachata#webpage",
+          "url": "https://axcentdance.com/blog-posts/salsa-vs-bachata",
+          "name": "Salsa vs Bachata: Key Differences Every Dancer Should Know",
+          "isPartOf": { "@id": "https://axcentdance.com/#website" },
+          "description": "Salsa vs Bachata — what is the difference? Compare music, rhythm, and dance style. Find out why most dancers learn both for the complete Latin experience."
         },
-        "publisher": {
+        {
+          "inLanguage": "en",
+          "@type": "BlogPosting",
+          "@id": "https://axcentdance.com/blog-posts/salsa-vs-bachata#article",
+          "headline": "Salsa vs Bachata: Key Differences Every Dancer Should Know",
+          "description": "A comprehensive comparison of Salsa and Bachata covering music, rhythm, dance technique, and cultural origins.",
+          "image": {
+            "inLanguage": "en",
+          "@type": "ImageObject",
+            "url": "https://axcentdance.com/assets/images/blog/salsa_vs_bachata_hero.webp",
+            "width": 1024,
+            "height": 1024
+          },
+          "author": [
+          { "@id": "https://axcentdance.com/#person1" },
+          { "@id": "https://axcentdance.com/#person2" }
+        ],
+          "publisher": {
             "@type": "Organization",
             "name": "AXcent Dance",
             "logo": {
-                "@type": "ImageObject",
-                "url": "https://axcentdance.com/assets/images/logo.webp"
+              "@type": "ImageObject",
+              "url": "https://axcentdance.com/assets/images/logo.webp"
             }
+          },
+          "datePublished": "2026-02-14",
+          "dateModified": "2026-03-17",
+          "mainEntityOfPage": { "@id": "https://axcentdance.com/blog-posts/salsa-vs-bachata#webpage" },
+          "isPartOf": { "@id": "https://axcentdance.com/blog-posts/salsa-vs-bachata#webpage" }
         },
-        "datePublished": "2026-02-14",
-        "dateModified": "2026-03-09",
-        "mainEntityOfPage": {
-            "@type": "WebPage",
-            "@id": "https://axcentdance.com/blog-posts/salsa-vs-bachata"
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://axcentdance.com/blog-posts/salsa-vs-bachata#breadcrumb",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://axcentdance.com/" },
+            { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://axcentdance.com/blog" },
+            { "@type": "ListItem", "position": 3, "name": "Salsa vs Bachata", "item": "https://axcentdance.com/blog-posts/salsa-vs-bachata" }
+          ]
         }
+      ]
     }
     </script>
 
     <!-- FAQ Schema -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": [
-            {
-                "@type": "Question",
-                "name": "What is the main difference between Salsa and Bachata music?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Salsa music is energetic and brass-driven, featuring congas, timbales, and trumpets with a fast tempo. Bachata music is guitar-driven and romantic, with bongos and guira providing a slower, more sensual rhythm. Salsa originated in 1970s New York from Afro-Cuban roots, while Bachata developed in the 1960s Dominican Republic."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "Can you dance both Salsa and Bachata at the same social event?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Absolutely. Most Latin dance social events (called 'socials') play both Salsa and Bachata music throughout the night. Knowing both dances means you can dance all night without sitting out. Many dance schools, including AXcent Dance in Zurich, teach both styles."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "Which dance is more sensual, Salsa or Bachata?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Bachata is generally considered more sensual and intimate due to its slower tempo, closer partner connection, and emphasis on body movement and hip rolls. However, different styles exist within both dances — Bachata Sensual is the most intimate style, while Cuban Salsa can also be very close and connected."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "Should I learn Salsa or Bachata first?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Starting with Bachata is often recommended for absolute beginners because of its simpler basic steps and slower tempo. Once comfortable, adding Salsa improves your overall musicality and coordination. Many dancers eventually learn both to become complete Latin dancers."
-                }
-            }
-        ]
-    }
-    </script>
+    
 </head>
 
 <body>

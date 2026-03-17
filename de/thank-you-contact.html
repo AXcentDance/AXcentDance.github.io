@@ -108,26 +108,39 @@
 
         gtag('config', 'G-E2SYCF7R7X');
     </script>
-    
+    <!-- Structured Data (@graph) -->
     <script type="application/ld+json">
     {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
+      "@context": "https://schema.org",
+      "@graph": [
         {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Startseite",
-            "item": "https://axcentdance.com/de/"
+          "@type": "WebPage",
+          "@id": "https://axcentdance.com/de/thank-you-contact#webpage",
+          "url": "https://axcentdance.com/de/thank-you-contact",
+          "name": "Danke \u2013 AXcent Dance",
+          "isPartOf": { "@id": "https://axcentdance.com/#website" },
+          "description": "Danke f\u00fcr deine Kontaktaufnahme mit AXcent Dance. Wir melden uns in K\u00fcrze."
         },
         {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "Danke \u2013 AXcent Dance",
-            "item": "https://axcentdance.com/de/thank-you-contact"
+          "@type": "BreadcrumbList",
+          "@id": "https://axcentdance.com/de/thank-you-contact#breadcrumb",
+          "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Startseite",
+                "item": "https://axcentdance.com/de/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Danke \u2013 AXcent Dance",
+                "item": "https://axcentdance.com/de/thank-you-contact"
+            }
+          ]
         }
-    ]
-}
+      ]
+    }
     </script>
 </head>
 

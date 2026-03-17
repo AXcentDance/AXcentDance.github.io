@@ -42,37 +42,69 @@
 
 
 
-    <!-- Schema Markup -->
+    <!-- Structured Data (@graph) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Article",
-      "headline": "What is Bachata? History, Styles & Basics",
-      "datePublished": "2025-10-01",
-      "dateModified": "2026-03-09",
-      "author": {
-        "@type": "Person",
-        "name": "Ale & Xidan",
-        "url": "https://axcentdance.com/about"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "AXcent Dance",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://axcentdance.com/assets/images/logo.webp"
+      "@graph": [
+        {
+          "inLanguage": "en",
+          "@type": "WebPage",
+          "@id": "https://axcentdance.com/guide-bachata#webpage",
+          "url": "https://axcentdance.com/guide-bachata",
+          "name": "What is Bachata? | Course Guide | AXcent Dance Zurich",
+          "isPartOf": { "@id": "https://axcentdance.com/#website" },
+          "description": "Learn all about Bachata music and dance. From Dominican roots to Sensual technique, history, and instruments. The complete guide for dancers in Zurich."
+        },
+        {
+          "inLanguage": "en",
+          "@type": "Article",
+          "@id": "https://axcentdance.com/guide-bachata#article",
+          "headline": "What is Bachata? History, Styles & Basics",
+          "datePublished": "2025-10-01",
+          "dateModified": "2026-03-17",
+          "author": [
+          { "@id": "https://axcentdance.com/#person1" },
+          { "@id": "https://axcentdance.com/#person2" }
+        ],
+          "publisher": {
+            "@type": "Organization",
+            "name": "AXcent Dance",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://axcentdance.com/assets/images/logo.webp"
+            }
+          },
+          "description": "Discover Bachata: its history, styles (Dominican & Sensual), and how to start dancing.",
+          "mainEntityOfPage": { "@id": "https://axcentdance.com/guide-bachata#webpage" },
+          "image": {
+            "@type": "ImageObject",
+            "url": "https://axcentdance.com/assets/images/bachata_requinto_v2.webp",
+            "width": 1024,
+            "height": 1024
+          }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://axcentdance.com/guide-bachata#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://axcentdance.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Bachata Guide",
+              "item": "https://axcentdance.com/guide-bachata"
+            }
+          ]
         }
-      },
-      "description": "Discover Bachata: its history, styles (Dominican & Sensual), and how to start dancing.",
-      "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "https://axcentdance.com/guide-bachata"
-      },
-      "image": "https://axcentdance.com/assets/images/bachata_requinto_v2.webp"
+      ]
     }
     </script>
-
-    <!-- Cookie Consent -->
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-E2SYCF7R7X"></script>
@@ -84,27 +116,6 @@
         gtag('config', 'G-E2SYCF7R7X');
     </script>
 
-    
-    <script type="application/ld+json">
-    {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-        {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Home",
-            "item": "https://axcentdance.com/"
-        },
-        {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "Bachata in Zurich: History, Styles & Classes",
-            "item": "https://axcentdance.com/guide-bachata"
-        }
-    ]
-}
-    </script>
 </head>
 
 <body>

@@ -37,36 +37,71 @@
 
 
 
-  <!-- Structured Data (BreadcrumbList) -->
-
-
-  <!-- Structured Data (Course) -->
+  <!-- Structured Data (@graph) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Course",
-    "name": "Bachata Beginner 1",
-    "description": "Improve your Bachata skills in Zurich with our Beginner 1 course. Focused on foundation techniques, bodyrolls, and sensual style.",
-    "provider": {
-      "@type": "Organization",
-      "name": "AXcent Dance",
-      "sameAs": "https://axcentdance.com"
-    },
-    "hasCourseInstance": {
-      "@type": "CourseInstance",
-      "courseMode": "onsite",
-      "location": {
-        "@type": "Place",
-        "name": "AXcent Dance Studio",
-        "address": "Hermetschloostrasse 73, 8048 Zürich"
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": "https://axcentdance.com/bachata-beginner-1#webpage",
+        "url": "https://axcentdance.com/bachata-beginner-1",
+        "name": "Bachata Beginner 1 | AXcent Dance Zurich",
+        "isPartOf": { "@id": "https://axcentdance.com/#website" },
+        "description": "The perfect bridge to Sensual Bachata. Our Beginner 1 course in Zurich prepares you for complex body movement and connection. Book your trial class today."
       },
-      "eventSchedule": {
-        "@type": "Schedule",
-        "repeatFrequency": "Weekly",
-        "byDay": "https://schema.org/Tuesday",
-        "startTime": "19:30"
+      {
+        "@type": "Course",
+        "@id": "https://axcentdance.com/bachata-beginner-1#course",
+        "isPartOf": { "@id": "https://axcentdance.com/bachata-beginner-1#webpage" },
+        "name": "Bachata Beginner 1",
+        "description": "Improve your Bachata skills in Zurich with our Beginner 1 course. Focused on foundation techniques, bodyrolls, and sensual style.",
+        "provider": {
+          "@type": "Organization",
+          "name": "AXcent Dance",
+          "sameAs": "https://axcentdance.com"
+        },
+        "hasCourseInstance": {
+          "@type": "CourseInstance",
+          "courseMode": "onsite",
+          "location": {
+            "@type": "Place",
+            "name": "AXcent Dance Studio",
+            "address": "Hermetschloostrasse 73, 8048 Z\u00fcrich"
+          },
+          "eventSchedule": {
+            "@type": "Schedule",
+            "repeatFrequency": "Weekly",
+            "byDay": "https://schema.org/Tuesday",
+            "startTime": "19:30"
+          }
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://axcentdance.com/bachata-beginner-1#breadcrumb",
+        "itemListElement": [
+          {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://axcentdance.com/"
+          },
+          {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Schedule",
+              "item": "https://axcentdance.com/schedule"
+          },
+          {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Learn Bachata in Zurich",
+              "item": "https://axcentdance.com/bachata-beginner-1"
+          }
+        ]
       }
-    }
+    ]
   }
   </script>
 
@@ -88,34 +123,6 @@
 
     gtag('config', 'G-E2SYCF7R7X');
   </script>
-
-  
-  <script type="application/ld+json">
-    {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-        {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Home",
-            "item": "https://axcentdance.com/"
-        },
-        {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "Schedule",
-            "item": "https://axcentdance.com/schedule"
-        },
-        {
-            "@type": "ListItem",
-            "position": 3,
-            "name": "Learn Bachata in Zurich",
-            "item": "https://axcentdance.com/bachata-beginner-1"
-        }
-    ]
-}
-    </script>
 </head>
 
 <body>

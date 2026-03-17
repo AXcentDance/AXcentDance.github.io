@@ -183,22 +183,33 @@
     
     <script type="application/ld+json">
     {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://axcentdance.com/de/thank-you#webpage",
+      "url": "https://axcentdance.com/de/thank-you",
+      "name": "Danke – AXcent Dance"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://axcentdance.com/de/thank-you#breadcrumb",
+      "itemListElement": [
         {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Startseite",
-            "item": "https://axcentdance.com/de/"
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Startseite",
+          "item": "https://axcentdance.com/de/"
         },
         {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "Danke \u2013 AXcent Dance",
-            "item": "https://axcentdance.com/de/thank-you"
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Danke – AXcent Dance",
+          "item": "https://axcentdance.com/de/thank-you"
         }
-    ]
+      ]
+    }
+  ]
 }
     </script>
 </head>

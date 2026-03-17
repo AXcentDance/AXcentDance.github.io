@@ -62,7 +62,8 @@
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "WebPage",
+        "inLanguage": "en",
+          "@type": "WebPage",
         "@id": "https://axcentdance.com/blog-posts/connection-101#webpage",
         "url": "https://axcentdance.com/blog-posts/connection-101",
         "name": "Connection 101: How to Improve Your Social Dancing | AXcent Dance Blog",
@@ -70,17 +71,17 @@
         "description": "It is not about the moves, it is about the feeling. 3 simple tips to instantly improve your connection with any partner."
       },
       {
-        "@type": "BlogPosting",
+        "inLanguage": "en",
+          "@type": "BlogPosting",
         "@id": "https://axcentdance.com/blog-posts/connection-101#article",
         "isPartOf": { "@id": "https://axcentdance.com/blog-posts/connection-101#webpage" },
         "headline": "Connection 101: How to Improve Your Social Dancing",
         "datePublished": "2025-12-07",
         "dateModified": "2026-03-10",
-        "author": {
-            "@type": "Person",
-            "name": "Ale & Xidan",
-            "url": "https://axcentdance.com/about"
-        },
+        "author": [
+          { "@id": "https://axcentdance.com/#person1" },
+          { "@id": "https://axcentdance.com/#person2" }
+        ],
         "publisher": {
             "@type": "Organization",
             "name": "AXcent Dance",
@@ -90,7 +91,12 @@
             }
         },
         "description": "It is not about the moves, it is about the feeling. 3 simple tips to instantly improve your connection with any partner.",
-        "image": "https://axcentdance.com/assets/images/blog/connection-101.webp",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://axcentdance.com/assets/images/blog/connection-101.webp",
+            "width": 1024,
+            "height": 1024
+          },
         "mainEntityOfPage": { "@id": "https://axcentdance.com/blog-posts/connection-101#webpage" }
       },
       {

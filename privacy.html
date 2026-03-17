@@ -50,27 +50,39 @@
 
         gtag('config', 'G-E2SYCF7R7X');
     </script>
-    
-    
-<script type="application/ld+json">
+    <!-- Structured Data (@graph) -->
+    <script type="application/ld+json">
     {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
+      "@context": "https://schema.org",
+      "@graph": [
         {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Home",
-            "item": "https://axcentdance.com/"
+          "@type": "WebPage",
+          "@id": "https://axcentdance.com/privacy#webpage",
+          "url": "https://axcentdance.com/privacy",
+          "name": "Privacy Policy \u2013 AXcent Dance Zurich",
+          "isPartOf": { "@id": "https://axcentdance.com/#website" },
+          "description": "Privacy Policy (Datenschutzerkl\u00e4rung) for AXcent Dance Zurich."
         },
         {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "Privacy Policy \u2013 AXcent Dance Zurich",
-            "item": "https://axcentdance.com/privacy"
+          "@type": "BreadcrumbList",
+          "@id": "https://axcentdance.com/privacy#breadcrumb",
+          "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://axcentdance.com/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Privacy Policy \u2013 AXcent Dance Zurich",
+                "item": "https://axcentdance.com/privacy"
+            }
+          ]
         }
-    ]
-}
+      ]
+    }
     </script>
 </head>
 

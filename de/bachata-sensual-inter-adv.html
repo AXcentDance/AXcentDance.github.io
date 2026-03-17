@@ -38,36 +38,71 @@
     <!-- End Meta Pixel Code -->
 
 
-    <!-- Structured Data (BreadcrumbList) -->
-    
-
-    <!-- Structured Data (Course) -->
+    <!-- Structured Data (@graph) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Course",
-      "name": "Bachata Sensual Mittelstufe/Fortgeschritten",
-      "description": "Fordere dich heraus mit Bachata Sensual Mittelstufe/Fortgeschritten in Zürich. Komplexe Figuren, Musikalität und fortgeschrittene Technik.",
-      "provider": {
-        "@type": "Organization",
-        "name": "Startseite",
-        "sameAs": "https://axcentdance.com"
-      },
-      "hasCourseInstance": {
-        "@type": "CourseInstance",
-        "courseMode": "onsite",
-        "location": {
-            "@type": "Place",
-            "name": "AXcent Dance Studio",
-            "address": "Hermetschloostrasse 73, 8048 Zürich"
+      "@graph": [
+        {
+          "@type": "WebPage",
+          "@id": "https://axcentdance.com/de/bachata-sensual-inter-adv#webpage",
+          "url": "https://axcentdance.com/de/bachata-sensual-inter-adv",
+          "name": "Bachata Sensual Mittelstufe/Fortgeschritten | AXcent Dance Z\u00fcrich",
+          "isPartOf": { "@id": "https://axcentdance.com/#website" },
+          "description": "Fordere dich heraus mit Bachata Sensual Mittelstufe/Fortgeschritten in Z\u00fcrich. Komplexe Figuren, Musikalit\u00e4t und fortgeschrittene Technik."
         },
-        "eventSchedule": {
-            "@type": "Schedule",
-            "repeatFrequency": "Wöchentlich",
-            "byDay": "https://schema.org/Donnerstag",
-            "startTime": "20:30"
+        {
+          "@type": "Course",
+          "@id": "https://axcentdance.com/de/bachata-sensual-inter-adv#course",
+          "isPartOf": { "@id": "https://axcentdance.com/de/bachata-sensual-inter-adv#webpage" },
+          "name": "Bachata Sensual Mittelstufe/Fortgeschritten",
+          "description": "Fordere dich heraus mit Bachata Sensual Mittelstufe/Fortgeschritten in Z\u00fcrich. Komplexe Figuren, Musikalit\u00e4t und fortgeschrittene Technik.",
+          "provider": {
+            "@type": "Organization",
+            "name": "AXcent Dance",
+            "sameAs": "https://axcentdance.com"
+          },
+          "hasCourseInstance": {
+            "@type": "CourseInstance",
+            "courseMode": "onsite",
+            "location": {
+                "@type": "Place",
+                "name": "AXcent Dance Studio",
+                "address": "Hermetschloostrasse 73, 8048 Z\u00fcrich"
+            },
+            "eventSchedule": {
+                "@type": "Schedule",
+                "repeatFrequency": "W\u00f6chentlich",
+                "byDay": "https://schema.org/Donnerstag",
+                "startTime": "20:30"
+            }
+          }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://axcentdance.com/de/bachata-sensual-inter-adv#breadcrumb",
+          "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Startseite",
+                "item": "https://axcentdance.com/de/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Stundenplan",
+                "item": "https://axcentdance.com/de/schedule"
+            },
+            {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Bachata Sensual Mittelstufe/Fortgeschritten",
+                "item": "https://axcentdance.com/de/bachata-sensual-inter-adv"
+            }
+          ]
         }
-      }
+      ]
     }
     </script>
 
@@ -75,7 +110,6 @@
     <link rel="stylesheet" href="../style.css?v=2.2">
     <link rel="apple-touch-icon" href="/apple-touch-icon-v2.png">
     <link rel="icon" href="/favicon-v2.png" type="image/png">
-
 
     <!-- Cookie Consent -->
 
@@ -87,34 +121,6 @@
         gtag('js', new Date());
 
         gtag('config', 'G-E2SYCF7R7X');
-    </script>
-
-    
-<script type="application/ld+json">
-    {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-        {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Startseite",
-            "item": "https://axcentdance.com/de/"
-        },
-        {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "Stundenplan",
-            "item": "https://axcentdance.com/de/schedule"
-        },
-        {
-            "@type": "ListItem",
-            "position": 3,
-            "name": "Bachata Sensual Mittelstufe/Fortgeschritten",
-            "item": "https://axcentdance.com/de/bachata-sensual-inter-adv"
-        }
-    ]
-}
     </script>
 </head>
 

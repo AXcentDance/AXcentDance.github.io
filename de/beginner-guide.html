@@ -469,6 +469,7 @@
       "@context": "https://schema.org",
       "@graph": [
         {
+          "inLanguage": "de",
           "@type": "WebPage",
           "@id": "https://axcentdance.com/de/beginner-guide#webpage",
           "url": "https://axcentdance.com/de/beginner-guide",
@@ -514,22 +515,29 @@
           }
         },
         {
+          "inLanguage": "de",
           "@type": "Article",
+          "@id": "https://axcentdance.com/de/beginner-guide#article",
           "headline": "Anfänger Guide: Deine erste Bachata Stunde",
           "datePublished": "2025-10-01",
           "dateModified": "2026-03-17",
-          "author": {
-            "@type": "Person",
-            "name": "Ale & Xidan",
-            "url": "https://axcentdance.com/de/about"
-          },
+          "author": [
+          { "@id": "https://axcentdance.com/#person1" },
+          { "@id": "https://axcentdance.com/#person2" }
+        ],
           "publisher": { "@id": "https://axcentdance.com/#organization" },
           "description": "Alles, was du für deine erste Tanzstunde wissen musst: Kleidung, Schuhe und Etikette.",
           "mainEntityOfPage": { "@id": "https://axcentdance.com/de/beginner-guide#webpage" },
-          "image": "https://axcentdance.com/assets/images/bachata_class_zurich.webp"
+          "image": {
+            "@type": "ImageObject",
+            "url": "https://axcentdance.com/assets/images/bachata_class_zurich.webp",
+            "width": 1024,
+            "height": 1024
+          }
         },
         {
           "@type": "BreadcrumbList",
+          "@id": "https://axcentdance.com/de/beginner-guide#breadcrumb",
           "itemListElement": [
             {
               "@type": "ListItem",

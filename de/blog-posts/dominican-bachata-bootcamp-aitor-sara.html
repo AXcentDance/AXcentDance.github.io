@@ -56,15 +56,24 @@
       "@context": "https://schema.org",
       "@graph": [
         {
+          "inLanguage": "de",
           "@type": "BlogPosting",
           "@id": "https://axcentdance.com/de/blog-posts/dominican-bachata-bootcamp-aitor-sara#blogposting",
           "headline": "Dominican Bachata Bootcamp mit Aitor & Sarah",
           "datePublished": "2026-02-08",
           "dateModified": "2026-03-17",
-          "author": { "@id": "https://axcentdance.com/#organization" },
+          "author": [
+          { "@id": "https://axcentdance.com/#person1" },
+          { "@id": "https://axcentdance.com/#person2" }
+        ],
           "publisher": { "@id": "https://axcentdance.com/#organization" },
           "description": "Das größte Dominican Bachata Event in Zürich! 7 Stunden Intensiv-Training mit den internationalen Stars Aitor Gomez & Sarah La Morena am 3./4. Okt 2026.",
-          "image": "https://axcentdance.com/assets/images/dominican_bootcamp.webp",
+          "image": {
+            "@type": "ImageObject",
+            "url": "https://axcentdance.com/assets/images/dominican_bootcamp.webp",
+            "width": 819,
+            "height": 1024
+          },
           "mainEntityOfPage": { "@id": "https://axcentdance.com/de/blog-posts/dominican-bachata-bootcamp-aitor-sara#webpage" },
           "video": { "@id": "https://axcentdance.com/de/blog-posts/dominican-bachata-bootcamp-aitor-sara#video" }
         },

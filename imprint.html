@@ -54,22 +54,33 @@
     
 <script type="application/ld+json">
     {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://axcentdance.com/imprint#webpage",
+      "url": "https://axcentdance.com/imprint",
+      "name": "Imprint – AXcent Dance Zurich"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://axcentdance.com/imprint#breadcrumb",
+      "itemListElement": [
         {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Home",
-            "item": "https://axcentdance.com/"
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://axcentdance.com/"
         },
         {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "Imprint \u2013 AXcent Dance Zurich",
-            "item": "https://axcentdance.com/imprint"
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Imprint – AXcent Dance Zurich",
+          "item": "https://axcentdance.com/imprint"
         }
-    ]
+      ]
+    }
+  ]
 }
     </script>
 </head>

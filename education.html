@@ -180,25 +180,39 @@
     </script>
 
 
+    <!-- Structured Data (@graph) -->
     <script type="application/ld+json">
     {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
+      "@context": "https://schema.org",
+      "@graph": [
         {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Home",
-            "item": "https://axcentdance.com/"
+          "@type": "WebPage",
+          "@id": "https://axcentdance.com/education#webpage",
+          "url": "https://axcentdance.com/education",
+          "name": "Bachata Education: History, Styles & Musicality | AXcent",
+          "isPartOf": { "@id": "https://axcentdance.com/#website" },
+          "description": "The ultimate Bachata knowledge hub. Explore history, street styles, musicality instruments, and terminology with AXcent Dance Zurich."
         },
         {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "Bachata Education: History, Styles & Musicality",
-            "item": "https://axcentdance.com/education"
+          "@type": "BreadcrumbList",
+          "@id": "https://axcentdance.com/education#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://axcentdance.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Bachata Education",
+              "item": "https://axcentdance.com/education"
+            }
+          ]
         }
-    ]
-}
+      ]
+    }
     </script>
 </head>
 

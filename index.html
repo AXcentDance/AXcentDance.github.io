@@ -82,6 +82,7 @@
         },
         {
           "@type": "VideoObject",
+          "inLanguage": "en",
           "name": "Bachata Classes Zurich | AXcent Dance",
           "description": "Experience the energy of our Bachata classes in Zurich. Join our community and learn to dance with international teachers.",
           "thumbnailUrl": "https://axcentdance.com/assets/images/hero-poster.webp",
@@ -99,6 +100,20 @@
           "about": { "@id": "https://axcentdance.com/#organization" },
           "description": "Join the best Bachata dance school in Zurich. We offer Bachata Sensual, Dominican Bachata, and Salsa classes for all levels at Hermetschloostrasse 73.",
           "inLanguage": "en"
+        },
+        {
+          "@id": "https://axcentdance.com/#person1",
+          "@type": "Person",
+          "name": "Alessandro Slamitz",
+          "jobTitle": "Co-Founder",
+          "sameAs": ["https://www.instagram.com/aleyxidan/"]
+        },
+        {
+          "@id": "https://axcentdance.com/#person2",
+          "@type": "Person",
+          "name": "Xidan",
+          "jobTitle": "Co-Founder",
+          "sameAs": ["https://www.instagram.com/aleyxidan/"]
         },
         {
           "@type": "LocalBusiness",
@@ -174,81 +189,14 @@
                     }
                   }
                 ]
-              },
-              {
-                "@type": "OfferCatalog",
-                "name": "Personal Coaching",
-                "itemListElement": [
-                  {
-                    "@type": "Offer",
-                    "itemOffered": {
-                      "@type": "Service",
-                      "name": "Private Bachata Lessons",
-                      "url": "https://axcentdance.com/private-lessons"
-                    }
-                  }
-                ]
-              },
-              {
-                "@type": "OfferCatalog",
-                "name": "Special Occasions",
-                "itemListElement": [
-                  {
-                    "@type": "Offer",
-                    "itemOffered": {
-                      "@type": "Service",
-                      "name": "Wedding Dance",
-                      "url": "https://axcentdance.com/wedding-dance"
-                    }
-                  }
-                ]
-              },
-              {
-                "@type": "OfferCatalog",
-                "name": "Business Services",
-                "itemListElement": [
-                  {
-                    "@type": "Offer",
-                    "itemOffered": {
-                      "@type": "Service",
-                      "name": "Corporate Events & Team Building",
-                      "url": "https://axcentdance.com/corporate-events"
-                    }
-                  }
-                ]
               }
             ]
           },
-          "potentialAction": {
-            "@type": "ReserveAction",
-            "target": {
-              "@type": "EntryPoint",
-              "urlTemplate": "https://axcentdance.com/#contact",
-              "inLanguage": ["en","de"],
-              "actionPlatform": [
-                "http://schema.org/DesktopWebPlatform",
-                "http://schema.org/MobileWebPlatform"
-              ]
-            },
-            "result": {
-              "@type": "Reservation",
-              "name": "Book a Free Trial Class"
-            }
-          },
-          "knowsLanguage": ["en","de"],
-          "award": [
-            "Judge at Swiss Championship",
-            "Organizer of Bachata Congress",
-            "International Bachata Dance Artist"
+          "founder": [
+            { "@id": "https://axcentdance.com/#person1" },
+            { "@id": "https://axcentdance.com/#person2" }
           ],
-          "founder": {
-            "@type": "Person",
-            "@id": "https://axcentdance.com/#founder",
-            "name": "Alessandro Slamitz",
-            "jobTitle": "Founder & Dance Instructor",
-            "sameAs": ["https://www.instagram.com/aleyxidan/"],
-            "knowsAbout": ["Bachata", "Salsa", "Latin Dance", "Dance Instruction"]
-          },
+          "knowsLanguage": ["en","de"],
           "knowsAbout": [
             "Bachata Dance Zurich",
             "Dance",
@@ -257,7 +205,6 @@
             "Salsa",
             "Latin Dance",
             "Social Dance Events"
-          ]
           ]
         },
         {
@@ -278,75 +225,7 @@
               "@type": "Answer",
               "text": "Yes, AXcent Dance is an English-speaking dance school in Zurich. Our international teachers lead all classes in English, making it perfect for expats and locals alike."
             }
-          }, {
-            "@type": "Question",
-            "name": "Is it too late to start dancing as an adult?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "It is never too late! Our Adult Beginner Classes are specifically designed for those who think they have 'two left feet'. We break everything down step-by-step in a relaxed, fun environment."
-            }
-          }, {
-            "@type": "Question",
-            "name": "Can I join a class anytime?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Yes! Our classes run continuously, so you can join our drop-in dance classes in Zurich anytime. No need to wait for a new semester to start—just book a free trial."
-            }
-          }, {
-            "@type": "Question",
-            "name": "Is Bachata a good hobby for adults in Zurich?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Absolutely! Bachata is one of the best new hobbies for adults in Zurich. It is a fun way to stay active, meet new people, and build confidence — no experience or partner needed."
-            }
           }]
-        },
-        {
-          "@type": "ItemList",
-          "@id": "https://axcentdance.com/#courses",
-          "name": "Dance Courses at AXcent",
-          "itemListElement": [
-            {
-              "@type": "Course",
-              "position": 1,
-              "name": "Bachata Beginner 1",
-              "description": "Perfect start into the world of Bachata or to improve your foundation, rhythm and figures.",
-              "provider": { "@id": "https://axcentdance.com/#organization" },
-              "url": "https://axcentdance.com/bachata-beginner-1"
-            },
-            {
-              "@type": "Course",
-              "position": 2,
-              "name": "Bachata Sensual Foundation",
-              "description": "Learn the technique and body movement of the Bachata Sensual style.",
-              "provider": { "@id": "https://axcentdance.com/#organization" },
-              "url": "https://axcentdance.com/bachata-sensual-foundation"
-            },
-            {
-              "@type": "Course",
-              "position": 3,
-              "name": "Bachata Sensual Improver",
-              "description": "Refine your skills with complex movements and musicality.",
-              "provider": { "@id": "https://axcentdance.com/#organization" },
-              "url": "https://axcentdance.com/bachata-sensual-improver"
-            },
-            {
-              "@type": "Course",
-              "position": 4,
-              "name": "Bachata Sensual Intermediate/Advanced",
-              "description": "Complex figures and advanced technique for experienced dancers.",
-              "provider": { "@id": "https://axcentdance.com/#organization" },
-              "url": "https://axcentdance.com/bachata-sensual-inter-adv"
-            },
-            {
-              "@type": "Course",
-              "position": 5,
-              "name": "Bachata Lady Styling",
-              "description": "Arm styling, body movement, and footwork for followers.",
-              "provider": { "@id": "https://axcentdance.com/#organization" },
-              "url": "https://axcentdance.com/lady-styling"
-            }
-          ]
         }
       ]
     }

@@ -61,6 +61,7 @@
       "@context": "https://schema.org",
       "@graph": [
         {
+          "inLanguage": "de",
           "@type": "WebPage",
           "@id": "https://axcentdance.com/de/blog-posts/new-location-zurich#webpage",
           "url": "https://axcentdance.com/de/blog-posts/blog-new-location",
@@ -70,17 +71,17 @@
           "inLanguage": "de"
         },
         {
+          "inLanguage": "de",
           "@type": "BlogPosting",
           "@id": "https://axcentdance.com/de/blog-posts/new-location-zurich#article",
           "isPartOf": { "@id": "https://axcentdance.com/de/blog-posts/new-location-zurich#webpage" },
           "headline": "Wir ziehen um! Neues Studio in Zürich Altstetten",
           "datePublished": "2025-12-21",
           "dateModified": "2026-03-16",
-          "author": {
-              "@type": "Person",
-              "name": "Ale & Xidan",
-              "url": "https://axcentdance.com/de/about"
-          },
+          "author": [
+          { "@id": "https://axcentdance.com/#person1" },
+          { "@id": "https://axcentdance.com/#person2" }
+        ],
           "publisher": {
               "@type": "Organization",
               "name": "AXcent Dance",
@@ -90,7 +91,12 @@
               }
           },
           "description": "AXcent Dance Studio zieht an einen neuen 138qm Standort in Zürich Altstetten.",
-          "image": "https://axcentdance.com/assets/images/hero_new.webp",
+          "image": {
+            "@type": "ImageObject",
+            "url": "https://axcentdance.com/assets/images/hero_new.webp",
+            "width": 1024,
+            "height": 768
+          },
           "mainEntityOfPage": { "@id": "https://axcentdance.com/de/blog-posts/new-location-zurich#webpage" }
         },
         {

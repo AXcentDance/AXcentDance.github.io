@@ -109,36 +109,49 @@
 
   <!-- Cookie Consent -->
 
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-E2SYCF7R7X"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-
-    gtag('config', 'G-E2SYCF7R7X');
-  </script>
-  
-  
-<script type="application/ld+json">
+    <!-- Structured Data (@graph) -->
+    <script type="application/ld+json">
     {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
+      "@context": "https://schema.org",
+      "@graph": [
         {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Home",
-            "item": "https://axcentdance.com/"
+          "@type": "WebPage",
+          "@id": "https://axcentdance.com/gallery#webpage",
+          "url": "https://axcentdance.com/gallery",
+          "name": "Gallery | AXcent Dance Zurich",
+          "isPartOf": { "@id": "https://axcentdance.com/#website" },
+          "description": "See the AXcent Dance community in action. Photos and videos from our Bachata classes, socials, and events in Zurich."
         },
         {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "Gallery",
-            "item": "https://axcentdance.com/gallery"
+          "@type": "BreadcrumbList",
+          "@id": "https://axcentdance.com/gallery#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://axcentdance.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Gallery",
+              "item": "https://axcentdance.com/gallery"
+            }
+          ]
         }
-    ]
-}
+      ]
+    }
+    </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-E2SYCF7R7X"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-E2SYCF7R7X');
     </script>
 </head>
 

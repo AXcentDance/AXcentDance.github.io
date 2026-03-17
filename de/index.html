@@ -78,6 +78,7 @@
         },
         {
           "@type": "VideoObject",
+          "inLanguage": "de",
           "name": "Bachata Kurse Zürich | AXcent Dance",
           "description": "Erlebe die Energie unserer Bachata-Kurse in Zürich. Werde Teil unserer Community und lerne Tanzen mit internationalen Lehrern.",
           "thumbnailUrl": "https://axcentdance.com/assets/images/hero-poster.webp",
@@ -95,6 +96,20 @@
           "about": { "@id": "https://axcentdance.com/#organization" },
           "description": "Besuchen Sie die beste Bachata-Tanzschule in Zürich. Wir bieten Bachata Sensual, Dominican Bachata und Salsa-Kurse für alle Niveaus an der Hermetschloostrasse 73.",
           "inLanguage": "de"
+        },
+        {
+          "@id": "https://axcentdance.com/#person1",
+          "@type": "Person",
+          "name": "Alessandro Slamitz",
+          "jobTitle": "Co-Founder",
+          "sameAs": ["https://www.instagram.com/aleyxidan/"]
+        },
+        {
+          "@id": "https://axcentdance.com/#person2",
+          "@type": "Person",
+          "name": "Xidan",
+          "jobTitle": "Co-Founder",
+          "sameAs": ["https://www.instagram.com/aleyxidan/"]
         },
         {
           "@type": "LocalBusiness",
@@ -170,81 +185,14 @@
                     }
                   }
                 ]
-              },
-              {
-                "@type": "OfferCatalog",
-                "name": "Personal Coaching",
-                "itemListElement": [
-                  {
-                    "@type": "Offer",
-                    "itemOffered": {
-                      "@type": "Service",
-                      "name": "Bachata Privatstunden",
-                      "url": "https://axcentdance.com/de/private-lessons"
-                    }
-                  }
-                ]
-              },
-              {
-                "@type": "OfferCatalog",
-                "name": "Besondere Anlässe",
-                "itemListElement": [
-                  {
-                    "@type": "Offer",
-                    "itemOffered": {
-                      "@type": "Service",
-                      "name": "Hochzeitstanz",
-                      "url": "https://axcentdance.com/de/wedding-dance"
-                    }
-                  }
-                ]
-              },
-              {
-                "@type": "OfferCatalog",
-                "name": "Firmen-Leistungen",
-                "itemListElement": [
-                  {
-                    "@type": "Offer",
-                    "itemOffered": {
-                      "@type": "Service",
-                      "name": "Teambuilding & Firmenevents",
-                      "url": "https://axcentdance.com/de/corporate-events"
-                    }
-                  }
-                ]
               }
             ]
           },
-          "potentialAction": {
-            "@type": "ReserveAction",
-            "target": {
-              "@type": "EntryPoint",
-              "urlTemplate": "https://axcentdance.com/#contact",
-              "inLanguage": ["en","de"],
-              "actionPlatform": [
-                "http://schema.org/DesktopWebPlatform",
-                "http://schema.org/MobileWebPlatform"
-              ]
-            },
-            "result": {
-              "@type": "Reservation",
-              "name": "Kostenlose Probelektion buchen"
-            }
-          },
-          "knowsLanguage": ["en","de"],
-          "award": [
-            "Wertungsrichter bei der Schweizermeisterschaft",
-            "Organisator des Bachata Kongresses",
-            "Internationaler Bachata-Tanzkünstler"
+          "founder": [
+            { "@id": "https://axcentdance.com/#person1" },
+            { "@id": "https://axcentdance.com/#person2" }
           ],
-          "founder": {
-            "@type": "Person",
-            "@id": "https://axcentdance.com/#founder",
-            "name": "Alessandro Slamitz",
-            "jobTitle": "Gründer & Tanzlehrer",
-            "sameAs": ["https://www.instagram.com/aleyxidan/"],
-            "knowsAbout": ["Bachata", "Salsa", "Lateinamerikanischer Tanz", "Tanzunterricht"]
-          },
+          "knowsLanguage": ["en","de"],
           "knowsAbout": [
             "Bachata Tanz Zürich",
             "Tanz",
@@ -253,7 +201,6 @@
             "Salsa",
             "Lateinamerikanischer Tanz",
             "Social Dance Events"
-          ]
           ]
         },
         {
@@ -274,75 +221,7 @@
               "@type": "Answer",
               "text": "Ja, AXcent Dance ist eine englischsprachige Tanzschule in Zürich. Unsere internationalen Lehrer unterrichten alle Klassen auf Englisch – perfekt für Expats und Einheimische."
             }
-          }, {
-            "@type": "Question",
-            "name": "Ist es zu spät, als Erwachsener mit Tanzen anzufangen?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Es ist nie zu spät! Unsere Anfängerkurse für Erwachsene sind speziell für diejenigen konzipiert, die glauben, sie hätten \"zwei linke Füsse\". Wir erklären alles Schritt für Schritt."
-            }
-          }, {
-            "@type": "Question",
-            "name": "Kann ich jederzeit einsteigen?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Ja! Unsere Kurse laufen fortlaufend, sodass du jederzeit in unsere Drop-in Tanzkurse in Zürich einsteigen kannst. Buche einfach eine kostenlose Probelektion."
-            }
-          }, {
-            "@type": "Question",
-            "name": "Ist Bachata ein gutes Hobby für Erwachsene in Zürich?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Auf jeden Fall! Bachata ist eines der besten neuen Hobbys für Erwachsene in Zürich. Es ist eine tolle Möglichkeit, aktiv zu bleiben, neue Leute kennenzulernen und Selbstvertrauen aufzubauen — keine Erfahrung oder Partner nötig."
-            }
           }]
-        },
-        {
-          "@type": "ItemList",
-          "@id": "https://axcentdance.com/de/#courses",
-          "name": "Tanzkurse bei AXcent",
-          "itemListElement": [
-            {
-              "@type": "Course",
-              "position": 1,
-              "name": "Bachata Anfänger 1",
-              "description": "Verbessere deine Grundlagen und lerne Elemente des Sensual Styles.",
-              "provider": { "@id": "https://axcentdance.com/#organization" },
-              "url": "https://axcentdance.com/de/bachata-beginner-1"
-            },
-            {
-              "@type": "Course",
-              "position": 2,
-              "name": "Bachata Sensual Grundlagen",
-              "description": "Lerne die Technik und Körperbewegung des Bachata Sensual Stils.",
-              "provider": { "@id": "https://axcentdance.com/#organization" },
-              "url": "https://axcentdance.com/de/bachata-sensual-foundation"
-            },
-            {
-              "@type": "Course",
-              "position": 3,
-              "name": "Bachata Sensual Improver",
-              "description": "Verfeinere deine Fähigkeiten mit komplexen Bewegungen und Musikalität.",
-              "provider": { "@id": "https://axcentdance.com/#organization" },
-              "url": "https://axcentdance.com/de/bachata-sensual-improver"
-            },
-            {
-              "@type": "Course",
-              "position": 4,
-              "name": "Bachata Sensual Mittelstufe/Fortgeschritten",
-              "description": "Komplexe Figuren und fortgeschrittene Technik für erfahrene Tänzer.",
-              "provider": { "@id": "https://axcentdance.com/#organization" },
-              "url": "https://axcentdance.com/de/bachata-sensual-inter-adv"
-            },
-            {
-              "@type": "Course",
-              "position": 5,
-              "name": "Bachata Lady Styling",
-              "description": "Arm-Styling, Körperbewegung und Footwork für Follower.",
-              "provider": { "@id": "https://axcentdance.com/#organization" },
-              "url": "https://axcentdance.com/de/lady-styling"
-            }
-          ]
         }
       ]
     }

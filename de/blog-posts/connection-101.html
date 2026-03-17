@@ -63,7 +63,8 @@
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "WebPage",
+        "inLanguage": "de",
+          "@type": "WebPage",
         "@id": "https://axcentdance.com/de/blog-posts/connection-101#webpage",
         "url": "https://axcentdance.com/de/blog-posts/connection-101",
         "name": "Verbindung 101: Wie du dein Social Dancing verbesserst | AXcent Dance Blog",
@@ -72,17 +73,17 @@
         "inLanguage": "de"
       },
       {
-        "@type": "BlogPosting",
+        "inLanguage": "de",
+          "@type": "BlogPosting",
         "@id": "https://axcentdance.com/de/blog-posts/connection-101#article",
         "isPartOf": { "@id": "https://axcentdance.com/de/blog-posts/connection-101#webpage" },
         "headline": "Verbindung 101: Wie du dein Social Dancing verbesserst",
         "datePublished": "2025-12-07",
         "dateModified": "2026-03-10",
-        "author": {
-            "@type": "Person",
-            "name": "Ale & Xidan",
-            "url": "https://axcentdance.com/de/about"
-        },
+        "author": [
+          { "@id": "https://axcentdance.com/#person1" },
+          { "@id": "https://axcentdance.com/#person2" }
+        ],
         "publisher": {
             "@type": "Organization",
             "name": "AXcent Dance",
@@ -92,7 +93,12 @@
             }
         },
         "description": "Es geht nicht um die Figuren, es geht um das Gefühl. 3 einfache Tipps, um deine Verbindung mit jedem Partner sofort zu verbessern.",
-        "image": "https://axcentdance.com/assets/images/blog/connection-101.webp",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://axcentdance.com/assets/images/blog/connection-101.webp",
+            "width": 1024,
+            "height": 1024
+          },
         "mainEntityOfPage": { "@id": "https://axcentdance.com/de/blog-posts/connection-101#webpage" }
       },
       {

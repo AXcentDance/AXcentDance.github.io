@@ -100,22 +100,33 @@
     
 <script type="application/ld+json">
     {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://axcentdance.com/terms#webpage",
+      "url": "https://axcentdance.com/terms",
+      "name": "Terms and Conditions – AXcent Dance Zurich"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://axcentdance.com/terms#breadcrumb",
+      "itemListElement": [
         {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Home",
-            "item": "https://axcentdance.com/"
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://axcentdance.com/"
         },
         {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "Terms and Conditions \u2013 AXcent Dance Zurich",
-            "item": "https://axcentdance.com/terms"
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Terms and Conditions – AXcent Dance Zurich",
+          "item": "https://axcentdance.com/terms"
         }
-    ]
+      ]
+    }
+  ]
 }
     </script>
 </head>

@@ -63,6 +63,7 @@
       "@context": "https://schema.org",
       "@graph": [
         {
+          "inLanguage": "de",
           "@type": "WebPage",
           "@id": "https://axcentdance.com/de/blog-posts/christmas-break-2025#webpage",
           "url": "https://axcentdance.com/de/blog-posts/christmas-break-2025",
@@ -72,17 +73,17 @@
           "inLanguage": "de"
         },
         {
+          "inLanguage": "de",
           "@type": "BlogPosting",
           "@id": "https://axcentdance.com/de/blog-posts/christmas-break-2025#article",
           "isPartOf": { "@id": "https://axcentdance.com/de/blog-posts/christmas-break-2025#webpage" },
           "headline": "Weihnachtspause & Neue Saison 2025",
           "datePublished": "2025-12-16",
           "dateModified": "2026-03-10",
-          "author": {
-              "@type": "Person",
-              "name": "Ale & Xidan",
-              "url": "https://axcentdance.com/de/about"
-          },
+          "author": [
+          { "@id": "https://axcentdance.com/#person1" },
+          { "@id": "https://axcentdance.com/#person2" }
+        ],
           "publisher": {
               "@type": "Organization",
               "name": "AXcent Dance",
@@ -92,7 +93,12 @@
               }
           },
           "description": "AXcent Dance Studio Weihnachtspause und Informationen zur Wiedereröffnung für 2025.",
-          "image": "https://axcentdance.com/assets/images/christmas_break_2025.webp",
+          "image": {
+            "@type": "ImageObject",
+            "url": "https://axcentdance.com/assets/images/christmas_break_2025.webp",
+            "width": 1024,
+            "height": 1024
+          },
           "mainEntityOfPage": { "@id": "https://axcentdance.com/de/blog-posts/christmas-break-2025#webpage" }
         },
         {
