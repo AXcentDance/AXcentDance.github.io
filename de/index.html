@@ -66,229 +66,287 @@
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "LocalBusiness",
-      "additionalType": "https://schema.org/DanceSchool",
-      "@id": "https://axcentdance.com/#organization",
-      "name": "AXcent Dance",
-      "url": "https://axcentdance.com/",
-      "logo": "https://axcentdance.com/assets/images/logo.webp",
-      "image": "https://axcentdance.com/assets/images/hero_new.webp",
-      "description": "AXcent Dance ist eine Bachata-Tanzschule in Zürich Altstetten, die Bachata Sensual, Dominican Bachata, Salsa und Latin-Tanzkurse für alle Niveaus sowie Workshops und Social Events anbietet.",
-      "telephone": "+41799668481",
-
-      "email": "info@axcentdance.com",
-      "sameAs": [
-        "https://www.instagram.com/axcent_dance/",
-        "https://www.youtube.com/channel/UCfdgCx1Iot8XwdWJN6AJb-g",
-        "https://www.facebook.com/profile.php?id=61579290375546"
-      ],
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Hermetschloostrasse 73",
-        "addressLocality": "Zurich",
-        "addressRegion": "ZH",
-        "postalCode": "8048",
-        "addressCountry": "CH"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": 47.409,
-        "longitude": 8.494
-      },
-      "foundingDate": "2025",
-      "paymentAccepted": ["Cash", "Visa", "Mastercard", "Twint"],
-      "areaServed": { "@type": "Place", "name": "Zürich, Schweiz" },
-      "priceRange": "CHF 75+ / month",
-      "openingHoursSpecification": [
+      "@graph": [
         {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": "Sonntag",
-          "opens": "13:00",
-          "closes": "17:00"
+          "@type": "WebSite",
+          "@id": "https://axcentdance.com/#website",
+          "url": "https://axcentdance.com/",
+          "name": "AXcent Dance",
+          "description": "Premium Bachata Tanzschule in Zürich",
+          "publisher": { "@id": "https://axcentdance.com/#organization" },
+          "inLanguage": ["en", "de"]
         },
         {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": ["Monday","Dienstag","Mittwoch","Donnerstag","Freitag"],
-          "opens": "11:00",
-          "closes": "22:00"
-        }
-
-      ],
-
-      "offers": {
-        "@type": "Offer",
-        "name": "Gratis Bachata Probelektion",
-        "price": "0",
-        "priceCurrency": "CHF",
-        "url": "https://axcentdance.com/de/#trial-form",
-        "availability": "https://schema.org/InStock"
-      },
-      "potentialAction": {
-        "@type": "ReserveAction",
-        "target": {
-          "@type": "EntryPoint",
-          "urlTemplate": "https://axcentdance.com/#contact",
-          "inLanguage": ["en","de"],
-          "actionPlatform": [
-            "http://schema.org/DesktopWebPlatform",
-            "http://schema.org/MobileWebPlatform"
+          "@type": "VideoObject",
+          "name": "Bachata Kurse Zürich | AXcent Dance",
+          "description": "Erlebe die Energie unserer Bachata-Kurse in Zürich. Werde Teil unserer Community und lerne Tanzen mit internationalen Lehrern.",
+          "thumbnailUrl": "https://axcentdance.com/assets/images/hero-poster.webp",
+          "uploadDate": "2025-01-01",
+          "contentUrl": "https://axcentdance.com/assets/videos/HeroVideo_mobile.mp4",
+          "embedUrl": "https://axcentdance.com/de/",
+          "isPartOf": { "@id": "https://axcentdance.com/de/#webpage" }
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://axcentdance.com/de/#webpage",
+          "url": "https://axcentdance.com/de/",
+          "name": "Bachata Tanzschule Zürich Altstetten | AXcent Dance",
+          "isPartOf": { "@id": "https://axcentdance.com/#website" },
+          "about": { "@id": "https://axcentdance.com/#organization" },
+          "description": "Besuchen Sie die beste Bachata-Tanzschule in Zürich. Wir bieten Bachata Sensual, Dominican Bachata und Salsa-Kurse für alle Niveaus an der Hermetschloostrasse 73.",
+          "inLanguage": "de"
+        },
+        {
+          "@type": "LocalBusiness",
+          "additionalType": "https://schema.org/DanceSchool",
+          "@id": "https://axcentdance.com/#organization",
+          "name": "AXcent Dance",
+          "url": "https://axcentdance.com/de/",
+          "logo": "https://axcentdance.com/assets/images/logo.webp",
+          "image": "https://axcentdance.com/assets/images/hero_new.webp",
+          "description": "AXcent Dance ist eine Bachata-Tanzschule in Zürich Altstetten, die Bachata Sensual, Dominican Bachata, Salsa und Latin-Tanzkurse für alle Niveaus sowie Workshops und Social Events anbietet.",
+          "telephone": "+41799668481",
+          "email": "info@axcentdance.com",
+          "hasMap": "https://www.google.com/maps?cid=15680757943659417558",
+          "sameAs": [
+            "https://www.instagram.com/axcent_dance/",
+            "https://www.youtube.com/channel/UCfdgCx1Iot8XwdWJN6AJb-g",
+            "https://www.facebook.com/profile.php?id=61579290375546",
+            "https://www.google.com/maps?cid=15680757943659417558"
+          ],
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Hermetschloostrasse 73",
+            "addressLocality": "Zurich",
+            "addressRegion": "ZH",
+            "postalCode": "8048",
+            "addressCountry": "CH"
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 47.3941999,
+            "longitude": 8.4745859
+          },
+          "foundingDate": "2025",
+          "paymentAccepted": ["Cash", "Visa", "Mastercard", "Twint"],
+          "areaServed": { "@type": "Place", "name": "Zürich, Schweiz" },
+          "priceRange": "CHF 75+ / month",
+          "openingHoursSpecification": [
+            {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": "Sonntag",
+              "opens": "13:00",
+              "closes": "17:00"
+            },
+            {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": ["Monday","Dienstag","Mittwoch","Donnerstag","Freitag"],
+              "opens": "11:00",
+              "closes": "22:00"
+            }
+          ],
+          "offers": {
+            "@type": "Offer",
+            "name": "Gratis Bachata Probelektion",
+            "price": "0",
+            "priceCurrency": "CHF",
+            "url": "https://axcentdance.com/de/#trial-form",
+            "availability": "https://schema.org/InStock"
+          },
+          "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Tanz-Angebote",
+            "itemListElement": [
+              {
+                "@type": "OfferCatalog",
+                "name": "Bachata Kurse",
+                "itemListElement": [
+                  {
+                    "@type": "Offer",
+                    "itemOffered": {
+                      "@type": "Service",
+                      "name": "Bachata Gruppenkurse",
+                      "url": "https://axcentdance.com/de/schedule"
+                    }
+                  }
+                ]
+              },
+              {
+                "@type": "OfferCatalog",
+                "name": "Personal Coaching",
+                "itemListElement": [
+                  {
+                    "@type": "Offer",
+                    "itemOffered": {
+                      "@type": "Service",
+                      "name": "Bachata Privatstunden",
+                      "url": "https://axcentdance.com/de/private-lessons"
+                    }
+                  }
+                ]
+              },
+              {
+                "@type": "OfferCatalog",
+                "name": "Besondere Anlässe",
+                "itemListElement": [
+                  {
+                    "@type": "Offer",
+                    "itemOffered": {
+                      "@type": "Service",
+                      "name": "Hochzeitstanz",
+                      "url": "https://axcentdance.com/de/wedding-dance"
+                    }
+                  }
+                ]
+              },
+              {
+                "@type": "OfferCatalog",
+                "name": "Firmen-Leistungen",
+                "itemListElement": [
+                  {
+                    "@type": "Offer",
+                    "itemOffered": {
+                      "@type": "Service",
+                      "name": "Teambuilding & Firmenevents",
+                      "url": "https://axcentdance.com/de/corporate-events"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          "potentialAction": {
+            "@type": "ReserveAction",
+            "target": {
+              "@type": "EntryPoint",
+              "urlTemplate": "https://axcentdance.com/#contact",
+              "inLanguage": ["en","de"],
+              "actionPlatform": [
+                "http://schema.org/DesktopWebPlatform",
+                "http://schema.org/MobileWebPlatform"
+              ]
+            },
+            "result": {
+              "@type": "Reservation",
+              "name": "Kostenlose Probelektion buchen"
+            }
+          },
+          "knowsLanguage": ["en","de"],
+          "award": [
+            "Wertungsrichter bei der Schweizermeisterschaft",
+            "Organisator des Bachata Kongresses",
+            "Internationaler Bachata-Tanzkünstler"
+          ],
+          "founder": {
+            "@type": "Person",
+            "@id": "https://axcentdance.com/#founder",
+            "name": "Alessandro Slamitz",
+            "jobTitle": "Gründer & Tanzlehrer",
+            "sameAs": ["https://www.instagram.com/aleyxidan/"],
+            "knowsAbout": ["Bachata", "Salsa", "Lateinamerikanischer Tanz", "Tanzunterricht"]
+          },
+          "knowsAbout": [
+            "Bachata Tanz Zürich",
+            "Tanz",
+            "Bachata Sensual",
+            "Dominican Bachata",
+            "Salsa",
+            "Lateinamerikanischer Tanz",
+            "Social Dance Events"
+          ]
           ]
         },
-        "result": {
-          "@type": "Reservation",
-          "name": "Kostenlose Probelektion buchen"
-        }
-      },
-
-      "knowsLanguage": ["en","de"],
-
-      "award": [
-        "Wertungsrichter bei der Schweizermeisterschaft",
-        "Organisator des Bachata Kongresses",
-        "Internationaler Bachata-Tanzkünstler"
-      ],
-
-      "founder": {
-        "@type": "Person",
-        "name": "Alessandro Slamitz",
-        "jobTitle": "Gründer & Tanzlehrer",
-        "sameAs": ["https://www.instagram.com/aleyxidan/"]
-      },
-      "knowsAbout": [
-        "Bachata Dance Zurich",
-        "Bachata Kurse Zürich",
-        "Bachata Tanzkurse Zürich",
-        "Dance",
-        "Bachata Sensual",
-        "Dominican Bachata",
-        "Salsa",
-        "Latin Dance",
-        "Social Dance Events"
-      ]
-    }
-    </script>
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "ItemList",
-      "itemListElement": [
         {
-          "@type": "Course",
-          "position": 1,
-          "name": "Bachata Anfänger 1",
-          "description": "Verbessere deine Grundlagen und lerne Elemente des Sensual Styles.",
-          "provider": {
-            "@type": "Organization",
-            "name": "AXcent Dance",
-            "sameAs": "https://axcentdance.com"
-          },
-          "url": "https://axcentdance.com/de/bachata-beginner-1"
+          "@type": "FAQPage",
+          "@id": "https://axcentdance.com/de/#faq",
+          "isPartOf": { "@id": "https://axcentdance.com/de/#webpage" },
+          "mainEntity": [{
+            "@type": "Question",
+            "name": "Brauche ich einen Tanzpartner?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Nein, du brauchst keinen Partner! Die meisten Schüler kommen alleine. Wir wechseln die Partner im Unterricht, was der beste Weg ist, um schnell zu lernen und Leute kennenzulernen."
+            }
+          }, {
+            "@type": "Question",
+            "name": "Finden die Tanzkurse auf Englisch statt?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Ja, AXcent Dance ist eine englischsprachige Tanzschule in Zürich. Unsere internationalen Lehrer unterrichten alle Klassen auf Englisch – perfekt für Expats und Einheimische."
+            }
+          }, {
+            "@type": "Question",
+            "name": "Ist es zu spät, als Erwachsener mit Tanzen anzufangen?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Es ist nie zu spät! Unsere Anfängerkurse für Erwachsene sind speziell für diejenigen konzipiert, die glauben, sie hätten \"zwei linke Füsse\". Wir erklären alles Schritt für Schritt."
+            }
+          }, {
+            "@type": "Question",
+            "name": "Kann ich jederzeit einsteigen?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Ja! Unsere Kurse laufen fortlaufend, sodass du jederzeit in unsere Drop-in Tanzkurse in Zürich einsteigen kannst. Buche einfach eine kostenlose Probelektion."
+            }
+          }, {
+            "@type": "Question",
+            "name": "Ist Bachata ein gutes Hobby für Erwachsene in Zürich?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Auf jeden Fall! Bachata ist eines der besten neuen Hobbys für Erwachsene in Zürich. Es ist eine tolle Möglichkeit, aktiv zu bleiben, neue Leute kennenzulernen und Selbstvertrauen aufzubauen — keine Erfahrung oder Partner nötig."
+            }
+          }]
         },
         {
-          "@type": "Course",
-          "position": 2,
-          "name": "Bachata Anfänger 1",
-          "description": "Verbessere deine Grundlagen und lerne Elemente des Sensual Styles.",
-          "provider": {
-            "@type": "Organization",
-            "name": "AXcent Dance",
-            "sameAs": "https://axcentdance.com"
-          },
-          "url": "https://axcentdance.com/de/bachata-beginner-1"
-        },
-        {
-          "@type": "Course",
-          "position": 3,
-          "name": "Bachata Sensual Grundlagen",
-          "description": "Lerne die Technik und Körperbewegung des Bachata Sensual Stils.",
-          "provider": {
-            "@type": "Organization",
-            "name": "AXcent Dance",
-            "sameAs": "https://axcentdance.com"
-          },
-          "url": "https://axcentdance.com/de/bachata-sensual-foundation"
-        },
-        {
-          "@type": "Course",
-          "position": 4,
-          "name": "Bachata Sensual Improver",
-          "description": "Verfeinere deine Fähigkeiten mit komplexen Bewegungen und Musikalität.",
-          "provider": {
-            "@type": "Organization",
-            "name": "AXcent Dance",
-            "sameAs": "https://axcentdance.com"
-          },
-          "url": "https://axcentdance.com/de/bachata-sensual-improver"
-        },
-        {
-          "@type": "Course",
-          "position": 5,
-          "name": "Bachata Sensual Mittelstufe/Fortgeschritten",
-          "description": "Komplexe Figuren und fortgeschrittene Technik für erfahrene Tänzer.",
-          "provider": {
-            "@type": "Organization",
-            "name": "AXcent Dance",
-            "sameAs": "https://axcentdance.com"
-          },
-          "url": "https://axcentdance.com/de/bachata-sensual-inter-adv"
-        },
-        {
-          "@type": "Course",
-          "position": 5,
-          "name": "Bachata Lady Styling",
-          "description": "Arm-Styling, Körperbewegung und Footwork für Follower.",
-          "provider": {
-            "@type": "Organization",
-            "name": "AXcent Dance",
-            "sameAs": "https://axcentdance.com"
-          },
-          "url": "https://axcentdance.com/de/lady-styling"
+          "@type": "ItemList",
+          "@id": "https://axcentdance.com/de/#courses",
+          "name": "Tanzkurse bei AXcent",
+          "itemListElement": [
+            {
+              "@type": "Course",
+              "position": 1,
+              "name": "Bachata Anfänger 1",
+              "description": "Verbessere deine Grundlagen und lerne Elemente des Sensual Styles.",
+              "provider": { "@id": "https://axcentdance.com/#organization" },
+              "url": "https://axcentdance.com/de/bachata-beginner-1"
+            },
+            {
+              "@type": "Course",
+              "position": 2,
+              "name": "Bachata Sensual Grundlagen",
+              "description": "Lerne die Technik und Körperbewegung des Bachata Sensual Stils.",
+              "provider": { "@id": "https://axcentdance.com/#organization" },
+              "url": "https://axcentdance.com/de/bachata-sensual-foundation"
+            },
+            {
+              "@type": "Course",
+              "position": 3,
+              "name": "Bachata Sensual Improver",
+              "description": "Verfeinere deine Fähigkeiten mit komplexen Bewegungen und Musikalität.",
+              "provider": { "@id": "https://axcentdance.com/#organization" },
+              "url": "https://axcentdance.com/de/bachata-sensual-improver"
+            },
+            {
+              "@type": "Course",
+              "position": 4,
+              "name": "Bachata Sensual Mittelstufe/Fortgeschritten",
+              "description": "Komplexe Figuren und fortgeschrittene Technik für erfahrene Tänzer.",
+              "provider": { "@id": "https://axcentdance.com/#organization" },
+              "url": "https://axcentdance.com/de/bachata-sensual-inter-adv"
+            },
+            {
+              "@type": "Course",
+              "position": 5,
+              "name": "Bachata Lady Styling",
+              "description": "Arm-Styling, Körperbewegung und Footwork für Follower.",
+              "provider": { "@id": "https://axcentdance.com/#organization" },
+              "url": "https://axcentdance.com/de/lady-styling"
+            }
+          ]
         }
       ]
     }
-    </script>
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [{
-        "@type": "Question",
-        "name": "Brauche ich einen Tanzpartner?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Nein, du brauchst keinen Partner! Die meisten Schüler kommen alleine. Wir wechseln die Partner im Unterricht, was der beste Weg ist, um schnell zu lernen und Leute kennenzulernen."
-        }
-      }, {
-        "@type": "Question",
-        "name": "Finden die Tanzkurse auf Englisch statt?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Ja, AXcent Dance ist eine englischsprachige Tanzschule in Zürich. Unsere internationalen Lehrer unterrichten alle Klassen auf Englisch – perfekt für Expats und Einheimische."
-        }
-      }, {
-        "@type": "Question",
-        "name": "Ist es zu spät, als Erwachsener mit Tanzen anzufangen?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Es ist nie zu spät! Unsere Anfängerkurse für Erwachsene sind speziell für diejenigen konzipiert, die glauben, sie hätten \"zwei linke Füsse\". Wir erklären alles Schritt für Schritt."
-        }
-      }, {
-        "@type": "Question",
-        "name": "Kann ich jederzeit einsteigen?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Ja! Unsere Kurse laufen fortlaufend, sodass du jederzeit in unsere Drop-in Tanzkurse in Zürich einsteigen kannst. Buche einfach eine kostenlose Probelektion."
-        }
-      }, {
-        "@type": "Question",
-        "name": "Ist Bachata ein gutes Hobby für Erwachsene in Zürich?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Auf jeden Fall! Bachata ist eines der besten neuen Hobbys für Erwachsene in Zürich. Es ist eine tolle Möglichkeit, aktiv zu bleiben, neue Leute kennenzulernen und Selbstvertrauen aufzubauen — keine Erfahrung oder Partner nötig."
-        }
-      }]
-    }
-    </script>
+  </script>
 
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-E2SYCF7R7X"></script>
@@ -344,7 +402,7 @@
         <a href="/de/#trial-form" class="btn-header-cta">Probelektion</a>
       </nav>
       <div class="lang-switch">
-          <a href="../index">EN</a>
+          <a href="../">EN</a>
           <span class="divider">|</span>
           <span class="active">DE</span>
         </div>
@@ -1439,7 +1497,7 @@
       <div class="footer-map-wrapper-large"
         style="border-radius: 12px; overflow: hidden; border: 1px solid var(--glass-border);">
         <iframe title="Google Maps Standort von AXcent Dance"
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2701.567677685764!2d8.4844443!3d47.3861111!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47900a3910000001%3A0x1234567890abcdef!2sHermetschloostrasse%2073%2C%208048%20Z%C3%BCrich!5e0!3m2!1sen!2sch!4v1625000000000!5m2!1sen!2sch&hl=de"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2701.365!2d8.472010!3d47.394204!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47900b995a7d8e03%3A0xd99d3e4500b44fd6!2sAXcent%20Dance%20%7C%20Bachata%20Classes!5e0!3m2!1sen!2sch!4v1710680000000!5m2!1sde!2sch&hl=de"
           width="100%" height="250" style="border:0; width: 100%; display: block;" allowfullscreen="" loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>

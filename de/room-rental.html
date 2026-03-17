@@ -57,54 +57,88 @@
         gtag('config', 'G-E2SYCF7R7X');
     </script>
 
+    <!-- Structured Data (Schema.org) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [{
-        "@type": "Question",
-        "name": "Kann ich den Raum für private Partys mieten?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Ja, unser Studio eignet sich perfekt für Geburtstage, Workshops und private Events. Kontaktiere uns für Preise."
-        }
-      }, {
-        "@type": "Question",
-        "name": "Welches Equipment ist inklusive?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Die Miete beinhaltet das Soundsystem, Spiegel und die Grundbeleuchtung. Weiteres Equipment kann angefragt werden."
-        }
-      }, {
-        "@type": "Question",
-        "name": "Gibt es Parkplätze?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Ja, es gibt Parkplätze direkt an der gleichen Strasse wie die Schule. Der öffentliche Verkehr (Tram 2, Bus 31) ist zudem nur 2 Gehminuten entfernt."
-        }
-      }]
-    }
-    </script>
-
-    <script type="application/ld+json">
-    {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
+      "@graph": [
         {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Startseite",
-            "item": "https://axcentdance.com/de/"
+          "@type": "WebPage",
+          "@id": "https://axcentdance.com/de/room-rental#webpage",
+          "url": "https://axcentdance.com/de/room-rental",
+          "name": "Tanzraum mieten Zürich | 138qm Saal in Altstetten",
+          "isPartOf": { "@id": "https://axcentdance.com/#website" },
+          "description": "Tanzraum mieten in Zürich Altstetten für Kurse, Events oder Proben. 138qm Spiegelsaal, Top-Sound und zentrale Lage.",
+          "inLanguage": "de"
         },
         {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "Tanzraum mieten Z\u00fcrich",
-            "item": "https://axcentdance.com/de/room-rental"
+          "@type": "LocalBusiness",
+          "@id": "https://axcentdance.com/#organization",
+          "name": "AXcent Dance",
+          "url": "https://axcentdance.com/de/",
+          "telephone": "+41799668481",
+          "hasMap": "https://www.google.com/maps?cid=15680757943659417558",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Hermetschloostrasse 73",
+            "addressLocality": "Zurich",
+            "addressRegion": "ZH",
+            "postalCode": "8048",
+            "addressCountry": "CH"
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 47.3941999,
+            "longitude": 8.4745859
+          }
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://axcentdance.com/de/room-rental#faq",
+          "isPartOf": { "@id": "https://axcentdance.com/de/room-rental#webpage" },
+          "mainEntity": [{
+            "@type": "Question",
+            "name": "Kann ich den Raum für private Partys mieten?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Ja, unser Studio eignet sich perfekt für Geburtstage, Workshops und private Events. Kontaktiere uns für Preise."
+            }
+          }, {
+            "@type": "Question",
+            "name": "Welches Equipment ist inklusive?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Die Miete beinhaltet das Soundsystem, Spiegel und die Grundbeleuchtung. Weiteres Equipment kann angefragt werden."
+            }
+          }, {
+            "@type": "Question",
+            "name": "Gibt es Parkplätze?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Ja, es gibt Parkplätze direkt an der gleichen Strasse wie die Schule. Der öffentliche Verkehr (Tram 2, Bus 31) ist zudem nur 2 Gehminuten entfernt."
+            }
+          }]
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://axcentdance.com/de/room-rental#breadcrumb",
+          "itemListElement": [
+              {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Startseite",
+                  "item": "https://axcentdance.com/de/"
+              },
+              {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "Tanzraum mieten Zürich",
+                  "item": "https://axcentdance.com/de/room-rental"
+              }
+          ]
         }
-    ]
-}
+      ]
+    }
     </script>
 </head>
 
@@ -545,7 +579,7 @@
             <div class="footer-map-wrapper-large"
                 style="border-radius: 12px; overflow: hidden; border: 1px solid var(--glass-border);">
                 <iframe title="Google Maps Standort von AXcent Dance"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2701.567677685764!2d8.4844443!3d47.3861111!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47900a3910000001%3A0x1234567890abcdef!2sHermetschloostrasse%2073%2C%208048%20Z%C3%BCrich!5e0!3m2!1sen!2sch!4v1625000000000!5m2!1sen!2sch&hl=de"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2701.365!2d8.472010!3d47.394204!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47900b995a7d8e03%3A0xd99d3e4500b44fd6!2sAXcent%20Dance%20%7C%20Bachata%20Classes!5e0!3m2!1sen!2sch!4v1710680000000!5m2!1sde!2sch&hl=de"
                     width="100%" height="250" style="border:0; width: 100%; display: block;" allowfullscreen=""
                     loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>

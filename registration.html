@@ -23,67 +23,127 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "Register for Bachata Classes",
-      "description": "Registration for dance classes at AXcent Dance Studio in Zurich.",
-      "url": "https://axcentdance.com/registration",
-      "mainEntity": {
-        "@type": "Service",
-        "name": "Bachata Dance Classes",
-        "provider": {
-            "@type": "DanceSchool",
-            "name": "AXcent Dance"
+      "@graph": [
+        {
+          "@type": "WebPage",
+          "@id": "https://axcentdance.com/registration#webpage",
+          "url": "https://axcentdance.com/registration",
+          "name": "Register for Bachata Classes | Zurich Dance School | AXcent",
+          "isPartOf": { "@id": "https://axcentdance.com/#website" },
+          "about": { "@id": "https://axcentdance.com/#organization" },
+          "description": "Register for dance classes at AXcent Dance Studio in Zurich. Join our Bachata Sensual, Dominican, and Lady Styling courses."
         },
-        "areaServed": "Zurich",
-        "offers": {
-            "@type": "Offer",
-            "priceCurrency": "CHF",
-            "price": "200.00",
-            "availability": "https://schema.org/InStock"
+        {
+          "@type": "LocalBusiness",
+          "@id": "https://axcentdance.com/#organization",
+          "name": "AXcent Dance",
+          "url": "https://axcentdance.com/",
+          "telephone": "+41799668481",
+          "hasMap": "https://www.google.com/maps?cid=15680757943659417558",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Hermetschloostrasse 73",
+            "addressLocality": "Zurich",
+            "addressRegion": "ZH",
+            "postalCode": "8048",
+            "addressCountry": "CH"
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 47.3941999,
+            "longitude": 8.4745859
+          },
+          "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Dance Classes",
+            "itemListElement": [
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Bachata Dance Classes",
+                  "serviceType": "Dance Instruction",
+                  "description": "Structured Bachata classes in Zurich for all levels, including technique, connection, and musicality."
+                }
+              }
+            ]
+          }
+        },
+        {
+            "@type": "Service",
+            "name": "Bachata Dance Classes",
+            "serviceType": "Dance Instruction",
+            "provider": { "@id": "https://axcentdance.com/#organization" },
+            "areaServed": "Zurich",
+            "description": "Structured Bachata classes in Zurich for all levels.",
+            "offers": {
+                "@type": "Offer",
+                "priceCurrency": "CHF",
+                "price": "200.00",
+                "availability": "https://schema.org/InStock",
+                "url": "https://axcentdance.com/registration"
+            }
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://axcentdance.com/registration#faq",
+          "isPartOf": { "@id": "https://axcentdance.com/registration#webpage" },
+          "mainEntity": [{
+            "@type": "Question",
+            "name": "What payment methods do you accept?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "We accept Twint, Cash, and Bank Transfer. Payment details will be sent to you after registration."
+            }
+          }, {
+            "@type": "Question",
+            "name": "What if I miss a class? Can I catch up?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No worries! Life happens. You can make up one missed class due to sickness within your 8-week period by attending another class of your level (or lower). However, please note that if you have already declared two planned absences (e.g. for holidays) for a pro-rated price, a third makeup day is not possible. Just let us know in advance so we can check availability."
+            }
+          }, {
+            "@type": "Question",
+            "name": "Is the registration binding?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, registration secures your spot in the course. Please review our terms regarding cancellations."
+            }
+          }, {
+            "@type": "Question",
+            "name": "Do you offer trial classes?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes! You can book a free trial class for our beginner courses. Visit our home page or contact us to arrange one."
+            }
+          }, {
+            "@type": "Question",
+            "name": "Do we need to rotate partners if we come as a couple?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "While we usually encourage partner rotation because it helps everyone learn faster, it is completely optional! If you prefer to stay with your partner for the whole class, you are more than welcome to do so. It's your date night, after all."
+            }
+          }]
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://axcentdance.com/registration#breadcrumb",
+          "itemListElement": [
+              {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Home",
+                  "item": "https://axcentdance.com/"
+              },
+              {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "Bachata Prices & Registration",
+                  "item": "https://axcentdance.com/registration"
+              }
+          ]
         }
-      }
-    }
-    </script>
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [{
-        "@type": "Question",
-        "name": "What payment methods do you accept?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "We accept Twint, Cash, and Bank Transfer. Payment details will be sent to you after registration."
-        }
-      }, {
-        "@type": "Question",
-        "name": "What if I miss a class? Can I catch up?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "No worries! Life happens. You can make up one missed class due to sickness within your 8-week period by attending another class of your level (or lower). However, please note that if you have already declared two planned absences (e.g. for holidays) for a pro-rated price, a third makeup day is not possible. Just let us know in advance so we can check availability."
-        }
-      }, {
-        "@type": "Question",
-        "name": "Is the registration binding?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes, registration secures your spot in the course. Please review our terms regarding cancellations."
-        }
-      }, {
-        "@type": "Question",
-        "name": "Do you offer trial classes?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes! You can book a free trial class for our beginner courses. Visit our home page or contact us to arrange one."
-        }
-      }, {
-        "@type": "Question",
-        "name": "Do we need to rotate partners if we come as a couple?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "While we usually encourage partner rotation because it helps everyone learn faster, it is completely optional! If you prefer to stay with your partner for the whole class, you are more than welcome to do so. It's your date night, after all."
-        }
-      }]
+      ]
     }
     </script>
 
@@ -426,26 +486,7 @@
     </script>
 
     
-    <script type="application/ld+json">
-    {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-        {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Home",
-            "item": "https://axcentdance.com/"
-        },
-        {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "Bachata Prices & Registration",
-            "item": "https://axcentdance.com/registration"
-        }
-    ]
-}
-    </script>
+
 </head>
 
 <body>
@@ -1167,7 +1208,7 @@
             <div class="footer-map-wrapper-large"
                 style="border-radius: 12px; overflow: hidden; border: 1px solid var(--glass-border);">
                 <iframe title="Google Maps Location of AXcent Dance"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2701.567677685764!2d8.4844443!3d47.3861111!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47900a3910000001%3A0x1234567890abcdef!2sHermetschloostrasse%2073%2C%208048%20Z%C3%BCrich!5e0!3m2!1sen!2sch!4v1625000000000!5m2!1sen!2sch&hl=en"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2701.365!2d8.472010!3d47.394204!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47900b995a7d8e03%3A0xd99d3e4500b44fd6!2sAXcent%20Dance%20%7C%20Bachata%20Classes!5e0!3m2!1sen!2sch!4v1710680000000!5m2!1sen!2sch&hl=en"
                     width="100%" height="250" style="border:0; width: 100%; display: block;" allowfullscreen=""
                     loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>

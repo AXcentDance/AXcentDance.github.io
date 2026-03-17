@@ -46,123 +46,319 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "ItemList",
-      "itemListElement": [
+      "@graph": [
         {
-          "@type": "Course",
-          "position": 1,
-          "name": "Bachata Beginner 1",
-          "description": "Improve your foundation and learn Sensual style elements.",
-          "provider": {
-            "@type": "Organization",
-            "name": "AXcent Dance",
-            "sameAs": "https://axcentdance.com"
-          },
-          "url": "https://axcentdance.com/bachata-beginner-1"
+          "@type": "WebPage",
+          "@id": "https://axcentdance.com/schedule#webpage",
+          "url": "https://axcentdance.com/schedule",
+          "name": "Bachata Schedule Zurich | Weekly Dance Class Times | AXcent",
+          "isPartOf": { "@id": "https://axcentdance.com/#website" },
+          "about": { "@id": "https://axcentdance.com/#organization" },
+          "description": "Check this week's Bachata class schedule in Zurich Altstetten. 5 levels, Mon–Thu evenings. No partner needed. Find the perfect class for your level."
         },
         {
-          "@type": "Course",
-          "position": 2,
-          "name": "Bachata Beginner 1",
-          "description": "Improve your foundation and learn Sensual style elements.",
-          "provider": {
-            "@type": "Organization",
-            "name": "AXcent Dance",
-            "sameAs": "https://axcentdance.com"
+          "@type": "LocalBusiness",
+          "@id": "https://axcentdance.com/#organization",
+          "name": "AXcent Dance",
+          "url": "https://axcentdance.com/",
+          "telephone": "+41799668481",
+          "hasMap": "https://www.google.com/maps?cid=15680757943659417558",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Hermetschloostrasse 73",
+            "addressLocality": "Zurich",
+            "addressRegion": "ZH",
+            "postalCode": "8048",
+            "addressCountry": "CH"
           },
-          "url": "https://axcentdance.com/bachata-beginner-1"
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 47.3941999,
+            "longitude": 8.4745859
+          },
+          "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Dance Classes",
+            "itemListElement": [
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Bachata Classes",
+                  "serviceType": "Dance Instruction",
+                  "description": "Professional Bachata Sensual and Dominican Bachata classes for all levels in Zurich."
+                }
+              }
+            ]
+          }
         },
         {
-          "@type": "Course",
-          "position": 3,
-          "name": "Bachata Sensual Foundation",
-          "description": "Learn the technique and body movement of the Bachata Sensual style.",
-          "provider": {
-            "@type": "Organization",
-            "name": "AXcent Dance",
-            "sameAs": "https://axcentdance.com"
-          },
-          "url": "https://axcentdance.com/bachata-sensual-foundation"
+          "@type": "ItemList",
+          "@id": "https://axcentdance.com/schedule#itemlist",
+          "name": "Bachata Class Schedule",
+          "itemListElement": [
+            {
+              "@type": "Course",
+              "position": 1,
+              "name": "Bachata Beginner 1",
+              "description": "Improve your foundation and learn Sensual style elements.",
+              "provider": { "@id": "https://axcentdance.com/#organization" },
+              "url": "https://axcentdance.com/bachata-beginner-1",
+              "offers": [
+                {
+                  "@type": "Offer",
+                  "name": "Regular Pass",
+                  "price": "200.00",
+                  "priceCurrency": "CHF",
+                  "description": "8-week course pass"
+                },
+                {
+                  "@type": "Offer",
+                  "name": "Student Pass",
+                  "price": "170.00",
+                  "priceCurrency": "CHF",
+                  "description": "8-week course pass for students"
+                }
+              ],
+              "hasCourseInstance": {
+                "@type": "CourseInstance",
+                "courseMode": "Physical",
+                "location": { "@id": "https://axcentdance.com/#organization" },
+                "instructor": {
+                  "@type": "Person",
+                  "name": "Ale y Alexia"
+                },
+                "courseSchedule": {
+                  "@type": "Schedule",
+                  "repeatFrequency": "Weekly",
+                  "byDay": "https://schema.org/Tuesday",
+                  "startTime": "19:30",
+                  "endTime": "20:30"
+                }
+              }
+            },
+            {
+              "@type": "Course",
+              "position": 2,
+              "name": "Bachata Sensual Foundation",
+              "description": "Learn the technique and body movement of the Bachata Sensual style.",
+              "provider": { "@id": "https://axcentdance.com/#organization" },
+              "url": "https://axcentdance.com/bachata-sensual-foundation",
+              "offers": [
+                {
+                  "@type": "Offer",
+                  "name": "Regular Pass",
+                  "price": "200.00",
+                  "priceCurrency": "CHF",
+                  "description": "8-week course pass"
+                },
+                {
+                  "@type": "Offer",
+                  "name": "Student Pass",
+                  "price": "170.00",
+                  "priceCurrency": "CHF",
+                  "description": "8-week course pass for students"
+                }
+              ],
+              "hasCourseInstance": {
+                "@type": "CourseInstance",
+                "courseMode": "Physical",
+                "location": { "@id": "https://axcentdance.com/#organization" },
+                "instructor": {
+                  "@type": "Person",
+                  "name": "Ale y Xidan"
+                },
+                "courseSchedule": {
+                  "@type": "Schedule",
+                  "repeatFrequency": "Weekly",
+                  "byDay": "https://schema.org/Wednesday",
+                  "startTime": "19:30",
+                  "endTime": "20:30"
+                }
+              }
+            },
+            {
+              "@type": "Course",
+              "position": 3,
+              "name": "Bachata Sensual Improver",
+              "description": "Refine your skills with complex movements and musicality.",
+              "provider": { "@id": "https://axcentdance.com/#organization" },
+              "url": "https://axcentdance.com/bachata-sensual-improver",
+              "offers": [
+                {
+                  "@type": "Offer",
+                  "name": "Regular Pass",
+                  "price": "200.00",
+                  "priceCurrency": "CHF",
+                  "description": "8-week course pass"
+                },
+                {
+                  "@type": "Offer",
+                  "name": "Student Pass",
+                  "price": "170.00",
+                  "priceCurrency": "CHF",
+                  "description": "8-week course pass for students"
+                }
+              ],
+              "hasCourseInstance": {
+                "@type": "CourseInstance",
+                "courseMode": "Physical",
+                "location": { "@id": "https://axcentdance.com/#organization" },
+                "instructor": {
+                  "@type": "Person",
+                  "name": "Ale y Xidan"
+                },
+                "courseSchedule": {
+                  "@type": "Schedule",
+                  "repeatFrequency": "Weekly",
+                  "byDay": "https://schema.org/Wednesday",
+                  "startTime": "20:30",
+                  "endTime": "21:30"
+                }
+              }
+            },
+            {
+              "@type": "Course",
+              "position": 4,
+              "name": "Bachata Sensual Intermediate/Advanced",
+              "description": "Complex figures and advanced technique for experienced dancers.",
+              "provider": { "@id": "https://axcentdance.com/#organization" },
+              "url": "https://axcentdance.com/bachata-sensual-inter-adv",
+              "offers": [
+                {
+                  "@type": "Offer",
+                  "name": "Regular Pass",
+                  "price": "200.00",
+                  "priceCurrency": "CHF",
+                  "description": "8-week course pass"
+                },
+                {
+                  "@type": "Offer",
+                  "name": "Student Pass",
+                  "price": "170.00",
+                  "priceCurrency": "CHF",
+                  "description": "8-week course pass for students"
+                }
+              ],
+              "hasCourseInstance": {
+                "@type": "CourseInstance",
+                "courseMode": "Physical",
+                "location": { "@id": "https://axcentdance.com/#organization" },
+                "instructor": {
+                  "@type": "Person",
+                  "name": "Ale y Xidan"
+                },
+                "courseSchedule": {
+                  "@type": "Schedule",
+                  "repeatFrequency": "Weekly",
+                  "byDay": "https://schema.org/Thursday",
+                  "startTime": "20:30",
+                  "endTime": "21:30"
+                }
+              }
+            },
+            {
+              "@type": "Course",
+              "position": 5,
+              "name": "Bachata Lady Styling",
+              "description": "Arm styling, body movement, and footwork for followers.",
+              "provider": { "@id": "https://axcentdance.com/#organization" },
+              "url": "https://axcentdance.com/lady-styling",
+              "offers": [
+                {
+                  "@type": "Offer",
+                  "name": "Regular Pass",
+                  "price": "200.00",
+                  "priceCurrency": "CHF",
+                  "description": "8-week course pass"
+                },
+                {
+                  "@type": "Offer",
+                  "name": "Student Pass",
+                  "price": "170.00",
+                  "priceCurrency": "CHF",
+                  "description": "8-week course pass for students"
+                }
+              ],
+              "hasCourseInstance": {
+                "@type": "CourseInstance",
+                "courseMode": "Physical",
+                "location": { "@id": "https://axcentdance.com/#organization" },
+                "instructor": {
+                  "@type": "Person",
+                  "name": "Xidan"
+                },
+                "courseSchedule": {
+                  "@type": "Schedule",
+                  "repeatFrequency": "Weekly",
+                  "byDay": "https://schema.org/Thursday",
+                  "startTime": "19:30",
+                  "endTime": "20:30"
+                }
+              }
+            }
+          ]
         },
         {
-          "@type": "Course",
-          "position": 4,
-          "name": "Bachata Sensual Improver",
-          "description": "Refine your skills with complex movements and musicality.",
-          "provider": {
-            "@type": "Organization",
-            "name": "AXcent Dance",
-            "sameAs": "https://axcentdance.com"
-          },
-          "url": "https://axcentdance.com/bachata-sensual-improver"
+          "@type": "FAQPage",
+          "@id": "https://axcentdance.com/schedule#faq",
+          "isPartOf": { "@id": "https://axcentdance.com/schedule#webpage" },
+          "mainEntity": [{
+            "@type": "Question",
+            "name": "Do I need to start at the beginning of the month?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No! Our classes run continuously, so you can join anytime if you have previous experience. New beginners are encouraged to start at the beginning of a cycle or book a private intro session."
+            }
+          }, {
+            "@type": "Question",
+            "name": "What if I don't have a partner?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No problem at all! We rotate partners during class, so everyone dances with everyone. It's the best way to learn!"
+            }
+          }, {
+            "@type": "Question",
+            "name": "How do I know my level?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Check our Beginner Guide or ask our instructors during a trial class."
+            }
+          }, {
+            "@type": "Question",
+            "name": "What if I miss a class?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "We understand that life can get busy! If you miss a class, don't worry—you won't fall behind. We allow you to catch up by attending a similar level class on a different day within the same course period. Plus, if you know your dates in advance, you can let us know during registration, and we'll prorate the cost for pre-planned absences."
+            }
+          }, {
+            "@type": "Question",
+            "name": "Do we need to rotate partners if we come as a couple?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "While we usually encourage partner rotation because it helps everyone learn faster, it is completely optional! If you prefer to stay with your partner for the whole class, you are more than welcome to do so. It's your date night, after all."
+            }
+          }]
         },
         {
-          "@type": "Course",
-          "position": 5,
-          "name": "Bachata Sensual Intermediate/Advanced",
-          "description": "Complex figures and advanced technique for experienced dancers.",
-          "provider": {
-            "@type": "Organization",
-            "name": "AXcent Dance",
-            "sameAs": "https://axcentdance.com"
-          },
-          "url": "https://axcentdance.com/bachata-sensual-inter-adv"
-        },
-        {
-          "@type": "Course",
-          "position": 5,
-          "name": "Bachata Lady Styling",
-          "description": "Arm styling, body movement, and footwork for followers.",
-          "provider": {
-            "@type": "Organization",
-            "name": "AXcent Dance",
-            "sameAs": "https://axcentdance.com"
-          },
-          "url": "https://axcentdance.com/lady-styling"
+          "@type": "BreadcrumbList",
+          "@id": "https://axcentdance.com/schedule#breadcrumb",
+          "itemListElement": [
+              {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Home",
+                  "item": "https://axcentdance.com/"
+              },
+              {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "Bachata Schedule Zurich",
+                  "item": "https://axcentdance.com/schedule"
+              }
+          ]
         }
       ]
-    }
-    </script>
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [{
-        "@type": "Question",
-        "name": "Do I need to start at the beginning of the month?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "No! Our classes run continuously, so you can join anytime if you have previous experience. New beginners are encouraged to start at the beginning of a cycle or book a private intro session."
-        }
-      }, {
-        "@type": "Question",
-        "name": "What if I don't have a partner?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "No problem at all! We rotate partners during class, so everyone dances with everyone. It's the best way to learn!"
-        }
-      }, {
-        "@type": "Question",
-        "name": "How do I know my level?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Check our Beginner Guide or ask our instructors during a trial class."
-        }
-      }, {
-        "@type": "Question",
-        "name": "What if I miss a class?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "We understand that life can get busy! If you miss a class, don't worry—you won't fall behind. We allow you to catch up by attending a similar level class on a different day within the same course period. Plus, if you know your dates in advance, you can let us know during registration, and we'll prorate the cost for pre-planned absences."
-        }
-      }, {
-        "@type": "Question",
-        "name": "Do we need to rotate partners if we come as a couple?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "While we usually encourage partner rotation because it helps everyone learn faster, it is completely optional! If you prefer to stay with your partner for the whole class, you are more than welcome to do so. It's your date night, after all."
-        }
-      }]
     }
     </script>
 
@@ -454,26 +650,7 @@
     </script>
 
     
-    <script type="application/ld+json">
-    {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-        {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Home",
-            "item": "https://axcentdance.com/"
-        },
-        {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "Bachata Schedule Zurich",
-            "item": "https://axcentdance.com/schedule"
-        }
-    ]
-}
-    </script>
+
 </head>
 
 <body>
@@ -1003,7 +1180,7 @@
             <div class="footer-map-wrapper-large"
                 style="border-radius: 12px; overflow: hidden; border: 1px solid var(--glass-border);">
                 <iframe title="Google Maps Location of AXcent Dance"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2701.567677685764!2d8.4844443!3d47.3861111!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47900a3910000001%3A0x1234567890abcdef!2sHermetschloostrasse%2073%2C%208048%20Z%C3%BCrich!5e0!3m2!1sen!2sch!4v1625000000000!5m2!1sen!2sch&hl=en"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2701.365!2d8.472010!3d47.394204!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47900b995a7d8e03%3A0xd99d3e4500b44fd6!2sAXcent%20Dance%20%7C%20Bachata%20Classes!5e0!3m2!1sen!2sch!4v1710680000000!5m2!1sen!2sch&hl=en"
                     width="100%" height="250" style="border:0; width: 100%; display: block;" allowfullscreen=""
                     loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>

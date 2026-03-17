@@ -57,34 +57,91 @@
     <link rel="apple-touch-icon" href="/apple-touch-icon-v2.png">
     <link rel="icon" href="/favicon-v2.png" type="image/png">
 
-    <!-- Schema Markup -->
+    <!-- Structured Data (Schema.org) -->
     <script type="application/ld+json">
     {
-    "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    "headline": "Christmas Break & New Season 2025",
-    "datePublished": "2025-12-16",
-    "dateModified": "2026-03-10",
-    "author": {
-        "@type": "Person",
-        "name": "Ale & Xidan",
-        "url": "https://axcentdance.com/de/about"
-    },
-    "publisher": {
-        "@type": "Organization",
-        "name": "AXcent Dance",
-        "logo": {
-            "@type": "ImageObject",
-            "url": "https://axcentdance.com/assets/images/logo.webp"
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebPage",
+          "@id": "https://axcentdance.com/de/blog-posts/christmas-break-2025#webpage",
+          "url": "https://axcentdance.com/de/blog-posts/christmas-break-2025",
+          "name": "Weihnachtspause & Neue Saison 2025 | AXcent Dance Blog",
+          "isPartOf": { "@id": "https://axcentdance.com/#website" },
+          "description": "AXcent Dance Studio Weihnachtspause: 22. Dez - 11. Jan. Wiedereröffnung Montag, 12. Jan. Frohe Weihnachten und ein gutes neues Jahr!",
+          "inLanguage": "de"
+        },
+        {
+          "@type": "BlogPosting",
+          "@id": "https://axcentdance.com/de/blog-posts/christmas-break-2025#article",
+          "isPartOf": { "@id": "https://axcentdance.com/de/blog-posts/christmas-break-2025#webpage" },
+          "headline": "Weihnachtspause & Neue Saison 2025",
+          "datePublished": "2025-12-16",
+          "dateModified": "2026-03-10",
+          "author": {
+              "@type": "Person",
+              "name": "Ale & Xidan",
+              "url": "https://axcentdance.com/de/about"
+          },
+          "publisher": {
+              "@type": "Organization",
+              "name": "AXcent Dance",
+              "logo": {
+                  "@type": "ImageObject",
+                  "url": "https://axcentdance.com/assets/images/logo.webp"
+              }
+          },
+          "description": "AXcent Dance Studio Weihnachtspause und Informationen zur Wiedereröffnung für 2025.",
+          "image": "https://axcentdance.com/assets/images/christmas_break_2025.webp",
+          "mainEntityOfPage": { "@id": "https://axcentdance.com/de/blog-posts/christmas-break-2025#webpage" }
+        },
+        {
+          "@type": "LocalBusiness",
+          "@id": "https://axcentdance.com/#organization",
+          "name": "AXcent Dance",
+          "url": "https://axcentdance.com/de/",
+          "telephone": "+41799668481",
+          "hasMap": "https://www.google.com/maps?cid=15680757943659417558",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Hermetschloostrasse 73",
+            "addressLocality": "Zurich",
+            "addressRegion": "ZH",
+            "postalCode": "8048",
+            "addressCountry": "CH"
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 47.3941999,
+            "longitude": 8.4745859
+          }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://axcentdance.com/de/blog-posts/christmas-break-2025#breadcrumb",
+          "itemListElement": [
+              {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Startseite",
+                  "item": "https://axcentdance.com/de/"
+              },
+              {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "Blog",
+                  "item": "https://axcentdance.com/de/blog"
+              },
+              {
+                  "@type": "ListItem",
+                  "position": 3,
+                  "name": "Weihnachtspause & Neue Saison 2025",
+                  "item": "https://axcentdance.com/de/blog-posts/christmas-break-2025"
+              }
+          ]
         }
-    },
-    "description": "AXcent Dance Studio Christmas Break dates and re-opening information for 2025.",
-    "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "https://axcentdance.com/de/blog-posts/christmas-break-2025"
-    },
-    "image": "https://axcentdance.com/assets/images/christmas_break_2025.webp"
-}
+      ]
+    }
     </script>
     <style>
         .post-hero {
@@ -148,32 +205,7 @@
 
         gtag('config', 'G-E2SYCF7R7X');
     </script>
-    <script type="application/ld+json">
-    {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-        {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Startseite",
-            "item": "https://axcentdance.com/de/"
-        },
-        {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "Blog",
-            "item": "https://axcentdance.com/blog"
-        },
-        {
-            "@type": "ListItem",
-            "position": 3,
-            "name": "Weihnachtspause & Neue Saison 2025",
-            "item": "https://axcentdance.com/de/blog-posts/christmas-break-2025"
-        }
-    ]
-}
-    </script>
+
 </head>
 
 <body>
@@ -339,7 +371,7 @@
             <div class="footer-map-wrapper-large"
                 style="border-radius: 12px; overflow: hidden; border: 1px solid var(--glass-border);">
                 <iframe title="Google Maps Standort von AXcent Dance"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2701.567677685764!2d8.4844443!3d47.3861111!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47900a3910000001%3A0x1234567890abcdef!2sHermetschloostrasse%2073%2C%208048%20Z%C3%BCrich!5e0!3m2!1sen!2sch!4v1625000000000!5m2!1sen!2sch&hl=de"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2701.365!2d8.472010!3d47.394204!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47900b995a7d8e03%3A0xd99d3e4500b44fd6!2sAXcent%20Dance%20%7C%20Bachata%20Classes!5e0!3m2!1sen!2sch!4v1710680000000!5m2!1sde!2sch&hl=de"
                     width="100%" height="250" style="border:0; width: 100%; display: block;" allowfullscreen=""
                     loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
