@@ -38,7 +38,11 @@ You must create **two** files:
     *   Level 1: Home (`/`)
     *   Level 2: Blog (`/blog`)
     *   Level 3: Post Title (`/blog-posts/[slug]`)
-4.  **Schema Synchronization**: Whenever any factual information (Dates, Artists, Locations, etc.) is changed on a page, you MUST check and update the corresponding JSON-LD Schema to ensure it remains accurate and is not contradicting what is shown to the user.
+4.  **Schema Specifics (Mandatory)**: 
+    *   **inLanguage**: MUST include `"inLanguage": "en"` (for English posts) or `"inLanguage": "de"` (for German posts) in both the `WebPage` and `BlogPosting` entities. 
+    *   **Author**: MUST use the dual Person `@id` reference pattern (`[{"@id": "...#person1"}, {"@id": "...#person2"}]`).
+    *   **Image**: MUST use `ImageObject` with `width` and `height` properties, not a plain URL string.
+5.  **Schema Synchronization**: Whenever any factual information (Dates, Artists, Locations, etc.) is changed on a page, you MUST check and update the corresponding JSON-LD Schema to ensure it remains accurate and is not contradicting what is shown to the user.
 4.  **Automation**: After creating the HTML files, run the update scripts. These scripts handle internal link cleanup, image optimization discovery, and SEO date synchronization.
     ```bash
     # 1. Sync dateModified with file timestamp
