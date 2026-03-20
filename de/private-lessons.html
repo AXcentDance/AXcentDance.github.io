@@ -46,7 +46,7 @@
 
     <style>
         .private-hero {
-            padding: 160px 20px 80px;
+            padding:  60px 20px 80px;
             text-align: center;
             background: linear-gradient(to bottom, rgba(5, 2, 8, 0.8), var(--bg-main)), url('../assets/images/private_lesson_hero.webp') !important;
             background-size: cover;
@@ -193,126 +193,105 @@
     </script>
 
     <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      "@context": "https://schema.org",
-      "@graph": [
+      "@type": "WebPage",
+      "@id": "https://axcentdance.com/de/private-lessons#webpage",
+      "url": "https://axcentdance.com/de/private-lessons",
+      "name": "Private Bachata Stunden Zürich — 1-zu-1 Coaching | AXcent Dance",
+      "isPartOf": {
+        "@id": "https://axcentdance.com/#website"
+      },
+      "about": {
+        "@id": "https://axcentdance.com/#organization"
+      },
+      "description": "Erreiche deine Tanzziele schneller mit Bachata Privatunterricht in Zürich. Personal Coaching für Technik, Führung & Styling. Kein Partner nötig."
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
         {
-          "@type": "WebPage",
-          "@id": "https://axcentdance.com/de/private-lessons#webpage",
-          "url": "https://axcentdance.com/de/private-lessons",
-          "name": "Private Bachata Stunden Zürich — 1-zu-1 Coaching | AXcent Dance",
-          "isPartOf": { "@id": "https://axcentdance.com/#website" },
-          "about": { "@id": "https://axcentdance.com/#organization" },
-          "description": "Erreiche deine Tanzziele schneller mit Bachata Privatunterricht in Zürich. Personal Coaching für Technik, Führung & Styling. Kein Partner nötig."
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Startseite",
+          "item": "https://axcentdance.com/de/"
         },
         {
-          "@type": "LocalBusiness",
-          "@id": "https://axcentdance.com/#organization",
-          "name": "AXcent Dance",
-          "url": "https://axcentdance.com/de/",
-          "telephone": "+41799668481",
-          "hasMap": "https://www.google.com/maps?cid=15680757943659417558",
-          "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "Hermetschloostrasse 73",
-            "addressLocality": "Zurich",
-            "addressRegion": "ZH",
-            "postalCode": "8048",
-            "addressCountry": "CH"
-          },
-          "geo": {
-            "@type": "GeoCoordinates",
-            "latitude": 47.3941999,
-            "longitude": 8.4745859
-          },
-          "hasOfferCatalog": {
-            "@type": "OfferCatalog",
-            "name": "Tanzunterricht",
-            "itemListElement": [
-              {
-                "@type": "Offer",
-                "itemOffered": {
-                  "@type": "Service",
-                  "name": "Private Bachata Stunden",
-                  "serviceType": "Privater Tanzunterricht",
-                  "description": "Personalisiertes 1-zu-1 Bachata Coaching, zugeschnitten auf deine individuellen Ziele und dein Niveau."
-                }
-              }
-            ]
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Stundenplan",
+          "item": "https://axcentdance.com/de/schedule"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Privatstunden Tanzen Zürich",
+          "item": "https://axcentdance.com/de/private-lessons"
+        }
+      ],
+      "@id": "https://axcentdance.com/de/private-lessons#breadcrumb"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Brauche ich einen Tanzpartner?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Kein Partner erforderlich! Unsere Lehrer tanzen mit dir, sodass du dich voll und ganz auf deine eigene Technik konzentrieren kannst."
           }
         },
         {
-          "@type": "BreadcrumbList",
-          "itemListElement": [
-            {
-                "@type": "ListItem",
-                "position": 1,
-                "name": "Startseite",
-                "item": "https://axcentdance.com/de/"
-            },
-            {
-                "@type": "ListItem",
-                "position": 2,
-                "name": "Stundenplan",
-                "item": "https://axcentdance.com/de/schedule"
-            },
-            {
-                "@type": "ListItem",
-                "position": 3,
-                "name": "Privatstunden Tanzen Zürich",
-                "item": "https://axcentdance.com/de/private-lessons"
-            }
-          ]
+          "@type": "Question",
+          "name": "Können wir einen Hochzeitstanz vorbereiten?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Absolut. Wir sind darauf spezialisiert, wunderschöne, unvergessliche Hochzeits-Choreografien zu erstellen."
+          }
         },
         {
-          "@type": "FAQPage",
-          "mainEntity": [{
-            "@type": "Question",
-            "name": "Brauche ich einen Tanzpartner?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Kein Partner erforderlich! Unsere Lehrer tanzen mit dir, sodass du dich voll und ganz auf deine eigene Technik konzentrieren kannst."
-            }
-          }, {
-            "@type": "Question",
-            "name": "Können wir einen Hochzeitstanz vorbereiten?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Absolut. Wir sind darauf spezialisiert, wunderschöne, unvergessliche Hochzeits-Choreografien zu erstellen."
-            }
-          }, {
-            "@type": "Question",
-            "name": "Was soll ich anziehen?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Bequeme Kleidung, die Bewegung zulässt. Standard-Tanzschuhe oder saubere Hallenschuhe sind am besten."
-            }
-          }, {
-            "@type": "Question",
-            "name": "Wie viel kostet es?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Wir besprechen die Investition persönlich mit dir. Bitte fülle das Kontaktformular aus."
-            }
-          }, {
-            "@type": "Question",
-            "name": "Wo finden die Stunden statt?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Alle Privatstunden finden an unserer Home-Base statt: AXcent Dance Studio (Hermetschloostrasse 73, Zürich)."
-            }
-          }, {
-            "@type": "Question",
-            "name": "Wie sind die Stornierungsbedingungen?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Wir verstehen, dass sich Pläne ändern können. Bitte storniere mindestens 24 Stunden im Voraus, um die volle Gebühr zu vermeiden."
-            }
-          }]
+          "@type": "Question",
+          "name": "Was soll ich anziehen?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Bequeme Kleidung, die Bewegung zulässt. Standard-Tanzschuhe oder saubere Hallenschuhe sind am besten."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Wie viel kostet es?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Wir besprechen die Investition persönlich mit dir. Bitte fülle das Kontaktformular aus."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Wo finden die Stunden statt?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Alle Privatstunden finden an unserer Home-Base statt: AXcent Dance Studio (Hermetschloostrasse 73, Zürich)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Wie sind die Stornierungsbedingungen?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Wir verstehen, dass sich Pläne ändern können. Bitte storniere mindestens 24 Stunden im Voraus, um die volle Gebühr zu vermeiden."
+          }
         }
       ]
     }
+  ]
+}
     </script>
+
+  <!-- Centralized Global Schema (Org, School, LocalBusiness) -->
+  <script src="/assets/js/schema.js"></script>
 </head>
 
 <body>
@@ -371,6 +350,15 @@
     </header>
 
     <main>
+    <!-- Visual Breadcrumbs -->
+    <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+      <div class="container">
+        <ol class="breadcrumb-list">
+          <li class="breadcrumb-item"><a href="../" class="breadcrumb-link">Startseite</a></li><li class="breadcrumb-item active" aria-current="page">Private Bachata Stunden Zürich — 1-zu-1 Coaching</li>
+        </ol>
+      </div>
+    </nav>
+
         <!-- Hero Section -->
         <section class="head-hero relative-container"
             style="min-height: 80vh; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;">

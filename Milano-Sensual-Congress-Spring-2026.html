@@ -41,110 +41,129 @@
 
     <!-- Structured Data (Event & Breadcrumbs) -->
     <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      "@context": "https://schema.org",
-      "@graph": [
+      "@type": "WebPage",
+      "@id": "https://axcentdance.com/Milano-Sensual-Congress-Spring-2026#webpage",
+      "url": "https://axcentdance.com/Milano-Sensual-Congress-Spring-2026",
+      "name": "Milano Sensual Congress 2026 | Spring Edition | AXcent Dance",
+      "isPartOf": {
+        "@id": "https://axcentdance.com/#website"
+      },
+      "description": "Join AXcent Dance at the Milano Sensual Congress 2026 Spring Edition in May. Join the Zurich group for this exclusive spring Bachata experience."
+    },
+    {
+      "@type": "EventSeries",
+      "@id": "https://axcentdance.com/events#msc-series",
+      "name": "Milano Sensual Congress",
+      "url": "https://milanosensualcongress.com",
+      "description": "The premier annual Bachata Sensual congress in Italy, bringing together top international artists for workshops and social dancing in Milan.",
+      "location": {
+        "@type": "Place",
+        "name": "Milan, Italy",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Milan",
+          "addressCountry": "IT"
+        }
+      },
+      "organizer": {
+        "@type": "Organization",
+        "name": "AXcent Dance",
+        "url": "https://axcentdance.com"
+      }
+    },
+    {
+      "@type": "Event",
+      "@id": "https://axcentdance.com/Milano-Sensual-Congress-Spring-2026#event",
+      "name": "Milano Sensual Congress Spring Edition 2026",
+      "startDate": "2026-05-15T18:00",
+      "endDate": "2026-05-17T22:00",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "superEvent": {
+        "@id": "https://axcentdance.com/events#msc-series"
+      },
+      "location": {
+        "@type": "Place",
+        "name": "Unamas Club",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Via Adamello, 21",
+          "addressLocality": "Bareggio",
+          "addressRegion": "MI",
+          "postalCode": "20010",
+          "addressCountry": "IT"
+        }
+      },
+      "url": "https://axcentdance.com/Milano-Sensual-Congress-Spring-2026",
+      "image": [
+        "https://axcentdance.com/assets/images/MilanoSensualCongressSpring2026.webp"
+      ],
+      "description": "The Milano Sensual Congress Spring Edition 2026. Join the Zurich group for an unforgettable spring weekend of Bachata in Milan.",
+      "offers": {
+        "@type": "Offer",
+        "url": "https://lasalsadelbaile.com/MSC2026Spring/AleXidan",
+        "price": "110",
+        "priceCurrency": "EUR",
+        "availability": "https://schema.org/InStock",
+        "validFrom": "2025-01-01"
+      },
+      "performer": [
         {
-          "@type": "WebPage",
-          "@id": "https://axcentdance.com/Milano-Sensual-Congress-Spring-2026#webpage",
-          "url": "https://axcentdance.com/Milano-Sensual-Congress-Spring-2026",
-          "name": "Milano Sensual Congress 2026 | Spring Edition | AXcent Dance",
-          "isPartOf": { "@id": "https://axcentdance.com/#website" },
-          "description": "Join AXcent Dance at the Milano Sensual Congress 2026 Spring Edition in May. Join the Zurich group for this exclusive spring Bachata experience."
+          "@type": "Person",
+          "name": "Melvin y Gatika"
         },
         {
-          "@type": "EventSeries",
-          "@id": "https://axcentdance.com/events#msc-series",
-          "name": "Milano Sensual Congress",
-          "url": "https://milanosensualcongress.com",
-          "description": "The premier annual Bachata Sensual congress in Italy, bringing together top international artists for workshops and social dancing in Milan.",
-          "location": {
-            "@type": "Place",
-            "name": "Milan, Italy",
-            "address": {
-              "@type": "PostalAddress",
-              "addressLocality": "Milan",
-              "addressCountry": "IT"
-            }
-          },
-          "organizer": {
-            "@type": "Organization",
-            "name": "AXcent Dance",
-            "url": "https://axcentdance.com"
-          }
+          "@type": "Person",
+          "name": "Cristian y Gabriella"
         },
         {
-          "@type": "Event",
-          "@id": "https://axcentdance.com/Milano-Sensual-Congress-Spring-2026#event",
-          "name": "Milano Sensual Congress Spring Edition 2026",
-          "startDate": "2026-05-15T18:00",
-          "endDate": "2026-05-17T22:00",
-          "eventStatus": "https://schema.org/EventScheduled",
-          "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-          "superEvent": { "@id": "https://axcentdance.com/events#msc-series" },
-          "location": {
-            "@type": "Place",
-            "name": "Unamas Club",
-            "address": {
-              "@type": "PostalAddress",
-              "streetAddress": "Via Adamello, 21",
-              "addressLocality": "Bareggio",
-              "addressRegion": "MI",
-              "postalCode": "20010",
-              "addressCountry": "IT"
-            }
-          },
-          "url": "https://axcentdance.com/Milano-Sensual-Congress-Spring-2026",
-          "image": [
-            "https://axcentdance.com/assets/images/MilanoSensualCongressSpring2026.webp"
-          ],
-          "description": "The Milano Sensual Congress Spring Edition 2026. Join the Zurich group for an unforgettable spring weekend of Bachata in Milan.",
-          "offers": {
-            "@type": "Offer",
-            "url": "https://lasalsadelbaile.com/MSC2026Spring/AleXidan",
-            "price": "110",
-            "priceCurrency": "EUR",
-            "availability": "https://schema.org/InStock",
-            "validFrom": "2025-01-01"
-          },
-          "performer": [
-            { "@type": "Person", "name": "Melvin y Gatika" },
-            { "@type": "Person", "name": "Cristian y Gabriella" },
-            { "@type": "Person", "name": "Irene y Tomas" },
-            { "@type": "Person", "name": "Marco y Valeria" },
-            { "@type": "Person", "name": "Ale y Xidan" }
-          ],
-          "organizer": {
-            "@type": "Organization",
-            "name": "AXcent Dance",
-            "url": "https://axcentdance.com"
-          }
+          "@type": "Person",
+          "name": "Irene y Tomas"
         },
         {
-          "@type": "BreadcrumbList",
-          "@id": "https://axcentdance.com/Milano-Sensual-Congress-Spring-2026#breadcrumb",
-          "itemListElement": [
-            {
-              "@type": "ListItem",
-              "position": 1,
-              "name": "Home",
-              "item": "https://axcentdance.com/"
-            },
-            {
-              "@type": "ListItem",
-              "position": 2,
-              "name": "Milano Sensual Congress Spring Edition",
-              "item": "https://axcentdance.com/Milano-Sensual-Congress-Spring-2026"
-            }
-          ]
+          "@type": "Person",
+          "name": "Marco y Valeria"
+        },
+        {
+          "@type": "Person",
+          "name": "Ale y Xidan"
+        }
+      ],
+      "organizer": {
+        "@type": "Organization",
+        "name": "AXcent Dance",
+        "url": "https://axcentdance.com"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://axcentdance.com/Milano-Sensual-Congress-Spring-2026#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://axcentdance.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Milano Sensual Congress Spring Edition",
+          "item": "https://axcentdance.com/Milano-Sensual-Congress-Spring-2026"
         }
       ]
     }
+  ]
+}
     </script>
 
     <style>
         .event-hero {
-            padding: 160px 20px 60px;
+            padding:  60px 20px 60px;
             text-align: center;
         }
 
@@ -325,6 +344,9 @@
             }
         }
     </style>
+
+  <!-- Centralized Global Schema (Org, School, LocalBusiness) -->
+  <script src="/assets/js/schema.js"></script>
 </head>
 
 <body>
@@ -380,6 +402,16 @@
     </header>
 
     <main>
+        <!-- Visual Breadcrumbs -->
+        <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+            <div class="container">
+                <ol class="breadcrumb-list">
+                    <li class="breadcrumb-item"><a href="./" class="breadcrumb-link">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Milano Sensual Congress Spring</li>
+                </ol>
+            </div>
+        </nav>
+
         <section class="event-hero">
             <div class="container">
                 <h1 class="page-title">

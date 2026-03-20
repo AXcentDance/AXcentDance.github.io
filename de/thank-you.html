@@ -182,14 +182,17 @@
     </script>
     
     <script type="application/ld+json">
-    {
+{
   "@context": "https://schema.org",
   "@graph": [
     {
       "@type": "WebPage",
       "@id": "https://axcentdance.com/de/thank-you#webpage",
       "url": "https://axcentdance.com/de/thank-you",
-      "name": "Danke – AXcent Dance"
+      "name": "Danke – AXcent Dance",
+      "isPartOf": {
+        "@id": "https://axcentdance.com/#website"
+      }
     },
     {
       "@type": "BreadcrumbList",
@@ -212,6 +215,9 @@
   ]
 }
     </script>
+
+  <!-- Centralized Global Schema (Org, School, LocalBusiness) -->
+  <script src="/assets/js/schema.js"></script>
 </head>
 
 <body>
@@ -270,6 +276,15 @@
     </header>
 
     <main>
+    <!-- Visual Breadcrumbs -->
+    <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+      <div class="container">
+        <ol class="breadcrumb-list">
+          <li class="breadcrumb-item"><a href="../" class="breadcrumb-link">Startseite</a></li><li class="breadcrumb-item active" aria-current="page">Danke – AXcent Dance</li>
+        </ol>
+      </div>
+    </nav>
+
         <section class="thank-you-section">
             <div class="thank-you-content">
                 <h1 class="thank-you-title">Danke!</h1>

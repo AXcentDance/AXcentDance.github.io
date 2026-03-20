@@ -67,64 +67,87 @@
 
     <!-- Structured Data (@graph) -->
     <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      "@context": "https://schema.org",
-      "@graph": [
-        {
-          "inLanguage": "en",
-          "@type": "WebPage",
-          "@id": "https://axcentdance.com/blog-posts/salsa-vs-bachata#webpage",
-          "url": "https://axcentdance.com/blog-posts/salsa-vs-bachata",
-          "name": "Salsa vs Bachata: Key Differences Every Dancer Should Know",
-          "isPartOf": { "@id": "https://axcentdance.com/#website" },
-          "description": "Salsa vs Bachata — what is the difference? Compare music, rhythm, and dance style. Find out why most dancers learn both for the complete Latin experience."
-        },
-        {
-          "inLanguage": "en",
-          "@type": "BlogPosting",
-          "@id": "https://axcentdance.com/blog-posts/salsa-vs-bachata#article",
-          "headline": "Salsa vs Bachata: Key Differences Every Dancer Should Know",
-          "description": "A comprehensive comparison of Salsa and Bachata covering music, rhythm, dance technique, and cultural origins.",
-          "image": {
-            "inLanguage": "en",
-          "@type": "ImageObject",
-            "url": "https://axcentdance.com/assets/images/blog/salsa_vs_bachata_hero.webp",
-            "width": 1024,
-            "height": 1024
-          },
-          "author": [
-          { "@id": "https://axcentdance.com/#person1" },
-          { "@id": "https://axcentdance.com/#person2" }
-        ],
-          "publisher": {
-            "@type": "Organization",
-            "name": "AXcent Dance",
-            "logo": {
-              "@type": "ImageObject",
-              "url": "https://axcentdance.com/assets/images/logo.webp"
-            }
-          },
-          "datePublished": "2026-02-14",
-          "dateModified": "2026-03-17",
-          "mainEntityOfPage": { "@id": "https://axcentdance.com/blog-posts/salsa-vs-bachata#webpage" },
-          "isPartOf": { "@id": "https://axcentdance.com/blog-posts/salsa-vs-bachata#webpage" }
-        },
-        {
-          "@type": "BreadcrumbList",
+      "inLanguage": "en",
+      "@type": "WebPage",
+      "@id": "https://axcentdance.com/blog-posts/salsa-vs-bachata#webpage",
+      "url": "https://axcentdance.com/blog-posts/salsa-vs-bachata",
+      "name": "Salsa vs Bachata: Key Differences Every Dancer Should Know",
+      "isPartOf": {
+        "@id": "https://axcentdance.com/#website"
+      },
+      "description": "Salsa vs Bachata — what is the difference? Compare music, rhythm, and dance style. Find out why most dancers learn both for the complete Latin experience."
+    },
+    {
+      "inLanguage": "en",
+      "@type": "BlogPosting",
+      "@id": "https://axcentdance.com/blog-posts/salsa-vs-bachata#blogposting",
+      "headline": "Salsa vs Bachata: Key Differences Every Dancer Should Know",
+      "description": "A comprehensive comparison of Salsa and Bachata covering music, rhythm, dance technique, and cultural origins.",
+      "image": {
         "inLanguage": "en",
-          "@id": "https://axcentdance.com/blog-posts/salsa-vs-bachata#breadcrumb",
-          "itemListElement": [
-            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://axcentdance.com/" },
-            { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://axcentdance.com/blog" },
-            { "@type": "ListItem", "position": 3, "name": "Salsa vs Bachata", "item": "https://axcentdance.com/blog-posts/salsa-vs-bachata" }
-          ]
+        "@type": "ImageObject",
+        "url": "https://axcentdance.com/assets/images/blog/salsa_vs_bachata_hero.webp",
+        "width": 1024,
+        "height": 1024
+      },
+      "author": [
+        {
+          "@id": "https://axcentdance.com/#person1"
+        },
+        {
+          "@id": "https://axcentdance.com/#person2"
+        }
+      ],
+      "publisher": {
+        "@id": "https://axcentdance.com/#organization"
+      },
+      "datePublished": "2026-02-14",
+      "dateModified": "2026-03-17",
+      "mainEntityOfPage": {
+        "@id": "https://axcentdance.com/blog-posts/salsa-vs-bachata#webpage"
+      },
+      "isPartOf": {
+        "@id": "https://axcentdance.com/blog-posts/salsa-vs-bachata#webpage"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "inLanguage": "en",
+      "@id": "https://axcentdance.com/blog-posts/salsa-vs-bachata#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://axcentdance.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Blog",
+          "item": "https://axcentdance.com/blog"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Salsa vs Bachata",
+          "item": "https://axcentdance.com/blog-posts/salsa-vs-bachata"
         }
       ]
     }
+  ]
+}
     </script>
 
     <!-- FAQ Schema -->
     
+
+  <!-- Centralized Global Schema (Org, School, LocalBusiness) -->
+  <script src="/assets/js/schema.js"></script>
 </head>
 
 <body>
@@ -178,6 +201,15 @@
     </header>
 
     <main>
+    <!-- Visual Breadcrumbs -->
+    <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+      <div class="container">
+        <ol class="breadcrumb-list">
+          <li class="breadcrumb-item"><a href="../" class="breadcrumb-link">Home</a></li><li class="breadcrumb-item"><a href="../blog" class="breadcrumb-link">Blog</a></li><li class="breadcrumb-item active" aria-current="page">Salsa vs Bachata: Key Differences Every Dancer Should Know</li>
+        </ol>
+      </div>
+    </nav>
+
         <article class="blog-post">
             <!-- Module A: Hero Header -->
             <header class="post-header">

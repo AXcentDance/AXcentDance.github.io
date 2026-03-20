@@ -158,44 +158,46 @@
   "@graph": [
     {
       "inLanguage": "en",
-          "@type": "WebPage",
+      "@type": "WebPage",
       "@id": "https://axcentdance.com/blog-posts/rent-space-zurich#webpage",
       "url": "https://axcentdance.com/blog-posts/rent-space-zurich",
-      "name": "More Than a Dance Studio: 5 Ways to Use Our Space | AXcent Dance Blog"
+      "name": "More Than a Dance Studio: 5 Ways to Use Our Space | AXcent Dance Blog",
+      "isPartOf": {
+        "@id": "https://axcentdance.com/#website"
+      }
     },
     {
       "inLanguage": "en",
-          "@type": "BlogPosting",
+      "@type": "BlogPosting",
       "headline": "More Than a Dance Studio: 5 Ways to Use Our Space",
       "datePublished": "2026-01-31",
       "dateModified": "2026-03-16",
       "author": [
-          { "@id": "https://axcentdance.com/#person1" },
-          { "@id": "https://axcentdance.com/#person2" }
-        ],
-      "publisher": {
-        "@type": "Organization",
-        "name": "AXcent Dance",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://axcentdance.com/assets/images/logo.webp"
+        {
+          "@id": "https://axcentdance.com/#person1"
+        },
+        {
+          "@id": "https://axcentdance.com/#person2"
         }
+      ],
+      "publisher": {
+        "@id": "https://axcentdance.com/#organization"
       },
       "description": "Discover 5 creative ways to use our 138qm studio in Zurich, from yoga and pilates to photo shoots and private events.",
       "image": {
-            "@type": "ImageObject",
-            "url": "https://axcentdance.com/assets/images/studio/studio_room_view_1.webp",
-            "width": 1024,
-            "height": 651
-          },
+        "@type": "ImageObject",
+        "url": "https://axcentdance.com/assets/images/studio/studio_room_view_1.webp",
+        "width": 1024,
+        "height": 651
+      },
       "mainEntityOfPage": {
         "@id": "https://axcentdance.com/blog-posts/rent-space-zurich#webpage"
       },
-      "@id": "https://axcentdance.com/blog-posts/rent-space-zurich#article"
+      "@id": "https://axcentdance.com/blog-posts/rent-space-zurich#blogposting"
     },
     {
       "@type": "BreadcrumbList",
-        "inLanguage": "en",
+      "inLanguage": "en",
       "@id": "https://axcentdance.com/blog-posts/rent-space-zurich#breadcrumb",
       "itemListElement": [
         {
@@ -220,8 +222,11 @@
     }
   ]
 }
-</script>
+    </script>
 
+
+  <!-- Centralized Global Schema (Org, School, LocalBusiness) -->
+  <script src="/assets/js/schema.js"></script>
 </head>
 
 <body>
@@ -273,6 +278,15 @@
     </header>
 
     <main>
+    <!-- Visual Breadcrumbs -->
+    <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+      <div class="container">
+        <ol class="breadcrumb-list">
+          <li class="breadcrumb-item"><a href="../" class="breadcrumb-link">Home</a></li><li class="breadcrumb-item"><a href="../blog" class="breadcrumb-link">Blog</a></li><li class="breadcrumb-item active" aria-current="page">More Than a Dance Studio: 5 Ways to Use Our Space</li>
+        </ol>
+      </div>
+    </nav>
+
         <!-- Hero Section -->
         <section class="post-hero relative-container" style="background: none;">
             <img src="../assets/images/studio/studio_room_view_1.webp"

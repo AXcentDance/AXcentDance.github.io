@@ -57,59 +57,44 @@
 
     
     <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      "@context": "https://schema.org",
-      "@graph": [
+      "@type": "WebPage",
+      "@id": "https://axcentdance.com/contact#webpage",
+      "url": "https://axcentdance.com/contact",
+      "name": "Contact & Location | Dance School Zurich Altstetten | AXcent",
+      "isPartOf": {
+        "@id": "https://axcentdance.com/#website"
+      },
+      "description": "Find our Bachata studio in Zurich Altstetten. Get directions, contact details, and book your trial class."
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://axcentdance.com/contact#breadcrumb",
+      "itemListElement": [
         {
-          "@type": "WebPage",
-          "@id": "https://axcentdance.com/contact/#webpage",
-          "url": "https://axcentdance.com/contact",
-          "name": "Contact & Location | Dance School Zurich Altstetten | AXcent",
-          "isPartOf": { "@id": "https://axcentdance.com/#website" },
-          "description": "Find our Bachata studio in Zurich Altstetten. Get directions, contact details, and book your trial class."},
-        {
-          "@type": "LocalBusiness",
-          "@id": "https://axcentdance.com/#organization",
-          "name": "AXcent Dance",
-          "url": "https://axcentdance.com/",
-          "telephone": "+41799668481",
-          "hasMap": "https://www.google.com/maps?cid=15680757943659417558",
-          "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "Hermetschloostrasse 73",
-            "addressLocality": "Zurich",
-            "addressRegion": "ZH",
-            "postalCode": "8048",
-            "addressCountry": "CH"
-          },
-          "geo": {
-            "@type": "GeoCoordinates",
-            "latitude": 47.3941999,
-            "longitude": 8.4745859
-          }
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://axcentdance.com/"
         },
         {
-          "@type": "BreadcrumbList",
-          "@id": "https://axcentdance.com/contact#breadcrumb",
-          "itemListElement": [
-            {
-              "@type": "ListItem",
-              "position": 1,
-              "name": "Home",
-              "item": "https://axcentdance.com/"
-            },
-            {
-              "@type": "ListItem",
-              "position": 2,
-              "name": "Contact Us",
-              "item": "https://axcentdance.com/contact"
-            }
-          ]
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Contact Us",
+          "item": "https://axcentdance.com/contact"
         }
       ]
     }
+  ]
+}
     </script>
 
+
+  <!-- Centralized Global Schema (Org, School, LocalBusiness) -->
+  <script src="/assets/js/schema.js"></script>
 </head>
 
 <body>
@@ -168,6 +153,15 @@
     </header>
 
     <main>
+    <!-- Visual Breadcrumbs -->
+    <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+      <div class="container">
+        <ol class="breadcrumb-list">
+          <li class="breadcrumb-item"><a href="./" class="breadcrumb-link">Home</a></li><li class="breadcrumb-item active" aria-current="page">Contact &amp; Location</li>
+        </ol>
+      </div>
+    </nav>
+
         <!-- Contact Hero -->
         <section class="hero relative-container" style="min-height: 30vh; padding-bottom: 0;">
             <!-- Hero Image -->

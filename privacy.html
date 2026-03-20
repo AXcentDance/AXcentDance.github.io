@@ -52,38 +52,43 @@
     </script>
     <!-- Structured Data (@graph) -->
     <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      "@context": "https://schema.org",
-      "@graph": [
+      "@type": "WebPage",
+      "@id": "https://axcentdance.com/privacy#webpage",
+      "url": "https://axcentdance.com/privacy",
+      "name": "Privacy Policy – AXcent Dance Zurich",
+      "isPartOf": {
+        "@id": "https://axcentdance.com/#website"
+      },
+      "description": "Privacy Policy (Datenschutzerklärung) for AXcent Dance Zurich."
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://axcentdance.com/privacy#breadcrumb",
+      "itemListElement": [
         {
-          "@type": "WebPage",
-          "@id": "https://axcentdance.com/privacy#webpage",
-          "url": "https://axcentdance.com/privacy",
-          "name": "Privacy Policy \u2013 AXcent Dance Zurich",
-          "isPartOf": { "@id": "https://axcentdance.com/#website" },
-          "description": "Privacy Policy (Datenschutzerkl\u00e4rung) for AXcent Dance Zurich."
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://axcentdance.com/"
         },
         {
-          "@type": "BreadcrumbList",
-          "@id": "https://axcentdance.com/privacy#breadcrumb",
-          "itemListElement": [
-            {
-                "@type": "ListItem",
-                "position": 1,
-                "name": "Home",
-                "item": "https://axcentdance.com/"
-            },
-            {
-                "@type": "ListItem",
-                "position": 2,
-                "name": "Privacy Policy \u2013 AXcent Dance Zurich",
-                "item": "https://axcentdance.com/privacy"
-            }
-          ]
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Privacy Policy – AXcent Dance Zurich",
+          "item": "https://axcentdance.com/privacy"
         }
       ]
     }
+  ]
+}
     </script>
+
+  <!-- Centralized Global Schema (Org, School, LocalBusiness) -->
+  <script src="/assets/js/schema.js"></script>
 </head>
 
 <body>
@@ -136,6 +141,15 @@
     </header>
 
     <main>
+    <!-- Visual Breadcrumbs -->
+    <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+      <div class="container">
+        <ol class="breadcrumb-list">
+          <li class="breadcrumb-item"><a href="./" class="breadcrumb-link">Home</a></li><li class="breadcrumb-item active" aria-current="page">Privacy Policy – AXcent Dance Zurich</li>
+        </ol>
+      </div>
+    </nav>
+
         <section class="legal-content padded-top">
 
             <h1>Privacy Policy (Datenschutzerklärung)</h1>

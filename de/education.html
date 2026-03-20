@@ -46,7 +46,7 @@
 
     <style>
         .education-hero {
-            padding: 160px 20px 80px;
+            padding:  60px 20px 80px;
             text-align: center;
             /* background: removed for SEO img refactor */
         }
@@ -185,38 +185,43 @@
 
     <!-- Structured Data (@graph) -->
     <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      "@context": "https://schema.org",
-      "@graph": [
+      "@type": "WebPage",
+      "@id": "https://axcentdance.com/de/education#webpage",
+      "url": "https://axcentdance.com/de/education",
+      "name": "Bachata Ausbildung: Geschichte, Stile & Musikalität | AXcent",
+      "isPartOf": {
+        "@id": "https://axcentdance.com/#website"
+      },
+      "description": "Die ultimative Bachata-Wissensdatenbank in Zürich. Entdecke Geschichte, Tanzstile, Musikalität und Fachbegriffe mit AXcent Dance Altstetten."
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://axcentdance.com/de/education#breadcrumb",
+      "itemListElement": [
         {
-          "@type": "WebPage",
-          "@id": "https://axcentdance.com/de/education#webpage",
-          "url": "https://axcentdance.com/de/education",
-          "name": "Bachata Ausbildung: Geschichte, Stile & Musikalität | AXcent",
-          "isPartOf": { "@id": "https://axcentdance.com/#website" },
-          "description": "Die ultimative Bachata-Wissensdatenbank in Zürich. Entdecke Geschichte, Tanzstile, Musikalität und Fachbegriffe mit AXcent Dance Altstetten."
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Startseite",
+          "item": "https://axcentdance.com/de/"
         },
         {
-          "@type": "BreadcrumbList",
-          "@id": "https://axcentdance.com/de/education#breadcrumb",
-          "itemListElement": [
-            {
-              "@type": "ListItem",
-              "position": 1,
-              "name": "Startseite",
-              "item": "https://axcentdance.com/de/"
-            },
-            {
-              "@type": "ListItem",
-              "position": 2,
-              "name": "Bachata Ausbildung",
-              "item": "https://axcentdance.com/de/education"
-            }
-          ]
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Bachata Ausbildung",
+          "item": "https://axcentdance.com/de/education"
         }
       ]
     }
+  ]
+}
     </script>
+
+  <!-- Centralized Global Schema (Org, School, LocalBusiness) -->
+  <script src="/assets/js/schema.js"></script>
 </head>
 
 <body>
@@ -270,6 +275,15 @@
     </header>
 
     <main>
+    <!-- Visual Breadcrumbs -->
+    <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+      <div class="container">
+        <ol class="breadcrumb-list">
+          <li class="breadcrumb-item"><a href="../" class="breadcrumb-link">Startseite</a></li><li class="breadcrumb-item active" aria-current="page">Bachata Ausbildung: Geschichte, Stile &amp; Musikalität</li>
+        </ol>
+      </div>
+    </nav>
+
         <!-- Hero Section -->
         <!-- Hero Section -->
         <section class="education-hero relative-container">

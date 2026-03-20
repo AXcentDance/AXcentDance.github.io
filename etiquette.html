@@ -43,7 +43,7 @@
 
     <style>
         .etiquette-hero {
-            padding: 160px 20px 60px;
+            padding:  60px 20px 60px;
             text-align: center;
             /* background: removed for SEO img refactor */
         }
@@ -122,37 +122,39 @@
 
     <!-- Structured Data (@graph) -->
     <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      "@context": "https://schema.org",
-      "@graph": [
+      "@type": "WebPage",
+      "@id": "https://axcentdance.com/etiquette#webpage",
+      "url": "https://axcentdance.com/etiquette",
+      "name": "Dance Etiquette | AXcent Dance Zurich",
+      "isPartOf": {
+        "@id": "https://axcentdance.com/#website"
+      },
+      "description": "Learn the essential rules of social dancing. A guide to dance floor etiquette, hygiene, and respect for the Bachata community."
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://axcentdance.com/etiquette#breadcrumb",
+      "itemListElement": [
         {
-          "@type": "WebPage",
-          "@id": "https://axcentdance.com/etiquette#webpage",
-          "url": "https://axcentdance.com/etiquette",
-          "name": "Dance Etiquette | AXcent Dance Zurich",
-          "isPartOf": { "@id": "https://axcentdance.com/#website" },
-          "description": "Learn the essential rules of social dancing. A guide to dance floor etiquette, hygiene, and respect for the Bachata community."
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://axcentdance.com/"
         },
         {
-          "@type": "BreadcrumbList",
-          "@id": "https://axcentdance.com/etiquette#breadcrumb",
-          "itemListElement": [
-            {
-              "@type": "ListItem",
-              "position": 1,
-              "name": "Home",
-              "item": "https://axcentdance.com/"
-            },
-            {
-              "@type": "ListItem",
-              "position": 2,
-              "name": "Dance Etiquette",
-              "item": "https://axcentdance.com/etiquette"
-            }
-          ]
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Dance Etiquette",
+          "item": "https://axcentdance.com/etiquette"
         }
       ]
     }
+  ]
+}
     </script>
 
     <!-- Google tag (gtag.js) -->
@@ -164,6 +166,9 @@
 
         gtag('config', 'G-E2SYCF7R7X');
     </script>
+
+  <!-- Centralized Global Schema (Org, School, LocalBusiness) -->
+  <script src="/assets/js/schema.js"></script>
 </head>
 
 <body>
@@ -222,6 +227,15 @@
     </header>
 
     <main>
+    <!-- Visual Breadcrumbs -->
+    <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+      <div class="container">
+        <ol class="breadcrumb-list">
+          <li class="breadcrumb-item"><a href="./" class="breadcrumb-link">Home</a></li><li class="breadcrumb-item active" aria-current="page">Dance Etiquette</li>
+        </ol>
+      </div>
+    </nav>
+
         <!-- Hero Section -->
 
         <section class="etiquette-hero relative-container">

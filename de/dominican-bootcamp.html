@@ -41,115 +41,127 @@
 
     <!-- Structured Data (@graph) -->
     <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      "@context": "https://schema.org",
-      "@graph": [
+      "@type": "WebPage",
+      "@id": "https://axcentdance.com/de/dominican-bootcamp#webpage",
+      "url": "https://axcentdance.com/de/dominican-bootcamp",
+      "name": "Dominican Bachata | Intensiv Camp | AXcent Dance Zürich",
+      "isPartOf": {
+        "@id": "https://axcentdance.com/#website"
+      },
+      "description": "Lerne authentischen Dominican Bachata in Zürich. Erlebe 7 Stunden intensives Bootcamp mit Aitor & Sarah für Fußarbeit, Technik und Musikalität."
+    },
+    {
+      "@type": "Event",
+      "@id": "https://axcentdance.com/de/dominican-bootcamp#event",
+      "name": "Dominican Bachata Bootcamp",
+      "startDate": "2026-10-03T10:00",
+      "endDate": "2026-10-04T20:00",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "image": [
+        "https://axcentdance.com/assets/images/dominican_bootcamp.webp"
+      ],
+      "location": {
+        "@type": "Place",
+        "name": "AXcent Dance Studio",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Hermetschloostrasse 73",
+          "addressLocality": "Zurich",
+          "postalCode": "8048",
+          "addressCountry": "CH"
+        }
+      },
+      "description": "7 Stunden intensives Dominican Bachata Bootcamp mit den internationalen Künstlern Aitor Gomez & Sarah La Morena in Zürich.",
+      "organizer": {
+        "@type": "Organization",
+        "name": "AXcent Dance",
+        "url": "https://axcentdance.com"
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": "https://axcentdance.com/de/dominican-bootcamp",
+        "price": "115",
+        "priceCurrency": "CHF",
+        "availability": "https://schema.org/InStock",
+        "validFrom": "2025-01-01"
+      },
+      "performer": [
         {
-          "@type": "WebPage",
-          "@id": "https://axcentdance.com/de/dominican-bootcamp#webpage",
-          "url": "https://axcentdance.com/de/dominican-bootcamp",
-          "name": "Dominican Bachata | Intensiv Camp | AXcent Dance Zürich",
-          "isPartOf": { "@id": "https://axcentdance.com/#website" },
-          "description": "Lerne authentischen Dominican Bachata in Zürich. Erlebe 7 Stunden intensives Bootcamp mit Aitor & Sarah für Fußarbeit, Technik und Musikalität."
+          "@type": "Person",
+          "name": "Aitor Gomez"
         },
         {
-          "@type": "Event",
-          "@id": "https://axcentdance.com/de/dominican-bootcamp#event",
+          "@type": "Person",
+          "name": "Sarah La Morena"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://axcentdance.com/de/dominican-bootcamp#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Ist es nur Dominican Bachata?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ja! Dieses Event konzentriert sich ausschliesslich auf authentische Dominican Bachata Technik, Musikalität und Footwork."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Ist das Bootcamp für alle Niveaus geeignet?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Nein, dieses Bootcamp richtet sich an Tänzer mit mindestens 1 Jahr Bachata-Erfahrung. Es ist nicht für absolute Anfänger geeignet."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Kann ich mein Ticket weiterverkaufen?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ja, du kannst dein Ticket auf eine andere Person übertragen. Bitte schreibe uns eine E-Mail mit dem Namen des neuen Teilnehmers."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://axcentdance.com/de/dominican-bootcamp#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Startseite",
+          "item": "https://axcentdance.com/de/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Events",
+          "item": "https://axcentdance.com/de/events"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
           "name": "Dominican Bachata Bootcamp",
-          "startDate": "2026-10-03T10:00",
-          "endDate": "2026-10-04T20:00",
-          "eventStatus": "https://schema.org/EventScheduled",
-          "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-          "image": [
-            "https://axcentdance.com/assets/images/dominican_bootcamp.webp"
-          ],
-          "location": {
-            "@type": "Place",
-            "name": "AXcent Dance Studio",
-            "address": {
-              "@type": "PostalAddress",
-              "streetAddress": "Hermetschloostrasse 73",
-              "addressLocality": "Zurich",
-              "postalCode": "8048",
-              "addressCountry": "CH"
-            }
-          },
-          "description": "7 Stunden intensives Dominican Bachata Bootcamp mit den internationalen Künstlern Aitor Gomez & Sarah La Morena in Zürich.",
-          "organizer": {
-            "@type": "Organization",
-            "name": "AXcent Dance",
-            "url": "https://axcentdance.com"
-          },
-          "offers": {
-            "@type": "Offer",
-            "url": "https://axcentdance.com/de/dominican-bootcamp",
-            "price": "115",
-            "priceCurrency": "CHF",
-            "availability": "https://schema.org/InStock",
-            "validFrom": "2025-01-01"
-          },
-          "performer": [
-            { "@type": "Person", "name": "Aitor Gomez" },
-            { "@type": "Person", "name": "Sarah La Morena" }
-          ]
-        },
-        {
-          "@type": "FAQPage",
-          "@id": "https://axcentdance.com/de/dominican-bootcamp#faq",
-          "mainEntity": [{
-            "@type": "Question",
-            "name": "Ist es nur Dominican Bachata?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Ja! Dieses Event konzentriert sich ausschliesslich auf authentische Dominican Bachata Technik, Musikalität und Footwork."
-            }
-          }, {
-            "@type": "Question",
-            "name": "Ist das Bootcamp für alle Niveaus geeignet?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Nein, dieses Bootcamp richtet sich an Tänzer mit mindestens 1 Jahr Bachata-Erfahrung. Es ist nicht für absolute Anfänger geeignet."
-            }
-          }, {
-            "@type": "Question",
-            "name": "Kann ich mein Ticket weiterverkaufen?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Ja, du kannst dein Ticket auf eine andere Person übertragen. Bitte schreibe uns eine E-Mail mit dem Namen des neuen Teilnehmers."
-            }
-          }]
-        },
-        {
-          "@type": "BreadcrumbList",
-          "@id": "https://axcentdance.com/de/dominican-bootcamp#breadcrumb",
-          "itemListElement": [
-            {
-              "@type": "ListItem",
-              "position": 1,
-              "name": "Startseite",
-              "item": "https://axcentdance.com/de/"
-            },
-            {
-              "@type": "ListItem",
-              "position": 2,
-              "name": "Events",
-              "item": "https://axcentdance.com/de/events"
-            },
-            {
-              "@type": "ListItem",
-              "position": 3,
-              "name": "Dominican Bachata Bootcamp",
-              "item": "https://axcentdance.com/de/dominican-bootcamp"
-            }
-          ]
+          "item": "https://axcentdance.com/de/dominican-bootcamp"
         }
       ]
     }
+  ]
+}
     </script>
 
     <style>
         .event-hero {
-            padding: 160px 20px 60px;
+            padding:  60px 20px 60px;
             text-align: center;
         }
 
@@ -385,6 +397,9 @@
 
         gtag('config', 'G-E2SYCF7R7X');
     </script>
+
+  <!-- Centralized Global Schema (Org, School, LocalBusiness) -->
+  <script src="/assets/js/schema.js"></script>
 </head>
 
 <body>
@@ -441,6 +456,15 @@
     </header>
 
     <main>
+    <!-- Visual Breadcrumbs -->
+    <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+      <div class="container">
+        <ol class="breadcrumb-list">
+          <li class="breadcrumb-item"><a href="../" class="breadcrumb-link">Startseite</a></li><li class="breadcrumb-item active" aria-current="page">Dominican Bachata</li>
+        </ol>
+      </div>
+    </nav>
+
         <section class="event-hero">
             <div class="container">
                 <h1 class="page-title">Dominican Bachata Bootcamp in Zürich</h1>

@@ -144,36 +144,42 @@
         }
     </style>
 <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      "@context": "https://schema.org",
-      "@graph": [
+      "@type": "WebPage",
+      "@id": "https://axcentdance.com/de/cart#webpage",
+      "url": "https://axcentdance.com/de/cart",
+      "name": "Warenkorb | AXcent Dance Zürich",
+      "isPartOf": {
+        "@id": "https://axcentdance.com/#website"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://axcentdance.com/de/cart#breadcrumb",
+      "itemListElement": [
         {
-          "@type": "WebPage",
-          "@id": "https://axcentdance.com/de/cart#webpage",
-          "url": "https://axcentdance.com/de/cart",
-          "name": "Warenkorb | AXcent Dance Zürich"
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Startseite",
+          "item": "https://axcentdance.com/de/"
         },
         {
-          "@type": "BreadcrumbList",
-          "@id": "https://axcentdance.com/de/cart#breadcrumb",
-          "itemListElement": [
-            {
-              "@type": "ListItem",
-              "position": 1,
-              "name": "Startseite",
-              "item": "https://axcentdance.com/de/"
-            },
-            {
-              "@type": "ListItem",
-              "position": 2,
-              "name": "Warenkorb",
-              "item": "https://axcentdance.com/de/cart"
-            }
-          ]
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Warenkorb",
+          "item": "https://axcentdance.com/de/cart"
         }
       ]
     }
+  ]
+}
     </script>
+
+  <!-- Centralized Global Schema (Org, School, LocalBusiness) -->
+  <script src="/assets/js/schema.js"></script>
 </head>
 
 <body>
@@ -230,6 +236,15 @@
     </header>
 
     <main>
+    <!-- Visual Breadcrumbs -->
+    <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+      <div class="container">
+        <ol class="breadcrumb-list">
+          <li class="breadcrumb-item"><a href="../" class="breadcrumb-link">Startseite</a></li><li class="breadcrumb-item active" aria-current="page">Warenkorb</li>
+        </ol>
+      </div>
+    </nav>
+
         <section class="cart-section">
             <div class="cart-content">
                 <div class="cart-logo"><span class="logo-title">AXCENT</span><span

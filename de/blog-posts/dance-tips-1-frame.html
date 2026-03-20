@@ -61,98 +61,83 @@
 
     <!-- Structured Data (Schema.org) -->
     <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      "@context": "https://schema.org",
-      "@graph": [
+      "inLanguage": "de",
+      "@type": "WebPage",
+      "@id": "https://axcentdance.com/de/blog-posts/dance-tips-1-frame#webpage",
+      "url": "https://axcentdance.com/de/blog-posts/dance-tips-1-frame",
+      "name": "Rahmen-Technik im Bachata: Tanz-Tipps Episode 1 | AXcent Dance Blog",
+      "isPartOf": {
+        "@id": "https://axcentdance.com/#website"
+      },
+      "description": "Verbessere dein Bachata Führen und Folgen mit besserer Rahmen-Technik. Lerne die Do's und Don'ts der Armhaltung und Verbindung."
+    },
+    {
+      "inLanguage": "de",
+      "@type": "BlogPosting",
+      "@id": "https://axcentdance.com/de/blog-posts/dance-tips-1-frame#blogposting",
+      "isPartOf": {
+        "@id": "https://axcentdance.com/de/blog-posts/dance-tips-1-frame#webpage"
+      },
+      "headline": "Rahmen-Technik im Bachata: Tanz-Tipps Ep. 1",
+      "datePublished": "2025-12-27",
+      "dateModified": "2026-03-10",
+      "author": [
         {
-          "inLanguage": "de",
-          "@type": "WebPage",
-          "@id": "https://axcentdance.com/de/blog-posts/dance-tips-1-frame#webpage",
-          "url": "https://axcentdance.com/de/blog-posts/dance-tips-1-frame",
-          "name": "Rahmen-Technik im Bachata: Tanz-Tipps Episode 1 | AXcent Dance Blog",
-          "isPartOf": { "@id": "https://axcentdance.com/#website" },
-          "description": "Verbessere dein Bachata Führen und Folgen mit besserer Rahmen-Technik. Lerne die Do's und Don'ts der Armhaltung und Verbindung."},
-        {
-          "inLanguage": "de",
-          "@type": "BlogPosting",
-          "@id": "https://axcentdance.com/de/blog-posts/dance-tips-1-frame#article",
-          "isPartOf": { "@id": "https://axcentdance.com/de/blog-posts/dance-tips-1-frame#webpage" },
-          "headline": "Rahmen-Technik im Bachata: Tanz-Tipps Ep. 1",
-          "datePublished": "2025-12-27",
-          "dateModified": "2026-03-10",
-          "author": [
-          { "@id": "https://axcentdance.com/#person1" },
-          { "@id": "https://axcentdance.com/#person2" }
-        ],
-          "publisher": {
-              "@type": "Organization",
-              "name": "AXcent Dance",
-              "logo": {
-                  "@type": "ImageObject",
-                  "url": "https://axcentdance.com/assets/images/logo.webp"
-              }
-          },
-          "description": "Verbessere dein Bachata Führen und Folgen mit besserer Rahmen-Technik. Lerne die Do's und Don'ts für Positionierung und Verbindung.",
-          "image": {
-            "@type": "ImageObject",
-            "url": "https://axcentdance.com/assets/images/hero_new.webp",
-            "width": 1024,
-            "height": 768
-          },
-          "mainEntityOfPage": { "@id": "https://axcentdance.com/de/blog-posts/dance-tips-1-frame#webpage" }
+          "@id": "https://axcentdance.com/#person1"
         },
         {
-          "@type": "LocalBusiness",
-          "@id": "https://axcentdance.com/#organization",
-          "name": "AXcent Dance",
-          "url": "https://axcentdance.com/de/",
-          "telephone": "+41799668481",
-          "hasMap": "https://www.google.com/maps?cid=15680757943659417558",
-          "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "Hermetschloostrasse 73",
-            "addressLocality": "Zurich",
-            "addressRegion": "ZH",
-            "postalCode": "8048",
-            "addressCountry": "CH"
-          },
-          "geo": {
-            "@type": "GeoCoordinates",
-            "latitude": 47.3941999,
-            "longitude": 8.4745859
-          }
+          "@id": "https://axcentdance.com/#person2"
+        }
+      ],
+      "publisher": {
+        "@id": "https://axcentdance.com/#organization"
+      },
+      "description": "Verbessere dein Bachata Führen und Folgen mit besserer Rahmen-Technik. Lerne die Do's und Don'ts für Positionierung und Verbindung.",
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://axcentdance.com/assets/images/hero_new.webp",
+        "width": 1024,
+        "height": 768
+      },
+      "mainEntityOfPage": {
+        "@id": "https://axcentdance.com/de/blog-posts/dance-tips-1-frame#webpage"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "inLanguage": "de",
+      "@id": "https://axcentdance.com/de/blog-posts/dance-tips-1-frame#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Startseite",
+          "item": "https://axcentdance.com/de/"
         },
         {
-          "@type": "BreadcrumbList",
-        "inLanguage": "de",
-          "@id": "https://axcentdance.com/de/blog-posts/dance-tips-1-frame#breadcrumb",
-          "itemListElement": [
-              {
-                  "@type": "ListItem",
-                  "position": 1,
-                  "name": "Startseite",
-                  "item": "https://axcentdance.com/de/"
-              },
-              {
-                  "@type": "ListItem",
-                  "position": 2,
-                  "name": "Blog",
-                  "item": "https://axcentdance.com/de/blog"
-              },
-              {
-                  "@type": "ListItem",
-                  "position": 3,
-                  "name": "Rahmen-Technik im Bachata",
-                  "item": "https://axcentdance.com/de/blog-posts/dance-tips-1-frame"
-              }
-          ]
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Blog",
+          "item": "https://axcentdance.com/de/blog"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Rahmen-Technik im Bachata",
+          "item": "https://axcentdance.com/de/blog-posts/dance-tips-1-frame"
         }
       ]
     }
+  ]
+}
     </script>
     <style>
         .post-hero {
-            padding: 160px 20px 80px;
+            padding:  60px 20px 80px;
             text-align: center;
             background: none;
             background-size: cover;
@@ -239,6 +224,9 @@
         gtag('config', 'G-E2SYCF7R7X');
     </script>
 
+
+  <!-- Centralized Global Schema (Org, School, LocalBusiness) -->
+  <script src="/assets/js/schema.js"></script>
 </head>
 
 <body>
@@ -291,6 +279,15 @@
     </header>
 
     <main>
+    <!-- Visual Breadcrumbs -->
+    <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+      <div class="container">
+        <ol class="breadcrumb-list">
+          <li class="breadcrumb-item"><a href="../../" class="breadcrumb-link">Startseite</a></li><li class="breadcrumb-item"><a href="../../blog" class="breadcrumb-link">Blog</a></li><li class="breadcrumb-item active" aria-current="page">Rahmen-Technik im Bachata: Tanz-Tipps Episode 1</li>
+        </ol>
+      </div>
+    </nav>
+
         <!-- Hero Section -->
         <section class="post-hero relative-container" style="background: none;">
             <img src="../../assets/images/hero_new.webp"

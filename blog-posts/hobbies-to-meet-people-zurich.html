@@ -58,44 +58,46 @@
   "@graph": [
     {
       "inLanguage": "en",
-          "@type": "WebPage",
+      "@type": "WebPage",
       "@id": "https://axcentdance.com/blog-posts/hobbies-to-meet-people-zurich#webpage",
       "url": "https://axcentdance.com/blog-posts/hobbies-to-meet-people-zurich",
-      "name": "Top Hobbies to Meet People in Zurich | AXcent Dance"
+      "name": "Top Hobbies to Meet People in Zurich | AXcent Dance",
+      "isPartOf": {
+        "@id": "https://axcentdance.com/#website"
+      }
     },
     {
       "inLanguage": "en",
-          "@type": "BlogPosting",
+      "@type": "BlogPosting",
       "headline": "Top Hobbies to Meet People in Zurich | AXcent Dance",
       "datePublished": "2026-03-07",
       "dateModified": "2026-03-16",
       "author": [
-          { "@id": "https://axcentdance.com/#person1" },
-          { "@id": "https://axcentdance.com/#person2" }
-        ],
-      "publisher": {
-        "@type": "Organization",
-        "name": "AXcent Dance",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://axcentdance.com/assets/images/logo.webp"
+        {
+          "@id": "https://axcentdance.com/#person1"
+        },
+        {
+          "@id": "https://axcentdance.com/#person2"
         }
+      ],
+      "publisher": {
+        "@id": "https://axcentdance.com/#organization"
       },
       "description": "Looking for hobbies to meet people in Zurich? Join our international community, learn Bachata, and make new friends. No partner needed, everyone is welcome!",
       "image": {
-            "@type": "ImageObject",
-            "url": "https://axcentdance.com/assets/images/gallery/gallery_1.webp",
-            "width": 1024,
-            "height": 576
-          },
+        "@type": "ImageObject",
+        "url": "https://axcentdance.com/assets/images/gallery/gallery_1.webp",
+        "width": 1024,
+        "height": 576
+      },
       "mainEntityOfPage": {
         "@id": "https://axcentdance.com/blog-posts/hobbies-to-meet-people-zurich#webpage"
       },
-      "@id": "https://axcentdance.com/blog-posts/hobbies-to-meet-people-zurich#article"
+      "@id": "https://axcentdance.com/blog-posts/hobbies-to-meet-people-zurich#blogposting"
     },
     {
       "@type": "BreadcrumbList",
-        "inLanguage": "en",
+      "inLanguage": "en",
       "@id": "https://axcentdance.com/blog-posts/hobbies-to-meet-people-zurich#breadcrumb",
       "itemListElement": [
         {
@@ -120,8 +122,11 @@
     }
   ]
 }
-</script>
+    </script>
 
+
+  <!-- Centralized Global Schema (Org, School, LocalBusiness) -->
+  <script src="/assets/js/schema.js"></script>
 </head>
 
 <body>
@@ -172,6 +177,15 @@
     </header>
 
     <main>
+    <!-- Visual Breadcrumbs -->
+    <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+      <div class="container">
+        <ol class="breadcrumb-list">
+          <li class="breadcrumb-item"><a href="../" class="breadcrumb-link">Home</a></li><li class="breadcrumb-item"><a href="../blog" class="breadcrumb-link">Blog</a></li><li class="breadcrumb-item active" aria-current="page">Top Hobbies to Meet People in Zurich</li>
+        </ol>
+      </div>
+    </nav>
+
         <!-- Hero Section -->
         <section class="post-hero relative-container"
             style="background-image: url('../assets/images/gallery/gallery_1.webp');">

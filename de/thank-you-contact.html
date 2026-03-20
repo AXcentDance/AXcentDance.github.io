@@ -110,38 +110,43 @@
     </script>
     <!-- Structured Data (@graph) -->
     <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      "@context": "https://schema.org",
-      "@graph": [
+      "@type": "WebPage",
+      "@id": "https://axcentdance.com/de/thank-you-contact#webpage",
+      "url": "https://axcentdance.com/de/thank-you-contact",
+      "name": "Danke – AXcent Dance",
+      "isPartOf": {
+        "@id": "https://axcentdance.com/#website"
+      },
+      "description": "Danke für deine Kontaktaufnahme mit AXcent Dance. Wir melden uns in Kürze."
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://axcentdance.com/de/thank-you-contact#breadcrumb",
+      "itemListElement": [
         {
-          "@type": "WebPage",
-          "@id": "https://axcentdance.com/de/thank-you-contact#webpage",
-          "url": "https://axcentdance.com/de/thank-you-contact",
-          "name": "Danke \u2013 AXcent Dance",
-          "isPartOf": { "@id": "https://axcentdance.com/#website" },
-          "description": "Danke f\u00fcr deine Kontaktaufnahme mit AXcent Dance. Wir melden uns in K\u00fcrze."
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Startseite",
+          "item": "https://axcentdance.com/de/"
         },
         {
-          "@type": "BreadcrumbList",
-          "@id": "https://axcentdance.com/de/thank-you-contact#breadcrumb",
-          "itemListElement": [
-            {
-                "@type": "ListItem",
-                "position": 1,
-                "name": "Startseite",
-                "item": "https://axcentdance.com/de/"
-            },
-            {
-                "@type": "ListItem",
-                "position": 2,
-                "name": "Danke \u2013 AXcent Dance",
-                "item": "https://axcentdance.com/de/thank-you-contact"
-            }
-          ]
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Danke – AXcent Dance",
+          "item": "https://axcentdance.com/de/thank-you-contact"
         }
       ]
     }
+  ]
+}
     </script>
+
+  <!-- Centralized Global Schema (Org, School, LocalBusiness) -->
+  <script src="/assets/js/schema.js"></script>
 </head>
 
 <body>
@@ -200,6 +205,15 @@
     </header>
 
     <main>
+    <!-- Visual Breadcrumbs -->
+    <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+      <div class="container">
+        <ol class="breadcrumb-list">
+          <li class="breadcrumb-item"><a href="../" class="breadcrumb-link">Startseite</a></li><li class="breadcrumb-item active" aria-current="page">Danke – AXcent Dance</li>
+        </ol>
+      </div>
+    </nav>
+
         <section class="thank-you-section">
             <div class="thank-you-content">
                 <h1 class="thank-you-title">Danke!</h1>

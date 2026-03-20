@@ -43,7 +43,7 @@
 
     <style>
         .education-hero {
-            padding: 160px 20px 80px;
+            padding:  60px 20px 80px;
             text-align: center;
             /* background: removed for SEO img refactor */
         }
@@ -182,38 +182,43 @@
 
     <!-- Structured Data (@graph) -->
     <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      "@context": "https://schema.org",
-      "@graph": [
+      "@type": "WebPage",
+      "@id": "https://axcentdance.com/education#webpage",
+      "url": "https://axcentdance.com/education",
+      "name": "Bachata Education: History, Styles & Musicality | AXcent",
+      "isPartOf": {
+        "@id": "https://axcentdance.com/#website"
+      },
+      "description": "The ultimate Bachata knowledge hub. Explore history, street styles, musicality instruments, and terminology with AXcent Dance Zurich."
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://axcentdance.com/education#breadcrumb",
+      "itemListElement": [
         {
-          "@type": "WebPage",
-          "@id": "https://axcentdance.com/education#webpage",
-          "url": "https://axcentdance.com/education",
-          "name": "Bachata Education: History, Styles & Musicality | AXcent",
-          "isPartOf": { "@id": "https://axcentdance.com/#website" },
-          "description": "The ultimate Bachata knowledge hub. Explore history, street styles, musicality instruments, and terminology with AXcent Dance Zurich."
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://axcentdance.com/"
         },
         {
-          "@type": "BreadcrumbList",
-          "@id": "https://axcentdance.com/education#breadcrumb",
-          "itemListElement": [
-            {
-              "@type": "ListItem",
-              "position": 1,
-              "name": "Home",
-              "item": "https://axcentdance.com/"
-            },
-            {
-              "@type": "ListItem",
-              "position": 2,
-              "name": "Bachata Education",
-              "item": "https://axcentdance.com/education"
-            }
-          ]
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Bachata Education",
+          "item": "https://axcentdance.com/education"
         }
       ]
     }
+  ]
+}
     </script>
+
+  <!-- Centralized Global Schema (Org, School, LocalBusiness) -->
+  <script src="/assets/js/schema.js"></script>
 </head>
 
 <body>
@@ -267,6 +272,15 @@
     </header>
 
     <main>
+    <!-- Visual Breadcrumbs -->
+    <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+      <div class="container">
+        <ol class="breadcrumb-list">
+          <li class="breadcrumb-item"><a href="./" class="breadcrumb-link">Home</a></li><li class="breadcrumb-item active" aria-current="page">Bachata Education: History, Styles &amp; Musicality</li>
+        </ol>
+      </div>
+    </nav>
+
         <!-- Hero Section -->
         <!-- Hero Section -->
         <section class="education-hero relative-container">

@@ -59,44 +59,46 @@
   "@graph": [
     {
       "inLanguage": "en",
-          "@type": "WebPage",
+      "@type": "WebPage",
       "@id": "https://axcentdance.com/blog-posts/start-new-hobby-meet-people-zurich#webpage",
       "url": "https://axcentdance.com/blog-posts/start-new-hobby-meet-people-zurich",
-      "name": "Start a New Hobby & Meet People in Zurich | AXcent Dance"
+      "name": "Start a New Hobby & Meet People in Zurich | AXcent Dance",
+      "isPartOf": {
+        "@id": "https://axcentdance.com/#website"
+      }
     },
     {
       "inLanguage": "en",
-          "@type": "BlogPosting",
+      "@type": "BlogPosting",
       "headline": "Why Bachata is the Best New Hobby for Meeting People in Zurich",
       "datePublished": "2026-02-22",
       "dateModified": "2026-03-10",
       "author": [
-          { "@id": "https://axcentdance.com/#person1" },
-          { "@id": "https://axcentdance.com/#person2" }
-        ],
-      "publisher": {
-        "@type": "Organization",
-        "name": "AXcent Dance",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://axcentdance.com/assets/images/logo.webp"
+        {
+          "@id": "https://axcentdance.com/#person1"
+        },
+        {
+          "@id": "https://axcentdance.com/#person2"
         }
+      ],
+      "publisher": {
+        "@id": "https://axcentdance.com/#organization"
       },
       "description": "Looking to start a new hobby and meet new people in Zurich? Join our Bachata classes! It is the perfect way to make friends, stay active, and learn to dance.",
       "image": {
-            "@type": "ImageObject",
-            "url": "https://axcentdance.com/assets/images/blog/first-week-new-studio_1200w.webp",
-            "width": 1200,
-            "height": 900
-          },
+        "@type": "ImageObject",
+        "url": "https://axcentdance.com/assets/images/blog/first-week-new-studio_1200w.webp",
+        "width": 1200,
+        "height": 900
+      },
       "mainEntityOfPage": {
         "@id": "https://axcentdance.com/blog-posts/start-new-hobby-meet-people-zurich#webpage"
       },
-      "@id": "https://axcentdance.com/blog-posts/start-new-hobby-meet-people-zurich#article"
+      "@id": "https://axcentdance.com/blog-posts/start-new-hobby-meet-people-zurich#blogposting"
     },
     {
       "@type": "BreadcrumbList",
-        "inLanguage": "en",
+      "inLanguage": "en",
       "@id": "https://axcentdance.com/blog-posts/start-new-hobby-meet-people-zurich#breadcrumb",
       "itemListElement": [
         {
@@ -121,8 +123,11 @@
     }
   ]
 }
-</script>
+    </script>
 
+
+  <!-- Centralized Global Schema (Org, School, LocalBusiness) -->
+  <script src="/assets/js/schema.js"></script>
 </head>
 
 <body>
@@ -174,6 +179,15 @@
     </header>
 
     <main>
+    <!-- Visual Breadcrumbs -->
+    <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+      <div class="container">
+        <ol class="breadcrumb-list">
+          <li class="breadcrumb-item"><a href="../" class="breadcrumb-link">Home</a></li><li class="breadcrumb-item"><a href="../blog" class="breadcrumb-link">Blog</a></li><li class="breadcrumb-item active" aria-current="page">Start a New Hobby &amp; Meet People in Zurich</li>
+        </ol>
+      </div>
+    </nav>
+
         <!-- Hero Section -->
         <section class="post-hero relative-container"
             style="background-image: url('../assets/images/blog/first-week-new-studio.webp');">

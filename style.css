@@ -258,10 +258,6 @@ svg {
 }
 
 /* UTILITIES */
-.breadcrumb-nav {
-    display: none !important;
-}
-
 .container {
     max-width: var(--container-width);
     margin: 0 auto;
@@ -5066,4 +5062,69 @@ textarea {
     .tag-sensual {
         display: none;
     }
+}
+
+/* BREADCRUMBS */
+.breadcrumb-nav {
+    display: block !important;
+    padding: 0.5rem 0;
+    margin-top: var(--header-height); /* Clear the fixed header */
+    position: relative;
+    z-index: 10;
+}
+
+@media (max-width: 899px) {
+    .breadcrumb-nav {
+        margin-top: var(--header-height-mobile);
+    }
+}
+
+.breadcrumb-list {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 0.8rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.breadcrumb-item {
+    display: flex;
+    align-items: center;
+    color: var(--text-muted);
+}
+
+.breadcrumb-item::after {
+    content: '/';
+    margin-left: 0.5rem;
+    opacity: 0.3;
+    font-weight: 300;
+}
+
+.breadcrumb-item:last-child::after {
+    display: none;
+}
+
+.breadcrumb-link {
+    color: var(--text-muted);
+    transition: color var(--transition-fast);
+}
+
+.breadcrumb-link:hover {
+    color: var(--accent-start);
+}
+
+.breadcrumb-item.active {
+    color: var(--accent-start);
+    font-weight: 700;
+}
+
+/* Hide breadcrumbs on homepage */
+.home .breadcrumb-nav {
+    display: none !important;
 }

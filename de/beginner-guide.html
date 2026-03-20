@@ -465,97 +465,76 @@
 
     <!-- Schema Markup -->
     <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      "@context": "https://schema.org",
-      "@graph": [
+      "inLanguage": "de",
+      "@type": "WebPage",
+      "@id": "https://axcentdance.com/de/beginner-guide#webpage",
+      "url": "https://axcentdance.com/de/beginner-guide",
+      "name": "Bachata Starten in Zürich — Anfänger Guide | AXcent Dance",
+      "isPartOf": {
+        "@id": "https://axcentdance.com/#website"
+      },
+      "about": {
+        "@id": "https://axcentdance.com/#organization"
+      },
+      "description": "Noch nie getanzt? Dieser Guide erklärt dir alles über Kleidung, Schuhe, Etikette und was dich in deiner ersten Bachata-Stunde in Zürich erwartet."
+    },
+    {
+      "inLanguage": "de",
+      "@type": "Article",
+      "@id": "https://axcentdance.com/de/beginner-guide#blogposting",
+      "headline": "Anfänger Guide: Deine erste Bachata Stunde",
+      "datePublished": "2025-10-01",
+      "dateModified": "2026-03-17",
+      "author": [
         {
-          "inLanguage": "de",
-          "@type": "WebPage",
-          "@id": "https://axcentdance.com/de/beginner-guide#webpage",
-          "url": "https://axcentdance.com/de/beginner-guide",
-          "name": "Bachata Starten in Zürich — Anfänger Guide | AXcent Dance",
-          "isPartOf": { "@id": "https://axcentdance.com/#website" },
-          "about": { "@id": "https://axcentdance.com/#organization" },
-          "description": "Noch nie getanzt? Dieser Guide erklärt dir alles über Kleidung, Schuhe, Etikette und was dich in deiner ersten Bachata-Stunde in Zürich erwartet."
+          "@id": "https://axcentdance.com/#person1"
         },
         {
-          "@type": "LocalBusiness",
-          "@id": "https://axcentdance.com/#organization",
-          "name": "AXcent Dance",
-          "url": "https://axcentdance.com/de/",
-          "telephone": "+41799668481",
-          "hasMap": "https://www.google.com/maps?cid=15680757943659417558",
-          "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "Hermetschloostrasse 73",
-            "addressLocality": "Zurich",
-            "addressRegion": "ZH",
-            "postalCode": "8048",
-            "addressCountry": "CH"
-          },
-          "geo": {
-            "@type": "GeoCoordinates",
-            "latitude": 47.3941999,
-            "longitude": 8.4745859
-          },
-          "hasOfferCatalog": {
-            "@type": "OfferCatalog",
-            "name": "Tanzunterricht",
-            "itemListElement": [
-              {
-                "@type": "Offer",
-                "itemOffered": {
-                  "@type": "Service",
-                  "name": "Bachata Kurse",
-                  "serviceType": "Tanzunterricht",
-                  "description": "Professionelle Bachata Kurse für alle Niveaus in Zürich."
-                }
-              }
-            ]
-          }
+          "@id": "https://axcentdance.com/#person2"
+        }
+      ],
+      "publisher": {
+        "@id": "https://axcentdance.com/#organization"
+      },
+      "description": "Alles, was du für deine erste Tanzstunde wissen musst: Kleidung, Schuhe und Etikette.",
+      "mainEntityOfPage": {
+        "@id": "https://axcentdance.com/de/beginner-guide#webpage"
+      },
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://axcentdance.com/assets/images/bachata_class_zurich.webp",
+        "width": 1024,
+        "height": 1024
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://axcentdance.com/de/beginner-guide#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Startseite",
+          "item": "https://axcentdance.com/de/"
         },
         {
-          "inLanguage": "de",
-          "@type": "Article",
-          "@id": "https://axcentdance.com/de/beginner-guide#article",
-          "headline": "Anfänger Guide: Deine erste Bachata Stunde",
-          "datePublished": "2025-10-01",
-          "dateModified": "2026-03-17",
-          "author": [
-          { "@id": "https://axcentdance.com/#person1" },
-          { "@id": "https://axcentdance.com/#person2" }
-        ],
-          "publisher": { "@id": "https://axcentdance.com/#organization" },
-          "description": "Alles, was du für deine erste Tanzstunde wissen musst: Kleidung, Schuhe und Etikette.",
-          "mainEntityOfPage": { "@id": "https://axcentdance.com/de/beginner-guide#webpage" },
-          "image": {
-            "@type": "ImageObject",
-            "url": "https://axcentdance.com/assets/images/bachata_class_zurich.webp",
-            "width": 1024,
-            "height": 1024
-          }
-        },
-        {
-          "@type": "BreadcrumbList",
-          "@id": "https://axcentdance.com/de/beginner-guide#breadcrumb",
-          "itemListElement": [
-            {
-              "@type": "ListItem",
-              "position": 1,
-              "name": "Startseite",
-              "item": "https://axcentdance.com/de/"
-            },
-            {
-              "@type": "ListItem",
-              "position": 2,
-              "name": "Bachata für Anfänger",
-              "item": "https://axcentdance.com/de/beginner-guide"
-            }
-          ]
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Bachata für Anfänger",
+          "item": "https://axcentdance.com/de/beginner-guide"
         }
       ]
     }
+  ]
+}
     </script>
+
+  <!-- Centralized Global Schema (Org, School, LocalBusiness) -->
+  <script src="/assets/js/schema.js"></script>
 </head>
 
 <body>
@@ -613,6 +592,15 @@
     </header>
 
     <main>
+    <!-- Visual Breadcrumbs -->
+    <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+      <div class="container">
+        <ol class="breadcrumb-list">
+          <li class="breadcrumb-item"><a href="../" class="breadcrumb-link">Startseite</a></li><li class="breadcrumb-item active" aria-current="page">Bachata Anfänger Guide Zürich — Deine erste Tanzstunde</li>
+        </ol>
+      </div>
+    </nav>
+
         <!-- 1. Hero Section -->
         <section class="guide-modern-hero">
             <!-- Background Image (SEO) -->

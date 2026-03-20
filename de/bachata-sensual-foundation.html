@@ -40,70 +40,72 @@
 
     <!-- Structured Data (@graph) -->
     <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      "@context": "https://schema.org",
-      "@graph": [
+      "@type": "WebPage",
+      "@id": "https://axcentdance.com/de/bachata-sensual-foundation#webpage",
+      "url": "https://axcentdance.com/de/bachata-sensual-foundation",
+      "name": "Bachata Sensual Foundation Kurse Zürich | AXcent Dance",
+      "isPartOf": {
+        "@id": "https://axcentdance.com/#website"
+      },
+      "description": "Meistere die Grundlagen von Bachata Sensual in Zürich. Lerne Körperbewegung, Isolation und Verbindungstechniken."
+    },
+    {
+      "@type": "Course",
+      "@id": "https://axcentdance.com/de/bachata-sensual-foundation#course",
+      "isPartOf": {
+        "@id": "https://axcentdance.com/de/bachata-sensual-foundation#webpage"
+      },
+      "name": "Bachata Sensual Foundation",
+      "description": "Meistere die Grundlagen von Bachata Sensual in Zürich. Lerne Körperbewegung, Isolation und Verbindungstechniken.",
+      "provider": {
+        "@id": "https://axcentdance.com/#organization"
+      },
+      "hasCourseInstance": {
+        "@type": "CourseInstance",
+        "courseMode": "onsite",
+        "location": {
+          "@type": "Place",
+          "name": "AXcent Dance Studio",
+          "address": "Hermetschloostrasse 73, 8048 Zürich"
+        },
+        "eventSchedule": {
+          "@type": "Schedule",
+          "repeatFrequency": "Wöchentlich",
+          "byDay": "https://schema.org/Mittwoch",
+          "startTime": "19:30"
+        }
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://axcentdance.com/de/bachata-sensual-foundation#breadcrumb",
+      "itemListElement": [
         {
-          "@type": "WebPage",
-          "@id": "https://axcentdance.com/de/bachata-sensual-foundation#webpage",
-          "url": "https://axcentdance.com/de/bachata-sensual-foundation",
-          "name": "Bachata Sensual Foundation Kurse Z\u00fcrich | AXcent Dance",
-          "isPartOf": { "@id": "https://axcentdance.com/#website" },
-          "description": "Meistere die Grundlagen von Bachata Sensual in Z\u00fcrich. Lerne K\u00f6rperbewegung, Isolation und Verbindungstechniken."
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Startseite",
+          "item": "https://axcentdance.com/de/"
         },
         {
-          "@type": "Course",
-          "@id": "https://axcentdance.com/de/bachata-sensual-foundation#course",
-          "isPartOf": { "@id": "https://axcentdance.com/de/bachata-sensual-foundation#webpage" },
-          "name": "Bachata Sensual Foundation",
-          "description": "Meistere die Grundlagen von Bachata Sensual in Z\u00fcrich. Lerne K\u00f6rperbewegung, Isolation und Verbindungstechniken.",
-          "provider": {
-            "@type": "Organization",
-            "name": "AXcent Dance",
-            "sameAs": "https://axcentdance.com"
-          },
-          "hasCourseInstance": {
-            "@type": "CourseInstance",
-            "courseMode": "onsite",
-            "location": {
-              "@type": "Place",
-              "name": "AXcent Dance Studio",
-              "address": "Hermetschloostrasse 73, 8048 Z\u00fcrich"
-            },
-            "eventSchedule": {
-              "@type": "Schedule",
-              "repeatFrequency": "W\u00f6chentlich",
-              "byDay": "https://schema.org/Mittwoch",
-              "startTime": "19:30"
-            }
-          }
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Stundenplan",
+          "item": "https://axcentdance.com/de/schedule"
         },
         {
-          "@type": "BreadcrumbList",
-          "@id": "https://axcentdance.com/de/bachata-sensual-foundation#breadcrumb",
-          "itemListElement": [
-            {
-              "@type": "ListItem",
-              "position": 1,
-              "name": "Startseite",
-              "item": "https://axcentdance.com/de/"
-            },
-            {
-              "@type": "ListItem",
-              "position": 2,
-              "name": "Stundenplan",
-              "item": "https://axcentdance.com/de/schedule"
-            },
-            {
-              "@type": "ListItem",
-              "position": 3,
-              "name": "Bachata Sensual Foundation Kurse Z\u00fcrich",
-              "item": "https://axcentdance.com/de/bachata-sensual-foundation"
-            }
-          ]
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Bachata Sensual Foundation Kurse Zürich",
+          "item": "https://axcentdance.com/de/bachata-sensual-foundation"
         }
       ]
     }
+  ]
+}
     </script>
 
     <!-- Styles -->
@@ -122,6 +124,9 @@
 
         gtag('config', 'G-E2SYCF7R7X');
     </script>
+
+  <!-- Centralized Global Schema (Org, School, LocalBusiness) -->
+  <script src="/assets/js/schema.js"></script>
 </head>
 
 <body>
@@ -179,6 +184,15 @@
     </header>
 
     <main>
+    <!-- Visual Breadcrumbs -->
+    <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+      <div class="container">
+        <ol class="breadcrumb-list">
+          <li class="breadcrumb-item"><a href="../" class="breadcrumb-link">Startseite</a></li><li class="breadcrumb-item active" aria-current="page">Bachata Sensual Foundation Kurse Zürich</li>
+        </ol>
+      </div>
+    </nav>
+
         <!-- Course Hero -->
         <section class="course-hero relative-container" style="background: none;">
             <img src="../assets/images/course_hero_bg.webp"

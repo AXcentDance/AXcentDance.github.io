@@ -39,70 +39,74 @@
 
     <!-- Structured Data (@graph) -->
     <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      "@context": "https://schema.org",
-      "@graph": [
+      "@type": "WebPage",
+      "@id": "https://axcentdance.com/de/bachata-beginner-1#webpage",
+      "url": "https://axcentdance.com/de/bachata-beginner-1",
+      "name": "Bachata Beginner 1 | AXcent Dance Zürich",
+      "isPartOf": {
+        "@id": "https://axcentdance.com/#website"
+      },
+      "description": "Die perfekte Brücke zum Sensual Bachata. Unser Beginner 1 Kurs in Zürich bereitet dich auf komplexe Körperbewegungen und Verbindung vor. Buche jetzt deine Probelektion."
+    },
+    {
+      "@type": "Course",
+      "@id": "https://axcentdance.com/de/bachata-beginner-1#course",
+      "isPartOf": {
+        "@id": "https://axcentdance.com/de/bachata-beginner-1#webpage"
+      },
+      "name": "Bachata Anfänger 1",
+      "description": "Verbessere deine Bachata-Kenntnisse in Zürich in unserem Anfänger 1 Kurs. Fokus auf Grundlagentechniken, Bodyrolls und Sensual Style.",
+      "provider": {
+        "@type": "Organization",
+        "name": "Startseite",
+        "sameAs": "https://axcentdance.com"
+      },
+      "hasCourseInstance": {
+        "@type": "CourseInstance",
+        "courseMode": "onsite",
+        "location": {
+          "@type": "Place",
+          "name": "AXcent Dance Studio",
+          "address": "Hermetschloostrasse 73, 8048 Zürich"
+        },
+        "eventSchedule": {
+          "@type": "Schedule",
+          "repeatFrequency": "Wöchentlich",
+          "byDay": "https://schema.org/Dienstag",
+          "startTime": "19:30"
+        }
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://axcentdance.com/de/bachata-beginner-1#breadcrumb",
+      "itemListElement": [
         {
-          "@type": "WebPage",
-          "@id": "https://axcentdance.com/de/bachata-beginner-1#webpage",
-          "url": "https://axcentdance.com/de/bachata-beginner-1",
-          "name": "Bachata Beginner 1 | AXcent Dance Z\u00fcrich",
-          "isPartOf": { "@id": "https://axcentdance.com/#website" },
-          "description": "Die perfekte Br\u00fccke zum Sensual Bachata. Unser Beginner 1 Kurs in Z\u00fcrich bereitet dich auf komplexe K\u00f6rperbewegungen und Verbindung vor. Buche jetzt deine Probelektion."
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Startseite",
+          "item": "https://axcentdance.com/de/"
         },
         {
-          "@type": "Course",
-          "@id": "https://axcentdance.com/de/bachata-beginner-1#course",
-          "isPartOf": { "@id": "https://axcentdance.com/de/bachata-beginner-1#webpage" },
-          "name": "Bachata Anf\u00e4nger 1",
-          "description": "Verbessere deine Bachata-Kenntnisse in Z\u00fcrich in unserem Anf\u00e4nger 1 Kurs. Fokus auf Grundlagentechniken, Bodyrolls und Sensual Style.",
-          "provider": {
-            "@type": "Organization",
-            "name": "Startseite",
-            "sameAs": "https://axcentdance.com"
-          },
-          "hasCourseInstance": {
-            "@type": "CourseInstance",
-            "courseMode": "onsite",
-            "location": {
-              "@type": "Place",
-              "name": "AXcent Dance Studio",
-              "address": "Hermetschloostrasse 73, 8048 Z\u00fcrich"
-            },
-            "eventSchedule": {
-              "@type": "Schedule",
-              "repeatFrequency": "W\u00f6chentlich",
-              "byDay": "https://schema.org/Dienstag",
-              "startTime": "19:30"
-            }
-          }
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Stundenplan",
+          "item": "https://axcentdance.com/de/schedule"
         },
         {
-          "@type": "BreadcrumbList",
-          "@id": "https://axcentdance.com/de/bachata-beginner-1#breadcrumb",
-          "itemListElement": [
-            {
-              "@type": "ListItem",
-              "position": 1,
-              "name": "Startseite",
-              "item": "https://axcentdance.com/de/"
-            },
-            {
-              "@type": "ListItem",
-              "position": 2,
-              "name": "Stundenplan",
-              "item": "https://axcentdance.com/de/schedule"
-            },
-            {
-              "@type": "ListItem",
-              "position": 3,
-              "name": "Bachata Lernen Z\u00fcrich",
-              "item": "https://axcentdance.com/de/bachata-beginner-1"
-            }
-          ]
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Bachata Lernen Zürich",
+          "item": "https://axcentdance.com/de/bachata-beginner-1"
         }
       ]
     }
+  ]
+}
     </script>
 
     <!-- Styles -->
@@ -121,6 +125,9 @@
 
         gtag('config', 'G-E2SYCF7R7X');
     </script>
+
+  <!-- Centralized Global Schema (Org, School, LocalBusiness) -->
+  <script src="/assets/js/schema.js"></script>
 </head>
 
 <body>
@@ -178,6 +185,15 @@
     </header>
 
     <main>
+    <!-- Visual Breadcrumbs -->
+    <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+      <div class="container">
+        <ol class="breadcrumb-list">
+          <li class="breadcrumb-item"><a href="../" class="breadcrumb-link">Startseite</a></li><li class="breadcrumb-item active" aria-current="page">Bachata Beginner 1</li>
+        </ol>
+      </div>
+    </nav>
+
         <!-- Course Hero -->
         <section class="course-hero relative-container" style="background: none;">
             <img src="../assets/images/course_hero_bg.webp"

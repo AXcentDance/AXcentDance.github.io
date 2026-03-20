@@ -224,38 +224,43 @@
     
     <!-- Structured Data (@graph) -->
     <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      "@context": "https://schema.org",
-      "@graph": [
+      "@type": "WebPage",
+      "@id": "https://axcentdance.com/thank-you-trial#webpage",
+      "url": "https://axcentdance.com/thank-you-trial",
+      "name": "Thank You – AXcent Dance",
+      "isPartOf": {
+        "@id": "https://axcentdance.com/#website"
+      },
+      "description": "Thank you for your interest in AXcent Dance. We will be in touch soon."
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://axcentdance.com/thank-you-trial#breadcrumb",
+      "itemListElement": [
         {
-          "@type": "WebPage",
-          "@id": "https://axcentdance.com/thank-you-trial#webpage",
-          "url": "https://axcentdance.com/thank-you-trial",
-          "name": "Thank You \u2013 AXcent Dance",
-          "isPartOf": { "@id": "https://axcentdance.com/#website" },
-          "description": "Thank you for your interest in AXcent Dance. We will be in touch soon."
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://axcentdance.com/"
         },
         {
-          "@type": "BreadcrumbList",
-          "@id": "https://axcentdance.com/thank-you-trial#breadcrumb",
-          "itemListElement": [
-            {
-                "@type": "ListItem",
-                "position": 1,
-                "name": "Home",
-                "item": "https://axcentdance.com/"
-            },
-            {
-                "@type": "ListItem",
-                "position": 2,
-                "name": "Thank You \u2013 AXcent Dance",
-                "item": "https://axcentdance.com/thank-you-trial"
-            }
-          ]
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Thank You – AXcent Dance",
+          "item": "https://axcentdance.com/thank-you-trial"
         }
       ]
     }
+  ]
+}
     </script>
+
+  <!-- Centralized Global Schema (Org, School, LocalBusiness) -->
+  <script src="/assets/js/schema.js"></script>
 </head>
 
 <body>
@@ -313,6 +318,15 @@
     </header>
 
     <main>
+    <!-- Visual Breadcrumbs -->
+    <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+      <div class="container">
+        <ol class="breadcrumb-list">
+          <li class="breadcrumb-item"><a href="./" class="breadcrumb-link">Home</a></li><li class="breadcrumb-item active" aria-current="page">Thank You – AXcent Dance</li>
+        </ol>
+      </div>
+    </nav>
+
         <section class="thank-you-section">
             <div class="thank-you-content">
                 <h1 class="thank-you-title">Thank You!</h1>

@@ -61,7 +61,7 @@
     
     <style>
         .post-hero {
-            padding: 160px 20px 80px;
+            padding:  60px 20px 80px;
             text-align: center;
             background: none;
             background-size: cover;
@@ -151,44 +151,46 @@
   "@graph": [
     {
       "inLanguage": "de",
-          "@type": "WebPage",
+      "@type": "WebPage",
       "@id": "https://axcentdance.com/de/blog-posts/what-to-wear-bachata#webpage",
       "url": "https://axcentdance.com/de/blog-posts/what-to-wear-bachata",
-      "name": "Was anziehen zum Bachata-Kurs: Ein Anfänger-Guide"
+      "name": "Was anziehen zum Bachata-Kurs: Ein Anfänger-Guide",
+      "isPartOf": {
+        "@id": "https://axcentdance.com/#website"
+      }
     },
     {
       "inLanguage": "de",
-          "@type": "BlogPosting",
+      "@type": "BlogPosting",
       "headline": "What to Wear to Bachata Class: A Beginner's Guide",
       "datePublished": "2025-12-09",
       "dateModified": "2026-03-10",
       "author": [
-          { "@id": "https://axcentdance.com/#person1" },
-          { "@id": "https://axcentdance.com/#person2" }
-        ],
-      "publisher": {
-        "@type": "Organization",
-        "name": "AXcent Dance",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://axcentdance.com/assets/images/logo.webp"
+        {
+          "@id": "https://axcentdance.com/#person1"
+        },
+        {
+          "@id": "https://axcentdance.com/#person2"
         }
+      ],
+      "publisher": {
+        "@id": "https://axcentdance.com/#organization"
       },
       "description": "Fragst du dich, was du zu deiner ersten Bachata-Stunde anziehen sollst? Hier ist unser kompletter Guide zu Kleidung, Schuhen und Hygiene.",
       "image": {
-            "@type": "ImageObject",
-            "url": "https://axcentdance.com/assets/images/bachata_essentials_flatlay.webp",
-            "width": 1024,
-            "height": 1024
-          },
+        "@type": "ImageObject",
+        "url": "https://axcentdance.com/assets/images/bachata_essentials_flatlay.webp",
+        "width": 1024,
+        "height": 1024
+      },
       "mainEntityOfPage": {
         "@id": "https://axcentdance.com/de/blog-posts/what-to-wear-bachata#webpage"
       },
-      "@id": "https://axcentdance.com/de/blog-posts/what-to-wear-bachata#article"
+      "@id": "https://axcentdance.com/de/blog-posts/what-to-wear-bachata#blogposting"
     },
     {
       "@type": "BreadcrumbList",
-        "inLanguage": "de",
+      "inLanguage": "de",
       "@id": "https://axcentdance.com/de/blog-posts/what-to-wear-bachata#breadcrumb",
       "itemListElement": [
         {
@@ -213,8 +215,11 @@
     }
   ]
 }
-</script>
+    </script>
 
+
+  <!-- Centralized Global Schema (Org, School, LocalBusiness) -->
+  <script src="/assets/js/schema.js"></script>
 </head>
 
 <body>
@@ -267,6 +272,15 @@
     </header>
 
     <main>
+    <!-- Visual Breadcrumbs -->
+    <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+      <div class="container">
+        <ol class="breadcrumb-list">
+          <li class="breadcrumb-item"><a href="../../" class="breadcrumb-link">Startseite</a></li><li class="breadcrumb-item"><a href="../../blog" class="breadcrumb-link">Blog</a></li><li class="breadcrumb-item active" aria-current="page">Was anziehen zum Bachata-Kurs: Ein Anfänger-Guide</li>
+        </ol>
+      </div>
+    </nav>
+
         <!-- Hero Section -->
         <section class="post-hero relative-container" style="background: none;">
             <img src="../../assets/images/bachata_essentials_flatlay.webp"

@@ -56,85 +56,76 @@
 
     <!-- Structured Data (Schema.org) -->
     <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      "@context": "https://schema.org",
-      "@graph": [
+      "@type": "WebPage",
+      "@id": "https://axcentdance.com/room-rental#webpage",
+      "url": "https://axcentdance.com/room-rental",
+      "name": "Dance Studio Rental Zurich | Rent 138qm Mirror Hall",
+      "isPartOf": {
+        "@id": "https://axcentdance.com/#website"
+      },
+      "description": "Looking for Dance Studio Rental in Zurich? Rent our 138qm mirror hall in Altstetten for classes, workshops, or rehearsals."
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://axcentdance.com/room-rental#faq",
+      "isPartOf": {
+        "@id": "https://axcentdance.com/room-rental#webpage"
+      },
+      "mainEntity": [
         {
-          "@type": "WebPage",
-          "@id": "https://axcentdance.com/room-rental#webpage",
-          "url": "https://axcentdance.com/room-rental",
-          "name": "Dance Studio Rental Zurich | Rent 138qm Mirror Hall",
-          "isPartOf": { "@id": "https://axcentdance.com/#website" },
-          "description": "Looking for Dance Studio Rental in Zurich? Rent our 138qm mirror hall in Altstetten for classes, workshops, or rehearsals."},
-        {
-          "@type": "LocalBusiness",
-          "@id": "https://axcentdance.com/#organization",
-          "name": "AXcent Dance",
-          "url": "https://axcentdance.com/",
-          "telephone": "+41799668481",
-          "hasMap": "https://www.google.com/maps?cid=15680757943659417558",
-          "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "Hermetschloostrasse 73",
-            "addressLocality": "Zurich",
-            "addressRegion": "ZH",
-            "postalCode": "8048",
-            "addressCountry": "CH"
-          },
-          "geo": {
-            "@type": "GeoCoordinates",
-            "latitude": 47.3941999,
-            "longitude": 8.4745859
+          "@type": "Question",
+          "name": "Can I rent the room for private parties?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, our studio is perfect for birthdays, workshops, and private events. Contact us for rates."
           }
         },
         {
-          "@type": "FAQPage",
-          "@id": "https://axcentdance.com/room-rental#faq",
-          "isPartOf": { "@id": "https://axcentdance.com/room-rental#webpage" },
-          "mainEntity": [{
-            "@type": "Question",
-            "name": "Can I rent the room for private parties?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Yes, our studio is perfect for birthdays, workshops, and private events. Contact us for rates."
-            }
-          }, {
-            "@type": "Question",
-            "name": "What equipment is included?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "The rental includes the sound system, mirrors, and basic lighting. Additional equipment can be requested."
-            }
-          }, {
-            "@type": "Question",
-            "name": "Is there parking available?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Yes, there is street parking available on the same street as the school. Public transport (Tram 2, Bus 31) is just 2 minutes walking distance."
-            }
-          }]
+          "@type": "Question",
+          "name": "What equipment is included?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The rental includes the sound system, mirrors, and basic lighting. Additional equipment can be requested."
+          }
         },
         {
-          "@type": "BreadcrumbList",
-          "@id": "https://axcentdance.com/room-rental#breadcrumb",
-          "itemListElement": [
-              {
-                  "@type": "ListItem",
-                  "position": 1,
-                  "name": "Home",
-                  "item": "https://axcentdance.com/"
-              },
-              {
-                  "@type": "ListItem",
-                  "position": 2,
-                  "name": "Dance Studio Rental Zurich",
-                  "item": "https://axcentdance.com/room-rental"
-              }
-          ]
+          "@type": "Question",
+          "name": "Is there parking available?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, there is street parking available on the same street as the school. Public transport (Tram 2, Bus 31) is just 2 minutes walking distance."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://axcentdance.com/room-rental#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://axcentdance.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Dance Studio Rental Zurich",
+          "item": "https://axcentdance.com/room-rental"
         }
       ]
     }
+  ]
+}
     </script>
+
+  <!-- Centralized Global Schema (Org, School, LocalBusiness) -->
+  <script src="/assets/js/schema.js"></script>
 </head>
 
 <body>
@@ -193,6 +184,15 @@
     </header>
 
     <main>
+    <!-- Visual Breadcrumbs -->
+    <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+      <div class="container">
+        <ol class="breadcrumb-list">
+          <li class="breadcrumb-item"><a href="./" class="breadcrumb-link">Home</a></li><li class="breadcrumb-item active" aria-current="page">Dance Studio Rental Zurich</li>
+        </ol>
+      </div>
+    </nav>
+
         <!-- Compact Room Rental Section -->
         <section class="rental-section-compact" style="padding-top: calc(var(--header-height) + 3rem); padding-bottom: 4rem;">
             <div class="container">

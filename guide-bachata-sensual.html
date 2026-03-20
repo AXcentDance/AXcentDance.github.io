@@ -66,40 +66,42 @@
   "@graph": [
     {
       "inLanguage": "en",
-          "@type": "WebPage",
+      "@type": "WebPage",
       "@id": "https://axcentdance.com/guide-bachata-sensual#webpage",
       "url": "https://axcentdance.com/guide-bachata-sensual",
-      "name": "What is Bachata Sensual? | AXcent Dance Zurich"
+      "name": "What is Bachata Sensual? | AXcent Dance Zurich",
+      "isPartOf": {
+        "@id": "https://axcentdance.com/#website"
+      }
     },
     {
       "inLanguage": "en",
-          "@type": "Article",
+      "@type": "Article",
       "headline": "What is Bachata Sensual? History & Key Elements",
       "datePublished": "2025-10-01",
       "dateModified": "2026-03-17",
       "author": [
-          { "@id": "https://axcentdance.com/#person1" },
-          { "@id": "https://axcentdance.com/#person2" }
-        ],
-      "publisher": {
-        "@type": "Organization",
-        "name": "AXcent Dance",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://axcentdance.com/assets/images/logo.webp"
+        {
+          "@id": "https://axcentdance.com/#person1"
+        },
+        {
+          "@id": "https://axcentdance.com/#person2"
         }
+      ],
+      "publisher": {
+        "@id": "https://axcentdance.com/#organization"
       },
       "description": "Learn about Bachata Sensual, the modern fusion style focusing on body movement and connection.",
       "mainEntityOfPage": {
         "@id": "https://axcentdance.com/guide-bachata-sensual#webpage"
       },
       "image": {
-            "@type": "ImageObject",
-            "url": "https://axcentdance.com/assets/images/hero_new.webp",
-            "width": 1024,
-            "height": 1024
-          },
-      "@id": "https://axcentdance.com/guide-bachata-sensual#article"
+        "@type": "ImageObject",
+        "url": "https://axcentdance.com/assets/images/hero_new.webp",
+        "width": 1024,
+        "height": 1024
+      },
+      "@id": "https://axcentdance.com/guide-bachata-sensual#blogposting"
     },
     {
       "@type": "BreadcrumbList",
@@ -121,8 +123,11 @@
     }
   ]
 }
-</script>
+    </script>
 
+
+  <!-- Centralized Global Schema (Org, School, LocalBusiness) -->
+  <script src="/assets/js/schema.js"></script>
 </head>
 
 <body>
@@ -181,6 +186,15 @@
   </header>
 
   <main>
+    <!-- Visual Breadcrumbs -->
+    <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+      <div class="container">
+        <ol class="breadcrumb-list">
+          <li class="breadcrumb-item"><a href="./" class="breadcrumb-link">Home</a></li><li class="breadcrumb-item active" aria-current="page">What is Bachata Sensual?</li>
+        </ol>
+      </div>
+    </nav>
+
     <!-- Guide Hero -->
     <section class="course-hero relative-container" style="background: none; min-height: 40vh;">
       <img src="assets/images/schedule_hero_placeholder.webp" srcset="assets/images/schedule_hero_placeholder_480w.webp 480w, assets/images/schedule_hero_placeholder_800w.webp 800w, assets/images/schedule_hero_placeholder_1200w.webp 1200w" sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px" alt="Bachata Dance Class Zurich" width="1024" height="1024" class="hero-bg-img" >

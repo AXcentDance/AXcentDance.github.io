@@ -41,86 +41,67 @@
 
     <!-- Structured Data (Schema.org) -->
     <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      "@context": "https://schema.org",
-      "@graph": [
-        {
-          "@type": "CollectionPage",
-          "@id": "https://axcentdance.com/de/events#webpage",
-          "name": "Bachata Events & Kongresse",
-          "description": "Kommende Bachata-Events, Intensiv-Workshops und internationale Kongresse, die von AXcent Dance organisiert oder besucht werden.",
-          "url": "https://axcentdance.com/de/events",
-          "isPartOf": { "@id": "https://axcentdance.com/#website" },
-          "mainEntity": {
-            "@type": "ItemList",
-            "itemListElement": [
-              {
-                "@type": "ListItem",
-                "position": 1,
-                "name": "Dominican Bachata Bootcamp Zürich",
-                "url": "https://axcentdance.com/de/dominican-bootcamp"
-              },
-              {
-                "@type": "ListItem",
-                "position": 2,
-                "name": "Milano Sensual Congress Spring Edition",
-                "url": "https://axcentdance.com/de/Milano-Sensual-Congress-Spring-2026"
-              },
-              {
-                "@type": "ListItem",
-                "position": 3,
-                "name": "Milano Sensual Congress 2026",
-                "url": "https://axcentdance.com/de/Milano-Sensual-Congress-2026"
-              }
-            ]
-          }
-        },
-        {
-          "@type": "LocalBusiness",
-          "@id": "https://axcentdance.com/#organization",
-          "name": "AXcent Dance",
-          "url": "https://axcentdance.com/de/",
-          "telephone": "+41799668481",
-          "hasMap": "https://www.google.com/maps?cid=15680757943659417558",
-          "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "Hermetschloostrasse 73",
-            "addressLocality": "Zurich",
-            "addressRegion": "ZH",
-            "postalCode": "8048",
-            "addressCountry": "CH"
+      "@type": "CollectionPage",
+      "@id": "https://axcentdance.com/de/events#webpage",
+      "name": "Bachata Events & Kongresse",
+      "description": "Kommende Bachata-Events, Intensiv-Workshops und internationale Kongresse, die von AXcent Dance organisiert oder besucht werden.",
+      "url": "https://axcentdance.com/de/events",
+      "isPartOf": {
+        "@id": "https://axcentdance.com/#website"
+      },
+      "mainEntity": {
+        "@type": "ItemList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Dominican Bachata Bootcamp Zürich",
+            "url": "https://axcentdance.com/de/dominican-bootcamp"
           },
-          "geo": {
-            "@type": "GeoCoordinates",
-            "latitude": 47.3941999,
-            "longitude": 8.4745859
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Milano Sensual Congress Spring Edition",
+            "url": "https://axcentdance.com/de/Milano-Sensual-Congress-Spring-2026"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Milano Sensual Congress 2026",
+            "url": "https://axcentdance.com/de/Milano-Sensual-Congress-2026"
           }
+        ]
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://axcentdance.com/de/events#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Startseite",
+          "item": "https://axcentdance.com/de/"
         },
         {
-          "@type": "BreadcrumbList",
-          "@id": "https://axcentdance.com/de/events#breadcrumb",
-          "itemListElement": [
-            {
-              "@type": "ListItem",
-              "position": 1,
-              "name": "Startseite",
-              "item": "https://axcentdance.com/de/"
-            },
-            {
-              "@type": "ListItem",
-              "position": 2,
-              "name": "Events",
-              "item": "https://axcentdance.com/de/events"
-            }
-          ]
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Events",
+          "item": "https://axcentdance.com/de/events"
         }
       ]
     }
+  ]
+}
     </script>
 
     <style>
         .events-hero {
-            padding: 160px 20px 80px;
+            padding:  60px 20px 80px;
             text-align: center;
         }
 
@@ -269,6 +250,9 @@
 
         gtag('config', 'G-E2SYCF7R7X');
     </script>
+
+  <!-- Centralized Global Schema (Org, School, LocalBusiness) -->
+  <script src="/assets/js/schema.js"></script>
 </head>
 
 <body>
@@ -325,6 +309,15 @@
     </header>
 
     <main>
+    <!-- Visual Breadcrumbs -->
+    <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+      <div class="container">
+        <ol class="breadcrumb-list">
+          <li class="breadcrumb-item"><a href="../" class="breadcrumb-link">Startseite</a></li><li class="breadcrumb-item active" aria-current="page">Bachata Events Zürich</li>
+        </ol>
+      </div>
+    </nav>
+
         <section class="events-hero">
             <div class="container">
                 <h1 class="page-title">Bachata Events & Bootcamps in Zürich</h1>

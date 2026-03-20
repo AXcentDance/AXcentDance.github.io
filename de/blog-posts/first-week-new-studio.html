@@ -61,7 +61,7 @@
     
     <style>
         .post-hero {
-            padding: 160px 20px 80px;
+            padding:  60px 20px 80px;
             text-align: center;
             background: none;
             background-size: cover;
@@ -132,44 +132,46 @@
   "@graph": [
     {
       "inLanguage": "de",
-          "@type": "WebPage",
+      "@type": "WebPage",
       "@id": "https://axcentdance.com/de/blog-posts/first-week-new-studio#webpage",
       "url": "https://axcentdance.com/de/blog-posts/first-week-new-studio",
-      "name": "Magie der ersten Woche: Wir feiern unser neues Zuhause in Zürich"
+      "name": "Magie der ersten Woche: Wir feiern unser neues Zuhause in Zürich",
+      "isPartOf": {
+        "@id": "https://axcentdance.com/#website"
+      }
     },
     {
       "inLanguage": "de",
-          "@type": "BlogPosting",
+      "@type": "BlogPosting",
       "headline": "First Week Magic: Celebrating Our New Home in Zurich",
       "datePublished": "2026-01-18",
       "dateModified": "2026-03-10",
       "author": [
-          { "@id": "https://axcentdance.com/#person1" },
-          { "@id": "https://axcentdance.com/#person2" }
-        ],
-      "publisher": {
-        "@type": "Organization",
-        "name": "AXcent Dance",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://axcentdance.com/assets/images/logo.webp"
+        {
+          "@id": "https://axcentdance.com/#person1"
+        },
+        {
+          "@id": "https://axcentdance.com/#person2"
         }
+      ],
+      "publisher": {
+        "@id": "https://axcentdance.com/#organization"
       },
       "description": "The energy was electric! A huge thank you to everyone who joined us for our first week of classes at our brand new studio in Zurich Altstetten.",
       "image": {
-            "@type": "ImageObject",
-            "url": "https://axcentdance.com/assets/images/blog/first-week-new-studio.webp",
-            "width": 1024,
-            "height": 768
-          },
+        "@type": "ImageObject",
+        "url": "https://axcentdance.com/assets/images/blog/first-week-new-studio.webp",
+        "width": 1024,
+        "height": 768
+      },
       "mainEntityOfPage": {
         "@id": "https://axcentdance.com/de/blog-posts/first-week-new-studio#webpage"
       },
-      "@id": "https://axcentdance.com/de/blog-posts/first-week-new-studio#article"
+      "@id": "https://axcentdance.com/de/blog-posts/first-week-new-studio#blogposting"
     },
     {
       "@type": "BreadcrumbList",
-        "inLanguage": "de",
+      "inLanguage": "de",
       "@id": "https://axcentdance.com/de/blog-posts/first-week-new-studio#breadcrumb",
       "itemListElement": [
         {
@@ -194,8 +196,11 @@
     }
   ]
 }
-</script>
+    </script>
 
+
+  <!-- Centralized Global Schema (Org, School, LocalBusiness) -->
+  <script src="/assets/js/schema.js"></script>
 </head>
 
 <body>
@@ -248,6 +253,15 @@
     </header>
 
     <main>
+    <!-- Visual Breadcrumbs -->
+    <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+      <div class="container">
+        <ol class="breadcrumb-list">
+          <li class="breadcrumb-item"><a href="../../" class="breadcrumb-link">Startseite</a></li><li class="breadcrumb-item"><a href="../../blog" class="breadcrumb-link">Blog</a></li><li class="breadcrumb-item active" aria-current="page">Magie der ersten Woche: Wir feiern unser neues Zuhause in Zürich</li>
+        </ol>
+      </div>
+    </nav>
+
         <!-- Hero Section -->
         <section class="post-hero relative-container" style="background: none;">
             <img src="../../assets/images/blog/first-week-new-studio.webp"

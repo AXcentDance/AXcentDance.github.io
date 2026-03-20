@@ -155,44 +155,46 @@
   "@graph": [
     {
       "inLanguage": "de",
-          "@type": "WebPage",
+      "@type": "WebPage",
       "@id": "https://axcentdance.com/de/blog-posts/rent-space-zurich#webpage",
       "url": "https://axcentdance.com/de/blog-posts/rent-space-zurich",
-      "name": "Mehr als ein Tanzstudio: 5 Arten unseren Raum zu nutzen | AXcent Dance Blog"
+      "name": "Mehr als ein Tanzstudio: 5 Arten unseren Raum zu nutzen | AXcent Dance Blog",
+      "isPartOf": {
+        "@id": "https://axcentdance.com/#website"
+      }
     },
     {
       "inLanguage": "de",
-          "@type": "BlogPosting",
+      "@type": "BlogPosting",
       "headline": "Mehr als ein Tanzstudio: 5 Arten unseren Raum zu nutzen",
       "datePublished": "2026-01-31",
       "dateModified": "2026-03-16",
       "author": [
-          { "@id": "https://axcentdance.com/#person1" },
-          { "@id": "https://axcentdance.com/#person2" }
-        ],
-      "publisher": {
-        "@type": "Organization",
-        "name": "AXcent Dance",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://axcentdance.com/assets/images/logo.webp"
+        {
+          "@id": "https://axcentdance.com/#person1"
+        },
+        {
+          "@id": "https://axcentdance.com/#person2"
         }
+      ],
+      "publisher": {
+        "@id": "https://axcentdance.com/#organization"
       },
       "description": "Suchen Sie einen Raum in Zürich? Entdecken Sie 5 kreative Wege, unser 138qm Studio zu nutzen – von Yoga und Pilates bis zu Fotoshootings.",
       "image": {
-            "@type": "ImageObject",
-            "url": "https://axcentdance.com/assets/images/studio/studio_room_view_1.webp",
-            "width": 1024,
-            "height": 651
-          },
+        "@type": "ImageObject",
+        "url": "https://axcentdance.com/assets/images/studio/studio_room_view_1.webp",
+        "width": 1024,
+        "height": 651
+      },
       "mainEntityOfPage": {
         "@id": "https://axcentdance.com/de/blog-posts/rent-space-zurich#webpage"
       },
-      "@id": "https://axcentdance.com/de/blog-posts/rent-space-zurich#article"
+      "@id": "https://axcentdance.com/de/blog-posts/rent-space-zurich#blogposting"
     },
     {
       "@type": "BreadcrumbList",
-        "inLanguage": "de",
+      "inLanguage": "de",
       "@id": "https://axcentdance.com/de/blog-posts/rent-space-zurich#breadcrumb",
       "itemListElement": [
         {
@@ -217,8 +219,11 @@
     }
   ]
 }
-</script>
+    </script>
 
+
+  <!-- Centralized Global Schema (Org, School, LocalBusiness) -->
+  <script src="/assets/js/schema.js"></script>
 </head>
 
 <body>
@@ -270,6 +275,15 @@
     </header>
 
     <main>
+    <!-- Visual Breadcrumbs -->
+    <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+      <div class="container">
+        <ol class="breadcrumb-list">
+          <li class="breadcrumb-item"><a href="../../" class="breadcrumb-link">Startseite</a></li><li class="breadcrumb-item"><a href="../../blog" class="breadcrumb-link">Blog</a></li><li class="breadcrumb-item active" aria-current="page">Mehr als ein Tanzstudio: 5 Arten unseren Raum zu nutzen</li>
+        </ol>
+      </div>
+    </nav>
+
         <!-- Hero Section -->
         <section class="post-hero relative-container" style="background: none;">
             <img src="../../assets/images/studio/studio_room_view_1.webp"

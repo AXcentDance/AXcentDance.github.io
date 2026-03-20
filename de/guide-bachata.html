@@ -47,66 +47,69 @@
 
     <!-- Structured Data (@graph) -->
     <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      "@context": "https://schema.org",
-      "@graph": [
+      "inLanguage": "de",
+      "@type": "WebPage",
+      "@id": "https://axcentdance.com/de/guide-bachata#webpage",
+      "url": "https://axcentdance.com/de/guide-bachata",
+      "name": "Was ist Bachata? | Guide Zürich | AXcent Dance",
+      "isPartOf": {
+        "@id": "https://axcentdance.com/#website"
+      },
+      "description": "Erfahre alles über Bachata-Musik und Tanz. Von den dominikanischen Wurzeln bis hin zur Sensual-Technik, Geschichte und Instrumenten. Der Guide für Tänzer in Zürich."
+    },
+    {
+      "inLanguage": "de",
+      "@type": "Article",
+      "@id": "https://axcentdance.com/de/guide-bachata#blogposting",
+      "headline": "Was ist Bachata? Geschichte, Stile & Grundlagen",
+      "datePublished": "2025-10-01",
+      "dateModified": "2026-03-17",
+      "author": [
         {
-          "inLanguage": "de",
-          "@type": "WebPage",
-          "@id": "https://axcentdance.com/de/guide-bachata#webpage",
-          "url": "https://axcentdance.com/de/guide-bachata",
-          "name": "Was ist Bachata? | Guide Z\u00fcrich | AXcent Dance",
-          "isPartOf": { "@id": "https://axcentdance.com/#website" },
-          "description": "Erfahre alles \u00fcber Bachata-Musik und Tanz. Von den dominikanischen Wurzeln bis hin zur Sensual-Technik, Geschichte und Instrumenten. Der Guide f\u00fcr T\u00e4nzer in Z\u00fcrich."
+          "@id": "https://axcentdance.com/#person1"
         },
         {
-          "inLanguage": "de",
-          "@type": "Article",
-          "@id": "https://axcentdance.com/de/guide-bachata#article",
-          "headline": "Was ist Bachata? Geschichte, Stile & Grundlagen",
-          "datePublished": "2025-10-01",
-          "dateModified": "2026-03-17",
-          "author": [
-          { "@id": "https://axcentdance.com/#person1" },
-          { "@id": "https://axcentdance.com/#person2" }
-        ],
-          "publisher": {
-            "@type": "Organization",
-            "name": "AXcent Dance",
-            "logo": {
-              "@type": "ImageObject",
-              "url": "https://axcentdance.com/assets/images/logo.webp"
-            }
-          },
-          "description": "Entdecke Bachata: seine Geschichte, Stile (Dominican & Sensual) und wie man mit dem Tanzen beginnt.",
-          "mainEntityOfPage": { "@id": "https://axcentdance.com/de/guide-bachata#webpage" },
-          "image": {
-            "@type": "ImageObject",
-            "url": "https://axcentdance.com/assets/images/bachata_requinto_v2.webp",
-            "width": 1024,
-            "height": 1024
-          }
+          "@id": "https://axcentdance.com/#person2"
+        }
+      ],
+      "publisher": {
+        "@id": "https://axcentdance.com/#organization"
+      },
+      "description": "Entdecke Bachata: seine Geschichte, Stile (Dominican & Sensual) und wie man mit dem Tanzen beginnt.",
+      "mainEntityOfPage": {
+        "@id": "https://axcentdance.com/de/guide-bachata#webpage"
+      },
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://axcentdance.com/assets/images/bachata_requinto_v2.webp",
+        "width": 1024,
+        "height": 1024
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://axcentdance.com/de/guide-bachata#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Startseite",
+          "item": "https://axcentdance.com/de/"
         },
         {
-          "@type": "BreadcrumbList",
-          "@id": "https://axcentdance.com/de/guide-bachata#breadcrumb",
-          "itemListElement": [
-            {
-              "@type": "ListItem",
-              "position": 1,
-              "name": "Startseite",
-              "item": "https://axcentdance.com/de/"
-            },
-            {
-              "@type": "ListItem",
-              "position": 2,
-              "name": "Bachata Guide",
-              "item": "https://axcentdance.com/de/guide-bachata"
-            }
-          ]
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Bachata Guide",
+          "item": "https://axcentdance.com/de/guide-bachata"
         }
       ]
     }
+  ]
+}
     </script>
 
     <!-- Google tag (gtag.js) -->
@@ -118,6 +121,9 @@
 
         gtag('config', 'G-E2SYCF7R7X');
     </script>
+
+  <!-- Centralized Global Schema (Org, School, LocalBusiness) -->
+  <script src="/assets/js/schema.js"></script>
 </head>
 
 <body>
@@ -176,6 +182,15 @@
     </header>
 
     <main>
+    <!-- Visual Breadcrumbs -->
+    <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+      <div class="container">
+        <ol class="breadcrumb-list">
+          <li class="breadcrumb-item"><a href="../" class="breadcrumb-link">Startseite</a></li><li class="breadcrumb-item active" aria-current="page">Was ist Bachata?</li>
+        </ol>
+      </div>
+    </nav>
+
         <!-- Guide Hero -->
         <section class="course-hero relative-container" style="background: none; min-height: 40vh;">
             <img src="../assets/images/hero_new.webp"

@@ -45,7 +45,7 @@
 
   <style>
     .gallery-hero {
-      padding: 160px 20px 80px;
+      padding:  60px 20px 80px;
       text-align: center;
       background: linear-gradient(to bottom, rgba(5, 2, 8, 0.8), var(--bg-main)), url('../assets/images/hero_new.webp') !important;
       background-size: cover;
@@ -113,37 +113,39 @@
 
     <!-- Structured Data (@graph) -->
     <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      "@context": "https://schema.org",
-      "@graph": [
+      "@type": "WebPage",
+      "@id": "https://axcentdance.com/de/gallery#webpage",
+      "url": "https://axcentdance.com/de/gallery",
+      "name": "Galerie | AXcent Dance Zürich",
+      "isPartOf": {
+        "@id": "https://axcentdance.com/#website"
+      },
+      "description": "Sehen Sie die AXcent Dance Community in Aktion. Fotos und Videos von unseren Bachata-Kursen, Socials und Events in Zürich."
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://axcentdance.com/de/gallery#breadcrumb",
+      "itemListElement": [
         {
-          "@type": "WebPage",
-          "@id": "https://axcentdance.com/de/gallery#webpage",
-          "url": "https://axcentdance.com/de/gallery",
-          "name": "Galerie | AXcent Dance Z\u00fcrich",
-          "isPartOf": { "@id": "https://axcentdance.com/#website" },
-          "description": "Sehen Sie die AXcent Dance Community in Aktion. Fotos und Videos von unseren Bachata-Kursen, Socials und Events in Z\u00fcrich."
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Startseite",
+          "item": "https://axcentdance.com/de/"
         },
         {
-          "@type": "BreadcrumbList",
-          "@id": "https://axcentdance.com/de/gallery#breadcrumb",
-          "itemListElement": [
-            {
-              "@type": "ListItem",
-              "position": 1,
-              "name": "Startseite",
-              "item": "https://axcentdance.com/de/"
-            },
-            {
-              "@type": "ListItem",
-              "position": 2,
-              "name": "Galerie",
-              "item": "https://axcentdance.com/de/gallery"
-            }
-          ]
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Galerie",
+          "item": "https://axcentdance.com/de/gallery"
         }
       ]
     }
+  ]
+}
     </script>
 
     <!-- Google tag (gtag.js) -->
@@ -155,6 +157,9 @@
 
         gtag('config', 'G-E2SYCF7R7X');
     </script>
+
+  <!-- Centralized Global Schema (Org, School, LocalBusiness) -->
+  <script src="/assets/js/schema.js"></script>
 </head>
 
 <body>
@@ -213,6 +218,15 @@
   </header>
 
   <main>
+    <!-- Visual Breadcrumbs -->
+    <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+      <div class="container">
+        <ol class="breadcrumb-list">
+          <li class="breadcrumb-item"><a href="../" class="breadcrumb-link">Startseite</a></li><li class="breadcrumb-item active" aria-current="page">Galerie</li>
+        </ol>
+      </div>
+    </nav>
+
     <!-- Hero Section -->
     <section class="gallery-hero">
       <div class="container">

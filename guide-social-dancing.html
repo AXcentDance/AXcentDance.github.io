@@ -44,67 +44,73 @@
 
   <!-- Structured Data (@graph) -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "inLanguage": "en",
-          "@type": "WebPage",
-        "@id": "https://axcentdance.com/guide-social-dancing#webpage",
-        "url": "https://axcentdance.com/guide-social-dancing",
-        "name": "What is Social Dancing? | AXcent Dance Zurich",
-        "isPartOf": { "@id": "https://axcentdance.com/#website" },
-        "description": "Learn about social dancing, a fun and inclusive way to meet people and express yourself. Perfect for beginners in Zurich."
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "inLanguage": "en",
+      "@type": "WebPage",
+      "@id": "https://axcentdance.com/guide-social-dancing#webpage",
+      "url": "https://axcentdance.com/guide-social-dancing",
+      "name": "What is Social Dancing? | AXcent Dance Zurich",
+      "isPartOf": {
+        "@id": "https://axcentdance.com/#website"
       },
-      {
-        "inLanguage": "en",
-          "@type": "Article",
-        "@id": "https://axcentdance.com/guide-social-dancing#article",
-        "isPartOf": { "@id": "https://axcentdance.com/guide-social-dancing#webpage" },
-        "headline": "What is Social Dancing? Guide for Beginners in Zurich",
-        "datePublished": "2025-10-01",
-        "dateModified": "2026-03-17",
-        "author": [
-          { "@id": "https://axcentdance.com/#person1" },
-          { "@id": "https://axcentdance.com/#person2" }
-        ],
-        "publisher": {
-          "@type": "Organization",
-          "name": "AXcent Dance",
-          "logo": {
-            "@type": "ImageObject",
-            "url": "https://axcentdance.com/assets/images/logo.webp"
-          }
+      "description": "Learn about social dancing, a fun and inclusive way to meet people and express yourself. Perfect for beginners in Zurich."
+    },
+    {
+      "inLanguage": "en",
+      "@type": "Article",
+      "@id": "https://axcentdance.com/guide-social-dancing#blogposting",
+      "isPartOf": {
+        "@id": "https://axcentdance.com/guide-social-dancing#webpage"
+      },
+      "headline": "What is Social Dancing? Guide for Beginners in Zurich",
+      "datePublished": "2025-10-01",
+      "dateModified": "2026-03-17",
+      "author": [
+        {
+          "@id": "https://axcentdance.com/#person1"
         },
-        "description": "Learn about social dancing, the inclusive way to meet people. No partner needed!",
-        "image": {
-            "@type": "ImageObject",
-            "url": "https://axcentdance.com/assets/images/hero_new.webp",
-            "width": 1024,
-            "height": 1024
-          }
+        {
+          "@id": "https://axcentdance.com/#person2"
+        }
+      ],
+      "publisher": {
+        "@id": "https://axcentdance.com/#organization"
       },
-      {
-        "@type": "BreadcrumbList",
-        "@id": "https://axcentdance.com/guide-social-dancing#breadcrumb",
-        "itemListElement": [
-          {
-              "@type": "ListItem",
-              "position": 1,
-              "name": "Home",
-              "item": "https://axcentdance.com/"
-          },
-          {
-              "@type": "ListItem",
-              "position": 2,
-              "name": "What is Social Dancing?",
-              "item": "https://axcentdance.com/guide-social-dancing"
-          }
-        ]
+      "description": "Learn about social dancing, the inclusive way to meet people. No partner needed!",
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://axcentdance.com/assets/images/hero_new.webp",
+        "width": 1024,
+        "height": 1024
+      },
+      "mainEntityOfPage": {
+        "@id": "https://axcentdance.com/guide-social-dancing#webpage"
       }
-    ]
-  }
-  </script>
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://axcentdance.com/guide-social-dancing#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://axcentdance.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "What is Social Dancing?",
+          "item": "https://axcentdance.com/guide-social-dancing"
+        }
+      ]
+    }
+  ]
+}
+    </script>
 
   <!-- Cookie Consent -->
 
@@ -117,6 +123,9 @@
 
     gtag('config', 'G-E2SYCF7R7X');
   </script>
+
+  <!-- Centralized Global Schema (Org, School, LocalBusiness) -->
+  <script src="/assets/js/schema.js"></script>
 </head>
 
 <body>
@@ -175,6 +184,15 @@
   </header>
 
   <main>
+    <!-- Visual Breadcrumbs -->
+    <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+      <div class="container">
+        <ol class="breadcrumb-list">
+          <li class="breadcrumb-item"><a href="./" class="breadcrumb-link">Home</a></li><li class="breadcrumb-item active" aria-current="page">What is Social Dancing?</li>
+        </ol>
+      </div>
+    </nav>
+
     <!-- Guide Hero -->
     <!-- Guide Hero -->
     <section class="course-hero relative-container" style="min-height: 40vh; background: none;">

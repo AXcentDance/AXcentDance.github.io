@@ -38,112 +38,100 @@
 
     <!-- Structured Data (Person) -->
     <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      "@context": "https://schema.org",
-      "@graph": [
+      "@type": "WebPage",
+      "@id": "https://axcentdance.com/about#webpage",
+      "url": "https://axcentdance.com/about",
+      "name": "Meet the Team | AXcent Dance Team & Philosophy Zurich",
+      "isPartOf": {
+        "@id": "https://axcentdance.com/#website"
+      },
+      "description": "Meet the best dance teachers in Zurich at AXcent Dance. Learn about our philosophy and our passion for Latin dance."
+    },
+    {
+      "@type": "Person",
+      "@id": "https://axcentdance.com/#person1",
+      "name": "Alessandro Slamitz",
+      "jobTitle": "Co-Founder",
+      "image": "https://axcentdance.com/assets/images/ale-xidan-about.webp",
+      "affiliation": {
+        "@id": "https://axcentdance.com/#organization"
+      },
+      "sameAs": [
+        "https://www.instagram.com/aleyxidan/"
+      ],
+      "description": "Co-founder of AXcent Dance, international Bachata artist, and IDO Swiss Championship judge."
+    },
+    {
+      "@type": "Person",
+      "@id": "https://axcentdance.com/#person2",
+      "name": "Xidan",
+      "jobTitle": "Co-Founder",
+      "image": "https://axcentdance.com/assets/images/ale-xidan-about.webp",
+      "affiliation": {
+        "@id": "https://axcentdance.com/#organization"
+      },
+      "sameAs": [
+        "https://www.instagram.com/aleyxidan/"
+      ],
+      "description": "Co-founder of AXcent Dance, international Bachata artist, and IDO Swiss Championship judge."
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://axcentdance.com/about#faq",
+      "isPartOf": {
+        "@id": "https://axcentdance.com/about/#webpage"
+      },
+      "mainEntity": [
         {
-          "@type": "WebPage",
-          "@id": "https://axcentdance.com/about/#webpage",
-          "url": "https://axcentdance.com/about",
-          "name": "Meet the Team | AXcent Dance Team & Philosophy Zurich",
-          "isPartOf": { "@id": "https://axcentdance.com/#website" },
-          "description": "Meet the best dance teachers in Zurich at AXcent Dance. Learn about our philosophy and our passion for Latin dance."},
-        {
-          "@type": "LocalBusiness",
-          "@id": "https://axcentdance.com/#organization",
-          "name": "AXcent Dance",
-          "url": "https://axcentdance.com/",
-          "telephone": "+41799668481",
-          "hasMap": "https://www.google.com/maps?cid=15680757943659417558",
-          "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "Hermetschloostrasse 73",
-            "addressLocality": "Zurich",
-            "addressRegion": "ZH",
-            "postalCode": "8048",
-            "addressCountry": "CH"
-          },
-          "geo": {
-            "@type": "GeoCoordinates",
-            "latitude": 47.3941999,
-            "longitude": 8.4745859
-          },
-          "founder": [
-            { "@id": "https://axcentdance.com/#person1" },
-            { "@id": "https://axcentdance.com/#person2" }
-          ]
+          "@type": "Question",
+          "name": "Do you teach in English?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes! All our classes are taught in English to welcome our international community in Zurich."
+          }
         },
         {
-          "@type": "Person",
-          "@id": "https://axcentdance.com/#person1",
-          "name": "Alessandro Slamitz",
-          "jobTitle": "Co-Founder",
-          "image": "https://axcentdance.com/assets/images/ale-xidan-about.webp",
-          "affiliation": { "@id": "https://axcentdance.com/#organization" },
-          "sameAs": [
-            "https://www.instagram.com/aleyxidan/"
-          ],
-          "description": "Co-founder of AXcent Dance, international Bachata artist, and IDO Swiss Championship judge."
+          "@type": "Question",
+          "name": "Are the teachers certified?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Absolutely. Our instructors are trained in Bachata Sensual and continuously update their skills at international festivals and training camps."
+          }
         },
         {
-          "@type": "Person",
-          "@id": "https://axcentdance.com/#person2",
-          "name": "Xidan",
-          "jobTitle": "Co-Founder",
-          "image": "https://axcentdance.com/assets/images/ale-xidan-about.webp",
-          "affiliation": { "@id": "https://axcentdance.com/#organization" },
-          "sameAs": [
-            "https://www.instagram.com/aleyxidan/"
-          ],
-          "description": "Co-founder of AXcent Dance, international Bachata artist, and IDO Swiss Championship judge."
+          "@type": "Question",
+          "name": "What is 'Bachata Sensual'?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Bachata Sensual is a style that evolved from traditional Bachata in Spain, created by Korke and Judith. It focuses more on connection and body movements than on footwork. Read more in our Bachata Style Guide."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://axcentdance.com/about#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://axcentdance.com/"
         },
         {
-          "@type": "FAQPage",
-          "@id": "https://axcentdance.com/about#faq",
-          "isPartOf": { "@id": "https://axcentdance.com/about/#webpage" },
-          "mainEntity": [{
-            "@type": "Question",
-            "name": "Do you teach in English?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Yes! All our classes are taught in English to welcome our international community in Zurich."
-            }
-          }, {
-            "@type": "Question",
-            "name": "Are the teachers certified?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Absolutely. Our instructors are trained in Bachata Sensual and continuously update their skills at international festivals and training camps."
-            }
-          }, {
-            "@type": "Question",
-            "name": "What is 'Bachata Sensual'?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Bachata Sensual is a style that evolved from traditional Bachata in Spain, created by Korke and Judith. It focuses more on connection and body movements than on footwork. Read more in our Bachata Style Guide."
-            }
-          }]
-        },
-        {
-          "@type": "BreadcrumbList",
-          "@id": "https://axcentdance.com/about#breadcrumb",
-          "itemListElement": [
-            {
-              "@type": "ListItem",
-              "position": 1,
-              "name": "Home",
-              "item": "https://axcentdance.com/"
-            },
-            {
-              "@type": "ListItem",
-              "position": 2,
-              "name": "Our Team & Philosophy",
-              "item": "https://axcentdance.com/about"
-            }
-          ]
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Our Team & Philosophy",
+          "item": "https://axcentdance.com/about"
         }
       ]
     }
+  ]
+}
     </script>
 
 
@@ -156,7 +144,7 @@
 
     <style>
         .about-hero {
-            padding: 160px 20px 40px;
+            padding:  60px 20px 40px;
             text-align: center;
             background: linear-gradient(to bottom, rgba(5, 2, 8, 0.8), var(--bg-main));
             position: relative;
@@ -401,6 +389,9 @@
     </script>
     
 
+
+  <!-- Centralized Global Schema (Org, School, LocalBusiness) -->
+  <script src="/assets/js/schema.js"></script>
 </head>
 
 <body>
@@ -454,6 +445,15 @@
     </header>
 
     <main>
+    <!-- Visual Breadcrumbs -->
+    <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+      <div class="container">
+        <ol class="breadcrumb-list">
+          <li class="breadcrumb-item"><a href="./" class="breadcrumb-link">Home</a></li><li class="breadcrumb-item active" aria-current="page">Meet the Team</li>
+        </ol>
+      </div>
+    </nav>
+
         <!-- Hero Section -->
         <section class="about-hero">
             <div class="container">

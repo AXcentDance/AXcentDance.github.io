@@ -39,71 +39,73 @@
 
   <!-- Structured Data (@graph) -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "WebPage",
-        "@id": "https://axcentdance.com/bachata-sensual-foundation#webpage",
-        "url": "https://axcentdance.com/bachata-sensual-foundation",
-        "name": "Bachata Sensual Foundation Classes Zurich | AXcent Dance",
-        "isPartOf": { "@id": "https://axcentdance.com/#website" },
-        "description": "Master the fundamentals of Bachata Sensual in Zurich. Learn body movement, isolation, and connection techniques."
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://axcentdance.com/bachata-sensual-foundation#webpage",
+      "url": "https://axcentdance.com/bachata-sensual-foundation",
+      "name": "Bachata Sensual Foundation Classes Zurich | AXcent Dance",
+      "isPartOf": {
+        "@id": "https://axcentdance.com/#website"
       },
-      {
-        "@type": "Course",
-        "@id": "https://axcentdance.com/bachata-sensual-foundation#course",
-        "isPartOf": { "@id": "https://axcentdance.com/bachata-sensual-foundation#webpage" },
-        "name": "Bachata Sensual Foundation",
-        "description": "Master the fundamentals of Bachata Sensual in Zurich. Learn body movement, isolation, and connection techniques.",
-        "provider": {
-          "@type": "Organization",
-          "name": "AXcent Dance",
-          "sameAs": "https://axcentdance.com"
+      "description": "Master the fundamentals of Bachata Sensual in Zurich. Learn body movement, isolation, and connection techniques."
+    },
+    {
+      "@type": "Course",
+      "@id": "https://axcentdance.com/bachata-sensual-foundation#course",
+      "isPartOf": {
+        "@id": "https://axcentdance.com/bachata-sensual-foundation#webpage"
+      },
+      "name": "Bachata Sensual Foundation",
+      "description": "Master the fundamentals of Bachata Sensual in Zurich. Learn body movement, isolation, and connection techniques.",
+      "provider": {
+        "@id": "https://axcentdance.com/#organization"
+      },
+      "hasCourseInstance": {
+        "@type": "CourseInstance",
+        "courseMode": "onsite",
+        "location": {
+          "@type": "Place",
+          "name": "AXcent Dance Studio",
+          "address": "Hermetschloostrasse 73, 8048 Zürich"
         },
-        "hasCourseInstance": {
-          "@type": "CourseInstance",
-          "courseMode": "onsite",
-          "location": {
-            "@type": "Place",
-            "name": "AXcent Dance Studio",
-            "address": "Hermetschloostrasse 73, 8048 Z\u00fcrich"
-          },
-          "eventSchedule": {
-            "@type": "Schedule",
-            "repeatFrequency": "Weekly",
-            "byDay": "https://schema.org/Wednesday",
-            "startTime": "19:30"
-          }
+        "eventSchedule": {
+          "@type": "Schedule",
+          "repeatFrequency": "Weekly",
+          "byDay": "https://schema.org/Wednesday",
+          "startTime": "19:30"
         }
-      },
-      {
-        "@type": "BreadcrumbList",
-        "@id": "https://axcentdance.com/bachata-sensual-foundation#breadcrumb",
-        "itemListElement": [
-          {
-              "@type": "ListItem",
-              "position": 1,
-              "name": "Home",
-              "item": "https://axcentdance.com/"
-          },
-          {
-              "@type": "ListItem",
-              "position": 2,
-              "name": "Schedule",
-              "item": "https://axcentdance.com/schedule"
-          },
-          {
-              "@type": "ListItem",
-              "position": 3,
-              "name": "Bachata Sensual Foundation Classes Zurich",
-              "item": "https://axcentdance.com/bachata-sensual-foundation"
-          }
-        ]
       }
-    ]
-  }
-  </script>
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://axcentdance.com/bachata-sensual-foundation#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://axcentdance.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Schedule",
+          "item": "https://axcentdance.com/schedule"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Bachata Sensual Foundation Classes Zurich",
+          "item": "https://axcentdance.com/bachata-sensual-foundation"
+        }
+      ]
+    }
+  ]
+}
+    </script>
 
   <!-- Styles -->
   <link rel="stylesheet" href="style.css?v=2.2">
@@ -123,6 +125,9 @@
 
     gtag('config', 'G-E2SYCF7R7X');
   </script>
+
+  <!-- Centralized Global Schema (Org, School, LocalBusiness) -->
+  <script src="/assets/js/schema.js"></script>
 </head>>
 
 <body>
@@ -181,6 +186,15 @@
   </header>
 
   <main>
+    <!-- Visual Breadcrumbs -->
+    <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+      <div class="container">
+        <ol class="breadcrumb-list">
+          <li class="breadcrumb-item"><a href="./" class="breadcrumb-link">Home</a></li><li class="breadcrumb-item active" aria-current="page">Bachata Sensual Foundation Classes Zurich</li>
+        </ol>
+      </div>
+    </nav>
+
     <!-- Course Hero -->
     <section class="course-hero relative-container" style="background: none;">
       <img src="assets/images/course_hero_bg.webp"

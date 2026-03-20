@@ -59,44 +59,46 @@
   "@graph": [
     {
       "inLanguage": "de",
-          "@type": "WebPage",
+      "@type": "WebPage",
       "@id": "https://axcentdance.com/de/blog-posts/start-new-hobby-meet-people-zurich#webpage",
       "url": "https://axcentdance.com/de/blog-posts/start-new-hobby-meet-people-zurich",
-      "name": "Neues Hobby anfangen und Leute in Zürich kennenlernen | AXcent Dance"
+      "name": "Neues Hobby anfangen und Leute in Zürich kennenlernen | AXcent Dance",
+      "isPartOf": {
+        "@id": "https://axcentdance.com/#website"
+      }
     },
     {
       "inLanguage": "de",
-          "@type": "BlogPosting",
+      "@type": "BlogPosting",
       "headline": "Warum Bachata das beste neue Hobby ist, um in Zürich Leute kennenzulernen",
       "datePublished": "2026-02-22",
       "dateModified": "2026-03-10",
       "author": [
-          { "@id": "https://axcentdance.com/#person1" },
-          { "@id": "https://axcentdance.com/#person2" }
-        ],
-      "publisher": {
-        "@type": "Organization",
-        "name": "AXcent Dance",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://axcentdance.com/assets/images/logo.webp"
+        {
+          "@id": "https://axcentdance.com/#person1"
+        },
+        {
+          "@id": "https://axcentdance.com/#person2"
         }
+      ],
+      "publisher": {
+        "@id": "https://axcentdance.com/#organization"
       },
       "description": "Du möchtest ein neues Hobby anfangen und neue Leute in Zürich kennenlernen? Komm in unsere Bachata-Kurse! Perfekt, um Freunde zu finden und aktiv zu bleiben.",
       "image": {
-            "@type": "ImageObject",
-            "url": "https://axcentdance.com/assets/images/blog/first-week-new-studio_1200w.webp",
-            "width": 1200,
-            "height": 900
-          },
+        "@type": "ImageObject",
+        "url": "https://axcentdance.com/assets/images/blog/first-week-new-studio_1200w.webp",
+        "width": 1200,
+        "height": 900
+      },
       "mainEntityOfPage": {
         "@id": "https://axcentdance.com/de/blog-posts/start-new-hobby-meet-people-zurich#webpage"
       },
-      "@id": "https://axcentdance.com/de/blog-posts/start-new-hobby-meet-people-zurich#article"
+      "@id": "https://axcentdance.com/de/blog-posts/start-new-hobby-meet-people-zurich#blogposting"
     },
     {
       "@type": "BreadcrumbList",
-        "inLanguage": "de",
+      "inLanguage": "de",
       "@id": "https://axcentdance.com/de/blog-posts/start-new-hobby-meet-people-zurich#breadcrumb",
       "itemListElement": [
         {
@@ -121,8 +123,11 @@
     }
   ]
 }
-</script>
+    </script>
 
+
+  <!-- Centralized Global Schema (Org, School, LocalBusiness) -->
+  <script src="/assets/js/schema.js"></script>
 </head>
 
 <body>
@@ -175,6 +180,15 @@
     </header>
 
     <main>
+    <!-- Visual Breadcrumbs -->
+    <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+      <div class="container">
+        <ol class="breadcrumb-list">
+          <li class="breadcrumb-item"><a href="../../" class="breadcrumb-link">Startseite</a></li><li class="breadcrumb-item"><a href="../../blog" class="breadcrumb-link">Blog</a></li><li class="breadcrumb-item active" aria-current="page">Neues Hobby anfangen und Leute in Zürich kennenlernen</li>
+        </ol>
+      </div>
+    </nav>
+
         <!-- Hero Section -->
         <section class="post-hero relative-container"
             style="background-image: url('../../assets/images/blog/first-week-new-studio.webp');">

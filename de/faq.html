@@ -45,105 +45,107 @@
 
     <!-- Structured Data (@graph) -->
     <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      "@context": "https://schema.org",
-      "@graph": [
+      "@type": "WebPage",
+      "@id": "https://axcentdance.com/de/faq#webpage",
+      "url": "https://axcentdance.com/de/faq",
+      "name": "FAQ - Häufig gestellte Fragen | AXcent Dance Zürich",
+      "isPartOf": {
+        "@id": "https://axcentdance.com/#website"
+      },
+      "description": "Finde Antworten auf häufige Fragen zu unseren Bachata Kursen in Zürich. Partner, Kleidung, Preise und mehr."
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://axcentdance.com/de/faq#faq",
+      "mainEntity": [
         {
-          "@type": "WebPage",
-          "@id": "https://axcentdance.com/de/faq#webpage",
-          "url": "https://axcentdance.com/de/faq",
-          "name": "FAQ - H\u00e4ufig gestellte Fragen | AXcent Dance Z\u00fcrich",
-          "isPartOf": { "@id": "https://axcentdance.com/#website" },
-          "description": "Finde Antworten auf h\u00e4ufige Fragen zu unseren Bachata Kursen in Z\u00fcrich. Partner, Kleidung, Preise und mehr."
+          "@type": "Question",
+          "name": "Brauche ich einen Partner, um teilzunehmen?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Nein, du brauchst keinen Partner! Wir wechseln die Partner während des Unterrichts regelmäßig. Das ist der beste Weg, um Führen und Folgen mit verschiedenen Tanzpartnern zu lernen und neue Leute kennenzulernen. Wenn du jedoch mit einem Partner kommst und zusammenbleiben mühtest, ist das auch erlaubt."
+          }
         },
         {
-          "@type": "FAQPage",
-          "@id": "https://axcentdance.com/de/faq#faq",
-          "mainEntity": [
-            {
-              "@type": "Question",
-              "name": "Brauche ich einen Partner, um teilzunehmen?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Nein, du brauchst keinen Partner! Wir wechseln die Partner w\u00e4hrend des Unterrichts regelm\u00e4\u00dfig. Das ist der beste Weg, um F\u00fchren und Folgen mit verschiedenen Tanzpartnern zu lernen und neue Leute kennenzulernen. Wenn du jedoch mit einem Partner kommst und zusammenbleiben m\u00fchtest, ist das auch erlaubt."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Was soll ich anziehen?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Trage bequeme Kleidung, in der du dich frei bewegen kannst. F\u00fcr Schuhe empfehlen wir Tanzschuhe oder Sneaker mit einer glatten Sohle, die Drehungen erleichtern. Vermeide schwere Stiefel oder Schuhe mit zu viel Grip."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Ich habe noch nie getanzt. Kann ich mitmachen?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Ja! Unser Anf\u00e4nger 1 Kurs ist ideal f\u00fcr T\u00e4nzer mit ca. 3-6 Monaten Erfahrung. Wenn du ein absoluter Anf\u00e4nger bist, schaue bitte in unseren Kalender f\u00fcr neue Kurs-Starttermine."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Wie bezahle ich f\u00fcr die Kurse?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Wir akzeptieren Zahlungen per Twint, Bar oder Bank\u00fcberweisung. Du kannst f\u00fcr eine Einzelstunde, ein 10er-Abo oder eine Mitgliedschaft bezahlen."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Gibt es Parkpl\u00e4tze?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Ja, es gibt \u00f6ffentliche Parkpl\u00e4tze (Blaue Zone) in der N\u00e4he sowie ein Parkhaus im Einkaufszentrum Letzipark, das nur einen kurzen Fu\u00dfweg entfernt ist. Wir sind auch gut mit \u00f6ffentlichen Verkehrsmitteln erreichbar (Tram 2, Bus 31)."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Was passiert, wenn ich eine Stunde verpasse?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Wenn du ein Abo oder einen Pass hast, gib uns bitte im Voraus Bescheid, wenn du nicht teilnehmen kannst. Je nach Verf\u00fcgbarkeit kannst du die Stunde an einem anderen Tag derselben Woche nachholen, bitte kl\u00e4re dies jedoch zuerst mit uns ab."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Bietet ihr Dominican Bachata Events an?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Ja! Wir veranstalten intensives Training mit Fokus auf den traditionellen Stil. Schau dir unser kommendes <a href=\"https://axcentdance.com/de/dominican-bootcamp\">Dominican Bachata Bootcamp in Z\u00fcrich</a> an."
-              }
-            }
-          ]
+          "@type": "Question",
+          "name": "Was soll ich anziehen?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Trage bequeme Kleidung, in der du dich frei bewegen kannst. Für Schuhe empfehlen wir Tanzschuhe oder Sneaker mit einer glatten Sohle, die Drehungen erleichtern. Vermeide schwere Stiefel oder Schuhe mit zu viel Grip."
+          }
         },
         {
-          "@type": "BreadcrumbList",
-          "@id": "https://axcentdance.com/de/faq#breadcrumb",
-          "itemListElement": [
-            {
-              "@type": "ListItem",
-              "position": 1,
-              "name": "Startseite",
-              "item": "https://axcentdance.com/de/"
-            },
-            {
-              "@type": "ListItem",
-              "position": 2,
-              "name": "FAQ",
-              "item": "https://axcentdance.com/de/faq"
-            }
-          ]
+          "@type": "Question",
+          "name": "Ich habe noch nie getanzt. Kann ich mitmachen?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ja! Unser Anfänger 1 Kurs ist ideal für Tänzer mit ca. 3-6 Monaten Erfahrung. Wenn du ein absoluter Anfänger bist, schaue bitte in unseren Kalender für neue Kurs-Starttermine."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Wie bezahle ich für die Kurse?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Wir akzeptieren Zahlungen per Twint, Bar oder Banküberweisung. Du kannst für eine Einzelstunde, ein 10er-Abo oder eine Mitgliedschaft bezahlen."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Gibt es Parkplätze?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ja, es gibt öffentliche Parkplätze (Blaue Zone) in der Nähe sowie ein Parkhaus im Einkaufszentrum Letzipark, das nur einen kurzen Fußweg entfernt ist. Wir sind auch gut mit öffentlichen Verkehrsmitteln erreichbar (Tram 2, Bus 31)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Was passiert, wenn ich eine Stunde verpasse?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Wenn du ein Abo oder einen Pass hast, gib uns bitte im Voraus Bescheid, wenn du nicht teilnehmen kannst. Je nach Verfügbarkeit kannst du die Stunde an einem anderen Tag derselben Woche nachholen, bitte kläre dies jedoch zuerst mit uns ab."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Bietet ihr Dominican Bachata Events an?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ja! Wir veranstalten intensives Training mit Fokus auf den traditionellen Stil. Schau dir unser kommendes <a href=\"https://axcentdance.com/de/dominican-bootcamp\">Dominican Bachata Bootcamp in Zürich</a> an."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://axcentdance.com/de/faq#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Startseite",
+          "item": "https://axcentdance.com/de/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "FAQ",
+          "item": "https://axcentdance.com/de/faq"
         }
       ]
     }
+  ]
+}
     </script>
 
 
     <style>
         .faq-hero {
-            padding: 160px 20px 40px;
+            padding:  60px 20px 40px;
             text-align: center;
             /* background: removed for SEO img refactor */
         }
@@ -220,6 +222,9 @@
     </script>
 
     </script>
+
+  <!-- Centralized Global Schema (Org, School, LocalBusiness) -->
+  <script src="/assets/js/schema.js"></script>
 </head>
 
 <body>
@@ -278,6 +283,15 @@
     </header>
 
     <main>
+    <!-- Visual Breadcrumbs -->
+    <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+      <div class="container">
+        <ol class="breadcrumb-list">
+          <li class="breadcrumb-item"><a href="../" class="breadcrumb-link">Startseite</a></li><li class="breadcrumb-item active" aria-current="page">FAQ - Häufig gestellte Fragen</li>
+        </ol>
+      </div>
+    </nav>
+
         <!-- Hero Section -->
         <!-- Hero Section -->
         <section class="faq-hero relative-container">

@@ -59,80 +59,52 @@
     
     
     <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      "@context": "https://schema.org",
-      "@graph": [
+      "@type": "WebPage",
+      "@id": "https://axcentdance.com/de/wedding-dance#webpage",
+      "url": "https://axcentdance.com/de/wedding-dance",
+      "name": "Hochzeitstanz Zürich | Individuelle Choreografie | AXcent Dance",
+      "isPartOf": {
+        "@id": "https://axcentdance.com/#website"
+      },
+      "about": {
+        "@id": "https://axcentdance.com/#organization"
+      },
+      "description": "Der perfekte Hochzeitstanz in Zürich. Individuelle Choreografie für Ihren Eröffnungstanz. Bachata, Salsa oder Walzer – buchen Sie jetzt."
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
         {
-          "@type": "WebPage",
-          "@id": "https://axcentdance.com/de/wedding-dance#webpage",
-          "url": "https://axcentdance.com/de/wedding-dance",
-          "name": "Hochzeitstanz Zürich | Individuelle Choreografie | AXcent Dance",
-          "isPartOf": { "@id": "https://axcentdance.com/#website" },
-          "about": { "@id": "https://axcentdance.com/#organization" },
-          "description": "Der perfekte Hochzeitstanz in Zürich. Individuelle Choreografie für Ihren Eröffnungstanz. Bachata, Salsa oder Walzer – buchen Sie jetzt."
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Startseite",
+          "item": "https://axcentdance.com/de/"
         },
         {
-          "@type": "LocalBusiness",
-          "@id": "https://axcentdance.com/#organization",
-          "name": "AXcent Dance",
-          "url": "https://axcentdance.com/de/",
-          "telephone": "+41799668481",
-          "hasMap": "https://www.google.com/maps?cid=15680757943659417558",
-          "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "Hermetschloostrasse 73",
-            "addressLocality": "Zurich",
-            "addressRegion": "ZH",
-            "postalCode": "8048",
-            "addressCountry": "CH"
-          },
-          "geo": {
-            "@type": "GeoCoordinates",
-            "latitude": 47.3941999,
-            "longitude": 8.4745859
-          },
-          "hasOfferCatalog": {
-            "@type": "OfferCatalog",
-            "name": "Spezielle Events",
-            "itemListElement": [
-              {
-                "@type": "Offer",
-                "itemOffered": {
-                  "@type": "Service",
-                  "name": "Hochzeitstanz Choreografie",
-                  "serviceType": "Tanzunterricht",
-                  "description": "Massgeschneiderte Choreografie für euren ersten Tanz zur Hochzeit, angepasst an eure Musik und euer Tanzniveau."
-                }
-              }
-            ]
-          }
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Stundenplan",
+          "item": "https://axcentdance.com/de/schedule"
         },
         {
-          "@type": "BreadcrumbList",
-          "itemListElement": [
-            {
-                "@type": "ListItem",
-                "position": 1,
-                "name": "Startseite",
-                "item": "https://axcentdance.com/de/"
-            },
-            {
-                "@type": "ListItem",
-                "position": 2,
-                "name": "Stundenplan",
-                "item": "https://axcentdance.com/de/schedule"
-            },
-            {
-                "@type": "ListItem",
-                "position": 3,
-                "name": "Hochzeitstanz Zürich",
-                "item": "https://axcentdance.com/de/wedding-dance"
-            }
-          ]
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Hochzeitstanz Zürich",
+          "item": "https://axcentdance.com/de/wedding-dance"
         }
-      ]
+      ],
+      "@id": "https://axcentdance.com/de/wedding-dance#breadcrumb"
     }
+  ]
+}
     </script>
+
+  <!-- Centralized Global Schema (Org, School, LocalBusiness) -->
+  <script src="/assets/js/schema.js"></script>
 </head>
 
 <body>
@@ -191,6 +163,15 @@
     </header>
 
     <main>
+    <!-- Visual Breadcrumbs -->
+    <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+      <div class="container">
+        <ol class="breadcrumb-list">
+          <li class="breadcrumb-item"><a href="../" class="breadcrumb-link">Startseite</a></li><li class="breadcrumb-item active" aria-current="page">Hochzeitstanz Zürich</li>
+        </ol>
+      </div>
+    </nav>
+
         <!-- Hero Section -->
         <section class="hero" style="min-height: 80vh; align-items: center;">
             <div class="hero-video"
