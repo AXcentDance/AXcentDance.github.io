@@ -1,4 +1,4 @@
-(function() {
+(function () {
   const isDe = window.location.pathname.includes('/de/');
   const baseUrl = "https://axcentdance.com";
 
@@ -21,8 +21,8 @@
         "url": baseUrl + "/",
         "logo": `${baseUrl}/assets/images/logo.webp`,
         "image": `${baseUrl}/assets/images/hero_new.webp`,
-        "description": isDe ? 
-          "Die Bachata-Tanzschule in Zürich Altstetten. Wir bieten Bachata Sensual, Dominican Bachata und Salsa Kurse für alle Niveaus an." : 
+        "description": isDe ?
+          "Die Bachata-Tanzschule in Zürich Altstetten. Wir bieten Bachata Sensual, Dominican Bachata und Salsa Kurse für alle Niveaus an." :
           "AXcent Dance is a Bachata dance school in Zurich Altstetten offering Bachata Sensual, Dominican Bachata, Salsa, and Latin dance classes for all levels.",
         "telephone": "+41799668481",
         "email": "info@axcentdance.com",
@@ -65,7 +65,7 @@
           },
           {
             "@type": "OpeningHoursSpecification",
-            "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
             "opens": "11:00",
             "closes": "22:00"
           }
@@ -74,7 +74,7 @@
       {
         "@id": `${baseUrl}/#person1`,
         "@type": "Person",
-        "name": "Alessandro Slamitz",
+        "name": "Alessandro",
         "jobTitle": isDe ? "Mitbegründer" : "Co-Founder",
         "sameAs": ["https://www.instagram.com/aleyxidan/"]
       },
