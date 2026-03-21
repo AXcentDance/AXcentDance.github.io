@@ -10,7 +10,7 @@
 
 /* --- HERO SECTION --- */
 .post-header {
-    padding-top: calc(var(--header-height) + 2rem);
+    padding-top: calc(var(--header-height) + 2.5rem);
     padding-bottom: 2rem;
     text-align: center;
     background: radial-gradient(circle at top center, rgba(82, 45, 128, 0.2), transparent 70%);

@@ -1434,11 +1434,8 @@ textarea {
     position: relative;
 }
 
-/* Hide breadcrumbs on blog posts and blog index while keeping them in the DOM for SEO */
-.breadcrumb-nav:has(+ .post-hero),
-.breadcrumb-nav:has(+ .post-header),
-.breadcrumb-nav:has(+ .blog-hero),
-.breadcrumb-nav:has(+ .blog-post) {
+/* Hide breadcrumbs globally while keeping them in the DOM for SEO */
+.breadcrumb-nav {
     display: none !important;
 }
 
