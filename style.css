@@ -1434,6 +1434,14 @@ textarea {
     position: relative;
 }
 
+/* Hide breadcrumbs on blog posts and blog index while keeping them in the DOM for SEO */
+.breadcrumb-nav:has(+ .post-hero),
+.breadcrumb-nav:has(+ .post-header),
+.breadcrumb-nav:has(+ .blog-hero),
+.breadcrumb-nav:has(+ .blog-post) {
+    display: none !important;
+}
+
 .breadcrumb-list {
     list-style: none;
     padding: 0;

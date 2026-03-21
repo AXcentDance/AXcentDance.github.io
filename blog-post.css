@@ -3,6 +3,11 @@
    Specific styles for modern blog posts (Latin Dance School, etc.)
 */
 
+/* --- BREADCRUMBS --- */
+.breadcrumb-nav {
+    display: none !important;
+}
+
 /* --- HERO SECTION --- */
 .post-header {
     padding-top: calc(var(--header-height) + 2rem);
@@ -191,5 +196,70 @@
 
 /* --- CTA SECTION --- */
 .cta-section {
-    background: radial-gradient(circle at center, rgba(82, 45, 128, 0.4), transparent 80%);
+    background: radial-gradient(circle at center, rgba(82, 45, 128, 0.1), rgba(15, 8, 22, 0.8));
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+    padding: 5rem 2rem !important;
+    border-radius: 40px !important;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-section::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 59, 48, 0.05) 0%, transparent 60%);
+    pointer-events: none;
+}
+
+.cta-section h2 {
+    position: relative;
+    font-size: 2.8rem !important;
+    margin-bottom: 2rem !important;
+    background: linear-gradient(180deg, #fff 0%, rgba(255, 255, 255, 0.7) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: var(--font-heading);
+}
+
+.cta-section p {
+    position: relative;
+    font-size: 1.15rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin-bottom: 3rem !important;
+    max-width: 650px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.btn-cta-premium {
+    position: relative;
+    display: inline-block;
+    padding: 1.25rem 3.5rem;
+    background: rgba(15, 8, 22, 0.6);
+    color: white;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    border-radius: 60px;
+    border: 1px solid var(--accent-start);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.btn-cta-premium:hover {
+    background: rgba(255, 59, 48, 0.1);
+    box-shadow: 0 15px 40px rgba(255, 59, 48, 0.25);
+    transform: translateY(-3px);
+    border-color: var(--accent-start);
+    color: white;
 }
