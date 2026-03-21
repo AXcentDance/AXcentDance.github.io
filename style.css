@@ -429,7 +429,7 @@ textarea {
 }
 
 .mobile-menu-btn {
-    display: block !important;
+    display: none !important;
     background: none;
     border: none;
     color: white !important;
@@ -766,7 +766,7 @@ textarea {
 
 /* Mobile Menu Button - Left Side */
 .mobile-menu-btn {
-    display: block !important;
+    display: none !important;
     background: none;
     border: none;
     color: white !important;
@@ -925,7 +925,7 @@ textarea {
 }
 
 .nav-links.active .dropbtn {
-    display: block !important;
+    display: none !important;
     font-size: 0.85rem;
     font-weight: 500;
     width: auto;
@@ -1423,18 +1423,7 @@ textarea {
     }
 }
 
-/* BREADCRUMBS */
-.breadcrumb-nav {
-    margin-bottom: 1rem;
-    font-size: 0.85rem;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    z-index: 10;
-    position: relative;
-}
-
-/* Hide breadcrumbs globally while keeping them in the DOM for SEO */
+/* BREADCRUMBS - Globally hidden for premium aesthetic while keeping in DOM for SEO */
 .breadcrumb-nav {
     display: none !important;
 }
@@ -3016,7 +3005,7 @@ textarea {
 
     .mobile-instructor {
         grid-area: instructor;
-        display: block !important;
+        display: none !important;
         font-size: 0.75rem !important;
         color: var(--text-muted) !important;
         font-style: italic;
@@ -5071,7 +5060,7 @@ textarea {
 
 /* BREADCRUMBS */
 .breadcrumb-nav {
-    display: block !important;
+    display: none !important;
     padding: 0.5rem 0;
     margin-top: var(--header-height); /* Clear the fixed header */
     position: relative;
