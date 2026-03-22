@@ -118,7 +118,13 @@ Header & Footer: The code for <header> and <footer> MUST be identical across all
 
 Workflow: When creating a new page (e.g., about.html), you MUST copy the Header and Footer HTML blocks exactly from index.html.
 
-Modifications: The only allowed changes in the header/footer on subpages are updating relative link paths (e.g., changing href="#contact" to href="index.html#contact").
+Modifications: The only allowed changes in the header/footer on subpages are updating relative link paths (e.g., changing href="#contact" to href="index.html#contact") and updating the Language Switcher path to match the equivalent page.
+
+3.5. Language Switcher Protocol
+
+- **Target Equivalents**: The language toggle MUST link to the equivalent page in the opposite language (e.g., `blog-posts/test` should toggle to `de/blog-posts/test`).
+- **Clean URLs in Header**: Navigation and Language Switcher links MUST NEVER include the `.html` extension.
+- **Root-Relative Paths**: Use root-relative paths or carefully adjusted relative paths (e.g., `../../de/blog-posts/test`) to ensure the switcher works across all directory depths.
 
 4. Animation & Core Web Vitals (Strict)
 4.1. The "Safe Animation" Rule
