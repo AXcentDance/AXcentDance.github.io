@@ -3,17 +3,18 @@ name: Unified Schema Management
 description: Mandatory guidelines for maintaining a single JSON-LD @graph structure across all pages, ensuring data consistency and preventing redundant schema scripts.
 ---
 
-# Unified Schema Management
+# Unified Static Schema Management
 
-This skill enforces the use of a single, coherent JSON-LD `@graph` structure for all structured data. To maximize SEO efficiency and prevent data fragmentation, **NEVER** use standalone `<script type="application/ld+json">` blocks for separate entities (like Breadcrumbs or FAQs) if they can be integrated into the main page graph.
+This skill enforces the use of a single, coherent JSON-LD `@graph` structure for all structured data, embedded directly in the HTML. **NEVER** use standalone `<script type="application/ld+json">` blocks or external JavaScript (like `schema.js`) to inject structured data.
 
 ## 1. Core Principles
-1.  **Single Source of Truth**: Every page MUST have exactly one main JSON-LD script containing a `@graph` array.
-2.  **Entity Linking**: Use `@id` references (e.g., `https://axcentdance.com/#organization`) to link entities across different pages and within the same graph.
-3.  **No Redundancy**: If a property (like `LocalBusiness`) is already defined in the graph, do not create a separate script for it elsewhere on the page.
+1.  **Single Source of Truth**: Every page MUST have exactly one main JSON-LD script containing a `@graph` array in the `<head>`.
+2.  **Entity Linking**: Use `@id` references (e.g., `https://axcentdance.com/#organization`) to link entities.
+3.  **Static Execution**: All schema must be readable in the raw HTML without JavaScript execution to optimize for AI Crawlers (Gemini, ChatGPT) and search engine speed.
+4.  **Global Entities**: Every `@graph` should include the foundational entities (`Organization`/`DanceSchool` and `Person` for Ale & Xidan) to ensure self-contained authority on every page.
 
-## 2. Mandatory @graph Structure
-Your JSON-LD block must follow this pattern:
+## 2. Mandatory @graph Structure Template
+Your JSON-LD block must follow this pattern exactly:
 
 ```html
 <script type="application/ld+json">
@@ -30,34 +31,62 @@ Your JSON-LD block must follow this pattern:
       "description": "[Meta Description]"
     },
     {
-      "@type": "LocalBusiness",
+      "@type": "WebSite",
+      "@id": "https://axcentdance.com/#website",
+      "url": "https://axcentdance.com/",
+      "name": "AXcent Dance",
+      "publisher": { "@id": "https://axcentdance.com/#organization" }
+    },
+    {
+      "@type": ["LocalBusiness", "DanceSchool"],
       "@id": "https://axcentdance.com/#organization",
       "name": "AXcent Dance",
       "url": "https://axcentdance.com/",
-      "telephone": "+41799668481",
+      "logo": "https://axcentdance.com/assets/images/logo.webp",
+      "image": "https://axcentdance.com/assets/images/hero_new.webp",
+      "priceRange": "$$",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "Hermetschloostrasse 73",
         "addressLocality": "Zurich",
         "postalCode": "8048",
         "addressCountry": "CH"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 47.3941999,
+        "longitude": 8.4745859
       }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://axcentdance.com/#person1",
+      "name": "Alessandro Slamitz",
+      "jobTitle": "Co-Founder",
+      "sameAs": ["https://www.instagram.com/aleyxidan/"]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://axcentdance.com/#person2",
+      "name": "Xidan",
+      "jobTitle": "Co-Founder",
+      "sameAs": ["https://www.instagram.com/aleyxidan/"]
     },
     {
       "@type": "BreadcrumbList",
       "@id": "https://axcentdance.com/[page-path]#breadcrumb",
       "itemListElement": [ ... ]
-    },
-    /* Add page-specific types here: FAQPage, Course, BlogPosting, etc. */
+    }
+    /* Add page-specific types here: BlogPosting, Event, etc. */
   ]
 }
 </script>
 ```
 
 ## 3. Page-Specific Entities
-*   **Blog Posts**: Include `BlogPosting` and `VideoObject` (if applicable) within the graph. Link them to the `WebPage` via `mainEntityOfPage`.
-*   **Schedule Page**: Include `ItemList` containing detailed `Course` objects (with `offers`, `instructor`, and `CourseInstance`).
-*   **FAQ Sections**: Include `FAQPage` within the graph, linked to the `WebPage` via `isPartOf`.
+*   **Blog Posts**: Include `BlogPosting` within the graph. Use `author` array pointing to `[{"@id": "...#person1"}, {"@id": "...#person2"}]`.
+*   **FAQ Sections**: Include `FAQPage` within the graph, linked to the `WebPage`.
+
 
 ## 4. Internationalization (EN-DE Parity)
 *   **German Pages**: All `name`, `description`, and `itemListElement` labels within the schema MUST be in German.

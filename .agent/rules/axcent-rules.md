@@ -145,9 +145,12 @@ Blog Post Headlines: Use curiosity-driven, emotionally engaging headlines that n
 
 Blog Post Internal Links: Every blog post MUST include 2-4 contextual internal links within the article body text, linking to other relevant pages on the site (e.g., schedule, registration, beginner-guide, guide-bachata, events, private-lessons). Links must be woven naturally into the flow of thought — never forced or out of context. Use descriptive anchor text (e.g., "check our weekly Bachata schedule" instead of "click here"). These contextual body links are weighted 5-10x more by Google than navigation links.
 
-5.2. Local SEO & Schema (JSON-LD)
+5.2. Local SEO & Unified Schema (Static @graph)
 
-Homepage: Must include LocalBusiness (specifically DanceSchool) schema with Zurich address.
+1.  **Single Source of Truth**: Use a single static `@graph` block in the `<head>` of EVERY page. **NEVER** use external JavaScript (e.g., `schema.js`) or standalone `<script type="application/ld+json">` tags for separate entities like Breadcrumbs or FAQs.
+2.  **Global Entities**: Every page's `@graph` MUST include the foundational business entity (`DanceSchool`) and the founders (`#person1` Alessandro Slamitz and `#person2` Xidan) to ensure self-contained authority.
+3.  **Hero Image Protocol**: For Google Discover eligibility, hero images MUST be **exactly 1200px wide** (WebP format).
+4.  **Homepage**: Must include full `LocalBusiness` (DanceSchool) details and `WebSite` definition within the `@graph`.
 
 5.3. Forbidden Schema Types (Do NOT Implement)
 

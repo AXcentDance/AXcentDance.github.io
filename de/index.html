@@ -62,9 +62,6 @@
   <link rel="manifest" href="../manifest.json">
   <link type="text/plain" rel="author" href="../humans.txt" />
 
-  <!-- Centralized Global Schema (Org, School, LocalBusiness) -->
-  <script src="/assets/js/schema.js"></script>
-
   <!-- Schema Markup (Page-Specific) -->
   <script type="application/ld+json">
 {
@@ -124,10 +121,70 @@
           }
         }
       ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://axcentdance.com/#website",
+      "url": "https://axcentdance.com/",
+      "name": "AXcent Dance",
+      "publisher": {
+        "@id": "https://axcentdance.com/#organization"
+      },
+      "inLanguage": [
+        "en",
+        "de"
+      ]
+    },
+    {
+      "@id": "https://axcentdance.com/#organization",
+      "@type": [
+        "LocalBusiness",
+        "DanceSchool"
+      ],
+      "name": "AXcent Dance",
+      "url": "https://axcentdance.com/",
+      "logo": "https://axcentdance.com/assets/images/logo.webp",
+      "image": "https://axcentdance.com/assets/images/hero_new.webp",
+      "description": "Die Bachata-Tanzschule in Zürich Altstetten. Wir bieten Bachata Sensual, Dominican Bachata und Salsa Kurse für alle Niveaus an.",
+      "telephone": "+41799668481",
+      "email": "info@axcentdance.com",
+      "hasMap": "https://www.google.com/maps?cid=15680757943659417558",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Hermetschloostrasse 73",
+        "addressLocality": "Zürich",
+        "addressRegion": "ZH",
+        "postalCode": "8048",
+        "addressCountry": "CH"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 47.3941999,
+        "longitude": 8.4745859
+      },
+      "priceRange": "$$"
+    },
+    {
+      "@id": "https://axcentdance.com/#person1",
+      "@type": "Person",
+      "name": "Alessandro Slamitz",
+      "jobTitle": "Mitbegründer",
+      "sameAs": [
+        "https://www.instagram.com/aleyxidan/"
+      ]
+    },
+    {
+      "@id": "https://axcentdance.com/#person2",
+      "@type": "Person",
+      "name": "Xidan",
+      "jobTitle": "Mitbegründerin",
+      "sameAs": [
+        "https://www.instagram.com/aleyxidan/"
+      ]
     }
   ]
 }
-    </script>
+</script>
 
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-E2SYCF7R7X"></script>
