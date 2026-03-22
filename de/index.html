@@ -249,92 +249,77 @@
   <main>
     <!-- 1. Hero Section -->
     <section id="hero" class="hero">
-      <!-- Video Background -->
-      <!-- Video Background with HLS -->
-      <video id="hero-video" autoplay muted loop playsinline class="hero-video"
-        poster="../assets/images/hero-poster.webp">
-        <!-- Fallback for Safari (Native HLS) -->
+      <!-- 1. Hero Content -->
+      <!-- 1. Hero Content -->
+      <!-- Mobile Hero Top: Video + Overlays (50/50 Split) -->
+      <div class="mobile-only mobile-video-wrapper">
+        <video id="hero-video-mobile" autoplay muted loop playsinline class="hero-video-mobile" poster="../assets/images/hero-poster.webp">
+          <source src="../assets/videos/HeroVideo_mobile.mp4" type="video/mp4">
+        </video>
+        
+        <!-- Top Overlay: Badge -->
+        <div class="mobile-badge-top">
+          <div class="hero-badge" style="margin:0 auto; padding:0 20px;">
+            <span class="hero-badge-line" style="width: 2rem; background: var(--accent-start);"></span>
+            <span class="hero-badge-text" style="font-size: 0.65rem; color: var(--accent-start); font-weight: 700;">Lerne Bachata in Zürich von <strong>internationalen Lehrern</strong></span>
+            <span class="hero-badge-line" style="width: 2rem; background: var(--accent-start);"></span>
+          </div>
+        </div>
+
+        <!-- Bottom Overlay: Title -->
+        <div class="mobile-title-bottom">
+          <div style="font-family: var(--font-display); font-size: 3.5rem; font-weight: 700; color: white; margin:0; text-transform: uppercase;">
+            <span class="ax-highlight">AX</span>CENT <span class="text-gradient">DANCE</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Desktop Video Background -->
+      <video id="hero-video" autoplay muted loop playsinline class="hero-video desktop-only" poster="../assets/images/hero-poster.webp">
         <source src="../assets/videos/hls/playlist.m3u8" type="application/x-mpegURL">
-        <!-- Fallback for legacy (Mobile MP4) -->
         <source src="../assets/videos/HeroVideo_mobile.mp4" type="video/mp4">
-        Your browser does not support the video tag.
       </video>
 
-      <!-- HLS.js Integration -->
-      <script src="https://cdn.jsdelivr.net/npm/hls.js@1.5.15/dist/hls.min.js"></script>
+      <!-- HLS.js Integration (Desktop Only) -->
       <script>
         document.addEventListener('DOMContentLoaded', () => {
           const video = document.getElementById('hero-video');
+          if (!video || window.innerWidth < 768) return;
+          
           const videoSrc = '../assets/videos/hls/playlist.m3u8';
-
           function attemptPlay() {
             video.muted = true;
-            const playPromise = video.play();
-            if (playPromise !== undefined) {
-              playPromise.then(_ => {
-                // Autoplay started!
-              }).catch(error => {
-                // Autoplay prevented, waiting for interaction
-                console.log("Autoplay prevented, waiting for interaction");
-              });
-            }
+            video.play().catch(e => console.log("Autoplay prevented"));
           }
 
-          if (Hls.isSupported()) {
-            const hls = new Hls({
-              capLevelToPlayerSize: true,
-              autoStartLoad: true,
-              lowLatencyMode: true
-            });
+          if (typeof Hls !== 'undefined' && Hls.isSupported()) {
+            const hls = new Hls({ capLevelToPlayerSize: true });
             hls.loadSource(videoSrc);
             hls.attachMedia(video);
-            hls.on(Hls.Events.MANIFEST_PARSED, () => {
-              attemptPlay();
-            });
-            // Fallback if HLS fails to load
-            hls.on(Hls.Events.ERROR, (event, data) => {
-              if (data.fatal) {
-                console.warn('HLS fatal error, falling back to MP4');
-                hls.destroy();
-                video.src = '../assets/videos/HeroVideo_mobile.mp4';
-                attemptPlay();
-              }
-            });
-          }
-          else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+            hls.on(Hls.Events.MANIFEST_PARSED, attemptPlay);
+          } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
             video.src = videoSrc;
             video.addEventListener('loadedmetadata', attemptPlay);
           }
-          else {
-            // Standard fallback
-            attemptPlay();
-          }
-
-          // Global touchstart fallback
-          const startVideo = () => {
-            if (video.paused) attemptPlay();
-            document.removeEventListener('touchstart', startVideo);
-            document.removeEventListener('click', startVideo);
-          };
-          document.addEventListener('touchstart', startVideo, { once: true, passive: true });
-          document.addEventListener('click', startVideo, { once: true, passive: true });
         });
       </script>
 
-      <!-- Overlay -->
-      <div class="hero-overlay"></div>
+      <!-- Overlay (Desktop Only) -->
+      <div class="hero-overlay desktop-only"></div>
 
       <div class="container hero-content-center">
 
-        <!-- Badge -->
-        <div class="hero-badge">
-          <span class="hero-badge-line"></span>
-          <span class="hero-badge-text">Lerne Bachata in Zürich von <strong>internationalen Lehrern</strong></span>
-          <span class="hero-badge-line"></span>
+        <!-- Badge (Desktop Only) -->
+        <div class="hero-only-desktop desktop-only">
+          <div class="hero-badge">
+            <span class="hero-badge-line"></span>
+            <span class="hero-badge-text">Lerne Bachata in Zürich von <strong>internationalen Lehrern</strong></span>
+            <span class="hero-badge-line"></span>
+          </div>
         </div>
 
-        <!-- Main Title -->
-        <h1 class="hero-title-large">
+        <!-- Main Title (Desktop Only) -->
+        <h1 class="hero-title-large desktop-only">
           <span class="hero-title-top">Bachata Tanzkurse in Zürich</span>
           <br>
           <span class="reveal-wrapper">
@@ -349,19 +334,24 @@
           </span>
         </h1>
 
-        <!-- Stylized Slogan -->
-        <div class="text-outline">
+        <!-- Stylized Slogan (Desktop Only) -->
+        <div class="text-outline desktop-only">
           ENTDECKE DEINEN STIL
         </div>
 
         <!-- Description -->
         <div class="hero-desc-border" style="max-width: 800px;">
-          <p style="margin-bottom: 0.5rem; margin-top: 0;">
+          <p class="desktop-only" style="margin-bottom: 0.5rem; margin-top: 0;">
             Auf der Suche nach einem <strong>neuen Hobby</strong> in Zürich? Entdecke unsere Bachata Kurse und werde
             Teil einer
             herzlichen Community in Zürich Altstetten, wo du neue Leute kennenlernen und tanzen lernen kannst.<br>
             <strong>Kein Partner nötig</strong> — bring einfach dein Lächeln mit!
           </p>
+          <div class="mobile-only" style="margin-top: -1rem; margin-bottom: 1rem;">
+            <p style="margin: 0 auto; max-width: 320px; font-size: 0.9rem; color: var(--text-muted); font-weight: 500; line-height: 1.4; text-align: center;">
+              Auf der Suche nach einem neuen Hobby in Zürich? Entdecke Bachata und werde Teil einer herzlichen Community in Zürich Altstetten.
+            </p>
+          </div>
         </div>
 
 

@@ -294,7 +294,7 @@ svg {
     }
 
     .section-title-modern {
-        font-size: 2.5rem !important;
+        font-size: 3.5rem !important;
     }
 
     .hero-desc-border {
@@ -5121,4 +5121,226 @@ textarea {
 /* Hide breadcrumbs on homepage */
 .home .breadcrumb-nav {
     display: none !important;
+}
+/* MOBILE/DESKTOP UTILITY CLASSES */
+.mobile-only {
+    display: none !important;
+}
+
+@media (max-width: 767px) {
+    .desktop-only {
+        display: none !important;
+    }
+    .mobile-only {
+        display: block !important;
+    }
+    
+    /* NEW MOBILE HERO REFACTOR - 50/50 Split */
+    .hero {
+        min-height: 100vh !important;
+        height: 100vh !important;
+        display: flex !important;
+        flex-direction: column !important;
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+        background: var(--bg-main);
+    }
+
+    .hero-content-center {
+        height: 50vh !important;
+        min-height: 50vh !important;
+        justify-content: center !important;
+        align-items: center !important;
+        padding-top: var(--header-height) !important;
+        order: 1 !important; /* Content at top */
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+        padding-left: 1.5rem !important;
+        padding-right: 1.5rem !important;
+        z-index: 10 !important;
+        position: relative !important;
+    }
+
+    /* Video occupies the bottom 50% */
+    .hero-video {
+        position: relative !important;
+        height: 50vh !important;
+        order: 2 !important; /* Video at bottom */
+    }
+
+    .hero-overlay {
+        position: absolute !important;
+        top: 50vh !important;
+        height: 50vh !important;
+        z-index: 5 !important;
+    }
+    
+    /* Scale Typography */
+    .hero-title-large {
+        font-size: 3.5rem !important;
+        margin-bottom: 0.5rem !important;
+    }
+    
+    .hero-desc-border p {
+        font-size: 0.85rem !important;
+        line-height: 1.4 !important;
+        max-width: 320px !important;
+        margin: 0 auto !important;
+    }
+    
+    .hero-buttons-group {
+        margin-top: 1rem !important;
+        gap: 0.75rem !important;
+    }
+    
+    .btn-hero {
+        padding: 0.75rem 1.25rem !important;
+        font-size: 0.8rem !important;
+    }
+
+    /* Hide the stats on mobile hero screen to keep the 50% clear */
+    .hero-stats {
+        display: none !important;
+    }
+}
+
+/* ==========================================================================
+   MOBILE UX OPTIMIZATIONS (Consolidated)
+   ========================================================================== */
+@media (max-width: 767px) {
+    /* 1. Hero Structural Fixes */
+    .hero {
+        display: flex !important;
+        flex-direction: column !important;
+        height: auto !important;
+        min-height: auto !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        overflow: visible !important;
+        background: var(--bg-main) !important;
+    }
+
+    /* 2. Brand Frame (Video + Overlays) */
+    .mobile-video-wrapper {
+        position: relative !important;
+        width: 100% !important;
+        height: 48vh !important;
+        overflow: hidden !important;
+        background: black !important;
+        margin-top: var(--header-height) !important;
+        order: 1 !important;
+    }
+
+    .mobile-video-wrapper video {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+    }
+
+    .mobile-badge-top {
+        position: absolute !important;
+        top: 15px !important;
+        left: 0 !important;
+        width: 100% !important;
+        z-index: 10 !important;
+        pointer-events: none;
+        text-align: center !important;
+    }
+
+    .mobile-title-bottom {
+        position: absolute !important;
+        bottom: 15px !important;
+        left: 0 !important;
+        width: 100% !important;
+        z-index: 10 !important;
+        pointer-events: none;
+        text-align: center !important;
+    }
+
+    .mobile-title-bottom div {
+        font-size: 3.5rem !important;
+        text-shadow: 0 4px 15px rgba(0,0,0,0.9) !important;
+        padding: 0 10px;
+    }
+
+    /* 3. Hero Content Center (Desc + Buttons) */
+    .hero-content-center {
+        position: relative !important;
+        order: 2 !important;
+        height: auto !important;
+        min-height: auto !important;
+        padding: 1.25rem 1.5rem !important; /* COMPRESSED PADDING */
+        background: var(--bg-main) !important;
+        z-index: 20 !important;
+        display: block !important;
+        text-align: center !important;
+    }
+
+    .hero-desc-border .mobile-only {
+        margin-top: 0 !important;
+        margin-bottom: 0.75rem !important; /* COMPRESSED MARGIN */
+    }
+
+    .hero-buttons-group {
+        margin-top: 0 !important;
+        gap: 0.75rem !important; /* Tighter buttons */
+    }
+
+    .btn-hero {
+        padding: 0.8rem 1.5rem !important; /* More compact buttons on phone */
+        font-size: 0.9rem !important;
+    }
+
+    .hero-title-large, 
+    .hero-badge-mobile, 
+    .hero-video, 
+    .hero-overlay:not(.mobile-video-wrapper .hero-overlay), 
+    .text-outline.desktop-only,
+    .hero-stats {
+        display: none !important;
+    }
+
+    /* 4. Guides Section (Vertical Fix) */
+    .guides-section {
+        position: relative !important;
+        order: 3 !important;
+        padding: 2.5rem 1.5rem !important; /* COMPRESSED PADDING */
+        margin-top: 0 !important;
+        background: var(--bg-secondary) !important;
+        display: block !important;
+        z-index: 25 !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+
+    .section-header {
+        margin-bottom: 1rem !important; /* COMPRESSED MARGIN */
+        text-align: center !important;
+    }
+
+    .section-title-modern {
+        font-size: 2.25rem !important; /* Slightly smaller for mobile */
+        margin-bottom: 0.5rem !important;
+        font-style: italic !important;
+        display: block !important;
+    }
+
+    .guides-grid {
+        display: flex !important;
+        flex-direction: column !important; /* VERTICAL STACK */
+        gap: 1.25rem !important; /* COMPRESSED GAP */
+        width: 100% !important;
+        overflow: visible !important;
+    }
+
+    .guide-card {
+        width: 100% !important;
+        min-width: 0 !important;
+        flex: none !important;
+        margin: 0 !important;
+        opacity: 1 !important;
+        padding: 1.50rem !important; /* COMPRESSED CARD PADDING */
+        transform: none !important; /* Disable potential conflicting reveal transforms */
+    }
 }
