@@ -5,25 +5,20 @@ import json
 
 ROOT_DIR = '/Users/slamitza/AXcentWebsiteGitHub'
 
-def get_breadcrumb_schema(file_path, title, lang):
-    # Determine base URL
+def get_breadcrumb_data(file_path, title, lang):
     base_url = "https://axcentdance.com"
-    
-    # Breadcrumb names
     home_name = "Startseite" if lang == "de" else "Home"
-    blog_name = "Blog" # Same in both
+    blog_name = "Blog"
     
-    # Item URLs
     home_url = f"{base_url}/de/" if lang == "de" else f"{base_url}/"
     blog_url = f"{base_url}/blog" 
     
-    # Post URL - Remove .html for clean URL
     rel_path = os.path.relpath(file_path, ROOT_DIR).replace('\\', '/')
-    clean_slug = rel_path.replace('.html', '')
+    clean_slug = rel_path.replace('.html', '').replace('index', '')
+    if clean_slug.endswith('/'): clean_slug = clean_slug[:-1]
     post_url = f"{base_url}/{clean_slug}"
 
-    schema = {
-        "@context": "https://schema.org",
+    return {
         "@type": "BreadcrumbList",
         "inLanguage": lang,
         "itemListElement": [
@@ -47,59 +42,64 @@ def get_breadcrumb_schema(file_path, title, lang):
             }
         ]
     }
-    return schema
 
 def inject_breadcrumb(file_path):
     with open(file_path, 'r', encoding='utf-8') as f:
         content = f.read()
 
-    # Skip ONLY if BreadcrumbList already has inLanguage
-    # Use re.SEARCH to see if "BreadcrumbList" and "inLanguage" appear close together
-    up_to_date_re = re.compile(r'"@type":\s*"BreadcrumbList".*?"inLanguage"', re.DOTALL)
-    if up_to_date_re.search(content):
-        return False
-
-    # Language
     lang = "de" if "/de/" in file_path.replace('\\', '/') else "en"
-    
-    # Extract Title
     title_match = re.search(r'<title>(.*?)</title>', content, re.IGNORECASE)
-    if not title_match:
-        return False
-    
-    # Clean Title (remove site name suffix)
+    if not title_match: return False
     title = title_match.group(1).split('|')[0].strip()
 
-    schema = get_breadcrumb_schema(file_path, title, lang)
-    schema_json = json.dumps(schema, indent=4, ensure_ascii=False)
-    
-    script_tag = f'\n    <script type="application/ld+json">\n    {schema_json}\n    </script>'
+    breadcrumb_item = get_breadcrumb_data(file_path, title, lang)
 
-    # Case 1: Already exists inside a @graph array (Standard premium structure)
-    graph_breadcrumb_re = re.compile(r'(\s*\{\s*"@type":\s*"BreadcrumbList",)', re.IGNORECASE)
-    if graph_breadcrumb_re.search(content):
-        print(f"Updating @graph breadcrumb in {os.path.basename(file_path)}...")
-        # Inject "inLanguage" after the @type line
-        new_content = graph_breadcrumb_re.sub(r'\1\n        "inLanguage": "' + lang + '",', content)
+    # Find the main @graph script tag
+    graph_match = re.search(r'<script type="application/ld\+json">\s*(\{.*?"@graph":\s*\[.*?\]\s*\})\s*</script>', content, re.DOTALL)
     
-    # Case 2: Exists as a separate script tag (Legacy or alternative structure)
-    else:
-        breadcrumb_script_re = re.compile(r'\n?\s*<script type="application/ld\+json">.*?"@type":\s*"BreadcrumbList".*?</script>', re.DOTALL)
-        if breadcrumb_script_re.search(content):
-            print(f"Updating standalone breadcrumb in {os.path.basename(file_path)}...")
-            new_content = breadcrumb_script_re.sub(f'\n    {script_tag}', content)
-        elif '</head>' in content:
-            # Standard injection before closing head
-            new_content = content.replace('</head>', f'{script_tag}\n</head>')
-        else:
+    # Also find and remove any standalone BreadcrumbList scripts to prevent duplication
+    standalone_re = re.compile(r'\n?\s*<script type="application/ld\+json">.*?"@type":\s*"BreadcrumbList".*?</script>', re.DOTALL)
+    content = standalone_re.sub('', content)
+
+    if graph_match:
+        try:
+            full_json = json.loads(graph_match.group(1))
+            graph = full_json.get("@graph", [])
+            
+            # Remove existing BreadcrumbList
+            graph = [item for item in graph if item.get("@type") != "BreadcrumbList"]
+            graph.append(breadcrumb_item)
+            
+            full_json["@graph"] = graph
+            new_json_str = json.dumps(full_json, indent=2, ensure_ascii=False)
+            new_script = f'<script type="application/ld+json">\n{new_json_str}\n</script>'
+            
+            # Re-find graph start because content might have shifted due to standalone removal
+            graph_match = re.search(r'<script type="application/ld\+json">\s*(\{.*?"@graph":\s*\[.*?\]\s*\})\s*</script>', content, re.DOTALL)
+            if graph_match:
+                content = content[:graph_match.start()] + new_script + content[graph_match.end():]
+            else:
+                # If removal broke the match, just append to head (safe fallback)
+                content = content.replace('</head>', f'{new_script}\n</head>')
+                
+        except json.JSONDecodeError:
             return False
+    else:
+        # No @graph - creating a standalone script but as a @graph for future compatibility
+        full_json = {
+            "@context": "https://schema.org",
+            "@graph": [breadcrumb_item]
+        }
+        new_json_str = json.dumps(full_json, indent=2, ensure_ascii=False)
+        new_script = f'\n  <script type="application/ld+json">\n{new_json_str}\n  </script>\n'
+        content = content.replace('</head>', f'{new_script}</head>')
 
     with open(file_path, 'w', encoding='utf-8') as f:
-        f.write(new_content)
+        f.write(content)
     return True
 
 def main():
-    print("Injecting Breadcrumb JSON-LD into blog posts...")
+    print("Injecting Unified Breadcrumb JSON-LD (@graph) into blog posts...")
     blog_dirs = [
         os.path.join(ROOT_DIR, 'blog-posts'),
         os.path.join(ROOT_DIR, 'de/blog-posts')
@@ -112,10 +112,10 @@ def main():
             for file in files:
                 if file.endswith(".html"):
                     if inject_breadcrumb(os.path.join(root, file)):
-                        print(f"[INJECTED] {file}")
+                        print(f"[REFACTORED] {file}")
                         count += 1
     
-    print(f"Finished. Injected schema into {count} files.")
+    print(f"Finished. Synced {count} files to Unified Schema standard.")
 
 if __name__ == "__main__":
     main()
