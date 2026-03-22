@@ -43,9 +43,8 @@ When the user asks to modify pages to target different search terms or improve r
 
 -   **Title**: `[Topic] | [Benefit/Context] | AXcent Dance Zurich`. MUST be between 50 and 60 characters (no shorter, no longer).
 -   **Heading Hierarchy**: Strictly one `<h1>`. Logical `<h2>` -> `<h3>`.
--   **Breadcrumbs**: Every subpage (blog, guide, course) MUST have both:
-    1.  **JSON-LD BreadcrumbList**: In the `<head>`, correctly reflecting the site hierarchy.
-    2.  **Visual Breadcrumbs**: A `<nav class="breadcrumb-nav">` component placed within the Hero section, clearly displaying the navigation path (e.g., Home > Blog > Post Title).
+-   **Breadcrumbs**: Every subpage (blog, guide, course) MUST have:
+    1.  **JSON-LD BreadcrumbList**: In the `<head>`, correctly reflecting the site hierarchy for SEO rich snippets. Visual breadcrumbs are **NOT** required.
 -   **Blog Post Updates**: Whenever ANY change is made to a blog post, the `dateModified` property in the blog post's schema (JSON-LD) MUST be updated to the current date (format: YYYY-MM-DD).
 
 ### 5.2. Context Synchronization
