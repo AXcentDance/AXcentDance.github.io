@@ -42,191 +42,212 @@
     <!-- Structured Data (Event & Breadcrumbs) -->
     <script type="application/ld+json">
 {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "WebPage",
-      "@id": "https://axcentdance.com/Milano-Sensual-Congress-2026#webpage",
-      "url": "https://axcentdance.com/Milano-Sensual-Congress-2026",
-      "name": "Milano Sensual Congress 2026 | Join Our Group | AXcent Dance",
-      "isPartOf": {
-        "@id": "https://axcentdance.com/#website"
-      },
-      "description": "Join AXcent Dance at the Milano Sensual Congress 2026. Get your tickets and join the Zurich group for this amazing event."
-    },
-    {
-      "@type": "EventSeries",
-      "@id": "https://axcentdance.com/events#msc-series",
-      "name": "Milano Sensual Congress",
-      "url": "https://milanosensualcongress.com",
-      "description": "The premier annual Bachata Sensual congress in Italy, bringing together top international artists for workshops and social dancing in Milan.",
-      "location": {
-        "@type": "Place",
-        "name": "Milan, Italy",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Milan",
-          "addressCountry": "IT"
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "WebPage",
+            "@id": "https://axcentdance.com/Milano-Sensual-Congress-2026#webpage",
+            "url": "https://axcentdance.com/Milano-Sensual-Congress-2026",
+            "name": "Milano Sensual Congress 2026 | Join Our Group | AXcent Dance",
+            "isPartOf": {
+                "@id": "https://axcentdance.com/#website"
+            },
+            "description": "Join AXcent Dance at the Milano Sensual Congress 2026. Get your tickets and join the Zurich group for this amazing event.",
+            "mainEntity": {
+                "@id": "https://axcentdance.com/Milano-Sensual-Congress-2026#event"
+            }
+        },
+        {
+            "@type": "EventSeries",
+            "@id": "https://axcentdance.com/events#msc-series",
+            "name": "Milano Sensual Congress",
+            "url": "https://milanosensualcongress.com",
+            "description": "The premier annual Bachata Sensual congress in Italy, bringing together top international artists for workshops and social dancing in Milan.",
+            "location": {
+                "@type": "Place",
+                "name": "Milan, Italy",
+                "address": {
+                    "@type": "PostalAddress",
+                    "addressLocality": "Milan",
+                    "addressCountry": "IT"
+                }
+            },
+            "organizer": {
+                "@type": "Organization",
+                "name": "AXcent Dance",
+                "url": "https://axcentdance.com"
+            }
+        },
+        {
+            "@type": "DanceEvent",
+            "@id": "https://axcentdance.com/Milano-Sensual-Congress-2026#event",
+            "name": "Milano Sensual Congress 2026",
+            "startDate": "2026-11-20T18:00",
+            "endDate": "2026-11-22T22:00",
+            "eventStatus": "https://schema.org/EventScheduled",
+            "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+            "superEvent": {
+                "@id": "https://axcentdance.com/events#msc-series"
+            },
+            "location": {
+                "@type": "Place",
+                "name": "Milan",
+                "address": {
+                    "@type": "PostalAddress",
+                    "addressLocality": "Milan",
+                    "addressCountry": "IT"
+                }
+            },
+            "url": "https://axcentdance.com/Milano-Sensual-Congress-2026",
+            "image": [
+                "https://axcentdance.com/assets/images/MilanoSensualCongress2026.webp"
+            ],
+            "description": "Experience the magic of Milano Sensual Congress with AXcent Dance. One of the most prestigious Bachata Sensual events featuring top world artists.",
+            "offers": {
+                "@type": "Offer",
+                "url": "https://lasalsadelbaile.com/MSC2026/AleyXidan",
+                "priceCurrency": "EUR",
+                "availability": "https://schema.org/InStock",
+                "validFrom": "2025-01-01",
+                "priceSpecification": [
+                    {
+                        "@type": "UnitPriceSpecification",
+                        "name": "Early-Bird Pass",
+                        "price": "115",
+                        "priceCurrency": "EUR",
+                        "validThrough": "2026-07-01T23:59:59"
+                    },
+                    {
+                        "@type": "UnitPriceSpecification",
+                        "name": "Standard Pass",
+                        "price": "140",
+                        "priceCurrency": "EUR",
+                        "validFrom": "2026-07-02T00:00:00"
+                    }
+                ]
+            },
+            "performer": [
+                {
+                    "@type": "Person",
+                    "name": "Gero y Migle"
+                },
+                {
+                    "@type": "Person",
+                    "name": "Klau y Ros"
+                },
+                {
+                    "@type": "Person",
+                    "name": "Cristian y Gabriella"
+                },
+                {
+                    "@type": "Person",
+                    "name": "Nacho y Silvia"
+                },
+                {
+                    "@type": "Person",
+                    "name": "Agustin y Alba"
+                },
+                {
+                    "@type": "Person",
+                    "name": "Irene y Tomas"
+                },
+                {
+                    "@type": "Person",
+                    "name": "David y Ines"
+                },
+                {
+                    "@type": "Person",
+                    "name": "Aitor Gomez"
+                }
+            ],
+            "organizer": {
+                "@type": "Organization",
+                "name": "AXcent Dance",
+                "url": "https://axcentdance.com"
+            },
+            "mainEntityOfPage": {
+                "@id": "https://axcentdance.com/Milano-Sensual-Congress-2026#webpage"
+            }
+        },
+        {
+            "@type": "BreadcrumbList",
+            "@id": "https://axcentdance.com/Milano-Sensual-Congress-2026#breadcrumb",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://axcentdance.com/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Milano Sensual Congress 2026",
+                    "item": "https://axcentdance.com/Milano-Sensual-Congress-2026"
+                }
+            ]
+        },
+        {
+            "@type": "WebSite",
+            "@id": "https://axcentdance.com/#website",
+            "url": "https://axcentdance.com/",
+            "name": "AXcent Dance",
+            "publisher": {
+                "@id": "https://axcentdance.com/#organization"
+            },
+            "inLanguage": [
+                "en",
+                "de"
+            ]
+        },
+        {
+            "@id": "https://axcentdance.com/#organization",
+            "@type": [
+                "LocalBusiness",
+                "DanceSchool"
+            ],
+            "name": "AXcent Dance",
+            "url": "https://axcentdance.com/",
+            "logo": "https://axcentdance.com/assets/images/logo.webp",
+            "image": "https://axcentdance.com/assets/images/hero_new.webp",
+            "description": "AXcent Dance is a Bachata dance school in Zurich Altstetten offering Bachata Sensual, Dominican Bachata, Salsa, and Latin dance classes for all levels.",
+            "telephone": "+41799668481",
+            "email": "info@axcentdance.com",
+            "hasMap": "https://www.google.com/maps?cid=15680757943659417558",
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Hermetschloostrasse 73",
+                "addressLocality": "Zurich",
+                "addressRegion": "ZH",
+                "postalCode": "8048",
+                "addressCountry": "CH"
+            },
+            "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": 47.3941999,
+                "longitude": 8.4745859
+            },
+            "priceRange": "$$"
+        },
+        {
+            "@id": "https://axcentdance.com/#person1",
+            "@type": "Person",
+            "name": "Alessandro Slamitz",
+            "jobTitle": "Co-Founder",
+            "sameAs": [
+                "https://www.instagram.com/aleyxidan/"
+            ]
+        },
+        {
+            "@id": "https://axcentdance.com/#person2",
+            "@type": "Person",
+            "name": "Xidan",
+            "jobTitle": "Co-Founder",
+            "sameAs": [
+                "https://www.instagram.com/aleyxidan/"
+            ]
         }
-      },
-      "organizer": {
-        "@type": "Organization",
-        "name": "AXcent Dance",
-        "url": "https://axcentdance.com"
-      }
-    },
-    {
-      "@type": "Event",
-      "@id": "https://axcentdance.com/Milano-Sensual-Congress-2026#event",
-      "name": "Milano Sensual Congress 2026",
-      "startDate": "2026-11-20T18:00",
-      "endDate": "2026-11-22T22:00",
-      "eventStatus": "https://schema.org/EventScheduled",
-      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-      "superEvent": {
-        "@id": "https://axcentdance.com/events#msc-series"
-      },
-      "location": {
-        "@type": "Place",
-        "name": "Milan",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Milan",
-          "addressCountry": "IT"
-        }
-      },
-      "url": "https://axcentdance.com/Milano-Sensual-Congress-2026",
-      "image": [
-        "https://axcentdance.com/assets/images/MilanoSensualCongress2026.webp"
-      ],
-      "description": "Experience the magic of Milano Sensual Congress with AXcent Dance. One of the most prestigious Bachata Sensual events featuring top world artists.",
-      "offers": {
-        "@type": "Offer",
-        "url": "https://lasalsadelbaile.com/MSC2026/AleyXidan",
-        "price": "140",
-        "priceCurrency": "EUR",
-        "availability": "https://schema.org/InStock",
-        "validFrom": "2025-01-01"
-      },
-      "performer": [
-        {
-          "@type": "Person",
-          "name": "Gero y Migle"
-        },
-        {
-          "@type": "Person",
-          "name": "Klau y Ros"
-        },
-        {
-          "@type": "Person",
-          "name": "Cristian y Gabriella"
-        },
-        {
-          "@type": "Person",
-          "name": "Nacho y Silvia"
-        },
-        {
-          "@type": "Person",
-          "name": "Agustin y Alba"
-        },
-        {
-          "@type": "Person",
-          "name": "Irene y Tomas"
-        },
-        {
-          "@type": "Person",
-          "name": "David y Ines"
-        },
-        {
-          "@type": "Person",
-          "name": "Aitor Gomez"
-        }
-      ],
-      "organizer": {
-        "@type": "Organization",
-        "name": "AXcent Dance",
-        "url": "https://axcentdance.com"
-      }
-    },
-    {
-      "@type": "BreadcrumbList",
-      "@id": "https://axcentdance.com/Milano-Sensual-Congress-2026#breadcrumb",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": "https://axcentdance.com/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Milano Sensual Congress 2026",
-          "item": "https://axcentdance.com/Milano-Sensual-Congress-2026"
-        }
-      ]
-    },
-    {
-      "@type": "WebSite",
-      "@id": "https://axcentdance.com/#website",
-      "url": "https://axcentdance.com/",
-      "name": "AXcent Dance",
-      "publisher": {
-        "@id": "https://axcentdance.com/#organization"
-      },
-      "inLanguage": [
-        "en",
-        "de"
-      ]
-    },
-    {
-      "@id": "https://axcentdance.com/#organization",
-      "@type": [
-        "LocalBusiness",
-        "DanceSchool"
-      ],
-      "name": "AXcent Dance",
-      "url": "https://axcentdance.com/",
-      "logo": "https://axcentdance.com/assets/images/logo.webp",
-      "image": "https://axcentdance.com/assets/images/hero_new.webp",
-      "description": "AXcent Dance is a Bachata dance school in Zurich Altstetten offering Bachata Sensual, Dominican Bachata, Salsa, and Latin dance classes for all levels.",
-      "telephone": "+41799668481",
-      "email": "info@axcentdance.com",
-      "hasMap": "https://www.google.com/maps?cid=15680757943659417558",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Hermetschloostrasse 73",
-        "addressLocality": "Zurich",
-        "addressRegion": "ZH",
-        "postalCode": "8048",
-        "addressCountry": "CH"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": 47.3941999,
-        "longitude": 8.4745859
-      },
-      "priceRange": "$$"
-    },
-    {
-      "@id": "https://axcentdance.com/#person1",
-      "@type": "Person",
-      "name": "Alessandro Slamitz",
-      "jobTitle": "Co-Founder",
-      "sameAs": [
-        "https://www.instagram.com/aleyxidan/"
-      ]
-    },
-    {
-      "@id": "https://axcentdance.com/#person2",
-      "@type": "Person",
-      "name": "Xidan",
-      "jobTitle": "Co-Founder",
-      "sameAs": [
-        "https://www.instagram.com/aleyxidan/"
-      ]
-    }
-  ]
+    ]
 }
 </script>
 

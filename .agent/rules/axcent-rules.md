@@ -157,6 +157,7 @@ Blog Post Internal Links: Every blog post MUST include 2-4 contextual internal l
 2.  **Global Entities**: Every page's `@graph` MUST include the foundational business entity (`DanceSchool`) and the founders (`#person1` Alessandro Slamitz and `#person2` Xidan) to ensure self-contained authority.
 3.  **Hero Image Protocol**: For Google Discover eligibility, hero images MUST be **exactly 1200px wide** (WebP format).
 4.  **Homepage**: Must include full `LocalBusiness` (DanceSchool) details and `WebSite` definition within the `@graph`.
+5.  **Global Content Override**: For pages with global or national reach (e.g., blog posts, guides, educational pages, and events), you MUST firmly establish an `Article`, `BlogPosting`, or `Event` as the `mainEntity` of the `WebPage` object. This prevents Google from conflating informational pages with localized service pages, ensuring they don't lose global search impressions.
 
 5.3. Forbidden Schema Types (Do NOT Implement)
 

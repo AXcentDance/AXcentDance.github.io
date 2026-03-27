@@ -186,97 +186,129 @@
     <!-- Structured Data (@graph) -->
     <script type="application/ld+json">
 {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "WebPage",
-      "@id": "https://axcentdance.com/de/education#webpage",
-      "url": "https://axcentdance.com/de/education",
-      "name": "Bachata Ausbildung: Geschichte, Stile & Musikalität | AXcent",
-      "isPartOf": {
-        "@id": "https://axcentdance.com/#website"
-      },
-      "description": "Die ultimative Bachata-Wissensdatenbank in Zürich. Entdecke Geschichte, Tanzstile, Musikalität und Fachbegriffe mit AXcent Dance Altstetten."
-    },
-    {
-      "@type": "BreadcrumbList",
-      "@id": "https://axcentdance.com/de/education#breadcrumb",
-      "itemListElement": [
+    "@context": "https://schema.org",
+    "@graph": [
         {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Startseite",
-          "item": "https://axcentdance.com/de/"
+            "@type": "WebPage",
+            "@id": "https://axcentdance.com/de/education#webpage",
+            "url": "https://axcentdance.com/de/education",
+            "name": "Bachata Ausbildung: Geschichte, Stile & Musikalität | AXcent",
+            "isPartOf": {
+                "@id": "https://axcentdance.com/#website"
+            },
+            "description": "Die ultimative Bachata-Wissensdatenbank in Zürich. Entdecke Geschichte, Tanzstile, Musikalität und Fachbegriffe mit AXcent Dance Altstetten.",
+            "mainEntity": {
+                "@id": "https://axcentdance.com/de/education#article"
+            }
         },
         {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Bachata Ausbildung",
-          "item": "https://axcentdance.com/de/education"
+            "@type": "Article",
+            "@id": "https://axcentdance.com/de/education#article",
+            "inLanguage": "de",
+            "headline": "Bachata Education: Geschichte, Stile & Musikalität",
+            "datePublished": "2025-01-01",
+            "dateModified": "2026-03-26",
+            "author": [
+                {
+                    "@id": "https://axcentdance.com/#person1"
+                },
+                {
+                    "@id": "https://axcentdance.com/#person2"
+                }
+            ],
+            "publisher": {
+                "@id": "https://axcentdance.com/#organization"
+            },
+            "description": "Die ultimative Bachata-Wissensdatenbank in Zürich. Entdecke Geschichte, Tanzstile, Musikalität und Fachbegriffe mit AXcent Dance Altstetten.",
+            "image": {
+                "@type": "ImageObject",
+                "url": "https://axcentdance.com/assets/images/bachata_education_book.webp",
+                "width": 1200,
+                "height": 675
+            },
+            "mainEntityOfPage": {
+                "@id": "https://axcentdance.com/de/education#webpage"
+            }
+        },
+        {
+            "@type": "BreadcrumbList",
+            "@id": "https://axcentdance.com/de/education#breadcrumb",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Startseite",
+                    "item": "https://axcentdance.com/de/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Bachata Ausbildung",
+                    "item": "https://axcentdance.com/de/education"
+                }
+            ]
+        },
+        {
+            "@type": "WebSite",
+            "@id": "https://axcentdance.com/#website",
+            "url": "https://axcentdance.com/",
+            "name": "AXcent Dance",
+            "publisher": {
+                "@id": "https://axcentdance.com/#organization"
+            },
+            "inLanguage": [
+                "en",
+                "de"
+            ]
+        },
+        {
+            "@id": "https://axcentdance.com/#organization",
+            "@type": [
+                "LocalBusiness",
+                "DanceSchool"
+            ],
+            "name": "AXcent Dance",
+            "url": "https://axcentdance.com/",
+            "logo": "https://axcentdance.com/assets/images/logo.webp",
+            "image": "https://axcentdance.com/assets/images/hero_new.webp",
+            "description": "Die Bachata-Tanzschule in Zürich Altstetten. Wir bieten Bachata Sensual, Dominican Bachata und Salsa Kurse für alle Niveaus an.",
+            "telephone": "+41799668481",
+            "email": "info@axcentdance.com",
+            "hasMap": "https://www.google.com/maps?cid=15680757943659417558",
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Hermetschloostrasse 73",
+                "addressLocality": "Zürich",
+                "addressRegion": "ZH",
+                "postalCode": "8048",
+                "addressCountry": "CH"
+            },
+            "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": 47.3941999,
+                "longitude": 8.4745859
+            },
+            "priceRange": "$$"
+        },
+        {
+            "@id": "https://axcentdance.com/#person1",
+            "@type": "Person",
+            "name": "Alessandro Slamitz",
+            "jobTitle": "Mitbegründer",
+            "sameAs": [
+                "https://www.instagram.com/aleyxidan/"
+            ]
+        },
+        {
+            "@id": "https://axcentdance.com/#person2",
+            "@type": "Person",
+            "name": "Xidan",
+            "jobTitle": "Mitbegründerin",
+            "sameAs": [
+                "https://www.instagram.com/aleyxidan/"
+            ]
         }
-      ]
-    },
-    {
-      "@type": "WebSite",
-      "@id": "https://axcentdance.com/#website",
-      "url": "https://axcentdance.com/",
-      "name": "AXcent Dance",
-      "publisher": {
-        "@id": "https://axcentdance.com/#organization"
-      },
-      "inLanguage": [
-        "en",
-        "de"
-      ]
-    },
-    {
-      "@id": "https://axcentdance.com/#organization",
-      "@type": [
-        "LocalBusiness",
-        "DanceSchool"
-      ],
-      "name": "AXcent Dance",
-      "url": "https://axcentdance.com/",
-      "logo": "https://axcentdance.com/assets/images/logo.webp",
-      "image": "https://axcentdance.com/assets/images/hero_new.webp",
-      "description": "Die Bachata-Tanzschule in Zürich Altstetten. Wir bieten Bachata Sensual, Dominican Bachata und Salsa Kurse für alle Niveaus an.",
-      "telephone": "+41799668481",
-      "email": "info@axcentdance.com",
-      "hasMap": "https://www.google.com/maps?cid=15680757943659417558",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Hermetschloostrasse 73",
-        "addressLocality": "Zürich",
-        "addressRegion": "ZH",
-        "postalCode": "8048",
-        "addressCountry": "CH"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": 47.3941999,
-        "longitude": 8.4745859
-      },
-      "priceRange": "$$"
-    },
-    {
-      "@id": "https://axcentdance.com/#person1",
-      "@type": "Person",
-      "name": "Alessandro Slamitz",
-      "jobTitle": "Mitbegründer",
-      "sameAs": [
-        "https://www.instagram.com/aleyxidan/"
-      ]
-    },
-    {
-      "@id": "https://axcentdance.com/#person2",
-      "@type": "Person",
-      "name": "Xidan",
-      "jobTitle": "Mitbegründerin",
-      "sameAs": [
-        "https://www.instagram.com/aleyxidan/"
-      ]
-    }
-  ]
+    ]
 }
 </script>
 
