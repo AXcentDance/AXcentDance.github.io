@@ -51,14 +51,36 @@
       "@type": "WebPage",
       "@id": "https://axcentdance.com/schedule#webpage",
       "url": "https://axcentdance.com/schedule",
-      "name": "Bachata Schedule Zurich | Weekly Dance Class Times | AXcent",
-      "isPartOf": {
-        "@id": "https://axcentdance.com/#website"
-      },
-      "about": {
+      "name": "Bachata Schedule Zurich | Weekly Dance Class Times",
+      "description": "Check this week's Bachata class schedule in Zurich Altstetten. 5 levels, Mon–Thu evenings. No partner needed. Find the perfect class for your level.",
+      "isPartOf": { "@id": "https://axcentdance.com/#website" },
+      "mainEntity": {
+        "@id": "https://axcentdance.com/schedule#itemlist"
+      }
+    },
+    {
+      "@type": "EducationalOccupationalProgram",
+      "@id": "https://axcentdance.com/schedule#program",
+      "name": "AXcent Bachata Dance Program",
+      "description": "A structured 8-week Bachata curriculum in Zurich.",
+      "provider": {
         "@id": "https://axcentdance.com/#organization"
       },
-      "description": "Check this week's Bachata class schedule in Zurich Altstetten. 5 levels, Mon–Thu evenings. No partner needed. Find the perfect class for your level."
+      "educationalCredentialAwarded": "Course Completion",
+      "programPrerequisites": "Varies by level",
+      "offers": {
+        "@type": "Offer",
+        "price": "200.00",
+        "priceCurrency": "CHF",
+        "category": "Educational Program"
+      },
+      "hasCourse": [
+        { "@id": "https://axcentdance.com/course/bachata-beginner-1#course" },
+        { "@id": "https://axcentdance.com/course/bachata-sensual-foundation#course" },
+        { "@id": "https://axcentdance.com/course/bachata-sensual-improver#course" },
+        { "@id": "https://axcentdance.com/course/bachata-sensual-inter-adv#course" },
+        { "@id": "https://axcentdance.com/course/lady-styling#course" }
+      ]
     },
     {
       "@type": "ItemList",
@@ -67,13 +89,16 @@
       "itemListElement": [
         {
           "@type": "Course",
+          "@id": "https://axcentdance.com/course/bachata-beginner-1#course",
           "position": 1,
           "name": "Bachata Beginner 1",
           "description": "Improve your foundation and learn Sensual style elements.",
+          "educationalLevel": "Beginner",
+          "timeRequired": "P8W",
           "provider": {
             "@id": "https://axcentdance.com/#organization"
           },
-          "url": "https://axcentdance.com/bachata-beginner-1",
+          "url": "https://axcentdance.com/schedule",
           "offers": [
             {
               "@type": "Offer",
@@ -111,13 +136,16 @@
         },
         {
           "@type": "Course",
+          "@id": "https://axcentdance.com/course/bachata-sensual-foundation#course",
           "position": 2,
           "name": "Bachata Sensual Foundation",
           "description": "Learn the technique and body movement of the Bachata Sensual style.",
+          "educationalLevel": "Beginner/Intermediate",
+          "timeRequired": "P8W",
           "provider": {
             "@id": "https://axcentdance.com/#organization"
           },
-          "url": "https://axcentdance.com/bachata-sensual-foundation",
+          "url": "https://axcentdance.com/schedule",
           "offers": [
             {
               "@type": "Offer",
@@ -155,13 +183,16 @@
         },
         {
           "@type": "Course",
+          "@id": "https://axcentdance.com/course/bachata-sensual-improver#course",
           "position": 3,
           "name": "Bachata Sensual Improver",
           "description": "Refine your skills with complex movements and musicality.",
+          "educationalLevel": "Intermediate",
+          "timeRequired": "P8W",
           "provider": {
             "@id": "https://axcentdance.com/#organization"
           },
-          "url": "https://axcentdance.com/bachata-sensual-improver",
+          "url": "https://axcentdance.com/schedule",
           "offers": [
             {
               "@type": "Offer",
@@ -199,13 +230,16 @@
         },
         {
           "@type": "Course",
+          "@id": "https://axcentdance.com/course/bachata-sensual-inter-adv#course",
           "position": 4,
           "name": "Bachata Sensual Intermediate/Advanced",
           "description": "Complex figures and advanced technique for experienced dancers.",
+          "educationalLevel": "Advanced",
+          "timeRequired": "P8W",
           "provider": {
             "@id": "https://axcentdance.com/#organization"
           },
-          "url": "https://axcentdance.com/bachata-sensual-inter-adv",
+          "url": "https://axcentdance.com/schedule",
           "offers": [
             {
               "@type": "Offer",
@@ -243,13 +277,16 @@
         },
         {
           "@type": "Course",
+          "@id": "https://axcentdance.com/course/lady-styling#course",
           "position": 5,
           "name": "Bachata Lady Styling",
           "description": "Arm styling, body movement, and footwork for followers.",
+          "educationalLevel": "All Levels",
+          "timeRequired": "P8W",
           "provider": {
             "@id": "https://axcentdance.com/#organization"
           },
-          "url": "https://axcentdance.com/lady-styling",
+          "url": "https://axcentdance.com/schedule",
           "offers": [
             {
               "@type": "Offer",
@@ -367,7 +404,7 @@
         "de"
       ]
     },
-    {
+        {
       "@id": "https://axcentdance.com/#organization",
       "@type": [
         "LocalBusiness",
@@ -394,24 +431,56 @@
         "latitude": 47.3941999,
         "longitude": 8.4745859
       },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "opens": "11:00",
+          "closes": "22:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Sunday",
+          "opens": "13:00",
+          "closes": "17:00"
+        }
+      ],
+      "serviceArea": [
+        { "@type": "AdministrativeArea", "name": "Zurich" },
+        { "@type": "AdministrativeArea", "name": "Baden" },
+        { "@type": "AdministrativeArea", "name": "Winterthur" },
+        { "@type": "AdministrativeArea", "name": "Urdorf" },
+        { "@type": "AdministrativeArea", "name": "Schlieren" },
+        { "@type": "AdministrativeArea", "name": "Dietikon" }
+      ],
       "priceRange": "$$"
     },
-    {
+        {
       "@id": "https://axcentdance.com/#person1",
       "@type": "Person",
       "name": "Alessandro Slamitz",
       "jobTitle": "Co-Founder",
+      "knowsAbout": ["Dance", "Bachata", "Salsa", "Reggaeton", "Pedagogy", "Movement", "Dating", "Modern", "Afro", "Kizomba", "Zouk"],
       "sameAs": [
-        "https://www.instagram.com/aleyxidan/"
+        "https://www.instagram.com/aleyxidan/",
+        "https://www.youtube.com/@AXcentDance"
       ]
     },
-    {
+        {
       "@id": "https://axcentdance.com/#person2",
       "@type": "Person",
       "name": "Xidan",
       "jobTitle": "Co-Founder",
+      "knowsAbout": ["Dance", "Bachata", "Salsa", "Reggaeton", "Pedagogy", "Movement", "Dating", "Modern", "Afro", "Kizomba", "Zouk"],
       "sameAs": [
-        "https://www.instagram.com/aleyxidan/"
+        "https://www.instagram.com/aleyxidan/",
+        "https://www.youtube.com/@AXcentDance"
       ]
     }
   ]

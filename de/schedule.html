@@ -339,14 +339,36 @@
       "@type": "WebPage",
       "@id": "https://axcentdance.com/de/schedule#webpage",
       "url": "https://axcentdance.com/de/schedule",
-      "name": "Bachata Stundenplan Zürich | Kurszeiten & Niveaus | AXcent",
-      "isPartOf": {
-        "@id": "https://axcentdance.com/#website"
-      },
-      "about": {
+      "name": "Bachata Stundenplan Zürich | Kurszeiten & Niveaus",
+      "description": "Bachata Kurse in Zürich — Stundenplan diese Woche. 5 Niveaus, Di–Do Abend. Kein Partner nötig. Finde den perfekten Bachata Tanzkurs bei AXcent Dance Altstetten.",
+      "isPartOf": { "@id": "https://axcentdance.com/#website" },
+      "mainEntity": {
+        "@id": "https://axcentdance.com/de/schedule#itemlist"
+      }
+    },
+    {
+      "@type": "EducationalOccupationalProgram",
+      "@id": "https://axcentdance.com/de/schedule#program",
+      "name": "AXcent Bachata Tanzprogramm",
+      "description": "Ein strukturiertes 8-Wochen-Bachata-Curriculum in Zürich.",
+      "provider": {
         "@id": "https://axcentdance.com/#organization"
       },
-      "description": "Bachata Kurse in Zürich — Stundenplan diese Woche. 5 Niveaus, Di–Do Abend. Kein Partner nötig. Finde den perfekten Bachata Tanzkurs bei AXcent Dance Altstetten."
+      "educationalCredentialAwarded": "Kursbestätigung",
+      "programPrerequisites": "Variiert nach Niveau",
+      "offers": {
+        "@type": "Offer",
+        "price": "200.00",
+        "priceCurrency": "CHF",
+        "category": "Educational Program"
+      },
+      "hasCourse": [
+        { "@id": "https://axcentdance.com/course/bachata-beginner-1#course" },
+        { "@id": "https://axcentdance.com/course/bachata-sensual-foundation#course" },
+        { "@id": "https://axcentdance.com/course/bachata-sensual-improver#course" },
+        { "@id": "https://axcentdance.com/course/bachata-sensual-inter-adv#course" },
+        { "@id": "https://axcentdance.com/course/lady-styling#course" }
+      ]
     },
     {
       "@type": "ItemList",
@@ -355,13 +377,16 @@
       "itemListElement": [
         {
           "@type": "Course",
+          "@id": "https://axcentdance.com/course/bachata-beginner-1#course",
           "position": 1,
           "name": "Bachata Anfänger 1",
           "description": "Verbessere deine Grundlagen und lerne Elemente des Sensual Styles.",
+          "educationalLevel": "Anfänger",
+          "timeRequired": "P8W",
           "provider": {
             "@id": "https://axcentdance.com/#organization"
           },
-          "url": "https://axcentdance.com/de/bachata-beginner-1",
+          "url": "https://axcentdance.com/de/schedule",
           "offers": [
             {
               "@type": "Offer",
@@ -399,13 +424,16 @@
         },
         {
           "@type": "Course",
+          "@id": "https://axcentdance.com/course/bachata-sensual-foundation#course",
           "position": 2,
           "name": "Bachata Sensual Grundlagen",
           "description": "Lerne die Technik und Körperbewegung des Bachata Sensual Stils.",
+          "educationalLevel": "Anfänger/Mittelstufe",
+          "timeRequired": "P8W",
           "provider": {
             "@id": "https://axcentdance.com/#organization"
           },
-          "url": "https://axcentdance.com/de/bachata-sensual-foundation",
+          "url": "https://axcentdance.com/de/schedule",
           "offers": [
             {
               "@type": "Offer",
@@ -443,13 +471,16 @@
         },
         {
           "@type": "Course",
+          "@id": "https://axcentdance.com/course/bachata-sensual-improver#course",
           "position": 3,
           "name": "Bachata Sensual Improver",
           "description": "Verfeinere deine Fähigkeiten mit komplexen Bewegungen und Musikalität.",
+          "educationalLevel": "Mittelstufe",
+          "timeRequired": "P8W",
           "provider": {
             "@id": "https://axcentdance.com/#organization"
           },
-          "url": "https://axcentdance.com/de/bachata-sensual-improver",
+          "url": "https://axcentdance.com/de/schedule",
           "offers": [
             {
               "@type": "Offer",
@@ -487,13 +518,16 @@
         },
         {
           "@type": "Course",
+          "@id": "https://axcentdance.com/course/bachata-sensual-inter-adv#course",
           "position": 4,
           "name": "Bachata Sensual Mittelstufe/Fortgeschritten",
           "description": "Komplexe Figuren und fortgeschrittene Technik für erfahrene Tänzer.",
+          "educationalLevel": "Fortgeschritten",
+          "timeRequired": "P8W",
           "provider": {
             "@id": "https://axcentdance.com/#organization"
           },
-          "url": "https://axcentdance.com/de/bachata-sensual-inter-adv",
+          "url": "https://axcentdance.com/de/schedule",
           "offers": [
             {
               "@type": "Offer",
@@ -531,13 +565,16 @@
         },
         {
           "@type": "Course",
+          "@id": "https://axcentdance.com/course/lady-styling#course",
           "position": 5,
           "name": "Bachata Lady Styling",
           "description": "Arm-Styling, Körperbewegung und Footwork für Follower.",
+          "educationalLevel": "Alle Niveaus",
+          "timeRequired": "P8W",
           "provider": {
             "@id": "https://axcentdance.com/#organization"
           },
-          "url": "https://axcentdance.com/de/lady-styling",
+          "url": "https://axcentdance.com/de/schedule",
           "offers": [
             {
               "@type": "Offer",
@@ -655,7 +692,7 @@
         "de"
       ]
     },
-    {
+        {
       "@id": "https://axcentdance.com/#organization",
       "@type": [
         "LocalBusiness",
@@ -665,14 +702,14 @@
       "url": "https://axcentdance.com/",
       "logo": "https://axcentdance.com/assets/images/logo.webp",
       "image": "https://axcentdance.com/assets/images/hero_new.webp",
-      "description": "Die Bachata-Tanzschule in Zürich Altstetten. Wir bieten Bachata Sensual, Dominican Bachata und Salsa Kurse für alle Niveaus an.",
+      "description": "AXcent Dance is a Bachata dance school in Zurich Altstetten offering Bachata Sensual, Dominican Bachata, Salsa, and Latin dance classes for all levels.",
       "telephone": "+41799668481",
       "email": "info@axcentdance.com",
       "hasMap": "https://www.google.com/maps?cid=15680757943659417558",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "Hermetschloostrasse 73",
-        "addressLocality": "Zürich",
+        "addressLocality": "Zurich",
         "addressRegion": "ZH",
         "postalCode": "8048",
         "addressCountry": "CH"
@@ -682,24 +719,56 @@
         "latitude": 47.3941999,
         "longitude": 8.4745859
       },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "opens": "11:00",
+          "closes": "22:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Sunday",
+          "opens": "13:00",
+          "closes": "17:00"
+        }
+      ],
+      "serviceArea": [
+        { "@type": "AdministrativeArea", "name": "Zurich" },
+        { "@type": "AdministrativeArea", "name": "Baden" },
+        { "@type": "AdministrativeArea", "name": "Winterthur" },
+        { "@type": "AdministrativeArea", "name": "Urdorf" },
+        { "@type": "AdministrativeArea", "name": "Schlieren" },
+        { "@type": "AdministrativeArea", "name": "Dietikon" }
+      ],
       "priceRange": "$$"
     },
-    {
+        {
       "@id": "https://axcentdance.com/#person1",
       "@type": "Person",
       "name": "Alessandro Slamitz",
-      "jobTitle": "Mitbegründer",
+      "jobTitle": "Co-Founder",
+      "knowsAbout": ["Dance", "Bachata", "Salsa", "Reggaeton", "Pedagogy", "Movement", "Dating", "Modern", "Afro", "Kizomba", "Zouk"],
       "sameAs": [
-        "https://www.instagram.com/aleyxidan/"
+        "https://www.instagram.com/aleyxidan/",
+        "https://www.youtube.com/@AXcentDance"
       ]
     },
-    {
+        {
       "@id": "https://axcentdance.com/#person2",
       "@type": "Person",
       "name": "Xidan",
-      "jobTitle": "Mitbegründerin",
+      "jobTitle": "Co-Founder",
+      "knowsAbout": ["Dance", "Bachata", "Salsa", "Reggaeton", "Pedagogy", "Movement", "Dating", "Modern", "Afro", "Kizomba", "Zouk"],
       "sameAs": [
-        "https://www.instagram.com/aleyxidan/"
+        "https://www.instagram.com/aleyxidan/",
+        "https://www.youtube.com/@AXcentDance"
       ]
     }
   ]

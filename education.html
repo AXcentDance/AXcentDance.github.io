@@ -40,152 +40,13 @@
     <link rel="apple-touch-icon" href="/apple-touch-icon-v2.png">
     <link rel="icon" href="/favicon-v2.png" type="image/png">
 
-
-    <style>
-        .education-hero {
-            padding: calc(var(--header-height) + 40px) 20px 80px;
-            text-align: center;
-            /* background: removed for SEO img refactor */
-        }
-
-        .edu-nav-container {
-            position: relative;
-            /* top: 80px; Removed sticky behavior */
-            z-index: 100;
-            background: rgba(15, 5, 24, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--glass-border);
-            padding: 1rem 0;
-            margin-bottom: 4rem;
-        }
-
-        .edu-nav {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .edu-nav a {
-            color: var(--text-muted);
-            text-decoration: none;
-            text-transform: uppercase;
-            font-size: 0.9rem;
-            font-weight: 600;
-            letter-spacing: 0.05em;
-            transition: color 0.3s ease;
-        }
-
-        .edu-nav a:hover,
-        .edu-nav a.active {
-            color: var(--accent-start);
-        }
-
-        .edu-section {
-            padding: 4rem 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .edu-section:last-child {
-            border-bottom: none;
-        }
-
-        .edu-content h2 {
-            font-size: 2.5rem;
-            color: white;
-            margin-bottom: 2rem;
-            font-family: var(--font-display);
-        }
-
-        .edu-content h3 {
-            font-size: 1.5rem;
-            color: var(--accent-start);
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        .edu-content p {
-            color: var(--text-muted);
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
-            font-size: 1.1rem;
-        }
-
-        .style-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .style-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            padding: 2rem;
-        }
-
-        .instrument-list {
-            list-style: none;
-            padding: 0;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .instrument-item {
-            background: rgba(255, 255, 255, 0.03);
-            padding: 1.5rem;
-            border-radius: 12px;
-            border-left: 3px solid var(--accent-start);
-        }
-
-        .instrument-name {
-            color: white;
-            font-weight: 700;
-            font-size: 1.2rem;
-            display: block;
-            margin-bottom: 0.5rem;
-        }
-
-        .glossary-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .term-item {
-            padding: 1rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .term-name {
-            color: var(--accent-start);
-            font-weight: 700;
-            display: block;
-            margin-bottom: 0.25rem;
-        }
-    </style>
-
-    <!-- Cookie Consent -->
-
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-E2SYCF7R7X"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-
-        gtag('config', 'G-E2SYCF7R7X');
-    </script>
-
-
     <!-- Structured Data (@graph) -->
     <script type="application/ld+json">
 {
     "@context": "https://schema.org",
     "@graph": [
         {
+            "inLanguage": "en",
             "@type": "WebPage",
             "@id": "https://axcentdance.com/education#webpage",
             "url": "https://axcentdance.com/education",
@@ -199,12 +60,12 @@
             }
         },
         {
+            "inLanguage": "en",
             "@type": "Article",
             "@id": "https://axcentdance.com/education#article",
-            "inLanguage": "en",
             "headline": "Bachata Education: History, Styles & Musicality",
-            "datePublished": "2025-01-01",
-            "dateModified": "2026-03-26",
+            "datePublished": "2025-10-01",
+            "dateModified": "2026-03-31",
             "author": [
                 {
                     "@id": "https://axcentdance.com/#person1"
@@ -216,15 +77,39 @@
             "publisher": {
                 "@id": "https://axcentdance.com/#organization"
             },
-            "description": "The ultimate Bachata knowledge hub. Explore history, street styles, musicality instruments, and terminology with AXcent Dance Zurich.",
-            "image": {
-                "@type": "ImageObject",
-                "url": "https://axcentdance.com/assets/images/bachata_education_book.webp",
-                "width": 1200,
-                "height": 675
-            },
+            "description": "Comprehensive guide to Bachata history, styles, and musicality.",
             "mainEntityOfPage": {
                 "@id": "https://axcentdance.com/education#webpage"
+            },
+            "about": [
+                {
+                    "@type": "Thing",
+                    "name": "Bachata",
+                    "sameAs": "https://en.wikipedia.org/wiki/Bachata_(dance)"
+                },
+                {
+                    "@type": "Thing",
+                    "name": "Bachata music",
+                    "sameAs": "https://en.wikipedia.org/wiki/Bachata_(music)"
+                }
+            ],
+            "mentions": [
+                {
+                    "@type": "Thing",
+                    "name": "Social dance",
+                    "sameAs": "https://en.wikipedia.org/wiki/Social_dance"
+                },
+                {
+                    "@type": "Place",
+                    "name": "Zurich",
+                    "sameAs": "https://en.wikipedia.org/wiki/Zurich"
+                }
+            ],
+            "image": {
+                "@type": "ImageObject",
+                "url": "https://axcentdance.com/assets/images/education_hero.webp",
+                "width": 1200,
+                "height": 1200
             }
         },
         {
@@ -240,7 +125,7 @@
                 {
                     "@type": "ListItem",
                     "position": 2,
-                    "name": "Bachata Education",
+                    "name": "Education",
                     "item": "https://axcentdance.com/education"
                 }
             ]
@@ -258,53 +143,85 @@
                 "de"
             ]
         },
+            {
+      "@id": "https://axcentdance.com/#organization",
+      "@type": [
+        "LocalBusiness",
+        "DanceSchool"
+      ],
+      "name": "AXcent Dance",
+      "url": "https://axcentdance.com/",
+      "logo": "https://axcentdance.com/assets/images/logo.webp",
+      "image": "https://axcentdance.com/assets/images/hero_new.webp",
+      "description": "AXcent Dance is a Bachata dance school in Zurich Altstetten offering Bachata Sensual, Dominican Bachata, Salsa, and Latin dance classes for all levels.",
+      "telephone": "+41799668481",
+      "email": "info@axcentdance.com",
+      "hasMap": "https://www.google.com/maps?cid=15680757943659417558",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Hermetschloostrasse 73",
+        "addressLocality": "Zurich",
+        "addressRegion": "ZH",
+        "postalCode": "8048",
+        "addressCountry": "CH"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 47.3941999,
+        "longitude": 8.4745859
+      },
+      "openingHoursSpecification": [
         {
-            "@id": "https://axcentdance.com/#organization",
-            "@type": [
-                "LocalBusiness",
-                "DanceSchool"
-            ],
-            "name": "AXcent Dance",
-            "url": "https://axcentdance.com/",
-            "logo": "https://axcentdance.com/assets/images/logo.webp",
-            "image": "https://axcentdance.com/assets/images/hero_new.webp",
-            "description": "AXcent Dance is a Bachata dance school in Zurich Altstetten offering Bachata Sensual, Dominican Bachata, Salsa, and Latin dance classes for all levels.",
-            "telephone": "+41799668481",
-            "email": "info@axcentdance.com",
-            "hasMap": "https://www.google.com/maps?cid=15680757943659417558",
-            "address": {
-                "@type": "PostalAddress",
-                "streetAddress": "Hermetschloostrasse 73",
-                "addressLocality": "Zurich",
-                "addressRegion": "ZH",
-                "postalCode": "8048",
-                "addressCountry": "CH"
-            },
-            "geo": {
-                "@type": "GeoCoordinates",
-                "latitude": 47.3941999,
-                "longitude": 8.4745859
-            },
-            "priceRange": "$$"
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "opens": "11:00",
+          "closes": "22:00"
         },
         {
-            "@id": "https://axcentdance.com/#person1",
-            "@type": "Person",
-            "name": "Alessandro Slamitz",
-            "jobTitle": "Co-Founder",
-            "sameAs": [
-                "https://www.instagram.com/aleyxidan/"
-            ]
-        },
-        {
-            "@id": "https://axcentdance.com/#person2",
-            "@type": "Person",
-            "name": "Xidan",
-            "jobTitle": "Co-Founder",
-            "sameAs": [
-                "https://www.instagram.com/aleyxidan/"
-            ]
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Sunday",
+          "opens": "13:00",
+          "closes": "17:00"
         }
+      ],
+      "serviceArea": [
+        { "@type": "AdministrativeArea", "name": "Zurich" },
+        { "@type": "AdministrativeArea", "name": "Baden" },
+        { "@type": "AdministrativeArea", "name": "Winterthur" },
+        { "@type": "AdministrativeArea", "name": "Urdorf" },
+        { "@type": "AdministrativeArea", "name": "Schlieren" },
+        { "@type": "AdministrativeArea", "name": "Dietikon" }
+      ],
+      "priceRange": "$$"
+    },
+            {
+      "@id": "https://axcentdance.com/#person1",
+      "@type": "Person",
+      "name": "Alessandro Slamitz",
+      "jobTitle": "Co-Founder",
+      "knowsAbout": ["Dance", "Bachata", "Salsa", "Reggaeton", "Pedagogy", "Movement", "Dating", "Modern", "Afro", "Kizomba", "Zouk"],
+      "sameAs": [
+        "https://www.instagram.com/aleyxidan/",
+        "https://www.youtube.com/@AXcentDance"
+      ]
+    },
+            {
+      "@id": "https://axcentdance.com/#person2",
+      "@type": "Person",
+      "name": "Xidan",
+      "jobTitle": "Co-Founder",
+      "knowsAbout": ["Dance", "Bachata", "Salsa", "Reggaeton", "Pedagogy", "Movement", "Dating", "Modern", "Afro", "Kizomba", "Zouk"],
+      "sameAs": [
+        "https://www.instagram.com/aleyxidan/",
+        "https://www.youtube.com/@AXcentDance"
+      ]
+    }
     ]
 }
 </script>

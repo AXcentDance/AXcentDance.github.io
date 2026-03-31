@@ -28,31 +28,105 @@
       "@type": "WebPage",
       "@id": "https://axcentdance.com/registration#webpage",
       "url": "https://axcentdance.com/registration",
-      "name": "Register for Bachata Classes | Zurich Dance School | AXcent",
-      "isPartOf": {
-        "@id": "https://axcentdance.com/#website"
-      },
-      "about": {
-        "@id": "https://axcentdance.com/#organization"
-      },
-      "description": "Register for dance classes at AXcent Dance Studio in Zurich. Join our Bachata Sensual, Dominican, and Lady Styling courses."
+      "name": "Bachata Course Prices Zurich | Registration & Fees",
+      "description": "Register for dance classes at AXcent Dance Studio in Zurich. Join our Bachata Sensual, Dominican, and Lady Styling courses.",
+      "isPartOf": { "@id": "https://axcentdance.com/#website" },
+      "mainEntity": {
+        "@id": "https://axcentdance.com/registration#course-list"
+      }
     },
     {
-      "@type": "Service",
-      "name": "Bachata Dance Classes",
-      "serviceType": "Dance Instruction",
-      "provider": {
-        "@id": "https://axcentdance.com/#organization"
-      },
-      "areaServed": "Zurich",
-      "description": "Structured Bachata classes in Zurich for all levels.",
-      "offers": {
-        "@type": "Offer",
-        "priceCurrency": "CHF",
-        "price": "200.00",
-        "availability": "https://schema.org/InStock",
-        "url": "https://axcentdance.com/registration"
-      }
+      "@type": "ItemList",
+      "@id": "https://axcentdance.com/registration#course-list",
+      "name": "AXcent Bachata Course Registration",
+      "numberOfItems": 5,
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "item": {
+            "@type": "Course",
+            "@id": "https://axcentdance.com/course/bachata-beginner-1#course",
+            "name": "Bachata Beginner 1",
+            "description": "8-week foundation course in Zurich Altstetten.",
+            "educationalLevel": "Beginner",
+            "provider": { "@id": "https://axcentdance.com/#organization" },
+            "url": "https://axcentdance.com/registration",
+            "offers": [
+              { "@type": "Offer", "name": "Regular Pass", "price": "200.00", "priceCurrency": "CHF", "description": "8-week course pass" },
+              { "@type": "Offer", "name": "Student Pass", "price": "170.00", "priceCurrency": "CHF", "description": "8-week course pass for students" }
+            ]
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "item": {
+            "@type": "Course",
+            "@id": "https://axcentdance.com/course/bachata-sensual-foundation#course",
+            "name": "Bachata Sensual Foundation",
+            "description": "8-week technique course in Zurich Altstetten.",
+            "educationalLevel": "Beginner/Intermediate",
+            "provider": { "@id": "https://axcentdance.com/#organization" },
+            "url": "https://axcentdance.com/registration",
+            "offers": [
+              { "@type": "Offer", "name": "Regular Pass", "price": "200.00", "priceCurrency": "CHF", "description": "8-week course pass" },
+              { "@type": "Offer", "name": "Student Pass", "price": "170.00", "priceCurrency": "CHF", "description": "8-week course pass for students" }
+            ]
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "item": {
+            "@type": "Course",
+            "@id": "https://axcentdance.com/course/bachata-sensual-improver#course",
+            "name": "Bachata Sensual Improver",
+            "description": "8-week progression course in Zurich Altstetten.",
+            "educationalLevel": "Intermediate",
+            "provider": { "@id": "https://axcentdance.com/#organization" },
+            "url": "https://axcentdance.com/registration",
+            "offers": [
+              { "@type": "Offer", "name": "Regular Pass", "price": "200.00", "priceCurrency": "CHF", "description": "8-week course pass" },
+              { "@type": "Offer", "name": "Student Pass", "price": "170.00", "priceCurrency": "CHF", "description": "8-week course pass for students" }
+            ]
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "item": {
+            "@type": "Course",
+            "@id": "https://axcentdance.com/course/bachata-sensual-inter-adv#course",
+            "name": "Bachata Sensual Intermediate/Advanced",
+            "description": "8-week advanced course in Zurich Altstetten.",
+            "educationalLevel": "Advanced",
+            "provider": { "@id": "https://axcentdance.com/#organization" },
+            "url": "https://axcentdance.com/registration",
+            "offers": [
+              { "@type": "Offer", "name": "Regular Pass", "price": "200.00", "priceCurrency": "CHF", "description": "8-week course pass" },
+              { "@type": "Offer", "name": "Student Pass", "price": "170.00", "priceCurrency": "CHF", "description": "8-week course pass for students" }
+            ]
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 5,
+          "item": {
+            "@type": "Course",
+            "@id": "https://axcentdance.com/course/lady-styling#course",
+            "name": "Bachata Lady Styling",
+            "description": "8-week styling course in Zurich Altstetten.",
+            "educationalLevel": "All Levels",
+            "provider": { "@id": "https://axcentdance.com/#organization" },
+            "url": "https://axcentdance.com/registration",
+            "offers": [
+              { "@type": "Offer", "name": "Regular Pass", "price": "200.00", "priceCurrency": "CHF", "description": "8-week course pass" },
+              { "@type": "Offer", "name": "Student Pass", "price": "170.00", "priceCurrency": "CHF", "description": "8-week course pass for students" }
+            ]
+          }
+        }
+      ]
     },
     {
       "@type": "FAQPage",
@@ -134,7 +208,7 @@
         "de"
       ]
     },
-    {
+        {
       "@id": "https://axcentdance.com/#organization",
       "@type": [
         "LocalBusiness",
@@ -161,24 +235,56 @@
         "latitude": 47.3941999,
         "longitude": 8.4745859
       },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "opens": "11:00",
+          "closes": "22:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Sunday",
+          "opens": "13:00",
+          "closes": "17:00"
+        }
+      ],
+      "serviceArea": [
+        { "@type": "AdministrativeArea", "name": "Zurich" },
+        { "@type": "AdministrativeArea", "name": "Baden" },
+        { "@type": "AdministrativeArea", "name": "Winterthur" },
+        { "@type": "AdministrativeArea", "name": "Urdorf" },
+        { "@type": "AdministrativeArea", "name": "Schlieren" },
+        { "@type": "AdministrativeArea", "name": "Dietikon" }
+      ],
       "priceRange": "$$"
     },
-    {
+        {
       "@id": "https://axcentdance.com/#person1",
       "@type": "Person",
       "name": "Alessandro Slamitz",
       "jobTitle": "Co-Founder",
+      "knowsAbout": ["Dance", "Bachata", "Salsa", "Reggaeton", "Pedagogy", "Movement", "Dating", "Modern", "Afro", "Kizomba", "Zouk"],
       "sameAs": [
-        "https://www.instagram.com/aleyxidan/"
+        "https://www.instagram.com/aleyxidan/",
+        "https://www.youtube.com/@AXcentDance"
       ]
     },
-    {
+        {
       "@id": "https://axcentdance.com/#person2",
       "@type": "Person",
       "name": "Xidan",
       "jobTitle": "Co-Founder",
+      "knowsAbout": ["Dance", "Bachata", "Salsa", "Reggaeton", "Pedagogy", "Movement", "Dating", "Modern", "Afro", "Kizomba", "Zouk"],
       "sameAs": [
-        "https://www.instagram.com/aleyxidan/"
+        "https://www.instagram.com/aleyxidan/",
+        "https://www.youtube.com/@AXcentDance"
       ]
     }
   ]

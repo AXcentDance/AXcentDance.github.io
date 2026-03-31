@@ -2,6 +2,8 @@
 trigger: always_on
 ---
 
+**Proactive Clarification**: If there is any ambiguity or doubt regarding a task, context, or technical implementation, ALWAYS ask the user for clarification first. Surgical precision requires full understanding.
+
 Do No Harm: Before suggesting any change, evaluate its impact on existing SEO rankings, page load speed, and core web vitals.
 
 Surgical Precision: Never rewrite code or content that does not need changing. If a task only requires a change to a specific meta-tag, provide only that update within its immediate context.

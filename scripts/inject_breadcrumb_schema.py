@@ -70,6 +70,36 @@ def inject_breadcrumb(file_path):
             graph = [item for item in graph if item.get("@type") != "BreadcrumbList"]
             graph.append(breadcrumb_item)
             
+            # --- GOOGLE DISCOVER AUTO-OPTIMIZATION [NEW] ---
+            # Automatically update images to 1200px and update dateModified
+            has_update = False
+            for item in graph:
+                if item.get("@id") and any(suffix in item.get("@id") for suffix in ["#blogposting", "#article"]):
+                    # 1. Standardize Image dimensions (1200px)
+                    if "image" in item:
+                        img = item["image"]
+                        if isinstance(img, dict) and img.get("@type") == "ImageObject":
+                            if img.get("width") != 1200:
+                                img["width"] = 1200
+                                has_update = True
+                                print(f"  [DISCOVER] Forced 1200px width for: {img.get('url', 'unknown')}")
+                            if not img.get("height"):
+                                img["height"] = 1200 # Default to square if missing
+                                has_update = True
+
+                    # 2. Update dateModified (Freshness)
+                    if item.get("dateModified") != "2026-03-31":
+                        item["dateModified"] = "2026-03-31"
+                        has_update = True
+                        print(f"  [FRESHNESS] Updated dateModified to 2026-03-31")
+
+                    # 3. Ensure recprocity (mainEntityOfPage)
+                    if "#webpage" in item.get("mainEntityOfPage", {}).get("@id", ""):
+                        pass # Valid binding
+                    else:
+                        item["mainEntityOfPage"] = {"@id": f"{post_url}#webpage"}
+                        has_update = True
+
             full_json["@graph"] = graph
             new_json_str = json.dumps(full_json, indent=2, ensure_ascii=False)
             new_script = f'<script type="application/ld+json">\n{new_json_str}\n</script>'

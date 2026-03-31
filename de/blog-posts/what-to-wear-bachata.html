@@ -155,14 +155,20 @@
       "name": "Was anziehen zum Bachata-Kurs: Ein Anfänger-Guide",
       "isPartOf": {
         "@id": "https://axcentdance.com/#website"
+      },
+      "mainEntity": {
+        "@id": "https://axcentdance.com/de/blog-posts/what-to-wear-bachata#blogposting"
       }
     },
     {
       "inLanguage": "de",
       "@type": "BlogPosting",
-      "headline": "What to Wear to Bachata Class: A Beginner's Guide",
+      "mainEntityOfPage": {
+        "@id": "https://axcentdance.com/de/blog-posts/what-to-wear-bachata#webpage"
+      },
+      "headline": "Was anziehen zum Bachata-Kurs: Ein Anfänger-Guide",
       "datePublished": "2025-12-09",
-      "dateModified": "2026-03-10",
+      "dateModified": "2026-03-31",
       "author": [
         {
           "@id": "https://axcentdance.com/#person1"
@@ -174,15 +180,12 @@
       "publisher": {
         "@id": "https://axcentdance.com/#organization"
       },
-      "description": "Fragst du dich, was du zu deiner ersten Bachata-Stunde anziehen sollst? Hier ist unser kompletter Guide zu Kleidung, Schuhen und Hygiene.",
+      "description": "Fragst du dich, was du zu einer ersten Bachata-Stunde anziehen sollst? Hier ist unser kompletter Guide zu Kleidung, Schuhen und Hygiene.",
       "image": {
         "@type": "ImageObject",
         "url": "https://axcentdance.com/assets/images/bachata_essentials_flatlay.webp",
-        "width": 1024,
-        "height": 1024
-      },
-      "mainEntityOfPage": {
-        "@id": "https://axcentdance.com/de/blog-posts/what-to-wear-bachata#webpage"
+        "width": 1200,
+        "height": 1200
       },
       "@id": "https://axcentdance.com/de/blog-posts/what-to-wear-bachata#blogposting"
     },
@@ -199,7 +202,7 @@
         "de"
       ]
     },
-    {
+        {
       "@id": "https://axcentdance.com/#organization",
       "@type": [
         "LocalBusiness",
@@ -209,14 +212,14 @@
       "url": "https://axcentdance.com/",
       "logo": "https://axcentdance.com/assets/images/logo.webp",
       "image": "https://axcentdance.com/assets/images/hero_new.webp",
-      "description": "Die Bachata-Tanzschule in Zürich Altstetten. Wir bieten Bachata Sensual, Dominican Bachata und Salsa Kurse für alle Niveaus an.",
+      "description": "AXcent Dance is a Bachata dance school in Zurich Altstetten offering Bachata Sensual, Dominican Bachata, Salsa, and Latin dance classes for all levels.",
       "telephone": "+41799668481",
       "email": "info@axcentdance.com",
       "hasMap": "https://www.google.com/maps?cid=15680757943659417558",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "Hermetschloostrasse 73",
-        "addressLocality": "Zürich",
+        "addressLocality": "Zurich",
         "addressRegion": "ZH",
         "postalCode": "8048",
         "addressCountry": "CH"
@@ -226,24 +229,56 @@
         "latitude": 47.3941999,
         "longitude": 8.4745859
       },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "opens": "11:00",
+          "closes": "22:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Sunday",
+          "opens": "13:00",
+          "closes": "17:00"
+        }
+      ],
+      "serviceArea": [
+        { "@type": "AdministrativeArea", "name": "Zurich" },
+        { "@type": "AdministrativeArea", "name": "Baden" },
+        { "@type": "AdministrativeArea", "name": "Winterthur" },
+        { "@type": "AdministrativeArea", "name": "Urdorf" },
+        { "@type": "AdministrativeArea", "name": "Schlieren" },
+        { "@type": "AdministrativeArea", "name": "Dietikon" }
+      ],
       "priceRange": "$$"
     },
-    {
+        {
       "@id": "https://axcentdance.com/#person1",
       "@type": "Person",
       "name": "Alessandro Slamitz",
-      "jobTitle": "Mitbegründer",
+      "jobTitle": "Co-Founder",
+      "knowsAbout": ["Dance", "Bachata", "Salsa", "Reggaeton", "Pedagogy", "Movement", "Dating", "Modern", "Afro", "Kizomba", "Zouk"],
       "sameAs": [
-        "https://www.instagram.com/aleyxidan/"
+        "https://www.instagram.com/aleyxidan/",
+        "https://www.youtube.com/@AXcentDance"
       ]
     },
-    {
+        {
       "@id": "https://axcentdance.com/#person2",
       "@type": "Person",
       "name": "Xidan",
-      "jobTitle": "Mitbegründerin",
+      "jobTitle": "Co-Founder",
+      "knowsAbout": ["Dance", "Bachata", "Salsa", "Reggaeton", "Pedagogy", "Movement", "Dating", "Modern", "Afro", "Kizomba", "Zouk"],
       "sameAs": [
-        "https://www.instagram.com/aleyxidan/"
+        "https://www.instagram.com/aleyxidan/",
+        "https://www.youtube.com/@AXcentDance"
       ]
     },
     {
@@ -260,7 +295,7 @@
           "@type": "ListItem",
           "position": 2,
           "name": "Blog",
-          "item": "https://axcentdance.com/blog"
+          "item": "https://axcentdance.com/de/blog"
         },
         {
           "@type": "ListItem",
@@ -422,7 +457,7 @@
             <div class="cta-box">
                 <h2 style="font-size: 2rem; margin-bottom: 1rem; color: white;">Bereit loszulegen?</h2>
                 <p style="color: var(--text-muted); margin-bottom: 2rem;">
-                    Jetzt, wo du für den Erfolg gekleidet bist, komm zu uns auf die Tanzfläche!
+                    Jetzt, wo du für den Erfolg gekleidet bist, komm zu uns auf die Tanzfläche! Schau in unseren <a href="../schedule">Stundenplan</a> oder <a href="../registration">melde dich heute an</a>.
                 </p>
                 <a href="../../#trial-form" class="btn-primary"
                     style="padding: 1rem 3rem; text-decoration: none; border-radius: 30px; font-weight: 700; background: var(--grad); color: white;">PROBELEKTION

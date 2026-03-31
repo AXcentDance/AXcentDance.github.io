@@ -154,14 +154,21 @@
       "name": "What to Wear to Bachata Class: A Beginner's Guide | AXcent Dance Blog",
       "isPartOf": {
         "@id": "https://axcentdance.com/#website"
+      },
+      "mainEntity": {
+        "@id": "https://axcentdance.com/blog-posts/what-to-wear-bachata#blogposting"
       }
     },
     {
       "inLanguage": "en",
       "@type": "BlogPosting",
+      "@id": "https://axcentdance.com/blog-posts/what-to-wear-bachata#blogposting",
+      "isPartOf": {
+        "@id": "https://axcentdance.com/blog-posts/what-to-wear-bachata#webpage"
+      },
       "headline": "What to Wear to Bachata Class: A Beginner's Guide",
       "datePublished": "2025-12-09",
-      "dateModified": "2026-03-10",
+      "dateModified": "2026-03-31",
       "author": [
         {
           "@id": "https://axcentdance.com/#person1"
@@ -173,17 +180,16 @@
       "publisher": {
         "@id": "https://axcentdance.com/#organization"
       },
-      "description": "Wondering what to wear for your first Bachata class? Here is our complete guide on clothes, shoes, and hygiene.",
+      "description": "Wondering what to wear for your first Bachata class? Here is our complete guide on clothes, shoes, and hygiene to make you feel confident and comfortable.",
       "image": {
         "@type": "ImageObject",
         "url": "https://axcentdance.com/assets/images/bachata_essentials_flatlay.webp",
-        "width": 1024,
-        "height": 1024
+        "width": 1200,
+        "height": 1200
       },
       "mainEntityOfPage": {
         "@id": "https://axcentdance.com/blog-posts/what-to-wear-bachata#webpage"
-      },
-      "@id": "https://axcentdance.com/blog-posts/what-to-wear-bachata#blogposting"
+      }
     },
     {
       "@type": "WebSite",
@@ -198,7 +204,7 @@
         "de"
       ]
     },
-    {
+        {
       "@id": "https://axcentdance.com/#organization",
       "@type": [
         "LocalBusiness",
@@ -225,24 +231,56 @@
         "latitude": 47.3941999,
         "longitude": 8.4745859
       },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "opens": "11:00",
+          "closes": "22:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Sunday",
+          "opens": "13:00",
+          "closes": "17:00"
+        }
+      ],
+      "serviceArea": [
+        { "@type": "AdministrativeArea", "name": "Zurich" },
+        { "@type": "AdministrativeArea", "name": "Baden" },
+        { "@type": "AdministrativeArea", "name": "Winterthur" },
+        { "@type": "AdministrativeArea", "name": "Urdorf" },
+        { "@type": "AdministrativeArea", "name": "Schlieren" },
+        { "@type": "AdministrativeArea", "name": "Dietikon" }
+      ],
       "priceRange": "$$"
     },
-    {
+        {
       "@id": "https://axcentdance.com/#person1",
       "@type": "Person",
       "name": "Alessandro Slamitz",
       "jobTitle": "Co-Founder",
+      "knowsAbout": ["Dance", "Bachata", "Salsa", "Reggaeton", "Pedagogy", "Movement", "Dating", "Modern", "Afro", "Kizomba", "Zouk"],
       "sameAs": [
-        "https://www.instagram.com/aleyxidan/"
+        "https://www.instagram.com/aleyxidan/",
+        "https://www.youtube.com/@AXcentDance"
       ]
     },
-    {
+        {
       "@id": "https://axcentdance.com/#person2",
       "@type": "Person",
       "name": "Xidan",
       "jobTitle": "Co-Founder",
+      "knowsAbout": ["Dance", "Bachata", "Salsa", "Reggaeton", "Pedagogy", "Movement", "Dating", "Modern", "Afro", "Kizomba", "Zouk"],
       "sameAs": [
-        "https://www.instagram.com/aleyxidan/"
+        "https://www.instagram.com/aleyxidan/",
+        "https://www.youtube.com/@AXcentDance"
       ]
     },
     {
@@ -405,7 +443,7 @@
             <div class="cta-box">
                 <h2 style="font-size: 2rem; margin-bottom: 1rem; color: white;">Ready to Step Out?</h2>
                 <p style="color: var(--text-muted); margin-bottom: 2rem;">
-                    Now that you are dressed for success, come join us on the dance floor!
+                    Now that you are dressed for success, come join us on the dance floor! Check our <a href="../schedule">weekly schedule</a> or <a href="../registration">register today</a>.
                 </p>
                 <a href="../#trial-form" class="btn-primary"
                     style="padding: 1rem 3rem; text-decoration: none; border-radius: 30px; font-weight: 700; background: var(--grad); color: white;">BOOK

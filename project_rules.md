@@ -1,5 +1,8 @@
 # AXcent Dance - Project Rules & Design Guidelines
 
+> [!IMPORTANT]
+> **Proactive Communication**: If you have ANY doubts about a technical requirement, SEO strategy, or content detail, you MUST ask the user for clarification before proceeding. Do not make assumptions on critical business logic.
+
 ## 1. Project Overview
 **AXcent Dance** is a modern dance studio focusing on Bachata based in Zurich, Switzerland. The website should reflect a "warm and connected" aesthetic, and a focus on inviting, premium feeling, focusing on human-connection.
 
