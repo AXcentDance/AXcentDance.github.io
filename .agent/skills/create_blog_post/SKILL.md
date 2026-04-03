@@ -12,7 +12,9 @@ Ask the user for (or generate based on topic):
 1.  **Slug**: The Clean URL part (e.g., `roots-of-bachata`).
 2.  **Title (EN & DE)**: The H1 heading for both languages.
 3.  **Description (EN & DE)**: The meta description (~150 chars).
-4.  **Date**: `YYYY-MM-DD`.
+4.  **Date**: `YYYY-MM-DDTHH:MM:SS+OFFSET` (ISO 8601).
+    *   **Winter (CET)**: `+01:00` (e.g., `2025-12-07T12:00:00+01:00`)
+    *   **Summer (CEST)**: `+02:00` (e.g., `2026-03-31T12:00:00+02:00`)
 5.  **Images**:
     *   **Hero Image**: Absolute path (e.g., `assets/images/blog/hero.webp`).
     *   **Body Images**: **At least 2 additional images** relevant to the content.
@@ -42,7 +44,7 @@ You must create **two** files:
     *   **inLanguage**: MUST include `"inLanguage": "en"` (for English posts) or `"inLanguage": "de"` (for German posts) in both the `WebPage` and `BlogPosting` entities. 
     *   **Author**: MUST use the dual Person `@id` reference pattern (`[{"@id": "...#person1"}, {"@id": "...#person2"}]`).
     *   **Image**: MUST use `ImageObject` with `width` and `height` properties, not a plain URL string.
-5.  **Schema Synchronization**: Whenever any factual information (Dates, Artists, Locations, etc.) is changed on a page, you MUST check and update the corresponding JSON-LD Schema to ensure it remains accurate and is not contradicting what is shown to the user.
+5.  **Schema Synchronization**: Whenever any factual information (Dates, Artists, Locations, etc.) is changed on a page, you MUST check and update the corresponding JSON-LD Schema to ensure it remains accurate and is not contradicting what is shown to the user. **All dates MUST include time and UTC offset (ISO 8601).**
 4.  **Automation**: After creating the HTML files, run the update scripts. These scripts handle internal link cleanup, image optimization discovery, and SEO date synchronization.
     ```bash
     # 1. Sync dateModified with file timestamp

@@ -16,10 +16,33 @@ def is_noindex(filepath):
         return True
     return False
 
+def get_offset(dt):
+    """
+    Returns the UTC offset string for a given date in Zurich.
+    Summer time 2025: Mar 30 - Oct 26
+    Summer time 2026: starts Mar 29
+    """
+    # 2025 Summer: Mar 30 to Oct 26
+    summer_start_2025 = datetime.datetime(2025, 3, 30)
+    summer_end_2025 = datetime.datetime(2025, 10, 26)
+    
+    # 2026 Summer: starts Mar 29
+    summer_start_2026 = datetime.datetime(2026, 3, 29)
+    
+    if summer_start_2025 <= dt < summer_end_2025:
+        return "+02:00"
+    elif dt >= summer_start_2026:
+        return "+02:00"
+    else:
+        return "+01:00"
+
 def get_lastmod(filepath):
-    """Returns file modification time in YYYY-MM-DD format."""
+    """Returns file modification time in ISO 8601 format with Zurich offset."""
     timestamp = os.path.getmtime(filepath)
-    return datetime.datetime.fromtimestamp(timestamp).strftime('%Y-%m-%d')
+    dt = datetime.datetime.fromtimestamp(timestamp)
+    date_str = dt.strftime('%Y-%m-%d')
+    offset = get_offset(dt)
+    return f"{date_str}T12:00:00{offset}"
 
 def get_url_path(filepath):
     """Converts filesystem path to URL path."""
