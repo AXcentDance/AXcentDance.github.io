@@ -1209,30 +1209,6 @@
     </image:image>
   </url>
   <url>
-    <loc>https://axcentdance.com/blog-posts/hack-your-happiness-zurich-winter</loc>
-    <lastmod>2026-04-05T12:00:00+02:00</lastmod>
-    <priority>0.6</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/blog-posts/hack-your-happiness-zurich-winter" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/blog-posts/hack-your-happiness-zurich-winter" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/blog-posts/hack-your-happiness-zurich-winter" />
-    <image:image>
-      <image:loc>https://axcentdance.com/assets/images/private_lesson_hero.webp</image:loc>
-      <image:title>Authentic Bachata dance class at AXcent Dance Zurich</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://axcentdance.com/de/blog-posts/hack-your-happiness-zurich-winter</loc>
-    <lastmod>2026-04-05T12:00:00+02:00</lastmod>
-    <priority>0.6</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/blog-posts/hack-your-happiness-zurich-winter" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/blog-posts/hack-your-happiness-zurich-winter" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/blog-posts/hack-your-happiness-zurich-winter" />
-    <image:image>
-      <image:loc>https://axcentdance.com/assets/images/private_lesson_hero.webp</image:loc>
-      <image:title>Authentischer Bachat-Tanzkurs bei AXcent Dance Zürich</image:title>
-    </image:image>
-  </url>
-  <url>
     <loc>https://axcentdance.com/blog-posts/rent-space-zurich</loc>
     <lastmod>2026-04-05T12:00:00+02:00</lastmod>
     <priority>0.6</priority>
@@ -1374,6 +1350,30 @@
     <image:image>
       <image:loc>https://axcentdance.com/assets/images/dominican_bootcamp.webp</image:loc>
       <image:title>Dominican Bachata Bootcamp Flyer</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://axcentdance.com/blog-posts/hack-your-happiness</loc>
+    <lastmod>2026-04-05T12:00:00+02:00</lastmod>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/blog-posts/hack-your-happiness" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/blog-posts/hack-your-happiness" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/blog-posts/hack-your-happiness" />
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/private_lesson_hero.webp</image:loc>
+      <image:title>Authentic Bachata dance class at AXcent Dance Zurich</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://axcentdance.com/de/blog-posts/hack-your-happiness</loc>
+    <lastmod>2026-04-05T12:00:00+02:00</lastmod>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/blog-posts/hack-your-happiness" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/blog-posts/hack-your-happiness" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/blog-posts/hack-your-happiness" />
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/private_lesson_hero.webp</image:loc>
+      <image:title>Authentischer Bachat-Tanzkurs bei AXcent Dance Zürich</image:title>
     </image:image>
   </url>
   <url>
