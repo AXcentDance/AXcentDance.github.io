@@ -40,6 +40,705 @@
     <link rel="apple-touch-icon" href="/apple-touch-icon-v2.png">
     <link rel="icon" href="/favicon-v2.png" type="image/png">
 
+    <style>
+        body.guide-bachata-page {
+            background: #06070a;
+        }
+
+        .bachata-machine {
+            position: relative;
+            overflow: clip;
+            min-height: 100vh;
+            padding-top: var(--header-height);
+            background:
+                radial-gradient(circle at 18% 18%, rgba(10, 54, 124, 0.32), transparent 34rem),
+                radial-gradient(circle at 86% 28%, rgba(134, 18, 36, 0.28), transparent 32rem),
+                linear-gradient(180deg, #07080b 0%, #11131a 44%, #06070a 100%);
+        }
+
+        .bachata-machine::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            opacity: 0.34;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 54px 54px;
+            mask-image: linear-gradient(180deg, transparent 0%, #000 16%, #000 82%, transparent 100%);
+        }
+
+        .machine-intro {
+            position: relative;
+            z-index: 2;
+            width: min(1180px, calc(100% - 40px));
+            margin: 0 auto;
+            padding: clamp(3.5rem, 9vw, 7rem) 0 clamp(1.5rem, 4vw, 3rem);
+        }
+
+        .machine-kicker {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.7rem;
+            color: #d8dce8;
+            font-size: 0.78rem;
+            font-weight: 800;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+        }
+
+        .machine-kicker::before {
+            content: "";
+            width: 42px;
+            height: 1px;
+            background: linear-gradient(90deg, #0f55c8, #e2354a);
+        }
+
+        .machine-title {
+            max-width: 980px;
+            margin: 1.1rem 0 1rem;
+            color: #fff;
+            font-family: var(--font-display);
+            font-size: clamp(3rem, 8vw, 7.6rem);
+            line-height: 0.9;
+            letter-spacing: 0;
+        }
+
+        .machine-lede {
+            max-width: 720px;
+            color: rgba(238, 241, 248, 0.78);
+            font-size: clamp(1rem, 1.5vw, 1.25rem);
+            line-height: 1.75;
+        }
+
+        .machine-scroll {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: minmax(0, 1fr);
+        }
+
+        .machine-stage {
+            position: sticky;
+            top: var(--header-height);
+            height: calc(100vh - var(--header-height));
+            min-height: 680px;
+            pointer-events: none;
+        }
+
+        .machine-stage-inner {
+            position: absolute;
+            inset: 0;
+            width: min(1060px, 94vw);
+            margin: 0 auto;
+            left: 0;
+            right: 0;
+        }
+
+        .machine-halo {
+            position: absolute;
+            inset: 8% 6% 4%;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 999px;
+            background:
+                radial-gradient(circle at 48% 42%, rgba(255, 255, 255, 0.07), transparent 26%),
+                radial-gradient(circle at 40% 34%, rgba(13, 73, 170, 0.22), transparent 30%),
+                radial-gradient(circle at 70% 64%, rgba(193, 33, 55, 0.18), transparent 36%);
+            filter: drop-shadow(0 24px 70px rgba(0, 0, 0, 0.62));
+            opacity: 0.92;
+        }
+
+        .flow-line {
+            position: absolute;
+            left: 50%;
+            top: 17%;
+            width: 1px;
+            height: 64%;
+            transform: translateX(-50%);
+            background: linear-gradient(180deg, transparent, rgba(236, 242, 255, 0.35), transparent);
+            opacity: 0.28;
+        }
+
+        .instrument {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: var(--w);
+            transform: translate3d(calc(-50% + var(--x0)), calc(-50% + var(--y0)), 0) scale(var(--s0)) rotate(var(--r0));
+            opacity: var(--o0);
+            filter: blur(var(--b0)) saturate(0.82) brightness(0.74) drop-shadow(0 28px 36px rgba(0, 0, 0, 0.54));
+            transition: transform 780ms cubic-bezier(.2, .9, .22, 1), opacity 620ms ease, filter 620ms ease;
+            will-change: transform, opacity, filter;
+        }
+
+        .instrument img {
+            display: block;
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .instrument.guira {
+            --w: clamp(130px, 17vw, 220px);
+            --x0: 0px;
+            --y0: -190px;
+            --s0: 1;
+            --r0: -8deg;
+            --o0: 1;
+            --b0: 0px;
+        }
+
+        .instrument.bongos {
+            --w: clamp(150px, 18vw, 250px);
+            --x0: 360px;
+            --y0: -72px;
+            --s0: .78;
+            --r0: 12deg;
+            --o0: 0;
+            --b0: 8px;
+        }
+
+        .instrument.segunda {
+            --w: clamp(210px, 27vw, 360px);
+            --x0: -430px;
+            --y0: 82px;
+            --s0: .75;
+            --r0: -14deg;
+            --o0: 0;
+            --b0: 8px;
+        }
+
+        .instrument.bass {
+            --w: clamp(250px, 34vw, 460px);
+            --x0: 470px;
+            --y0: 225px;
+            --s0: .76;
+            --r0: 10deg;
+            --o0: 0;
+            --b0: 8px;
+        }
+
+        .instrument.requinto {
+            --w: clamp(230px, 31vw, 430px);
+            --x0: 0px;
+            --y0: -430px;
+            --s0: .78;
+            --r0: 0deg;
+            --o0: 0;
+            --b0: 8px;
+            z-index: 4;
+        }
+
+        .bachata-machine[data-step="1"] .bongos,
+        .bachata-machine[data-step="2"] .bongos,
+        .bachata-machine[data-step="3"] .bongos,
+        .bachata-machine[data-step="4"] .bongos,
+        .bachata-machine[data-step="5"] .bongos {
+            transform: translate3d(-50%, calc(-50% - 72px), 0) scale(1) rotate(-4deg);
+            opacity: 1;
+            filter: blur(0) saturate(1.03) brightness(1) drop-shadow(0 34px 42px rgba(0, 0, 0, 0.58));
+        }
+
+        .bachata-machine[data-step="2"] .segunda,
+        .bachata-machine[data-step="3"] .segunda,
+        .bachata-machine[data-step="4"] .segunda,
+        .bachata-machine[data-step="5"] .segunda {
+            transform: translate3d(calc(-50% - 142px), calc(-50% + 98px), 0) scale(1) rotate(-10deg);
+            opacity: 1;
+            filter: blur(0) saturate(1.02) brightness(1) drop-shadow(0 34px 42px rgba(0, 0, 0, 0.58));
+        }
+
+        .bachata-machine[data-step="3"] .bass,
+        .bachata-machine[data-step="4"] .bass,
+        .bachata-machine[data-step="5"] .bass {
+            transform: translate3d(calc(-50% + 120px), calc(-50% + 245px), 0) scale(1) rotate(4deg);
+            opacity: 1;
+            filter: blur(0) saturate(1.02) brightness(1) drop-shadow(0 34px 42px rgba(0, 0, 0, 0.58));
+        }
+
+        .bachata-machine[data-step="4"] .requinto,
+        .bachata-machine[data-step="5"] .requinto {
+            transform: translate3d(calc(-50% + 32px), calc(-50% + 70px), 0) scale(1.03) rotate(5deg);
+            opacity: 1;
+            filter: blur(0) saturate(1.08) brightness(1.06) drop-shadow(0 38px 54px rgba(0, 0, 0, 0.62));
+        }
+
+        .bachata-machine[data-step="1"] .guira,
+        .bachata-machine[data-step="2"] .guira,
+        .bachata-machine[data-step="3"] .guira,
+        .bachata-machine[data-step="4"] .guira,
+        .bachata-machine[data-step="5"] .guira {
+            transform: translate3d(-50%, calc(-50% - 210px), 0) scale(.86) rotate(-8deg);
+        }
+
+        .machine-copy-track {
+            position: relative;
+            z-index: 3;
+            width: min(1180px, calc(100% - 40px));
+            margin: -100vh auto 0;
+            padding-bottom: 10vh;
+        }
+
+        .machine-panel {
+            display: flex;
+            min-height: 100vh;
+            align-items: center;
+        }
+
+        .machine-panel.align-left {
+            justify-content: flex-start;
+        }
+
+        .machine-panel.align-right {
+            justify-content: flex-end;
+        }
+
+        .machine-copy {
+            width: min(520px, 46vw);
+            padding: 1.3rem 0;
+        }
+
+        .machine-index {
+            display: inline-flex;
+            margin-bottom: 1rem;
+            color: rgba(240, 244, 255, 0.46);
+            font-weight: 800;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+        }
+
+        .machine-copy h2 {
+            margin: 0 0 1rem;
+            color: #fff;
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4.1vw, 4rem);
+            line-height: 0.98;
+            letter-spacing: 0;
+        }
+
+        .machine-copy p {
+            margin: 0;
+            color: rgba(238, 241, 248, 0.78);
+            font-size: clamp(1rem, 1.25vw, 1.12rem);
+            line-height: 1.8;
+        }
+
+        .machine-panel .machine-copy {
+            opacity: 0.26;
+            transform: translateY(22px);
+            transition: opacity 420ms ease, transform 420ms ease;
+        }
+
+        .machine-panel.is-active .machine-copy {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .machine-final {
+            position: relative;
+            z-index: 4;
+            width: min(1180px, calc(100% - 40px));
+            margin: 0 auto;
+            padding: 4rem 0 7rem;
+            text-align: center;
+        }
+
+        .machine-listen {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.95rem 1.35rem;
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            border-radius: 999px;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 800;
+            letter-spacing: 0.04em;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.03));
+            box-shadow: 0 18px 45px rgba(0, 0, 0, 0.32), inset 0 1px 0 rgba(255, 255, 255, 0.16);
+            pointer-events: auto;
+        }
+
+        .play-mark {
+            display: inline-grid;
+            place-items: center;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #0f55c8, #d62942);
+        }
+
+        .lineup-sticky {
+            position: sticky;
+            top: var(--header-height);
+            z-index: 5;
+            padding: 0.35rem 0;
+            background: linear-gradient(180deg, rgba(6, 7, 10, 0.96), rgba(6, 7, 10, 0.8));
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(18px);
+            box-shadow: 0 24px 70px rgba(0, 0, 0, 0.42);
+        }
+
+        .lineup-frame {
+            position: relative;
+            width: min(900px, calc(100% - 40px));
+            margin: 0 auto;
+            padding: clamp(0.35rem, 0.85vw, 0.6rem);
+            border-radius: 8px;
+            background:
+                radial-gradient(circle at 18% 34%, rgba(13, 73, 170, 0.26), transparent 32%),
+                radial-gradient(circle at 84% 46%, rgba(193, 33, 55, 0.22), transparent 34%),
+                linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.025));
+            overflow: hidden;
+        }
+
+        .lineup-frame::before {
+            content: "";
+            position: absolute;
+            inset: 50% 3rem auto;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.34), transparent);
+        }
+
+        .instrument-lineup {
+            position: relative;
+            display: grid;
+            grid-template-columns: repeat(5, minmax(0, 1fr));
+            gap: clamp(0.45rem, 1.3vw, 1rem);
+            align-items: center;
+        }
+
+        .lineup-instrument {
+            position: relative;
+            display: grid;
+            place-items: center;
+            gap: 0.28rem;
+            min-height: clamp(58px, 8vw, 92px);
+            opacity: 0.68;
+            transform: translateY(0) scale(0.94);
+            transition: opacity 360ms ease, transform 360ms ease, filter 360ms ease;
+            filter: saturate(0.9) brightness(0.9);
+            color: rgba(255, 255, 255, 0.74);
+            text-decoration: none;
+        }
+
+        .lineup-instrument.is-active {
+            opacity: 1;
+            transform: translateY(-6px) scale(1);
+            filter: saturate(1.08) brightness(1.08) drop-shadow(0 18px 28px rgba(0, 0, 0, 0.46));
+            color: #fff;
+        }
+
+        .lineup-instrument img {
+            display: block;
+            width: min(100%, var(--lineup-w));
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .lineup-instrument span {
+            display: block;
+            max-width: 100%;
+            font-size: clamp(0.62rem, 0.8vw, 0.74rem);
+            font-weight: 800;
+            letter-spacing: 0.06em;
+            line-height: 1.1;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        .lineup-instrument.guira-img { --lineup-w: 66px; }
+        .lineup-instrument.bongos-img { --lineup-w: 78px; }
+        .lineup-instrument.segunda-img { --lineup-w: 106px; }
+        .lineup-instrument.bass-img { --lineup-w: 126px; }
+        .lineup-instrument.requinto-img { --lineup-w: 112px; }
+
+        .lineup-story {
+            position: relative;
+            z-index: 2;
+            width: min(1180px, calc(100% - 40px));
+            margin: 0 auto;
+            padding: clamp(2rem, 5vw, 4rem) 0 6rem;
+        }
+
+        .lineup-panel {
+            display: grid;
+            grid-template-columns: minmax(0, 0.9fr) minmax(220px, 0.55fr);
+            gap: clamp(1.5rem, 5vw, 5rem);
+            align-items: center;
+            min-height: 78vh;
+            padding: clamp(2rem, 5vw, 4rem) 0;
+            scroll-margin-top: calc(var(--header-height) + 150px);
+        }
+
+        .lineup-panel:nth-child(even) {
+            grid-template-columns: minmax(220px, 0.55fr) minmax(0, 0.9fr);
+        }
+
+        .lineup-panel:nth-child(even) .machine-copy {
+            grid-column: 2;
+        }
+
+        .lineup-panel:nth-child(even) .falling-instrument {
+            grid-column: 1;
+            grid-row: 1;
+        }
+
+        .falling-instrument {
+            display: grid;
+            place-items: center;
+            min-height: 280px;
+            opacity: 0;
+            transform: translateY(-110px) scale(0.86) rotate(-3deg);
+            transition: opacity 520ms ease, transform 720ms cubic-bezier(.2, .9, .22, 1), filter 520ms ease;
+            filter: blur(7px) saturate(0.72) brightness(0.72);
+        }
+
+        .lineup-panel.is-active .falling-instrument {
+            opacity: 1;
+            transform: translateY(0) scale(1) rotate(0deg);
+            filter: blur(0) saturate(1.08) brightness(1.08) drop-shadow(0 30px 42px rgba(0, 0, 0, 0.5));
+        }
+
+        .falling-instrument img {
+            display: block;
+            width: min(100%, var(--fall-w));
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .falling-instrument.guira-img { --fall-w: 230px; }
+        .falling-instrument.bongos-img { --fall-w: 290px; }
+        .falling-instrument.segunda-img { --fall-w: 390px; }
+        .falling-instrument.bass-img { --fall-w: 460px; }
+        .falling-instrument.requinto-img { --fall-w: 430px; }
+
+        .guide-after-machine {
+            background: #f7f2eb;
+            color: #1f1c1a;
+            padding: clamp(4rem, 7vw, 7rem) 0;
+        }
+
+        .guide-after-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: clamp(2rem, 6vw, 5rem);
+            align-items: start;
+        }
+
+        .guide-after-machine h2,
+        .guide-after-machine h3 {
+            color: #171412;
+            font-family: var(--font-display);
+            letter-spacing: 0;
+        }
+
+        .guide-after-machine p,
+        .guide-after-machine li {
+            color: rgba(31, 28, 26, 0.76);
+            line-height: 1.75;
+        }
+
+        .style-list {
+            margin: 0;
+            padding-left: 1.2rem;
+        }
+
+        .guide-cta-band {
+            margin-top: 3rem;
+            padding: clamp(1.5rem, 4vw, 2.5rem);
+            border-radius: 8px;
+            background: #15171d;
+            color: #fff;
+        }
+
+        .guide-cta-band h3 {
+            color: #fff;
+            margin-top: 0;
+        }
+
+        .guide-cta-band p {
+            color: rgba(255, 255, 255, 0.72);
+        }
+
+        @media (max-width: 860px) {
+            .bachata-machine {
+                padding-top: var(--header-height-mobile);
+            }
+
+            .lineup-sticky {
+                top: var(--header-height-mobile);
+                padding: 0.25rem 0;
+            }
+
+            .lineup-frame {
+                width: min(100% - 24px, 520px);
+                padding: 0.28rem;
+            }
+
+            .instrument-lineup {
+                gap: 0.2rem;
+            }
+
+            .lineup-instrument {
+                gap: 0.18rem;
+                min-height: 50px;
+            }
+
+            .lineup-instrument span {
+                font-size: 0.5rem;
+                letter-spacing: 0.03em;
+            }
+
+            .lineup-instrument.guira-img { --lineup-w: 38px; }
+            .lineup-instrument.bongos-img { --lineup-w: 44px; }
+            .lineup-instrument.segunda-img { --lineup-w: 58px; }
+            .lineup-instrument.bass-img { --lineup-w: 68px; }
+            .lineup-instrument.requinto-img { --lineup-w: 62px; }
+
+            .lineup-story {
+                width: min(100% - 32px, 620px);
+                padding-top: 1rem;
+            }
+
+            .lineup-panel,
+            .lineup-panel:nth-child(even) {
+                display: grid;
+                grid-template-columns: 1fr;
+                min-height: 72vh;
+                padding: 3.5rem 0;
+                scroll-margin-top: calc(var(--header-height-mobile) + 92px);
+            }
+
+            .lineup-panel:nth-child(even) .machine-copy,
+            .lineup-panel:nth-child(even) .falling-instrument {
+                grid-column: auto;
+                grid-row: auto;
+            }
+
+            .falling-instrument {
+                order: -1;
+                min-height: 190px;
+                transform: translateY(-72px) scale(0.86);
+            }
+
+            .falling-instrument.guira-img { --fall-w: 150px; }
+            .falling-instrument.bongos-img { --fall-w: 190px; }
+            .falling-instrument.segunda-img { --fall-w: 250px; }
+            .falling-instrument.bass-img { --fall-w: 290px; }
+            .falling-instrument.requinto-img { --fall-w: 270px; }
+
+            .machine-stage {
+                top: var(--header-height-mobile);
+                height: 46vh;
+                min-height: 330px;
+            }
+
+            .machine-scroll {
+                display: block;
+            }
+
+            .machine-copy-track {
+                margin: 0 auto;
+                padding-top: 2rem;
+            }
+
+            .machine-panel,
+            .machine-panel.align-left,
+            .machine-panel.align-right {
+                min-height: 72vh;
+                justify-content: flex-start;
+                align-items: flex-start;
+                padding: 40vh 0 5rem;
+            }
+
+            .machine-copy {
+                width: min(100%, 520px);
+            }
+
+            .machine-panel .machine-copy {
+                opacity: 0.04;
+            }
+
+            .machine-panel.is-active .machine-copy {
+                opacity: 1;
+            }
+
+            .machine-title {
+                font-size: clamp(3rem, 14vw, 5.2rem);
+            }
+
+            .instrument.guira {
+                --w: 120px;
+                --y0: -118px;
+            }
+
+            .instrument.bongos {
+                --w: 142px;
+                --x0: 240px;
+            }
+
+            .instrument.segunda {
+                --w: 220px;
+            }
+
+            .instrument.bass {
+                --w: 260px;
+            }
+
+            .instrument.requinto {
+                --w: 230px;
+            }
+
+            .bachata-machine[data-step="1"] .bongos,
+            .bachata-machine[data-step="2"] .bongos,
+            .bachata-machine[data-step="3"] .bongos,
+            .bachata-machine[data-step="4"] .bongos,
+            .bachata-machine[data-step="5"] .bongos {
+                transform: translate3d(-50%, calc(-50% - 52px), 0) scale(1) rotate(-4deg);
+            }
+
+            .bachata-machine[data-step="2"] .segunda,
+            .bachata-machine[data-step="3"] .segunda,
+            .bachata-machine[data-step="4"] .segunda,
+            .bachata-machine[data-step="5"] .segunda {
+                transform: translate3d(calc(-50% - 72px), calc(-50% + 52px), 0) scale(1) rotate(-10deg);
+            }
+
+            .bachata-machine[data-step="3"] .bass,
+            .bachata-machine[data-step="4"] .bass,
+            .bachata-machine[data-step="5"] .bass {
+                transform: translate3d(calc(-50% + 56px), calc(-50% + 142px), 0) scale(1) rotate(4deg);
+            }
+
+            .bachata-machine[data-step="4"] .requinto,
+            .bachata-machine[data-step="5"] .requinto {
+                transform: translate3d(calc(-50% + 24px), calc(-50% + 30px), 0) scale(1) rotate(5deg);
+            }
+
+            .bachata-machine[data-step="1"] .guira,
+            .bachata-machine[data-step="2"] .guira,
+            .bachata-machine[data-step="3"] .guira,
+            .bachata-machine[data-step="4"] .guira,
+            .bachata-machine[data-step="5"] .guira {
+                transform: translate3d(-50%, calc(-50% - 132px), 0) scale(.86) rotate(-8deg);
+            }
+
+            .guide-after-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .instrument,
+            .machine-panel .machine-copy {
+                transition: none;
+            }
+        }
+    </style>
+
 
 
     <!-- Structured Data (@graph) -->
@@ -99,7 +798,7 @@
             ],
             "image": {
                 "@type": "ImageObject",
-                "url": "https://axcentdance.com/assets/images/bachata_requinto_v2.webp",
+                "url": "https://axcentdance.com/assets/images/bachata_requinto_clear.webp",
                 "width": 1200,
                 "height": 1200
             }
@@ -231,7 +930,7 @@
 
   </head>
 
-<body>
+<body class="guide-bachata-page">
 
     <!-- Background Elements -->
     <div class="blob blob-1"></div>
@@ -287,207 +986,214 @@
     </header>
 
     <main>
-
-        <!-- Guide Hero -->
-        <section class="course-hero relative-container" style="background: none; min-height: 40vh;">
-            <img src="assets/images/hero_new.webp"
-                srcset="assets/images/hero_new_480w.webp 480w, assets/images/hero_new_800w.webp 800w, assets/images/hero_new_1200w.webp 1200w"
-                sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px" alt="Bachata in Zurich" width="1024"
-                height="1024" class="hero-bg-img">
-            <div class="hero-overlay"></div>
-            <div class="container course-hero-content hero-content-z">
-
-                <div class="course-level-badge">THE BASICS</div>
-                <h1 class="page-title">The Complete Guide to Bachata</h1>
-
-                <p class="hero-desc-border" style="border: none; padding: 0;">
-                    From the streets of the Dominican Republic to dance floors around the world. Bachata is more than
-                    just a dance; it's a feeling.
+        <section class="bachata-machine" data-step="0" aria-labelledby="bachata-machine-title">
+            <div class="machine-intro">
+                <span class="machine-kicker">What is Bachata?</span>
+                <h1 class="machine-title" id="bachata-machine-title">The Bachata Machine</h1>
+                <p class="machine-lede">
+                    Bachata is a conversation between metal, wood, skin, strings, and voice. Keep the band in view
+                    while each instrument drops into the story below.
                 </p>
             </div>
-        </section>
 
-        <!-- Guide Content -->
-        <section class="course-content-section">
-            <div class="container">
-                <article class="guide-article">
-                    <p>
-                        Bachata is a genre of music and dance that originated in the Dominican Republic in the mid-20th
-                        century. Initially considered music for the lower classes, it has exploded in popularity over
-                        the last few decades to become one of the most popular social dances in the world.
-                    </p>
-
-                    <div class="guide-highlight-box">
-                        <h2 style="color: white; margin-bottom: 0.5rem;">The Rhythm</h2>
-                        <p style="margin-bottom: 0;">
-                            Bachata music is characterized by a distinctive guitar sound (the requinto) and a 4/4 beat.
-                            The basic step is simple: three steps to the side, followed by a tap (or hip movement) on
-                            the fourth beat. 1, 2, 3, Tap!
-                        </p>
-                    </div>
-
-
-
-                    <!-- Instruments Vertical List -->
-                    <section class="instruments-section" style="margin: 4rem 0;">
-                        <h2
-                            style="font-family: var(--font-display); font-size: 2.5rem; color: white; margin-bottom: 3rem; text-align: center;">
-                            The 5 Pillars of Bachata Music</h2>
-
-                        <div class="instruments-list" style="display: flex; flex-direction: column; gap: 2rem;">
-
-                            <!-- 1. Requinto -->
-                            <div class="inst-row glass-card"
-                                style="display: flex; align-items: center; gap: 2rem; padding: 1.5rem; border-radius: 16px;">
-                                <div class="inst-img"
-                                    style="width: 180px; height: 120px; flex-shrink: 0; border-radius: 12px; overflow: hidden;">
-                                    <img src="assets/images/bachata_requinto_v2.webp"
-                                        srcset="assets/images/bachata_requinto_v2_480w.webp 480w, assets/images/bachata_requinto_v2_800w.webp 800w, assets/images/bachata_requinto_v2_1200w.webp 1200w"
-                                        sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px"
-                                        alt="Requinto Guitar" width="1024" height="1024" loading="lazy"
-                                        style="width: 100%; height: 100%; object-fit: cover;">
-                                </div>
-                                <div class="inst-content">
-                                    <h3 style="color: var(--accent-start); margin-bottom: 0.5rem; font-size: 1.4rem;">
-                                        Requinto (Lead Guitar)</h3>
-                                    <p style="color: var(--text-muted); margin: 0; line-height: 1.6;">The star of the
-                                        show. It plays the arpeggios, the solos, and the distinctive melodies that
-                                        define the song's emotion.</p>
-                                </div>
-                            </div>
-
-                            <!-- 2. Segunda -->
-                            <div class="inst-row glass-card"
-                                style="display: flex; align-items: center; gap: 2rem; padding: 1.5rem; border-radius: 16px;">
-                                <div class="inst-img"
-                                    style="width: 180px; height: 120px; flex-shrink: 0; border-radius: 12px; overflow: hidden;">
-                                    <img src="assets/images/bachata_segunda.webp"
-                                        srcset="assets/images/bachata_segunda_480w.webp 480w, assets/images/bachata_segunda_800w.webp 800w, assets/images/bachata_segunda_1200w.webp 1200w"
-                                        sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px"
-                                        alt="Segunda Guitar" width="1024" height="1024" loading="lazy"
-                                        style="width: 100%; height: 100%; object-fit: cover;">
-                                </div>
-                                <div class="inst-content">
-                                    <h3 style="color: var(--accent-start); margin-bottom: 0.5rem; font-size: 1.4rem;">
-                                        Segunda (Rhythm Guitar)</h3>
-                                    <p style="color: var(--text-muted); margin: 0; line-height: 1.6;">The backbone. It
-                                        provides the syncopated chords ('chop-chop') that lock in with the bongo to
-                                        create the groove.</p>
-                                </div>
-                            </div>
-
-                            <!-- 3. Bass -->
-                            <div class="inst-row glass-card"
-                                style="display: flex; align-items: center; gap: 2rem; padding: 1.5rem; border-radius: 16px;">
-                                <div class="inst-img"
-                                    style="width: 180px; height: 120px; flex-shrink: 0; border-radius: 12px; overflow: hidden;">
-                                    <img src="assets/images/bachata_bass_v2.webp"
-                                        srcset="assets/images/bachata_bass_v2_480w.webp 480w, assets/images/bachata_bass_v2_800w.webp 800w, assets/images/bachata_bass_v2_1200w.webp 1200w"
-                                        sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px"
-                                        alt="Bass Guitar" width="1024" height="1024" loading="lazy"
-                                        style="width: 100%; height: 100%; object-fit: cover;">
-                                </div>
-                                <div class="inst-content">
-                                    <h3 style="color: var(--accent-start); margin-bottom: 0.5rem; font-size: 1.4rem;">
-                                        Bass (Bajo)</h3>
-                                    <p style="color: var(--text-muted); margin: 0; line-height: 1.6;">The heartbeat. It
-                                        drives the song forward, typically marking beats 1, 3, and 4, giving depth to
-                                        the rhythm section.</p>
-                                </div>
-                            </div>
-
-                            <!-- 4. Bongos -->
-                            <div class="inst-row glass-card"
-                                style="display: flex; align-items: center; gap: 2rem; padding: 1.5rem; border-radius: 16px;">
-                                <div class="inst-img"
-                                    style="width: 180px; height: 120px; flex-shrink: 0; border-radius: 12px; overflow: hidden;">
-                                    <img src="assets/images/bachata_bongos.webp"
-                                        srcset="assets/images/bachata_bongos_480w.webp 480w, assets/images/bachata_bongos_800w.webp 800w, assets/images/bachata_bongos_1200w.webp 1200w"
-                                        sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px" alt="Bongos"
-                                        width="1024" height="1024" loading="lazy"
-                                        style="width: 100%; height: 100%; object-fit: cover;">
-                                </div>
-                                <div class="inst-content">
-                                    <h3 style="color: var(--accent-start); margin-bottom: 0.5rem; font-size: 1.4rem;">
-                                        Bongos</h3>
-                                    <p style="color: var(--text-muted); margin: 0; line-height: 1.6;">The energy engine.
-                                        The larger drum (Hembra) improvises, while the smaller drum (Macho) hits the
-                                        sharp 4th beat accent.</p>
-                                </div>
-                            </div>
-
-                            <!-- 5. Guira -->
-                            <div class="inst-row glass-card"
-                                style="display: flex; align-items: center; gap: 2rem; padding: 1.5rem; border-radius: 16px;">
-                                <div class="inst-img"
-                                    style="width: 180px; height: 120px; flex-shrink: 0; border-radius: 12px; overflow: hidden;">
-                                    <img src="assets/images/bachata_guira.webp"
-                                        srcset="assets/images/bachata_guira_480w.webp 480w, assets/images/bachata_guira_800w.webp 800w, assets/images/bachata_guira_1200w.webp 1200w"
-                                        sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px" alt="Guira"
-                                        width="1024" height="1024" loading="lazy"
-                                        style="width: 100%; height: 100%; object-fit: cover;">
-                                </div>
-                                <div class="inst-content">
-                                    <h3 style="color: var(--accent-start); margin-bottom: 0.5rem; font-size: 1.4rem;">
-                                        Güira</h3>
-                                    <p style="color: var(--text-muted); margin: 0; line-height: 1.6;">The timekeeper. A
-                                        metal scraper that fills the high frequencies and keeps the band tight and
-                                        steady.</p>
-                                </div>
-                            </div>
-
-                        </div>
-                    </section>
-
-                    <h2>Why Dance Bachata in Zurich?</h2>
-                    <p>
-                        Zurich has one of the most vibrant Bachata communities in Europe. From social parties to
-                        workshops, the city is alive with Latin rhythm. At <strong>AXcent Dance in Zurich
-                            Altstetten</strong>, we are proud to be at the heart of this movement.
-                    </p>
-                    <p>
-                        We offer a structured curriculum that respects the Dominican roots while mastering the modern
-                        Sensual style. Whether you are looking for a new hobby, a way to meet people in Zurich, or
-                        serious dance training, our school provides the perfect environment.
-                    </p>
-
-                    <h2>Why is it so popular?</h2>
-                    <p>
-                        Bachata is incredibly accessible. The basic rhythm is easy to hear, and the basic steps are easy
-                        to learn. Unlike some other dances that require high energy or complex acrobatics, Bachata can
-                        be danced in a relaxed, smooth way.
-                    </p>
-                    <p>
-                        It's also very versatile. You can dance it to traditional Dominican songs, romantic ballads, or
-                        modern pop remixes.
-                    </p>
-
-                    <h2>Different Styles</h2>
-                    <p>
-                        Over time, Bachata has evolved into different styles:
-                    </p>
-                    <ul style="margin-bottom: 2rem; padding-left: 1.5rem;">
-                        <li style="margin-bottom: 0.5rem;"><strong>Dominican Bachata:</strong> The original style.
-                            Focuses on footwork, musicality, and playful partner interaction.</li>
-                        <li style="margin-bottom: 0.5rem;"><strong>Bachata Moderna:</strong> Incorporates elements from
-                            Salsa and other dances. More turns and figures.</li>
-                        <li style="margin-bottom: 0.5rem;"><strong><a href="guide-bachata-sensual"
-                                    style="color: var(--accent-start); text-decoration: none;">Bachata
-                                    Sensual:</a></strong> The most popular style of bachata at the moment in Europe and
-                            America. Focuses on body movements and connection (this is our specialty!).</li>
-                    </ul>
-
-                    <div style="text-align: center; margin-top: 4rem;">
-                        <h3 style="color: white; margin-bottom: 1.5rem;">Want to learn the steps?</h3>
-                        <a href="schedule" class="btn-primary"
-                            style="padding: 1rem 2rem; border-radius: 50px; text-decoration: none;">
-                            VIEW BACHATA CLASSES IN ZURICH
+            <div class="lineup-sticky" aria-label="Bachata band instruments">
+                <div class="lineup-frame">
+                    <div class="instrument-lineup">
+                        <a class="lineup-instrument guira-img is-active" data-lineup-item="0" href="#guira-section">
+                            <img src="assets/images/bachata_guira_clear.webp"
+                                srcset="assets/images/bachata_guira_clear_480w.webp 480w, assets/images/bachata_guira_clear_800w.webp 800w"
+                                sizes="(max-width: 860px) 38px, 66px" alt="Güira" width="1024" height="1024">
+                            <span>Güira</span>
+                        </a>
+                        <a class="lineup-instrument bongos-img" data-lineup-item="1" href="#bongos-section">
+                            <img src="assets/images/bachata_bongos_clear.webp"
+                                srcset="assets/images/bachata_bongos_clear_480w.webp 480w, assets/images/bachata_bongos_clear_800w.webp 800w"
+                                sizes="(max-width: 860px) 44px, 78px" alt="Bongo drums" width="1024" height="1024">
+                            <span>Bongos</span>
+                        </a>
+                        <a class="lineup-instrument segunda-img" data-lineup-item="2" href="#segunda-section">
+                            <img src="assets/images/bachata_segunda_clear.webp"
+                                srcset="assets/images/bachata_segunda_clear_480w.webp 480w, assets/images/bachata_segunda_clear_800w.webp 800w"
+                                sizes="(max-width: 860px) 58px, 106px" alt="Segunda guitar" width="1024" height="1024">
+                            <span>Segunda</span>
+                        </a>
+                        <a class="lineup-instrument bass-img" data-lineup-item="3" href="#bass-section">
+                            <img src="assets/images/bachata_bass_clear.webp"
+                                srcset="assets/images/bachata_bass_clear_480w.webp 480w, assets/images/bachata_bass_clear_800w.webp 800w"
+                                sizes="(max-width: 860px) 68px, 126px" alt="Bass guitar" width="1024" height="1024">
+                            <span>Bass</span>
+                        </a>
+                        <a class="lineup-instrument requinto-img" data-lineup-item="4" href="#requinto-section">
+                            <img src="assets/images/bachata_requinto_clear.webp"
+                                srcset="assets/images/bachata_requinto_clear_480w.webp 480w, assets/images/bachata_requinto_clear_800w.webp 800w"
+                                sizes="(max-width: 860px) 62px, 112px" alt="Requinto guitar" width="1024" height="1024">
+                            <span>Requinto</span>
                         </a>
                     </div>
+                </div>
+            </div>
+
+            <div class="lineup-story">
+                <article class="machine-panel lineup-panel is-active" data-machine-step="0" id="guira-section">
+                    <div class="machine-copy">
+                        <span class="machine-index">Section 01</span>
+                        <h2>The Rhythmic Pulse</h2>
+                        <p>
+                            The güira is the bright metal pulse that keeps Bachata moving. Its rasp cuts through the
+                            band with a steady stream of texture, marking time while adding the crisp snap that makes
+                            the rhythm feel alive.
+                        </p>
+                        <p>
+                            For dancers, it is one of the easiest sounds to follow when finding the groove. Listen for
+                            the scratch, the release, and the tiny accents between the main beats; they create the
+                            shimmering energy that makes Bachata feel playful instead of flat.
+                        </p>
+                    </div>
+                    <figure class="falling-instrument guira-img" aria-hidden="true">
+                        <img src="assets/images/bachata_guira_clear.webp"
+                            srcset="assets/images/bachata_guira_clear_480w.webp 480w, assets/images/bachata_guira_clear_800w.webp 800w"
+                            sizes="(max-width: 860px) 150px, 230px" alt="" width="1024" height="1024">
+                    </figure>
                 </article>
+
+                <article class="machine-panel lineup-panel" data-machine-step="1" id="bongos-section">
+                    <div class="machine-copy">
+                        <span class="machine-index">Section 02</span>
+                        <h2>El Martillo</h2>
+                        <p>
+                            The bongos speak in two voices: the smaller macho drum gives sharper tones, while the
+                            larger hembra drum brings a rounder, deeper answer. Together they play el martillo, the
+                            hammer pattern that gives Bachata its unmistakable bounce.
+                        </p>
+                        <p>
+                            This rhythm does more than keep time. It converses with the güira, opens space for breaks,
+                            and often signals changes in energy. When the bongos improvise, dancers feel it as a lift,
+                            a pause, or a sudden invitation to play with the music.
+                        </p>
+                    </div>
+                    <figure class="falling-instrument bongos-img" aria-hidden="true">
+                        <img src="assets/images/bachata_bongos_clear.webp"
+                            srcset="assets/images/bachata_bongos_clear_480w.webp 480w, assets/images/bachata_bongos_clear_800w.webp 800w"
+                            sizes="(max-width: 860px) 190px, 290px" alt="" width="1024" height="1024" loading="lazy">
+                    </figure>
+                </article>
+
+                <article class="machine-panel lineup-panel" data-machine-step="2" id="segunda-section">
+                    <div class="machine-copy">
+                        <span class="machine-index">Section 03</span>
+                        <h2>Chop And Harmony</h2>
+                        <p>
+                            The segunda, also called the rítmica, is the rhythm guitar that gives Bachata its forward
+                            push. Instead of taking the spotlight, it locks into short chord chops, muted strums, and
+                            syncopated accents that glue the percussion and harmony together.
+                        </p>
+                        <p>
+                            Its job is subtle but essential. The segunda shapes the feel of the song: relaxed and
+                            romantic in softer passages, sharper and more percussive when the music drives. Without it,
+                            Bachata loses much of the spring that dancers feel under their steps.
+                        </p>
+                    </div>
+                    <figure class="falling-instrument segunda-img" aria-hidden="true">
+                        <img src="assets/images/bachata_segunda_clear.webp"
+                            srcset="assets/images/bachata_segunda_clear_480w.webp 480w, assets/images/bachata_segunda_clear_800w.webp 800w"
+                            sizes="(max-width: 860px) 250px, 390px" alt="" width="1024" height="1024" loading="lazy">
+                    </figure>
+                </article>
+
+                <article class="machine-panel lineup-panel" data-machine-step="3" id="bass-section">
+                    <div class="machine-copy">
+                        <span class="machine-index">Section 04</span>
+                        <h2>The Grounded Soul</h2>
+                        <p>
+                            The bass is the floor of the whole arrangement. It anchors the harmony, outlines the chord
+                            changes, and often walks with a melodic quality that feels almost like a second singer
+                            underneath the guitars.
+                        </p>
+                        <p>
+                            In Bachata, the bass does not simply sit on the beat. It pushes, answers, and creates
+                            counterpoint against the bongos and guitars. For dancers, it gives weight to the body and
+                            helps make the tap, pause, or hip action feel grounded rather than decorative.
+                        </p>
+                    </div>
+                    <figure class="falling-instrument bass-img" aria-hidden="true">
+                        <img src="assets/images/bachata_bass_clear.webp"
+                            srcset="assets/images/bachata_bass_clear_480w.webp 480w, assets/images/bachata_bass_clear_800w.webp 800w"
+                            sizes="(max-width: 860px) 290px, 460px" alt="" width="1024" height="1024" loading="lazy">
+                    </figure>
+                </article>
+
+                <article class="machine-panel lineup-panel" data-machine-step="4" id="requinto-section">
+                    <div class="machine-copy">
+                        <span class="machine-index">Section 05</span>
+                        <h2>The Singing Requinto</h2>
+                        <p>
+                            The requinto is the lead guitar, the voice that most people recognize first in Bachata. It
+                            plays bright arpeggios, melodic hooks, fills, and solos that give the song its emotional
+                            signature.
+                        </p>
+                        <p>
+                            It can sound sweet, nostalgic, playful, or dramatic within just a few notes. When the
+                            requinto answers the singer or rises above the band, it tells dancers where the feeling is:
+                            when to soften, when to accent, and when to let the music breathe.
+                        </p>
+                    </div>
+                    <figure class="falling-instrument requinto-img" aria-hidden="true">
+                        <img src="assets/images/bachata_requinto_clear.webp"
+                            srcset="assets/images/bachata_requinto_clear_480w.webp 480w, assets/images/bachata_requinto_clear_800w.webp 800w"
+                            sizes="(max-width: 860px) 270px, 430px" alt="" width="1024" height="1024" loading="lazy">
+                    </figure>
+                </article>
+            </div>
+
+            <div class="machine-final">
+                <a class="machine-listen" href="schedule">
+                    <span class="play-mark" aria-hidden="true">
+                        <svg width="15" height="16" viewBox="0 0 15 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M13.2 7.1c.7.4.7 1.4 0 1.8L2.6 15c-.7.4-1.6-.1-1.6-.9V1.9c0-.8.9-1.3 1.6-.9l10.6 6.1Z" fill="white" />
+                        </svg>
+                    </span>
+                    Listen to the Bachata Machine
+                </a>
             </div>
         </section>
 
+        <section class="guide-after-machine">
+            <div class="container guide-after-grid">
+                <article>
+                    <h2>From Sound To Social Dance</h2>
+                    <p>
+                        Bachata began in the Dominican Republic and grew from intimate guitar music into one of the most
+                        loved social dances in the world. The basic dance structure is approachable: three steps and a
+                        tap, danced to a warm 4/4 rhythm with space for play, connection, and musicality.
+                    </p>
+                    <p>
+                        The magic is that the music feels simple at first and then keeps revealing detail. The güira
+                        gives shimmer, the bongos speak in syncopation, the segunda drives the groove, the bass walks,
+                        and the requinto sings over everything.
+                    </p>
+                </article>
+
+                <aside>
+                    <h3>Styles You Will Meet</h3>
+                    <ul class="style-list">
+                        <li><strong>Dominican Bachata:</strong> footwork, musicality, playful partner conversation.</li>
+                        <li><strong>Bachata Moderna:</strong> turns and figures influenced by salsa and modern partner dance.</li>
+                        <li><strong><a href="guide-bachata-sensual">Bachata Sensual:</a></strong> body movement, connection, and expressive flow.</li>
+                    </ul>
+                </aside>
+            </div>
+
+            <div class="container">
+                <div class="guide-cta-band">
+                    <h3>Want to feel it in your body?</h3>
+                    <p>
+                        Join us in Zurich Altstetten for structured Bachata classes that connect the rhythm, the music,
+                        and the dance floor from day one.
+                    </p>
+                    <a href="schedule" class="btn-primary" style="text-decoration: none;">View Bachata Classes</a>
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer class="main-footer">
@@ -554,7 +1260,56 @@
 
     <script src="script.js?v=2.1"></script>
 
-    
+    <script>
+        (() => {
+            const machine = document.querySelector('.bachata-machine');
+            const panels = Array.from(document.querySelectorAll('.machine-panel'));
+            const lineupItems = Array.from(document.querySelectorAll('.lineup-instrument'));
+
+            if (!machine || panels.length === 0) return;
+
+            const setStep = (step) => {
+                machine.dataset.step = String(step);
+                panels.forEach((panel) => {
+                    panel.classList.toggle('is-active', Number(panel.dataset.machineStep) === step);
+                });
+                lineupItems.forEach((item) => {
+                    item.classList.toggle('is-active', Number(item.dataset.lineupItem) === step);
+                });
+            };
+
+            lineupItems.forEach((item) => {
+                item.addEventListener('click', (event) => {
+                    const targetId = item.getAttribute('href');
+                    const target = targetId ? document.querySelector(targetId) : null;
+
+                    if (!target) return;
+
+                    event.preventDefault();
+                    const step = Number(item.dataset.lineupItem);
+                    setStep(step);
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    history.pushState(null, '', targetId);
+                });
+            });
+
+            const observer = new IntersectionObserver((entries) => {
+                const visible = entries
+                    .filter((entry) => entry.isIntersecting)
+                    .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+                if (visible) {
+                    setStep(Number(visible.target.dataset.machineStep));
+                }
+            }, {
+                threshold: [0.35, 0.5, 0.65],
+                rootMargin: '-18% 0px -22% 0px'
+            });
+
+            panels.forEach((panel) => observer.observe(panel));
+            setStep(0);
+        })();
+    </script>
 
     
     </div>
