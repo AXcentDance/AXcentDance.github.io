@@ -346,40 +346,6 @@
             transform: translateY(0);
         }
 
-        .machine-final {
-            position: relative;
-            z-index: 4;
-            width: min(1180px, calc(100% - 40px));
-            margin: 0 auto;
-            padding: 4rem 0 7rem;
-            text-align: center;
-        }
-
-        .machine-listen {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.75rem;
-            padding: 0.95rem 1.35rem;
-            border: 1px solid rgba(255, 255, 255, 0.16);
-            border-radius: 999px;
-            color: #fff;
-            text-decoration: none;
-            font-weight: 800;
-            letter-spacing: 0.04em;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.03));
-            box-shadow: 0 18px 45px rgba(0, 0, 0, 0.32), inset 0 1px 0 rgba(255, 255, 255, 0.16);
-            pointer-events: auto;
-        }
-
-        .play-mark {
-            display: inline-grid;
-            place-items: center;
-            width: 34px;
-            height: 34px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #0f55c8, #d62942);
-        }
-
         .lineup-sticky {
             position: sticky;
             top: var(--header-height);
@@ -558,20 +524,68 @@
         }
 
         .guide-cta-band {
-            margin-top: 3rem;
-            padding: clamp(1.5rem, 4vw, 2.5rem);
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto;
+            gap: clamp(1.25rem, 3vw, 2rem);
+            align-items: center;
+            margin-top: clamp(2.5rem, 6vw, 4rem);
+            padding: clamp(1.35rem, 3vw, 2.35rem);
             border-radius: 8px;
-            background: #15171d;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            background:
+                radial-gradient(circle at 14% 18%, rgba(15, 85, 200, 0.24), transparent 31%),
+                radial-gradient(circle at 86% 72%, rgba(214, 41, 66, 0.2), transparent 36%),
+                #15171d;
             color: #fff;
+            box-shadow: 0 24px 55px rgba(0, 0, 0, 0.22);
         }
 
         .guide-cta-band h3 {
             color: #fff;
-            margin-top: 0;
+            margin: 0 0 0.45rem;
+            font-size: clamp(1.55rem, 2.6vw, 2.55rem);
+            line-height: 1.05;
+            letter-spacing: 0;
         }
 
         .guide-cta-band p {
-            color: rgba(255, 255, 255, 0.72);
+            max-width: 700px;
+            margin: 0;
+            color: rgba(255, 255, 255, 0.76);
+            line-height: 1.65;
+        }
+
+        .guide-cta-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.65rem;
+            min-width: 205px;
+            min-height: 48px;
+            padding: 0.85rem 1.2rem;
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            border-radius: 999px;
+            background: linear-gradient(135deg, #ff3b30, #ff6b1a);
+            color: #fff;
+            font-weight: 800;
+            letter-spacing: 0.03em;
+            text-decoration: none;
+            white-space: nowrap;
+            box-shadow: 0 14px 34px rgba(255, 59, 48, 0.22);
+            transition: filter 220ms ease, opacity 220ms ease;
+        }
+
+        .guide-cta-button:hover {
+            filter: brightness(1.08);
+        }
+
+        .guide-cta-button:focus-visible {
+            outline: 3px solid rgba(255, 107, 26, 0.45);
+            outline-offset: 3px;
+        }
+
+        .guide-cta-button svg {
+            flex: 0 0 auto;
         }
 
         @media (max-width: 860px) {
@@ -740,6 +754,15 @@
             .guide-after-grid {
                 grid-template-columns: 1fr;
             }
+
+            .guide-cta-band {
+                grid-template-columns: 1fr;
+            }
+
+            .guide-cta-button {
+                width: 100%;
+                max-width: 320px;
+            }
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -777,7 +800,7 @@
             "@id": "https://axcentdance.com/guide-bachata#article",
             "headline": "What is Bachata? Music, Instruments, Dance Styles and Basics",
             "datePublished": "2025-10-01T12:00:00+02:00",
-            "dateModified": "2026-04-27T12:00:00+02:00",
+            "dateModified": "2026-04-28T12:00:00+02:00",
             "author": [
                 {
                     "@id": "https://axcentdance.com/#person1"
@@ -1000,10 +1023,10 @@
         <section class="bachata-machine" data-step="0" aria-labelledby="bachata-machine-title">
             <div class="machine-intro">
                 <span class="machine-kicker">What is Bachata?</span>
-                <h1 class="machine-title" id="bachata-machine-title">What is Bachata? The Bachata Machine</h1>
+                <h1 class="machine-title" id="bachata-machine-title">What is Bachata? Inside the Bachata Sound</h1>
                 <p class="machine-lede">
-                    What is Bachata? It is a conversation between metal, wood, skin, strings, and voice. Keep the band
-                    in view while each instrument drops into the story below.
+                    What is Bachata? It is a conversation between metal, wood, skin, strings, and voice. Follow the five
+                    instruments that create the feeling behind every step.
                 </p>
             </div>
 
@@ -1161,16 +1184,6 @@
                 </article>
             </div>
 
-            <div class="machine-final">
-                <a class="machine-listen" href="schedule">
-                    <span class="play-mark" aria-hidden="true">
-                        <svg width="15" height="16" viewBox="0 0 15 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M13.2 7.1c.7.4.7 1.4 0 1.8L2.6 15c-.7.4-1.6-.1-1.6-.9V1.9c0-.8.9-1.3 1.6-.9l10.6 6.1Z" fill="white" />
-                        </svg>
-                    </span>
-                    Listen to the Bachata Machine
-                </a>
-            </div>
         </section>
 
         <section class="guide-after-machine">
@@ -1201,12 +1214,20 @@
 
             <div class="container">
                 <div class="guide-cta-band">
-                    <h3>Want to feel it in your body?</h3>
-                    <p>
-                        Join us in Zurich Altstetten for structured Bachata classes that connect the rhythm, the music,
-                        and the dance floor from day one.
-                    </p>
-                    <a href="schedule" class="btn-primary" style="text-decoration: none;">View Bachata Classes</a>
+                    <div>
+                        <h3>Ready to hear it in your own steps?</h3>
+                        <p>
+                            Join a structured Bachata class in Zurich Altstetten and connect the rhythm, instruments,
+                            partnerwork, and dance floor from the first lesson.
+                        </p>
+                    </div>
+                    <a href="schedule" class="guide-cta-button" aria-label="View the Bachata class schedule">
+                        View weekly schedule
+                        <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </a>
                 </div>
             </div>
         </section>
