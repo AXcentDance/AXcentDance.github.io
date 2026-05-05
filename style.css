@@ -2511,14 +2511,6 @@ textarea {
     line-height: 1.3;
 }
 
-.class-option-card .topic {
-    color: var(--text-muted);
-    font-size: 0.72rem;
-    line-height: 1.35;
-    margin-top: 0.35rem;
-    max-width: 13rem;
-}
-
 .class-option input:checked~.class-option-card .name {
     color: white;
 }
@@ -2945,13 +2937,6 @@ textarea {
     color: var(--text-main);
 }
 
-.class-topic {
-    color: var(--text-muted);
-    font-size: 0.78rem;
-    line-height: 1.35;
-    margin-top: 0.35rem;
-}
-
 .class-instructor {
     font-size: 0.75rem;
     color: var(--text-muted);
@@ -3295,12 +3280,6 @@ textarea {
     height: 100%;
 }
 
-.compact-card-details {
-    display: flex;
-    flex-direction: column;
-    gap: 0.2rem;
-}
-
 .compact-option input:checked+.compact-card {
     background: rgba(108, 92, 231, 0.15);
     border-color: var(--accent-start);
@@ -3319,12 +3298,6 @@ textarea {
     font-weight: 500;
     color: var(--text-light);
     font-size: 0.95rem;
-}
-
-.compact-topic {
-    color: var(--text-muted);
-    font-size: 0.72rem;
-    line-height: 1.3;
 }
 
 .compact-day {
@@ -4413,13 +4386,6 @@ textarea {
     color: white;
     margin: 0.25rem 0;
     line-height: 1.2;
-}
-
-.class-topic {
-    color: var(--text-muted);
-    font-size: 0.78rem;
-    line-height: 1.35;
-    margin-top: 0.35rem;
 }
 
 .class-instructor {
