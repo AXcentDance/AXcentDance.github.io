@@ -26,7 +26,7 @@
   </url>
   <url>
     <loc>https://axcentdance.com/blog</loc>
-    <lastmod>2026-05-03T12:00:00+02:00</lastmod>
+    <lastmod>2026-05-05T12:00:00+02:00</lastmod>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/blog" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/blog" />
@@ -34,6 +34,10 @@
     <image:image>
       <image:loc>https://axcentdance.com/assets/images/blog/dance-tips-1-title.webp</image:loc>
       <image:title>Frame Technique</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/blog/salsa_bachata_music.webp</image:loc>
+      <image:title>Salsa and Bachata music representing the Swiss Championship dance floor</image:title>
     </image:image>
     <image:image>
       <image:loc>https://axcentdance.com/assets/images/private_lesson_hero.webp</image:loc>
@@ -114,7 +118,7 @@
   </url>
   <url>
     <loc>https://axcentdance.com/de/blog</loc>
-    <lastmod>2026-05-03T12:00:00+02:00</lastmod>
+    <lastmod>2026-05-05T12:00:00+02:00</lastmod>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/blog" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/blog" />
@@ -122,6 +126,10 @@
     <image:image>
       <image:loc>https://axcentdance.com/assets/images/blog/dance-tips-1-title.webp</image:loc>
       <image:title>Rahmen-Technik</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/blog/salsa_bachata_music.webp</image:loc>
+      <image:title>Salsa- und Bachata-Musik als Symbol für die Schweizer Meisterschaft</image:title>
     </image:image>
     <image:image>
       <image:loc>https://axcentdance.com/assets/images/private_lesson_hero.webp</image:loc>
@@ -1113,6 +1121,17 @@
     </image:image>
   </url>
   <url>
+    <loc>https://axcentdance.com/blog-posts/ido-swiss-championship-salsa-bachata-judges-2026</loc>
+    <lastmod>2026-05-05T12:00:00+02:00</lastmod>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/blog-posts/ido-swiss-championship-salsa-bachata-judges-2026" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/blog-posts/ido-swiss-championship-salsa-bachata-judges-2026" />
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/blog/salsa_bachata_music.webp</image:loc>
+      <image:title>Salsa and Bachata dancers representing championship adjudication standards</image:title>
+    </image:image>
+  </url>
+  <url>
     <loc>https://axcentdance.com/blog-posts/science-of-dance-mental-health</loc>
     <lastmod>2026-05-03T12:00:00+02:00</lastmod>
     <priority>0.6</priority>
@@ -1702,6 +1721,16 @@
     <image:image>
       <image:loc>https://axcentdance.com/assets/images/blog/first-week-new-studio.webp</image:loc>
       <image:title>Erste Woche im neuen AXcent Dance Studio</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://axcentdance.com/de/blog-posts/ido-schweizermeisterschaft-salsa-bachata-jury-2026</loc>
+    <lastmod>2026-05-05T12:00:00+02:00</lastmod>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/blog-posts/ido-schweizermeisterschaft-salsa-bachata-jury-2026" />
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/blog/salsa_bachata_music.webp</image:loc>
+      <image:title>Salsa und Bachata als Symbol für Juryarbeit an der Schweizer Meisterschaft</image:title>
     </image:image>
   </url>
 </urlset>
