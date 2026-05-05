@@ -57,9 +57,9 @@
           "position": 1,
           "item": {
             "@type": "Course",
-            "@id": "https://axcentdance.com/course/bachata-beginner-1#course",
-            "name": "Bachata Anfänger 1",
-            "description": "8-Wochen-Grundkurs in Zürich Altstetten.",
+            "@id": "https://axcentdance.com/course/bachata-beginner-2#course",
+            "name": "Bachata Beginner 2",
+            "description": "8-Wochen-Beginner-2-Kurs für Tänzer mit 6 bis 10 Monaten Erfahrung in Zürich Altstetten.",
             "educationalLevel": "Anfänger",
             "provider": { "@id": "https://axcentdance.com/#organization" },
             "url": "https://axcentdance.com/de/registration",
@@ -1017,11 +1017,12 @@
 
                                 <div class="class-option-wrapper">
                                     <label class="class-option">
-                                        <input type="checkbox" name="classes[]" value="Tue 19:30 Beginner 1">
+                                        <input type="checkbox" name="classes[]" value="Tue 19:30 Beginner 2">
                                         <div class="class-option-card">
                                             <span class="time">19:30</span>
                                             <div class="class-details">
-                                                <span class="name">Bachata Anfänger 1</span>
+                                                <span class="name">Bachata Beginner 2</span>
+                                                <span class="topic">Slides, Cambres, Footwork und Hüftbewegungen</span>
 
                                             </div>
                                         </div>
@@ -1536,7 +1537,7 @@
                                 return;
                             }
                             // Map role to class name/value
-                            // Extract class name from value, e.g. "Wed 18:30 Beginner 1"
+                            // Extract class name from value, e.g. "Wed 18:30 Beginner 2"
                             const classVal = checkbox.value;
                             rolesMap[classVal] = roleSelected.value;
                         }

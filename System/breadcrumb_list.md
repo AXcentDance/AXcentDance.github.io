@@ -52,7 +52,7 @@
 | :--- | :--- | :--- |
 
 
-| **Bachata Beginner 1** | `bachata-beginner-1.html` | Home > Schedule > Bachata Beginner 1 |
+| **Bachata Beginner 2** | `bachata-beginner-1.html` | Home > Schedule > Bachata Beginner 2 |
 | **Sensual Foundation** | `bachata-sensual-foundation.html` | Home > Schedule > Bachata Sensual Foundation |
 | **Sensual Improver** | `bachata-sensual-improver.html` | Home > Schedule > Bachata Sensual Improver |
 | **Sensual Inter/Adv** | `bachata-sensual-inter-adv.html` | Home > Schedule > Bachata Sensual Inter/Adv |
