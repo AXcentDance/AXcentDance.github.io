@@ -25,25 +25,6 @@
     <meta property="og:locale" content="de_CH">
     <meta http-equiv="Content-Security-Policy"
         content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://cdn.jsdelivr.net https://connect.facebook.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com https://placehold.co https://*.googleapis.com https://*.gstatic.com https://www.facebook.com https://connect.facebook.net; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://script.google.com https://formsubmit.co https://www.facebook.com https://connect.facebook.net; frame-src 'self' https://www.google.com; object-src 'none'; base-uri 'self'; media-src 'self' blob:; worker-src 'self' blob:;">
-    <!-- Meta Pixel Code -->
-    <script>
-        !function (f, b, e, v, n, t, s) {
-            if (f.fbq) return; n = f.fbq = function () {
-                n.callMethod ?
-                    n.callMethod.apply(n, arguments) : n.queue.push(arguments)
-            };
-            if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
-            n.queue = []; t = b.createElement(e); t.async = !0;
-            t.src = v; s = b.getElementsByTagName(e)[0];
-            s.parentNode.insertBefore(t, s)
-        }(window, document, 'script',
-            'https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', '1427661435456369');
-        fbq('track', 'PageView');
-    </script>
-    <noscript><img height="1" width="1" style="display:none"
-            src="https://www.facebook.com/tr?id=1427661435456369&ev=PageView&noscript=1" /></noscript>
-    <!-- End Meta Pixel Code -->
 
     <link rel="stylesheet" href="../style.css?v=2.3">
     <link rel="apple-touch-icon" href="/apple-touch-icon-v2.png">
@@ -117,7 +98,7 @@
             "offers": {
                 "@type": "Offer",
                 "url": "https://lasalsadelbaile.com/MSC2026/AleyXidan",
-                "price": "115",
+                "price": "120",
                 "priceCurrency": "EUR",
                 "availability": "https://schema.org/InStock",
                 "validFrom": "2025-01-01",
@@ -125,7 +106,7 @@
                     {
                         "@type": "UnitPriceSpecification",
                         "name": "Early-Bird Pass",
-                        "price": "115",
+                        "price": "120",
                         "priceCurrency": "EUR",
                         "validThrough": "2026-07-01T23:59:59"
                     },
@@ -135,6 +116,13 @@
                         "price": "140",
                         "priceCurrency": "EUR",
                         "validFrom": "2026-07-02T00:00:00"
+                    },
+                    {
+                        "@type": "UnitPriceSpecification",
+                        "name": "Advanced Masterclass Add-on",
+                        "description": "Masterclasses für fortgeschrittene Tänzer mit Gero y Migle, Klau y Ros und Cristian y Gabriella. Ein vollständiges Kongressticket ist erforderlich.",
+                        "price": "59",
+                        "priceCurrency": "EUR"
                     }
                 ]
             },
@@ -453,8 +441,26 @@
         gtag('config', 'G-E2SYCF7R7X');
     </script>
 
-
-
+  <!-- Meta Pixel Code -->
+  <script>
+    !function (f, b, e, v, n, t, s) {
+      if (f.fbq) return; n = f.fbq = function () {
+        n.callMethod ?
+          n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+      };
+      if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+      n.queue = []; t = b.createElement(e); t.async = !0;
+      t.src = v; s = b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t, s)
+    }(window, document, 'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1427661435456369');
+    fbq('track', 'PageView');
+    console.log('Meta Pixel PageView fired');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=1427661435456369&ev=PageView&noscript=1" /></noscript>
+  <!-- End Meta Pixel Code -->
   </head>
 
 <body>
@@ -551,7 +557,8 @@
                         David y Ines, Irene y Tomas und Aitor Gomez.
                     </p>
                     <p class="event-description" style="margin-top: -1rem;">
-                        Verpasse nicht die <strong>3 Stunden Masterclass</strong> mit den Hauptkünstlern und den
+                        Fortgeschrittene Tänzer können die <strong>Masterclasses mit Gero y Migle, Klau y Ros und Cristian y Gabriella</strong> für <strong>59 €</strong> dazubuchen.
+                        Ein vollständiges Kongressticket ist erforderlich. Verpasse auch nicht den
                         <strong>International Jack & Jill</strong> Wettbewerb mit Teilnehmern aus ganz Europa!
                     </p>
 
@@ -567,6 +574,14 @@
                         <div class="detail-item">
                             <div class="detail-label">Datum</div>
                             <div class="detail-value">Nov 20-21-22, 2026</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">Preis</div>
+                            <div class="detail-value">120 €</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">Masterclasses</div>
+                            <div class="detail-value">Fortgeschritten • 59 € Zusatz</div>
                         </div>
                         <div class="detail-item">
                             <div class="detail-label">Rabatt-Code</div>
