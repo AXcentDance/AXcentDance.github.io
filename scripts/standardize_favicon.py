@@ -24,7 +24,7 @@ def standardize_favicon(filepath):
         pass
 
     # 2. Update Favicon
-    # Expected: <link rel="icon" href="/favicon-axcent-2026.png" type="image/png" sizes="512x512">
+    # Expected: <link rel="icon" href="/favicon-axcent-transparent.svg" type="image/svg+xml">
     # Variations: rel="shortcut icon", rel="icon", differenthrefs.
     
     # regex for any icon link
@@ -32,7 +32,7 @@ def standardize_favicon(filepath):
     
     icon_pattern = re.compile(r'<link\s+rel=["\'](?:shortcut\s+)?icon["\']\s+href=["\']([^"\']+)["\'](?:\s+type=["\'][^"\']+["\'])?\s*>', re.IGNORECASE)
     
-    expected_icon = '<link rel="icon" href="/favicon-axcent-2026.png" type="image/png" sizes="512x512">'
+    expected_icon = '<link rel="icon" href="/favicon-axcent-transparent.svg" type="image/svg+xml">'
     
     # Check if we have one
     match = icon_pattern.search(content)
