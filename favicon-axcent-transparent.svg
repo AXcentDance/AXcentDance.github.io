@@ -1,24 +1,23 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title">
   <title>AXcent Dance favicon</title>
   <defs>
-    <linearGradient id="axcent-gradient" x1="68" y1="256" x2="444" y2="256" gradientUnits="userSpaceOnUse">
+    <linearGradient id="axcent-gradient" x1="8" y1="64" x2="120" y2="64" gradientUnits="userSpaceOnUse">
       <stop offset="0" stop-color="#ff3b30"/>
       <stop offset="1" stop-color="#ff7a1a"/>
     </linearGradient>
-    <filter id="soft-shadow" x="-12%" y="-12%" width="124%" height="124%">
-      <feDropShadow dx="0" dy="14" stdDeviation="18" flood-color="#050208" flood-opacity=".38"/>
-    </filter>
   </defs>
-  <g filter="url(#soft-shadow)">
-    <text x="256" y="330"
-      text-anchor="middle"
-      font-family="Arial Black, Arial, Helvetica, sans-serif"
-      font-size="268"
-      font-weight="900"
-      letter-spacing="-22"
-      fill="url(#axcent-gradient)"
-      stroke="#ffe7c6"
-      stroke-width="12"
-      paint-order="stroke fill">AX</text>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <g stroke="#ffe7c6" stroke-width="27">
+      <path d="M9 112 L31 18 L55 112"/>
+      <path d="M20 75 H44"/>
+      <path d="M69 20 L119 110"/>
+      <path d="M119 20 L69 110"/>
+    </g>
+    <g stroke="url(#axcent-gradient)" stroke-width="18">
+      <path d="M9 112 L31 18 L55 112"/>
+      <path d="M20 75 H44"/>
+      <path d="M69 20 L119 110"/>
+      <path d="M119 20 L69 110"/>
+    </g>
   </g>
 </svg>
