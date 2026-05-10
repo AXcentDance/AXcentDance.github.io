@@ -270,25 +270,9 @@
   ]
 }
 </script>
-
   <!-- Meta Pixel Code -->
-  <script>
-    !function (f, b, e, v, n, t, s) {
-      if (f.fbq) return; n = f.fbq = function () {
-        n.callMethod ?
-          n.callMethod.apply(n, arguments) : n.queue.push(arguments)
-      };
-      if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
-      n.queue = []; t = b.createElement(e); t.async = !0;
-      t.src = v; s = b.getElementsByTagName(e)[0];
-      s.parentNode.insertBefore(t, s)
-    }(window, document, 'script',
-      'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '2846140112392262');
-    fbq('track', 'PageView');
-    console.log('Meta Pixel PageView fired');
-  </script>
-  <noscript><img height="1" width="1" style="display:none"
+  <script src="meta-pixel.js?v=1.0"></script>
+  <noscript><img height="1" width="1" style="display:none" alt=""
       src="https://www.facebook.com/tr?id=2846140112392262&ev=PageView&noscript=1" /></noscript>
   <!-- End Meta Pixel Code -->
   </head>
@@ -403,6 +387,26 @@
         <!-- Blog Grid -->
         <section class="blog-container" style="padding-top: 0;">
             <div class="blog-grid-modern">
+                <!-- Teacher Collaboration Post -->
+                <article class="modern-card reveal" data-category="wellness">
+                    <div class="card-image-wrap">
+                        <span class="card-category">Studio</span>
+                        <img src="assets/images/blog/discover/rent-space-zurich-1200x675.webp"
+                            alt="AXcent Dance studio space for yoga, Pilates, fitness, Reggaeton and Afro teachers in Zurich" width="1200" height="675"
+                            loading="lazy" class="card-image">
+                    </div>
+                    <div class="card-body">
+                        <div class="card-date">May 10, 2026</div>
+                        <h2 class="card-title">Teach Yoga, Salsa or Pilates in Zurich</h2>
+                        <p class="card-desc">
+                            Do you teach Yoga, Pilates, Salsa, Kizomba, Reggaeton, Afro, fitness or another solo class?
+                            AXcent Dance is open to serious, people-first instructors in Zurich.
+                        </p>
+                        <a href="blog-posts/teach-yoga-pilates-reggaeton-zurich" class="card-link">
+                            Read Article <span style="font-size: 1.2em;">→</span>
+                        </a>
+                    </div>
+                </article>
                 <!-- IDO Swiss Championship Student Podium -->
                 <article class="modern-card reveal" data-category="community">
                     <div class="card-image-wrap">
@@ -622,7 +626,7 @@
                         <div class="card-date">Feb 4, 2026</div>
                         <h2 class="card-title">Sensation Night Congress 2026: Join Us & The Stars!</h2>
                         <p class="card-desc">
-                            Join Ale & Xidan at Sensation Night Congress 2026! We're teaching alongside world-class
+                            Join Ale & Xidan at Sensation Night Congress 2026! We are teaching alongside world-class
                             artists like Korke & Judith.
                         </p>
                         <a href="blog-posts/sensation-night-congress-2026" class="card-link">

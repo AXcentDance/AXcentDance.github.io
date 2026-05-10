@@ -271,25 +271,9 @@
   ]
 }
 </script>
-
   <!-- Meta Pixel Code -->
-  <script>
-    !function (f, b, e, v, n, t, s) {
-      if (f.fbq) return; n = f.fbq = function () {
-        n.callMethod ?
-          n.callMethod.apply(n, arguments) : n.queue.push(arguments)
-      };
-      if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
-      n.queue = []; t = b.createElement(e); t.async = !0;
-      t.src = v; s = b.getElementsByTagName(e)[0];
-      s.parentNode.insertBefore(t, s)
-    }(window, document, 'script',
-      'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '2846140112392262');
-    fbq('track', 'PageView');
-    console.log('Meta Pixel PageView fired');
-  </script>
-  <noscript><img height="1" width="1" style="display:none"
+  <script src="../meta-pixel.js?v=1.0"></script>
+  <noscript><img height="1" width="1" style="display:none" alt=""
       src="https://www.facebook.com/tr?id=2846140112392262&ev=PageView&noscript=1" /></noscript>
   <!-- End Meta Pixel Code -->
   </head>
@@ -404,6 +388,26 @@
         <!-- Blog Grid -->
         <section class="blog-container" style="padding-top: 0;">
             <div class="blog-grid-modern">
+                <!-- Teacher Collaboration Post -->
+                <article class="modern-card reveal" data-category="wellness">
+                    <div class="card-image-wrap">
+                        <span class="card-category">Studio</span>
+                        <img src="../assets/images/blog/discover/rent-space-zurich-1200x675.webp"
+                            alt="AXcent Dance Studio für Yoga, Pilates, Fitness, Reggaeton und Afro Lehrpersonen in Zürich" width="1200" height="675"
+                            loading="lazy" class="card-image">
+                    </div>
+                    <div class="card-body">
+                        <div class="card-date">10. Mai 2026</div>
+                        <h2 class="card-title">Yoga, Salsa oder Pilates in Zürich unterrichten</h2>
+                        <p class="card-desc">
+                            Unterrichten Sie Yoga, Pilates, Salsa, Kizomba, Reggaeton, Afro, Fitness oder andere
+                            Solo-Kurse? AXcent Dance ist offen für sorgfältig ausgewählte Lehrpersonen.
+                        </p>
+                        <a href="blog-posts/teach-yoga-pilates-reggaeton-zurich" class="card-link">
+                            Artikel lesen <span style="font-size: 1.2em;">→</span>
+                        </a>
+                    </div>
+                </article>
                 <!-- IDO Schweizermeisterschaft Schüler-Podestplatz -->
                 <article class="modern-card reveal" data-category="community">
                     <div class="card-image-wrap">

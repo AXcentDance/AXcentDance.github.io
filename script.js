@@ -320,9 +320,20 @@ info@axcentdance.com`,
                         console.error('FormSubmit Network Error:', formSubmitResult.reason);
                     }
 
-                    // Store data for Meta Pixel Advanced Matching on the thank-you page
-                    if (data.email) sessionStorage.setItem('lead_email', data.email);
-                    if (data.phone) sessionStorage.setItem('lead_phone', data.phone);
+                    const googleSubmitted = results[0].status === 'fulfilled';
+                    const formSubmitSubmitted = formSubmitResult.status === 'fulfilled' && formSubmitResult.value.ok;
+
+                    if (!googleSubmitted && !formSubmitSubmitted) {
+                        throw new Error('Trial signup services did not confirm submission.');
+                    }
+
+                    try {
+                        if (data.email) sessionStorage.setItem('lead_email', data.email);
+                        if (data.phone) sessionStorage.setItem('lead_phone', data.phone);
+                        sessionStorage.setItem('axcent_trial_signup_success', '1');
+                    } catch (storageError) {
+                        console.error('Storage Error:', storageError);
+                    }
 
                     // Give a moment to see logs before redirect (optional, or just redirect)
                     window.location.href = 'thank-you-trial.html';
@@ -617,6 +628,5 @@ info@axcentdance.com`,
         updateScannerOpacity();
     }
 });
-
 
 
