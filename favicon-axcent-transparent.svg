@@ -9,7 +9,7 @@
       <feDropShadow dx="0" dy="14" stdDeviation="18" flood-color="#050208" flood-opacity=".38"/>
     </filter>
   </defs>
-  <g filter="url(#soft-shadow)">
+  <g filter="url(#soft-shadow)" transform="translate(256 256) scale(1.08 1.03) translate(-256 -256)">
     <text x="256" y="330"
       text-anchor="middle"
       font-family="Arial Black, Arial, Helvetica, sans-serif"
