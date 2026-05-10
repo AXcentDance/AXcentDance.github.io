@@ -314,8 +314,8 @@
       <!-- 1. Hero Content -->
       <!-- Mobile Hero Top: Video + Overlays (50/50 Split) -->
       <div class="mobile-only mobile-video-wrapper">
-        <video id="hero-video-mobile" autoplay muted loop playsinline class="hero-video-mobile" poster="../assets/images/hero-poster.webp">
-          <source src="../assets/videos/HeroVideo_mobile.mp4" type="video/mp4">
+        <video id="hero-video-mobile" autoplay muted loop playsinline webkit-playsinline preload="auto" class="hero-video-mobile" poster="../assets/images/hero-poster.webp">
+          <source src="../assets/videos/HeroVideo_mobile.mp4" type="video/mp4" media="(max-width: 767px)">
         </video>
         
         <!-- Top Overlay: Badge -->
@@ -341,26 +341,64 @@
         <source src="../assets/videos/HeroVideo_mobile.mp4" type="video/mp4">
       </video>
 
-      <!-- HLS.js Integration (Desktop Only) -->
+      <!-- Hero video autoplay -->
       <script>
         document.addEventListener('DOMContentLoaded', () => {
-          const video = document.getElementById('hero-video');
-          if (!video || window.innerWidth < 768) return;
+          const mobileVideo = document.getElementById('hero-video-mobile');
+          const desktopVideo = document.getElementById('hero-video');
           
-          const videoSrc = '../assets/videos/hls/playlist.m3u8';
-          function attemptPlay() {
+          function prepareAutoplay(video) {
+            if (!video) return;
             video.muted = true;
-            video.play().catch(e => console.log("Autoplay prevented"));
+            video.defaultMuted = true;
+            video.playsInline = true;
+            video.setAttribute('autoplay', '');
+            video.setAttribute('muted', '');
+            video.setAttribute('playsinline', '');
+            video.setAttribute('webkit-playsinline', '');
+            video.removeAttribute('controls');
+          }
+
+          function attemptPlay(video) {
+            if (!video) return;
+            prepareAutoplay(video);
+            const playPromise = video.play();
+            if (playPromise && typeof playPromise.catch === 'function') {
+              playPromise.catch(() => {});
+            }
+          }
+
+          if (mobileVideo) {
+            prepareAutoplay(mobileVideo);
+            mobileVideo.addEventListener('loadedmetadata', () => attemptPlay(mobileVideo), { once: true });
+            mobileVideo.addEventListener('canplay', () => attemptPlay(mobileVideo), { once: true });
+
+            if (window.innerWidth < 768) {
+              requestAnimationFrame(() => attemptPlay(mobileVideo));
+              window.addEventListener('pageshow', () => attemptPlay(mobileVideo));
+              document.addEventListener('visibilitychange', () => {
+                if (!document.hidden) attemptPlay(mobileVideo);
+              });
+            }
+          }
+
+          if (!desktopVideo || window.innerWidth < 768) return;
+
+          const videoSrc = '../assets/videos/hls/playlist.m3u8';
+          function attemptDesktopPlay() {
+            attemptPlay(desktopVideo);
           }
 
           if (typeof Hls !== 'undefined' && Hls.isSupported()) {
             const hls = new Hls({ capLevelToPlayerSize: true });
             hls.loadSource(videoSrc);
-            hls.attachMedia(video);
-            hls.on(Hls.Events.MANIFEST_PARSED, attemptPlay);
-          } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-            video.src = videoSrc;
-            video.addEventListener('loadedmetadata', attemptPlay);
+            hls.attachMedia(desktopVideo);
+            hls.on(Hls.Events.MANIFEST_PARSED, attemptDesktopPlay);
+          } else if (desktopVideo.canPlayType('application/vnd.apple.mpegurl')) {
+            desktopVideo.src = videoSrc;
+            desktopVideo.addEventListener('loadedmetadata', attemptDesktopPlay);
+          } else {
+            attemptDesktopPlay();
           }
         });
       </script>
