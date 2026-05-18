@@ -66,6 +66,7 @@
         "category": "Educational Program"
       },
       "hasCourse": [
+        { "@id": "https://axcentdance.com/course/bachata-beginner-1#course" },
         { "@id": "https://axcentdance.com/course/bachata-beginner-2#course" },
         { "@id": "https://axcentdance.com/course/bachata-sensual-foundation#course" },
         { "@id": "https://axcentdance.com/course/bachata-sensual-improver#course" },
@@ -80,8 +81,55 @@
       "itemListElement": [
         {
           "@type": "Course",
-          "@id": "https://axcentdance.com/course/bachata-beginner-2#course",
+          "@id": "https://axcentdance.com/course/bachata-beginner-1#course",
           "position": 1,
+          "name": "Bachata Beginner 1",
+          "description": "Learn the foundations of dance in this introductory course. No previous experience required.",
+          "educationalLevel": "Absolute Beginner, ~ 0-4 months",
+          "timeRequired": "P8W",
+          "provider": {
+            "@id": "https://axcentdance.com/#organization"
+          },
+          "url": "https://axcentdance.com/schedule",
+          "offers": [
+            {
+              "@type": "Offer",
+              "name": "Regular Pass",
+              "price": "200.00",
+              "priceCurrency": "CHF",
+              "description": "8-week course pass"
+            },
+            {
+              "@type": "Offer",
+              "name": "Student Pass",
+              "price": "170.00",
+              "priceCurrency": "CHF",
+              "description": "8-week course pass for students"
+            }
+          ],
+          "hasCourseInstance": {
+            "@type": "CourseInstance",
+            "courseMode": "Physical",
+            "location": {
+              "@id": "https://axcentdance.com/#organization"
+            },
+            "instructor": {
+              "@type": "Person",
+              "name": "Alessandro Slamitz"
+            },
+            "courseSchedule": {
+              "@type": "Schedule",
+              "repeatFrequency": "Weekly",
+              "byDay": "https://schema.org/Tuesday",
+              "startTime": "18:30",
+              "endTime": "19:30"
+            }
+          }
+        },
+        {
+          "@type": "Course",
+          "@id": "https://axcentdance.com/course/bachata-beginner-2#course",
+          "position": 2,
           "name": "Bachata Beginner 2",
           "description": "Build slides, cambres, footwork, hip movement, and preparation for Sensual Foundation for dancers with around 4-8 months of experience.",
           "educationalLevel": "Beginner, ~ 4-8 months",
@@ -128,7 +176,7 @@
         {
           "@type": "Course",
           "@id": "https://axcentdance.com/course/bachata-sensual-foundation#course",
-          "position": 2,
+          "position": 3,
           "name": "Bachata Sensual Foundation",
           "description": "Learn the technique and body movement of the Bachata Sensual style for dancers with around 1-1.5 years of experience.",
           "educationalLevel": "Beginner/Intermediate, ~ 1-1.5 years",
@@ -175,7 +223,7 @@
         {
           "@type": "Course",
           "@id": "https://axcentdance.com/course/bachata-sensual-improver#course",
-          "position": 3,
+          "position": 4,
           "name": "Bachata Sensual Improver",
           "description": "Refine your skills with complex movements and musicality for dancers with around 2 years of experience.",
           "educationalLevel": "Intermediate, ~ 2 years",
@@ -222,7 +270,7 @@
         {
           "@type": "Course",
           "@id": "https://axcentdance.com/course/bachata-sensual-inter-adv#course",
-          "position": 4,
+          "position": 5,
           "name": "Bachata Sensual Intermediate/Advanced",
           "description": "Complex figures and advanced technique for dancers with 2+ years and Improver experience.",
           "educationalLevel": "Advanced, 2+ years + Improver",
@@ -269,7 +317,7 @@
         {
           "@type": "Course",
           "@id": "https://axcentdance.com/course/lady-styling#course",
-          "position": 5,
+          "position": 6,
           "name": "Bachata Lady Styling",
           "description": "Arm styling, body movement, and footwork for followers with around 1 year of dance experience.",
           "educationalLevel": "Open Level, ~ 1 year",
@@ -905,7 +953,7 @@
                             <span class="level-tag tag-beginner">Bachata</span>
                             <span class="badge-full">Full</span>
                             <h3 class="class-name">Bachata Beginner 1</h3>
-                            <p class="class-experience">~ 3-4 months of experience</p>
+                            <p class="class-experience">Absolute Beginners / Foundations</p>
                         </a>
 
                         <!-- Wed Class (Empty) -->
@@ -920,7 +968,7 @@
                         <div class="time-slot">19:30</div>
 
                         <!-- Tue Class -->
-                        <a href="bachata-beginner-1" class="class-card">
+                        <a href="bachata-beginner-2" class="class-card">
                             <span class="level-tag tag-beginner">Bachata</span>
                             <h3 class="class-name">Bachata Beginner 2</h3>
                             <p class="class-experience">~ 4-8 months of experience</p>
@@ -976,9 +1024,9 @@
                                 <div class="mobile-time">18:30</div>
                                 <span class="badge-full">Full</span>
                                 <h3 class="class-name">Bachata Beginner 1</h3>
-                                <p class="class-experience">~ 3-4 months of experience</p>
+                                <p class="class-experience">Absolute Beginners / Foundations</p>
                             </a>
-                            <a href="bachata-beginner-1" class="class-card">
+                            <a href="bachata-beginner-2" class="class-card">
                                 <div class="mobile-time">19:30</div>
                                 <h3 class="class-name">Bachata Beginner 2</h3>
                                 <p class="class-experience">~ 4-8 months of experience</p>
