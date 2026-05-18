@@ -10,7 +10,7 @@ This file tracks the Title Tags and Meta Descriptions for all pages on the AXcen
 | **Home** | `index.html` | Bachata Classes in Zurich \| Free Trial Class \| AXcent Dance | Join 200+ dancers in our Bachata classes in Zurich. International instructors, all levels from beginner to advanced. No partner needed. Book your free trial class today! |
 | **About Us** | `about.html` | About AXcent Dance Zurich - Our Story & Team | Meet the team behind AXcent Dance in Zurich. Learn about our philosophy, our instructors Ale and Xidan, and our passion for teaching Bachata Sensual & Dominican. |
 | **Contact** | `contact.html` | Contact AXcent Dance Studio Zurich Altstetten | Get in touch with the top Bachata school in Zurich. Visit our studio in Altstetten, check opening hours, and contact us for inquiries about dance classes and events. |
-| **Schedule** | `schedule.html` | Bachata Class Schedule Zurich \| AXcent Dance | Check this week's Bachata class schedule in Zurich Altstetten. 5 levels, Mon–Thu evenings. No partner needed. Find the perfect class for your level. |
+| **Schedule** | `schedule.html` | Bachata Class Schedule Zurich \| AXcent Dance | Check Bachata class times in Zurich Altstetten with experience guidance for each level: Beginner 2, Sensual Foundation, Improver, Lady Style, and Int/Adv. |
 | **Registration** | `registration.html` | Register for Classes | AXcent Dance Zurich Altstetten | Register for Bachata classes in Zurich Altstetten with AXcent Dance. Choose your package and join the community. |
 
 ## Services
@@ -48,11 +48,11 @@ This file tracks the Title Tags and Meta Descriptions for all pages on the AXcen
 ## Classes
 | Page | File | Title Tag | Meta Description |
 | :--- | :--- | :--- | :--- |
-| **Bachata Beginner 2** | `bachata-beginner-1.html` | Bachata Beginner 2 Course Zurich \| Sensual Prep Skills | Build slides, cambres, footwork, and hip movement in our Bachata Beginner 2 course in Zurich for dancers with 6 to 10 months experience. |
-| **Sensual Foundation** | `bachata-sensual-foundation.html` | Bachata Sensual Foundation Classes Zurich | AXcent Dance | detailed foundation course for Bachata Sensual. Learn body waves, isolations, and connection. |
-| **Sensual Improver** | `bachata-sensual-improver.html` | Bachata Sensual Improver | AXcent Dance Zurich | Improve your flow and complex figures. For dancers with a solid foundation. |
-| **Sensual Inter/Adv** | `bachata-sensual-inter-adv.html` | Bachata Sensual Inter/Adv | AXcent Dance Zurich | Advanced combinations and musicality for experienced dancers. Challenge yourself. |
-| **Lady Styling** | `lady-styling.html` | Bachata Lady Styling Classes Zurich | AXcent Dance | Focus on your elegance, arm styling, and body movement. Classes designated for followers. |
+| **Bachata Beginner 2** | `bachata-beginner-1.html` | Bachata Beginner 2 Course Zurich \| Sensual Prep Skills | Build slides, cambres, footwork, and hip movement in our Bachata Beginner 2 course in Zurich for dancers with around 4-8 months of experience. |
+| **Sensual Foundation** | `bachata-sensual-foundation.html` | Bachata Sensual Foundation Classes Zurich | AXcent Dance | Master Bachata Sensual foundations in Zurich. Learn body movement, isolation, and safe connection for dancers with around 1-1.5 years of experience. |
+| **Sensual Improver** | `bachata-sensual-improver.html` | Bachata Sensual Improver | AXcent Dance Zurich | Refine Bachata Sensual in Zurich with musicality, smoother connection, and complex movement for dancers with around 2 years of experience. |
+| **Sensual Inter/Adv** | `bachata-sensual-inter-adv.html` | Bachata Sensual Inter/Adv | AXcent Dance Zurich | Challenge yourself in Bachata Sensual Intermediate/Advanced in Zurich with advanced technique for dancers with 2+ years and Improver experience. |
+| **Lady Styling** | `lady-styling.html` | Bachata Lady Styling Classes Zurich | AXcent Dance | Express yourself with Bachata Lady Styling in Zurich. Improve arms, body movement, and confidence with around 1 year of dance experience. |
 
 ## Legal
 | Page | File | Title Tag | Meta Description |

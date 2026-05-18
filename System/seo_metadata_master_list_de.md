@@ -8,7 +8,7 @@ This file tracks the Title Tags and Meta Descriptions for all German pages on th
 | **Home** | `index.html` | Bachata Tanzkurs Zürich \| Gratis Probelektion \| AXcent Dance | Werde Teil von 200+ Tänzern in den besten Bachata Kursen in Zürich. Lerne Bachata mit Top-Lehrern, vom Anfänger bis Fortgeschritten. Kein Partner nötig. Jetzt gratis Probelektion buchen! |
 | **Über uns** | `about.html` | Unser Team & Philosophie \| Die besten Tanzlehrer in Zürich | Triff das Team hinter AXcent Dance in Zürich. Lerne unsere Philosophie, unsere Instruktoren Ale und Xidan sowie unsere Leidenschaft für Bachata Sensual & Dominican kennen. |
 | **Kontakt** | `contact.html` | Kontakt AXcent Dance - Deine Tanzschule in Zürich Altstetten | Besuche unser Bachata Studio in Zürich Altstetten. Kontaktiere uns für Infos zu Tanzkursen, Events und Probelektionen in der besten Tanzschule Zürichs. |
-| **Stundenplan** | `schedule.html` | Bachata Kurse in Zürich — Stundenplan dieser Woche \| AXcent Dance | Unser aktueller Bachata Stundenplan in Zürich. 5 Niveaus, Di–Do Abend. Kein Partner nötig. Finde den passenden Bachata Kurs für dein Niveau – von Anfänger bis Intermediate. |
+| **Stundenplan** | `schedule.html` | Bachata Kurse in Zürich — Stundenplan dieser Woche \| AXcent Dance | Bachata Stundenplan in Zürich Altstetten mit Erfahrungsangaben pro Niveau: Beginner 2, Sensual Foundation, Improver, Lady Style und Int/Adv. |
 | **Anmeldung** | `registration.html` | Anmeldung Bachata Kurs Zürich \| AXcent Dance | Melde dich jetzt für deinen Bachata Tanzkurs in Zürich an. Werde Teil der AXcent Dance Community und lerne Bachata in Altstetten. |
 | **Warenkorb** | `cart.html` | Warenkorb \| AXcent Dance Zürich | Schliesse deine Anmeldung für Tanzkurse bei AXcent Dance Zürich ab. Sicherer Checkout. |
 
@@ -17,11 +17,11 @@ This file tracks the Title Tags and Meta Descriptions for all German pages on th
 | :--- | :--- | :--- | :--- |
 
 
-| **Bachata Beginner 2** | `bachata-beginner-1.html` | Bachata Beginner 2 Kurs Zürich \| Sensual Vorbereitung | Lerne Slides, Cambres, Footwork und Hüftbewegungen im Bachata Beginner 2 Kurs in Zürich. Ideal für Tänzer mit 6 bis 10 Monaten Erfahrung. |
-| **Sensual Foundation** | `bachata-sensual-foundation.html` | Bachata Sensual Foundation Kurse Zürich \| AXcent Dance | Meistere die Grundlagen von Bachata Sensual in Zürich. Lerne Körperbewegung, Isolation und Verbindungstechniken. |
-| **Sensual Improver** | `bachata-sensual-improver.html` | Bachata Sensual Improver \| AXcent Dance Zürich | Verfeinere deine Bachata Sensual Fähigkeiten in Zürich. Fokus auf komplexe Bewegungen, Musikalität und geschmeidiges Führen/Folgen. |
-| **Sensual Inter/Adv** | `bachata-sensual-inter-adv.html` | Bachata Sensual Mittelstufe/Fortgeschritten \| AXcent Dance Zürich | Fordere dich heraus mit Bachata Sensual Mittelstufe/Fortgeschritten in Zürich. Komplexe Figuren, Musikalität und fortgeschrittene Technik. |
-| **Lady Styling** | `lady-styling.html` | Bachata Lady Styling Kurse Zürich \| AXcent Dance | Entfalte dich mit Bachata Lady Styling in Zürich. Verbessere dein Arm-Styling, deine Körperbewegung und dein Selbstvertrauen. |
+| **Bachata Beginner 2** | `bachata-beginner-1.html` | Bachata Beginner 2 Kurs Zürich \| Sensual Vorbereitung | Lerne Slides, Cambres, Footwork und Hüftbewegungen im Bachata Beginner 2 Kurs in Zürich. Ideal für Tänzer mit ca. 4-8 Monaten Erfahrung. |
+| **Sensual Foundation** | `bachata-sensual-foundation.html` | Bachata Sensual Foundation Kurse Zürich \| AXcent Dance | Meistere Bachata Sensual Grundlagen in Zürich. Lerne Bewegung, Isolation und Verbindung für Tänzer mit ca. 1-1,5 Jahren Erfahrung. |
+| **Sensual Improver** | `bachata-sensual-improver.html` | Bachata Sensual Improver \| AXcent Dance Zürich | Verfeinere Bachata Sensual in Zürich mit Musikalität, Verbindung und komplexer Bewegung. Für Tänzer mit ca. 2 Jahren Erfahrung. |
+| **Sensual Inter/Adv** | `bachata-sensual-inter-adv.html` | Bachata Sensual Mittelstufe/Fortgeschritten \| AXcent Dance Zürich | Fordere dich im Bachata Sensual Mittelstufe/Fortgeschritten Kurs in Zürich heraus. Für Tänzer mit 2+ Jahren und Improver Erfahrung. |
+| **Lady Styling** | `lady-styling.html` | Bachata Lady Styling Kurse Zürich \| AXcent Dance | Entfalte dich mit Bachata Lady Styling in Zürich. Verbessere Arme, Körperbewegung und Selbstvertrauen mit ca. 1 Jahr Tanzerfahrung. |
 
 ## Services
 | Page | File | Title Tag | Meta Description |
