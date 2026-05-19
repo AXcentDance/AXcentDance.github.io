@@ -293,38 +293,49 @@ info@axcentdance.com`,
                 class: data.selected_class
             };
 
-            const p1 = fetch(scriptURL, {
-                method: 'POST',
-                body: JSON.stringify(data),
-                mode: 'no-cors'
+            const timeout = (ms, label) => new Promise((_, reject) => {
+                setTimeout(() => reject(new Error(`${label} timeout`)), ms);
             });
 
-            const p2 = fetch(formSubmitURL, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: JSON.stringify(formSubmitData)
-            });
+            const googleSheetsPromise = Promise.race([
+                fetch(scriptURL, {
+                    method: 'POST',
+                    body: JSON.stringify(data),
+                    mode: 'no-cors'
+                }),
+                timeout(5000, 'Google Sheets submission')
+            ]);
 
-            Promise.allSettled([p1, p2])
+            const formSubmitPromise = Promise.race([
+                fetch(formSubmitURL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify(formSubmitData)
+                }),
+                timeout(3000, 'FormSubmit email submission')
+            ]);
+
+            Promise.allSettled([googleSheetsPromise, formSubmitPromise])
                 .then((results) => {
+                    const googleSheetsResult = results[0];
                     const formSubmitResult = results[1];
-                    if (formSubmitResult.status === 'fulfilled') {
-                        console.log('FormSubmit status:', formSubmitResult.value.status);
-                        if (!formSubmitResult.value.ok) {
-                            alert('Warning: FormSubmit email service returned an error. Please check the console.');
-                        }
+
+                    if (googleSheetsResult.status === 'fulfilled') {
+                        console.log('Trial Google Sheets submission completed or accepted as background request.');
                     } else {
-                        console.error('FormSubmit Network Error:', formSubmitResult.reason);
+                        console.error('Trial Google Sheets submission issue:', googleSheetsResult.reason);
                     }
 
-                    const googleSubmitted = results[0].status === 'fulfilled';
-                    const formSubmitSubmitted = formSubmitResult.status === 'fulfilled' && formSubmitResult.value.ok;
-
-                    if (!googleSubmitted && !formSubmitSubmitted) {
-                        throw new Error('Trial signup services did not confirm submission.');
+                    if (formSubmitResult.status === 'fulfilled') {
+                        console.log('Trial FormSubmit status:', formSubmitResult.value.status);
+                        if (!formSubmitResult.value.ok) {
+                            console.error('Trial FormSubmit returned an error status:', formSubmitResult.value.status);
+                        }
+                    } else {
+                        console.error('Trial FormSubmit submission issue:', formSubmitResult.reason);
                     }
 
                     try {
@@ -335,19 +346,7 @@ info@axcentdance.com`,
                         console.error('Storage Error:', storageError);
                     }
 
-                    // Give a moment to see logs before redirect (optional, or just redirect)
                     window.location.href = 'thank-you-trial.html';
-                })
-                .catch(error => {
-                    console.error('Error!', error);
-                    // Even if allSettled throws (which it shouldn't), we try to alert.
-                    alert('Something went wrong submitting the form. Please try again or contact us directly at info@axcentdance.com.\n\nError details: ' + (error.message || error));
-
-                    // Reset button state
-                    submitBtn.innerHTML = originalBtnContent;
-                    submitBtn.disabled = false;
-                    submitBtn.style.opacity = '1';
-                    submitBtn.style.cursor = 'pointer';
                 });
         });
     } else {
@@ -628,5 +627,4 @@ info@axcentdance.com`,
         updateScannerOpacity();
     }
 });
-
 
