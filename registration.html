@@ -50,11 +50,28 @@
       "@type": "ItemList",
       "@id": "https://axcentdance.com/registration#course-list",
       "name": "AXcent Bachata Course Registration",
-      "numberOfItems": 5,
+      "numberOfItems": 6,
       "itemListElement": [
         {
           "@type": "ListItem",
           "position": 1,
+          "item": {
+            "@type": "Course",
+            "@id": "https://axcentdance.com/course/bachata-beginner-1#course",
+            "name": "Bachata Beginner 1",
+            "description": "8-week Beginner 1 course for absolute beginners learning Bachata foundations in Zurich Altstetten.",
+            "educationalLevel": "Beginner",
+            "provider": { "@id": "https://axcentdance.com/#organization" },
+            "url": "https://axcentdance.com/registration",
+            "offers": [
+              { "@type": "Offer", "name": "Regular Pass", "price": "200.00", "priceCurrency": "CHF", "description": "8-week course pass" },
+              { "@type": "Offer", "name": "Student Pass", "price": "170.00", "priceCurrency": "CHF", "description": "8-week course pass for students" }
+            ]
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
           "item": {
             "@type": "Course",
             "@id": "https://axcentdance.com/course/bachata-beginner-2#course",
@@ -71,7 +88,7 @@
         },
         {
           "@type": "ListItem",
-          "position": 2,
+          "position": 3,
           "item": {
             "@type": "Course",
             "@id": "https://axcentdance.com/course/bachata-sensual-foundation#course",
@@ -88,7 +105,7 @@
         },
         {
           "@type": "ListItem",
-          "position": 3,
+          "position": 4,
           "item": {
             "@type": "Course",
             "@id": "https://axcentdance.com/course/bachata-sensual-improver#course",
@@ -105,7 +122,7 @@
         },
         {
           "@type": "ListItem",
-          "position": 4,
+          "position": 5,
           "item": {
             "@type": "Course",
             "@id": "https://axcentdance.com/course/bachata-sensual-inter-adv#course",
@@ -122,7 +139,7 @@
         },
         {
           "@type": "ListItem",
-          "position": 5,
+          "position": 6,
           "item": {
             "@type": "Course",
             "@id": "https://axcentdance.com/course/lady-styling#course",
@@ -983,21 +1000,21 @@
                             <div class="timetable-col">
                                 <h3 class="timetable-day-header">Tuesday</h3>
 
-                                <!-- Tuesday 18:30 - Empty -->
-                                <div class="class-option-wrapper desktop-only-spacer" style="visibility: hidden; pointer-events: none;">
+                                <div class="class-option-wrapper">
                                     <label class="class-option">
-                                        <input type="checkbox" disabled>
+                                        <input type="checkbox" name="classes[]" value="Tue 18:30 Beginner 1">
                                         <div class="class-option-card">
                                             <span class="time">18:30</span>
                                             <div class="class-details">
-                                                <span class="name">Spacer Class</span>
-                                                <span class="class-instructor-small">Spacer</span>
+                                                <span class="name">Bachata Beginner 1</span>
                                             </div>
                                         </div>
                                     </label>
                                     <div class="class-role-select">
-                                        <label><input type="radio" disabled><span>Leader</span></label>
-                                        <label><input type="radio" disabled><span>Follower</span></label>
+                                        <label><input type="radio" name="role_Tue_1830_Beginner_1"
+                                                value="Leader"><span>Leader</span></label>
+                                        <label><input type="radio" name="role_Tue_1830_Beginner_1"
+                                                value="Follower"><span>Follower</span></label>
                                     </div>
                                 </div>
 
