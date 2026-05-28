@@ -25,8 +25,6 @@ def extract_keywords_from_path(file_path):
     chunks = [keywords]
     if 'Milano' in keywords:
         chunks.append('Milano Sensual Congress')
-    if 'Spring' in keywords:
-        chunks.append('Spring Edition')
     return chunks
 
 def audit_internal_links(new_file_path):

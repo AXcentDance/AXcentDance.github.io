@@ -110,7 +110,6 @@ A plain URL string is *technically valid*, but **`ImageObject` with explicit `wi
 | `bachata_essentials_flatlay.webp` | 1024 | 1024 | 1:1 |
 | `blog/salsa_vs_bachata_hero.webp` | 1024 | 1024 | 1:1 |
 | `MilanoSensualCongress2026.webp` | — | — | check with PIL |
-| `MilanoSensualCongressSpring2026.webp` | — | — | check with PIL |
 
 > ⚠️ `roots-of-bachata-hero.webp` is only 640×640. It will **not** get a Google Discover large image card. Consider generating a 1200×675 version.
 
