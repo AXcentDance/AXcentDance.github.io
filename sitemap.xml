@@ -26,7 +26,7 @@
   </url>
   <url>
     <loc>https://axcentdance.com/blog</loc>
-    <lastmod>2026-05-10T12:00:00+02:00</lastmod>
+    <lastmod>2026-06-06T12:00:00+02:00</lastmod>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/blog" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/blog" />
@@ -34,6 +34,10 @@
     <image:image>
       <image:loc>https://axcentdance.com/assets/images/blog/dance-tips-1-title.webp</image:loc>
       <image:title>Frame Technique</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/blog/discover/dance-tips-1-frame-1200x675.webp</image:loc>
+      <image:title>Afro dance classes coming to AXcent Dance in September</image:title>
     </image:image>
     <image:image>
       <image:loc>https://axcentdance.com/assets/images/blog/discover/rent-space-zurich-1200x675.webp</image:loc>
@@ -126,7 +130,7 @@
   </url>
   <url>
     <loc>https://axcentdance.com/de/blog</loc>
-    <lastmod>2026-05-10T12:00:00+02:00</lastmod>
+    <lastmod>2026-06-06T12:00:00+02:00</lastmod>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/blog" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/blog" />
@@ -134,6 +138,10 @@
     <image:image>
       <image:loc>https://axcentdance.com/assets/images/blog/dance-tips-1-title.webp</image:loc>
       <image:title>Rahmen-Technik</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/blog/discover/dance-tips-1-frame-1200x675.webp</image:loc>
+      <image:title>Afro Tanzkurse kommen im September zu AXcent Dance</image:title>
     </image:image>
     <image:image>
       <image:loc>https://axcentdance.com/assets/images/blog/discover/rent-space-zurich-1200x675.webp</image:loc>
@@ -226,7 +234,7 @@
   </url>
   <url>
     <loc>https://axcentdance.com/</loc>
-    <lastmod>2026-05-19T12:00:00+02:00</lastmod>
+    <lastmod>2026-06-03T12:00:00+02:00</lastmod>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/" />
@@ -250,7 +258,7 @@
   </url>
   <url>
     <loc>https://axcentdance.com/de/</loc>
-    <lastmod>2026-05-19T12:00:00+02:00</lastmod>
+    <lastmod>2026-06-03T12:00:00+02:00</lastmod>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/" />
@@ -378,7 +386,7 @@
   </url>
   <url>
     <loc>https://axcentdance.com/schedule</loc>
-    <lastmod>2026-05-18T12:00:00+02:00</lastmod>
+    <lastmod>2026-06-03T12:00:00+02:00</lastmod>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/schedule" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/schedule" />
@@ -390,7 +398,7 @@
   </url>
   <url>
     <loc>https://axcentdance.com/de/schedule</loc>
-    <lastmod>2026-05-18T12:00:00+02:00</lastmod>
+    <lastmod>2026-06-03T12:00:00+02:00</lastmod>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/schedule" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/schedule" />
@@ -1353,6 +1361,30 @@
     <image:image>
       <image:loc>https://axcentdance.com/assets/images/dominican_bootcamp.webp</image:loc>
       <image:title>Dominican Bachata Bootcamp Flyer mit Aitor Gomez und Sarah La Morena</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://axcentdance.com/blog-posts/new-afro-dance-classes-september</loc>
+    <lastmod>2026-06-06T12:00:00+02:00</lastmod>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/blog-posts/new-afro-dance-classes-september" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/blog-posts/new-afro-dance-classes-september" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/blog-posts/new-afro-dance-classes-september" />
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/blog/discover/dance-tips-1-frame-1200x675.webp</image:loc>
+      <image:title>Dancers moving with rhythm and grounded energy at AXcent Dance</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://axcentdance.com/de/blog-posts/new-afro-dance-classes-september</loc>
+    <lastmod>2026-06-06T12:00:00+02:00</lastmod>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/blog-posts/new-afro-dance-classes-september" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/blog-posts/new-afro-dance-classes-september" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/blog-posts/new-afro-dance-classes-september" />
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/blog/discover/dance-tips-1-frame-1200x675.webp</image:loc>
+      <image:title>Tanzende Menschen mit Rhythmus und geerdeter Energie bei AXcent Dance</image:title>
     </image:image>
   </url>
   <url>
