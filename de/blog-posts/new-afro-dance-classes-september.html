@@ -44,6 +44,7 @@
         .afro-signup__name-grid { display: grid; gap: 0.7rem; }
         .afro-signup__input { background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.16); border-radius: 999px; color: #fff; min-height: 48px; padding: 0 1rem; width: 100%; }
         .afro-signup__button { border: 0; border-radius: 999px; background: var(--grad); color: #fff; cursor: pointer; font-weight: 800; min-height: 48px; padding: 0 1.35rem; }
+        .afro-signup__status { color: rgba(255, 255, 255, 0.86); font-size: 0.92rem; line-height: 1.5; min-height: 1.4rem; }
         .afro-content { max-width: 1040px; margin: 0 auto; padding: 4.5rem 1.25rem 5.5rem; }
         .afro-section { display: grid; gap: 1.4rem; padding: 3rem 0; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
         .afro-section__kicker { color: var(--accent-start); font-size: 0.82rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; }
@@ -182,14 +183,9 @@
                     <h1 class="afro-hero__title">Neue Afro Kurse kommen diesen September</h1>
                     <p class="afro-hero__lead">Die Herbstsaison ist der perfekte Moment, um etwas Neues zu beginnen, entspannt in Bewegung zu kommen und Afro Dance bei AXcent Dance zu entdecken. Dieser Anfangerkurs ist so aufgebaut, dass du bequem mit anderen starten kannst, die Afro ebenfalls noch nicht kennen.</p>
                 </div>
-                <form class="afro-signup" action="https://formsubmit.co/info@axcentdance.com" method="POST">
+                <form class="afro-signup afro-reminder-form" action="https://script.google.com/macros/s/AKfycbyCHknG4poGufAW0NZw6ws2Lm2Me7ID_i0Mfhlji4EzsUhEouKTgX5LvMQI6qBMs669yA/exec" method="POST">
                     <h2 class="afro-signup__title">September Erinnerung erhalten</h2>
                     <p class="afro-signup__text">Hinterlasse hier deinen Namen und deine E-Mail. Wir erinnern dich, sobald die Afro Kurse im September offnen, und senden dir 15% Rabatt fur den Kursstart.</p>
-                    <input type="hidden" name="_subject" value="Afro September Kurs Benachrichtigung">
-                    <input type="hidden" name="_template" value="table">
-                    <input type="hidden" name="_captcha" value="false">
-                    <input type="hidden" name="_webhook" value="https://script.google.com/macros/s/AKfycbylWB7x4JuALn5P0HkATZormohHsMTi_dp3zKYvLZi42_-hI8dkkpgnlb80rwOIFgntoQ/exec">
-                    <input type="hidden" name="_next" value="https://axcentdance.com/de/thank-you-contact">
                     <div class="afro-signup__row">
                         <div class="afro-signup__name-grid">
                             <label class="sr-only" for="afro-firstname">Vorname</label>
@@ -200,6 +196,7 @@
                         <label class="sr-only" for="afro-email">E-Mail</label>
                         <input class="afro-signup__input" type="email" id="afro-email" name="email" placeholder="deine@email.com" required>
                         <button class="afro-signup__button" type="submit">Erinnert mich</button>
+                        <div class="afro-signup__status" aria-live="polite"></div>
                     </div>
                 </form>
             </div>
@@ -239,12 +236,7 @@
             <section class="afro-cta">
                 <h2>Hinterlasse deinen Namen und deine E-Mail fur die September Erinnerung.</h2>
                 <p>Schreibe deine Details hier hinein und wir erinnern dich, sobald die Details zum Afro Kurs bereit sind. Zusammen mit der Erinnerung erhaltst du 15% Rabatt fur den Kursstart.</p>
-                <form class="afro-signup__row" action="https://formsubmit.co/info@axcentdance.com" method="POST">
-                    <input type="hidden" name="_subject" value="Afro September Kurs Benachrichtigung">
-                    <input type="hidden" name="_template" value="table">
-                    <input type="hidden" name="_captcha" value="false">
-                    <input type="hidden" name="_webhook" value="https://script.google.com/macros/s/AKfycbylWB7x4JuALn5P0HkATZormohHsMTi_dp3zKYvLZi42_-hI8dkkpgnlb80rwOIFgntoQ/exec">
-                    <input type="hidden" name="_next" value="https://axcentdance.com/de/thank-you-contact">
+                <form class="afro-signup__row afro-reminder-form" action="https://script.google.com/macros/s/AKfycbyCHknG4poGufAW0NZw6ws2Lm2Me7ID_i0Mfhlji4EzsUhEouKTgX5LvMQI6qBMs669yA/exec" method="POST">
                     <div class="afro-signup__name-grid">
                         <label class="sr-only" for="afro-firstname-bottom">Vorname</label>
                         <input class="afro-signup__input" type="text" id="afro-firstname-bottom" name="firstname" placeholder="Vorname" required>
@@ -254,6 +246,7 @@
                     <label class="sr-only" for="afro-email-bottom">E-Mail</label>
                     <input class="afro-signup__input" type="email" id="afro-email-bottom" name="email" placeholder="deine@email.com" required>
                     <button class="afro-signup__button" type="submit">Erinnert mich</button>
+                    <div class="afro-signup__status" aria-live="polite"></div>
                 </form>
             </section>
         </article>
@@ -321,6 +314,35 @@
         </div>
     </footer>
 
+    <script>
+        document.querySelectorAll('.afro-reminder-form').forEach((form) => {
+            form.addEventListener('submit', (event) => {
+                event.preventDefault();
+                const button = form.querySelector('.afro-signup__button');
+                const status = form.querySelector('.afro-signup__status');
+                const originalText = button.textContent;
+                const body = new URLSearchParams(new FormData(form));
+
+                button.disabled = true;
+                button.textContent = 'Senden...';
+                status.textContent = '';
+
+                fetch(form.action, {
+                    method: 'POST',
+                    body,
+                    mode: 'no-cors'
+                }).then(() => {
+                    status.textContent = 'Danke. Wir erinnern dich im September.';
+                    form.reset();
+                }).catch(() => {
+                    status.textContent = 'Etwas ist schiefgelaufen. Bitte versuche es erneut oder schreibe an info@axcentdance.com.';
+                }).finally(() => {
+                    button.disabled = false;
+                    button.textContent = originalText;
+                });
+            });
+        });
+    </script>
     <script src="../../script.min.js"></script>
 
     
