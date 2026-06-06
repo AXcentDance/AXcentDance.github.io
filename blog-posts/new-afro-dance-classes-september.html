@@ -528,12 +528,13 @@
                 const status = form.querySelector('.afro-signup__status');
                 const originalText = button.textContent;
                 const body = new URLSearchParams(new FormData(form));
+                const submitUrl = `${form.action}?${body.toString()}`;
 
                 button.disabled = true;
                 button.textContent = 'Sending...';
                 status.textContent = '';
 
-                fetch(form.action, {
+                fetch(submitUrl, {
                     method: 'POST',
                     body,
                     mode: 'no-cors'
