@@ -124,6 +124,11 @@
             gap: 0.7rem;
         }
 
+        .afro-signup__name-grid {
+            display: grid;
+            gap: 0.7rem;
+        }
+
         .afro-signup__input {
             background: rgba(255, 255, 255, 0.08);
             border: 1px solid rgba(255, 255, 255, 0.16);
@@ -228,7 +233,7 @@
                 grid-template-columns: minmax(0, 1fr) 390px;
             }
 
-            .afro-signup__row {
+            .afro-signup__name-grid {
                 grid-template-columns: minmax(0, 1fr) auto;
             }
         }
@@ -379,10 +384,19 @@
                 </div>
                 <form class="afro-signup" action="https://formsubmit.co/info@axcentdance.com" method="POST">
                     <h2 class="afro-signup__title">Get a September reminder</h2>
-                    <p class="afro-signup__text">Leave your email here and we will remind you when Afro classes open in September. Your reminder will include a 15% discount for the course start.</p>
+                    <p class="afro-signup__text">Leave your name and email here. We will remind you when Afro classes open in September and include a 15% discount for the course start.</p>
                     <input type="hidden" name="_subject" value="Afro September course notification request">
-                    <input type="hidden" name="course_interest" value="Afro dance classes September 2026">
+                    <input type="hidden" name="_template" value="table">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_webhook" value="https://script.google.com/macros/s/AKfycbylWB7x4JuALn5P0HkATZormohHsMTi_dp3zKYvLZi42_-hI8dkkpgnlb80rwOIFgntoQ/exec">
+                    <input type="hidden" name="_next" value="https://axcentdance.com/thank-you-contact">
                     <div class="afro-signup__row">
+                        <div class="afro-signup__name-grid">
+                            <label class="sr-only" for="afro-firstname">First name</label>
+                            <input class="afro-signup__input" type="text" id="afro-firstname" name="firstname" placeholder="First name" required>
+                            <label class="sr-only" for="afro-lastname">Last name</label>
+                            <input class="afro-signup__input" type="text" id="afro-lastname" name="lastname" placeholder="Last name" required>
+                        </div>
                         <label class="sr-only" for="afro-email">Email</label>
                         <input class="afro-signup__input" type="email" id="afro-email" name="email" placeholder="your@email.com" required>
                         <button class="afro-signup__button" type="submit">Remind me</button>
@@ -423,11 +437,20 @@
             </section>
 
             <section class="afro-cta">
-                <h2>Leave your email and receive a September reminder.</h2>
-                <p>Write your email here and we will remind you when the Afro course details are ready. Together with the reminder, you will receive a 15% discount for the course start.</p>
+                <h2>Leave your name and email to receive a September reminder.</h2>
+                <p>Write your details here and we will remind you when the Afro course details are ready. Together with the reminder, you will receive a 15% discount for the course start.</p>
                 <form class="afro-signup__row" action="https://formsubmit.co/info@axcentdance.com" method="POST">
                     <input type="hidden" name="_subject" value="Afro September course notification request">
-                    <input type="hidden" name="course_interest" value="Afro dance classes September 2026">
+                    <input type="hidden" name="_template" value="table">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_webhook" value="https://script.google.com/macros/s/AKfycbylWB7x4JuALn5P0HkATZormohHsMTi_dp3zKYvLZi42_-hI8dkkpgnlb80rwOIFgntoQ/exec">
+                    <input type="hidden" name="_next" value="https://axcentdance.com/thank-you-contact">
+                    <div class="afro-signup__name-grid">
+                        <label class="sr-only" for="afro-firstname-bottom">First name</label>
+                        <input class="afro-signup__input" type="text" id="afro-firstname-bottom" name="firstname" placeholder="First name" required>
+                        <label class="sr-only" for="afro-lastname-bottom">Last name</label>
+                        <input class="afro-signup__input" type="text" id="afro-lastname-bottom" name="lastname" placeholder="Last name" required>
+                    </div>
                     <label class="sr-only" for="afro-email-bottom">Email</label>
                     <input class="afro-signup__input" type="email" id="afro-email-bottom" name="email" placeholder="your@email.com" required>
                     <button class="afro-signup__button" type="submit">Remind me</button>
