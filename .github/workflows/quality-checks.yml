@@ -1,0 +1,33 @@
+name: Quality Checks
+
+on:
+  pull_request:
+  push:
+
+jobs:
+  website-checks:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Python dependencies
+        run: pip install beautifulsoup4
+
+      - name: Run breadcrumb unit tests
+        run: python3 -m unittest discover -s tests
+
+      - name: Validate breadcrumb schema
+        run: python3 scripts/maintain_breadcrumbs.py validate
+
+      - name: Run breadcrumb audit
+        run: python3 scripts/breadcrumb_audit.py
+
+      - name: Check whitespace errors
+        run: git diff --check
