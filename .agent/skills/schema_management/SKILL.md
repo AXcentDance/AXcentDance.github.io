@@ -61,7 +61,7 @@ Your JSON-LD block must follow this pattern exactly:
     {
       "@type": "Person",
       "@id": "https://axcentdance.com/#person1",
-      "name": "Alessandro Slamitz",
+      "name": "Ale",
       "jobTitle": "Co-Founder",
       "sameAs": ["https://www.instagram.com/aleyxidan/"]
     },

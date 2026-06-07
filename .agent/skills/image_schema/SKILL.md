@@ -153,7 +153,7 @@ All `BlogPosting` schemas on AXcent Dance must use the following `author` block:
 ]
 ```
 
-`#person1` = **Alessandro Slamitz** (Co-Founder)  
+`#person1` = **Ale** (Co-Founder)
 `#person2` = **Xidan** (Co-Founder)
 
 These Person entities are fully declared in `about.html` with:
