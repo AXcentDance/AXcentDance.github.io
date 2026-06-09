@@ -23,6 +23,9 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+# Generated SEO intelligence cache
+System/topic_map/embeddings_cache.json
+
 # Large Media Files (Exclude from normal git tracking, use LFS if needed)
 *.mp4
 *.mov
