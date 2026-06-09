@@ -17,6 +17,7 @@ dist/
 .env.development.local
 .env.test.local
 .env.production.local
+private/
 
 # Logs
 npm-debug.log*
@@ -25,6 +26,9 @@ yarn-error.log*
 
 # Generated SEO intelligence cache
 System/topic_map/embeddings_cache.json
+System/GSC_Content_Report.md
+System/gsc_search_console_data.json
+System/GSC_Topic_Action_Report.md
 
 # Large Media Files (Exclude from normal git tracking, use LFS if needed)
 *.mp4
