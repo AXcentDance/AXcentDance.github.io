@@ -275,22 +275,22 @@
 
     <main>
 
-        <!-- Hero Section -->
-        <!-- Hero Section -->
         <section class="education-hero relative-container">
             <!-- Hero Image (SEO) -->
             <img src="assets/images/bachata_education_book.webp"
                 srcset="assets/images/bachata_education_book_480w.webp 480w, assets/images/bachata_education_book_800w.webp 800w, assets/images/bachata_education_book_1200w.webp 1200w"
                 sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px"
                 alt="Bachata Dance Education Book and Instruments" width="1024" height="1024" class="hero-bg-img"
-                style="opacity: 0.5;">
+                loading="eager" fetchpriority="high">
             <div class="hero-overlay"></div>
 
             <div class="container hero-content-z">
 
-                <span class="hero-badge-text"
-                    style="color: var(--accent-start); letter-spacing: 0.2em; font-size: 0.9rem; font-weight: 700; display: block; margin-bottom: 1rem;">KNOWLEDGE
-                    BASE</span>
+                <div class="hero-badge">
+                    <span class="hero-badge-line"></span>
+                    <span class="hero-badge-text">KNOWLEDGE BASE</span>
+                    <span class="hero-badge-line"></span>
+                </div>
                 <h1 class="page-title">Dance Education</h1>
                 <p class="hero-desc-border" style="border: none; padding: 0;">
                     Understanding the history, music, and language of Bachata.
