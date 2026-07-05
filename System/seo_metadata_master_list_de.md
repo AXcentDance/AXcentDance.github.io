@@ -7,7 +7,7 @@ This file tracks the Title Tags and Meta Descriptions for all German pages on th
 | :--- | :--- | :--- | :--- |
 | **Home** | `index.html` | Bachata Tanzkurs Zürich \| Gratis Probelektion \| AXcent Dance | Werde Teil von 200+ Tänzern in den besten Bachata Kursen in Zürich. Lerne Bachata mit Top-Lehrern, vom Anfänger bis Fortgeschritten. Kein Partner nötig. Jetzt gratis Probelektion buchen! |
 | **Über uns** | `about.html` | Unser Team & Philosophie \| Die besten Tanzlehrer in Zürich | Triff das Team hinter AXcent Dance in Zürich. Lerne unsere Philosophie, unsere Instruktoren Ale und Xidan sowie unsere Leidenschaft für Bachata Sensual & Dominican kennen. |
-| **Kontakt** | `contact.html` | Kontakt AXcent Dance - Deine Tanzschule in Zürich Altstetten | Besuche unser Bachata Studio in Zürich Altstetten. Kontaktiere uns für Infos zu Tanzkursen, Events und Probelektionen in der besten Tanzschule Zürichs. |
+| **Kontakt** | `contact.html` | Kontakt AXcent Dance Zürich \| Studio, Anfahrt & Hilfe | Besuche AXcent Dance in Zürich Altstetten. Finde Adresse, Anfahrt, WhatsApp-Kontakt und ein klares Formular für Fragen oder Probelektionen. |
 | **Stundenplan** | `schedule.html` | Bachata Kurse in Zürich — Stundenplan dieser Woche \| AXcent Dance | Bachata Stundenplan in Zürich Altstetten mit Erfahrungsangaben pro Niveau: Beginner 2, Sensual Foundation, Improver, Lady Style und Int/Adv. |
 | **Anmeldung** | `registration.html` | Anmeldung Bachata Kurs Zürich \| AXcent Dance | Melde dich jetzt für deinen Bachata Tanzkurs in Zürich an. Werde Teil der AXcent Dance Community und lerne Bachata in Altstetten. |
 | **Warenkorb** | `cart.html` | Warenkorb \| AXcent Dance Zürich | Schliesse deine Anmeldung für Tanzkurse bei AXcent Dance Zürich ab. Sicherer Checkout. |

@@ -9,7 +9,7 @@ ROOT_DIR = '/Users/slamitza/AXcentWebsiteGitHub'
 FOOTER_TEMPLATE = """    <footer class="main-footer">
         <div class="container footer-grid">
             <div class="footer-col">
-                <a href="{prefix}index.html" class="logo footer-logo"><span class="logo-title">AXCENT</span><span
+                <a href="{prefix}index.html" class="logo footer-logo"><span class="logo-title">AXcent</span><span
                         class="logo-subtitle text-gradient">DANCE</span></a>
                 <p class="footer-address">
                     Hermetschloostrasse 73,<br>

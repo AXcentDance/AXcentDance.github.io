@@ -25,7 +25,8 @@
     <meta property="og:locale" content="de_CH">
     <meta http-equiv="Content-Security-Policy"
         content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://cdn.jsdelivr.net https://connect.facebook.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com https://placehold.co https://*.googleapis.com https://*.gstatic.com https://www.facebook.com https://connect.facebook.net; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://script.google.com https://formsubmit.co https://www.facebook.com https://connect.facebook.net; frame-src 'self' https://www.google.com; object-src 'none'; base-uri 'self'; media-src 'self' blob:; worker-src 'self' blob:;">
-    <link rel="stylesheet" href="../style.css?v=2.3">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@200..900&family=Outfit:wght@500;600;700;800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Teko:wght@300..700&display=swap">
+    <link rel="stylesheet" href="../style.css?v=4.2">
     <link rel="apple-touch-icon" href="/apple-touch-icon-v2.png">
     <link rel="icon" href="/favicon-axcent-192.png" type="image/png" sizes="192x192">
     <link rel="icon" href="/favicon-axcent-transparent.svg" type="image/svg+xml">
@@ -51,11 +52,28 @@
       "@type": "ItemList",
       "@id": "https://axcentdance.com/de/registration#course-list",
       "name": "AXcent Bachata Kursanmeldung",
-      "numberOfItems": 6,
+      "numberOfItems": 8,
       "itemListElement": [
         {
           "@type": "ListItem",
           "position": 1,
+          "item": {
+            "@type": "Course",
+            "@id": "https://axcentdance.com/course/bachata-beginner-0#course",
+            "name": "Bachata Beginner 0",
+            "description": "8-Wochen-Beginner-0-Kurs für absolute Anfänger in Zürich Altstetten.",
+            "educationalLevel": "Absolute Anfänger",
+            "provider": { "@id": "https://axcentdance.com/#organization" },
+            "url": "https://axcentdance.com/de/registration",
+            "offers": [
+              { "@type": "Offer", "name": "Regulärer Pass", "price": "200.00", "priceCurrency": "CHF", "description": "8-Wochen-Kurspass" },
+              { "@type": "Offer", "name": "Studentenpass", "price": "170.00", "priceCurrency": "CHF", "description": "8-Wochen-Kurspass für Studenten" }
+            ]
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
           "item": {
             "@type": "Course",
             "@id": "https://axcentdance.com/course/bachata-beginner-1#course",
@@ -72,7 +90,7 @@
         },
         {
           "@type": "ListItem",
-          "position": 2,
+          "position": 3,
           "item": {
             "@type": "Course",
             "@id": "https://axcentdance.com/course/bachata-beginner-2#course",
@@ -89,7 +107,7 @@
         },
         {
           "@type": "ListItem",
-          "position": 3,
+          "position": 4,
           "item": {
             "@type": "Course",
             "@id": "https://axcentdance.com/course/bachata-sensual-foundation#course",
@@ -106,7 +124,7 @@
         },
         {
           "@type": "ListItem",
-          "position": 4,
+          "position": 5,
           "item": {
             "@type": "Course",
             "@id": "https://axcentdance.com/course/bachata-sensual-improver#course",
@@ -123,7 +141,24 @@
         },
         {
           "@type": "ListItem",
-          "position": 5,
+          "position": 6,
+          "item": {
+            "@type": "Course",
+            "@id": "https://axcentdance.com/course/bachata-sensual-intermediate#course",
+            "name": "Bachata Sensual Mittelstufe",
+            "description": "8-Wochen-Sensual-Mittelstufenkurs in Zürich Altstetten.",
+            "educationalLevel": "Mittelstufe",
+            "provider": { "@id": "https://axcentdance.com/#organization" },
+            "url": "https://axcentdance.com/de/registration",
+            "offers": [
+              { "@type": "Offer", "name": "Regulärer Pass", "price": "200.00", "priceCurrency": "CHF", "description": "8-Wochen-Kurspass" },
+              { "@type": "Offer", "name": "Studentenpass", "price": "170.00", "priceCurrency": "CHF", "description": "8-Wochen-Kurspass für Studenten" }
+            ]
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 7,
           "item": {
             "@type": "Course",
             "@id": "https://axcentdance.com/course/bachata-sensual-inter-adv#course",
@@ -140,7 +175,7 @@
         },
         {
           "@type": "ListItem",
-          "position": 6,
+          "position": 8,
           "item": {
             "@type": "Course",
             "@id": "https://axcentdance.com/course/lady-styling#course",
@@ -639,7 +674,7 @@
         gtag('config', 'G-E2SYCF7R7X');
     </script>
   <!-- Meta Pixel Code -->
-  <script src="../meta-pixel.js?v=1.0"></script>
+  <script src="../meta-pixel.js?v=1.1"></script>
   <noscript><img height="1" width="1" style="display:none" alt=""
       src="https://www.facebook.com/tr?id=2846140112392262&ev=PageView&noscript=1" /></noscript>
   <!-- End Meta Pixel Code -->
@@ -656,7 +691,7 @@
     <header class="main-header">
         <div class="container navbar">
             <a href="./" class="logo">
-                <span class="logo-title">AXCENT</span><span class="logo-subtitle text-gradient">DANCE</span>
+                <span class="logo-title">AXcent</span><span class="logo-subtitle text-gradient">DANCE</span>
             </a>
             <button class="mobile-menu-btn" aria-label="Toggle menu">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"
@@ -669,8 +704,7 @@
             <nav class="nav-links">
         <a href="../">Home</a>
         <a href="about">Über uns</a>
-                <a href="schedule">Stundenplan</a>
-                <a href="registration" class="active">Anmeldung</a>
+                <a href="schedule">Unsere Kurse</a>
                 <a href="events">Events</a>
                 <a href="contact">Kontakt</a>
 
@@ -689,7 +723,7 @@
                         <a href="etiquette"><span>Tanzetikette</span></a>
                     </div>
                 </div>
-        <a href="/de/#trial-form" class="btn-header-cta">Probelektion</a>
+        <a href="/de/#trial-form" class="btn-header-cta">Probelektion buchen</a>
       </nav>
       <div class="lang-switch">
           <a href="../registration">EN</a>
@@ -994,6 +1028,65 @@
                         </p>
 
                         <div class="timetable-selection-grid">
+                            <!-- Montag Column -->
+                            <div class="timetable-col">
+                                <h3 class="timetable-day-header">Montag</h3>
+
+                                <div class="class-option-wrapper">
+                                    <label class="class-option">
+                                        <input type="checkbox" name="classes[]" value="Mon 18:30 Beginner 0">
+                                        <div class="class-option-card">
+                                            <span class="time">18:30</span>
+                                            <div class="class-details">
+                                                <span class="name">Bachata Beginner 0</span>
+                                            </div>
+                                        </div>
+                                    </label>
+                                    <div class="class-role-select">
+                                        <label><input type="radio" name="role_Mon_1830_Beginner_0"
+                                                value="Leader"><span>Leader</span></label>
+                                        <label><input type="radio" name="role_Mon_1830_Beginner_0"
+                                                value="Follower"><span>Follower</span></label>
+                                    </div>
+                                </div>
+
+                                <!-- Spacer for 19:30 Alignment -->
+                                <div class="class-option-wrapper desktop-only-spacer" style="visibility: hidden; pointer-events: none;">
+                                    <label class="class-option">
+                                        <input type="checkbox" disabled>
+                                        <div class="class-option-card">
+                                            <span class="time">19:30</span>
+                                            <div class="class-details">
+                                                <span class="name">Spacer Class</span>
+                                                <span class="class-instructor-small">Spacer</span>
+                                            </div>
+                                        </div>
+                                    </label>
+                                    <div class="class-role-select">
+                                        <label><input type="radio" disabled><span>Leader</span></label>
+                                        <label><input type="radio" disabled><span>Follower</span></label>
+                                    </div>
+                                </div>
+
+                                <!-- Spacer for 20:30 Alignment -->
+                                <div class="class-option-wrapper desktop-only-spacer" style="visibility: hidden; pointer-events: none;">
+                                    <label class="class-option">
+                                        <input type="checkbox" disabled>
+                                        <div class="class-option-card">
+                                            <span class="time">20:30</span>
+                                            <div class="class-details">
+                                                <span class="name">Spacer Class</span>
+                                                <span class="class-instructor-small">Spacer</span>
+                                            </div>
+                                        </div>
+                                    </label>
+                                    <div class="class-role-select">
+                                        <label><input type="radio" disabled><span>Leader</span></label>
+                                        <label><input type="radio" disabled><span>Follower</span></label>
+                                    </div>
+                                </div>
+                            </div>
+
                             <!-- Dienstag Column -->
                             <div class="timetable-col">
                                 <h3 class="timetable-day-header">Dienstag</h3>
@@ -1119,44 +1212,41 @@
                             <div class="timetable-col">
                                 <h3 class="timetable-day-header">Donnerstag</h3>
 
-                                <!-- Spacer for 18:30 Alignment -->
-                                <div class="class-option-wrapper desktop-only-spacer" style="visibility: hidden; pointer-events: none;">
+                                <div class="class-option-wrapper">
                                     <label class="class-option">
-                                        <input type="checkbox" disabled>
+                                        <input type="checkbox" name="classes[]" value="Thu 18:30 Bachata Lady Style">
                                         <div class="class-option-card">
                                             <span class="time">18:30</span>
                                             <div class="class-details">
-                                                <span class="name">Spacer Class</span>
-                                                <span class="class-instructor-small">Spacer</span>
+                                                <span class="name">Bachata Lady Style</span>
+
                                             </div>
                                         </div>
                                     </label>
                                     <div class="class-role-select">
-                                        <label><input type="radio" disabled><span>Leader</span></label>
-                                        <label><input type="radio" disabled><span>Follower</span></label>
+                                        <label><input type="radio" name="role_Thu_1830_Lady_Style"
+                                                value="Leader"><span>Leader</span></label>
+                                        <label><input type="radio" name="role_Thu_1830_Lady_Style"
+                                                value="Follower"><span>Follower</span></label>
                                     </div>
                                 </div>
 
                                 <div class="class-option-wrapper">
                                     <label class="class-option">
-                                        <input type="checkbox" name="classes[]" value="Thu 19:30 Lady Styling">
+                                        <input type="checkbox" name="classes[]"
+                                            value="Thu 19:30 Sensual Intermediate">
                                         <div class="class-option-card">
                                             <span class="time">19:30</span>
                                             <div class="class-details">
-                                                <span class="name">Lady Styling</span>
+                                                <span class="name">Bachata Sensual Mittelstufe</span>
 
                                             </div>
                                         </div>
                                     </label>
-                                    <!-- No role select for Lady Styling as it's solo/styling usually, but user asked for it next to EACH course. Adding for consistency or maybe skip? 
-                                         User said "each person can maybe have a course as lead and another as follow". Lady styling implies no partner. 
-                                         I will add it but maybe it's redundant. Actually, Lady Styling is usually solo. 
-                                         Let's add it for consistency but maybe hide it or just not include it for styling? 
-                                         User said "Next to each course". I'll add it. -->
                                     <div class="class-role-select">
-                                        <label><input type="radio" name="role_Thu_1930_Lady_Styling"
+                                        <label><input type="radio" name="role_Thu_1930_Sensual_Intermediate"
                                                 value="Leader"><span>Leader</span></label>
-                                        <label><input type="radio" name="role_Thu_1930_Lady_Styling"
+                                        <label><input type="radio" name="role_Thu_1930_Sensual_Intermediate"
                                                 value="Follower"><span>Follower</span></label>
                                     </div>
                                 </div>
@@ -1313,7 +1403,7 @@
     <footer class="main-footer">
         <div class="container footer-grid">
             <div class="footer-col">
-                <a href="./" class="logo footer-logo"><span class="logo-title">AXCENT</span><span
+                <a href="./" class="logo footer-logo"><span class="logo-title">AXcent</span><span
                         class="logo-subtitle text-gradient">DANCE</span></a>
                 <p class="footer-address">
                     Hermetschloostrasse 73,<br>
@@ -1372,7 +1462,7 @@
         </div>
     </footer>
 
-    <script src="../script.js?v=2.1"></script>
+    <script src="../script.js?v=5.8"></script>
     <script>
         // Pricing Toggle Logic (Global)
         // Moved out of module to ensure it loads reliably

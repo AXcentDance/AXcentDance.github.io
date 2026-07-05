@@ -9,7 +9,7 @@ This file tracks the Title Tags and Meta Descriptions for all pages on the AXcen
 | :--- | :--- | :--- | :--- |
 | **Home** | `index.html` | Bachata Classes in Zurich \| Free Trial Class \| AXcent Dance | Join 200+ dancers in our Bachata classes in Zurich. International instructors, all levels from beginner to advanced. No partner needed. Book your free trial class today! |
 | **About Us** | `about.html` | About AXcent Dance Zurich - Our Story & Team | Meet the team behind AXcent Dance in Zurich. Learn about our philosophy, our instructors Ale and Xidan, and our passion for teaching Bachata Sensual & Dominican. |
-| **Contact** | `contact.html` | Contact AXcent Dance Studio Zurich Altstetten | Get in touch with the top Bachata school in Zurich. Visit our studio in Altstetten, check opening hours, and contact us for inquiries about dance classes and events. |
+| **Contact** | `contact.html` | Contact AXcent Dance Zurich \| Studio Visit & Support | Visit AXcent Dance in Zurich Altstetten. Find the studio address, arrival tips, WhatsApp contact, and a clear form for questions or trial classes. |
 | **Schedule** | `schedule.html` | Bachata Class Schedule Zurich \| AXcent Dance | Check Bachata class times in Zurich Altstetten with experience guidance for each level: Beginner 2, Sensual Foundation, Improver, Lady Style, and Int/Adv. |
 | **Registration** | `registration.html` | Register for Classes | AXcent Dance Zurich Altstetten | Register for Bachata classes in Zurich Altstetten with AXcent Dance. Choose your package and join the community. |
 

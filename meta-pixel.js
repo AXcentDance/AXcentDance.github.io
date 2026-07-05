@@ -28,49 +28,61 @@
             .pop() || 'index';
     }
 
-    if (!window.fbq) {
-        !function (f, b, e, v, n, t, s) {
-            n = f.fbq = function () {
-                n.callMethod ?
-                    n.callMethod.apply(n, arguments) : n.queue.push(arguments);
-            };
-            if (!f._fbq) f._fbq = n;
-            n.push = n;
-            n.loaded = true;
-            n.version = '2.0';
-            n.queue = [];
-            t = b.createElement(e);
-            t.async = true;
-            t.src = v;
-            s = b.getElementsByTagName(e)[0];
-            s.parentNode.insertBefore(t, s);
-        }(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+    function initMetaPixel() {
+        if (!window.fbq) {
+            !function (f, b, e, v, n, t, s) {
+                n = f.fbq = function () {
+                    n.callMethod ?
+                        n.callMethod.apply(n, arguments) : n.queue.push(arguments);
+                };
+                if (!f._fbq) f._fbq = n;
+                n.push = n;
+                n.loaded = true;
+                n.version = '2.0';
+                n.queue = [];
+                t = b.createElement(e);
+                t.async = true;
+                t.src = v;
+                s = b.getElementsByTagName(e)[0];
+                s.parentNode.insertBefore(t, s);
+            }(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+        }
+
+        if (!window.__axcentMetaPixelInitialized) {
+            window.fbq('init', PIXEL_ID);
+            window.__axcentMetaPixelInitialized = true;
+        }
+
+        if (!window.__axcentMetaPageViewFired) {
+            window.fbq('track', 'PageView');
+            window.__axcentMetaPageViewFired = true;
+            console.log('Meta PageView fired');
+        }
+
+        const page = currentPage();
+
+        if (page === 'thank-you-trial' && readSessionFlag(TRIAL_SUCCESS_KEY) && !window.__axcentMetaLeadFired) {
+            window.fbq('track', 'Lead');
+            window.__axcentMetaLeadFired = true;
+            clearSessionFlags([TRIAL_SUCCESS_KEY]);
+            console.log('Meta Lead fired');
+        }
+
+        if (page === 'thank-you' && readSessionFlag(PURCHASE_PENDING_KEY) && !window.__axcentMetaPurchaseFired) {
+            window.fbq('track', 'Purchase');
+            window.__axcentMetaPurchaseFired = true;
+            clearSessionFlags([PURCHASE_PENDING_KEY, REGISTRATION_SUCCESS_KEY]);
+            console.log('Meta Purchase fired');
+        }
     }
 
-    if (!window.__axcentMetaPixelInitialized) {
-        window.fbq('init', PIXEL_ID);
-        window.__axcentMetaPixelInitialized = true;
-    }
-
-    if (!window.__axcentMetaPageViewFired) {
-        window.fbq('track', 'PageView');
-        window.__axcentMetaPageViewFired = true;
-        console.log('Meta PageView fired');
-    }
-
-    const page = currentPage();
-
-    if (page === 'thank-you-trial' && readSessionFlag(TRIAL_SUCCESS_KEY) && !window.__axcentMetaLeadFired) {
-        window.fbq('track', 'Lead');
-        window.__axcentMetaLeadFired = true;
-        clearSessionFlags([TRIAL_SUCCESS_KEY]);
-        console.log('Meta Lead fired');
-    }
-
-    if (page === 'thank-you' && readSessionFlag(PURCHASE_PENDING_KEY) && !window.__axcentMetaPurchaseFired) {
-        window.fbq('track', 'Purchase');
-        window.__axcentMetaPurchaseFired = true;
-        clearSessionFlags([PURCHASE_PENDING_KEY, REGISTRATION_SUCCESS_KEY]);
-        console.log('Meta Purchase fired');
+    // Speculation Rules prerendering (script.js) renders pages before the user
+    // actually visits them. Firing the pixel during a prerender would count
+    // PageViews for visits that may never happen, so wait until the page is
+    // actually shown.
+    if (document.prerendering) {
+        document.addEventListener('prerenderingchange', initMetaPixel, { once: true });
+    } else {
+        initMetaPixel();
     }
 }());

@@ -1,0 +1,4247 @@
+/* ==========================================================================
+   TROPIC NOIR — prototype theme (Phase 1)
+   Loaded after style.css from index.html, contact.html, de/contact.html,
+   events.html, and de/events.html ONLY. Shared rules are scoped to
+   :is(body.home-page, body.contact-page, body.events-page);
+   homepage sections stay body.home-page, the contact section (23) is
+   body.contact-page, and the events section (24) is body.events-page,
+   so no other page is affected. See
+   System/homepage-revamp-strategy.md for the full palette spec.
+
+   Tokens: petrol #061A17 / #0C2A24, surface #10322B, coral #FF5A3C,
+   brass #E8B04B, champagne #F2E7CF, sage #9DB4AB, ink #10231F.
+   Rules: CTA system is three-tiered — tier 1 sunset-gradient fill
+   (coral to amber) with INK text (never white-on-coral), tier 2 soft
+   coral tint that fills on hover, tier 3 hairline marks. The trial
+   form submit is ink-on-champagne. Shape: "Planted" soft rectangles
+   (10px / 8px), each with a weighted inset base edge that presses
+   deeper on hover; the brass offset ring survives on keyboard focus
+   only. No glow shadows, no conic rotating borders, no pills on
+   buttons, solid surfaces (no glass).
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. TOKEN REMAP
+   -------------------------------------------------------------------------- */
+:is(body.home-page, body.contact-page, body.events-page) {
+    --bg-main: #061A17;
+    --bg-secondary: #0C2A24;
+    --bg-elevated: #061A17;
+    --bg-dark: #041310;
+    --text-main: #F4EFE6;
+    --text-muted: #9DB4AB;
+    --text-dark: #10231F;
+    --text-inverse: #F2E7CF; /* used as light-on-dark text across home rules */
+    --accent-start: #FF5A3C;
+    --accent-end: #F58042;
+    --accent-gold: #E8B04B;
+    --accent-purple: #0C2A24;
+    --accent-navy: #10322B;
+    --accent-navy-soft: #10322B;
+    --accent-navy-deep: #041310;
+    --accent-bronze: #E8B04B;
+    --accent-bronze-soft: #E5CD9F; /* light role: soft brass text on dark */
+    --accent-bronze-muted: #CBA45C;
+    --accent-bronze-glow: rgba(232, 176, 75, 0.28);
+    --title-cream: #F2E7CF;
+    --title-cream-soft: #F7EEDC;
+    --grad: linear-gradient(90deg, #FF5A3C, #F58042);
+    --brand-grad: linear-gradient(135deg, #F2E7CF 0%, #FF5A3C 55%, #E8B04B 100%);
+    --glass-bg: #10322B;
+    --glass-border: rgba(232, 176, 75, 0.2);
+    --glass-highlight: rgba(255, 255, 255, 0.05);
+    --shadow-soft: 0 14px 35px rgba(2, 10, 8, 0.45);
+    --shadow-warm: 0 18px 40px rgba(255, 90, 60, 0.1);
+    --cta-grad: linear-gradient(118deg, #FF6A4A 0%, #FF8A5C 55%, #F2A05C 100%);
+    --cta-ink: #10231F;
+    --cta-radius: 14px;
+    --cta-radius-sm: 12px;
+    --cta-base-rest: rgba(16, 35, 31, 0.22);
+    --cta-base-hover: rgba(16, 35, 31, 0.42);
+    --cta-base-soft: rgba(232, 176, 75, 0.32);
+    --cta-soft-bg: rgba(255, 106, 74, 0.13);
+    --cta-soft-border: rgba(255, 138, 92, 0.5);
+    --cta-soft-text: #F4EFE6;
+    --cta-submit-bg: #10231F;
+    --cta-submit-bg-hover: #1A342C;
+    --cta-submit-text: #F2E7CF;
+    --cta-form-accent: #D8552F;
+    --font-heading: 'Playfair Display', serif;
+    color: var(--text-main);
+    background: var(--bg-main);
+}
+
+:is(body.home-page, body.contact-page, body.events-page)::selection,
+:is(body.home-page, body.contact-page, body.events-page) *::selection {
+    background: rgba(255, 90, 60, 0.35);
+    color: #F4EFE6;
+}
+
+:is(body.home-page, body.contact-page, body.events-page) main {
+    background: var(--bg-main);
+}
+
+/* --------------------------------------------------------------------------
+   2. PAGE LOADER
+   -------------------------------------------------------------------------- */
+body.home-page .page-loader {
+    background: linear-gradient(135deg, #041310 0%, #061A17 52%, #0C2A24 100%);
+    color: var(--text-main);
+}
+
+body.home-page .page-loader__mark {
+    color: #F2E7CF;
+}
+
+body.home-page .page-loader__ax {
+    color: #F2E7CF;
+}
+
+body.home-page .page-loader__mark span:last-child {
+    background: none;
+    -webkit-background-clip: initial;
+    background-clip: initial;
+    -webkit-text-fill-color: #E8B04B;
+    color: #E8B04B;
+}
+
+body.home-page .page-loader__line {
+    background: linear-gradient(90deg, transparent, #E8B04B, #FF5A3C, transparent);
+}
+
+/* --------------------------------------------------------------------------
+   3. HEADER & NAV
+   -------------------------------------------------------------------------- */
+:is(body.home-page, body.contact-page, body.events-page) .main-header {
+    background: rgba(6, 26, 23, 0.92);
+    border-bottom: 1px solid rgba(232, 176, 75, 0.16);
+    box-shadow: 0 10px 26px rgba(2, 10, 8, 0.35);
+}
+
+:is(body.home-page, body.contact-page, body.events-page) .main-header.scrolled {
+    background: rgba(6, 26, 23, 0.88);
+    box-shadow: 0 14px 36px rgba(2, 10, 8, 0.45);
+}
+
+:is(body.home-page, body.contact-page, body.events-page) .main-header::after,
+:is(body.home-page, body.contact-page, body.events-page) .main-footer::before {
+    background: linear-gradient(90deg, transparent, rgba(232, 176, 75, 0.65), rgba(255, 90, 60, 0.45), transparent);
+}
+
+:is(body.home-page, body.contact-page, body.events-page) .logo-title {
+    color: #F2E7CF;
+}
+
+/* Logo "DANCE" + any gradient text -> solid brass */
+:is(body.home-page, body.contact-page, body.events-page) .text-gradient {
+    background: none;
+    -webkit-background-clip: initial;
+    background-clip: initial;
+    -webkit-text-fill-color: #E8B04B;
+    color: #E8B04B;
+}
+
+:is(body.home-page, body.contact-page, body.events-page) .nav-links a:not(.btn-header-cta):not(.btn-header-secondary),
+:is(body.home-page, body.contact-page, body.events-page) .dropbtn {
+    color: rgba(244, 239, 230, 0.75);
+}
+
+:is(body.home-page, body.contact-page, body.events-page) .nav-links a:not(.btn-header-cta):not(.btn-header-secondary):hover,
+:is(body.home-page, body.contact-page, body.events-page) .dropbtn:hover,
+:is(body.home-page, body.contact-page, body.events-page) .dropdown:hover .dropbtn,
+:is(body.home-page, body.contact-page, body.events-page) .nav-links a:not(.btn-header-cta):not(.btn-header-secondary).active,
+:is(body.home-page, body.contact-page, body.events-page) .dropbtn.active,
+:is(body.home-page, body.contact-page, body.events-page) .lang-switch .active {
+    color: #F4EFE6;
+    text-shadow: none;
+}
+
+:is(body.home-page, body.contact-page, body.events-page) .nav-links a:not(.btn-header-cta):not(.btn-header-secondary)::after,
+:is(body.home-page, body.contact-page, body.events-page) .dropbtn::after,
+:is(body.home-page, body.contact-page, body.events-page) .dropdown-content a span::after {
+    background: rgba(232, 176, 75, 0.55);
+    box-shadow: none;
+}
+
+:is(body.home-page, body.contact-page, body.events-page) .nav-links a:not(.btn-header-cta):not(.btn-header-secondary).active::after,
+:is(body.home-page, body.contact-page, body.events-page) .dropbtn.active::after,
+:is(body.home-page, body.contact-page, body.events-page) .dropdown-content a.active span::after {
+    background: linear-gradient(90deg, transparent, #E8B04B, #FF5A3C, transparent);
+    box-shadow: none;
+}
+
+:is(body.home-page, body.contact-page, body.events-page) .dropdown-content {
+    background: rgba(12, 42, 36, 0.97);
+    border-color: rgba(232, 176, 75, 0.18);
+    box-shadow: 0 18px 42px rgba(2, 10, 8, 0.5);
+}
+
+:is(body.home-page, body.contact-page, body.events-page) .dropdown-content a {
+    color: rgba(244, 239, 230, 0.72);
+}
+
+:is(body.home-page, body.contact-page, body.events-page) .dropdown-content a:hover {
+    background: rgba(255, 90, 60, 0.1);
+    color: #F4EFE6;
+}
+
+:is(body.home-page, body.contact-page, body.events-page) .lang-switch .active {
+    border-bottom-color: #E8B04B;
+}
+
+:is(body.home-page, body.contact-page, body.events-page) .lang-switch .divider {
+    color: rgba(244, 239, 230, 0.3);
+}
+
+/* --------------------------------------------------------------------------
+   4. CTA SYSTEM — three tiers, no glow, no rotating border
+   Tier 1: sunset gradient (coral to amber), ink text — one loud CTA
+   per viewport. Tier 2: soft coral tint that fills on engagement.
+   Tier 3: hairline marks. The trial submit is ink-on-champagne.
+   -------------------------------------------------------------------------- */
+/* Tier 1 — the gradient parks at its coral end and glides toward amber
+   on hover (background-image cannot transition; background-position can) */
+:is(body.home-page, body.contact-page, body.events-page) .btn-hero-primary,
+:is(body.home-page, body.contact-page, body.events-page) .guides-confidence .btn-primary,
+:is(body.home-page, body.contact-page, body.events-page) .guides-first-step__actions .btn-primary,
+:is(body.home-page, body.contact-page, body.events-page) .cta-filled {
+    background: var(--cta-grad);
+    background-size: 160% 100%;
+    background-position: 0% 50%;
+    border: 1px solid transparent;
+    border-radius: var(--cta-radius);
+    color: var(--cta-ink);
+    box-shadow: inset 0 -2px 0 var(--cta-base-rest);
+    text-shadow: none;
+    outline: 1px solid transparent;
+    outline-offset: 3px;
+    transition: background-position 0.3s ease, box-shadow 0.25s ease, outline-color 0.25s ease, color 0.25s ease;
+}
+
+:is(body.home-page, body.contact-page, body.events-page) .btn-hero-primary:hover,
+:is(body.home-page, body.contact-page, body.events-page) .btn-hero-primary:focus-visible,
+:is(body.home-page, body.contact-page, body.events-page) .guides-confidence .btn-primary:hover,
+:is(body.home-page, body.contact-page, body.events-page) .guides-confidence .btn-primary:focus-visible,
+:is(body.home-page, body.contact-page, body.events-page) .guides-first-step__actions .btn-primary:hover,
+:is(body.home-page, body.contact-page, body.events-page) .guides-first-step__actions .btn-primary:focus-visible,
+:is(body.home-page, body.contact-page, body.events-page) .cta-filled:hover,
+:is(body.home-page, body.contact-page, body.events-page) .cta-filled:focus-visible {
+    background-position: 100% 50%;
+    color: var(--cta-ink);
+    box-shadow: inset 0 -2px 0 var(--cta-base-hover);
+}
+
+/* Tier 2 — header pill steps down so the hero owns the fold; the full
+   gradient is the reward for hover/focus */
+:is(body.home-page, body.contact-page, body.events-page) .btn-header-cta {
+    background: var(--cta-soft-bg);
+    border: 1px solid var(--cta-soft-border);
+    border-radius: var(--cta-radius-sm);
+    color: var(--cta-soft-text);
+    box-shadow: inset 0 -2px 0 var(--cta-base-soft);
+    text-shadow: none;
+    outline: 1px solid transparent;
+    outline-offset: 3px;
+    transition: background-color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, color 0.25s ease, outline-color 0.25s ease;
+}
+
+:is(body.home-page, body.contact-page, body.events-page) .btn-header-cta:hover,
+:is(body.home-page, body.contact-page, body.events-page) .btn-header-cta:focus-visible {
+    background: var(--cta-grad);
+    background-size: 160% 100%;
+    background-position: 0% 50%;
+    border-color: transparent;
+    color: var(--cta-ink);
+    box-shadow: inset 0 -2px 0 var(--cta-base-hover);
+}
+
+/* Trial submit — ink on champagne: the darkest element on the light
+   island, with a small sunset arrow */
+:is(body.home-page, body.contact-page, body.events-page) .btn-submit {
+    background: var(--cta-submit-bg);
+    border: 1px solid transparent;
+    border-radius: var(--cta-radius);
+    min-height: 3.5rem;
+    color: var(--cta-submit-text);
+    box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.35);
+    text-shadow: none;
+    outline: 1px solid transparent;
+    outline-offset: 3px;
+    transition: background-color 0.25s ease, box-shadow 0.25s ease, outline-color 0.25s ease;
+}
+
+/* The sheen layer follows the new corner radius */
+:is(body.home-page, body.contact-page, body.events-page) .btn-submit::before {
+    border-radius: calc(var(--cta-radius) - 1px);
+}
+
+/* style.css already draws the arrow chip; the glyph turns sunset coral
+   and the chip squares up to match the planted shape */
+:is(body.home-page, body.contact-page, body.events-page) .btn-submit::after {
+    color: #FF8A5C;
+    border-color: rgba(255, 138, 92, 0.45);
+    border-radius: var(--cta-radius-sm);
+}
+
+:is(body.home-page, body.contact-page, body.events-page) .btn-submit:hover,
+:is(body.home-page, body.contact-page, body.events-page) .btn-submit:focus-visible {
+    background: var(--cta-submit-bg-hover);
+    color: var(--cta-submit-text);
+    box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.55);
+}
+
+/* Kill the conic rotating border everywhere on the homepage */
+:is(body.home-page, body.contact-page, body.events-page) .btn-header-cta::before,
+:is(body.home-page, body.contact-page, body.events-page) .btn-hero-primary::before,
+:is(body.home-page, body.contact-page, body.events-page) .home-hero__actions .btn-hero-primary::before,
+:is(body.home-page, body.contact-page, body.events-page) .home-hero__panel-actions .btn-hero-primary::before,
+:is(body.home-page, body.contact-page, body.events-page) .btn-rotating-border::before,
+:is(body.home-page, body.contact-page, body.events-page) .btn-header-cta::after,
+:is(body.home-page, body.contact-page, body.events-page) .btn-hero-primary::after {
+    content: none;
+    animation: none;
+}
+
+/* Secondary buttons: transparent + brass hairline + champagne text */
+:is(body.home-page, body.contact-page, body.events-page) .btn-hero-secondary,
+:is(body.home-page, body.contact-page, body.events-page) .btn-header-secondary,
+:is(body.home-page, body.contact-page, body.events-page) .guides-confidence .btn-secondary,
+:is(body.home-page, body.contact-page, body.events-page) .cta-outline {
+    background: transparent;
+    border: 1px solid rgba(232, 176, 75, 0.45);
+    border-radius: var(--cta-radius);
+    color: #F4EFE6;
+    box-shadow: none;
+    text-shadow: none;
+}
+
+:is(body.home-page, body.contact-page, body.events-page) .btn-hero-secondary:hover,
+:is(body.home-page, body.contact-page, body.events-page) .btn-hero-secondary:focus-visible,
+:is(body.home-page, body.contact-page, body.events-page) .btn-header-secondary:hover,
+:is(body.home-page, body.contact-page, body.events-page) .btn-header-secondary:focus-visible,
+:is(body.home-page, body.contact-page, body.events-page) .guides-confidence .btn-secondary:hover,
+:is(body.home-page, body.contact-page, body.events-page) .guides-confidence .btn-secondary:focus-visible,
+:is(body.home-page, body.contact-page, body.events-page) .cta-outline:hover,
+:is(body.home-page, body.contact-page, body.events-page) .cta-outline:focus-visible {
+    background: rgba(232, 176, 75, 0.1);
+    border-color: #E8B04B;
+    color: #F4EFE6;
+    transform: none;
+}
+
+/* --------------------------------------------------------------------------
+   5. HERO
+   -------------------------------------------------------------------------- */
+body.home-page .home-hero,
+body.home-page .home-hero__panel {
+    background: var(--bg-main);
+}
+
+body.home-page .hero-overlay,
+body.home-page .home-hero__shade {
+    background: linear-gradient(180deg, rgba(6, 26, 23, 0) 40%, rgba(6, 26, 23, 0.55) 78%, rgba(6, 26, 23, 0.92) 100%);
+}
+
+body.home-page .home-hero__title,
+body.home-page .home-hero__brand,
+body.home-page .home-hero__brand-name,
+body.home-page .home-hero__brand-a,
+body.home-page .home-hero__brand-cent,
+body.home-page .home-hero__brand-dance {
+    color: #F2E7CF;
+    -webkit-text-fill-color: #F2E7CF;
+}
+
+body.home-page .home-hero__brand-x {
+    color: #FF5A3C;
+    -webkit-text-fill-color: #FF5A3C;
+}
+
+/* Hero CTAs — match the higher-specificity panel rules from style.css */
+body.home-page .home-hero__actions .btn-hero-primary,
+body.home-page .home-hero__panel-actions .btn-hero-primary {
+    background: var(--cta-grad);
+    background-size: 160% 100%;
+    background-position: 0% 50%;
+    border-color: transparent;
+    border-radius: var(--cta-radius);
+    color: var(--cta-ink);
+    box-shadow: inset 0 -2px 0 var(--cta-base-rest);
+    transition: background-position 0.3s ease, box-shadow 0.25s ease, outline-color 0.25s ease, color 0.25s ease;
+}
+
+body.home-page .home-hero__actions .btn-hero-primary:hover,
+body.home-page .home-hero__actions .btn-hero-primary:focus-visible,
+body.home-page .home-hero__panel-actions .btn-hero-primary:hover,
+body.home-page .home-hero__panel-actions .btn-hero-primary:focus-visible {
+    background-position: 100% 50%;
+    color: var(--cta-ink);
+    box-shadow: inset 0 -2px 0 var(--cta-base-hover);
+}
+
+/* The hero secondary keeps step with the planted shape */
+body.home-page .btn-hero-secondary,
+body.home-page .home-hero__actions .btn-hero-secondary,
+body.home-page .home-hero__panel-actions .btn-hero-secondary {
+    border-radius: var(--cta-radius);
+}
+
+body.home-page .home-hero__actions .btn-hero-secondary,
+body.home-page .home-hero__panel-actions .btn-hero-secondary {
+    background: transparent;
+    border: 1px solid rgba(232, 176, 75, 0.45);
+    color: #F4EFE6;
+    box-shadow: none;
+}
+
+body.home-page .home-hero__actions .btn-hero-secondary:hover,
+body.home-page .home-hero__actions .btn-hero-secondary:focus-visible,
+body.home-page .home-hero__panel-actions .btn-hero-secondary:hover,
+body.home-page .home-hero__panel-actions .btn-hero-secondary:focus-visible {
+    background: rgba(232, 176, 75, 0.1);
+    border-color: #E8B04B;
+    color: #F4EFE6;
+}
+
+body.home-page .home-hero__intro {
+    color: #9DB4AB;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* H1 value proposition: roman lead line, italic reassurance line
+   (the roman/italic pairing device from the title system) */
+body.home-page .home-hero__headline {
+    margin: 0 0 0.62rem;
+    color: #F2E7CF;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: clamp(1.2rem, 1.6vw, 1.52rem);
+    line-height: 1.28;
+    letter-spacing: 0.004em;
+    text-transform: none;
+}
+
+body.home-page .home-hero__headline-lead,
+body.home-page .home-hero__headline-soft {
+    display: block;
+}
+
+body.home-page .home-hero__headline-soft {
+    color: #F4EFE6;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 0.86em;
+}
+
+/* Assurance line directly under the primary CTA: no boxes — one editorial
+   line with thin brass hairline separators. Legibility over video comes
+   from a soft shadow, not a pill. */
+body.home-page .home-hero__actions .home-hero__assurance {
+    flex-basis: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.3rem 0;
+    margin: 0.55rem 0 0;
+    padding: 0 0 0 0.2rem;
+    list-style: none;
+}
+
+body.home-page .home-hero__actions .home-hero__assurance li {
+    display: inline-flex;
+    align-items: center;
+    min-height: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: none;
+    color: #F4EFE6;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.035em;
+    line-height: 1.25;
+    text-align: left;
+    text-shadow:
+        0 1px 14px rgba(4, 19, 16, 0.9),
+        0 0 3px rgba(4, 19, 16, 0.65);
+}
+
+body.home-page .home-hero__actions .home-hero__assurance li + li::before {
+    content: '';
+    display: inline-block;
+    width: 1px;
+    height: 0.85em;
+    margin: 0 0.62rem;
+    background: rgba(232, 176, 75, 0.55);
+}
+
+body.home-page .home-hero__choice {
+    background: #10322B;
+    border: 1px solid rgba(232, 176, 75, 0.14);
+    color: #F4EFE6;
+    box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+}
+
+body.home-page .home-hero__choice:hover {
+    border-color: rgba(232, 176, 75, 0.4);
+    background: #144036;
+}
+
+/* Active choice: one consistent coral ring (style.css would otherwise mix
+   its brass border-color into the other three sides) */
+body.home-page .home-hero__choice.active,
+body.home-page .home-hero__choice.is-active,
+body.home-page .home-hero__choice[aria-pressed="true"] {
+    border: 1px solid rgba(255, 90, 60, 0.6);
+    background: #144036;
+}
+
+/* --------------------------------------------------------------------------
+   6. SECTION SURFACES & TITLES
+   -------------------------------------------------------------------------- */
+body.home-page .guides-section {
+    background: linear-gradient(180deg, #0C2A24 0%, #061A17 100%);
+}
+
+body.home-page .guides-section::before {
+    background:
+        linear-gradient(90deg, transparent 0%, rgba(232, 176, 75, 0.08) 18%, transparent 38%),
+        linear-gradient(135deg, transparent 0%, rgba(255, 90, 60, 0.06) 52%, transparent 78%);
+}
+
+body.home-page .guides-section::after,
+body.home-page .schedule-section::after,
+body.home-page .reviews-section::after {
+    background: linear-gradient(90deg, transparent, rgba(232, 176, 75, 0.55), rgba(255, 90, 60, 0.4), transparent);
+}
+
+body.home-page .schedule-section {
+    background: #061A17;
+}
+
+body.home-page .gallery-values-section,
+body.home-page .stay-section {
+    background: #0C2A24;
+}
+
+/* Matches the higher-specificity shorthand in style.css */
+body.home-page .gallery-values-section.stay-section {
+    background:
+        radial-gradient(circle at 18% 12%, rgba(232, 176, 75, 0.1), transparent 28%),
+        radial-gradient(circle at 86% 16%, rgba(255, 90, 60, 0.06), transparent 24%),
+        linear-gradient(135deg, #0C2A24 0%, #0A241F 48%, #061A17 100%);
+}
+
+body.home-page .gallery-values-section.stay-section::before {
+    background:
+        linear-gradient(90deg, rgba(232, 176, 75, 0.08), transparent 26%, rgba(232, 176, 75, 0.05) 74%, transparent),
+        repeating-linear-gradient(90deg, rgba(242, 231, 207, 0.03) 0 1px, transparent 1px 6rem);
+}
+
+body.home-page .stay-visual {
+    color: #F4EFE6;
+}
+
+body.home-page .stay-visual .section-title-modern,
+body.home-page .stay-copy .section-title-modern {
+    color: #F2E7CF;
+}
+
+body.home-page .schedule-grid-header {
+    background: linear-gradient(90deg, rgba(232, 176, 75, 0.12), rgba(16, 50, 43, 0.45));
+    border-color: rgba(232, 176, 75, 0.22);
+    box-shadow: none;
+}
+
+/* (schedule title ::before is unified into the accent-mark motif — section 14) */
+
+body.home-page .reviews-section {
+    background: #061A17;
+}
+
+body.home-page .trial-section {
+    background: #061A17;
+}
+
+body.home-page .home-faq-section {
+    background: transparent;
+}
+
+:is(body.home-page, body.contact-page, body.events-page) .section-title-modern,
+:is(body.home-page, body.contact-page, body.events-page) .section-title-left,
+:is(body.home-page, body.contact-page, body.events-page) .schedule-header h2,
+:is(body.home-page, body.contact-page, body.events-page) .stay-section h2,
+:is(body.home-page, body.contact-page, body.events-page) .stay-visual__header h3 {
+    color: #F2E7CF;
+}
+
+:is(body.home-page, body.contact-page, body.events-page) .section-subtitle {
+    color: #9DB4AB;
+}
+
+/* --------------------------------------------------------------------------
+   7. BEGINNER GATEWAY
+   -------------------------------------------------------------------------- */
+body.home-page .guides-first-step {
+    background: #10322B;
+    border: 1px solid rgba(232, 176, 75, 0.18);
+    box-shadow: var(--shadow-soft);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+}
+
+body.home-page .guides-first-step:hover,
+body.home-page .guides-first-step:focus-within {
+    border-color: rgba(232, 176, 75, 0.4);
+    box-shadow: var(--shadow-soft);
+}
+
+body.home-page .guides-first-step__eyebrow {
+    color: #E8B04B;
+}
+
+body.home-page .guides-first-step h3 {
+    color: #F2E7CF;
+}
+
+body.home-page .guides-first-step p {
+    color: #9DB4AB;
+}
+
+body.home-page .guides-first-step__meta span {
+    background: rgba(232, 176, 75, 0.1);
+    border: 1px solid rgba(232, 176, 75, 0.28);
+    color: #F4EFE6;
+}
+
+body.home-page .guides-first-step__link {
+    color: #FF5A3C;
+}
+
+body.home-page .guides-confidence {
+    background: #0C2A24;
+    border: 1px solid rgba(232, 176, 75, 0.15);
+}
+
+body.home-page .guides-confidence p {
+    color: #F4EFE6;
+}
+
+/* --------------------------------------------------------------------------
+   8. SCHEDULE
+   -------------------------------------------------------------------------- */
+body.home-page .day-column {
+    background: transparent;
+    border-left: 1px solid rgba(232, 176, 75, 0.14);
+}
+
+body.home-page .day-title,
+body.home-page .col-header {
+    color: #F2E7CF;
+}
+
+body.home-page .class-card,
+body.home-page .compact-card,
+body.home-page .compact-option {
+    background: #10322B;
+    border: 1px solid rgba(232, 176, 75, 0.14);
+    color: #F4EFE6;
+    box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+}
+
+/* Hover keeps the uniform hairline (no width-jumping borders); the solid
+   inset rail from section 19 carries the coral accent instead */
+body.home-page .class-card:hover,
+body.home-page .compact-option:hover {
+    border-color: rgba(232, 176, 75, 0.45);
+    background: #144036;
+}
+
+body.home-page .class-name,
+body.home-page .compact-name {
+    color: #F4EFE6;
+}
+
+body.home-page .class-experience,
+body.home-page .compact-status {
+    color: #9DB4AB;
+}
+
+body.home-page .time,
+body.home-page .time-slot,
+body.home-page .compact-time {
+    color: #F2E7CF;
+    font-family: 'Teko', sans-serif;
+    font-size: 1.15em;
+    letter-spacing: 0.04em;
+}
+
+body.home-page .badge-full {
+    background: rgba(157, 180, 171, 0.14);
+    border: 1px solid rgba(157, 180, 171, 0.3);
+    color: #9DB4AB;
+}
+
+body.home-page .tag-styling {
+    background: rgba(232, 176, 75, 0.14);
+    border: 1px solid rgba(232, 176, 75, 0.3);
+    color: #E8B04B;
+}
+
+body.home-page .schedule-meta {
+    color: #9DB4AB;
+}
+
+/* --------------------------------------------------------------------------
+   9. ABOUT / GALLERY / STAY
+   -------------------------------------------------------------------------- */
+body.home-page .atelier-copy,
+body.home-page .stay-copy,
+body.home-page .stay-lede {
+    color: #F4EFE6;
+}
+
+body.home-page .atelier-photo__caption,
+body.home-page .atelier-gallery-meta {
+    color: #9DB4AB;
+}
+
+/* Atelier cream matboard panels -> petrol surfaces (the trial form stays
+   the page's only light island) */
+body.home-page .stay-visual__header.atelier-copy,
+body.home-page .atelier-copy,
+body.home-page .stay-copy {
+    background: rgba(16, 50, 43, 0.92);
+    border: 1px solid rgba(232, 176, 75, 0.16);
+    color: #F4EFE6;
+    box-shadow: var(--shadow-soft);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+}
+
+body.home-page .atelier-photo {
+    background: #10322B;
+    border: 1px solid rgba(232, 176, 75, 0.15);
+}
+
+body.home-page .atelier-gallery-link {
+    background: rgba(232, 176, 75, 0.1);
+    border: 1px solid rgba(232, 176, 75, 0.4);
+    color: #E8B04B;
+}
+
+body.home-page .atelier-gallery-link:hover {
+    background: rgba(232, 176, 75, 0.18);
+    color: #F2E7CF;
+}
+
+body.home-page .stay-eyebrow,
+body.home-page .trial-expectation__eyebrow,
+body.home-page .trial-step__eyebrow,
+body.home-page .cta-premium-kicker {
+    color: #E8B04B;
+}
+
+/* stay-link renders as a button (hardcoded old gradient in style.css);
+   tier 2 here — mid-funnel, the community section stays calm */
+body.home-page .stay-link {
+    background: var(--cta-soft-bg);
+    border: 1px solid var(--cta-soft-border);
+    border-radius: var(--cta-radius-sm);
+    color: var(--cta-soft-text);
+    box-shadow: inset 0 -2px 0 var(--cta-base-soft);
+    text-shadow: none;
+    outline: 1px solid transparent;
+    outline-offset: 3px;
+    transition: background-color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, color 0.25s ease, outline-color 0.25s ease;
+}
+
+body.home-page .stay-link:hover,
+body.home-page .stay-link:focus-visible {
+    background: var(--cta-grad);
+    background-size: 160% 100%;
+    background-position: 0% 50%;
+    border-color: transparent;
+    color: var(--cta-ink);
+    box-shadow: inset 0 -2px 0 var(--cta-base-hover);
+}
+
+body.home-page .atelier-gallery-link,
+body.home-page .atelier-gallery-link__text {
+    color: #E8B04B;
+}
+
+/* --------------------------------------------------------------------------
+   10. REVIEWS
+   -------------------------------------------------------------------------- */
+body.home-page .review-card {
+    position: relative;
+    padding: 1.35rem 1.4rem 1.25rem;
+    border-radius: 16px;
+    background: linear-gradient(155deg, #13392F 0%, #0D2B24 100%);
+    border: 1px solid rgba(232, 176, 75, 0.22);
+    box-shadow: 0 16px 32px rgba(2, 10, 8, 0.35);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+}
+
+/* Floor-tape corner ticks: brass at rest, coral when the card is engaged */
+body.home-page .review-card::before,
+body.home-page .review-card::after {
+    content: '';
+    position: absolute;
+    width: 1.05rem;
+    height: 1.05rem;
+    pointer-events: none;
+    transition: border-color 0.3s ease;
+}
+
+body.home-page .review-card::before {
+    top: 0.55rem;
+    left: 0.55rem;
+    border-top: 2px solid rgba(232, 176, 75, 0.55);
+    border-left: 2px solid rgba(232, 176, 75, 0.55);
+}
+
+body.home-page .review-card::after {
+    right: 0.55rem;
+    bottom: 0.55rem;
+    border-right: 2px solid rgba(232, 176, 75, 0.55);
+    border-bottom: 2px solid rgba(232, 176, 75, 0.55);
+}
+
+body.home-page .review-card:hover,
+body.home-page .review-card:focus-within {
+    background: linear-gradient(155deg, #17453A 0%, #10322B 100%);
+    border-color: rgba(255, 90, 60, 0.55);
+    box-shadow: 0 20px 40px rgba(2, 10, 8, 0.45);
+}
+
+body.home-page .review-card:hover::before,
+body.home-page .review-card:hover::after,
+body.home-page .review-card:focus-within::before,
+body.home-page .review-card:focus-within::after {
+    border-color: #FF5A3C;
+}
+
+body.home-page .review-stars {
+    color: #E8B04B;
+    background: none;
+    -webkit-background-clip: initial;
+    background-clip: initial;
+    -webkit-text-fill-color: #E8B04B;
+    font-size: 0.95rem;
+    letter-spacing: 0.14em;
+}
+
+body.home-page .reviewer-name {
+    color: #F2E7CF;
+}
+
+body.home-page .review-text {
+    color: rgba(244, 239, 230, 0.88);
+    font-size: 0.88rem;
+    line-height: 1.55;
+}
+
+body.home-page .review-date {
+    color: #9DB4AB;
+}
+
+body.home-page .reviews-proof__score,
+body.home-page .reviews-proof__rating-figure {
+    color: #F2E7CF;
+}
+
+body.home-page .reviews-proof__starfield {
+    color: #E8B04B;
+}
+
+body.home-page .reviews-proof__copy,
+body.home-page .reviews-proof__source-line {
+    color: #9DB4AB;
+}
+
+/* --------------------------------------------------------------------------
+   11. TRIAL FORM — the champagne conversion island
+   -------------------------------------------------------------------------- */
+/* Booking process rides on the dark canvas: solid petrol pills, brass
+   step numerals, readable champagne labels */
+body.home-page .trial-process__item {
+    color: #F2E7CF;
+    background: rgba(16, 50, 43, 0.9);
+    border: 1px solid rgba(232, 176, 75, 0.38);
+}
+
+body.home-page .trial-process__item strong {
+    color: #F2E7CF;
+}
+
+body.home-page .trial-process__step {
+    background: rgba(4, 19, 16, 0.65);
+    border: 1px solid rgba(232, 176, 75, 0.55);
+    color: #E8B04B;
+    box-shadow: none;
+}
+
+body.home-page .trial-process__item + .trial-process__item::before {
+    background: #E8B04B;
+    box-shadow: 0 0 0 0.38rem rgba(6, 26, 23, 0.9);
+}
+
+body.home-page .trial-process__track {
+    background: rgba(232, 176, 75, 0.16);
+}
+
+body.home-page .trial-process__track::after {
+    background: linear-gradient(90deg, #FF5A3C, #E8B04B);
+}
+
+/* One island, not five stacked panels: the form wrapper carries the
+   champagne surface; the steps sit transparently inside it */
+body.home-page .form-wrapper {
+    background: #F4ECD9;
+    border: 1px solid rgba(36, 20, 7, 0.16);
+    box-shadow: 0 24px 60px rgba(2, 10, 8, 0.5);
+}
+
+body.home-page .trial-step {
+    background: transparent;
+    border: none;
+    color: #10231F;
+    box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+}
+
+body.home-page .trial-step--contact {
+    border-top: 1px solid rgba(36, 20, 7, 0.14);
+    box-shadow: none;
+}
+
+/* The class picker well: one light surface with ink text */
+body.home-page .trial-step--choice .class-selection-grid {
+    background: #FBF7EC;
+    border: 1px solid #E2D5BD;
+    color: #1D130B;
+    box-shadow: none;
+}
+
+body.home-page .trial-step--choice .day-column {
+    background: transparent;
+    border: 1px solid rgba(36, 20, 7, 0.08);
+    box-shadow: none;
+}
+
+body.home-page .trial-step--choice .day-title {
+    color: #241407;
+    border-bottom-color: rgba(36, 20, 7, 0.14);
+}
+
+body.home-page .trial-step--choice .trial-time-rail__title {
+    color: #6D6154;
+    border-bottom-color: rgba(36, 20, 7, 0.14);
+}
+
+body.home-page .trial-step__title,
+body.home-page .trial-step__header {
+    color: #241407;
+}
+
+body.home-page .trial-step__note,
+body.home-page .trial-submit-note,
+body.home-page .trial-consent {
+    color: #6D6154;
+}
+
+body.home-page .trial-step .class-card,
+body.home-page .trial-step .compact-option {
+    background: #FFFDF7;
+    border: 1px solid #E2D5BD;
+    color: #1D130B;
+}
+
+/* compact-option labels wrap an inner .compact-card box — keep it light too */
+body.home-page .trial-step .compact-card {
+    background: #FFFDF7;
+    border: 1px solid #E2D5BD;
+    color: #1D130B;
+    box-shadow: none;
+}
+
+body.home-page .trial-step .compact-card::before,
+body.home-page .trial-step .compact-card::after {
+    content: none;
+}
+
+body.home-page .trial-step .compact-option:hover .compact-card {
+    border-color: rgba(216, 85, 47, 0.6);
+    background: #FFFDF7;
+}
+
+/* Selected class flips to an inverted petrol card (was purple in style.css) */
+body.home-page .trial-step .compact-option input:checked + .compact-card,
+body.home-page .trial-step .compact-option:not(.compact-option--disabled):hover input:checked + .compact-card,
+body.home-page .trial-step .compact-option:focus-within input:checked + .compact-card {
+    background: linear-gradient(135deg, #10322B 0%, #144036 100%);
+    border-color: var(--cta-form-accent);
+    color: #F4EFE6;
+    box-shadow:
+        0 16px 34px rgba(2, 10, 8, 0.3),
+        0 0 0 2px rgba(216, 85, 47, 0.25);
+}
+
+body.home-page .trial-step .class-card:hover,
+body.home-page .trial-step .compact-option:hover {
+    border-color: rgba(216, 85, 47, 0.6);
+    background: #FFFDF7;
+}
+
+body.home-page .trial-step .class-card.selected,
+body.home-page .trial-step .class-card[aria-checked="true"],
+body.home-page .trial-step .compact-option.selected {
+    border: 1px solid var(--cta-form-accent);
+    background: #FFF1E9;
+    box-shadow: none;
+}
+
+body.home-page .trial-step .class-name,
+body.home-page .trial-step .compact-name {
+    color: #1D130B;
+}
+
+body.home-page .trial-step .class-experience,
+body.home-page .trial-step .compact-status,
+body.home-page .trial-step .compact-time {
+    color: #6D6154;
+}
+
+body.home-page .trial-step .time,
+body.home-page .trial-step .time-slot {
+    color: #1D130B;
+}
+
+body.home-page .trial-form label {
+    color: #241407;
+}
+
+body.home-page .trial-form input,
+body.home-page .trial-form select,
+body.home-page .trial-form textarea {
+    background: #FFFDF7;
+    border: 1px solid #D8C9A8;
+    color: #1D130B;
+}
+
+body.home-page .trial-form input::placeholder,
+body.home-page .trial-form textarea::placeholder {
+    color: #9C8F7C;
+}
+
+body.home-page .trial-form input:focus,
+body.home-page .trial-form select:focus,
+body.home-page .trial-form textarea:focus {
+    border-color: var(--cta-form-accent);
+    outline: 2px solid var(--cta-form-accent);
+    outline-offset: 1px;
+    box-shadow: none;
+}
+
+body.home-page .trial-time-rail__title {
+    color: #6D6154;
+}
+
+body.home-page .trial-time-rail__list {
+    color: #6D6154;
+}
+
+/* --------------------------------------------------------------------------
+   12. FAQ + generic glass surfaces
+   -------------------------------------------------------------------------- */
+/* Glass panels/cards -> solid petrol surfaces (no blur) wherever they
+   weren't already restyled by a section rule above */
+:is(body.home-page, body.contact-page, body.events-page) .glass-panel,
+:is(body.home-page, body.contact-page, body.events-page) .glass-card {
+    background: #0C2A24;
+    border: 1px solid rgba(232, 176, 75, 0.15);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    box-shadow: var(--shadow-soft);
+}
+
+body.home-page .home-faq-section details {
+    background: #0C2A24;
+    border: 1px solid rgba(232, 176, 75, 0.15);
+}
+
+/* Beats the cream card rule of the old inverted-FAQ design */
+body.home-page .home-faq-section .glass-panel {
+    background: rgba(16, 50, 43, 0.85);
+    border-color: rgba(232, 176, 75, 0.18);
+    box-shadow: none;
+}
+
+body.home-page .home-faq-section details[open] {
+    border-left: 3px solid #E8B04B;
+}
+
+body.home-page .home-faq-section summary {
+    color: #F2E7CF;
+}
+
+body.home-page .home-faq-section summary:hover {
+    color: #FF5A3C;
+}
+
+body.home-page .home-faq-section p {
+    color: #9DB4AB;
+}
+
+body.home-page .home-faq-section h2 {
+    color: #F2E7CF;
+}
+
+/* --------------------------------------------------------------------------
+   13. MOTIF & TEXTURE — accent mark, dancing underline, grain, vignette
+   -------------------------------------------------------------------------- */
+
+/* The .reveal slab is replaced by GSAP choreography on the homepage.
+   Content stays fully visible without JavaScript or with reduced motion. */
+:is(body.home-page, body.contact-page, body.events-page) .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+}
+
+/* Title signature: no glyphs, no marks — the emotive word of each title
+   carries the palette as an italic gradient keyword. Kill every legacy
+   ::before ornament above titles. */
+:is(body.home-page, body.contact-page, body.events-page) .section-title-modern::before,
+:is(body.home-page, body.contact-page, body.events-page) .schedule-section .section-title-modern::before,
+:is(body.home-page, body.contact-page, body.events-page) .reviews-section .section-title-modern::before,
+:is(body.home-page, body.contact-page, body.events-page) .home-faq-section .section-title-modern::before,
+:is(body.home-page, body.contact-page, body.events-page) .stay-visual .section-title-modern::before,
+:is(body.home-page, body.contact-page, body.events-page) .stay-copy .section-title-modern::before {
+    content: none;
+}
+
+:is(body.home-page, body.contact-page, body.events-page) .section-title-modern .title-accent {
+    font-style: italic;
+    background: linear-gradient(100deg, #FF5A3C 0%, #F58042 46%, #E8B04B 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: #FF5A3C;
+}
+
+/* The Dancing Underline: a brass rule with a coral tip under every section
+   title. GSAP draws it in three steps and a tap; the CSS variable defaults
+   to 1 so it renders complete without JavaScript or with reduced motion. */
+:is(body.home-page, body.contact-page, body.events-page) .section-title-modern::after {
+    content: '';
+    display: block;
+    width: 5.25rem;
+    height: 2px;
+    margin: 1.05rem auto 0;
+    border-radius: 999px;
+    background: linear-gradient(90deg, var(--accent-gold) 0%, var(--accent-gold) 72%, var(--accent-start) 100%);
+    transform: scaleX(var(--title-underline-scale, 1));
+    transform-origin: left center;
+}
+
+:is(body.home-page, body.contact-page, body.events-page) .section-title-left::after {
+    margin-left: 0;
+    margin-right: auto;
+}
+
+/* Film grain + vignette: de-flattens the dark canvas. Static (no motion),
+   pointer-transparent, above content (11000) and below the loader (20000). */
+:is(body.home-page, body.contact-page, body.events-page)::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 11990;
+    background: radial-gradient(120% 95% at 50% 42%, transparent 62%, rgba(3, 16, 13, 0.4) 100%);
+}
+
+:is(body.home-page, body.contact-page, body.events-page)::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 11991;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 200px 200px;
+    opacity: 0.045;
+    mix-blend-mode: soft-light;
+}
+
+/* FAQ soft open: the + rotates to x when an item is open. The transition is
+   motion-gated; without it the icon still flips instantly. */
+body.home-page .home-faq-section summary span {
+    display: inline-block;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    body.home-page .home-faq-section summary span {
+        transition: transform 0.3s ease;
+    }
+}
+
+body.home-page .home-faq-section details[open] summary span {
+    transform: rotate(45deg);
+}
+
+/* --------------------------------------------------------------------------
+   14. FOOTER
+   -------------------------------------------------------------------------- */
+:is(body.home-page, body.contact-page, body.events-page) .main-footer {
+    background: #041310;
+    color: #9DB4AB;
+}
+
+:is(body.home-page, body.contact-page, body.events-page) .footer-heading {
+    color: #F2E7CF;
+}
+
+:is(body.home-page, body.contact-page, body.events-page) .main-footer a {
+    color: #9DB4AB;
+}
+
+:is(body.home-page, body.contact-page, body.events-page) .main-footer a:hover {
+    color: #FF5A3C;
+}
+
+:is(body.home-page, body.contact-page, body.events-page) .footer-socials a {
+    color: #E8B04B;
+}
+
+:is(body.home-page, body.contact-page, body.events-page) .footer-bottom {
+    color: rgba(157, 180, 171, 0.7);
+    border-top: 1px solid rgba(232, 176, 75, 0.12);
+}
+
+/* --------------------------------------------------------------------------
+   15. PHASE 2 CONVERSION — offramp, badges, founders, avatars, FAQ, footer
+   -------------------------------------------------------------------------- */
+
+/* Hero stage CTAs: present but not shouting (was 0.88rem, then 1rem) */
+body.home-page .home-hero__actions .btn-hero {
+    min-width: 11rem;
+    padding: 0.9rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+/* About: the second heading reads as a subhead, not a competing H2 */
+body.home-page .section-title-modern--sub {
+    font-size: 2rem !important;
+    margin-bottom: 1.6rem;
+}
+
+/* Schedule offramp: closes the CTA gap between the grid and the form */
+body.home-page .schedule-offramp {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem 1.6rem;
+    margin-top: 3rem;
+    padding: 1.4rem 1.8rem;
+    background: #0C2A24;
+    border: 1px solid rgba(232, 176, 75, 0.18);
+    border-radius: 16px;
+}
+
+body.home-page .schedule-offramp__copy {
+    margin: 0;
+    color: #F4EFE6;
+    font-size: 1.02rem;
+}
+
+body.home-page .schedule-offramp__cta,
+body.home-page .home-faq-section__cta-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--cta-radius);
+    background: var(--cta-grad);
+    background-size: 160% 100%;
+    background-position: 0% 50%;
+    color: var(--cta-ink);
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    box-shadow: inset 0 -2px 0 var(--cta-base-rest);
+    outline: 1px solid transparent;
+    outline-offset: 3px;
+    transition: background-position 0.3s ease, box-shadow 0.25s ease, outline-color 0.25s ease;
+}
+
+body.home-page .schedule-offramp__cta:hover,
+body.home-page .schedule-offramp__cta:focus-visible,
+body.home-page .home-faq-section__cta-link:hover,
+body.home-page .home-faq-section__cta-link:focus-visible {
+    background-position: 100% 50%;
+    color: var(--cta-ink);
+    box-shadow: inset 0 -2px 0 var(--cta-base-hover);
+}
+
+/* "Start here" badge: brass so it guides without outranking coral CTAs */
+body.home-page .tag-recommended {
+    background: #E8B04B;
+    border: 1px solid transparent;
+    color: #10231F;
+}
+
+/* The recommended card keeps the uniform hairline; its solid coral rail
+   comes from the flat rail system in section 19 */
+body.home-page .class-card--recommended {
+    border-color: rgba(255, 90, 60, 0.4);
+}
+
+/* Trial form: the beginner option carries a small brass flag */
+body.home-page .trial-step .compact-option--recommended .compact-card {
+    border-color: rgba(216, 85, 47, 0.55);
+}
+
+body.home-page .trial-step .compact-status--recommended {
+    display: inline-block;
+    padding: 0.14rem 0.5rem;
+    border-radius: 999px;
+    background: #E8B04B;
+    color: #10231F;
+    font-size: 0.66rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+/* Mobile trial picker: collapse the nested boxes (day column, option label,
+   card, time pill) into one cream panel per day with flat divided rows */
+@media (max-width: 899px) {
+    body.home-page .trial-step--choice .day-column {
+        border: none;
+        background: transparent;
+    }
+
+    body.home-page .trial-step--choice .day-title {
+        border-bottom: none;
+    }
+
+    body.home-page .trial-step--choice .compact-class-list {
+        background: #FFFDF7;
+        border: 1px solid #E2D5BD;
+        box-shadow: none;
+    }
+
+    body.home-page .trial-step .compact-option {
+        background: transparent;
+        border: none;
+    }
+
+    body.home-page .trial-step .compact-card {
+        background: transparent;
+        border: none;
+    }
+
+    body.home-page .trial-step--choice .compact-option + .compact-option .compact-card {
+        border-top: 1px solid rgba(36, 20, 7, 0.1);
+    }
+
+    /* The beginner row swaps its coral border for a soft tint */
+    body.home-page .trial-step .compact-option--recommended .compact-card {
+        border-color: transparent;
+        background: rgba(216, 85, 47, 0.06);
+    }
+
+    body.home-page .trial-step--choice .compact-option input:checked + .compact-card .compact-time,
+    body.home-page .trial-step--choice .compact-option:not(.compact-option--disabled):hover input:checked + .compact-card .compact-time,
+    body.home-page .trial-step--choice .compact-option:focus-within input:checked + .compact-card .compact-time {
+        color: rgba(244, 239, 230, 0.88);
+    }
+}
+
+/* Founders strip: faces + credential right after the "10 couples" fact */
+body.home-page .founders-strip {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 1.6rem 0 1.8rem;
+    padding: 1rem 1.2rem;
+    background: rgba(4, 19, 16, 0.55);
+    border: 1px solid rgba(232, 176, 75, 0.22);
+    border-radius: 16px;
+}
+
+body.home-page .founders-strip__photo {
+    flex: 0 0 auto;
+    width: 3.6rem;
+    height: 3.6rem;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: 50% 18%;
+    border: 1px solid rgba(232, 176, 75, 0.45);
+}
+
+body.home-page .founders-strip__copy {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+body.home-page .founders-strip__names {
+    color: #F2E7CF;
+    font-size: 1.02rem;
+}
+
+body.home-page .founders-strip__role {
+    color: #9DB4AB;
+    font-size: 0.86rem;
+    line-height: 1.45;
+}
+
+body.home-page .founders-strip__link {
+    width: fit-content;
+    color: #FF5A3C;
+    font-size: 0.86rem;
+    font-weight: 600;
+}
+
+body.home-page .founders-strip__link:hover,
+body.home-page .founders-strip__link:focus-visible {
+    color: #FF7156;
+    text-decoration: underline;
+}
+
+/* Reviews: initial-avatars + linked, quantified rating */
+body.home-page .review-header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.7rem;
+}
+
+body.home-page .review-header .google-badge {
+    margin-left: auto;
+}
+
+body.home-page .review-avatar {
+    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.4rem;
+    height: 2.4rem;
+    border-radius: 50%;
+    background: rgba(232, 176, 75, 0.24);
+    border: 1px solid rgba(232, 176, 75, 0.6);
+    color: #F7EEDC;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+}
+
+body.home-page a.reviews-proof__source-line {
+    color: #9DB4AB;
+    text-decoration: underline;
+    text-decoration-color: rgba(232, 176, 75, 0.5);
+    text-underline-offset: 3px;
+}
+
+body.home-page a.reviews-proof__source-line:hover,
+body.home-page a.reviews-proof__source-line:focus-visible {
+    color: #F2E7CF;
+    text-decoration-color: #E8B04B;
+}
+
+/* FAQ: structural classes replacing the old inline styles */
+body.home-page .home-faq-section {
+    max-width: 800px;
+    margin: 4rem auto 6rem;
+    padding: 0 1.25rem;
+}
+
+body.home-page .home-faq-section__title {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+body.home-page .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+body.home-page .faq-item {
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+body.home-page .faq-item__summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem;
+    cursor: pointer;
+    color: var(--text-main);
+    font-weight: 600;
+    font-size: 1.1rem;
+    list-style: none;
+}
+
+body.home-page .faq-item__summary::-webkit-details-marker {
+    display: none;
+}
+
+body.home-page .faq-item__icon {
+    color: var(--accent-start);
+    font-size: 1.5rem;
+    line-height: 1;
+}
+
+body.home-page .faq-item__body {
+    padding: 0 1.5rem 1.5rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+body.home-page .faq-item__body a {
+    color: var(--accent-start);
+}
+
+body.home-page .home-faq-section__cta {
+    margin-top: 2.2rem;
+    text-align: center;
+}
+
+body.home-page .home-faq-section__cta-copy {
+    margin: 0 0 0.9rem;
+    color: #9DB4AB;
+}
+
+/* Footer: visible WhatsApp line */
+body.home-page .footer-contact {
+    margin: 0.7rem 0 1rem;
+    font-size: 0.95rem;
+}
+
+body.home-page .footer-contact a {
+    color: #E8B04B;
+}
+
+body.home-page .footer-contact a:hover,
+body.home-page .footer-contact a:focus-visible {
+    color: #FF5A3C;
+}
+
+/* --------------------------------------------------------------------------
+   16. BEGINNER GATEWAY — compact editorial scale
+   The starter section previously shouted (5rem title, 23rem photo cards,
+   cream badges from the old light theme). Everything steps down one size
+   and adopts the petrol/brass/coral language.
+   -------------------------------------------------------------------------- */
+body.home-page .guides-section--starter {
+    padding: clamp(2.2rem, 3.6vw, 3.2rem) 0 clamp(2.4rem, 3.8vw, 3.4rem);
+}
+
+/* Every other section title on the page is centered (schedule, reviews,
+   about, FAQ); this one inherited style.css's left-aligned two-column
+   .guides-section rule from before the fork redesign, when a side visual
+   sat next to the text. The fork is single-column now, so re-center to match. */
+body.home-page .guides-section--starter .guides-section__story {
+    margin: 0 auto;
+    text-align: center;
+}
+
+body.home-page .guides-section--starter .section-title-modern {
+    margin: 0 auto;
+    font-size: clamp(1.9rem, 2.9vw, 2.8rem) !important;
+    text-align: center;
+}
+
+/* Roman/italic title device: the second line answers softly */
+body.home-page .guides-section--starter .section-title-modern span:last-child {
+    font-size: 0.82em;
+    font-style: italic;
+    font-weight: 500;
+    color: #F4EFE6;
+}
+
+body.home-page .guides-section--starter .section-subtitle {
+    max-width: 560px;
+    margin: 0.5rem auto 0;
+    font-size: 0.98rem;
+    text-align: center;
+}
+
+/* Inline form errors on the champagne island */
+body.home-page .trial-form .form-error {
+    margin: 0.5rem 0 0;
+    color: #B3261E;
+    font-size: 0.88rem;
+    font-weight: 500;
+}
+
+body.home-page .trial-form input.input-error {
+    border-color: #B3261E;
+}
+
+/* --------------------------------------------------------------------------
+   17. FOCUS PASS — collage recomposition, duotone, compressed trial header,
+   events strip, location strip, footer map card, trust microline
+   -------------------------------------------------------------------------- */
+
+/* Header: the DE language link steps one tick lighter so the second
+   language stays findable without outranking the nav */
+body.home-page .lang-switch a {
+    color: rgba(244, 239, 230, 0.6);
+}
+
+body.home-page .lang-switch a:hover,
+body.home-page .lang-switch a:focus-visible {
+    color: #F4EFE6;
+}
+
+/* About collage: four photos instead of six. The grid tightens, the
+   gallery link anchors to the collage's bottom edge, and the stage
+   loses roughly two rows of height. */
+body.home-page .atelier-stage {
+    grid-template-rows: repeat(9, minmax(2.3rem, auto)) auto auto;
+    min-height: clamp(40rem, 44vw, 48rem);
+}
+
+body.home-page .atelier-photo--hero {
+    grid-column: 1 / 6;
+    grid-row: 1 / 5;
+}
+
+body.home-page .atelier-photo--class {
+    grid-column: 6 / 9;
+    grid-row: 2 / 7;
+}
+
+body.home-page .atelier-photo--event {
+    grid-column: 9 / 13;
+    grid-row: 5 / 8;
+}
+
+body.home-page .atelier-photo--social {
+    grid-column: 5 / 11;
+    grid-row: 8 / 11;
+}
+
+body.home-page .atelier-gallery-meta {
+    grid-column: 9 / 13;
+    grid-row: 10 / 11;
+    align-self: end;
+    margin-bottom: 0;
+}
+
+@media (max-width: 1020px) {
+    body.home-page .atelier-stage {
+        grid-template-rows: repeat(9, minmax(2.5rem, auto)) auto;
+        min-height: clamp(46rem, 92vw, 57rem);
+    }
+
+    body.home-page .atelier-photo--hero {
+        grid-column: 1 / 5;
+        grid-row: 1 / 4;
+    }
+
+    body.home-page .atelier-photo--class {
+        grid-column: 6 / 9;
+        grid-row: 4 / 7;
+    }
+
+    body.home-page .atelier-photo--event {
+        grid-column: 1 / 6;
+        grid-row: 4 / 7;
+    }
+
+    body.home-page .atelier-photo--social {
+        grid-column: 2 / 8;
+        grid-row: 7 / 9;
+    }
+
+    body.home-page .atelier-gallery-meta {
+        grid-column: 5 / 9;
+        grid-row: 9 / 10;
+        align-self: end;
+    }
+}
+
+/* Branded duotone at rest (petrol shadows, champagne lift), full colour
+   on hover — colour is the reward for attention */
+body.home-page .atelier-photo {
+    filter: grayscale(1) sepia(0.65) hue-rotate(108deg) saturate(0.9) brightness(0.95) contrast(1.08);
+}
+
+body.home-page .atelier-photo::after {
+    background:
+        linear-gradient(165deg, rgba(242, 231, 207, 0.22), transparent 42%),
+        linear-gradient(180deg, transparent 55%, rgba(4, 19, 16, 0.5));
+    mix-blend-mode: soft-light;
+    opacity: 1;
+}
+
+body.home-page .atelier-photo:hover {
+    border-color: rgba(232, 176, 75, 0.55);
+    filter: grayscale(0) saturate(1.05) contrast(1.03);
+}
+
+body.home-page .atelier-photo:hover::after {
+    opacity: 0.25;
+}
+
+/* Trial header: roughly 30% shorter — the visitor has read this promise
+   five times by now, so the header states it once and steps aside */
+body.home-page .cta-premium-wrapper {
+    margin: 0 auto 1.3rem;
+    padding: 0 0 1.2rem;
+    gap: clamp(0.8rem, 2.2vw, 1.3rem);
+}
+
+body.home-page .cta-premium-title {
+    font-size: clamp(1.9rem, 3.4vw, 2.9rem);
+}
+
+body.home-page .cta-premium-note {
+    margin: 0.5rem 0 0.9rem;
+}
+
+/* The couple mark joins the Tropic Noir palette: brass instead of the
+   old purple/red brand colours */
+body.home-page .cta-premium-mark {
+    width: clamp(3.2rem, 5vw, 4.2rem);
+    filter: grayscale(1) sepia(1) hue-rotate(-8deg) saturate(1.5) brightness(1.35) contrast(0.9);
+    opacity: 0.95;
+}
+
+/* Trust microline at the moment of commitment */
+body.home-page .trial-submit-proof {
+    margin: 0.55rem 0 0;
+    text-align: center;
+    font-size: 0.88rem;
+    color: #6D6154;
+}
+
+body.home-page .trial-submit-proof__stars {
+    color: #B8872B;
+    letter-spacing: 0.12em;
+    margin-right: 0.45rem;
+}
+
+body.home-page .trial-submit-proof a {
+    color: #6D6154;
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-color: rgba(184, 135, 43, 0.55);
+    text-underline-offset: 3px;
+}
+
+body.home-page .trial-submit-proof a:hover,
+body.home-page .trial-submit-proof a:focus-visible {
+    color: #10231F;
+    text-decoration-color: #B8872B;
+}
+
+/* Upcoming events strip: the scene beyond the weekly schedule */
+body.home-page .events-strip {
+    padding: clamp(3rem, 5.5vw, 4.5rem) 0;
+    background: var(--bg-secondary);
+}
+
+body.home-page .events-strip__header {
+    max-width: 720px;
+    margin: 0 auto clamp(1.8rem, 3vw, 2.6rem);
+    text-align: center;
+}
+
+body.home-page .events-strip__subtitle {
+    margin: 0.9rem auto 0;
+}
+
+body.home-page .events-strip__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 26rem), 1fr));
+    gap: clamp(1rem, 2vw, 1.5rem);
+    max-width: 62rem;
+    margin: 0 auto;
+}
+
+body.home-page .events-strip__card {
+    display: flex;
+    gap: 1.15rem;
+    padding: 1.15rem;
+    border-radius: 18px;
+}
+
+/* Without this, the card falls back to style.css's unscoped .glass-card:hover
+   (near-white background + translateY), washing out the champagne title */
+body.home-page .events-strip__card:hover,
+body.home-page .events-strip__card:focus-within {
+    background: linear-gradient(155deg, #123830 0%, #0D2B24 100%);
+    border-color: rgba(232, 176, 75, 0.4);
+    box-shadow: 0 16px 32px rgba(2, 10, 8, 0.4);
+}
+
+body.home-page .events-strip__image {
+    flex: 0 0 auto;
+    width: clamp(6.5rem, 9vw, 8rem);
+    height: auto;
+    aspect-ratio: 4 / 5;
+    align-self: center;
+    object-fit: cover;
+    border-radius: 12px;
+    border: 1px solid rgba(232, 176, 75, 0.25);
+}
+
+body.home-page .events-strip__copy {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+    min-width: 0;
+}
+
+body.home-page .events-strip__date {
+    color: #E8B04B;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+body.home-page .events-strip__title {
+    margin: 0;
+    color: #F2E7CF;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.35rem;
+    line-height: 1.15;
+}
+
+body.home-page .events-strip__note {
+    margin: 0;
+    color: #9DB4AB;
+    font-size: 0.92rem;
+    line-height: 1.55;
+}
+
+body.home-page .events-strip__link {
+    margin-top: auto;
+    width: fit-content;
+    color: #FF5A3C;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: color 0.25s ease;
+}
+
+body.home-page .events-strip__link:hover,
+body.home-page .events-strip__link:focus-visible {
+    color: #FF7156;
+    text-decoration: underline;
+}
+
+body.home-page .events-strip__meta {
+    display: flex;
+    justify-content: center;
+    margin-top: clamp(1.4rem, 2.4vw, 2rem);
+}
+
+body.home-page .events-strip__all {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.6rem 1.3rem;
+    border-radius: var(--cta-radius-sm);
+    border: 1px solid rgba(232, 176, 75, 0.45);
+    background: rgba(232, 176, 75, 0.08);
+    color: #E8B04B;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+
+body.home-page .events-strip__all:hover,
+body.home-page .events-strip__all:focus-visible {
+    background: rgba(232, 176, 75, 0.16);
+    color: #F2E7CF;
+}
+
+@media (max-width: 700px) {
+    body.home-page .events-strip__card {
+        flex-direction: column;
+    }
+
+    body.home-page .events-strip__image {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        align-self: stretch;
+    }
+}
+
+/* Location strip: answers the "how do I get there" objection right
+   before the FAQ */
+body.home-page .location-strip {
+    padding: 0 0 clamp(2.8rem, 4.5vw, 4rem);
+}
+
+body.home-page .location-strip__inner {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem 1.2rem;
+    padding: 1.1rem 1.4rem;
+    background: rgba(16, 50, 43, 0.9);
+    border: 1px solid rgba(232, 176, 75, 0.22);
+    border-radius: 16px;
+}
+
+body.home-page .location-strip__pin {
+    display: inline-flex;
+    color: #E8B04B;
+}
+
+body.home-page .location-strip__copy {
+    display: flex;
+    flex: 1 1 18rem;
+    flex-direction: column;
+    gap: 0.15rem;
+    margin: 0;
+    min-width: 0;
+}
+
+body.home-page .location-strip__copy strong {
+    color: #F2E7CF;
+}
+
+body.home-page .location-strip__transit {
+    color: #9DB4AB;
+    font-size: 0.9rem;
+}
+
+body.home-page .location-strip__link {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.6rem 1.2rem;
+    border-radius: var(--cta-radius-sm);
+    border: 1px solid rgba(232, 176, 75, 0.45);
+    background: rgba(232, 176, 75, 0.08);
+    color: #E8B04B;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+
+body.home-page .location-strip__link:hover,
+body.home-page .location-strip__link:focus-visible {
+    background: rgba(232, 176, 75, 0.16);
+    color: #F2E7CF;
+}
+
+/* Footer: the heavy map iframe becomes a light petrol card that links
+   out to Google Maps */
+:is(body.home-page, body.contact-page, body.events-page) .footer-map-full {
+    margin-bottom: 2rem;
+}
+
+:is(body.home-page, body.contact-page, body.events-page) .footer-map-full__heading {
+    margin-bottom: 1rem;
+}
+
+:is(body.home-page, body.contact-page, body.events-page) .footer-map-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 1.6rem 1.2rem;
+    text-align: center;
+    border: 1px solid rgba(232, 176, 75, 0.18);
+    border-radius: 16px;
+    background: radial-gradient(circle at 50% 0%, rgba(232, 176, 75, 0.07), transparent 55%), #0C2A24;
+    transition: border-color 0.25s ease, background-color 0.25s ease;
+}
+
+:is(body.home-page, body.contact-page, body.events-page) .footer-map-card__pin {
+    display: inline-flex;
+    color: #E8B04B;
+}
+
+:is(body.home-page, body.contact-page, body.events-page) .footer-map-card__address {
+    color: #F2E7CF;
+    font-weight: 600;
+}
+
+:is(body.home-page, body.contact-page, body.events-page) .footer-map-card__hint {
+    color: #9DB4AB;
+    font-size: 0.88rem;
+}
+
+:is(body.home-page, body.contact-page, body.events-page) .footer-map-card:hover,
+:is(body.home-page, body.contact-page, body.events-page) .footer-map-card:focus-visible {
+    border-color: rgba(232, 176, 75, 0.45);
+}
+
+/* Student Stories grid: equal rhythm between rows and columns. Overflow
+   stays with style.css: hidden clips the marquee loop on desktop and the
+   mobile row scrolls horizontally. */
+body.home-page .reviews-grid {
+    gap: clamp(0.65rem, 1.6vw, 1rem);
+}
+
+/* Student Stories presence: these surface rules must sit AFTER the generic
+   glass-card reset in section 12, or that reset wins the cascade tie */
+body.home-page .review-card {
+    background: linear-gradient(155deg, #13392F 0%, #0D2B24 100%);
+    border: 1px solid rgba(232, 176, 75, 0.22);
+    box-shadow: 0 16px 32px rgba(2, 10, 8, 0.35);
+}
+
+body.home-page .review-card:hover,
+body.home-page .review-card:focus-within {
+    background: linear-gradient(155deg, #17453A 0%, #10322B 100%);
+    border-color: rgba(255, 90, 60, 0.55);
+    box-shadow: 0 20px 40px rgba(2, 10, 8, 0.45);
+}
+
+/* --------------------------------------------------------------------------
+   18. PROOF & PERSISTENCE — stat band, hero hierarchy, mobile trial bar
+   -------------------------------------------------------------------------- */
+
+/* Stat band under the hero: four verifiable facts, brass numerals.
+   The "200+" claim finally moves from the meta description onto the page. */
+body.home-page .stat-band {
+    padding: clamp(1.1rem, 2vw, 1.6rem) 0;
+    background: #0C2A24;
+    border-top: 1px solid rgba(232, 176, 75, 0.14);
+    border-bottom: 1px solid rgba(232, 176, 75, 0.14);
+}
+
+body.home-page .stat-band__inner {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+body.home-page .stat-band__item {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 0.55rem;
+    margin: 0;
+    min-width: 0;
+}
+
+body.home-page .stat-band__item + .stat-band__item {
+    border-left: 1px solid rgba(232, 176, 75, 0.16);
+}
+
+body.home-page .stat-band__value {
+    color: #E8B04B;
+    font-family: var(--font-display);
+    font-size: clamp(1.7rem, 2.4vw, 2.2rem);
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: 0.02em;
+}
+
+body.home-page .stat-band__label {
+    color: #9DB4AB;
+    font-size: 0.85rem;
+    line-height: 1.3;
+}
+
+body.home-page .stat-band__label a {
+    color: #9DB4AB;
+    text-decoration: underline;
+    text-decoration-color: rgba(232, 176, 75, 0.5);
+    text-underline-offset: 3px;
+}
+
+body.home-page .stat-band__label a:hover,
+body.home-page .stat-band__label a:focus-visible {
+    color: #F2E7CF;
+    text-decoration-color: #E8B04B;
+}
+
+@media (max-width: 900px) {
+    body.home-page .stat-band__inner {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.9rem 0;
+    }
+
+    body.home-page .stat-band__item {
+        justify-content: flex-start;
+        padding-left: 1rem;
+    }
+
+    body.home-page .stat-band__item + .stat-band__item {
+        border-left: none;
+    }
+
+    body.home-page .stat-band__item:nth-child(even) {
+        border-left: 1px solid rgba(232, 176, 75, 0.16);
+    }
+}
+
+/* Hero hierarchy: the value proposition outranks the decorative brand
+   lockup — the visitor already saw the brand in the header */
+body.home-page .home-hero__brand {
+    font-size: clamp(1.4rem, 2vw, 1.9rem);
+}
+
+body.home-page .home-hero__headline {
+    margin: 0.4rem 0 0.7rem;
+    font-size: clamp(1.65rem, 2.4vw, 2.4rem);
+    line-height: 1.18;
+}
+
+/* Mobile sticky trial bar: the primary CTA stays reachable after the
+   hero scrolls away. Desktop keeps the persistent header CTA instead. */
+body.home-page .mobile-cta-bar {
+    display: none;
+}
+
+@media (max-width: 767px) {
+    body.home-page .mobile-cta-bar {
+        display: block;
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 1200;
+        padding: 0.55rem 0.8rem calc(0.55rem + env(safe-area-inset-bottom));
+        background: rgba(4, 19, 16, 0.94);
+        border-top: 1px solid rgba(232, 176, 75, 0.25);
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    body.home-page .mobile-cta-bar--hidden {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+    }
+
+    body.home-page .mobile-cta-bar__link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 48px;
+        border-radius: var(--cta-radius);
+        background: var(--cta-grad);
+        background-size: 160% 100%;
+        background-position: 0% 50%;
+        color: var(--cta-ink);
+        font-family: 'Outfit', sans-serif;
+        font-size: 1rem;
+        font-weight: 700;
+        text-decoration: none;
+        box-shadow: inset 0 -2px 0 var(--cta-base-rest);
+        transition: background-position 0.3s ease, box-shadow 0.25s ease;
+    }
+
+    body.home-page .mobile-cta-bar__link:hover,
+    body.home-page .mobile-cta-bar__link:focus-visible {
+        background-position: 100% 50%;
+        color: var(--cta-ink);
+        box-shadow: inset 0 -2px 0 var(--cta-base-hover);
+    }
+
+    body.home-page .mobile-cta-bar__hint {
+        font-weight: 500;
+        white-space: pre;
+    }
+
+    /* Lift the WhatsApp float clear of the bar */
+    body.home-page .whatsapp-float {
+        bottom: calc(4.6rem + env(safe-area-inset-bottom));
+    }
+
+    body.home-page .whatsapp-float__bubble {
+        bottom: calc(8.2rem + env(safe-area-inset-bottom));
+    }
+}
+
+/* --------------------------------------------------------------------------
+   19. FLOOR-TAPE TICKS — the site's signature mark, extended to the
+   schedule and the hero selector. Dancers tape their spot on the floor;
+   here a corner tick marks YOUR class. Cards rest clean (hairline only);
+   the tick appears on the card that matters: recommended, hovered, or
+   active. Replaces the old fading-gradient rails entirely. No fades, no
+   glow, no movement — opacity and colour only.
+   -------------------------------------------------------------------------- */
+
+/* Schedule cards: top-left tape tick (scoped to .schedule-section so this
+   outranks the old style.css rail rules, including the mobile variant) */
+body.home-page .schedule-section .class-card::before {
+    content: '';
+    position: absolute;
+    inset: 0.5rem auto auto 0.5rem;
+    width: 0.85rem;
+    height: 0.85rem;
+    border-top: 2px solid transparent;
+    border-left: 2px solid transparent;
+    border-radius: 0;
+    background: none;
+    opacity: 1;
+    pointer-events: none;
+    transition: border-color 0.3s ease;
+}
+
+body.home-page .schedule-section .class-card:hover::before {
+    border-top-color: #FF5A3C;
+    border-left-color: #FF5A3C;
+}
+
+/* The recommended card wears its tape permanently */
+body.home-page .schedule-section .class-card--recommended::before {
+    border-top-color: #FF5A3C;
+    border-left-color: #FF5A3C;
+}
+
+/* Arrow chip: the old light theme drew a cream circle with a brass arrow —
+   brass on cream is unreadable, and the cream blob clashes with the dark
+   card. The chip goes dark with a brass tint so the brass arrow shows. */
+body.home-page .schedule-section .class-card::after {
+    border-color: rgba(232, 176, 75, 0.35);
+    background-color: rgba(232, 176, 75, 0.1);
+}
+
+body.home-page .schedule-section .class-card:hover::after {
+    border-color: rgba(232, 176, 75, 0.6);
+    background-color: rgba(232, 176, 75, 0.2);
+}
+
+/* Hero selector: the old sheen sweep and coral wash become a pair of
+   tape ticks that frame the active (or hovered) choice */
+body.home-page .home-hero__choice::before,
+body.home-page .home-hero__choice::after {
+    content: '';
+    position: absolute;
+    z-index: 2;
+    width: 0.65rem;
+    height: 0.65rem;
+    border: 0 solid #FF5A3C;
+    border-radius: 0;
+    background: none;
+    opacity: 0;
+    transform: none;
+    pointer-events: none;
+    transition: opacity 0.24s ease;
+}
+
+body.home-page .home-hero__choice::before {
+    inset: 0.3rem auto auto 0.3rem;
+    border-top-width: 2px;
+    border-left-width: 2px;
+}
+
+body.home-page .home-hero__choice::after {
+    inset: auto 0.3rem 0.3rem auto;
+    border-right-width: 2px;
+    border-bottom-width: 2px;
+}
+
+body.home-page .home-hero__choice:hover::before,
+body.home-page .home-hero__choice:focus-visible::before,
+body.home-page .home-hero__choice.active::before,
+body.home-page .home-hero__choice.is-active::before,
+body.home-page .home-hero__choice[aria-pressed="true"]::before,
+body.home-page .home-hero__choice:hover::after,
+body.home-page .home-hero__choice:focus-visible::after,
+body.home-page .home-hero__choice.active::after,
+body.home-page .home-hero__choice.is-active::after,
+body.home-page .home-hero__choice[aria-pressed="true"]::after {
+    opacity: 1;
+    transform: none;
+}
+
+/* The old glowing label rail retires; the ticks carry the mark now */
+body.home-page .home-hero__choice-copy::before {
+    display: none;
+}
+
+/* --------------------------------------------------------------------------
+   20. FLAGSHIP EVENT — the Milano Sensual Congress is the congress AXcent
+   organizes itself, so its card outranks its neighbours: a brass
+   "Organized by AXcent" chip, a warmer ring, and permanent tape ticks
+   (brass at rest, coral when engaged — same grammar as everywhere else).
+   -------------------------------------------------------------------------- */
+body.home-page .events-strip__flag {
+    width: fit-content;
+    padding: 0.2rem 0.6rem;
+    border-radius: 999px;
+    background: #E8B04B;
+    color: #10231F;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.66rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+body.home-page .events-strip__card--flagship {
+    position: relative;
+    border-color: rgba(232, 176, 75, 0.42);
+}
+
+body.home-page .events-strip__card--flagship::before,
+body.home-page .events-strip__card--flagship::after {
+    content: '';
+    position: absolute;
+    width: 1.05rem;
+    height: 1.05rem;
+    pointer-events: none;
+    transition: border-color 0.3s ease;
+}
+
+body.home-page .events-strip__card--flagship::before {
+    inset: 0.55rem auto auto 0.55rem;
+    border-top: 2px solid rgba(232, 176, 75, 0.75);
+    border-left: 2px solid rgba(232, 176, 75, 0.75);
+}
+
+body.home-page .events-strip__card--flagship::after {
+    inset: auto 0.55rem 0.55rem auto;
+    border-right: 2px solid rgba(232, 176, 75, 0.75);
+    border-bottom: 2px solid rgba(232, 176, 75, 0.75);
+}
+
+body.home-page .events-strip__card--flagship:hover::before,
+body.home-page .events-strip__card--flagship:hover::after,
+body.home-page .events-strip__card--flagship:focus-within::before,
+body.home-page .events-strip__card--flagship:focus-within::after {
+    border-color: #FF5A3C;
+}
+
+/* --------------------------------------------------------------------------
+   20. TRIAL HEADER REFINED — typography, not buttons
+   The H2 spans previously inherited the CTA button skins from section 4
+   (.cta-outline = brass hairline pill, .cta-filled = solid coral fill),
+   so the headline wore two boxes. They are words, not controls: roman
+   champagne lead, italic coral accent with the brass-to-coral underline.
+   The booking steps drop their pill boxes for one quiet count-in line —
+   brass numerals joined by hairline segments, like a dance count.
+   -------------------------------------------------------------------------- */
+body.home-page .cta-premium-title .cta-outline,
+body.home-page .cta-premium-title .cta-outline:hover,
+body.home-page .cta-premium-title .cta-outline:focus-visible {
+    background: transparent;
+    border: none;
+    color: #F2E7CF;
+}
+
+body.home-page .cta-premium-title .cta-filled,
+body.home-page .cta-premium-title .cta-filled:hover,
+body.home-page .cta-premium-title .cta-filled:focus-visible {
+    position: relative;
+    background: none;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    color: #FF5A3C;
+    font-style: italic;
+}
+
+body.home-page .cta-premium-title .cta-filled::after {
+    content: '';
+    position: absolute;
+    left: 0.04em;
+    right: 0.12em;
+    bottom: 0.02em;
+    height: 2px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #E8B04B, #FF5A3C 65%, transparent);
+}
+
+/* Count-in steps: no pills, no full-width track — short hairline
+   connectors between brass numerals carry the sequence */
+body.home-page .trial-process__canvas,
+body.home-page .trial-process__track {
+    display: none;
+}
+
+body.home-page .trial-process {
+    min-height: 0;
+}
+
+body.home-page .trial-process__list {
+    justify-content: flex-start;
+    gap: clamp(0.7rem, 1.8vw, 1.2rem);
+}
+
+body.home-page .trial-process__item {
+    min-height: 0;
+    padding: 0.2rem 0;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    gap: 0.5rem;
+}
+
+/* The connector renders inside each item, ahead of its numeral */
+body.home-page .trial-process__item + .trial-process__item::before {
+    content: '';
+    position: static;
+    width: clamp(1.1rem, 3vw, 2.4rem);
+    height: 1px;
+    margin: 0 0.15rem 0 0;
+    border-radius: 0;
+    background: linear-gradient(90deg, rgba(232, 176, 75, 0.65), rgba(232, 176, 75, 0.18));
+    box-shadow: none;
+}
+
+body.home-page .trial-process__step {
+    width: 1.9rem;
+    min-width: 1.9rem;
+    min-height: 1.9rem;
+    background: rgba(232, 176, 75, 0.08);
+    border: 1px solid rgba(232, 176, 75, 0.55);
+    color: #E8B04B;
+    box-shadow: none;
+}
+
+body.home-page .trial-process__item strong {
+    color: #F2E7CF;
+    font-size: clamp(0.9rem, 1.2vw, 1.02rem);
+    font-weight: 600;
+    letter-spacing: 0.01em;
+}
+
+@media (max-width: 899px) {
+    body.home-page .trial-process__item {
+        width: auto;
+        padding: 0.2rem 0;
+        background: transparent;
+        border: none;
+    }
+
+    body.home-page .trial-process__item + .trial-process__item::before {
+        content: none;
+    }
+
+    body.home-page .trial-process__list {
+        gap: 0.5rem;
+    }
+
+    body.home-page .trial-process__item strong {
+        white-space: normal;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   21. KEYBOARD FOCUS — hover now presses the planted base edge instead of
+   drawing the brass ring, so the ring returns here for :focus-visible only
+   (keyboard users need an indicator that does not depend on colour depth).
+   -------------------------------------------------------------------------- */
+:is(body.home-page, body.contact-page, body.events-page) .btn-hero-primary:focus-visible,
+:is(body.home-page, body.contact-page, body.events-page) .home-hero__actions .btn-hero-primary:focus-visible,
+:is(body.home-page, body.contact-page, body.events-page) .home-hero__panel-actions .btn-hero-primary:focus-visible,
+:is(body.home-page, body.contact-page, body.events-page) .guides-confidence .btn-primary:focus-visible,
+:is(body.home-page, body.contact-page, body.events-page) .guides-first-step__actions .btn-primary:focus-visible,
+:is(body.home-page, body.contact-page, body.events-page) .btn-header-cta:focus-visible,
+:is(body.home-page, body.contact-page, body.events-page) .stay-link:focus-visible,
+:is(body.home-page, body.contact-page, body.events-page) .starter-fork__trial:focus-visible,
+:is(body.home-page, body.contact-page, body.events-page) .schedule-offramp__cta:focus-visible,
+:is(body.home-page, body.contact-page, body.events-page) .home-faq-section__cta-link:focus-visible,
+:is(body.home-page, body.contact-page, body.events-page) .mobile-cta-bar__link:focus-visible {
+    outline: 1px solid #E8B04B;
+    outline-offset: 3px;
+}
+
+:is(body.home-page, body.contact-page, body.events-page) .btn-submit:focus-visible {
+    outline: 1px solid var(--cta-form-accent);
+    outline-offset: 3px;
+}
+
+/* --------------------------------------------------------------------------
+   22. CONVERSION PASS — "not sure" escape hatch in the class picker and the
+   price-transparency note under the submit button. Both remove hesitation at
+   the moment of commitment: the first removes wrong-level anxiety, the second
+   removes the "what is the catch" suspicion around a free offer.
+   -------------------------------------------------------------------------- */
+body.home-page .trial-step .compact-option--unsure {
+    display: block;
+    margin-top: 0.9rem;
+}
+
+body.home-page .trial-step .compact-option--unsure .compact-card {
+    justify-content: center;
+    text-align: center;
+    gap: 0.6rem;
+    padding: 0.85rem 1.1rem;
+    border-color: rgba(216, 85, 47, 0.4);
+}
+
+body.home-page .trial-step .compact-option--unsure .compact-name {
+    flex: 0 1 auto;
+}
+
+body.home-page .trial-step .compact-status--unsure {
+    display: inline-block;
+    flex: 0 0 auto;
+    padding: 0.14rem 0.5rem;
+    border-radius: 999px;
+    background: #E8B04B;
+    color: #10231F;
+    font-size: 0.66rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+body.home-page .trial-submit-pricing {
+    max-width: 32rem;
+    margin: 0.55rem auto 0;
+    color: #6D6154;
+    font-size: 0.82rem;
+    line-height: 1.5;
+    text-align: center;
+}
+
+@media (max-width: 899px) {
+    body.home-page .trial-step .compact-option--unsure .compact-card {
+        flex-direction: column;
+        gap: 0.45rem;
+        border: 1px solid rgba(216, 85, 47, 0.4);
+        border-radius: 0.5rem;
+        background: #FFFDF7;
+        padding: 0.85rem 1rem;
+    }
+
+    body.home-page .trial-step--choice .compact-option--unsure .compact-status {
+        order: 0;
+        margin-left: 0;
+    }
+}
+
+/* Mobile timetable readability: the old light-theme mobile rule in style.css
+   (@media max-width 899px) paints .hidden-desktop .class-card with a cream
+   gradient using !important, which beats the tropic dark card surface and
+   leaves cream text on a cream card. Re-assert the tropic surface with the
+   same weight; the time column moves from low-contrast bronze to brass. */
+@media (max-width: 899px) {
+    body.home-page .hidden-desktop .class-card {
+        background: #10322B !important;
+        border-color: rgba(232, 176, 75, 0.14);
+        box-shadow: none;
+    }
+
+    body.home-page .hidden-desktop .class-card:hover {
+        background: #144036 !important;
+        border-color: rgba(232, 176, 75, 0.45);
+    }
+
+    body.home-page .hidden-desktop .mobile-time {
+        color: #E8B04B;
+        border-right-color: rgba(232, 176, 75, 0.26);
+    }
+}
+
+/* Mobile photo mosaic: on phones the four stacked atelier photos ran the
+   "Belong" section past two viewports. They become one magazine mosaic —
+   the smiling group shot leads full width, the other three sit under it
+   as square tiles, so all four photos share one glance with no swiping.
+   Static grid, no scroll capture, so no pointer gating is needed. */
+@media (max-width: 700px) {
+    body.home-page .atelier-fallback--story {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 0.55rem;
+        margin-top: 1.1rem;
+        min-height: 0;
+    }
+
+    /* The desktop collage assigns explicit grid-column/row spans per photo
+       (§ about collage, ~lines 1787/1820) — reset them so the mosaic flows */
+    body.home-page .atelier-fallback--story .atelier-photo {
+        grid-column: auto;
+        grid-row: auto;
+        aspect-ratio: 1 / 1;
+        margin: 0;
+        clip-path: none;
+    }
+
+    body.home-page .atelier-fallback--story .atelier-photo--hero {
+        grid-column: 1 / -1;
+        grid-row: auto;
+        aspect-ratio: 16 / 9;
+    }
+
+    /* Captions are unreadable on ~108px tiles; the photos carry the story */
+    body.home-page .atelier-fallback--story .atelier-photo__caption {
+        display: none;
+    }
+
+    /* The stage min-height (§ about collage, ≤1020px clamp) was sized for
+       the stacked photos and would leave a void under the short mosaic */
+    body.home-page .atelier-stage {
+        min-height: 0;
+    }
+
+    /* Compact the header panel and copy block so the header, all four
+       photos, and the gallery link share one phone viewport */
+    body.home-page .stay-visual__header.atelier-copy {
+        padding: 1.1rem 1.2rem 0.9rem;
+    }
+
+    body.home-page .stay-visual__header .section-title-modern {
+        font-size: clamp(1.7rem, 7vw, 2.1rem);
+        line-height: 1.12;
+    }
+
+    body.home-page .stay-copy {
+        padding: 1.3rem 1.2rem 1.4rem;
+    }
+}
+
+/* Mobile hero CTAs: below 900px style.css hides the stage overlay actions
+   and expects a .home-hero__panel-actions block in the panel (the EN revamp
+   had dropped that markup, leaving the mobile hero without any CTA). The
+   panel assurance list is the mobile twin of the stage chips. */
+body.home-page .home-hero__assurance--panel {
+    display: none;
+}
+
+@media (max-width: 899px) {
+    body.home-page .home-hero__assurance--panel {
+        display: grid;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   23. STARTER FORK — the beginner gateway as a self-selection fork of two
+   editorial duotone snapshots. Each path opens with a photo in the brand
+   duotone (petrol shadows, champagne lift — §17 recipe) wearing floor-tape
+   corner ticks; the first-person voice line overlaps the photo's bottom
+   edge like a magazine caption; course, eyebrow, and CTAs follow. Colour
+   blooms on hover — attention is rewarded, nothing moves. A brass hairline
+   with an "or" chip splits the paths.
+   -------------------------------------------------------------------------- */
+body.home-page .starter-fork {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: stretch;
+    gap: clamp(1.2rem, 2.6vw, 2.2rem);
+    margin-top: clamp(1rem, 2vw, 1.6rem);
+}
+
+/* The duotone snapshot — a small thumbnail beside the copy rather than a
+   full-width banner on top of it */
+body.home-page .starter-fork__photo {
+    position: relative;
+    grid-area: photo;
+    align-self: start;
+    width: 100%;
+    margin: 0;
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
+    border-radius: 14px;
+    border: 1px solid rgba(232, 176, 75, 0.2);
+}
+
+body.home-page .starter-fork__photo img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 32%;
+    filter: grayscale(1) sepia(0.65) hue-rotate(108deg) saturate(0.9) brightness(0.95) contrast(1.08);
+    transition: filter 0.45s ease;
+}
+
+body.home-page .starter-fork__photo--foundation img {
+    object-position: center 22%;
+}
+
+/* Champagne lift + petrol floor, same soft-light wash as the About collage */
+body.home-page .starter-fork__photo::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background:
+        linear-gradient(165deg, rgba(242, 231, 207, 0.22), transparent 42%),
+        linear-gradient(180deg, transparent 55%, rgba(4, 19, 16, 0.5));
+    mix-blend-mode: soft-light;
+}
+
+/* Floor-tape ticks: brass L-marks on opposite corners of the snapshot */
+body.home-page .starter-fork__photo::after {
+    content: '';
+    position: absolute;
+    inset: 0.65rem;
+    z-index: 2;
+    pointer-events: none;
+    background:
+        linear-gradient(#E8B04B, #E8B04B) top left / 1rem 2px,
+        linear-gradient(#E8B04B, #E8B04B) top left / 2px 1rem,
+        linear-gradient(#E8B04B, #E8B04B) bottom right / 1rem 2px,
+        linear-gradient(#E8B04B, #E8B04B) bottom right / 2px 1rem;
+    background-repeat: no-repeat;
+    opacity: 0.8;
+}
+
+/* Colour is the reward for attention (hover or keyboard focus anywhere
+   in the path); paint-only, nothing moves */
+body.home-page .starter-fork .starter-fork__path:hover .starter-fork__photo img,
+body.home-page .starter-fork .starter-fork__path:focus-within .starter-fork__photo img {
+    filter: grayscale(0) saturate(1.05) contrast(1.03);
+}
+
+/* The .guide-card class remains only so the shared gateway entrance
+   choreography in script.js picks the paths up; its card skin from
+   style.css (cream glass, blur, padding, hover sheen) is neutralised. */
+body.home-page .starter-fork .starter-fork__path {
+    display: grid;
+    grid-template-columns: clamp(120px, 16vw, 180px) minmax(0, 1fr);
+    grid-template-areas:
+        "photo voice"
+        "photo body";
+    column-gap: clamp(1rem, 2vw, 1.5rem);
+    align-items: start;
+    padding: clamp(0.2rem, 0.8vw, 0.6rem) 0;
+    background: none;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    overflow: visible;
+}
+
+body.home-page .starter-fork .starter-fork__path:hover {
+    background: none;
+    border-color: transparent;
+    box-shadow: none;
+}
+
+body.home-page .starter-fork .starter-fork__path::before {
+    content: none;
+}
+
+/* The voice line: a caption strip that sits beside the thumbnail, not
+   overlapping it — the card now runs horizontal, not stacked */
+body.home-page .starter-fork__voice {
+    position: relative;
+    z-index: 3;
+    grid-area: voice;
+    justify-self: start;
+    display: inline-block;
+    margin: 0 0 0.6rem;
+    padding: 0.5rem 0.9rem 0.5rem 0.8rem;
+    background: #08211C;
+    border-left: 2px solid #E8B04B;
+    font-family: var(--font-heading);
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(1rem, 1.4vw, 1.2rem);
+    line-height: 1.35;
+    color: #F2E7CF;
+}
+
+body.home-page .starter-fork__body {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    grid-area: body;
+    padding: 0;
+}
+
+body.home-page .starter-fork__course {
+    margin: 0 0 0.55rem;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: clamp(1.45rem, 2.1vw, 1.85rem);
+    line-height: 1.15;
+    color: #F4EFE6;
+}
+
+body.home-page .starter-fork__when {
+    margin: 0 0 clamp(0.9rem, 1.6vw, 1.2rem);
+    font-size: clamp(0.74rem, 0.95vw, 0.82rem);
+    font-weight: 600;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: #E8B04B;
+}
+
+body.home-page .starter-fork__promise {
+    margin: 0 0 clamp(1.3rem, 2.4vw, 1.9rem);
+    max-width: 26rem;
+    font-size: clamp(0.92rem, 1.05vw, 0.98rem);
+    line-height: 1.65;
+    color: #9DB4AB;
+}
+
+body.home-page .starter-fork__actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: clamp(0.9rem, 1.8vw, 1.4rem);
+    margin-top: auto;
+}
+
+/* Same tier-2 recipe as the old card trial links: soft tint at rest,
+   the gradient arrives on engagement (the form CTA stays the loud one) */
+body.home-page .starter-fork__trial {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.55rem 1.25rem;
+    border-radius: var(--cta-radius-sm);
+    background: var(--cta-soft-bg);
+    border: 1px solid var(--cta-soft-border);
+    color: var(--cta-soft-text);
+    font-size: 0.85rem;
+    font-weight: 600;
+    box-shadow: inset 0 -2px 0 var(--cta-base-soft);
+    outline: 1px solid transparent;
+    outline-offset: 3px;
+    transition: background-color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, color 0.25s ease, outline-color 0.25s ease;
+}
+
+body.home-page .starter-fork__trial:hover,
+body.home-page .starter-fork__trial:focus-visible {
+    background: var(--cta-grad);
+    background-size: 160% 100%;
+    background-position: 0% 50%;
+    border-color: transparent;
+    color: var(--cta-ink);
+    box-shadow: inset 0 -2px 0 var(--cta-base-hover);
+}
+
+body.home-page .starter-fork__more {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #9DB4AB;
+    text-decoration: underline;
+    text-decoration-color: rgba(232, 176, 75, 0.4);
+    text-underline-offset: 4px;
+    transition: color 0.25s ease, text-decoration-color 0.25s ease;
+}
+
+body.home-page .starter-fork__more:hover,
+body.home-page .starter-fork__more:focus-visible {
+    color: #FF7A56;
+    text-decoration-color: currentColor;
+}
+
+/* The fork's hinge: a brass hairline with the "or" chip riding it */
+body.home-page .starter-fork__divider {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.6rem;
+}
+
+body.home-page .starter-fork__divider::before {
+    content: '';
+    position: absolute;
+    top: 0.4rem;
+    bottom: 0.4rem;
+    left: 50%;
+    width: 1px;
+    background: rgba(232, 176, 75, 0.35);
+}
+
+body.home-page .starter-fork__divider span {
+    position: relative;
+    padding: 0.3rem 0.65rem;
+    border: 1px solid rgba(232, 176, 75, 0.5);
+    border-radius: 999px;
+    background: #0A241F;
+    color: #E8B04B;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+}
+
+/* Phone compaction: each path becomes a thumbnail row — small duotone
+   square beside the voice line, course, and eyebrow; the promise line is
+   cut (the quote and eyebrow already carry it). The !importants out-rank
+   style.css's max-767 "icon copy" .guide-card grid (documented lesson). */
+@media (max-width: 768px) {
+    body.home-page .starter-fork {
+        grid-template-columns: 1fr;
+        gap: 1.1rem;
+    }
+
+    body.home-page .starter-fork .starter-fork__path {
+        grid-template-columns: 6.5rem minmax(0, 1fr) !important;
+        grid-template-areas:
+            "photo voice"
+            "photo body" !important;
+        column-gap: 0.9rem !important;
+        padding: 0.2rem 0 !important;
+    }
+
+    body.home-page .starter-fork__photo {
+        aspect-ratio: 1 / 1;
+        border-radius: 12px;
+    }
+
+    /* Smaller tape ticks for the thumbnail scale */
+    body.home-page .starter-fork__photo::after {
+        inset: 0.4rem;
+        background:
+            linear-gradient(#E8B04B, #E8B04B) top left / 0.7rem 2px,
+            linear-gradient(#E8B04B, #E8B04B) top left / 2px 0.7rem,
+            linear-gradient(#E8B04B, #E8B04B) bottom right / 0.7rem 2px,
+            linear-gradient(#E8B04B, #E8B04B) bottom right / 2px 0.7rem;
+        background-repeat: no-repeat;
+    }
+
+    /* The caption strip sits beside the thumb — no overlap in a row */
+    body.home-page .starter-fork__voice {
+        margin: 0 0 0.45rem;
+        padding: 0.4rem 0.7rem 0.4rem 0.65rem;
+        font-size: 1rem;
+    }
+
+    body.home-page .starter-fork__promise {
+        display: none;
+    }
+
+    body.home-page .starter-fork__when {
+        margin-bottom: 0;
+    }
+
+    body.home-page .starter-fork__actions {
+        margin-top: 0.85rem;
+        gap: 0.8rem;
+    }
+
+    body.home-page .starter-fork__divider {
+        width: auto;
+        min-height: 1.6rem;
+    }
+
+    body.home-page .starter-fork__divider::before {
+        top: 50%;
+        bottom: auto;
+        left: 0;
+        right: 0;
+        width: auto;
+        height: 1px;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   23. CONTACT PAGE — the question-flow hero, the studio details card, and
+   the contact form adopt the Tropic Noir language: petrol surfaces, brass
+   hairlines, the italic gradient keyword, and the champagne conversion
+   island (mirroring the trial form in section 11). Scoped to
+   body.contact-page; loaded by contact.html and de/contact.html only.
+   -------------------------------------------------------------------------- */
+
+/* The idle language link keeps a raw plum tone in style.css */
+:is(body.contact-page, body.events-page) .lang-switch a {
+    color: rgba(244, 239, 230, 0.75);
+}
+
+:is(body.contact-page, body.events-page) .lang-switch a:hover,
+:is(body.contact-page, body.events-page) .lang-switch a:focus-visible {
+    color: #F4EFE6;
+}
+
+/* Question-flow hero: petrol canvas with faint coral/brass ambience */
+body.contact-page .contact-question-flow {
+    background:
+        radial-gradient(ellipse at 72% 38%, rgba(255, 90, 60, 0.09) 0%, transparent 42%),
+        radial-gradient(ellipse at 24% 76%, rgba(232, 176, 75, 0.09) 0%, transparent 38%),
+        linear-gradient(135deg, #0C2A24 0%, #061A17 62%);
+    color: var(--text-main);
+}
+
+body.contact-page .contact-question-flow::before {
+    background:
+        linear-gradient(90deg, transparent 0%, rgba(232, 176, 75, 0.06) 24%, transparent 44%),
+        linear-gradient(135deg, transparent 0%, rgba(255, 90, 60, 0.05) 58%, transparent 82%);
+}
+
+body.contact-page .contact-hero::after,
+body.contact-page .contact-quick-actions::after {
+    background: linear-gradient(90deg, transparent, rgba(232, 176, 75, 0.65), rgba(255, 90, 60, 0.45), transparent);
+}
+
+body.contact-page .contact-question-flow__title {
+    color: #F2E7CF;
+}
+
+/* The rotating word is the title's emotive accent: italic serif, coral
+   through brass glyphs (glyph colors flow from the remapped tokens) */
+body.contact-page .contact-question-flow__word-slot {
+    font-family: var(--font-heading);
+    font-style: italic;
+}
+
+body.contact-page .contact-question-flow__word {
+    text-shadow: none;
+}
+
+/* The slot clips at its padding edge (overflow: hidden), so the underline
+   drops below the italic descenders via bottom padding, not a negative
+   offset (which would be clipped away) */
+body.contact-page .contact-question-flow__word-slot {
+    padding-bottom: 0.22em;
+}
+
+body.contact-page .contact-question-flow__word-slot::before {
+    bottom: 0.02em;
+    background: linear-gradient(90deg, rgba(232, 176, 75, 0.75), rgba(255, 90, 60, 0.5), transparent);
+}
+
+body.contact-page .contact-question-flow__canvas {
+    opacity: 0;
+}
+
+/* Details/form band: solid petrol with one faint brass streak */
+body.contact-page .contact-section--modern {
+    background: #061A17;
+}
+
+body.contact-page .contact-section--modern::before {
+    background: linear-gradient(90deg, transparent 0%, rgba(232, 176, 75, 0.05) 34%, transparent 56%);
+}
+
+/* Section headings: serif like every Tropic Noir title, with the dancing
+   underline; the accent word carries the coral-to-brass gradient */
+body.contact-page .contact-info-card--modern h2,
+body.contact-page .contact-form--modern h2 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+}
+
+body.contact-page .contact-info-card--modern h2 {
+    color: #F2E7CF;
+}
+
+body.contact-page .contact-info-card--modern h2::after,
+body.contact-page .contact-form--modern h2::after {
+    content: '';
+    display: block;
+    width: 5.25rem;
+    height: 2px;
+    margin: 1.05rem 0 0;
+    border-radius: 999px;
+    background: linear-gradient(90deg, var(--accent-gold) 0%, var(--accent-gold) 72%, var(--accent-start) 100%);
+}
+
+body.contact-page .contact-info-card--modern h2 .title-accent {
+    font-style: italic;
+    background: linear-gradient(100deg, #FF5A3C 0%, #F58042 46%, #E8B04B 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: #FF5A3C;
+}
+
+/* Studio details card: solid petrol surface, brass hairline, sage copy */
+body.contact-page .contact-info-card--modern {
+    background: linear-gradient(135deg, #10322B 0%, #0C2A24 100%);
+    border: 1px solid rgba(232, 176, 75, 0.2);
+    color: #F4EFE6;
+    box-shadow: var(--shadow-soft);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+}
+
+body.contact-page .contact-info-card--modern .section-kicker {
+    color: #E5CD9F;
+}
+
+body.contact-page .contact-item--modern {
+    background: rgba(4, 19, 16, 0.45);
+    border: 1px solid rgba(232, 176, 75, 0.16);
+    box-shadow: none;
+}
+
+body.contact-page .contact-item--modern p {
+    color: #9DB4AB;
+}
+
+body.contact-page .contact-address-note {
+    color: rgba(157, 180, 171, 0.85);
+}
+
+body.contact-page .contact-item--modern a:hover,
+body.contact-page .contact-item--modern a:focus-visible {
+    color: #FF8A5C;
+}
+
+/* Icon chips: the tier-2 soft coral recipe, no glow */
+body.contact-page .contact-icon {
+    background: var(--cta-soft-bg);
+    border: 1px solid var(--cta-soft-border);
+    color: #FF8A5C;
+    box-shadow: none;
+}
+
+body.contact-page .contact-embedded-map {
+    background: rgba(4, 19, 16, 0.45);
+    border: 1px solid rgba(232, 176, 75, 0.2);
+    box-shadow: none;
+}
+
+/* The contact form is the page's champagne conversion island */
+body.contact-page .contact-form--modern {
+    background: #F4ECD9;
+    border: 1px solid rgba(36, 20, 7, 0.16);
+    color: #10231F;
+    box-shadow: 0 24px 60px rgba(2, 10, 8, 0.5);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+}
+
+body.contact-page .contact-form--modern h2 {
+    color: #241407;
+}
+
+/* On champagne the accent word goes deep rust (AA against the island) */
+body.contact-page .contact-form--modern h2 .title-accent {
+    font-style: italic;
+    color: #B03E1E;
+}
+
+body.contact-page .contact-form--modern .section-kicker {
+    color: #8A3315;
+}
+
+body.contact-page .contact-form--modern .form-label {
+    color: #241407;
+}
+
+body.contact-page .contact-form--modern .form-input,
+body.contact-page .contact-form--modern .form-textarea {
+    background: #FFFDF7;
+    border: 1px solid #D8C9A8;
+    color: #1D130B;
+    border-radius: var(--cta-radius-sm);
+    box-shadow: none;
+}
+
+body.contact-page .contact-form--modern .form-input::placeholder,
+body.contact-page .contact-form--modern .form-textarea::placeholder {
+    color: #9C8F7C;
+}
+
+body.contact-page .contact-form--modern .form-input:focus,
+body.contact-page .contact-form--modern .form-textarea:focus {
+    background: #FFFDF7;
+    border-color: var(--cta-form-accent);
+    outline: 2px solid var(--cta-form-accent);
+    outline-offset: 1px;
+    box-shadow: none;
+}
+
+/* Submit: ink on champagne, planted (no pill), like the trial submit */
+body.contact-page .contact-submit {
+    background: var(--cta-submit-bg);
+    border: 1px solid transparent;
+    border-radius: var(--cta-radius);
+    color: var(--cta-submit-text);
+    box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.35);
+    text-shadow: none;
+    outline: 1px solid transparent;
+    outline-offset: 3px;
+    transition: background-color 0.25s ease, box-shadow 0.25s ease, outline-color 0.25s ease;
+}
+
+body.contact-page .contact-submit::before,
+body.contact-page .contact-submit::after {
+    content: none;
+    animation: none;
+}
+
+body.contact-page .contact-submit:hover,
+body.contact-page .contact-submit:focus-visible {
+    background: var(--cta-submit-bg-hover);
+    border-color: transparent;
+    color: var(--cta-submit-text);
+    box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.55);
+}
+
+body.contact-page .contact-submit:focus-visible {
+    outline: 1px solid var(--cta-form-accent);
+}
+
+body.contact-page .contact-form__privacy {
+    color: #6D6154;
+}
+
+body.contact-page .contact-form__privacy a {
+    color: #8A3315;
+}
+
+body.contact-page .contact-form__privacy a:hover,
+body.contact-page .contact-form__privacy a:focus-visible {
+    color: #10231F;
+}
+
+/* Footer copy: sage over the section-14 petrol footer (beats the old
+   cream-tinted rules of the same specificity in style.css) */
+:is(body.contact-page, body.events-page) .main-footer .footer-address,
+:is(body.contact-page, body.events-page) .main-footer .footer-links a,
+:is(body.contact-page, body.events-page) .main-footer .footer-bottom {
+    color: #9DB4AB;
+}
+
+:is(body.contact-page, body.events-page) .main-footer .footer-links a:hover {
+    color: #FF5A3C;
+}
+
+:is(body.contact-page, body.events-page) .main-footer .footer-logo .logo-subtitle {
+    color: #E8B04B;
+}
+
+/* Mobile header: style.css forces the cream header with !important below
+   900px, so the petrol counterparts must carry !important too */
+@media (max-width: 899px) {
+    :is(body.contact-page, body.events-page) .main-header {
+        background: rgba(6, 26, 23, 0.96) !important;
+        border-bottom-color: rgba(232, 176, 75, 0.16);
+        box-shadow: 0 10px 26px rgba(2, 10, 8, 0.35);
+    }
+
+    :is(body.contact-page, body.events-page) .logo-title {
+        color: #F2E7CF !important;
+    }
+
+    :is(body.contact-page, body.events-page) .logo-subtitle {
+        color: #E8B04B !important;
+    }
+
+    :is(body.contact-page, body.events-page) .mobile-menu-btn {
+        color: #F2E7CF !important;
+        background: rgba(12, 42, 36, 0.85) !important;
+        border: 1px solid rgba(232, 176, 75, 0.3) !important;
+        box-shadow: none;
+    }
+
+    :is(body.contact-page, body.events-page) .lang-switch,
+    :is(body.contact-page, body.events-page) .lang-switch a,
+    :is(body.contact-page, body.events-page) .lang-switch span {
+        color: #F4EFE6 !important;
+    }
+
+    :is(body.contact-page, body.events-page) .lang-switch .divider {
+        color: rgba(244, 239, 230, 0.3) !important;
+    }
+
+    :is(body.contact-page, body.events-page) .nav-links.active {
+        background: linear-gradient(180deg, rgba(6, 26, 23, 0.99), rgba(12, 42, 36, 0.99));
+        border-top: 1px solid rgba(232, 176, 75, 0.16);
+    }
+
+    :is(body.contact-page, body.events-page) .nav-links.active > a,
+    :is(body.contact-page, body.events-page) .nav-links.active .dropbtn,
+    :is(body.contact-page, body.events-page) .nav-links.active .dropdown-content a {
+        color: #F4EFE6 !important;
+    }
+
+    :is(body.contact-page, body.events-page) .nav-links.active .btn-header-cta {
+        color: var(--text-inverse) !important;
+    }
+
+    :is(body.contact-page, body.events-page) .nav-links.active .btn-header-cta:hover,
+    :is(body.contact-page, body.events-page) .nav-links.active .btn-header-cta:focus-visible {
+        color: var(--cta-ink) !important;
+    }
+
+    :is(body.contact-page, body.events-page) .nav-links.active .dropdown-content {
+        background: rgba(12, 42, 36, 0.9);
+        box-shadow: none;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   24. EVENTS PAGE — "The Season": a cinematic hero over the Compás WebGL
+   stage, a season rail of date tiles, two editorial event acts (Zurich
+   bootcamp, Milano group trip), a proof mosaic, and a closing bridge back
+   to the free trial. Scoped to body.events-page; loaded by events.html
+   and de/events.html only. Fresh block names (events-hero-stage,
+   season-rail, event-act, event-nights, events-bridge) so nothing
+   collides with the homepage events-strip rules in section 20.
+   -------------------------------------------------------------------------- */
+
+/* Hero stage: a still, warm petrol room — coral and brass ambience only,
+   no animated scene (ambient WebGL heroes were rejected by the owner);
+   the motion on this page is the content itself moving in */
+body.events-page .events-hero-stage {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-height: min(46rem, 92vh);
+    padding: calc(var(--header-height) + 4.5rem) 1.25rem 5.5rem;
+    overflow: hidden;
+    background:
+        radial-gradient(ellipse at 72% 26%, rgba(255, 90, 60, 0.14) 0%, transparent 46%),
+        radial-gradient(ellipse at 20% 80%, rgba(232, 176, 75, 0.13) 0%, transparent 44%),
+        radial-gradient(ellipse at 50% 110%, rgba(232, 176, 75, 0.08) 0%, transparent 52%),
+        linear-gradient(160deg, #0C2A24 0%, #061A17 58%);
+}
+
+body.events-page .events-hero-stage__inner {
+    position: relative;
+    z-index: 1;
+    max-width: 62rem;
+    margin: 0 auto;
+    text-align: center;
+}
+
+body.events-page .events-hero-stage__kicker {
+    display: block;
+    margin-bottom: 1.1rem;
+    color: #E8B04B;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+
+body.events-page .events-hero-stage__title {
+    margin: 0 auto;
+    max-width: 17ch;
+    color: #F2E7CF;
+    font-family: var(--font-heading);
+    font-size: clamp(2.5rem, 5.6vw, 4.4rem);
+    font-weight: 700;
+    line-height: 1.08;
+}
+
+body.events-page .events-hero-stage__title .title-accent {
+    font-style: italic;
+    background: linear-gradient(100deg, #FF5A3C 0%, #F58042 46%, #E8B04B 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: #FF5A3C;
+}
+
+body.events-page .events-hero-stage__lede {
+    max-width: 40rem;
+    margin: 1.6rem auto 0;
+    color: #9DB4AB;
+    font-size: 1.08rem;
+    line-height: 1.7;
+}
+
+body.events-page .events-hero-stage__actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2.4rem;
+}
+
+/* Season rail: the calendar spine — one tile per event, ol semantics */
+body.events-page .season-section {
+    background: #061A17;
+    padding: 5.5rem 0 4.5rem;
+}
+
+body.events-page .season-rail {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr));
+    gap: 1.2rem;
+    max-width: 56rem;
+    margin: 3rem auto 0;
+    padding: 0;
+    list-style: none;
+    counter-reset: season;
+}
+
+body.events-page .season-rail__item {
+    position: relative;
+    display: flex;
+    align-items: baseline;
+    gap: 1.1rem;
+    padding: 1.4rem 1.6rem 1.5rem;
+    background: #10322B;
+    border: 1px solid rgba(232, 176, 75, 0.2);
+    border-radius: 16px;
+    text-decoration: none;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+body.events-page .season-rail__item:hover,
+body.events-page .season-rail__item:focus-visible {
+    border-color: rgba(255, 90, 60, 0.55);
+    background: #144036;
+}
+
+/* Floor-tape ticks frame the tile on engagement — the site's mark */
+body.events-page .season-rail__item::before,
+body.events-page .season-rail__item::after {
+    content: '';
+    position: absolute;
+    width: 0.9rem;
+    height: 0.9rem;
+    border: 0 solid transparent;
+    pointer-events: none;
+    transition: border-color 0.3s ease;
+}
+
+body.events-page .season-rail__item::before {
+    inset: 0.5rem auto auto 0.5rem;
+    border-top-width: 2px;
+    border-left-width: 2px;
+}
+
+body.events-page .season-rail__item::after {
+    inset: auto 0.5rem 0.5rem auto;
+    border-right-width: 2px;
+    border-bottom-width: 2px;
+}
+
+body.events-page .season-rail__item:hover::before,
+body.events-page .season-rail__item:hover::after,
+body.events-page .season-rail__item:focus-visible::before,
+body.events-page .season-rail__item:focus-visible::after {
+    border-color: #FF5A3C;
+}
+
+body.events-page .season-rail__dates {
+    color: #F2E7CF;
+    font-family: 'Teko', sans-serif;
+    font-size: 2.3rem;
+    font-weight: 500;
+    line-height: 0.9;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+}
+
+body.events-page .season-rail__info {
+    display: grid;
+    gap: 0.2rem;
+}
+
+body.events-page .season-rail__city {
+    color: #E8B04B;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+body.events-page .season-rail__name {
+    color: #F4EFE6;
+    font-size: 1.02rem;
+    font-weight: 600;
+    line-height: 1.35;
+}
+
+body.events-page .season-rail__cue {
+    margin-left: auto;
+    align-self: center;
+    color: #FF5A3C;
+    font-weight: 700;
+    transition: color 0.3s ease;
+}
+
+body.events-page .season-rail__item:hover .season-rail__cue {
+    color: #E8B04B;
+}
+
+/* Event acts: editorial split — poster in a taped frame, copy beside it */
+body.events-page .event-act {
+    padding: 5.5rem 0;
+}
+
+body.events-page .event-act--zurich {
+    background: linear-gradient(180deg, #061A17 0%, #0C2A24 100%);
+}
+
+body.events-page .event-act--milano {
+    background: linear-gradient(180deg, #0C2A24 0%, #061A17 100%);
+}
+
+body.events-page .event-act__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+    gap: clamp(2rem, 5vw, 4.5rem);
+    align-items: center;
+}
+
+body.events-page .event-act--milano .event-act__grid {
+    grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+}
+
+body.events-page .event-act--milano .event-act__media {
+    order: 2;
+}
+
+body.events-page .event-act__media {
+    position: relative;
+    margin: 0;
+    padding: 0.9rem;
+    background: #10322B;
+    border: 1px solid rgba(232, 176, 75, 0.24);
+    border-radius: 18px;
+}
+
+body.events-page .event-act__media img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+/* Permanent brass tape on the poster frame, coral when engaged */
+body.events-page .event-act__media::before,
+body.events-page .event-act__media::after {
+    content: '';
+    position: absolute;
+    width: 1.05rem;
+    height: 1.05rem;
+    pointer-events: none;
+    transition: border-color 0.3s ease;
+}
+
+body.events-page .event-act__media::before {
+    inset: 0.45rem auto auto 0.45rem;
+    border-top: 2px solid rgba(232, 176, 75, 0.75);
+    border-left: 2px solid rgba(232, 176, 75, 0.75);
+}
+
+body.events-page .event-act__media::after {
+    inset: auto 0.45rem 0.45rem auto;
+    border-right: 2px solid rgba(232, 176, 75, 0.75);
+    border-bottom: 2px solid rgba(232, 176, 75, 0.75);
+}
+
+body.events-page .event-act:hover .event-act__media::before,
+body.events-page .event-act:hover .event-act__media::after {
+    border-color: #FF5A3C;
+}
+
+body.events-page .event-act__flag {
+    width: fit-content;
+    margin-bottom: 1rem;
+    padding: 0.24rem 0.7rem;
+    border-radius: 999px;
+    background: #E8B04B;
+    color: #10231F;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+body.events-page .event-act__kicker {
+    display: block;
+    margin-bottom: 0.85rem;
+    color: #E8B04B;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+}
+
+body.events-page .event-act__date {
+    display: block;
+    margin-bottom: 0.4rem;
+    color: #FF5A3C;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.92rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+body.events-page .event-act .section-title-modern {
+    margin-bottom: 1.3rem;
+    font-size: clamp(2rem, 3.6vw, 2.9rem);
+    text-align: left;
+}
+
+body.events-page .event-act__copy {
+    color: #9DB4AB;
+    font-size: 1.03rem;
+    line-height: 1.75;
+    margin-bottom: 1.1rem;
+}
+
+body.events-page .event-act__facts {
+    display: grid;
+    gap: 0;
+    margin: 1.8rem 0 2.1rem;
+}
+
+body.events-page .event-act__fact {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.3rem 1.2rem;
+    padding: 0.72rem 0;
+    border-top: 1px solid rgba(232, 176, 75, 0.18);
+}
+
+body.events-page .event-act__fact:last-child {
+    border-bottom: 1px solid rgba(232, 176, 75, 0.18);
+}
+
+body.events-page .event-act__fact dt {
+    color: #9DB4AB;
+    font-size: 0.92rem;
+}
+
+body.events-page .event-act__fact dd {
+    margin: 0;
+    color: #F2E7CF;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-align: right;
+}
+
+body.events-page .event-act__fact dd a {
+    color: #F2E7CF;
+    text-decoration: underline;
+    text-decoration-color: rgba(232, 176, 75, 0.55);
+    text-underline-offset: 3px;
+    transition: color 0.3s ease, text-decoration-color 0.3s ease;
+}
+
+body.events-page .event-act__fact dd a:hover,
+body.events-page .event-act__fact dd a:focus-visible {
+    color: #E8B04B;
+    text-decoration-color: #E8B04B;
+}
+
+body.events-page .event-act__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* Proof mosaic: three real photographs, static grid (no rail, no sway) */
+body.events-page .event-nights {
+    background: #0C2A24;
+    padding: 5.5rem 0;
+    text-align: center;
+}
+
+body.events-page .event-nights .section-subtitle {
+    max-width: 44rem;
+    margin: 1.2rem auto 0;
+}
+
+body.events-page .event-nights__mosaic {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.9rem;
+    margin-top: 3rem;
+}
+
+body.events-page .event-nights__photo {
+    position: relative;
+    margin: 0;
+    overflow: hidden;
+    border: 1px solid rgba(232, 176, 75, 0.18);
+    border-radius: 14px;
+    background: #10322B;
+}
+
+body.events-page .event-nights__photo img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+}
+
+/* Closing bridge: one calm band that hands non-ready visitors to the
+   free weekly trial instead of losing them */
+body.events-page .events-bridge {
+    background: #061A17;
+    padding: 5.5rem 0 6.5rem;
+    text-align: center;
+}
+
+body.events-page .events-bridge .section-subtitle {
+    max-width: 38rem;
+    margin: 1.2rem auto 0;
+}
+
+body.events-page .events-bridge__actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2.2rem;
+}
+
+/* Brass hairline separators between the acts (same grammar as the
+   homepage assurance hairlines) */
+body.events-page .event-act,
+body.events-page .event-nights,
+body.events-page .events-bridge {
+    position: relative;
+}
+
+body.events-page .event-act::before,
+body.events-page .event-nights::before,
+body.events-page .events-bridge::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(72rem, calc(100% - 2.5rem));
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(232, 176, 75, 0.4), rgba(255, 90, 60, 0.3), transparent);
+}
+
+/* Responsive: acts stack, mosaic becomes hero-photo + two squares */
+@media (max-width: 900px) {
+    body.events-page .event-act__grid,
+    body.events-page .event-act--milano .event-act__grid {
+        grid-template-columns: 1fr;
+    }
+
+    body.events-page .event-act--milano .event-act__media {
+        order: 0;
+    }
+
+    body.events-page .event-act__media {
+        max-width: 30rem;
+        margin: 0 auto;
+    }
+
+    body.events-page .event-act .section-title-modern {
+        text-align: left;
+    }
+}
+
+@media (max-width: 700px) {
+    body.events-page .events-hero-stage {
+        min-height: min(40rem, 88vh);
+    }
+
+    body.events-page .event-nights__mosaic {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    body.events-page .event-nights__photo--lead {
+        grid-column: 1 / -1;
+    }
+
+    body.events-page .event-nights__photo--lead img {
+        aspect-ratio: 16 / 9;
+    }
+
+    body.events-page .event-nights__photo:not(.event-nights__photo--lead) img {
+        aspect-ratio: 1 / 1;
+    }
+
+    body.events-page .season-rail__dates {
+        font-size: 2rem;
+    }
+}
+
+/* Left-aligned act titles keep the dancing underline anchored left */
+body.events-page .event-act .section-title-modern::after {
+    margin-left: 0;
+    margin-right: auto;
+}
+
+/* Season header: centered like the schedule/reviews titles */
+body.events-page .season-section .section-title-modern,
+body.events-page .season-section .section-subtitle,
+body.events-page .event-nights .section-subtitle,
+body.events-page .events-bridge .section-subtitle {
+    text-align: center;
+}
+
+/* Section titles match the homepage serif recipe (style.css scopes it to
+   body.home-page only, so events re-declares it) */
+body.events-page .section-title-modern {
+    color: var(--text-main);
+    font-family: 'Cormorant Garamond', serif;
+    font-style: normal;
+    font-size: clamp(2.4rem, 4.6vw, 3.6rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 0.95;
+    text-shadow: none;
+}
+
+body.events-page .event-act .section-title-modern {
+    font-size: clamp(2rem, 3.6vw, 2.9rem);
+}
+
+/* --------------------------------------------------------------------------
+   25. BOOTCAMP DETAIL — "The Masterclass Bill": the Dominican Bachata
+   Bootcamp page. The body carries BOTH classes (events-page bootcamp-page):
+   events-page turns on all shared chrome, the §24 hero/act/bridge recipes,
+   and the Compás hero scene; bootcamp-page scopes what is unique here —
+   the stat band, the artist acts, the champagne register island (the
+   preserved Stripe form), the level band, and the FAQ skin. Loaded by
+   dominican-bootcamp.html and de/dominican-bootcamp.html only.
+   -------------------------------------------------------------------------- */
+
+/* Stat band: the flyer's numbers as a quiet Teko strip under the hero */
+body.bootcamp-page .bootcamp-stats {
+    position: relative;
+    background: #061A17;
+    padding: 3.2rem 0 3rem;
+}
+
+body.bootcamp-page .bootcamp-stats::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(72rem, calc(100% - 2.5rem));
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(232, 176, 75, 0.4), rgba(255, 90, 60, 0.3), transparent);
+}
+
+body.bootcamp-page .bootcamp-stats__grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1rem;
+    max-width: 52rem;
+    margin: 0 auto;
+    text-align: center;
+}
+
+body.bootcamp-page .bootcamp-stats__number {
+    display: block;
+    color: #F2E7CF;
+    font-family: 'Teko', sans-serif;
+    font-size: clamp(2.4rem, 4.5vw, 3.4rem);
+    font-weight: 500;
+    line-height: 0.9;
+}
+
+body.bootcamp-page .bootcamp-stats__label {
+    display: block;
+    margin-top: 0.35rem;
+    color: #9DB4AB;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+/* Artist acts: the portrait demo video sits in a taped phone frame */
+body.bootcamp-page .event-act__media--phone {
+    max-width: 19rem;
+    justify-self: center;
+}
+
+body.bootcamp-page .bootcamp-video {
+    position: relative;
+}
+
+body.bootcamp-page .bootcamp-video video {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 9 / 16;
+    object-fit: cover;
+    border-radius: 10px;
+    background: #041310;
+}
+
+body.bootcamp-page .event-act__artist-role {
+    display: inline-block;
+    margin: 0 0 1rem;
+    padding: 0.24rem 0.7rem;
+    border-radius: 999px;
+    background: rgba(232, 176, 75, 0.14);
+    border: 1px solid rgba(232, 176, 75, 0.4);
+    color: #E8B04B;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+/* Register island: the single light block on the petrol page. The form
+   markup (ids, names, checkboxes, submit) is preserved verbatim from the
+   old page; only the skin changes. */
+body.bootcamp-page .bootcamp-register {
+    position: relative;
+    padding: 5.5rem 0;
+    background: linear-gradient(180deg, #0C2A24 0%, #061A17 100%);
+}
+
+body.bootcamp-page .bootcamp-register::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(72rem, calc(100% - 2.5rem));
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(232, 176, 75, 0.4), rgba(255, 90, 60, 0.3), transparent);
+}
+
+body.bootcamp-page .bootcamp-register__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: start;
+}
+
+body.bootcamp-page .bootcamp-register__brief .section-title-modern {
+    text-align: left;
+}
+
+body.bootcamp-page .bootcamp-register__brief .section-title-modern::after {
+    margin-left: 0;
+    margin-right: auto;
+}
+
+body.bootcamp-page .bootcamp-register__copy {
+    color: #9DB4AB;
+    font-size: 1.02rem;
+    line-height: 1.75;
+    margin: 1.1rem 0 0;
+}
+
+/* The champagne card */
+body.bootcamp-page .bootcamp-register__island {
+    background: #F4ECD9;
+    border: 1px solid rgba(16, 35, 31, 0.14);
+    border-radius: 18px;
+    padding: clamp(1.5rem, 3vw, 2.4rem);
+    box-shadow: var(--shadow-soft);
+}
+
+body.bootcamp-page .bootcamp-register__island h3 {
+    margin: 0 0 1.4rem;
+    color: #10231F;
+    font-family: var(--font-heading);
+    font-size: 1.6rem;
+    font-weight: 700;
+}
+
+body.bootcamp-page .bootcamp-register__island .event-input-group {
+    margin-bottom: 1rem;
+}
+
+body.bootcamp-page .bootcamp-register__island .event-input-label {
+    display: block;
+    margin-bottom: 0.35rem;
+    color: #6D6154;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+body.bootcamp-page .bootcamp-register__island .event-input {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    background: #FFFDF7;
+    border: 1px solid #D8C9A9;
+    border-radius: 10px;
+    color: #1D130B;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+body.bootcamp-page .bootcamp-register__island .event-input::placeholder {
+    color: #A99D8A;
+}
+
+body.bootcamp-page .bootcamp-register__island .event-input:focus {
+    outline: none;
+    border-color: #FF5A3C;
+    box-shadow: 0 0 0 2px rgba(255, 90, 60, 0.25);
+}
+
+/* Checkboxes: the global recipe is dark-theme; re-ink it for champagne */
+body.bootcamp-page .bootcamp-register__island .checkmark {
+    background-color: #FFFDF7;
+    border: 1px solid #B9A87F;
+}
+
+body.bootcamp-page .bootcamp-register__island .checkbox-container:hover input ~ .checkmark {
+    background-color: #F7F0DF;
+}
+
+body.bootcamp-page .bootcamp-register__island .checkbox-container input:checked ~ .checkmark {
+    background-color: #FF5A3C;
+    border-color: #FF5A3C;
+}
+
+body.bootcamp-page .bootcamp-register__island .checkbox-text {
+    color: #6D6154;
+    font-size: 0.88rem;
+}
+
+body.bootcamp-page .bootcamp-register__island .checkbox-text a {
+    color: #8A3315;
+    text-decoration: underline;
+}
+
+body.bootcamp-page .bootcamp-register__island .checkbox-text a:hover,
+body.bootcamp-page .bootcamp-register__island .checkbox-text a:focus-visible {
+    color: #10231F;
+}
+
+/* The submit keeps its ids/classes; on the island it wears the ink-on-
+   champagne recipe (a tier-3 outline would be light-on-light here) */
+body.bootcamp-page .bootcamp-register__island .btn-hero-secondary {
+    background: #10231F;
+    border: 1px solid transparent;
+    border-radius: var(--cta-radius);
+    color: #F2E7CF;
+    box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.35);
+}
+
+body.bootcamp-page .bootcamp-register__island .btn-hero-secondary:hover,
+body.bootcamp-page .bootcamp-register__island .btn-hero-secondary:focus-visible {
+    background: #1B3A33;
+    border-color: transparent;
+    color: #F2E7CF;
+    box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.55);
+}
+
+body.bootcamp-page .bootcamp-register__note {
+    margin-top: 1rem;
+    color: #6D6154;
+    font-size: 0.8rem;
+    text-align: center;
+}
+
+/* Level band: one honest line with two chips */
+body.bootcamp-page .bootcamp-level {
+    background: #061A17;
+    padding: 4rem 0;
+    text-align: center;
+}
+
+body.bootcamp-page .bootcamp-level__chips {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.7rem;
+    margin-top: 1.4rem;
+}
+
+body.bootcamp-page .bootcamp-level__chip {
+    padding: 0.4rem 0.95rem;
+    border-radius: 999px;
+    border: 1px solid rgba(232, 176, 75, 0.45);
+    color: #F4EFE6;
+    font-size: 0.9rem;
+}
+
+/* FAQ skin: solid petrol panels, brass hairline, coral + that rotates */
+body.bootcamp-page .bootcamp-faq {
+    max-width: 50rem;
+    margin: 0 auto;
+    padding: 5rem 1.25rem 5.5rem;
+}
+
+body.bootcamp-page .bootcamp-faq .section-title-modern {
+    text-align: center;
+    margin-bottom: 2.6rem;
+}
+
+body.bootcamp-page .bootcamp-faq__list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+body.bootcamp-page .bootcamp-faq__item {
+    background: #10322B;
+    border: 1px solid rgba(232, 176, 75, 0.2);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: border-color 0.3s ease;
+}
+
+body.bootcamp-page .bootcamp-faq__item[open],
+body.bootcamp-page .bootcamp-faq__item:hover {
+    border-color: rgba(255, 90, 60, 0.5);
+}
+
+body.bootcamp-page .bootcamp-faq__summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.4rem 1.5rem;
+    cursor: pointer;
+    list-style: none;
+    color: #F2E7CF;
+    font-weight: 600;
+    font-size: 1.05rem;
+}
+
+body.bootcamp-page .bootcamp-faq__summary::-webkit-details-marker {
+    display: none;
+}
+
+body.bootcamp-page .bootcamp-faq__icon {
+    color: #FF5A3C;
+    font-size: 1.5rem;
+    line-height: 1;
+    display: inline-block;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    body.bootcamp-page .bootcamp-faq__icon {
+        transition: transform 0.3s ease;
+    }
+}
+
+body.bootcamp-page .bootcamp-faq__item[open] .bootcamp-faq__icon {
+    transform: rotate(45deg);
+}
+
+body.bootcamp-page .bootcamp-faq__body {
+    padding: 0 1.5rem 1.5rem;
+    color: #9DB4AB;
+    line-height: 1.65;
+}
+
+body.bootcamp-page .bootcamp-faq__body a {
+    color: #E8B04B;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+body.bootcamp-page .bootcamp-faq__body a:hover,
+body.bootcamp-page .bootcamp-faq__body a:focus-visible {
+    color: #FF5A3C;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    body.bootcamp-page .bootcamp-register__grid {
+        grid-template-columns: 1fr;
+    }
+
+    body.bootcamp-page .bootcamp-stats__grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.6rem 1rem;
+    }
+}
+
+/* Form spacing that used to live in the old inline styles */
+body.bootcamp-page .bootcamp-register__consent {
+    margin-top: 1.2rem;
+}
+
+body.bootcamp-page .bootcamp-register__consent-second {
+    margin-top: 0.5rem;
+}
+
+body.bootcamp-page .bootcamp-register__submit {
+    width: 100%;
+    justify-content: center;
+    margin-top: 1.2rem;
+}
+
+/* --------------------------------------------------------------------------
+   26. EVENTS PAGE — waypoints rail: a fixed side navigator that lists the
+   two event acts so visitors can jump straight to the Dominican intensive
+   or the international congress. Desktop only (the season rail already
+   provides the same skip links in the flow on smaller screens). Scoped to
+   body.events-page; scroll-spy state is toggled by script.js via the
+   events-waypoints__link--active modifier.
+   -------------------------------------------------------------------------- */
+
+body.events-page .event-act {
+    scroll-margin-top: calc(var(--header-height) + 1rem);
+}
+
+body.events-page .events-waypoints {
+    display: none;
+}
+
+@media (min-width: 1200px) {
+    body.events-page .events-waypoints {
+        display: block;
+        position: fixed;
+        top: 50%;
+        right: 1.5rem;
+        transform: translateY(-50%);
+        z-index: 900;
+    }
+}
+
+body.events-page .events-waypoints__list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    margin: 0;
+    padding: 0.55rem;
+    list-style: none;
+    background: rgba(6, 26, 23, 0.72);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(232, 176, 75, 0.22);
+    border-radius: 16px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+}
+
+body.events-page .events-waypoints__link {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.65rem;
+    padding: 0.5rem 0.8rem;
+    border-radius: 30px;
+    color: #9DB4AB;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+body.events-page .events-waypoints__dot {
+    flex: none;
+    width: 0.55rem;
+    height: 0.55rem;
+    border: 2px solid currentColor;
+    border-radius: 50%;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+body.events-page .events-waypoints__link:hover,
+body.events-page .events-waypoints__link:focus-visible {
+    color: #F2E7CF;
+    background: rgba(232, 176, 75, 0.12);
+}
+
+body.events-page .events-waypoints__link--active {
+    color: #E8B04B;
+}
+
+body.events-page .events-waypoints__link--active .events-waypoints__dot {
+    background: currentColor;
+}

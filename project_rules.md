@@ -4,46 +4,48 @@
 > **Proactive Communication**: If you have ANY doubts about a technical requirement, SEO strategy, or content detail, you MUST ask the user for clarification before proceeding. Do not make assumptions on critical business logic.
 
 ## 1. Project Overview
-**AXcent Dance** is a modern dance studio focusing on Bachata based in Zurich, Switzerland. The website should reflect a "warm and connected" aesthetic, and a focus on inviting, premium feeling, focusing on human-connection.
+**AXcent Dance** is a modern dance studio focusing on Bachata based in Zurich, Switzerland. The website should feel premium, elegant, connected, inviting, and energetic — never corporate and never like a generic template. The final color direction is still being decided (see Section 2.1); express the brand through typography, spacing, composition, photography, and motion rather than through any fixed palette.
 
 **Studio Address**: Hermetschloostrasse 73, 8048, Zurich
 
 ## 2. Design System
 
-### 2.1. Color Palette
-The palette is "Warm Modern". It combines soft, inviting backgrounds with vibrant, energetic accents.
+### 2.1. Color Palette (Deliberately Undecided)
+**STATUS**: The final brand palette is NOT fixed yet. The owner is still exploring color directions. The homepage currently prototypes one candidate ("Tropic Noir") via `tropic-noir.css`, scoped to the homepage only — see `System/homepage-revamp-strategy.md`. Do not treat it, or any hex values in the existing codebase, as final brand law.
 
-- **Primary Background**: `#FDFBF7` (Warm Off-White) - Used for main page backgrounds to create a welcoming atmosphere.
-- **Secondary Background**: `#F2EFE9` (Warm Light Grey) - Used for sections or cards.
-- **Primary Text**: `#2D2D2D` (Soft Charcoal) - High contrast but softer than pure black.
-- **Secondary Text**: `#5C5C5C` (Warm Grey) - For subtitles and supporting text.
-- **Brand Accent**: `#E05D44` (Terracotta/Coral) - energetic, warm, and modern. Used for primary buttons and key highlights.
-- **Secondary Accent**: `#F4A261` (Soft Orange) - Used for gradients or subtle highlights.
-- **Success/Info**: `#2A9D8F` (Teal) - For positive states, complements the warm tones.
+Until a final palette is decided:
+
+- Never hardcode colors inside components. All colors must flow through semantic CSS variables (`--bg-main`, `--bg-secondary`, `--bg-elevated`, `--text-main`, `--text-muted`, `--text-inverse`, accent tokens) so the palette can be swapped centrally at any time.
+- Do not roll any experimental palette out beyond the homepage without explicit owner approval.
+- Maintain WCAG AA contrast regardless of palette; CTA label text needs at least 4.5:1 against its button fill.
+- When a task touches colors, ask the owner which direction applies or propose options — do not silently invent a new palette.
 
 ### 2.2. Typography
-Use modern, clean sans-serif fonts available via Google Fonts.
+Use modern, elegant fonts available via Google Fonts. The typography should echo the logo's contrast between refined serif strength and fluid movement while remaining practical for a fast website.
 
-- **Headings**: **'Outfit'**, sans-serif.
+- **Hero/Display Headings**: **'Cormorant Garamond'**, serif.
     - Weights: 600 (SemiBold), 700 (Bold).
-    - Character: Geometric but friendly.
+    - Character: Elegant, expressive, and logo-adjacent. Use for hero statements and selected editorial headings only.
+- **UI/Section Headings**: **'Outfit'**, sans-serif.
+    - Weights: 600 (SemiBold), 700 (Bold).
+    - Character: Geometric, friendly, and clean for scannable sections.
 - **Body**: **'Inter'**, sans-serif.
     - Weights: 400 (Regular), 500 (Medium).
     - Character: Highly legible, neutral.
+- **Script Personality**: Do not introduce decorative script fonts for navigation, body copy, or buttons. The logo already carries the script gesture; the website should translate that feeling through spacing, curves, motion lines, and composition.
 
 ### 2.3. UI Aesthetics
-- **Glassmorphism**: Use subtle glass effects for overlays (navbars, cards).
-    - Background: `rgba(255, 255, 255, 0.7)`
-    - Blur: `backdrop-filter: blur(12px)`
-    - Border: `1px solid rgba(255, 255, 255, 0.3)`
-- **Shadows**: Soft, diffused shadows to create depth without harshness.
-    - Example: `box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05)`
+- **Surfaces**: Overlay surfaces (navbars, cards) use semantic tokens (`var(--glass-bg)`, `var(--glass-border)`, `var(--shadow-soft)`) — never hardcoded colors — so they follow whichever palette wins.
+- **Shadows**: Soft, diffused shadows to create depth without harshness, defined as tokens.
 - **Border Radius**: Generous curves to feel friendly.
     - Buttons: `30px` (Pill shape) or `12px` (Rounded rect).
     - Cards: `16px` to `24px`.
-- **Animations**: Smooth, organic transitions.
-    - `transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1)`
-    - Micro-interactions on hover (slight lift, scale, or color shift).
+- **Accent Discipline**: Reserve the strongest accent for primary CTAs and key highlights; decorative accents stay thin and restrained (never large background fields).
+- **Animations**: Smooth, organic, and Core Web Vitals safe.
+    - `transition: opacity 0.3s ease, color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease`
+    - Hover states may use color, opacity, border, underline, and shadow changes.
+    - Do not use hover movement such as `transform: translate` or `scale` on layout elements.
+- **GSAP & Three.js — Modern, Not "AI Slop"**: Use GSAP and Three.js as progressive enhancements for a modern, premium, crafted feel. Every effect must look intentional and brand-specific: purposeful scroll entrances, tasteful CTA/card micro-interactions, at most one ambient signature scene per viewport, and motion that references dance (rhythm, musicality, lead-and-follow). Avoid generic template effects — random floating shapes, particle explosions, neon glow spam, rotating conic borders, cursor-chasing blobs, parallax on everything. Preserve accessibility (`prefers-reduced-motion` static fallback, content visible without JS), semantic content, SEO clarity, and Core Web Vitals (lazy-init heavy scenes, pause offscreen, cap devicePixelRatio, never run WebGL over the hero video).
 
 ## 3. Coding Standards
 
@@ -55,7 +57,7 @@ Use modern, clean sans-serif fonts available via Google Fonts.
     - Ensure logical heading hierarchy (`h1` -> `h2` -> `h3`).
 
 ### 3.2. CSS
-- **Methodology**: Vanilla CSS with CSS Variables (Custom Properties).
+- **Methodology**: Vanilla CSS with CSS Variables (Custom Properties) and BEM class naming.
 - **Organization**:
     - Define variables in `:root`.
     - Use a Reset (e.g., box-sizing: border-box).

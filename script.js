@@ -3,6 +3,2414 @@ console.log('AXcent Dance website initialized.');
 document.addEventListener('DOMContentLoaded', () => {
     console.log('DOM fully loaded and parsed');
 
+    const gsap = window.gsap;
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const animateHomeHeroIntro = () => {
+        if (!gsap || prefersReducedMotion || !document.querySelector('.home-hero')) return;
+        const panelIntroTargets = gsap.utils.toArray([
+            '.home-hero__brand',
+            '.home-hero__headline',
+            '.home-hero__intro',
+            '.home-hero__meta span'
+        ].join(', '));
+        const selector = document.querySelector('.home-hero__selector');
+        const selectorTargets = selector
+            ? Array.from(selector.children).sort((first, second) => first.getBoundingClientRect().top - second.getBoundingClientRect().top)
+            : [];
+        const actionTargets = gsap.utils.toArray('.home-hero__actions .btn-hero, .home-hero__actions .home-hero__assurance li');
+        const stage = document.querySelector('.home-hero__stage');
+        const motionTargets = [stage, ...panelIntroTargets, ...selectorTargets, ...actionTargets].filter(Boolean);
+        const clearIntroStyles = () => {
+            gsap.set(motionTargets, { clearProps: 'opacity,visibility,transform' });
+        };
+
+        gsap.timeline({
+            defaults: { ease: 'power3.out' },
+            onComplete: clearIntroStyles
+        })
+            .from(stage, {
+                opacity: 0,
+                y: 30,
+                scale: 0.985,
+                duration: 0.62
+            })
+            .from(actionTargets, {
+                opacity: 0,
+                y: 18,
+                duration: 0.38,
+                stagger: 0.035
+            }, '-=0.36')
+            .from(panelIntroTargets, {
+                opacity: 0,
+                y: 14,
+                duration: 0.36,
+                stagger: 0.025
+            }, '-=0.44')
+            .from(selectorTargets, {
+                opacity: 0,
+                y: 16,
+                duration: 0.36,
+                stagger: 0.045
+            }, '-=0.22');
+
+        window.setTimeout(clearIntroStyles, 1700);
+    };
+
+    // Homepage loading reveal
+    const pageLoader = document.querySelector('.page-loader');
+    let heroIntroPlayed = false;
+    const markHeroIntroPlayed = () => {
+        if (heroIntroPlayed) return;
+        heroIntroPlayed = true;
+        animateHomeHeroIntro();
+    };
+
+    if (pageLoader) {
+        if (gsap && !prefersReducedMotion) {
+            gsap.fromTo('.page-loader__mark', {
+                autoAlpha: 0,
+                y: 18,
+                scale: 0.96
+            }, {
+                autoAlpha: 1,
+                y: 0,
+                scale: 1,
+                duration: 0.78,
+                ease: 'power3.out'
+            });
+            gsap.fromTo('.page-loader__line', {
+                autoAlpha: 0,
+                scaleX: 0.45
+            }, {
+                autoAlpha: 1,
+                scaleX: 1,
+                duration: 0.82,
+                ease: 'power3.out',
+                delay: 0.12
+            });
+        }
+
+        let loaderDone = false;
+        const markPageLoaded = () => {
+            if (loaderDone) return;
+            loaderDone = true;
+
+            if (gsap && !prefersReducedMotion) {
+                gsap.to(pageLoader, {
+                    autoAlpha: 0,
+                    duration: 0.34,
+                    ease: 'power2.out',
+                    onStart: () => {
+                        document.body.classList.add('page-loaded');
+                        markHeroIntroPlayed();
+                    },
+                    onComplete: () => {
+                        pageLoader.style.display = 'none';
+                    }
+                });
+            } else {
+                document.body.classList.add('page-loaded');
+                markHeroIntroPlayed();
+            }
+        };
+
+        window.addEventListener('load', () => {
+            window.setTimeout(markPageLoaded, 150);
+        }, { once: true });
+        window.setTimeout(markPageLoaded, 1050);
+    } else {
+        markHeroIntroPlayed();
+    }
+
+    // Homepage hero video switcher
+    const heroShowcaseVideo = document.getElementById('hero-showcase-video');
+    const heroPosterFrame = document.querySelector('[data-hero-poster-frame]');
+    const heroVideoChoices = document.querySelectorAll('.home-hero__choice[data-hero-video], .home-hero__choice[data-hero-poster]');
+
+    if (heroShowcaseVideo && heroVideoChoices.length) {
+        const playHeroVideo = () => {
+            heroShowcaseVideo.muted = true;
+            heroShowcaseVideo.playsInline = true;
+            const playPromise = heroShowcaseVideo.play();
+            if (playPromise && typeof playPromise.catch === 'function') {
+                playPromise.catch(() => {});
+            }
+        };
+
+        const seekHeroVideo = (startTime) => {
+            if (!Number.isFinite(startTime) || startTime <= 0) {
+                playHeroVideo();
+                return;
+            }
+
+            const seekWhenReady = () => {
+                try {
+                    heroShowcaseVideo.currentTime = startTime;
+                } catch (error) {
+                    // Some browsers block seeking until more metadata is ready.
+                }
+                playHeroVideo();
+            };
+
+            if (heroShowcaseVideo.readyState >= 1) {
+                seekWhenReady();
+            } else {
+                heroShowcaseVideo.addEventListener('loadedmetadata', seekWhenReady, { once: true });
+            }
+        };
+
+        const choiceMotionProperties = [
+            '--choice-sheen-x',
+            '--choice-sheen-opacity',
+            '--choice-rail-opacity',
+            '--choice-rail-scale',
+            '--choice-shadow-opacity'
+        ];
+
+        const clearHeroChoiceMotion = (choiceElement) => {
+            choiceMotionProperties.forEach((property) => {
+                choiceElement.style.removeProperty(property);
+            });
+        };
+
+        const animateHeroChoiceSelection = (choiceElement) => {
+            if (!gsap || prefersReducedMotion) return;
+
+            const choiceCopy = choiceElement.querySelector('.home-hero__choice-copy');
+            const choiceText = choiceElement.querySelectorAll('.home-hero__choice-title, .home-hero__choice-note');
+
+            gsap.killTweensOf(choiceElement);
+            if (choiceCopy) gsap.killTweensOf(choiceCopy);
+            if (choiceText.length) gsap.killTweensOf(choiceText);
+            clearHeroChoiceMotion(choiceElement);
+
+            gsap.timeline({
+                defaults: { ease: 'power3.out' },
+                onComplete: () => clearHeroChoiceMotion(choiceElement)
+            })
+                .set(choiceElement, {
+                    '--choice-sheen-x': '-118%',
+                    '--choice-sheen-opacity': 0,
+                    '--choice-rail-opacity': 0.12,
+                    '--choice-rail-scale': 0.46,
+                    '--choice-shadow-opacity': 0.26
+                })
+                .to(choiceElement, {
+                    '--choice-sheen-x': '116%',
+                    '--choice-sheen-opacity': 0.42,
+                    '--choice-rail-opacity': 0.92,
+                    '--choice-rail-scale': 1,
+                    '--choice-shadow-opacity': 0.2,
+                    duration: 0.58
+                })
+                .to(choiceElement, {
+                    '--choice-sheen-opacity': 0,
+                    '--choice-shadow-opacity': 0.15,
+                    duration: 0.24,
+                    ease: 'sine.out'
+                }, '-=0.16');
+
+            if (choiceCopy) {
+                gsap.fromTo(choiceCopy, {
+                    x: 8
+                }, {
+                    x: 0,
+                    duration: 0.46,
+                    ease: 'expo.out',
+                    overwrite: true,
+                    clearProps: 'transform'
+                });
+            }
+
+            if (choiceText.length) {
+                gsap.fromTo(choiceText, {
+                    autoAlpha: 0.62,
+                    y: 3
+                }, {
+                    autoAlpha: 1,
+                    y: 0,
+                    duration: 0.38,
+                    stagger: 0.035,
+                    ease: 'power2.out',
+                    overwrite: true,
+                    clearProps: 'opacity,visibility,transform'
+                });
+            }
+        };
+
+        heroVideoChoices.forEach((choice) => {
+            choice.addEventListener('click', () => {
+                heroVideoChoices.forEach((button) => {
+                    if (gsap) {
+                        gsap.killTweensOf(button);
+                        clearHeroChoiceMotion(button);
+                    }
+                    const isActive = button === choice;
+                    button.classList.toggle('is-active', isActive);
+                    button.setAttribute('aria-pressed', String(isActive));
+                });
+
+                if (gsap && !prefersReducedMotion) {
+                    animateHeroChoiceSelection(choice);
+                }
+
+                // Poster-only choices (no matching footage yet, e.g. an event
+                // without a dedicated clip) show a static image instead of
+                // reusing another entry's video, which would be a fake duplicate.
+                const posterSource = choice.dataset.heroPoster;
+                if (posterSource) {
+                    heroShowcaseVideo.pause();
+                    if (heroPosterFrame) {
+                        heroPosterFrame.src = posterSource;
+                        heroPosterFrame.classList.add('is-active');
+                    }
+                    return;
+                }
+
+                if (heroPosterFrame) {
+                    heroPosterFrame.classList.remove('is-active');
+                }
+
+                const webmSource = choice.dataset.heroWebm;
+                const mp4Source = choice.dataset.heroVideo;
+                const nextSource = webmSource && heroShowcaseVideo.canPlayType('video/webm') ? webmSource : mp4Source;
+                const startTime = Number(choice.dataset.heroStart || 0);
+
+                heroShowcaseVideo.classList.add('is-switching');
+                if (gsap && !prefersReducedMotion) {
+                    gsap.to(heroShowcaseVideo, {
+                        opacity: 0.2,
+                        duration: 0.16,
+                        ease: 'power1.out'
+                    });
+                }
+
+                const finishSwitch = () => {
+                    seekHeroVideo(startTime);
+                    if (gsap && !prefersReducedMotion) {
+                        gsap.to(heroShowcaseVideo, {
+                            opacity: 1,
+                            duration: 0.3,
+                            ease: 'power2.out',
+                            onComplete: () => {
+                                heroShowcaseVideo.classList.remove('is-switching');
+                                gsap.set(heroShowcaseVideo, { clearProps: 'opacity' });
+                            }
+                        });
+                    } else {
+                        window.setTimeout(() => {
+                            heroShowcaseVideo.classList.remove('is-switching');
+                        }, 180);
+                    }
+                };
+
+                if (heroShowcaseVideo.getAttribute('src') !== nextSource) {
+                    heroShowcaseVideo.setAttribute('src', nextSource);
+                    heroShowcaseVideo.load();
+                    heroShowcaseVideo.addEventListener('loadedmetadata', finishSwitch, { once: true });
+                } else {
+                    finishSwitch();
+                }
+            });
+        });
+
+        playHeroVideo();
+    }
+
+    // Free-trial CTA motion is handled in CSS so the border can orbit without tracking the pointer.
+
+    const enhanceBeginnerGateway = () => {
+        const gateway = document.querySelector('[data-beginner-gateway]');
+        if (!gateway || !document.body.classList.contains('home-page')) return;
+
+        const guideCards = Array.from(gateway.querySelectorAll('.guide-card'));
+        const photoCards = guideCards.filter(card => card.classList.contains('beginner-course-card--photo'));
+        const photoMotionActiveClass = 'beginner-course-card--motion-active';
+        const startBridge = gateway.querySelector('[data-beginner-start-bridge]');
+        const introMotionTargets = [
+            gateway.querySelector('.guides-section__story'),
+            startBridge,
+            gateway.querySelector('.guides-confidence')
+        ].filter(Boolean);
+        const standardCardTargets = guideCards.filter(card => !card.classList.contains('beginner-course-card--photo'));
+        const riseMotionTargets = [
+            ...introMotionTargets,
+            ...standardCardTargets
+        ].filter(Boolean);
+        const motionTargets = [
+            ...riseMotionTargets,
+            ...photoCards
+        ].filter(Boolean);
+
+        const clearPhotoCardEntrance = (card) => {
+            gsap.set(card, { clearProps: 'opacity,visibility,transform,transformOrigin,transformPerspective' });
+            card.style.removeProperty('--beginner-card-reveal');
+            card.style.removeProperty('--beginner-card-sheen-x');
+        };
+
+        const playGatewayReveal = () => {
+            if (!gsap || prefersReducedMotion || !motionTargets.length) return;
+
+            const revealTimeline = gsap.timeline({
+                defaults: { ease: 'power3.out' },
+                onComplete: () => {
+                    riseMotionTargets.forEach((target) => {
+                        gsap.set(target, { clearProps: 'opacity,visibility,transform' });
+                    });
+                    photoCards.forEach(clearPhotoCardEntrance);
+                }
+            });
+
+            if (riseMotionTargets.length) {
+                revealTimeline.to(riseMotionTargets, {
+                    autoAlpha: 1,
+                    y: 0,
+                    duration: 0.56,
+                    stagger: 0.06
+                });
+            }
+
+            if (photoCards.length) {
+                revealTimeline.to(photoCards, {
+                    autoAlpha: 1,
+                    x: 0,
+                    rotateY: 0,
+                    scale: 1,
+                    '--beginner-card-reveal': 1,
+                    '--beginner-card-sheen-x': '118%',
+                    duration: 0.84,
+                    ease: 'expo.out',
+                    stagger: 0.09
+                }, riseMotionTargets.length ? '-=0.18' : 0)
+                    .to(photoCards, {
+                        '--beginner-card-reveal': 0,
+                        duration: 0.42,
+                        ease: 'sine.out'
+                    }, '-=0.12');
+            }
+        };
+
+        let revealPlayed = false;
+        const revealOnce = () => {
+            if (revealPlayed) return;
+            revealPlayed = true;
+            playGatewayReveal();
+        };
+
+        if (gsap && !prefersReducedMotion && motionTargets.length) {
+            if (riseMotionTargets.length) {
+                gsap.set(riseMotionTargets, {
+                    autoAlpha: 0,
+                    y: 26
+                });
+            }
+
+            if (photoCards.length) {
+                gsap.set(photoCards, {
+                    autoAlpha: 0,
+                    x: (index) => (index % 2 === 0 ? -96 : 96),
+                    rotateY: (index) => (index % 2 === 0 ? -7 : 7),
+                    scale: 0.965,
+                    transformPerspective: 900,
+                    transformOrigin: (index) => (index % 2 === 0 ? 'left center' : 'right center'),
+                    '--beginner-card-reveal': 0,
+                    '--beginner-card-sheen-x': '-128%'
+                });
+            }
+
+            if ('IntersectionObserver' in window) {
+                const revealObserver = new IntersectionObserver((entries) => {
+                    if (entries.some(entry => entry.isIntersecting)) {
+                        revealOnce();
+                        revealObserver.disconnect();
+                    }
+                }, { threshold: 0.18 });
+                revealObserver.observe(gateway);
+            } else {
+                revealOnce();
+            }
+        }
+
+        const sweepCard = (card) => {
+            if (!gsap || prefersReducedMotion) return;
+
+            gsap.killTweensOf(card);
+            gsap.fromTo(card, {
+                '--guide-card-sheen': 0
+            }, {
+                '--guide-card-sheen': 1,
+                duration: 0.44,
+                ease: 'power2.out',
+                onComplete: () => {
+                    gsap.to(card, {
+                        '--guide-card-sheen': 0,
+                        duration: 0.34,
+                        ease: 'sine.out'
+                    });
+                }
+            });
+        };
+
+        const liftBeginnerPhotoCard = (card) => {
+            if (!card.classList.contains('beginner-course-card--photo')) return;
+
+            card.classList.add(photoMotionActiveClass);
+
+            if (!gsap || prefersReducedMotion) return;
+            gsap.killTweensOf(card);
+            gsap.set(card, {
+                '--beginner-card-sheen-x': '-128%',
+                '--beginner-card-reveal': 0
+            });
+            gsap.to(card, {
+                '--beginner-card-reveal': 1,
+                '--beginner-card-sheen-x': '118%',
+                duration: 0.62,
+                ease: 'power2.out',
+                overwrite: 'auto'
+            });
+        };
+
+        const settleBeginnerPhotoCard = (card) => {
+            if (!card.classList.contains('beginner-course-card--photo')) return;
+
+            card.classList.remove(photoMotionActiveClass);
+            if (!gsap || prefersReducedMotion) return;
+            gsap.killTweensOf(card);
+            gsap.to(card, {
+                '--beginner-card-reveal': 0,
+                duration: 0.36,
+                ease: 'sine.out',
+                overwrite: 'auto',
+                onComplete: () => {
+                    card.style.removeProperty('--beginner-card-reveal');
+                    card.style.removeProperty('--beginner-card-sheen-x');
+                }
+            });
+        };
+
+        guideCards.forEach((card) => {
+            card.addEventListener('pointerenter', () => {
+                sweepCard(card);
+                liftBeginnerPhotoCard(card);
+            });
+            card.addEventListener('focusin', () => {
+                sweepCard(card);
+                liftBeginnerPhotoCard(card);
+            });
+        });
+
+        photoCards.forEach((card) => {
+            card.addEventListener('pointerleave', () => settleBeginnerPhotoCard(card));
+            card.addEventListener('focusout', (event) => {
+                if (!card.contains(event.relatedTarget)) {
+                    settleBeginnerPhotoCard(card);
+                }
+            });
+        });
+
+        if (gsap && startBridge && !prefersReducedMotion) {
+            gsap.to(startBridge, {
+                '--bridge-pulse': 1,
+                duration: 1.9,
+                ease: 'sine.inOut',
+                repeat: -1,
+                yoyo: true
+            });
+        }
+
+        const canvas = gateway.querySelector('[data-guides-canvas]');
+        const startCanvas = gateway.querySelector('[data-beginner-start-canvas]');
+        const canUseWebGL = () => {
+            if (!window.WebGLRenderingContext) return false;
+
+            try {
+                const testCanvas = document.createElement('canvas');
+                return Boolean(
+                    testCanvas.getContext('webgl') ||
+                    testCanvas.getContext('experimental-webgl')
+                );
+            } catch (error) {
+                return false;
+            }
+        };
+
+        let threeModulePromise = null;
+        const loadThreeModule = () => {
+            if (!threeModulePromise) {
+                threeModulePromise = import('https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js')
+                    .catch(() => null);
+            }
+            return threeModulePromise;
+        };
+
+        const enhanceStartBridge = () => {
+            if (!startBridge || !startCanvas || prefersReducedMotion || !canUseWebGL()) return;
+
+            let bridgeLoaded = false;
+            let bridgeRenderer = null;
+            let bridgeScene = null;
+            let bridgeCamera = null;
+            let bridgeGroup = null;
+            let bridgeParticles = null;
+            let ringOuter = null;
+            let ringInner = null;
+            let bridgeFrame = 0;
+            let bridgeVisible = false;
+
+            const resizeBridge = () => {
+                if (!bridgeRenderer || !bridgeCamera || !bridgeGroup) return;
+
+                const width = Math.max(1, startBridge.clientWidth);
+                const height = Math.max(1, startCanvas.clientHeight || startBridge.clientHeight);
+                bridgeRenderer.setSize(width, height, false);
+                bridgeCamera.aspect = width / height;
+                bridgeCamera.updateProjectionMatrix();
+
+                const scale = Math.min(1.08, Math.max(0.74, width / 1080));
+                bridgeGroup.scale.set(scale, scale, scale);
+            };
+
+            const startBridgeLoop = () => {
+                if (bridgeFrame || !bridgeRenderer || !bridgeScene || !bridgeCamera || !bridgeGroup) return;
+                bridgeVisible = true;
+
+                const render = (time) => {
+                    const rhythm = time * 0.00055;
+                    bridgeGroup.rotation.z = Math.sin(rhythm) * 0.035;
+                    bridgeGroup.position.y = Math.sin(rhythm * 1.4) * 0.035;
+
+                    if (ringOuter) ringOuter.rotation.z = rhythm * 0.85;
+                    if (ringInner) ringInner.rotation.z = -rhythm * 1.15;
+                    if (bridgeParticles) {
+                        bridgeParticles.rotation.z = rhythm * 0.28;
+                        bridgeParticles.rotation.y = Math.sin(rhythm * 0.9) * 0.08;
+                    }
+
+                    bridgeRenderer.render(bridgeScene, bridgeCamera);
+
+                    if (bridgeVisible) {
+                        bridgeFrame = window.requestAnimationFrame(render);
+                    }
+                };
+
+                bridgeFrame = window.requestAnimationFrame(render);
+            };
+
+            const stopBridgeLoop = () => {
+                bridgeVisible = false;
+                if (bridgeFrame) {
+                    window.cancelAnimationFrame(bridgeFrame);
+                    bridgeFrame = 0;
+                }
+            };
+
+            const buildBridge = async () => {
+                if (bridgeLoaded) return;
+                bridgeLoaded = true;
+
+                const THREE = await loadThreeModule();
+                if (!THREE) return;
+
+                try {
+                    bridgeRenderer = new THREE.WebGLRenderer({
+                        canvas: startCanvas,
+                        alpha: true,
+                        antialias: true,
+                        powerPreference: 'low-power'
+                    });
+                } catch (error) {
+                    return;
+                }
+
+                bridgeRenderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));
+                bridgeRenderer.setClearColor(0x000000, 0);
+
+                bridgeScene = new THREE.Scene();
+                bridgeCamera = new THREE.PerspectiveCamera(42, 1, 0.1, 100);
+                bridgeCamera.position.set(0, 0, 7);
+
+                bridgeGroup = new THREE.Group();
+                bridgeScene.add(bridgeGroup);
+
+                const makeConnector = (side, color, opacity) => {
+                    const points = [];
+                    for (let index = 0; index < 78; index += 1) {
+                        const t = index / 77;
+                        const x = side * (1.1 + t * 3.25);
+                        const y = Math.sin(t * Math.PI) * 0.18;
+                        const z = Math.cos((t * Math.PI) + side) * 0.22;
+                        points.push(new THREE.Vector3(x, y, z));
+                    }
+
+                    const curve = new THREE.CatmullRomCurve3(points);
+                    const geometry = new THREE.BufferGeometry().setFromPoints(curve.getPoints(150));
+                    const material = new THREE.LineBasicMaterial({
+                        color,
+                        transparent: true,
+                        opacity,
+                        depthWrite: false
+                    });
+                    bridgeGroup.add(new THREE.Line(geometry, material));
+                };
+
+                makeConnector(-1, 0xb8872b, 0.72);
+                makeConnector(1, 0xc94a35, 0.58);
+
+                const outerGeometry = new THREE.TorusGeometry(1.02, 0.018, 8, 144);
+                const innerGeometry = new THREE.TorusGeometry(0.72, 0.012, 8, 128);
+                const outerMaterial = new THREE.MeshBasicMaterial({
+                    color: 0xb8872b,
+                    transparent: true,
+                    opacity: 0.44,
+                    depthWrite: false
+                });
+                const innerMaterial = new THREE.MeshBasicMaterial({
+                    color: 0xc94a35,
+                    transparent: true,
+                    opacity: 0.36,
+                    depthWrite: false
+                });
+                ringOuter = new THREE.Mesh(outerGeometry, outerMaterial);
+                ringInner = new THREE.Mesh(innerGeometry, innerMaterial);
+                bridgeGroup.add(ringOuter, ringInner);
+
+                const count = window.innerWidth < 768 ? 54 : 96;
+                const positions = new Float32Array(count * 3);
+                for (let index = 0; index < count; index += 1) {
+                    const offset = index * 3;
+                    const angle = (index / count) * Math.PI * 2;
+                    const radius = 0.8 + Math.random() * 2.4;
+                    positions[offset] = Math.cos(angle) * radius;
+                    positions[offset + 1] = (Math.random() - 0.5) * 1.15;
+                    positions[offset + 2] = Math.sin(angle) * 0.55 + (Math.random() - 0.5) * 0.32;
+                }
+
+                const particleGeometry = new THREE.BufferGeometry();
+                particleGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+                const particleMaterial = new THREE.PointsMaterial({
+                    color: 0x2a0f3f,
+                    size: 0.035,
+                    transparent: true,
+                    opacity: 0.22,
+                    depthWrite: false
+                });
+                bridgeParticles = new THREE.Points(particleGeometry, particleMaterial);
+                bridgeGroup.add(bridgeParticles);
+
+                resizeBridge();
+                startBridgeLoop();
+            };
+
+            window.addEventListener('resize', resizeBridge, { passive: true });
+
+            if ('IntersectionObserver' in window) {
+                const bridgeObserver = new IntersectionObserver((entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            buildBridge();
+                            startBridgeLoop();
+                        } else {
+                            stopBridgeLoop();
+                        }
+                    });
+                }, {
+                    rootMargin: '260px 0px',
+                    threshold: 0.01
+                });
+                bridgeObserver.observe(startBridge);
+            } else {
+                buildBridge();
+            }
+        };
+
+        enhanceStartBridge();
+
+        if (!canvas || prefersReducedMotion) return;
+
+        if (!canUseWebGL()) {
+            gateway.classList.add('guides-section--canvas-fallback');
+            return;
+        }
+
+        let hasLoadedThree = false;
+        let renderer = null;
+        let scene = null;
+        let camera = null;
+        let field = null;
+        let particles = null;
+        let animationFrame = 0;
+        let isVisible = false;
+        const pointer = { x: 0, y: 0 };
+        const pointerTarget = { x: 0, y: 0 };
+
+        const resizeField = () => {
+            if (!renderer || !camera || !field) return;
+
+            const width = Math.max(1, gateway.clientWidth);
+            const height = Math.max(1, gateway.clientHeight);
+            renderer.setSize(width, height, false);
+            camera.aspect = width / height;
+            camera.updateProjectionMatrix();
+
+            const scale = Math.min(1.12, Math.max(0.74, width / 1180));
+            field.scale.set(scale, scale, scale);
+        };
+
+        const startField = () => {
+            if (animationFrame || !renderer || !scene || !camera || !field) return;
+            isVisible = true;
+
+            const render = (time) => {
+                pointer.x += (pointerTarget.x - pointer.x) * 0.045;
+                pointer.y += (pointerTarget.y - pointer.y) * 0.045;
+
+                const rhythm = time * 0.00045;
+                field.rotation.x = pointer.y * 0.08;
+                field.rotation.y = pointer.x * 0.1;
+                field.position.y = Math.sin(rhythm) * 0.08;
+
+                if (particles) {
+                    particles.rotation.z = rhythm * 0.28;
+                    particles.rotation.y = pointer.x * 0.08;
+                }
+
+                renderer.render(scene, camera);
+
+                if (isVisible) {
+                    animationFrame = window.requestAnimationFrame(render);
+                }
+            };
+
+            animationFrame = window.requestAnimationFrame(render);
+        };
+
+        const stopField = () => {
+            isVisible = false;
+            if (animationFrame) {
+                window.cancelAnimationFrame(animationFrame);
+                animationFrame = 0;
+            }
+        };
+
+        const buildField = async () => {
+            if (hasLoadedThree) return;
+            hasLoadedThree = true;
+
+            const THREE = await loadThreeModule();
+            if (!THREE) {
+                gateway.classList.add('guides-section--canvas-fallback');
+                return;
+            }
+
+            try {
+                renderer = new THREE.WebGLRenderer({
+                    canvas,
+                    alpha: true,
+                    antialias: true,
+                    powerPreference: 'low-power'
+                });
+            } catch (error) {
+                gateway.classList.add('guides-section--canvas-fallback');
+                return;
+            }
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));
+            renderer.setClearColor(0x000000, 0);
+
+            scene = new THREE.Scene();
+            camera = new THREE.PerspectiveCamera(42, 1, 0.1, 100);
+            camera.position.set(0, 0, 7);
+
+            field = new THREE.Group();
+            scene.add(field);
+
+            const makeRibbon = (phase, color, opacity, yOffset) => {
+                const curvePoints = [];
+                for (let index = 0; index < 92; index += 1) {
+                    const t = index / 91;
+                    const x = (t - 0.5) * 8.8;
+                    const y = Math.sin((t * Math.PI * 2.4) + phase) * 0.34
+                        + Math.sin((t * Math.PI * 5.2) + phase) * 0.08
+                        + yOffset;
+                    const z = Math.cos((t * Math.PI * 2.1) + phase) * 0.72;
+                    curvePoints.push(new THREE.Vector3(x, y, z));
+                }
+
+                const curve = new THREE.CatmullRomCurve3(curvePoints);
+                const geometry = new THREE.BufferGeometry().setFromPoints(curve.getPoints(220));
+                const material = new THREE.LineBasicMaterial({
+                    color,
+                    transparent: true,
+                    opacity,
+                    depthWrite: false
+                });
+                field.add(new THREE.Line(geometry, material));
+            };
+
+            makeRibbon(0, 0xc94a35, 0.34, 0.45);
+            makeRibbon(1.25, 0xb8872b, 0.42, 0);
+            makeRibbon(2.35, 0x2a0f3f, 0.16, -0.45);
+
+            const count = window.innerWidth < 768 ? 80 : 145;
+            const positions = new Float32Array(count * 3);
+            for (let index = 0; index < count; index += 1) {
+                const offset = index * 3;
+                positions[offset] = (Math.random() - 0.5) * 9;
+                positions[offset + 1] = (Math.random() - 0.5) * 3.2;
+                positions[offset + 2] = (Math.random() - 0.5) * 2.4;
+            }
+
+            const particleGeometry = new THREE.BufferGeometry();
+            particleGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+            const particleMaterial = new THREE.PointsMaterial({
+                color: 0xc94a35,
+                size: 0.035,
+                transparent: true,
+                opacity: 0.28,
+                depthWrite: false
+            });
+            particles = new THREE.Points(particleGeometry, particleMaterial);
+            field.add(particles);
+
+            resizeField();
+            startField();
+        };
+
+        window.addEventListener('resize', resizeField, { passive: true });
+
+        if ('IntersectionObserver' in window) {
+            const canvasObserver = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        buildField();
+                        startField();
+                    } else {
+                        stopField();
+                    }
+                });
+            }, {
+                rootMargin: '360px 0px',
+                threshold: 0.01
+            });
+            canvasObserver.observe(gateway);
+        } else {
+            buildField();
+        }
+    };
+
+    enhanceBeginnerGateway();
+
+    const enhancePremiumTimetable = () => {
+        const schedule = document.querySelector('.schedule-section');
+        if (!schedule || !document.body.classList.contains('home-page')) return;
+
+        const rows = Array.from(schedule.querySelectorAll('.schedule-row'));
+        const cards = Array.from(schedule.querySelectorAll('.class-card'));
+        const tropicNoirActive = !!document.querySelector('link[href*="tropic-noir"]');
+        const revealTargets = gsap
+            ? gsap.utils.toArray([
+                '.schedule-grid-header',
+                '.hidden-mobile > .schedule-row',
+                '.hidden-desktop .mobile-schedule-day'
+            ].join(', '), schedule)
+            : [];
+
+        if (gsap && !prefersReducedMotion && tropicNoirActive) {
+            // "Count-in": the time column ticks in first like a metronome,
+            // then the class cards step in laterally, row by row.
+            const gridHeader = schedule.querySelector('.schedule-grid-header');
+            const timeSlots = gsap.utils.toArray('.hidden-mobile .time-slot', schedule);
+            const desktopCards = gsap.utils.toArray('.hidden-mobile .class-card', schedule);
+            const mobileDays = gsap.utils.toArray('.hidden-desktop .mobile-schedule-day', schedule);
+            const countInTargets = [gridHeader, ...timeSlots, ...desktopCards, ...mobileDays].filter(Boolean);
+
+            if (countInTargets.length) {
+                if (gridHeader) gsap.set(gridHeader, { autoAlpha: 0, y: 12 });
+                if (timeSlots.length) gsap.set(timeSlots, { autoAlpha: 0, y: 8 });
+                if (desktopCards.length) gsap.set(desktopCards, { autoAlpha: 0, x: -14 });
+                if (mobileDays.length) gsap.set(mobileDays, { autoAlpha: 0, y: 18 });
+
+                let countInPlayed = false;
+                const playCountIn = () => {
+                    if (countInPlayed) return;
+                    countInPlayed = true;
+                    const timeline = gsap.timeline({
+                        defaults: { ease: 'power3.out' },
+                        onComplete: () => {
+                            gsap.set(countInTargets, { clearProps: 'opacity,visibility,transform' });
+                        }
+                    });
+                    if (gridHeader) {
+                        timeline.to(gridHeader, { autoAlpha: 1, y: 0, duration: 0.5 });
+                    }
+                    if (timeSlots.length) {
+                        timeline.to(timeSlots, {
+                            autoAlpha: 1,
+                            y: 0,
+                            duration: 0.3,
+                            stagger: 0.14,
+                            ease: 'power2.out'
+                        }, gridHeader ? '-=0.25' : 0);
+                    }
+                    if (desktopCards.length) {
+                        timeline.to(desktopCards, {
+                            autoAlpha: 1,
+                            x: 0,
+                            duration: 0.55,
+                            stagger: 0.07
+                        }, '-=0.15');
+                    }
+                    if (mobileDays.length) {
+                        timeline.to(mobileDays, { autoAlpha: 1, y: 0, duration: 0.56, stagger: 0.08 }, '<');
+                    }
+                };
+
+                if ('IntersectionObserver' in window) {
+                    const observer = new IntersectionObserver((entries) => {
+                        if (entries.some(entry => entry.isIntersecting)) {
+                            playCountIn();
+                            observer.disconnect();
+                        }
+                    }, {
+                        threshold: 0.16
+                    });
+                    observer.observe(schedule);
+                } else {
+                    playCountIn();
+                }
+            }
+        } else if (gsap && !prefersReducedMotion && revealTargets.length) {
+            gsap.set(revealTargets, {
+                autoAlpha: 0,
+                y: 18
+            });
+
+            let timetableRevealed = false;
+            const playTimetableReveal = () => {
+                if (timetableRevealed) return;
+                timetableRevealed = true;
+                gsap.to(revealTargets, {
+                    autoAlpha: 1,
+                    y: 0,
+                    duration: 0.56,
+                    stagger: 0.055,
+                    ease: 'power3.out',
+                    clearProps: 'opacity,visibility,transform'
+                });
+            };
+
+            if ('IntersectionObserver' in window) {
+                const observer = new IntersectionObserver((entries) => {
+                    if (entries.some(entry => entry.isIntersecting)) {
+                        playTimetableReveal();
+                        observer.disconnect();
+                    }
+                }, {
+                    threshold: 0.16
+                });
+                observer.observe(schedule);
+            } else {
+                playTimetableReveal();
+            }
+        }
+
+        const clearTimetableFocus = () => {
+            schedule.classList.remove('is-interacting');
+            rows.forEach(row => row.classList.remove('is-focused'));
+        };
+
+        const markTimetableFocus = (card) => {
+            const row = card.closest('.schedule-row');
+            schedule.classList.add('is-interacting');
+            rows.forEach(item => item.classList.toggle('is-focused', item === row));
+
+            if (!gsap || prefersReducedMotion) return;
+            gsap.killTweensOf(card);
+            gsap.fromTo(card, {
+                '--timetable-sheen': '-140%'
+            }, {
+                '--timetable-sheen': '160%',
+                duration: 0.68,
+                ease: 'power2.out',
+                onComplete: () => {
+                    gsap.set(card, {
+                        '--timetable-sheen': '-140%'
+                    });
+                }
+            });
+        };
+
+        cards.forEach((card) => {
+            card.addEventListener('pointerenter', () => markTimetableFocus(card));
+            card.addEventListener('focus', () => markTimetableFocus(card));
+            card.addEventListener('blur', clearTimetableFocus);
+        });
+
+        schedule.addEventListener('pointerleave', clearTimetableFocus);
+    };
+
+    enhancePremiumTimetable();
+
+    const enhanceTropicChoreography = () => {
+        // Homepage-only motion system for the Tropic Noir prototype.
+        // The .reveal slab is neutralized in tropic-noir.css; content stays
+        // visible without JavaScript and under prefers-reduced-motion.
+        if (!document.body.classList.contains('home-page')) return;
+        if (!document.querySelector('link[href*="tropic-noir"]')) return;
+
+        const observeOnce = (target, onEnter, options) => {
+            if (!('IntersectionObserver' in window)) {
+                onEnter();
+                return;
+            }
+            const observer = new IntersectionObserver((entries) => {
+                if (entries.some(entry => entry.isIntersecting)) {
+                    observer.disconnect();
+                    onEnter();
+                }
+            }, options);
+            observer.observe(target);
+        };
+
+        // FAQ soft open: animated height instead of the native snap. The
+        // native toggle stays in place for reduced motion and without GSAP.
+        const faqSection = document.querySelector('.home-faq-section');
+        if (faqSection) {
+            faqSection.querySelectorAll('details').forEach((item) => {
+                const summary = item.querySelector('summary');
+                const content = summary ? summary.nextElementSibling : null;
+                if (!summary || !content) return;
+
+                const contentPaddingBottom = window.getComputedStyle(content).paddingBottom;
+
+                summary.addEventListener('click', (event) => {
+                    if (!gsap || prefersReducedMotion) return;
+                    event.preventDefault();
+                    if (item.dataset.faqAnimating === 'true') return;
+                    item.dataset.faqAnimating = 'true';
+
+                    if (item.open) {
+                        gsap.to(content, {
+                            height: 0,
+                            paddingBottom: 0,
+                            autoAlpha: 0,
+                            duration: 0.32,
+                            ease: 'power2.in',
+                            onComplete: () => {
+                                item.open = false;
+                                gsap.set(content, { clearProps: 'height,opacity,visibility' });
+                                gsap.set(content, { paddingBottom: contentPaddingBottom });
+                                delete item.dataset.faqAnimating;
+                            }
+                        });
+                    } else {
+                        item.open = true;
+                        gsap.set(content, { paddingBottom: contentPaddingBottom });
+                        gsap.from(content, {
+                            height: 0,
+                            paddingBottom: 0,
+                            autoAlpha: 0,
+                            duration: 0.45,
+                            ease: 'power3.out',
+                            onComplete: () => {
+                                gsap.set(content, { clearProps: 'height,opacity,visibility' });
+                                gsap.set(content, { paddingBottom: contentPaddingBottom });
+                                delete item.dataset.faqAnimating;
+                            }
+                        });
+                    }
+                });
+            });
+        }
+
+        if (!gsap || prefersReducedMotion) return;
+
+        // Dancing underline: the section-title rule draws in three steps and
+        // a tap (the bachata basic). Drives the CSS variable read by the
+        // ::after element in tropic-noir.css.
+        gsap.utils.toArray('.section-title-modern').forEach((title) => {
+            gsap.set(title, { '--title-underline-scale': 0 });
+            observeOnce(title, () => {
+                gsap.to(title, {
+                    keyframes: [
+                        { '--title-underline-scale': 0.33, duration: 0.18, ease: 'power2.out' },
+                        { '--title-underline-scale': 0.66, duration: 0.18, ease: 'power2.out' },
+                        { '--title-underline-scale': 1.04, duration: 0.18, ease: 'power2.out' },
+                        { '--title-underline-scale': 1, duration: 0.24, ease: 'expo.out' }
+                    ]
+                });
+            }, { threshold: 0.4, rootMargin: '0px 0px -10% 0px' });
+        });
+
+        // Lead & Follow: the heading leads, content answers a half-beat
+        // later with a 1-2-3-tap stagger (a breath after every fourth item).
+        // The beginner gateway and schedule keep their own choreography.
+        const beatStagger = (index) => 0.07 * index + Math.floor(index / 4) * 0.07;
+        const choreography = [
+            {
+                root: '#about',
+                lead: '.stay-visual__header',
+                follow: ['.atelier-photo', '.atelier-gallery-meta', '.stay-copy']
+            },
+            {
+                root: '#reviews',
+                lead: '.section-title-modern',
+                follow: ['.reviews-proof', '.reviews-slider-wrapper']
+            },
+            {
+                root: '#trial-form',
+                lead: '.cta-premium-kicker, .cta-premium-title',
+                follow: ['.cta-premium-mark', '.cta-premium-note', '.trial-expectation']
+            },
+            {
+                root: '.home-faq-section',
+                lead: '.section-title-modern',
+                follow: ['.faq-list details']
+            }
+        ];
+
+        choreography.forEach(({ root, lead, follow }) => {
+            const rootElement = document.querySelector(root);
+            if (!rootElement) return;
+
+            const leadTargets = gsap.utils.toArray(lead, rootElement);
+            const followTargets = follow.flatMap((selector) => gsap.utils.toArray(selector, rootElement));
+            if (!leadTargets.length && !followTargets.length) return;
+
+            if (leadTargets.length) gsap.set(leadTargets, { autoAlpha: 0, y: 18 });
+            if (followTargets.length) gsap.set(followTargets, { autoAlpha: 0, y: 14 });
+
+            observeOnce(rootElement, () => {
+                const timeline = gsap.timeline({
+                    defaults: { ease: 'power3.out' },
+                    onComplete: () => {
+                        gsap.set([...leadTargets, ...followTargets], { clearProps: 'opacity,visibility,transform' });
+                    }
+                });
+                if (leadTargets.length) {
+                    timeline.to(leadTargets, { autoAlpha: 1, y: 0, duration: 0.6, stagger: 0.07 });
+                }
+                if (followTargets.length) {
+                    timeline.to(followTargets, {
+                        autoAlpha: 1,
+                        y: 0,
+                        duration: 0.6,
+                        stagger: beatStagger
+                    }, leadTargets.length ? '-=0.35' : 0);
+                }
+            }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+        });
+
+    };
+
+    enhanceTropicChoreography();
+
+    const enhanceEventsPage = () => {
+        // Events-page motion system for the Tropic Noir theme. Content stays
+        // fully visible without JavaScript and under prefers-reduced-motion;
+        // initial hidden states are set from JS only.
+        if (!document.body.classList.contains('events-page')) return;
+        if (!document.querySelector('link[href*="tropic-noir"]')) return;
+
+        const heroSection = document.querySelector('[data-events-hero]');
+
+        const observeOnce = (target, onEnter, options) => {
+            if (!('IntersectionObserver' in window)) {
+                onEnter();
+                return;
+            }
+            const observer = new IntersectionObserver((entries) => {
+                if (entries.some(entry => entry.isIntersecting)) {
+                    observer.disconnect();
+                    onEnter();
+                }
+            }, options);
+            observer.observe(target);
+        };
+
+        // --- Entrance choreography (Lead & Follow, same grammar as home) ---
+        if (gsap && !prefersReducedMotion) {
+            if (heroSection) {
+                const heroKicker = heroSection.querySelector('.events-hero-stage__kicker');
+                const heroTitle = heroSection.querySelector('.events-hero-stage__title');
+                const heroLede = heroSection.querySelector('.events-hero-stage__lede');
+                const heroActions = gsap.utils.toArray('.events-hero-stage__actions .btn-hero');
+                const heroTargets = [heroKicker, heroTitle, heroLede, ...heroActions].filter(Boolean);
+                if (heroTargets.length) {
+                    gsap.timeline({
+                        defaults: { ease: 'power3.out' },
+                        onComplete: () => {
+                            gsap.set(heroTargets, { clearProps: 'opacity,visibility,transform' });
+                        }
+                    })
+                        .from(heroKicker, { autoAlpha: 0, y: 12, duration: 0.45 })
+                        .from(heroTitle, { autoAlpha: 0, y: 18, duration: 0.62 }, '-=0.2')
+                        .from(heroLede, { autoAlpha: 0, y: 14, duration: 0.55 }, '-=0.34')
+                        .from(heroActions, { autoAlpha: 0, y: 14, duration: 0.5, stagger: 0.09 }, '-=0.3');
+                }
+            }
+
+            // Dancing underline: identical keyframes to the homepage motif.
+            gsap.utils.toArray('.section-title-modern').forEach((title) => {
+                gsap.set(title, { '--title-underline-scale': 0 });
+                observeOnce(title, () => {
+                    gsap.to(title, {
+                        keyframes: [
+                            { '--title-underline-scale': 0.33, duration: 0.18, ease: 'power2.out' },
+                            { '--title-underline-scale': 0.66, duration: 0.18, ease: 'power2.out' },
+                            { '--title-underline-scale': 1.04, duration: 0.18, ease: 'power2.out' },
+                            { '--title-underline-scale': 1, duration: 0.24, ease: 'expo.out' }
+                        ]
+                    });
+                }, { threshold: 0.4, rootMargin: '0px 0px -10% 0px' });
+            });
+
+            const beatStagger = (index) => 0.07 * index + Math.floor(index / 4) * 0.07;
+            // Roots that are absent on a given page are skipped silently, so
+            // the events listing and the bootcamp detail page share this map.
+            const choreography = [
+                {
+                    root: '.season-section',
+                    lead: '.section-title-modern',
+                    follow: ['.section-subtitle', '.season-rail__item']
+                },
+                {
+                    root: '.bootcamp-stats',
+                    lead: '.bootcamp-stats__item',
+                    follow: []
+                },
+                {
+                    root: '.bootcamp-register',
+                    lead: '.event-act__kicker, .section-title-modern',
+                    follow: ['.bootcamp-register__copy', '.event-act__facts', '.bootcamp-register__island']
+                },
+                {
+                    root: '.bootcamp-level',
+                    lead: '.section-title-modern',
+                    follow: ['.section-subtitle', '.bootcamp-level__chip']
+                },
+                {
+                    root: '.bootcamp-faq',
+                    lead: '.section-title-modern',
+                    follow: ['.bootcamp-faq__item']
+                },
+                {
+                    root: '.event-act--zurich',
+                    lead: '.event-act__kicker, .event-act__date, .section-title-modern, .event-act__artist-role',
+                    follow: ['.event-act__media', '.event-act__copy', '.event-act__facts', '.event-act__actions']
+                },
+                {
+                    root: '.event-nights',
+                    lead: '.section-title-modern',
+                    follow: ['.section-subtitle', '.event-nights__photo']
+                },
+                {
+                    root: '.event-act--milano',
+                    lead: '.event-act__flag, .event-act__kicker, .event-act__date, .section-title-modern, .event-act__artist-role',
+                    follow: ['.event-act__media', '.event-act__copy', '.event-act__facts', '.event-act__actions']
+                },
+                {
+                    root: '.events-bridge',
+                    lead: '.section-title-modern',
+                    follow: ['.section-subtitle', '.events-bridge__actions .btn-hero']
+                }
+            ];
+
+            choreography.forEach(({ root, lead, follow }) => {
+                const rootElement = document.querySelector(root);
+                if (!rootElement) return;
+
+                const leadTargets = gsap.utils.toArray(lead, rootElement);
+                const followTargets = follow.flatMap((selector) => gsap.utils.toArray(selector, rootElement));
+                if (!leadTargets.length && !followTargets.length) return;
+
+                if (leadTargets.length) gsap.set(leadTargets, { autoAlpha: 0, y: 18 });
+                if (followTargets.length) gsap.set(followTargets, { autoAlpha: 0, y: 14 });
+
+                observeOnce(rootElement, () => {
+                    const timeline = gsap.timeline({
+                        defaults: { ease: 'power3.out' },
+                        onComplete: () => {
+                            gsap.set([...leadTargets, ...followTargets], { clearProps: 'opacity,visibility,transform' });
+                        }
+                    });
+                    if (leadTargets.length) {
+                        timeline.to(leadTargets, { autoAlpha: 1, y: 0, duration: 0.6, stagger: 0.07 });
+                    }
+                    if (followTargets.length) {
+                        timeline.to(followTargets, {
+                            autoAlpha: 1,
+                            y: 0,
+                            duration: 0.6,
+                            stagger: beatStagger
+                        }, leadTargets.length ? '-=0.35' : 0);
+                    }
+                }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+            });
+        }
+
+        // --- Demo video (bootcamp page): loads nothing until the visitor
+        // presses play (preload="none"); pauses itself when scrolled away.
+        const demoVideoWrap = document.querySelector('[data-bootcamp-video]');
+        if (demoVideoWrap && 'IntersectionObserver' in window) {
+            const demoVideo = demoVideoWrap.querySelector('video');
+            if (demoVideo) {
+                const videoObserver = new IntersectionObserver((entries) => {
+                    entries.forEach((entry) => {
+                        if (!entry.isIntersecting && !demoVideo.paused) {
+                            demoVideo.pause();
+                        }
+                    });
+                }, { threshold: 0.2 });
+                videoObserver.observe(demoVideo);
+            }
+        }
+
+        // --- Waypoints rail: the fixed side navigator on the events listing.
+        // Highlights the link of the event act currently on screen; runs
+        // regardless of reduced-motion because it conveys state, not motion.
+        const waypointsNav = document.querySelector('[data-events-waypoints]');
+        if (waypointsNav && 'IntersectionObserver' in window) {
+            const waypointLinks = Array.from(waypointsNav.querySelectorAll('a[href^="#"]'));
+            const waypointTargets = waypointLinks
+                .map((link) => document.getElementById(link.hash.slice(1)))
+                .filter(Boolean);
+            const setActiveWaypoint = (id) => {
+                waypointLinks.forEach((link) => {
+                    link.classList.toggle('events-waypoints__link--active', link.hash === `#${id}`);
+                });
+            };
+            const waypointObserver = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) setActiveWaypoint(entry.target.id);
+                });
+            }, { rootMargin: '-40% 0px -50% 0px' });
+            waypointTargets.forEach((target) => waypointObserver.observe(target));
+        }
+
+    };
+
+    enhanceEventsPage();
+
+    // Mobile sticky trial bar: visible while browsing, steps aside once the
+    // trial form itself is on screen (no point pointing at what is visible).
+    const mobileCtaBar = document.querySelector('[data-mobile-cta-bar]');
+    const mobileCtaTarget = document.getElementById('trial-form');
+    if (mobileCtaBar && mobileCtaTarget && 'IntersectionObserver' in window) {
+        const mobileCtaObserver = new IntersectionObserver((entries) => {
+            const formInView = entries.some((entry) => entry.isIntersecting);
+            mobileCtaBar.classList.toggle('mobile-cta-bar--hidden', formInView);
+        }, { rootMargin: '0px 0px -15% 0px' });
+        mobileCtaObserver.observe(mobileCtaTarget);
+    }
+
+    const enhanceContactQuestionFlow = () => {
+        const questionFlow = document.querySelector('.contact-question-flow');
+        const wordSlot = questionFlow?.querySelector('[data-contact-question-word]');
+        const canvas = questionFlow?.querySelector('[data-contact-question-canvas]');
+        if (!questionFlow || !wordSlot || !canvas) return;
+
+        const words = (wordSlot.dataset.contactQuestionWords || wordSlot.textContent || '')
+            .split('|')
+            .map((word) => word.trim())
+            .filter(Boolean);
+        if (!words.length) return;
+
+        const wordCycleDelay = 1500;
+        // Tropic Noir pages recolor the hero scene to coral/brass/champagne;
+        // pages without the stylesheet keep the warm cream palette.
+        const tropicNoirActive = !!document.querySelector('link[href*="tropic-noir"]');
+        const sceneState = { pulse: 0, activeIndex: 0 };
+        let activeWordIndex = 0;
+        let activeWordElement = null;
+        let wordDelayCall = null;
+        let wordCleanupCall = null;
+        let wordTimeline = null;
+        let isWordAnimating = false;
+        let hasStartedWords = false;
+        let isFlowVisible = false;
+
+        const createWordElement = (word) => {
+            const wordElement = document.createElement('span');
+            wordElement.className = 'contact-question-flow__word';
+            wordElement.setAttribute('aria-hidden', 'true');
+
+            Array.from(word).forEach((character) => {
+                const glyph = document.createElement('span');
+                glyph.className = character === ' ' ? 'contact-question-flow__space' : 'contact-question-flow__glyph';
+                glyph.textContent = character === ' ' ? '\u00a0' : character;
+                wordElement.appendChild(glyph);
+            });
+
+            return wordElement;
+        };
+
+        const cleanWordStyles = (wordElement) => {
+            if (!wordElement) return;
+
+            wordElement.style.removeProperty('opacity');
+            wordElement.style.removeProperty('transform');
+            wordElement.style.removeProperty('visibility');
+            wordElement.querySelectorAll('.contact-question-flow__glyph, .contact-question-flow__space').forEach((glyph) => {
+                glyph.style.removeProperty('opacity');
+                glyph.style.removeProperty('transform');
+                glyph.style.removeProperty('visibility');
+            });
+        };
+
+        const setActiveWord = (wordIndex) => {
+            const normalizedIndex = ((wordIndex % words.length) + words.length) % words.length;
+            wordSlot.getAnimations?.({ subtree: true }).forEach((animation) => animation.cancel());
+            wordSlot.textContent = '';
+            activeWordElement = createWordElement(words[normalizedIndex]);
+            wordSlot.appendChild(activeWordElement);
+            activeWordIndex = normalizedIndex;
+            sceneState.activeIndex = normalizedIndex;
+            questionFlow.dataset.activeQuestion = words[normalizedIndex];
+            return activeWordElement;
+        };
+
+        const setInitialWord = () => {
+            setActiveWord(0);
+            wordSlot.style.setProperty('--word-line-scale', '1');
+        };
+
+        setInitialWord();
+
+        const canUseWebGL = () => {
+            if (!window.WebGLRenderingContext) return false;
+
+            try {
+                const testCanvas = document.createElement('canvas');
+                return Boolean(
+                    testCanvas.getContext('webgl') ||
+                    testCanvas.getContext('experimental-webgl')
+                );
+            } catch (error) {
+                return false;
+            }
+        };
+
+        let contactThreePromise = null;
+        const loadContactThree = () => {
+            if (!contactThreePromise) {
+                contactThreePromise = import('https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js')
+                    .catch(() => null);
+            }
+            return contactThreePromise;
+        };
+
+        let contactGsapPromise = null;
+        const loadContactGsap = () => {
+            if (window.gsap) return Promise.resolve(window.gsap);
+            if (contactGsapPromise) return contactGsapPromise;
+
+            const loadGsapModule = () => import('https://cdn.jsdelivr.net/npm/gsap@3.12.5/+esm')
+                .then((module) => module.gsap || module.default || window.gsap || null)
+                .catch(() => null);
+
+            contactGsapPromise = new Promise((resolve) => {
+                let hasResolved = false;
+                const finish = (value) => {
+                    if (hasResolved) return;
+                    hasResolved = true;
+                    resolve(value || loadGsapModule());
+                };
+
+                const existingScript = document.querySelector('script[src*="gsap"]') || document.querySelector('script[data-contact-question-gsap]');
+                if (existingScript) {
+                    existingScript.addEventListener('load', () => finish(window.gsap || null), { once: true });
+                    existingScript.addEventListener('error', () => finish(null), { once: true });
+                    window.setTimeout(() => finish(window.gsap || null), 900);
+                    return;
+                }
+
+                const script = document.createElement('script');
+                script.src = 'https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js';
+                script.async = true;
+                script.dataset.contactQuestionGsap = 'true';
+                script.onload = () => finish(window.gsap || null);
+                script.onerror = () => finish(null);
+                document.head.appendChild(script);
+
+                window.setTimeout(() => finish(window.gsap || null), 1000);
+            });
+
+            return contactGsapPromise;
+        };
+
+        const clearWordDelay = () => {
+            if (!wordDelayCall) return;
+
+            if (typeof wordDelayCall.kill === 'function') {
+                wordDelayCall.kill();
+            } else {
+                window.clearTimeout(wordDelayCall);
+                window.clearInterval(wordDelayCall);
+            }
+
+            wordDelayCall = null;
+        };
+
+        const clearWordCleanup = () => {
+            if (!wordCleanupCall) return;
+            window.clearTimeout(wordCleanupCall);
+            wordCleanupCall = null;
+        };
+
+        const clearWordTimeline = () => {
+            if (!wordTimeline) return;
+
+            if (typeof wordTimeline.kill === 'function') {
+                wordTimeline.kill();
+            }
+
+            wordTimeline = null;
+        };
+
+        const prepareNextWord = (nextIndex) => {
+            clearWordCleanup();
+            clearWordTimeline();
+
+            isWordAnimating = true;
+            const nextWord = setActiveWord(nextIndex);
+            wordSlot.style.setProperty('--word-line-scale', '0');
+            return nextWord;
+        };
+
+        const finishWordChange = (nextWord, nextIndex) => {
+            clearWordCleanup();
+            wordTimeline = null;
+            isWordAnimating = false;
+
+            if (nextWord.parentNode !== wordSlot) {
+                nextWord = setActiveWord(nextIndex);
+            }
+
+            wordSlot.querySelectorAll('.contact-question-flow__word').forEach((wordElement) => {
+                if (wordElement !== nextWord) {
+                    wordElement.remove();
+                }
+            });
+            cleanWordStyles(nextWord);
+            activeWordElement = nextWord;
+            activeWordIndex = nextIndex;
+            questionFlow.dataset.activeQuestion = words[activeWordIndex];
+            sceneState.activeIndex = activeWordIndex;
+            sceneState.pulse = 0;
+            wordSlot.style.setProperty('--word-line-scale', '1');
+        };
+
+        const animateNextWord = (contactGsap) => {
+            if (!contactGsap) {
+                animateNextWordFallback();
+                return;
+            }
+
+            if (prefersReducedMotion || words.length < 2 || isWordAnimating || !isFlowVisible) {
+                return;
+            }
+
+            const nextIndex = (activeWordIndex + 1) % words.length;
+            const nextWord = prepareNextWord(nextIndex);
+            const nextGlyphs = nextWord.querySelectorAll('.contact-question-flow__glyph, .contact-question-flow__space');
+
+            contactGsap.killTweensOf(wordSlot);
+            contactGsap.killTweensOf(nextWord);
+            contactGsap.killTweensOf(nextGlyphs);
+            contactGsap.set(nextWord, { yPercent: -82, autoAlpha: 0 });
+            contactGsap.set(nextGlyphs, { yPercent: -28, autoAlpha: 0 });
+
+            wordTimeline = contactGsap.timeline({
+                defaults: { ease: 'power3.out' }
+            });
+
+            wordTimeline
+                .to(wordSlot, {
+                    '--word-line-scale': 0,
+                    duration: 0.12,
+                    ease: 'power2.out'
+                }, 0)
+                .to(nextWord, {
+                    yPercent: 0,
+                    autoAlpha: 1,
+                    duration: 0.5,
+                    clearProps: 'opacity,transform,visibility'
+                }, 0.04)
+                .to(nextGlyphs, {
+                    yPercent: 0,
+                    autoAlpha: 1,
+                    duration: 0.42,
+                    stagger: 0.014,
+                    clearProps: 'opacity,transform,visibility'
+                }, 0.08)
+                .to(sceneState, {
+                    pulse: 1,
+                    activeIndex: nextIndex,
+                    duration: 0.52,
+                    ease: 'sine.out'
+                }, 0.12)
+                .to(wordSlot, {
+                    '--word-line-scale': 1,
+                    duration: 0.48
+                }, 0.34)
+                .to(sceneState, {
+                    pulse: 0,
+                    duration: 0.8,
+                    ease: 'sine.inOut'
+                }, 0.68);
+
+            wordCleanupCall = window.setTimeout(() => {
+                clearWordTimeline();
+                finishWordChange(nextWord, nextIndex);
+            }, 760);
+        };
+
+        const animateNextWordFallback = () => {
+            if (prefersReducedMotion || words.length < 2 || isWordAnimating || !isFlowVisible) {
+                return;
+            }
+
+            const nextIndex = (activeWordIndex + 1) % words.length;
+            const nextWord = prepareNextWord(nextIndex);
+            const nextGlyphs = nextWord.querySelectorAll('.contact-question-flow__glyph, .contact-question-flow__space');
+
+            nextWord.style.transform = 'translate3d(0, -82%, 0)';
+            nextWord.style.opacity = '0';
+            nextGlyphs.forEach((glyph) => {
+                glyph.style.transform = 'translate3d(0, -28%, 0)';
+                glyph.style.opacity = '0';
+            });
+
+            const playFallbackFrame = () => {
+                if (nextWord.animate) {
+                    nextWord.animate([
+                        { transform: 'translate3d(0, -82%, 0)', opacity: 0 },
+                        { transform: 'translate3d(0, 0, 0)', opacity: 1 }
+                    ], { duration: 500, easing: 'cubic-bezier(.22, 1, .36, 1)', fill: 'forwards' });
+                } else {
+                    nextWord.style.transform = 'translate3d(0, 0, 0)';
+                    nextWord.style.opacity = '1';
+                }
+
+                nextGlyphs.forEach((glyph, index) => {
+                    if (glyph.animate) {
+                        glyph.animate([
+                            { transform: 'translate3d(0, -28%, 0)', opacity: 0 },
+                            { transform: 'translate3d(0, 0, 0)', opacity: 1 }
+                        ], { duration: 420, delay: 80 + index * 14, easing: 'cubic-bezier(.22, 1, .36, 1)', fill: 'forwards' });
+                    } else {
+                        glyph.style.transform = 'translate3d(0, 0, 0)';
+                        glyph.style.opacity = '1';
+                    }
+                });
+
+                wordSlot.style.setProperty('--word-line-scale', '1');
+                sceneState.pulse = 1;
+                sceneState.activeIndex = nextIndex;
+            };
+
+            if (typeof window.requestAnimationFrame === 'function') {
+                window.requestAnimationFrame(playFallbackFrame);
+            } else {
+                window.setTimeout(playFallbackFrame, 16);
+            }
+
+            wordCleanupCall = window.setTimeout(() => {
+                finishWordChange(nextWord, nextIndex);
+            }, 1100);
+        };
+
+        const startWordCycle = async () => {
+            if (prefersReducedMotion || words.length < 2 || hasStartedWords || !isFlowVisible) return;
+
+            const contactGsap = await loadContactGsap();
+            if (hasStartedWords || !isFlowVisible) {
+                return;
+            }
+
+            hasStartedWords = true;
+            wordDelayCall = window.setInterval(() => {
+                if (contactGsap) {
+                    animateNextWord(contactGsap);
+                    return;
+                }
+
+                animateNextWordFallback();
+            }, wordCycleDelay);
+        };
+
+        const stopWordCycle = () => {
+            clearWordDelay();
+            clearWordCleanup();
+            clearWordTimeline();
+            isWordAnimating = false;
+            wordSlot.getAnimations?.({ subtree: true }).forEach((animation) => animation.cancel());
+            if (activeWordElement?.parentNode === wordSlot) {
+                wordSlot.querySelectorAll('.contact-question-flow__word').forEach((wordElement) => {
+                    if (wordElement !== activeWordElement) {
+                        wordElement.remove();
+                    }
+                });
+                cleanWordStyles(activeWordElement);
+            } else {
+                setActiveWord(activeWordIndex);
+            }
+            wordSlot.style.setProperty('--word-line-scale', '1');
+            hasStartedWords = false;
+        };
+
+        let fallbackFrame = 0;
+        let fallbackVisible = false;
+        const renderFallbackQuestion = (time = 0) => {
+            const context = canvas.getContext('2d');
+            if (!context) return;
+
+            const rect = canvas.getBoundingClientRect();
+            const ratio = Math.min(window.devicePixelRatio || 1, 1.5);
+            const width = Math.max(1, Math.round(rect.width * ratio));
+            const height = Math.max(1, Math.round(rect.height * ratio));
+
+            if (canvas.width !== width || canvas.height !== height) {
+                canvas.width = width;
+                canvas.height = height;
+            }
+
+            context.setTransform(ratio, 0, 0, ratio, 0, 0);
+            context.clearRect(0, 0, rect.width, rect.height);
+
+            const pulse = prefersReducedMotion ? 0.35 : Math.sin(time * 0.0022) * 0.5 + 0.5;
+            const centerX = rect.width * 0.54;
+            const centerY = rect.height * 0.5;
+
+            const wash = context.createRadialGradient(centerX, centerY, 10, centerX, centerY, Math.max(rect.width, rect.height) * 0.58);
+            if (tropicNoirActive) {
+                wash.addColorStop(0, 'rgba(242, 231, 207, 0.1)');
+                wash.addColorStop(0.45, 'rgba(232, 176, 75, 0.1)');
+                wash.addColorStop(1, 'rgba(255, 90, 60, 0)');
+            } else {
+                wash.addColorStop(0, 'rgba(255, 248, 240, 0.54)');
+                wash.addColorStop(0.45, 'rgba(184, 135, 43, 0.13)');
+                wash.addColorStop(1, 'rgba(201, 74, 53, 0)');
+            }
+            context.fillStyle = wash;
+            context.fillRect(0, 0, rect.width, rect.height);
+
+            const ribbons = tropicNoirActive
+                ? [
+                    ['#ff5a3c', 0.34, 5.2, 0.2],
+                    ['#e8b04b', 0.26, 3.2, 0.55],
+                    ['#f58042', 0.1, 2, 0.82]
+                ]
+                : [
+                    ['#c94a35', 0.34, 5.2, 0.2],
+                    ['#b8872b', 0.26, 3.2, 0.55],
+                    ['#2a0f3f', 0.1, 2, 0.82]
+                ];
+
+            context.lineCap = 'round';
+            ribbons.forEach(([color, alpha, lineWidth, offset], index) => {
+                const wave = Math.sin(time * 0.0015 + Number(offset) * Math.PI) * (prefersReducedMotion ? 0 : rect.height * 0.035);
+                context.beginPath();
+                context.moveTo(rect.width * (0.08 + index * 0.04), rect.height * (0.68 - index * 0.1));
+                context.bezierCurveTo(
+                    rect.width * 0.28,
+                    rect.height * (0.1 + Number(offset) * 0.22) + wave,
+                    rect.width * 0.66,
+                    rect.height * (0.88 - Number(offset) * 0.22) - wave,
+                    rect.width * (0.92 - index * 0.06),
+                    rect.height * (0.34 + index * 0.14)
+                );
+                context.strokeStyle = String(color);
+                context.globalAlpha = Number(alpha) + pulse * 0.08;
+                context.lineWidth = Number(lineWidth);
+                context.stroke();
+            });
+
+            for (let index = 0; index < 12; index += 1) {
+                const phase = (index / 12 + time * 0.00004) % 1;
+                const x = rect.width * (0.16 + phase * 0.7);
+                const y = rect.height * (0.34 + Math.sin(phase * Math.PI * 2 + index) * 0.22);
+                context.beginPath();
+                context.globalAlpha = 0.18 + pulse * 0.08;
+                context.fillStyle = tropicNoirActive
+                    ? (index % 3 === 0 ? '#e8b04b' : '#f58042')
+                    : (index % 3 === 0 ? '#b8872b' : '#e36a43');
+                context.arc(x, y, index % 3 === 0 ? 2.6 : 1.8, 0, Math.PI * 2);
+                context.fill();
+            }
+
+            context.globalAlpha = 1;
+        };
+
+        const startFallbackQuestion = () => {
+            if (fallbackFrame) return;
+
+            questionFlow.classList.add('contact-question-flow--fallback');
+            questionFlow.dataset.questionScene = 'fallback';
+            fallbackVisible = true;
+
+            const render = (time) => {
+                renderFallbackQuestion(time);
+                if (fallbackVisible && !prefersReducedMotion) {
+                    fallbackFrame = window.requestAnimationFrame(render);
+                }
+            };
+
+            if (prefersReducedMotion) {
+                renderFallbackQuestion(0);
+            } else {
+                fallbackFrame = window.requestAnimationFrame(render);
+            }
+        };
+
+        const stopFallbackQuestion = () => {
+            fallbackVisible = false;
+            if (fallbackFrame) {
+                window.cancelAnimationFrame(fallbackFrame);
+                fallbackFrame = 0;
+            }
+        };
+
+        if (!canUseWebGL()) {
+            startFallbackQuestion();
+            return;
+        }
+
+        let hasBuiltScene = false;
+        let renderer = null;
+        let scene = null;
+        let camera = null;
+        let ribbonGroup = null;
+        let particles = null;
+        let ribbonMeshes = [];
+        let glintMeshes = [];
+        let animationFrame = 0;
+        let isSceneVisible = false;
+        const pointer = { x: 0, y: 0 };
+        const pointerTarget = { x: 0, y: 0 };
+
+        const resizeQuestionScene = () => {
+            if (!renderer || !camera || !ribbonGroup) return;
+
+            const width = Math.max(1, canvas.clientWidth);
+            const height = Math.max(1, canvas.clientHeight);
+            renderer.setSize(width, height, false);
+            camera.aspect = width / height;
+            camera.updateProjectionMatrix();
+
+            const scale = Math.min(1.1, Math.max(0.74, width / 520));
+            ribbonGroup.scale.set(scale, scale, scale);
+        };
+
+        const startQuestionLoop = () => {
+            if (animationFrame || !renderer || !scene || !camera || !ribbonGroup) return;
+            if (prefersReducedMotion) {
+                renderer.render(scene, camera);
+                return;
+            }
+
+            isSceneVisible = true;
+            const render = (time) => {
+                pointer.x += (pointerTarget.x - pointer.x) * 0.045;
+                pointer.y += (pointerTarget.y - pointer.y) * 0.045;
+
+                const rhythm = time * 0.00052;
+                const activePulse = sceneState.pulse || 0;
+                ribbonGroup.rotation.x = pointer.y * 0.08;
+                ribbonGroup.rotation.y = pointer.x * 0.08;
+                ribbonGroup.rotation.z = Math.sin(rhythm) * 0.018;
+
+                ribbonMeshes.forEach((mesh, index) => {
+                    const baseOpacity = mesh.userData.baseOpacity || 0.16;
+                    mesh.rotation.z = Math.sin(rhythm * 1.05 + index) * 0.018;
+                    mesh.position.y = Math.sin(rhythm * 1.4 + index) * 0.035;
+                    mesh.material.opacity = Math.max(0.025, baseOpacity + activePulse * 0.08 + Math.sin(rhythm * 1.6 + index) * 0.018);
+                });
+
+                glintMeshes.forEach((mesh, index) => {
+                    const curve = mesh.userData.curve;
+                    const progress = (mesh.userData.seed + time * 0.000022) % 1;
+                    const point = curve.getPointAt(progress);
+                    mesh.position.set(point.x, point.y, point.z + 0.08 + Math.sin(rhythm * 2 + index) * 0.02);
+                    mesh.scale.setScalar((mesh.userData.baseScale || 1) * (1 + activePulse * 0.25 + Math.sin(rhythm * 2.2 + index) * 0.06));
+                });
+
+                if (particles) {
+                    const positionAttribute = particles.geometry.getAttribute('position');
+                    const seeds = particles.userData.seeds || [];
+                    const curves = particles.userData.curves || [];
+                    if (positionAttribute && seeds.length && curves.length) {
+                        for (let index = 0; index < seeds.length; index += 1) {
+                            const curve = curves[index % curves.length];
+                            const point = curve.getPointAt((seeds[index] + time * 0.000014) % 1);
+                            const offset = index * 3;
+                            positionAttribute.array[offset] = point.x;
+                            positionAttribute.array[offset + 1] = point.y;
+                            positionAttribute.array[offset + 2] = point.z + 0.05 + Math.sin(rhythm * 1.8 + index) * 0.045;
+                        }
+                        positionAttribute.needsUpdate = true;
+                    }
+                }
+
+                renderer.render(scene, camera);
+
+                if (isSceneVisible) {
+                    animationFrame = window.requestAnimationFrame(render);
+                }
+            };
+
+            animationFrame = window.requestAnimationFrame(render);
+        };
+
+        const stopQuestionLoop = () => {
+            isSceneVisible = false;
+            if (animationFrame) {
+                window.cancelAnimationFrame(animationFrame);
+                animationFrame = 0;
+            }
+            stopFallbackQuestion();
+        };
+
+        const buildQuestionScene = async () => {
+            if (hasBuiltScene) return;
+            hasBuiltScene = true;
+
+            const THREE = await loadContactThree();
+            if (!THREE) {
+                startFallbackQuestion();
+                return;
+            }
+
+            try {
+                renderer = new THREE.WebGLRenderer({
+                    canvas,
+                    alpha: true,
+                    antialias: window.innerWidth >= 768,
+                    preserveDrawingBuffer: false,
+                    powerPreference: 'low-power'
+                });
+            } catch (error) {
+                startFallbackQuestion();
+                return;
+            }
+
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));
+            renderer.setClearColor(0x000000, 0);
+
+            const scenePalette = tropicNoirActive
+                ? { floor: 0xe8b04b, ribbonA: 0xff5a3c, ribbonB: 0xe8b04b, ribbonC: 0xf58042, glintAccent: 0xe8b04b, glintLight: 0xf2e7cf, particle: 0xf58042 }
+                : { floor: 0xb8872b, ribbonA: 0xc94a35, ribbonB: 0xb8872b, ribbonC: 0xe36a43, glintAccent: 0xb8872b, glintLight: 0xfff8f0, particle: 0xe36a43 };
+
+            scene = new THREE.Scene();
+            camera = new THREE.PerspectiveCamera(42, 1, 0.1, 100);
+            camera.position.set(0, 0, 6.4);
+
+            ribbonGroup = new THREE.Group();
+            scene.add(ribbonGroup);
+
+            const floorGeometry = new THREE.RingGeometry(1.05, 1.08, 96);
+            const floorMaterial = new THREE.MeshBasicMaterial({
+                color: scenePalette.floor,
+                transparent: true,
+                opacity: 0.14,
+                depthWrite: false
+            });
+            const floor = new THREE.Mesh(floorGeometry, floorMaterial);
+            floor.scale.set(1.7, 0.52, 1);
+            floor.position.set(0, -0.64, -0.22);
+            floor.rotation.z = -0.05;
+            ribbonGroup.add(floor);
+
+            const ribbonDefinitions = [
+                {
+                    color: scenePalette.ribbonA,
+                    opacity: 0.24,
+                    radius: 0.024,
+                    curve: new THREE.CubicBezierCurve3(
+                        new THREE.Vector3(-2.1, -0.82, 0.02),
+                        new THREE.Vector3(-1.14, 1.14, 0.1),
+                        new THREE.Vector3(1.16, 0.9, 0.1),
+                        new THREE.Vector3(2.05, -0.46, 0.02)
+                    )
+                },
+                {
+                    color: scenePalette.ribbonB,
+                    opacity: 0.2,
+                    radius: 0.018,
+                    curve: new THREE.CubicBezierCurve3(
+                        new THREE.Vector3(-1.9, 0.52, 0.03),
+                        new THREE.Vector3(-0.9, -1.08, 0.08),
+                        new THREE.Vector3(1.25, -0.8, 0.08),
+                        new THREE.Vector3(1.94, 0.68, 0.03)
+                    )
+                },
+                {
+                    color: scenePalette.ribbonC,
+                    opacity: 0.14,
+                    radius: 0.014,
+                    curve: new THREE.CubicBezierCurve3(
+                        new THREE.Vector3(-1.48, -0.52, 0.0),
+                        new THREE.Vector3(-0.44, 0.46, 0.05),
+                        new THREE.Vector3(0.52, 0.38, 0.05),
+                        new THREE.Vector3(1.5, -0.58, 0.0)
+                    )
+                }
+            ];
+
+            ribbonDefinitions.forEach((definition) => {
+                const glowGeometry = new THREE.TubeGeometry(definition.curve, 72, definition.radius * 3.2, 8, false);
+                const glowMaterial = new THREE.MeshBasicMaterial({
+                    color: definition.color,
+                    transparent: true,
+                    opacity: definition.opacity * 0.18,
+                    depthWrite: false
+                });
+                const glow = new THREE.Mesh(glowGeometry, glowMaterial);
+                glow.userData.baseOpacity = definition.opacity * 0.18;
+                ribbonMeshes.push(glow);
+                ribbonGroup.add(glow);
+
+                const ribbonGeometry = new THREE.TubeGeometry(definition.curve, 96, definition.radius, 8, false);
+                const ribbonMaterial = new THREE.MeshBasicMaterial({
+                    color: definition.color,
+                    transparent: true,
+                    opacity: definition.opacity,
+                    depthWrite: false
+                });
+                const ribbon = new THREE.Mesh(ribbonGeometry, ribbonMaterial);
+                ribbon.userData.baseOpacity = definition.opacity;
+                ribbonMeshes.push(ribbon);
+                ribbonGroup.add(ribbon);
+            });
+
+            const glintGeometry = new THREE.CircleGeometry(0.035, 20);
+            const glintCount = window.innerWidth < 768 ? 8 : 12;
+            for (let index = 0; index < glintCount; index += 1) {
+                const curve = ribbonDefinitions[index % ribbonDefinitions.length].curve;
+                const seed = (index / glintCount + (index % 2) * 0.07) % 1;
+                const point = curve.getPointAt(seed);
+                const material = new THREE.MeshBasicMaterial({
+                    color: index % 3 === 0 ? scenePalette.glintAccent : scenePalette.glintLight,
+                    transparent: true,
+                    opacity: index % 3 === 0 ? 0.36 : 0.28,
+                    depthWrite: false
+                });
+                const glint = new THREE.Mesh(glintGeometry, material);
+                glint.position.copy(point);
+                glint.userData.curve = curve;
+                glint.userData.seed = seed;
+                glint.userData.baseScale = index % 3 === 0 ? 1.15 : 0.85;
+                glintMeshes.push(glint);
+                ribbonGroup.add(glint);
+            }
+
+            const particleCount = window.innerWidth < 768 ? 14 : 28;
+            const particlePositions = new Float32Array(particleCount * 3);
+            const particleSeeds = [];
+            for (let index = 0; index < particleCount; index += 1) {
+                const curve = ribbonDefinitions[index % ribbonDefinitions.length].curve;
+                const seed = (index / particleCount + (index % 4) * 0.06) % 1;
+                const point = curve.getPointAt(seed);
+                const offset = index * 3;
+                particlePositions[offset] = point.x;
+                particlePositions[offset + 1] = point.y;
+                particlePositions[offset + 2] = point.z + 0.06;
+                particleSeeds.push(seed);
+            }
+
+            const particleGeometry = new THREE.BufferGeometry();
+            particleGeometry.setAttribute('position', new THREE.BufferAttribute(particlePositions, 3));
+            const particleMaterial = new THREE.PointsMaterial({
+                color: scenePalette.particle,
+                size: window.innerWidth < 768 ? 0.026 : 0.032,
+                transparent: true,
+                opacity: 0.2,
+                depthWrite: false
+            });
+            particles = new THREE.Points(particleGeometry, particleMaterial);
+            particles.userData.curves = ribbonDefinitions.map((definition) => definition.curve);
+            particles.userData.seeds = particleSeeds;
+            ribbonGroup.add(particles);
+
+            resizeQuestionScene();
+            if (isFlowVisible) {
+                startQuestionLoop();
+            }
+            questionFlow.dataset.questionScene = prefersReducedMotion ? 'static' : 'ready';
+        };
+
+        questionFlow.addEventListener('pointermove', (event) => {
+            if (window.innerWidth < 768) return;
+            const rect = questionFlow.getBoundingClientRect();
+            pointerTarget.x = ((event.clientX - rect.left) / Math.max(rect.width, 1) - 0.5) * 2;
+            pointerTarget.y = -(((event.clientY - rect.top) / Math.max(rect.height, 1) - 0.5) * 2);
+        }, { passive: true });
+
+        questionFlow.addEventListener('pointerleave', () => {
+            pointerTarget.x = 0;
+            pointerTarget.y = 0;
+        });
+
+        window.addEventListener('resize', resizeQuestionScene, { passive: true });
+
+        const isQuestionNearViewport = () => {
+            const rect = questionFlow.getBoundingClientRect();
+            return rect.top < window.innerHeight + 320 && rect.bottom > -320;
+        };
+
+        const startQuestionFlow = () => {
+            isFlowVisible = true;
+            if (!isQuestionNearViewport()) return;
+            buildQuestionScene();
+            startQuestionLoop();
+            startWordCycle();
+        };
+
+        const stopQuestionFlow = () => {
+            if (isQuestionNearViewport()) return;
+
+            isFlowVisible = false;
+            stopWordCycle();
+            stopQuestionLoop();
+        };
+
+        window.addEventListener('scroll', () => {
+            if (isQuestionNearViewport()) {
+                startQuestionFlow();
+            } else {
+                stopQuestionFlow();
+            }
+        }, { passive: true });
+
+        window.setTimeout(startQuestionFlow, 420);
+
+        if ('IntersectionObserver' in window) {
+            const questionObserver = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting || isQuestionNearViewport()) {
+                        startQuestionFlow();
+                    } else {
+                        stopQuestionFlow();
+                    }
+                });
+            }, {
+                rootMargin: '260px 0px',
+                threshold: 0.01
+            });
+            questionObserver.observe(questionFlow);
+        } else {
+            startQuestionFlow();
+        }
+    };
+
+    enhanceContactQuestionFlow();
+
+    const enhanceFooterEntrance = () => {
+        const footer = document.querySelector('.main-footer');
+        if (!footer || prefersReducedMotion) return;
+
+        const columns = Array.from(footer.querySelectorAll('.footer-grid > .footer-col'));
+        if (columns.length < 3) return;
+
+        const [leftColumn, centerColumn, rightColumn] = columns;
+        const footerMap = footer.querySelector('.footer-map-full');
+        const footerBottom = footer.querySelector('.footer-bottom');
+        const motionTargets = [leftColumn, centerColumn, rightColumn, footerMap, footerBottom].filter(Boolean);
+        let hasPlayed = false;
+        let footerGsapPromise = null;
+
+        const loadFooterGsap = () => {
+            if (window.gsap) return Promise.resolve(window.gsap);
+            if (footerGsapPromise) return footerGsapPromise;
+
+            footerGsapPromise = new Promise((resolve) => {
+                const existingScript = document.querySelector('script[data-footer-gsap]');
+                if (existingScript) {
+                    existingScript.addEventListener('load', () => resolve(window.gsap || null), { once: true });
+                    existingScript.addEventListener('error', () => resolve(null), { once: true });
+                    return;
+                }
+
+                const script = document.createElement('script');
+                script.src = 'https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js';
+                script.async = true;
+                script.dataset.footerGsap = 'true';
+                script.onload = () => resolve(window.gsap || null);
+                script.onerror = () => resolve(null);
+                document.head.appendChild(script);
+
+                window.setTimeout(() => resolve(window.gsap || null), 900);
+            });
+
+            return footerGsapPromise;
+        };
+
+        const clearFooterMotion = () => {
+            footer.classList.remove('is-footer-motion-ready');
+            footer.style.removeProperty('--footer-accent-scale');
+            motionTargets.forEach((target) => {
+                target.style.removeProperty('opacity');
+                target.style.removeProperty('visibility');
+                target.style.removeProperty('transform');
+                target.style.removeProperty('will-change');
+            });
+        };
+
+        const showFooterImmediately = () => {
+            hasPlayed = true;
+            clearFooterMotion();
+        };
+
+        const playNativeFooterReveal = () => {
+            if (!Element.prototype.animate) {
+                showFooterImmediately();
+                return;
+            }
+
+            const ease = 'cubic-bezier(0.22, 1, 0.36, 1)';
+            const animations = [
+                leftColumn.animate([
+                    { opacity: 0, transform: 'translate3d(-68px, 0, 0)' },
+                    { opacity: 1, transform: 'translate3d(0, 0, 0)' }
+                ], { duration: 900, easing: ease, delay: 80, fill: 'forwards' }),
+                centerColumn.animate([
+                    { opacity: 0, transform: 'translate3d(0, -54px, 0)' },
+                    { opacity: 1, transform: 'translate3d(0, 0, 0)' }
+                ], { duration: 920, easing: ease, delay: 0, fill: 'forwards' }),
+                rightColumn.animate([
+                    { opacity: 0, transform: 'translate3d(68px, 0, 0)' },
+                    { opacity: 1, transform: 'translate3d(0, 0, 0)' }
+                ], { duration: 900, easing: ease, delay: 140, fill: 'forwards' })
+            ];
+
+            if (footerMap) {
+                animations.push(footerMap.animate([
+                    { opacity: 0, transform: 'translate3d(0, 26px, 0)' },
+                    { opacity: 1, transform: 'translate3d(0, 0, 0)' }
+                ], { duration: 760, easing: ease, delay: 480, fill: 'forwards' }));
+            }
+
+            if (footerBottom) {
+                animations.push(footerBottom.animate([
+                    { opacity: 0, transform: 'translate3d(0, 18px, 0)' },
+                    { opacity: 1, transform: 'translate3d(0, 0, 0)' }
+                ], { duration: 640, easing: ease, delay: 620, fill: 'forwards' }));
+            }
+
+            Promise.all(animations.map(animation => animation.finished.catch(() => {})))
+                .then(() => {
+                    clearFooterMotion();
+                    animations.forEach(animation => animation.cancel());
+                });
+        };
+
+        const playGsapFooterReveal = (footerGsap) => {
+            const footerTimeline = footerGsap.timeline({
+                defaults: {
+                    duration: 0.9,
+                    ease: 'power3.out'
+                },
+                onComplete: () => {
+                    footerGsap.set(motionTargets, { clearProps: 'opacity,visibility,transform,willChange' });
+                    clearFooterMotion();
+                }
+            });
+
+            footerTimeline
+                .fromTo(footer, {
+                    '--footer-accent-scale': 0
+                }, {
+                    '--footer-accent-scale': 1,
+                    duration: 0.72,
+                    ease: 'power2.out'
+                }, 0)
+                .fromTo(centerColumn, {
+                    autoAlpha: 0,
+                    y: -54,
+                    willChange: 'transform, opacity'
+                }, {
+                    autoAlpha: 1,
+                    y: 0
+                }, 0.05)
+                .fromTo(leftColumn, {
+                    autoAlpha: 0,
+                    x: -68,
+                    willChange: 'transform, opacity'
+                }, {
+                    autoAlpha: 1,
+                    x: 0
+                }, 0.14)
+                .fromTo(rightColumn, {
+                    autoAlpha: 0,
+                    x: 68,
+                    willChange: 'transform, opacity'
+                }, {
+                    autoAlpha: 1,
+                    x: 0
+                }, 0.2);
+
+            if (footerMap) {
+                footerTimeline.fromTo(footerMap, {
+                    autoAlpha: 0,
+                    y: 26,
+                    willChange: 'transform, opacity'
+                }, {
+                    autoAlpha: 1,
+                    y: 0,
+                    duration: 0.74
+                }, 0.56);
+            }
+
+            if (footerBottom) {
+                footerTimeline.fromTo(footerBottom, {
+                    autoAlpha: 0,
+                    y: 18,
+                    willChange: 'transform, opacity'
+                }, {
+                    autoAlpha: 1,
+                    y: 0,
+                    duration: 0.58
+                }, 0.68);
+            }
+        };
+
+        const playFooterReveal = () => {
+            if (hasPlayed) return;
+            hasPlayed = true;
+            loadFooterGsap().then((footerGsap) => {
+                if (footerGsap) {
+                    playGsapFooterReveal(footerGsap);
+                    return;
+                }
+
+                playNativeFooterReveal();
+            });
+        };
+
+        footer.classList.add('is-footer-motion-ready');
+        footer.style.setProperty('--footer-accent-scale', '0');
+
+        if ('IntersectionObserver' in window) {
+            const footerObserver = new IntersectionObserver((entries) => {
+                if (entries.some(entry => entry.isIntersecting)) {
+                    footerObserver.disconnect();
+                    playFooterReveal();
+                }
+            }, {
+                threshold: 0.16,
+                rootMargin: '220px 0px -8% 0px'
+            });
+
+            footerObserver.observe(footer);
+        } else {
+            playFooterReveal();
+        }
+    };
+
+    enhanceFooterEntrance();
+
     // Mobile Menu Toggle
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
     const navLinks = document.querySelector('.nav-links');
@@ -27,7 +2435,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const dropBtns = document.querySelectorAll('.dropbtn');
     dropBtns.forEach(btn => {
         btn.addEventListener('click', (e) => {
-            if (window.innerWidth < 900) {
+            if (window.innerWidth < 1080) {
                 e.preventDefault();
                 const dropdown = btn.closest('.dropdown');
                 dropdown.classList.toggle('active');
@@ -223,6 +2631,34 @@ document.addEventListener('DOMContentLoaded', () => {
         // Initial check
         updateArrows();
     }
+
+    // Reviews marquee: duplicate each rail's cards once so the slow
+    // horizontal drift can loop seamlessly. Clones are decorative (hidden
+    // from assistive tech, and display:none outside the marquee viewport).
+    document.querySelectorAll('.reviews-rail__track').forEach((track) => {
+        if (track.dataset.marqueeCloned) return;
+        Array.from(track.children).forEach((card) => {
+            const clone = card.cloneNode(true);
+            clone.classList.add('review-card--clone');
+            clone.setAttribute('aria-hidden', 'true');
+            track.appendChild(clone);
+        });
+        track.dataset.marqueeCloned = 'true';
+    });
+});
+
+/* Trial class preselection: links such as "?class=beginner0#trial-form"
+   (used by the beginner gateway CTAs) check the matching radio so a
+   high-intent visitor lands on the form with their class already chosen. */
+document.addEventListener('DOMContentLoaded', () => {
+    const preselect = new URLSearchParams(window.location.search).get('class');
+    if (!preselect) return;
+
+    const target = document.querySelector(`.trial-form input[name="class-select"][data-preselect="${preselect}"]`);
+    if (!target || target.disabled) return;
+
+    target.checked = true;
+    target.dispatchEvent(new Event('change', { bubbles: true }));
 });
 
 /* GOOGLE SHEETS FORM SUBMISSION */
@@ -231,27 +2667,631 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (trialForm) {
         console.log('Trial form found, attaching listener');
+        const classSelectInputs = trialForm.querySelectorAll('input[name="class-select"]');
+        const canAnimateClassChoice = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        // Inline validation errors clear as soon as the visitor fixes the field
+        trialForm.addEventListener('input', (event) => {
+            const field = event.target;
+            if (!(field instanceof HTMLElement)) return;
+            field.classList.remove('input-error');
+            const anchor = field.closest('.form-group')
+                || (field.getAttribute('name') === 'class-select'
+                    ? trialForm.querySelector('.trial-step--choice .trial-step__header')
+                    : null);
+            anchor?.querySelector('.form-error')?.remove();
+        });
+
+        const enhanceTrialProcess = () => {
+            const process = document.querySelector('[data-trial-process]');
+            if (!process) return;
+
+            const processCanvas = process.querySelector('[data-trial-process-canvas]');
+            const processItems = Array.from(process.querySelectorAll('.trial-process__item'));
+            const canAnimateProcess = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            let trialProcessGsapPromise = null;
+
+            const loadTrialProcessGsap = () => {
+                if (window.gsap) return Promise.resolve(window.gsap);
+                if (trialProcessGsapPromise) return trialProcessGsapPromise;
+
+                trialProcessGsapPromise = import('https://cdn.jsdelivr.net/npm/gsap@3.12.5/+esm')
+                    .then((module) => module.gsap || module.default || window.gsap || null)
+                    .catch(() => null);
+
+                return trialProcessGsapPromise;
+            };
+
+            if (canAnimateProcess && processItems.length) {
+                let hasPlayedReveal = false;
+                const playReveal = async () => {
+                    if (hasPlayedReveal) return;
+                    hasPlayedReveal = true;
+
+                    const gsap = await loadTrialProcessGsap();
+                    if (!gsap) return;
+
+                    gsap.set(process, { '--trial-process-progress': 0 });
+                    gsap.set(processItems, {
+                        autoAlpha: 0,
+                        y: 14
+                    });
+
+                    gsap.timeline({
+                        defaults: { ease: 'power3.out' },
+                        onComplete: () => {
+                            gsap.set(processItems, { clearProps: 'opacity,visibility,transform' });
+                        }
+                    })
+                        .to(process, {
+                            '--trial-process-progress': 1,
+                            duration: 0.72
+                        }, 0)
+                        .to(processItems, {
+                            autoAlpha: 1,
+                            y: 0,
+                            duration: 0.46,
+                            stagger: 0.08
+                        }, 0.05);
+                };
+
+                if ('IntersectionObserver' in window) {
+                    const revealObserver = new IntersectionObserver((entries) => {
+                        if (entries.some(entry => entry.isIntersecting)) {
+                            playReveal();
+                            revealObserver.disconnect();
+                        }
+                    }, {
+                        rootMargin: '160px 0px',
+                        threshold: 0.2
+                    });
+                    revealObserver.observe(process);
+                } else {
+                    playReveal();
+                }
+            }
+
+            if (!processCanvas || !canAnimateProcess) return;
+
+            const canUseTrialProcessWebGL = () => {
+                if (!window.WebGLRenderingContext) return false;
+
+                try {
+                    const testCanvas = document.createElement('canvas');
+                    return Boolean(
+                        testCanvas.getContext('webgl') ||
+                        testCanvas.getContext('experimental-webgl')
+                    );
+                } catch (error) {
+                    return false;
+                }
+            };
+
+            if (!canUseTrialProcessWebGL()) return;
+
+            let trialProcessThreePromise = null;
+            const loadTrialProcessThree = () => {
+                if (trialProcessThreePromise) return trialProcessThreePromise;
+
+                trialProcessThreePromise = import('https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js')
+                    .catch(() => null);
+
+                return trialProcessThreePromise;
+            };
+
+            let processRenderer = null;
+            let processScene = null;
+            let processCamera = null;
+            let processGroup = null;
+            let processParticles = null;
+            let processFrame = 0;
+            let processVisible = false;
+            let processLoaded = false;
+            let processBaseRotation = 0;
+            const processStations = [];
+
+            const resizeTrialProcess = () => {
+                if (!processRenderer || !processCamera || !processGroup) return;
+
+                const width = Math.max(1, Math.round(process.clientWidth));
+                const height = Math.max(1, Math.round(process.clientHeight));
+                processRenderer.setSize(width, height, false);
+
+                const aspect = width / height;
+                processCamera.left = -3.9 * aspect;
+                processCamera.right = 3.9 * aspect;
+                processCamera.top = 2.1;
+                processCamera.bottom = -2.1;
+                processCamera.updateProjectionMatrix();
+
+                processBaseRotation = 0;
+                const scale = width < 720 ? Math.min(1, Math.max(0.7, height / 330)) : Math.min(1, Math.max(0.76, width / 920));
+                processGroup.scale.set(scale, scale, scale);
+            };
+
+            const startTrialProcess = () => {
+                if (processFrame || !processRenderer || !processScene || !processCamera || !processGroup) return;
+                processVisible = true;
+
+                const render = (time = 0) => {
+                    const rhythm = time * 0.001;
+                    processGroup.rotation.z = processBaseRotation + Math.sin(rhythm * 0.7) * 0.018;
+                    processGroup.position.y = Math.sin(rhythm * 0.9) * 0.035;
+
+                    processStations.forEach((station, index) => {
+                        const pulse = 1 + Math.sin(rhythm * 1.8 + index * 0.72) * 0.035;
+                        station.scale.set(pulse, pulse, pulse);
+                    });
+
+                    if (processParticles) {
+                        processParticles.rotation.z = processBaseRotation + rhythm * 0.11;
+                        processParticles.rotation.y = Math.sin(rhythm * 0.8) * 0.08;
+                    }
+
+                    processRenderer.render(processScene, processCamera);
+
+                    if (processVisible) {
+                        processFrame = window.requestAnimationFrame(render);
+                    }
+                };
+
+                processFrame = window.requestAnimationFrame(render);
+            };
+
+            const stopTrialProcess = () => {
+                processVisible = false;
+                if (processFrame) {
+                    window.cancelAnimationFrame(processFrame);
+                    processFrame = 0;
+                }
+            };
+
+            const buildTrialProcess = async () => {
+                if (processLoaded) return;
+                processLoaded = true;
+
+                const THREE = await loadTrialProcessThree();
+                if (!THREE) return;
+
+                try {
+                    processRenderer = new THREE.WebGLRenderer({
+                        canvas: processCanvas,
+                        alpha: true,
+                        antialias: true,
+                        powerPreference: 'low-power'
+                    });
+                } catch (error) {
+                    return;
+                }
+
+                processRenderer.setClearColor(0x000000, 0);
+                processRenderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.35));
+
+                processScene = new THREE.Scene();
+                processCamera = new THREE.OrthographicCamera(-4, 4, 2, -2, 0, 10);
+                processCamera.position.z = 5;
+
+                processGroup = new THREE.Group();
+                processScene.add(processGroup);
+
+                const stationX = [-2.35, 0, 2.35];
+                const makeConnector = (fromX, toX, color, opacity, yOffset) => {
+                    const points = [];
+                    for (let index = 0; index < 34; index += 1) {
+                        const t = index / 33;
+                        const x = fromX + (toX - fromX) * t;
+                        const y = Math.sin(t * Math.PI) * 0.18 + yOffset;
+                        const z = Math.cos(t * Math.PI) * 0.08;
+                        points.push(new THREE.Vector3(x, y, z));
+                    }
+
+                    const curve = new THREE.CatmullRomCurve3(points);
+                    const geometry = new THREE.BufferGeometry().setFromPoints(curve.getPoints(74));
+                    const material = new THREE.LineBasicMaterial({
+                        color,
+                        transparent: true,
+                        opacity,
+                        depthWrite: false
+                    });
+                    processGroup.add(new THREE.Line(geometry, material));
+                };
+
+                makeConnector(stationX[0], stationX[1], 0xc94a35, 0.42, 0.04);
+                makeConnector(stationX[1], stationX[2], 0xb8872b, 0.48, -0.04);
+
+                stationX.forEach((x, index) => {
+                    const ringGeometry = new THREE.RingGeometry(0.22, 0.255, 42);
+                    const ringMaterial = new THREE.MeshBasicMaterial({
+                        color: index === 1 ? 0xb8872b : 0xc94a35,
+                        transparent: true,
+                        opacity: 0.46,
+                        depthWrite: false,
+                        side: THREE.DoubleSide
+                    });
+                    const ring = new THREE.Mesh(ringGeometry, ringMaterial);
+                    ring.position.set(x, 0, 0);
+                    processStations.push(ring);
+                    processGroup.add(ring);
+
+                    const glowGeometry = new THREE.CircleGeometry(0.16, 32);
+                    const glowMaterial = new THREE.MeshBasicMaterial({
+                        color: index === 1 ? 0x2a0f3f : 0xb8872b,
+                        transparent: true,
+                        opacity: 0.12,
+                        depthWrite: false
+                    });
+                    const glow = new THREE.Mesh(glowGeometry, glowMaterial);
+                    glow.position.set(x, 0, -0.01);
+                    processGroup.add(glow);
+                });
+
+                const particleCount = window.innerWidth < 768 ? 26 : 42;
+                const positions = new Float32Array(particleCount * 3);
+                for (let index = 0; index < particleCount; index += 1) {
+                    const offset = index * 3;
+                    const angle = (index / particleCount) * Math.PI * 2;
+                    const radius = 0.8 + Math.random() * 2.4;
+                    positions[offset] = Math.cos(angle) * radius;
+                    positions[offset + 1] = Math.sin(angle) * 0.42 + (Math.random() - 0.5) * 0.22;
+                    positions[offset + 2] = (Math.random() - 0.5) * 0.45;
+                }
+
+                const particleGeometry = new THREE.BufferGeometry();
+                particleGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+                const particleMaterial = new THREE.PointsMaterial({
+                    color: 0x2a0f3f,
+                    size: 0.035,
+                    transparent: true,
+                    opacity: 0.26,
+                    depthWrite: false
+                });
+                processParticles = new THREE.Points(particleGeometry, particleMaterial);
+                processGroup.add(processParticles);
+
+                resizeTrialProcess();
+                startTrialProcess();
+            };
+
+            window.addEventListener('resize', resizeTrialProcess, { passive: true });
+
+            if ('IntersectionObserver' in window) {
+                const processObserver = new IntersectionObserver((entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            buildTrialProcess();
+                            startTrialProcess();
+                        } else {
+                            stopTrialProcess();
+                        }
+                    });
+                }, {
+                    rootMargin: '220px 0px',
+                    threshold: 0.01
+                });
+                processObserver.observe(process);
+            } else {
+                buildTrialProcess();
+            }
+        };
+
+        enhanceTrialProcess();
+
+        if (canAnimateClassChoice) {
+            const classChoiceCards = Array.from(trialForm.querySelectorAll('.compact-card'));
+            let classChoiceGsapPromise = null;
+            let classChoiceThreePromise = null;
+            let activeChoiceCanvas = null;
+            let choiceCanvasToken = 0;
+
+            const loadClassChoiceGsap = () => {
+                if (window.gsap) return Promise.resolve(window.gsap);
+                if (classChoiceGsapPromise) return classChoiceGsapPromise;
+
+                classChoiceGsapPromise = new Promise((resolve) => {
+                    let hasResolved = false;
+                    const finish = (value) => {
+                        if (hasResolved) return;
+                        hasResolved = true;
+                        resolve(value);
+                    };
+
+                    const existingScript = document.querySelector('script[src*="gsap"]') || document.querySelector('script[data-class-choice-gsap]');
+                    if (existingScript) {
+                        existingScript.addEventListener('load', () => finish(window.gsap || null), { once: true });
+                        existingScript.addEventListener('error', () => finish(null), { once: true });
+                        window.setTimeout(() => finish(window.gsap || null), 900);
+                        return;
+                    }
+
+                    const script = document.createElement('script');
+                    script.src = 'https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js';
+                    script.async = true;
+                    script.dataset.classChoiceGsap = 'true';
+                    script.onload = () => finish(window.gsap || null);
+                    script.onerror = () => finish(null);
+                    document.head.appendChild(script);
+
+                    window.setTimeout(() => finish(window.gsap || null), 1000);
+                });
+
+                return classChoiceGsapPromise;
+            };
+
+            const loadClassChoiceThree = () => {
+                if (classChoiceThreePromise) return classChoiceThreePromise;
+
+                classChoiceThreePromise = import('https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js')
+                    .catch(() => null);
+
+                return classChoiceThreePromise;
+            };
+
+            const canUseClassChoiceWebGL = () => {
+                if (!window.WebGLRenderingContext) return false;
+
+                try {
+                    const testCanvas = document.createElement('canvas');
+                    return Boolean(
+                        testCanvas.getContext('webgl') ||
+                        testCanvas.getContext('experimental-webgl')
+                    );
+                } catch (error) {
+                    return false;
+                }
+            };
+
+            const stopActiveChoiceCanvas = () => {
+                if (!activeChoiceCanvas) return;
+
+                if (activeChoiceCanvas.animationFrame) {
+                    window.cancelAnimationFrame(activeChoiceCanvas.animationFrame);
+                }
+
+                activeChoiceCanvas.geometry?.dispose();
+                activeChoiceCanvas.material?.dispose();
+                activeChoiceCanvas.renderer?.dispose();
+                activeChoiceCanvas.canvas?.remove();
+                activeChoiceCanvas = null;
+            };
+
+            const startChoiceCanvas = async (card) => {
+                if (!card || !canUseClassChoiceWebGL()) return;
+
+                const token = ++choiceCanvasToken;
+                stopActiveChoiceCanvas();
+
+                const THREE = await loadClassChoiceThree();
+                if (!THREE || token !== choiceCanvasToken) return;
+
+                const canvas = document.createElement('canvas');
+                canvas.className = 'compact-card__selection-canvas';
+                canvas.setAttribute('aria-hidden', 'true');
+                card.prepend(canvas);
+
+                const renderer = new THREE.WebGLRenderer({
+                    canvas,
+                    alpha: true,
+                    antialias: true,
+                    powerPreference: 'low-power'
+                });
+                renderer.setClearColor(0x000000, 0);
+                renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));
+
+                const scene = new THREE.Scene();
+                const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+                const geometry = new THREE.PlaneGeometry(2, 2);
+                const material = new THREE.ShaderMaterial({
+                    transparent: true,
+                    depthWrite: false,
+                    depthTest: false,
+                    uniforms: {
+                        uTime: { value: 0 }
+                    },
+                    vertexShader: `
+                        varying vec2 vUv;
+                        void main() {
+                            vUv = uv;
+                            gl_Position = vec4(position.xy, 0.0, 1.0);
+                        }
+                    `,
+                    fragmentShader: `
+                        precision mediump float;
+                        varying vec2 vUv;
+                        uniform float uTime;
+                        void main() {
+                            vec2 p = vUv;
+                            float diagonal = p.x * 0.72 + (1.0 - p.y) * 0.28;
+                            float wave = sin((p.x * 5.4 + p.y * 3.8) + uTime * 1.25) * 0.5 + 0.5;
+                            float softCore = 1.0 - smoothstep(0.16, 0.78, distance(p, vec2(0.82, 0.22)));
+                            float lowGlow = 1.0 - smoothstep(0.16, 0.92, distance(p, vec2(0.18, 0.86)));
+                            vec3 coral = vec3(0.79, 0.29, 0.21);
+                            vec3 gold = vec3(0.72, 0.53, 0.17);
+                            vec3 ink = vec3(0.16, 0.06, 0.24);
+                            vec3 color = mix(ink, mix(coral, gold, wave), 0.62 + softCore * 0.28);
+                            float alpha = 0.08 + softCore * 0.18 + lowGlow * 0.1 + diagonal * 0.06;
+                            gl_FragColor = vec4(color, alpha);
+                        }
+                    `
+                });
+                const mesh = new THREE.Mesh(geometry, material);
+                scene.add(mesh);
+
+                const resize = () => {
+                    const rect = card.getBoundingClientRect();
+                    renderer.setSize(
+                        Math.max(1, Math.round(rect.width)),
+                        Math.max(1, Math.round(rect.height)),
+                        false
+                    );
+                };
+
+                const render = (time = 0) => {
+                    if (!activeChoiceCanvas || activeChoiceCanvas.card !== card) return;
+
+                    material.uniforms.uTime.value = time * 0.001;
+                    renderer.render(scene, camera);
+                    activeChoiceCanvas.animationFrame = window.requestAnimationFrame(render);
+                };
+
+                activeChoiceCanvas = {
+                    card,
+                    canvas,
+                    renderer,
+                    geometry,
+                    material,
+                    animationFrame: 0,
+                    resize
+                };
+
+                resize();
+                render();
+            };
+
+            const animateClassChoice = (input, immediate = false) => {
+                if (!input || input.disabled) return;
+
+                const card = input.closest('.compact-option')?.querySelector('.compact-card');
+                if (!card) return;
+
+                classChoiceCards.forEach(choiceCard => {
+                    choiceCard.classList.toggle('compact-card--selected', choiceCard === card);
+                    if (choiceCard !== card) {
+                        choiceCard.querySelector('.compact-card__selection-canvas')?.remove();
+                    }
+                });
+
+                startChoiceCanvas(card);
+
+                loadClassChoiceGsap().then((choiceGsap) => {
+                    if (!choiceGsap) {
+                        const existingTimer = Number(card.dataset.choicePulseTimer);
+                        if (existingTimer) {
+                            window.clearTimeout(existingTimer);
+                        }
+
+                        card.classList.remove('compact-card--choice-pulse');
+                        void card.offsetWidth;
+                        card.classList.add('compact-card--choice-pulse');
+
+                        card.dataset.choicePulseTimer = String(window.setTimeout(() => {
+                            card.classList.remove('compact-card--choice-pulse');
+                            delete card.dataset.choicePulseTimer;
+                        }, 460));
+                        return;
+                    }
+
+                    choiceGsap.killTweensOf(card);
+                    choiceGsap.fromTo(card, {
+                        boxShadow: '0 10px 24px rgba(42, 15, 63, 0.08)'
+                    }, {
+                        boxShadow: '0 16px 34px rgba(42, 15, 63, 0.2), 0 0 0 5px rgba(201, 74, 53, 0.12)',
+                        duration: immediate ? 0.01 : 0.28,
+                        ease: 'power2.out',
+                        yoyo: true,
+                        repeat: 1,
+                        onComplete: () => choiceGsap.set(card, { clearProps: 'boxShadow' })
+                    });
+                });
+            };
+
+            classSelectInputs.forEach(input => {
+                input.addEventListener('change', () => animateClassChoice(input));
+            });
+
+            const selectedInput = trialForm.querySelector('input[name="class-select"]:checked');
+            const selectedCard = selectedInput?.closest('.compact-option')?.querySelector('.compact-card');
+            if (selectedCard) {
+                animateClassChoice(selectedInput, true);
+            }
+
+            window.addEventListener('resize', () => {
+                activeChoiceCanvas?.resize();
+            }, { passive: true });
+        }
+
         trialForm.addEventListener('submit', e => {
             e.preventDefault();
 
             const submitBtn = document.getElementById('submitTrialBtn');
             const originalBtnContent = submitBtn.innerHTML;
+            const isGermanPage = document.documentElement.lang === 'de' || window.location.pathname.includes('/de/');
 
-            // 1. Show Loading State
-            submitBtn.innerHTML = '<span>Submitting...</span>';
+            // 1. Gather Data
+            const rawFormData = new FormData(trialForm);
+            const firstName = String(rawFormData.get('firstname') || '').trim();
+            const contact = String(rawFormData.get('contact') || '').trim();
+            const selectedClass = String(rawFormData.get('class-select') || '').trim();
+            const contactLooksLikeEmail = contact.includes('@');
+            const data = {
+                firstname: firstName,
+                lastname: '',
+                contact,
+                phone: contactLooksLikeEmail ? '' : contact,
+                email: contactLooksLikeEmail ? contact : '',
+                selected_class: selectedClass // Users script expects 'selected_class'
+            };
+
+            // Inline validation: errors render next to their field instead of
+            // an alert(); the first invalid field is scrolled into view.
+            trialForm.querySelectorAll('.form-error').forEach((node) => node.remove());
+            trialForm.querySelectorAll('.input-error').forEach((node) => node.classList.remove('input-error'));
+
+            const addInlineError = (anchor, message) => {
+                if (!anchor) return;
+                const error = document.createElement('p');
+                error.className = 'form-error';
+                error.setAttribute('role', 'alert');
+                error.textContent = message;
+                anchor.appendChild(error);
+            };
+
+            const invalidTargets = [];
+
+            if (!data.selected_class) {
+                addInlineError(
+                    trialForm.querySelector('.trial-step--choice .trial-step__header'),
+                    isGermanPage ? 'Bitte wähle zuerst eine Probelektion aus.' : 'Please choose a trial class first.'
+                );
+                invalidTargets.push(trialForm.querySelector('.trial-step--choice'));
+            }
+
+            if (!data.firstname) {
+                const nameInput = trialForm.querySelector('#firstname');
+                nameInput?.classList.add('input-error');
+                addInlineError(
+                    nameInput?.closest('.form-group'),
+                    isGermanPage ? 'Bitte gib deinen Namen ein.' : 'Please add your name.'
+                );
+                invalidTargets.push(nameInput);
+            }
+
+            if (!data.contact) {
+                const contactInput = trialForm.querySelector('#contact');
+                contactInput?.classList.add('input-error');
+                addInlineError(
+                    contactInput?.closest('.form-group'),
+                    isGermanPage ? 'Bitte gib deine WhatsApp Nummer ein.' : 'Please add your WhatsApp number or email.'
+                );
+                invalidTargets.push(contactInput);
+            }
+
+            if (invalidTargets.length) {
+                const firstInvalid = invalidTargets.find(Boolean);
+                firstInvalid?.scrollIntoView({
+                    behavior: canAnimateClassChoice ? 'smooth' : 'auto',
+                    block: 'center'
+                });
+                if (firstInvalid && typeof firstInvalid.focus === 'function') {
+                    firstInvalid.focus({ preventScroll: true });
+                }
+                return;
+            }
+
+            // 2. Show Loading State
+            submitBtn.innerHTML = isGermanPage ? '<span>Wird gesendet...</span>' : '<span>Submitting...</span>';
             submitBtn.disabled = true;
             submitBtn.style.opacity = '0.7';
             submitBtn.style.cursor = 'not-allowed';
-
-            // 2. Gather Data
-            const rawFormData = new FormData(trialForm);
-            const data = {
-                firstname: rawFormData.get('firstname'),
-                lastname: rawFormData.get('lastname'),
-                phone: rawFormData.get('phone'),
-                email: rawFormData.get('email'),
-                selected_class: rawFormData.get('class-select') // Users script expects 'selected_class'
-            };
 
             // 3. Send to Google Script AND FormSubmit (Parallel)
             // IMPORTANT: PASTE YOUR WEB APP URL BELOW
@@ -269,14 +3309,24 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             // Prepare FormSubmit Data
-            const formSubmitData = {
-                _subject: `New Trial Booking from ${data.firstname} ${data.lastname}`,
-                _template: 'table',
-                _captcha: 'false',
-                _autoresponse: `Thank you for submitting the trial form!
+            const autoresponse = isGermanPage
+                ? `Vielen Dank für deine Anfrage zur Probelektion!
 
-We will contact you shortly via WhatsApp (or email if we can't find you on WhatsApp).
-We are looking forward to having you join our dance family!
+Wir melden uns bald per WhatsApp bei dir.
+Wir freuen uns darauf, dich bei AXcent Dance zu begrüssen.
+
+Ort:
+AXcent Dance Studio
+Hermetschloostrasse 73
+8048 Zürich Altstetten
+
+Liebe Grüsse
+Das AXcent Dance Team
+info@axcentdance.com`
+                : `Thank you for requesting a trial class!
+
+We will contact you shortly via WhatsApp.
+We are looking forward to welcoming you to AXcent Dance.
 
 Location:
 AXcent Dance Studio
@@ -285,9 +3335,16 @@ Hermetschloostrasse 73
 
 Best regards,
 The AXcent Dance Team
-info@axcentdance.com`,
+info@axcentdance.com`;
+
+            const formSubmitData = {
+                _subject: `New Trial Booking from ${data.firstname}`,
+                _template: 'table',
+                _captcha: 'false',
+                _autoresponse: autoresponse,
                 firstname: data.firstname,
                 lastname: data.lastname,
+                contact: data.contact,
                 phone: data.phone,
                 email: data.email,
                 class: data.selected_class
@@ -349,8 +3406,6 @@ info@axcentdance.com`,
                     window.location.href = 'thank-you-trial.html';
                 });
         });
-    } else {
-        console.error('Trial form not found in DOM');
     }
 
     // Contact Form Logic
@@ -359,12 +3414,13 @@ info@axcentdance.com`,
         console.log('Contact form found, attaching listener');
         contactForm.addEventListener('submit', e => {
             e.preventDefault();
+            const isGermanPage = document.documentElement.lang === 'de' || window.location.pathname.startsWith('/de/');
 
             const submitBtn = document.getElementById('submitContactBtn');
             const originalBtnContent = submitBtn.innerHTML;
 
             // 1. Show Loading State
-            submitBtn.innerHTML = '<span>Sending...</span>';
+            submitBtn.innerHTML = isGermanPage ? '<span>Wird gesendet...</span>' : '<span>Sending...</span>';
             submitBtn.disabled = true;
             submitBtn.style.opacity = '0.7';
             submitBtn.style.cursor = 'not-allowed';
@@ -388,7 +3444,13 @@ info@axcentdance.com`,
                 _subject: `New Contact from ${data.name}`,
                 _template: 'table', // or 'box'
                 _captcha: 'false',  // Disable captcha if you want instant submission
-                _autoresponse: `Thank you for submitting the contact form!
+                _autoresponse: isGermanPage ? `Danke für deine Nachricht an AXcent Dance.
+
+Wir melden uns bald per E-Mail oder WhatsApp.
+
+Liebe Grüsse,
+Das AXcent Dance Team
+info@axcentdance.com` : `Thank you for submitting the contact form!
 
 We will get back to you shortly via email or WhatsApp.
 
@@ -423,7 +3485,7 @@ info@axcentdance.com`,
                 })
                 .catch(error => {
                     console.error('Error!', error.message);
-                    alert('Something went wrong sending your message. Please try again later.');
+                    alert(isGermanPage ? 'Beim Senden deiner Nachricht ist etwas schiefgelaufen. Bitte versuche es später erneut.' : 'Something went wrong sending your message. Please try again later.');
 
                     // Reset button state
                     submitBtn.innerHTML = originalBtnContent;
@@ -566,6 +3628,16 @@ info@axcentdance.com`,
         const prefetchLink = (url) => {
             if (!url || url.includes('#') || url.startsWith('mailto:') || url.startsWith('tel:')) return;
 
+            // Only prefetch same-origin pages; cross-origin prefetches (social
+            // icons, external partners) waste bandwidth and are discarded.
+            let resolved;
+            try {
+                resolved = new URL(url, window.location.href);
+            } catch (error) {
+                return;
+            }
+            if (resolved.origin !== window.location.origin) return;
+
             // check if already prefetched
             if (document.head.querySelector(`link[href="${url}"]`)) return;
 
@@ -627,4 +3699,3 @@ info@axcentdance.com`,
         updateScannerOpacity();
     }
 });
-

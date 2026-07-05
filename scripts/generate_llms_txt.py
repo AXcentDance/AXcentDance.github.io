@@ -66,6 +66,9 @@ def process_file(file_path):
         # Remove scripts and styles first
         for script in soup(["script", "style", "noscript", "iframe", "svg"]):
             script.extract()
+
+        for hidden in soup.select('[aria-hidden="true"]'):
+            hidden.extract()
             
         # Get text
         text = soup.get_text(separator=' ')

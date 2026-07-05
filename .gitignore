@@ -38,3 +38,6 @@ System/GSC_Topic_Action_Report.md
 *.mkv
 *.zip
 *.tar.gz
+
+# Claude Code local config
+.claude/

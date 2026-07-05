@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex,nofollow">
+  <title>AXcent Dance — Brand Palette Proposals (Internal)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500..800;1,500..700&family=Inter:wght@400;500;600;700;800&family=Great+Vibes&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background: #121110; color: #ECE7DF; line-height: 1.6; }
+    .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+    /* ---------- page header ---------- */
+    .page-head { padding: 64px 0 40px; border-bottom: 1px solid #2A2724; }
+    .page-head h1 { font-family: 'Playfair Display', serif; font-size: 2.6rem; font-weight: 700; color: #F5EFE4; }
+    .page-head .sub { color: #A89F92; max-width: 62ch; margin-top: 10px; }
+    .constraints { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+    .constraints span { font-size: .78rem; font-weight: 600; letter-spacing: .04em; padding: 6px 12px; border-radius: 999px; border: 1px solid #3A362F; color: #C9BFAF; }
+    .constraints span.hard { border-color: #7A3B31; color: #E38B77; }
+
+    /* ---------- principles ---------- */
+    .principles { padding: 36px 0; border-bottom: 1px solid #2A2724; }
+    .principles h2, .compare h2, .sources h2 { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: #F5EFE4; margin-bottom: 16px; }
+    .principles ol { padding-left: 20px; color: #C9BFAF; display: grid; gap: 8px; font-size: .95rem; }
+    .principles b { color: #ECE7DF; }
+
+    /* ---------- jump nav ---------- */
+    .jump { position: sticky; top: 0; z-index: 50; background: rgba(18,17,16,.94); backdrop-filter: blur(8px); border-bottom: 1px solid #2A2724; }
+    .jump .wrap { display: flex; flex-wrap: wrap; gap: 5px; padding-top: 10px; padding-bottom: 10px; }
+    .jump a { flex: 0 0 auto; display: inline-flex; align-items: center; gap: 7px; font-size: .78rem; font-weight: 600; color: #C9BFAF; text-decoration: none; padding: 6px 12px; border-radius: 999px; border: 1px solid #2E2B26; cursor: pointer; }
+    .jump a:hover { border-color: #575147; color: #F5EFE4; }
+    .jump a.active { border-color: #C9BFAF; background: #26231F; color: #F5EFE4; }
+    .jump .chip-all { border-style: dashed; }
+    .jump .dots { display: inline-flex; gap: 3px; }
+    .jump .dots i { width: 11px; height: 11px; border-radius: 50%; display: inline-block; border: 1px solid rgba(255,255,255,.22); }
+    .jump .fav { margin-left: 3px; font-size: .9rem; line-height: 1; color: #6E675D; opacity: .55; transition: transform .12s ease, color .12s ease, opacity .12s ease; }
+    .jump .fav:hover { opacity: 1; transform: scale(1.25); color: #E8B04B; }
+    .jump a.faved .fav { opacity: 1; color: #E8B04B; }
+    .jump a.faved { border-color: rgba(232, 176, 75, .55); }
+    .fav-bar { font-size: .78rem; color: #A89F92; padding: 0 0 10px; }
+    .fav-bar b { color: #E8B04B; font-weight: 600; }
+
+    /* single-palette compare mode: click a chip -> page becomes that palette */
+    body.single-mode .page-head,
+    body.single-mode .principles,
+    body.single-mode .compare,
+    body.single-mode .sources { display: none; }
+    body.single-mode section.palette { border-bottom: none; padding-top: 28px; }
+
+    /* ---------- palette section ---------- */
+    .palette { padding: 56px 0; border-bottom: 1px solid #2A2724; }
+    .palette-head { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; }
+    .palette-head .num { font-family: 'Playfair Display', serif; font-style: italic; color: #6E675D; font-size: 1.2rem; }
+    .palette-head h2 { font-family: 'Playfair Display', serif; font-size: 2rem; color: #F5EFE4; }
+    .palette-head .mood { color: #A89F92; font-size: .95rem; }
+
+    .swatch-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin: 26px 0 8px; }
+    .swatch { border-radius: 12px; overflow: hidden; border: 1px solid #33302B; cursor: pointer; background: #1B1A18; }
+    .swatch .chip { height: 74px; }
+    .swatch .meta { padding: 9px 11px; }
+    .swatch .role { font-size: .68rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: #8F8779; }
+    .swatch .hex { font-size: .85rem; font-weight: 600; color: #ECE7DF; font-variant-numeric: tabular-nums; }
+    .swatch .pct { font-size: .7rem; color: #6E675D; }
+    .swatch:hover { border-color: #575147; }
+    .swatch.copied .hex::after { content: " ✓ copied"; color: #9BC49B; font-size: .7rem; }
+
+    .split-bar { display: flex; height: 14px; border-radius: 999px; overflow: hidden; margin: 10px 0 22px; border: 1px solid #33302B; }
+
+    .notes { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 26px; }
+    @media (max-width: 760px) { .notes { grid-template-columns: 1fr; } }
+    .note-block h3 { font-size: .78rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: #8F8779; margin-bottom: 6px; }
+    .note-block p { color: #C9BFAF; font-size: .92rem; }
+    .contrast-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+    .contrast-chips span { font-size: .74rem; padding: 4px 10px; border-radius: 999px; border: 1px solid #3A362F; color: #C9BFAF; }
+    .contrast-chips b { color: #9BC49B; font-weight: 700; }
+
+    /* ---------- logo recolor tiles ---------- */
+    .logo-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 14px; }
+    @media (max-width: 700px) { .logo-row { grid-template-columns: 1fr; } }
+    .logo-tile { border-radius: 14px; border: 1px solid #33302B; padding: 16px 10px 4px; display: flex; flex-direction: column; align-items: center; }
+    .logo-tile svg { width: min(280px, 82%); height: auto; display: block; }
+    .logo-tile .cap { font-size: .66rem; letter-spacing: .09em; text-transform: uppercase; font-weight: 600; padding: 4px 0 8px; color: color-mix(in srgb, var(--lgA) 60%, transparent); }
+    .logo-note { font-size: .78rem; color: #8F8779; margin-bottom: 24px; }
+
+    /* ---------- mockup (palette-driven via CSS vars) ---------- */
+    .mockup { border-radius: 16px; overflow: hidden; border: 1px solid #33302B; font-family: 'Inter', sans-serif; }
+    .mk-nav { display: flex; align-items: center; justify-content: space-between; padding: 14px 26px; background: var(--m1); border-bottom: 1px solid color-mix(in srgb, var(--detail) 25%, transparent); }
+    .mk-logo { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1.15rem; color: var(--t1); }
+    .mk-logo em { font-style: normal; color: var(--accent); }
+    .mk-links { display: flex; gap: 18px; font-size: .78rem; font-weight: 600; color: var(--mut1); }
+    .mk-cta-sm { font-size: .78rem; font-weight: 700; padding: 8px 16px; border-radius: 999px; background: var(--accent); color: var(--onacc); }
+    .mk-hero { background: var(--m1); padding: 54px 26px 50px; text-align: left; display: grid; grid-template-columns: 1.4fr 1fr; gap: 30px; align-items: center; }
+    @media (max-width: 700px) { .mk-hero { grid-template-columns: 1fr; } }
+    .mk-hero h4 { font-family: 'Playfair Display', serif; font-size: 2.1rem; line-height: 1.15; color: var(--t1); font-weight: 700; }
+    .mk-hero h4 em { font-style: italic; color: var(--accent); }
+    .mk-hero p { color: var(--mut1); font-size: .92rem; margin: 12px 0 20px; max-width: 44ch; }
+    .mk-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+    .mk-btn-primary { font-size: .85rem; font-weight: 700; padding: 12px 22px; border-radius: 999px; background: var(--accent); color: var(--onacc); }
+    .mk-btn-ghost { font-size: .85rem; font-weight: 600; padding: 12px 22px; border-radius: 999px; border: 1px solid color-mix(in srgb, var(--detail) 55%, transparent); color: var(--t1); }
+    .mk-chips { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 18px; }
+    .mk-chips span { font-size: .7rem; font-weight: 600; padding: 5px 11px; border-radius: 999px; border: 1px solid color-mix(in srgb, var(--detail) 45%, transparent); color: var(--t1); }
+    .mk-hero-visual { border-radius: 12px; aspect-ratio: 4/3; background:
+      radial-gradient(circle at 30% 35%, color-mix(in srgb, var(--accent) 55%, transparent), transparent 60%),
+      radial-gradient(circle at 75% 70%, color-mix(in srgb, var(--detail) 45%, transparent), transparent 55%),
+      color-mix(in srgb, var(--m1) 60%, var(--m2)); border: 1px solid color-mix(in srgb, var(--detail) 30%, transparent); }
+    /* second main as canvas — the "dual main" flip band */
+    .mk-band { background: var(--m2); padding: 40px 26px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    @media (max-width: 700px) { .mk-band { grid-template-columns: 1fr; } }
+    .mk-band-title { grid-column: 1 / -1; font-family: 'Playfair Display', serif; font-size: 1.35rem; color: var(--t2); margin-bottom: 4px; }
+    .mk-card { border-radius: 12px; padding: 18px; background: var(--card); border: 1px solid color-mix(in srgb, var(--detail) 35%, transparent); }
+    .mk-card .lvl { font-size: .65rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+    .mk-card h5 { font-size: .95rem; color: var(--tcard); margin: 4px 0 4px; }
+    .mk-card p { font-size: .78rem; color: var(--mutcard); }
+    .mk-review { background: var(--m1); padding: 34px 26px; display: flex; align-items: center; gap: 20px; }
+    .mk-stars { color: var(--detail); font-size: 1rem; letter-spacing: 2px; }
+    .mk-review p { color: var(--mut1); font-size: .85rem; font-style: italic; max-width: 58ch; }
+    .mk-review b { color: var(--t1); font-style: normal; font-size: .8rem; }
+    .mk-footer { background: color-mix(in srgb, var(--m1) 80%, black); padding: 18px 26px; display: flex; justify-content: space-between; font-size: .72rem; color: var(--mut1); }
+    .mk-footer b { color: var(--detail); }
+
+    /* ---------- comparison + sources ---------- */
+    .compare { padding: 52px 0; border-bottom: 1px solid #2A2724; }
+    .compare table { width: 100%; border-collapse: collapse; font-size: .88rem; }
+    .compare th { text-align: left; font-size: .72rem; text-transform: uppercase; letter-spacing: .07em; color: #8F8779; padding: 10px 12px; border-bottom: 1px solid #3A362F; }
+    .compare td { padding: 12px; border-bottom: 1px solid #26231F; color: #C9BFAF; vertical-align: top; }
+    .compare td:first-child { color: #F5EFE4; font-weight: 600; white-space: nowrap; }
+    .dots { display: inline-flex; gap: 4px; vertical-align: middle; }
+    .dots i { width: 14px; height: 14px; border-radius: 50%; display: inline-block; border: 1px solid rgba(255,255,255,.18); }
+    .reco { margin-top: 26px; padding: 20px 22px; border-radius: 14px; border: 1px solid #4A4238; background: #1B1915; color: #D6CCBC; font-size: .95rem; }
+    .reco b { color: #F5EFE4; }
+    .sources { padding: 44px 0 80px; }
+    .sources ul { padding-left: 20px; color: #A89F92; font-size: .85rem; display: grid; gap: 6px; }
+    .sources a { color: #C9BFAF; }
+  </style>
+</head>
+<body>
+
+  <!-- Reusable vector approximation of the AXcent logo (shapes preserved, colors via CSS vars) -->
+  <svg style="display:none" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="axcent-logo" viewBox="0 0 460 400">
+      <g fill="none" stroke-linecap="round">
+        <circle cx="213" cy="26" r="13" fill="var(--lgA)" stroke="none"/>
+        <path d="M221,45 C238,74 202,104 215,132 C227,161 209,182 186,202" stroke="var(--lgA)" stroke-width="11"/>
+        <circle cx="262" cy="56" r="11" fill="var(--lgB)" stroke="none"/>
+        <path d="M158,84 C210,44 268,62 293,104" stroke="var(--lgB)" stroke-width="10"/>
+        <path d="M283,118 C258,164 213,178 176,205" stroke="var(--lgB)" stroke-width="9"/>
+      </g>
+      <text x="112" y="296" font-family="'Playfair Display',serif" font-weight="700" font-size="88" fill="var(--lgA)">A<tspan fill="var(--lgB)">X</tspan></text>
+      <text x="242" y="296" font-family="'Great Vibes',cursive" font-size="86" fill="var(--lgA)">cent</text>
+      <line x1="98" y1="326" x2="216" y2="326" stroke="var(--lgDiv)" stroke-width="1.5"/>
+      <rect x="224" y="320" width="12" height="12" transform="rotate(45 230 326)" fill="var(--lgDiv)"/>
+      <line x1="244" y1="326" x2="362" y2="326" stroke="var(--lgDiv)" stroke-width="1.5"/>
+      <text x="230" y="366" text-anchor="middle" font-family="Inter,sans-serif" font-weight="600" font-size="20" letter-spacing="9" fill="var(--lgA)">DANCE STUDIO</text>
+    </symbol>
+  </svg>
+
+  <header class="page-head">
+    <div class="wrap">
+      <h1>AXcent Dance — Palette Proposals</h1>
+      <p class="sub"><b style="color:#F5EFE4">Round 3 — the night glamour family.</b> The owner shortlisted R1·01 (Midnight &amp; Ivory), R2·05 (Noir &amp; Brass) and R2·03 (Night &amp; Mist). Their shared DNA: a dark nocturnal canvas, one elegant counterpoint (ivory, metal, or mist), and a single hot accent. Round 3 explores four more palettes built on exactly that feeling. Rounds 2 and 1 are kept below for reference. Click any swatch to copy its hex. <b style="color:#F5EFE4">Every palette now also shows the studio logo</b> (a vector re-draw of its shapes — dancers, AX, script, divider) recolored in that palette, on both main canvases.</p>
+      <div class="constraints">
+        <span class="hard">No green (competitor)</span>
+        <span class="hard">No purple</span>
+        <span>Dual main colors</span>
+        <span>One strong accent</span>
+        <span>WCAG AA contrast</span>
+        <span>Premium, warm, beginner-friendly</span>
+      </div>
+    </div>
+  </header>
+
+  <section class="principles">
+    <div class="wrap">
+      <h2>How these were chosen</h2>
+      <ol>
+        <li><b>60-30-10 hierarchy:</b> the dominant main carries ~60% of the page, the second main ~30% (bands, cards, contrast sections), and the accent stays scarce (~10%) so CTAs always win attention.</li>
+        <li><b>Dual mains = two canvases:</b> both mains take turns as backgrounds (dark hero / light band, or vice versa), which gives the site rhythm without adding more hues.</li>
+        <li><b>Complementary temperature:</b> pairing a cool or neutral main with a warm main (or warm accent) reads as "trust + excitement" — the classic blue/orange logic adapted per palette.</li>
+        <li><b>Psychology for a bachata studio:</b> warm reds/corals signal passion and energy; deep dark canvases signal premium; creams keep it human and welcoming for nervous beginners.</li>
+        <li><b>Ownability:</b> local dance competitors cluster around black/red, neon, and (one) green. Each proposal stakes out ground none of them holds.</li>
+        <li><b>Accessibility:</b> body text ≥ 7:1 on its canvas, CTA labels ≥ 4.5:1 on their fill (noted per palette).</li>
+      </ol>
+    </div>
+  </section>
+
+  <nav class="jump">
+    <div class="wrap">
+      <a href="#" data-all class="chip chip-all">View all ▾</a>
+      <a href="#r3a" data-pal="r3a" class="chip"><span class="dots"><i style="background:#0F2440"></i><i style="background:#EFE0C5"></i><i style="background:#F04A34"></i></span>Opera Night</a>
+      <a href="#r3b" data-pal="r3b" class="chip"><span class="dots"><i style="background:#0B1830"></i><i style="background:#C89B3C"></i><i style="background:#D42A3A"></i></span>Gilded Night</a>
+      <a href="#r3c" data-pal="r3c" class="chip"><span class="dots"><i style="background:#101012"></i><i style="background:#EDE9E1"></i><i style="background:#C8102E"></i></span>Tuxedo &amp; Rouge</a>
+      <a href="#r3d" data-pal="r3d" class="chip"><span class="dots"><i style="background:#141114"></i><i style="background:#D9B3A7"></i><i style="background:#D6234A"></i></span>Velvet Rose</a>
+      <a href="#n1" data-pal="n1" class="chip"><span class="dots"><i style="background:#182F8A"></i><i style="background:#F2EEE3"></i><i style="background:#FFB020"></i></span>Ultramarine</a>
+      <a href="#n2" data-pal="n2" class="chip"><span class="dots"><i style="background:#1A1A1C"></i><i style="background:#F5F3EF"></i><i style="background:#F5B301"></i></span>Graphite</a>
+      <a href="#n3" data-pal="n3" class="chip"><span class="dots"><i style="background:#0B1626"></i><i style="background:#DCE4EC"></i><i style="background:#D02460"></i></span>Night &amp; Mist</a>
+      <a href="#n4" data-pal="n4" class="chip"><span class="dots"><i style="background:#F4EFE6"></i><i style="background:#2C4E75"></i><i style="background:#E8A13D"></i></span>French Blue</a>
+      <a href="#n5" data-pal="n5" class="chip"><span class="dots"><i style="background:#141210"></i><i style="background:#9C7A3C"></i><i style="background:#D9243B"></i></span>Noir &amp; Brass</a>
+      <a href="#p1" data-pal="p1" class="chip"><span class="dots"><i style="background:#101B2D"></i><i style="background:#F6EFE3"></i><i style="background:#FF5A3C"></i></span>Midnight &amp; Ivory</a>
+      <a href="#p2" data-pal="p2" class="chip"><span class="dots"><i style="background:#221510"></i><i style="background:#F3E7D3"></i><i style="background:#FF6A3D"></i></span>Espresso</a>
+      <a href="#p3" data-pal="p3" class="chip"><span class="dots"><i style="background:#161114"></i><i style="background:#6E1F2E"></i><i style="background:#E8B04B"></i></span>Bordeaux</a>
+      <a href="#p4" data-pal="p4" class="chip"><span class="dots"><i style="background:#F2E4D0"></i><i style="background:#B34A32"></i><i style="background:#16324F"></i></span>Terracotta</a>
+      <a href="#p5" data-pal="p5" class="chip"><span class="dots"><i style="background:#EFD7CA"></i><i style="background:#26313F"></i><i style="background:#D7263D"></i></span>Rose &amp; Slate</a>
+    </div>
+    <div class="wrap fav-bar" id="favBar"></div>
+  </nav>
+
+  <!-- ================= R3-01 OPERA NIGHT ================= -->
+  <section class="palette" id="r3a" style="--m1:#0F2440; --m2:#EFE0C5; --accent:#F04A34; --detail:#D3B06A; --t1:#F2E7D2; --mut1:#9FB0C5; --t2:#241C10; --card:#FBF4E4; --tcard:#241C10; --mutcard:#7A6F5B; --onacc:#1C0E08;">
+    <div class="wrap">
+      <div class="palette-head">
+        <span class="num">R3 · 01</span><h2>Opera Night</h2>
+        <span class="mood">Velvet seats, silk programs — Midnight &amp; Ivory's warmer, more theatrical sibling</span>
+      </div>
+      <div class="swatch-row">
+        <div class="swatch" data-hex="#0F2440"><div class="chip" style="background:#0F2440"></div><div class="meta"><div class="role">Main 1 · canvas</div><div class="hex">#0F2440</div><div class="pct">~60% — sapphire hero, dark sections, footer</div></div></div>
+        <div class="swatch" data-hex="#EFE0C5"><div class="chip" style="background:#EFE0C5"></div><div class="meta"><div class="role">Main 2 · canvas</div><div class="hex">#EFE0C5</div><div class="pct">~30% — champagne-silk bands, cards, forms</div></div></div>
+        <div class="swatch" data-hex="#F04A34"><div class="chip" style="background:#F04A34"></div><div class="meta"><div class="role">Accent · CTA</div><div class="hex">#F04A34</div><div class="pct">~10% — vermilion buttons, highlights</div></div></div>
+        <div class="swatch" data-hex="#D3B06A"><div class="chip" style="background:#D3B06A"></div><div class="meta"><div class="role">Detail</div><div class="hex">#D3B06A</div><div class="pct">soft-gold hairlines, stars</div></div></div>
+        <div class="swatch" data-hex="#9FB0C5"><div class="chip" style="background:#9FB0C5"></div><div class="meta"><div class="role">Muted text</div><div class="hex">#9FB0C5</div><div class="pct">on sapphire</div></div></div>
+      </div>
+      <div class="split-bar"><div style="flex:60; background:#0F2440"></div><div style="flex:30; background:#EFE0C5"></div><div style="flex:10; background:#F04A34"></div></div>
+      <div class="notes">
+        <div class="note-block"><h3>Psychology &amp; rationale</h3><p>Takes what worked in Midnight &amp; Ivory and turns the temperature up: the blue is deeper and richer (sapphire, not corporate navy), the light main is champagne silk instead of plain ivory, and the accent runs hotter — vermilion, the color of theater curtains. The soft-gold detail line gives it the opera-house finish. Same trust + passion structure as your shortlist, with more sensuality and occasion.</p></div>
+        <div class="note-block"><h3>Contrast (WCAG)</h3><div class="contrast-chips"><span>Champagne on sapphire <b>12.1:1 AAA</b></span><span>Ink on vermilion CTA <b>5.2:1 AA</b></span><span>Soft gold on sapphire <b>7+:1 AAA</b></span><span>Ink on champagne <b>12+:1 AAA</b></span></div><p style="margin-top:8px">Vermilion is large-type only on sapphire; never white-on-vermilion (fails AA).</p></div>
+      </div>
+      <div class="mockup">
+        <div class="mk-nav"><span class="mk-logo">AX<em>c</em>ent</span><span class="mk-links"><span>HOME</span><span>CLASSES</span><span>EVENTS</span><span>CONTACT</span></span><span class="mk-cta-sm">Book Free Trial</span></div>
+        <div class="mk-hero">
+          <div><h4>Learn Bachata in Zurich — <em>no partner needed</em></h4><p>Small classes, real connection, and teachers who remember what the first step feels like.</p><div class="mk-btns"><span class="mk-btn-primary">Book Free Trial</span><span class="mk-btn-ghost">Class Schedule</span></div><div class="mk-chips"><span>Beginner friendly</span><span>No experience required</span><span>No partner needed</span></div></div>
+          <div class="mk-hero-visual"></div>
+        </div>
+        <div class="mk-band"><div class="mk-band-title">Start with other beginners</div>
+          <div class="mk-card"><div class="lvl" style="color:#B33222">Monday 18:30</div><h5>Bachata Beginner 0</h5><p>Absolute beginners — start here.</p></div>
+          <div class="mk-card"><div class="lvl" style="color:#B33222">Tuesday 20:30</div><h5>Afro Beginner</h5><p>Grounded rhythm and footwork.</p></div>
+          <div class="mk-card"><div class="lvl" style="color:#B33222">Wednesday 19:30</div><h5>Sensual Foundation</h5><p>Waves, body isolation, connection.</p></div>
+        </div>
+        <div class="mk-review"><span class="mk-stars">★★★★★</span><p>"I started as a complete beginner and after a few weeks I can already social dance." <b>— Laura M, Google Review</b></p></div>
+        <div class="mk-footer"><span><b>AXcent Dance</b> · Hermetschloostrasse 73, Zürich</span><span>Book Free Trial · Schedule · Contact</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= R3-02 GILDED NIGHT ================= -->
+  <section class="palette" id="r3b" style="--m1:#0B1830; --m2:#C89B3C; --accent:#D42A3A; --detail:#C89B3C; --t1:#F2E9D8; --mut1:#93A2C0; --t2:#17110A; --card:#1A2745; --tcard:#F2E9D8; --mutcard:#A9B4CC; --onacc:#FFFFFF;">
+    <div class="wrap">
+      <div class="palette-head">
+        <span class="num">R3 · 02</span><h2>Gilded Night</h2>
+        <span class="mood">Your three favorites fused — deep blue nobility, metallic drama, one scarlet heartbeat</span>
+      </div>
+      <div class="swatch-row">
+        <div class="swatch" data-hex="#0B1830"><div class="chip" style="background:#0B1830"></div><div class="meta"><div class="role">Main 1 · canvas</div><div class="hex">#0B1830</div><div class="pct">~60% — night-blue page canvas</div></div></div>
+        <div class="swatch" data-hex="#C89B3C"><div class="chip" style="background:#C89B3C"></div><div class="meta"><div class="role">Main 2 · bands</div><div class="hex">#C89B3C</div><div class="pct">~30% — gold bands, frames, big numerals</div></div></div>
+        <div class="swatch" data-hex="#D42A3A"><div class="chip" style="background:#D42A3A"></div><div class="meta"><div class="role">Accent · CTA</div><div class="hex">#D42A3A</div><div class="pct">~10% — scarlet buttons, highlights</div></div></div>
+        <div class="swatch" data-hex="#F2E9D8"><div class="chip" style="background:#F2E9D8"></div><div class="meta"><div class="role">Text</div><div class="hex">#F2E9D8</div><div class="pct">cream on night blue</div></div></div>
+        <div class="swatch" data-hex="#93A2C0"><div class="chip" style="background:#93A2C0"></div><div class="meta"><div class="role">Muted text</div><div class="hex">#93A2C0</div><div class="pct">supporting copy</div></div></div>
+      </div>
+      <div class="split-bar"><div style="flex:60; background:#0B1830"></div><div style="flex:30; background:#C89B3C"></div><div style="flex:10; background:#D42A3A"></div></div>
+      <div class="notes">
+        <div class="note-block"><h3>Psychology &amp; rationale</h3><p>Built by fusing what you shortlisted: the deep blue trust of Midnight &amp; Ivory, the metallic second-main drama of Noir &amp; Brass, and a hot red heartbeat like the cabaret accent. Blue-and-gold is royal, celebratory, and theatrical — grand ballroom rather than speakeasy — and the scarlet stays scarce so it lands like a spotlight. Probably the most "event brand" of any direction so far, and completely unclaimed territory locally.</p></div>
+        <div class="note-block"><h3>Contrast (WCAG)</h3><div class="contrast-chips"><span>Cream on night blue <b>14.7:1 AAA</b></span><span>Gold text on night blue <b>6.9:1 AA</b></span><span>Ink on gold bands <b>7.3:1 AAA</b></span><span>White on scarlet CTA <b>5.0:1 AA</b></span></div><p style="margin-top:8px">Gold carries large type and surfaces; body copy on gold uses near-black ink. Scarlet is never body text.</p></div>
+      </div>
+      <div class="mockup">
+        <div class="mk-nav"><span class="mk-logo">AX<em>c</em>ent</span><span class="mk-links"><span>HOME</span><span>CLASSES</span><span>EVENTS</span><span>CONTACT</span></span><span class="mk-cta-sm">Book Free Trial</span></div>
+        <div class="mk-hero">
+          <div><h4>Learn Bachata in Zurich — <em>no partner needed</em></h4><p>Small classes, real connection, and teachers who remember what the first step feels like.</p><div class="mk-btns"><span class="mk-btn-primary">Book Free Trial</span><span class="mk-btn-ghost">Class Schedule</span></div><div class="mk-chips"><span>Beginner friendly</span><span>No experience required</span><span>No partner needed</span></div></div>
+          <div class="mk-hero-visual"></div>
+        </div>
+        <div class="mk-band"><div class="mk-band-title" style="color:var(--t2)">Start with other beginners</div>
+          <div class="mk-card"><div class="lvl" style="color:#E3B95C">Monday 18:30</div><h5>Bachata Beginner 0</h5><p>Absolute beginners — start here.</p></div>
+          <div class="mk-card"><div class="lvl" style="color:#E3B95C">Tuesday 20:30</div><h5>Afro Beginner</h5><p>Grounded rhythm and footwork.</p></div>
+          <div class="mk-card"><div class="lvl" style="color:#E3B95C">Wednesday 19:30</div><h5>Sensual Foundation</h5><p>Waves, body isolation, connection.</p></div>
+        </div>
+        <div class="mk-review"><span class="mk-stars">★★★★★</span><p>"I started as a complete beginner and after a few weeks I can already social dance." <b>— Laura M, Google Review</b></p></div>
+        <div class="mk-footer"><span><b>AXcent Dance</b> · Hermetschloostrasse 73, Zürich</span><span>Book Free Trial · Schedule · Contact</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= R3-03 TUXEDO & ROUGE ================= -->
+  <section class="palette" id="r3c" style="--m1:#101012; --m2:#EDE9E1; --accent:#C8102E; --detail:#8E8B84; --t1:#EDE9E1; --mut1:#9A9791; --t2:#161616; --card:#F8F6F1; --tcard:#161616; --mutcard:#6F6C66; --onacc:#FFFFFF;">
+    <div class="wrap">
+      <div class="palette-head">
+        <span class="num">R3 · 03</span><h2>Tuxedo &amp; Rouge</h2>
+        <span class="mood">Formalwear minimalism — black tie, pearl silk, lipstick red</span>
+      </div>
+      <div class="swatch-row">
+        <div class="swatch" data-hex="#101012"><div class="chip" style="background:#101012"></div><div class="meta"><div class="role">Main 1 · canvas</div><div class="hex">#101012</div><div class="pct">~60% — true-black hero, sections, footer</div></div></div>
+        <div class="swatch" data-hex="#EDE9E1"><div class="chip" style="background:#EDE9E1"></div><div class="meta"><div class="role">Main 2 · canvas</div><div class="hex">#EDE9E1</div><div class="pct">~30% — pearl bands, cards, forms</div></div></div>
+        <div class="swatch" data-hex="#C8102E"><div class="chip" style="background:#C8102E"></div><div class="meta"><div class="role">Accent · CTA</div><div class="hex">#C8102E</div><div class="pct">~10% — rouge buttons, highlights</div></div></div>
+        <div class="swatch" data-hex="#8E8B84"><div class="chip" style="background:#8E8B84"></div><div class="meta"><div class="role">Muted / detail</div><div class="hex">#8E8B84</div><div class="pct">warm gray text, hairlines</div></div></div>
+        <div class="swatch" data-hex="#161616"><div class="chip" style="background:#161616"></div><div class="meta"><div class="role">Text on light</div><div class="hex">#161616</div><div class="pct">ink on pearl</div></div></div>
+      </div>
+      <div class="split-bar"><div style="flex:60; background:#101012"></div><div style="flex:30; background:#EDE9E1"></div><div style="flex:10; background:#C8102E"></div></div>
+      <div class="notes">
+        <div class="note-block"><h3>Psychology &amp; rationale</h3><p>The night-glamour feeling reduced to its most timeless form: black-tie monochrome with a single lipstick-red gesture — couture language (Chanel, ballroom formalwear) rather than club language. Because 90% of the system is neutral, your photography and the new logo get total freedom, and the rouge reads chic rather than cliché precisely because it is rationed. The most disciplined and least trend-exposed of the family.</p></div>
+        <div class="note-block"><h3>Contrast (WCAG)</h3><div class="contrast-chips"><span>Pearl on black <b>15.6:1 AAA</b></span><span>White on rouge CTA <b>5.9:1 AA</b></span><span>Rouge text on pearl <b>4.9:1 AA</b></span><span>Ink on pearl <b>15+:1 AAA</b></span></div><p style="margin-top:8px">The rare palette where the accent passes as body text on the light canvas — rouge links are allowed.</p></div>
+      </div>
+      <div class="mockup">
+        <div class="mk-nav"><span class="mk-logo">AX<em>c</em>ent</span><span class="mk-links"><span>HOME</span><span>CLASSES</span><span>EVENTS</span><span>CONTACT</span></span><span class="mk-cta-sm">Book Free Trial</span></div>
+        <div class="mk-hero">
+          <div><h4>Learn Bachata in Zurich — <em>no partner needed</em></h4><p>Small classes, real connection, and teachers who remember what the first step feels like.</p><div class="mk-btns"><span class="mk-btn-primary">Book Free Trial</span><span class="mk-btn-ghost">Class Schedule</span></div><div class="mk-chips"><span>Beginner friendly</span><span>No experience required</span><span>No partner needed</span></div></div>
+          <div class="mk-hero-visual"></div>
+        </div>
+        <div class="mk-band"><div class="mk-band-title">Start with other beginners</div>
+          <div class="mk-card"><div class="lvl">Monday 18:30</div><h5>Bachata Beginner 0</h5><p>Absolute beginners — start here.</p></div>
+          <div class="mk-card"><div class="lvl">Tuesday 20:30</div><h5>Afro Beginner</h5><p>Grounded rhythm and footwork.</p></div>
+          <div class="mk-card"><div class="lvl">Wednesday 19:30</div><h5>Sensual Foundation</h5><p>Waves, body isolation, connection.</p></div>
+        </div>
+        <div class="mk-review"><span class="mk-stars" style="color:#C8102E">★★★★★</span><p>"I started as a complete beginner and after a few weeks I can already social dance." <b>— Laura M, Google Review</b></p></div>
+        <div class="mk-footer"><span><b>AXcent Dance</b> · Hermetschloostrasse 73, Zürich</span><span>Book Free Trial · Schedule · Contact</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= R3-04 VELVET ROSE ================= -->
+  <section class="palette" id="r3d" style="--m1:#141114; --m2:#D9B3A7; --accent:#D6234A; --detail:#C08573; --t1:#F3EBE4; --mut1:#A6968F; --t2:#241512; --card:#EFD9CF; --tcard:#241512; --mutcard:#7E685F; --onacc:#FFFFFF;">
+    <div class="wrap">
+      <div class="palette-head">
+        <span class="num">R3 · 04</span><h2>Velvet Rose</h2>
+        <span class="mood">Noir sensuality with skin-warm rose — the most intimate of the family</span>
+      </div>
+      <div class="swatch-row">
+        <div class="swatch" data-hex="#141114"><div class="chip" style="background:#141114"></div><div class="meta"><div class="role">Main 1 · canvas</div><div class="hex">#141114</div><div class="pct">~60% — noir page canvas</div></div></div>
+        <div class="swatch" data-hex="#D9B3A7"><div class="chip" style="background:#D9B3A7"></div><div class="meta"><div class="role">Main 2 · bands</div><div class="hex">#D9B3A7</div><div class="pct">~30% — smoked-rose bands, cards, forms</div></div></div>
+        <div class="swatch" data-hex="#D6234A"><div class="chip" style="background:#D6234A"></div><div class="meta"><div class="role">Accent · CTA</div><div class="hex">#D6234A</div><div class="pct">~10% — raspberry-red buttons, highlights</div></div></div>
+        <div class="swatch" data-hex="#C08573"><div class="chip" style="background:#C08573"></div><div class="meta"><div class="role">Detail</div><div class="hex">#C08573</div><div class="pct">copper-rose hairlines, icons</div></div></div>
+        <div class="swatch" data-hex="#F3EBE4"><div class="chip" style="background:#F3EBE4"></div><div class="meta"><div class="role">Text</div><div class="hex">#F3EBE4</div><div class="pct">warm cream on noir</div></div></div>
+      </div>
+      <div class="split-bar"><div style="flex:60; background:#141114"></div><div style="flex:30; background:#D9B3A7"></div><div style="flex:10; background:#D6234A"></div></div>
+      <div class="notes">
+        <div class="note-block"><h3>Psychology &amp; rationale</h3><p>Same noir base you liked in Noir &amp; Brass, but the metallic is swapped for something more human: a smoked, skin-warm rose — candlelight on skin, close embrace. The raspberry-red accent carries the heat like Night &amp; Mist's, one step warmer and deeper. This is the most sensual, most bachata-sensual-native direction: intimate rather than grand, and a natural fit for the styling and sensual class lines.</p></div>
+        <div class="note-block"><h3>Contrast (WCAG)</h3><div class="contrast-chips"><span>Cream on noir <b>~15:1 AAA</b></span><span>Rose on noir (large/surfaces) <b>9.8:1 AAA</b></span><span>Ink on rose bands <b>9+:1 AAA</b></span><span>White on raspberry CTA <b>5.0:1 AA</b></span></div><p style="margin-top:8px">Rose is surfaces and large type; body copy on rose uses dark ink. Raspberry is never body text.</p></div>
+      </div>
+      <div class="mockup">
+        <div class="mk-nav"><span class="mk-logo">AX<em>c</em>ent</span><span class="mk-links"><span>HOME</span><span>CLASSES</span><span>EVENTS</span><span>CONTACT</span></span><span class="mk-cta-sm">Book Free Trial</span></div>
+        <div class="mk-hero">
+          <div><h4>Learn Bachata in Zurich — <em>no partner needed</em></h4><p>Small classes, real connection, and teachers who remember what the first step feels like.</p><div class="mk-btns"><span class="mk-btn-primary">Book Free Trial</span><span class="mk-btn-ghost">Class Schedule</span></div><div class="mk-chips"><span>Beginner friendly</span><span>No experience required</span><span>No partner needed</span></div></div>
+          <div class="mk-hero-visual"></div>
+        </div>
+        <div class="mk-band"><div class="mk-band-title" style="color:var(--t2)">Start with other beginners</div>
+          <div class="mk-card"><div class="lvl" style="color:#B0123B">Monday 18:30</div><h5>Bachata Beginner 0</h5><p>Absolute beginners — start here.</p></div>
+          <div class="mk-card"><div class="lvl" style="color:#B0123B">Tuesday 20:30</div><h5>Afro Beginner</h5><p>Grounded rhythm and footwork.</p></div>
+          <div class="mk-card"><div class="lvl" style="color:#B0123B">Wednesday 19:30</div><h5>Sensual Foundation</h5><p>Waves, body isolation, connection.</p></div>
+        </div>
+        <div class="mk-review"><span class="mk-stars" style="color:#C08573">★★★★★</span><p>"I started as a complete beginner and after a few weeks I can already social dance." <b>— Laura M, Google Review</b></p></div>
+        <div class="mk-footer"><span><b>AXcent Dance</b> · Hermetschloostrasse 73, Zürich</span><span>Book Free Trial · Schedule · Contact</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= COMPARISON (ROUND 3) ================= -->
+  <section class="compare" id="compare-r3">
+    <div class="wrap">
+      <h2>Round 3 — side-by-side (with your three favorites)</h2>
+      <table>
+        <thead><tr><th>Palette</th><th>Colors</th><th>Feels like</th><th>vs. your shortlist</th></tr></thead>
+        <tbody>
+          <tr><td>R3·01 Opera Night</td><td><span class="dots"><i style="background:#0F2440"></i><i style="background:#EFE0C5"></i><i style="background:#F04A34"></i></span></td><td>Theater velvet, silk, curtain-red</td><td>Midnight &amp; Ivory with more warmth, depth, and occasion</td></tr>
+          <tr><td>R3·02 Gilded Night</td><td><span class="dots"><i style="background:#0B1830"></i><i style="background:#C89B3C"></i><i style="background:#D42A3A"></i></span></td><td>Grand ballroom, royal, celebratory</td><td>The deliberate fusion: R1·01's blue + R2·05's metal main + a cabaret-red heart</td></tr>
+          <tr><td>R3·03 Tuxedo &amp; Rouge</td><td><span class="dots"><i style="background:#101012"></i><i style="background:#EDE9E1"></i><i style="background:#C8102E"></i></span></td><td>Black tie, couture, timeless</td><td>The family's minimalist pole — night glamour with everything non-essential removed</td></tr>
+          <tr><td>R3·04 Velvet Rose</td><td><span class="dots"><i style="background:#141114"></i><i style="background:#D9B3A7"></i><i style="background:#D6234A"></i></span></td><td>Candlelight on skin, close embrace</td><td>Noir &amp; Brass's base with a human, sensual counterpoint instead of metal</td></tr>
+          <tr><td style="color:#8F8779">R1·01 Midnight &amp; Ivory</td><td><span class="dots"><i style="background:#101B2D"></i><i style="background:#F6EFE3"></i><i style="background:#FF5A3C"></i></span></td><td colspan="2" style="color:#8F8779">Your shortlist — editorial trust + coral fire</td></tr>
+          <tr><td style="color:#8F8779">R2·05 Noir &amp; Brass</td><td><span class="dots"><i style="background:#141210"></i><i style="background:#9C7A3C"></i><i style="background:#D9243B"></i></span></td><td colspan="2" style="color:#8F8779">Your shortlist — Art-Deco ballroom glamour</td></tr>
+          <tr><td style="color:#8F8779">R2·03 Night &amp; Mist</td><td><span class="dots"><i style="background:#0B1626"></i><i style="background:#DCE4EC"></i><i style="background:#D02460"></i></span></td><td colspan="2" style="color:#8F8779">Your shortlist — modern club cool + raspberry</td></tr>
+        </tbody>
+      </table>
+      <div class="reco"><b>Read on the family:</b> within the seven night-glamour candidates, <b>R3·02 Gilded Night</b> is the one engineered from everything you responded to — blue nobility, metallic drama, hot-red scarcity — and <b>R3·03 Tuxedo &amp; Rouge</b> is the safest long-term system of the group. <b>Next step:</b> name your two finalists and I will apply both to the real homepage behind a toggle, so you compare them on the live page with your actual video, photos, and content — that decides these things faster than any mockup.</div>
+    </div>
+  </section>
+
+  <!-- ================= R2-01 ULTRAMARINE & BONE ================= -->
+  <section class="palette" id="n1" style="--m1:#182F8A; --m2:#F2EEE3; --accent:#FFB020; --detail:#AAB8E8; --t1:#F2EEE3; --mut1:#AAB8E8; --t2:#10131F; --card:#FCFAF3; --tcard:#10131F; --mutcard:#6A6E7E; --onacc:#131313;">
+    <div class="wrap">
+      <div class="palette-head">
+        <span class="num">R2 · 01</span><h2>Ultramarine &amp; Bone</h2>
+        <span class="mood">Gallery blue — dance as an art form</span>
+      </div>
+      <div class="swatch-row">
+        <div class="swatch" data-hex="#182F8A"><div class="chip" style="background:#182F8A"></div><div class="meta"><div class="role">Main 1 · canvas</div><div class="hex">#182F8A</div><div class="pct">~60% — hero, dark sections, footer</div></div></div>
+        <div class="swatch" data-hex="#F2EEE3"><div class="chip" style="background:#F2EEE3"></div><div class="meta"><div class="role">Main 2 · canvas</div><div class="hex">#F2EEE3</div><div class="pct">~30% — light bands, cards, forms</div></div></div>
+        <div class="swatch" data-hex="#FFB020"><div class="chip" style="background:#FFB020"></div><div class="meta"><div class="role">Accent · CTA</div><div class="hex">#FFB020</div><div class="pct">~10% — marigold buttons, highlights</div></div></div>
+        <div class="swatch" data-hex="#AAB8E8"><div class="chip" style="background:#AAB8E8"></div><div class="meta"><div class="role">Muted / detail</div><div class="hex">#AAB8E8</div><div class="pct">periwinkle text on blue, hairlines</div></div></div>
+        <div class="swatch" data-hex="#10131F"><div class="chip" style="background:#10131F"></div><div class="meta"><div class="role">Text on light</div><div class="hex">#10131F</div><div class="pct">ink on bone</div></div></div>
+      </div>
+      <div class="split-bar"><div style="flex:60; background:#182F8A"></div><div style="flex:30; background:#F2EEE3"></div><div style="flex:10; background:#FFB020"></div></div>
+      <div class="notes">
+        <div class="note-block"><h3>Psychology &amp; rationale</h3><p>Saturated ultramarine is art-world language (Yves Klein, gallery walls) — it positions AXcent as a place where dance is craft and culture, not just fitness. It is confident and unmistakably deliberate: no dance studio in the region owns a true cobalt. The marigold accent brings the warmth and stage-light energy, and the bone second main keeps forms and schedules calm and readable.</p></div>
+        <div class="note-block"><h3>Contrast (WCAG)</h3><div class="contrast-chips"><span>Bone on ultramarine <b>9.8:1 AAA</b></span><span>Marigold text on ultramarine <b>6.3:1 AA</b></span><span>Ink on marigold CTA <b>10.3:1 AAA</b></span><span>Ink on bone <b>13+:1 AAA</b></span></div><p style="margin-top:8px">Marigold is never used as text on the bone canvas (fails); fills and details only there.</p></div>
+      </div>
+      <div class="mockup">
+        <div class="mk-nav"><span class="mk-logo">AX<em>c</em>ent</span><span class="mk-links"><span>HOME</span><span>CLASSES</span><span>EVENTS</span><span>CONTACT</span></span><span class="mk-cta-sm">Book Free Trial</span></div>
+        <div class="mk-hero">
+          <div><h4>Learn Bachata in Zurich — <em>no partner needed</em></h4><p>Small classes, real connection, and teachers who remember what the first step feels like.</p><div class="mk-btns"><span class="mk-btn-primary">Book Free Trial</span><span class="mk-btn-ghost">Class Schedule</span></div><div class="mk-chips"><span>Beginner friendly</span><span>No experience required</span><span>No partner needed</span></div></div>
+          <div class="mk-hero-visual"></div>
+        </div>
+        <div class="mk-band"><div class="mk-band-title">Start with other beginners</div>
+          <div class="mk-card"><div class="lvl" style="color:#B57500">Monday 18:30</div><h5>Bachata Beginner 0</h5><p>Absolute beginners — start here.</p></div>
+          <div class="mk-card"><div class="lvl" style="color:#B57500">Tuesday 20:30</div><h5>Afro Beginner</h5><p>Grounded rhythm and footwork.</p></div>
+          <div class="mk-card"><div class="lvl" style="color:#B57500">Wednesday 19:30</div><h5>Sensual Foundation</h5><p>Waves, body isolation, connection.</p></div>
+        </div>
+        <div class="mk-review"><span class="mk-stars" style="color:#FFB020">★★★★★</span><p>"I started as a complete beginner and after a few weeks I can already social dance." <b>— Laura M, Google Review</b></p></div>
+        <div class="mk-footer"><span><b>AXcent Dance</b> · Hermetschloostrasse 73, Zürich</span><span>Book Free Trial · Schedule · Contact</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= R2-02 GRAPHITE & PORCELAIN ================= -->
+  <section class="palette" id="n2" style="--m1:#1A1A1C; --m2:#F5F3EF; --accent:#F5B301; --detail:#8E8B84; --t1:#F5F3EF; --mut1:#9C9A94; --t2:#161616; --card:#FFFEFB; --tcard:#161616; --mutcard:#75726B; --onacc:#171204;">
+    <div class="wrap">
+      <div class="palette-head">
+        <span class="num">R2 · 02</span><h2>Graphite &amp; Porcelain</h2>
+        <span class="mood">Monochrome + one — luxury minimalism with a saffron spark</span>
+      </div>
+      <div class="swatch-row">
+        <div class="swatch" data-hex="#1A1A1C"><div class="chip" style="background:#1A1A1C"></div><div class="meta"><div class="role">Main 1 · canvas</div><div class="hex">#1A1A1C</div><div class="pct">~60% — hero, dark sections, footer</div></div></div>
+        <div class="swatch" data-hex="#F5F3EF"><div class="chip" style="background:#F5F3EF"></div><div class="meta"><div class="role">Main 2 · canvas</div><div class="hex">#F5F3EF</div><div class="pct">~30% — light bands, cards, forms</div></div></div>
+        <div class="swatch" data-hex="#F5B301"><div class="chip" style="background:#F5B301"></div><div class="meta"><div class="role">Accent · CTA</div><div class="hex">#F5B301</div><div class="pct">~10% — saffron buttons, highlights</div></div></div>
+        <div class="swatch" data-hex="#8E8B84"><div class="chip" style="background:#8E8B84"></div><div class="meta"><div class="role">Muted / detail</div><div class="hex">#8E8B84</div><div class="pct">warm gray text, hairlines</div></div></div>
+        <div class="swatch" data-hex="#161616"><div class="chip" style="background:#161616"></div><div class="meta"><div class="role">Text on light</div><div class="hex">#161616</div><div class="pct">ink on porcelain</div></div></div>
+      </div>
+      <div class="split-bar"><div style="flex:60; background:#1A1A1C"></div><div style="flex:30; background:#F5F3EF"></div><div style="flex:10; background:#F5B301"></div></div>
+      <div class="notes">
+        <div class="note-block"><h3>Psychology &amp; rationale</h3><p>The Equinox playbook: black-and-off-white monochrome signals uncompromising premium, and lets your strongest asset — real photography and video of people dancing — supply all the emotion and color. The single saffron accent is pure optimism and stage energy, and nobody in the dance niche owns yellow. Ages the slowest of any direction; the logo redesign gets maximum freedom because the system imposes almost nothing.</p></div>
+        <div class="note-block"><h3>Contrast (WCAG)</h3><div class="contrast-chips"><span>Porcelain on graphite <b>15.6:1 AAA</b></span><span>Saffron text on graphite <b>9.3:1 AAA</b></span><span>Ink on saffron CTA <b>10.2:1 AAA</b></span><span>Ink on porcelain <b>15+:1 AAA</b></span></div><p style="margin-top:8px">Saffron never carries text on porcelain (fails); it is a fill/detail color on light surfaces.</p></div>
+      </div>
+      <div class="mockup">
+        <div class="mk-nav"><span class="mk-logo">AX<em>c</em>ent</span><span class="mk-links"><span>HOME</span><span>CLASSES</span><span>EVENTS</span><span>CONTACT</span></span><span class="mk-cta-sm">Book Free Trial</span></div>
+        <div class="mk-hero">
+          <div><h4>Learn Bachata in Zurich — <em>no partner needed</em></h4><p>Small classes, real connection, and teachers who remember what the first step feels like.</p><div class="mk-btns"><span class="mk-btn-primary">Book Free Trial</span><span class="mk-btn-ghost">Class Schedule</span></div><div class="mk-chips"><span>Beginner friendly</span><span>No experience required</span><span>No partner needed</span></div></div>
+          <div class="mk-hero-visual"></div>
+        </div>
+        <div class="mk-band"><div class="mk-band-title">Start with other beginners</div>
+          <div class="mk-card"><div class="lvl" style="color:#A87B00">Monday 18:30</div><h5>Bachata Beginner 0</h5><p>Absolute beginners — start here.</p></div>
+          <div class="mk-card"><div class="lvl" style="color:#A87B00">Tuesday 20:30</div><h5>Afro Beginner</h5><p>Grounded rhythm and footwork.</p></div>
+          <div class="mk-card"><div class="lvl" style="color:#A87B00">Wednesday 19:30</div><h5>Sensual Foundation</h5><p>Waves, body isolation, connection.</p></div>
+        </div>
+        <div class="mk-review"><span class="mk-stars" style="color:#F5B301">★★★★★</span><p>"I started as a complete beginner and after a few weeks I can already social dance." <b>— Laura M, Google Review</b></p></div>
+        <div class="mk-footer"><span><b>AXcent Dance</b> · Hermetschloostrasse 73, Zürich</span><span>Book Free Trial · Schedule · Contact</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= R2-03 NIGHT & MIST, RASPBERRY ================= -->
+  <section class="palette" id="n3" style="--m1:#0B1626; --m2:#DCE4EC; --accent:#D02460; --detail:#8FA3B8; --t1:#EFF3F7; --mut1:#8FA3B8; --t2:#14202E; --card:#F6F9FC; --tcard:#14202E; --mutcard:#5F7285; --onacc:#FFFFFF;">
+    <div class="wrap">
+      <div class="palette-head">
+        <span class="num">R2 · 03</span><h2>Night &amp; Mist</h2>
+        <span class="mood">After midnight — cool night air, one raspberry heartbeat</span>
+      </div>
+      <div class="swatch-row">
+        <div class="swatch" data-hex="#0B1626"><div class="chip" style="background:#0B1626"></div><div class="meta"><div class="role">Main 1 · canvas</div><div class="hex">#0B1626</div><div class="pct">~60% — hero, dark sections, footer</div></div></div>
+        <div class="swatch" data-hex="#DCE4EC"><div class="chip" style="background:#DCE4EC"></div><div class="meta"><div class="role">Main 2 · canvas</div><div class="hex">#DCE4EC</div><div class="pct">~30% — mist bands, cards, forms</div></div></div>
+        <div class="swatch" data-hex="#D02460"><div class="chip" style="background:#D02460"></div><div class="meta"><div class="role">Accent · CTA</div><div class="hex">#D02460</div><div class="pct">~10% — raspberry buttons, highlights</div></div></div>
+        <div class="swatch" data-hex="#8FA3B8"><div class="chip" style="background:#8FA3B8"></div><div class="meta"><div class="role">Muted / detail</div><div class="hex">#8FA3B8</div><div class="pct">steel text on night, hairlines</div></div></div>
+        <div class="swatch" data-hex="#EFF3F7"><div class="chip" style="background:#EFF3F7"></div><div class="meta"><div class="role">Text on dark</div><div class="hex">#EFF3F7</div><div class="pct">cool white on night</div></div></div>
+      </div>
+      <div class="split-bar"><div style="flex:60; background:#0B1626"></div><div style="flex:30; background:#DCE4EC"></div><div style="flex:10; background:#D02460"></div></div>
+      <div class="notes">
+        <div class="note-block"><h3>Psychology &amp; rationale</h3><p>The most nightlife-native option: a blue-black canvas like the hour the socials actually happen, a cool mist for daylight sections, and a raspberry accent that is passion without the black/red cliché every Latin studio reaches for. Raspberry sits on the warm-pink side (clearly not purple) and speaks to leads and followers equally when paired with the cool, architectural mains. Sharpest "modern club" identity of the ten.</p></div>
+        <div class="note-block"><h3>Contrast (WCAG)</h3><div class="contrast-chips"><span>Mist on night <b>14:1 AAA</b></span><span>White on raspberry CTA <b>5.1:1 AA</b></span><span>Steel muted on night <b>7+:1 AAA</b></span><span>Ink on mist <b>12+:1 AAA</b></span></div><p style="margin-top:8px">Raspberry works as large display text on mist (AA-Large); body-size raspberry text only on the night canvas.</p></div>
+      </div>
+      <div class="mockup">
+        <div class="mk-nav"><span class="mk-logo">AX<em>c</em>ent</span><span class="mk-links"><span>HOME</span><span>CLASSES</span><span>EVENTS</span><span>CONTACT</span></span><span class="mk-cta-sm">Book Free Trial</span></div>
+        <div class="mk-hero">
+          <div><h4>Learn Bachata in Zurich — <em>no partner needed</em></h4><p>Small classes, real connection, and teachers who remember what the first step feels like.</p><div class="mk-btns"><span class="mk-btn-primary">Book Free Trial</span><span class="mk-btn-ghost">Class Schedule</span></div><div class="mk-chips"><span>Beginner friendly</span><span>No experience required</span><span>No partner needed</span></div></div>
+          <div class="mk-hero-visual"></div>
+        </div>
+        <div class="mk-band"><div class="mk-band-title">Start with other beginners</div>
+          <div class="mk-card"><div class="lvl">Monday 18:30</div><h5>Bachata Beginner 0</h5><p>Absolute beginners — start here.</p></div>
+          <div class="mk-card"><div class="lvl">Tuesday 20:30</div><h5>Afro Beginner</h5><p>Grounded rhythm and footwork.</p></div>
+          <div class="mk-card"><div class="lvl">Wednesday 19:30</div><h5>Sensual Foundation</h5><p>Waves, body isolation, connection.</p></div>
+        </div>
+        <div class="mk-review"><span class="mk-stars" style="color:#D02460">★★★★★</span><p>"I started as a complete beginner and after a few weeks I can already social dance." <b>— Laura M, Google Review</b></p></div>
+        <div class="mk-footer"><span><b>AXcent Dance</b> · Hermetschloostrasse 73, Zürich</span><span>Book Free Trial · Schedule · Contact</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= R2-04 PORCELAIN & FRENCH BLUE ================= -->
+  <section class="palette" id="n4" style="--m1:#F4EFE6; --m2:#2C4E75; --accent:#E8A13D; --detail:#75706A; --t1:#1D2026; --mut1:#75706A; --t2:#F4EFE6; --card:#3A5C84; --tcard:#F4EFE6; --mutcard:#B9C6D6; --onacc:#1D1608;">
+    <div class="wrap">
+      <div class="palette-head">
+        <span class="num">R2 · 04</span><h2>Porcelain &amp; French Blue</h2>
+        <span class="mood">Lakeside daylight — Swiss trust, honeyed warmth</span>
+      </div>
+      <div class="swatch-row">
+        <div class="swatch" data-hex="#F4EFE6"><div class="chip" style="background:#F4EFE6"></div><div class="meta"><div class="role">Main 1 · canvas</div><div class="hex">#F4EFE6</div><div class="pct">~60% — light page canvas</div></div></div>
+        <div class="swatch" data-hex="#2C4E75"><div class="chip" style="background:#2C4E75"></div><div class="meta"><div class="role">Main 2 · bands</div><div class="hex">#2C4E75</div><div class="pct">~30% — hero, contrast bands, footer</div></div></div>
+        <div class="swatch" data-hex="#E8A13D"><div class="chip" style="background:#E8A13D"></div><div class="meta"><div class="role">Accent · CTA</div><div class="hex">#E8A13D</div><div class="pct">~10% — honey buttons, highlights</div></div></div>
+        <div class="swatch" data-hex="#75706A"><div class="chip" style="background:#75706A"></div><div class="meta"><div class="role">Muted text</div><div class="hex">#75706A</div><div class="pct">on porcelain</div></div></div>
+        <div class="swatch" data-hex="#1D2026"><div class="chip" style="background:#1D2026"></div><div class="meta"><div class="role">Text on light</div><div class="hex">#1D2026</div><div class="pct">ink on porcelain</div></div></div>
+      </div>
+      <div class="split-bar"><div style="flex:60; background:#F4EFE6"></div><div style="flex:30; background:#2C4E75"></div><div style="flex:10; background:#E8A13D"></div></div>
+      <div class="notes">
+        <div class="note-block"><h3>Psychology &amp; rationale</h3><p>A light-first identity built on the most trusted hue there is: a softened French blue instead of corporate navy, floating on warm porcelain. It reads Zurich — lake, sky, quality — and is the least intimidating first impression for a nervous beginner researching classes on a lunch break. The honey accent supplies the warmth and keeps CTAs unmissable on both canvases. Blue+honey is the trust+excitement complementary pair in its gentlest form.</p></div>
+        <div class="note-block"><h3>Contrast (WCAG)</h3><div class="contrast-chips"><span>Ink on porcelain <b>13+:1 AAA</b></span><span>Porcelain on french blue <b>7.5:1 AAA</b></span><span>French blue text on porcelain <b>7.5:1 AAA</b></span><span>Ink on honey CTA <b>8.6:1 AAA</b></span></div><p style="margin-top:8px">Honey is fills/details only — never text on the light canvas (1.9:1). French blue doubles as a text color on porcelain.</p></div>
+      </div>
+      <div class="mockup">
+        <div class="mk-nav" style="background:var(--m2)"><span class="mk-logo" style="color:var(--t2)">AX<em>c</em>ent</span><span class="mk-links" style="color:var(--mutcard)"><span>HOME</span><span>CLASSES</span><span>EVENTS</span><span>CONTACT</span></span><span class="mk-cta-sm">Book Free Trial</span></div>
+        <div class="mk-hero">
+          <div><h4>Learn Bachata in Zurich — <em>no partner needed</em></h4><p>Small classes, real connection, and teachers who remember what the first step feels like.</p><div class="mk-btns"><span class="mk-btn-primary">Book Free Trial</span><span class="mk-btn-ghost">Class Schedule</span></div><div class="mk-chips"><span>Beginner friendly</span><span>No experience required</span><span>No partner needed</span></div></div>
+          <div class="mk-hero-visual"></div>
+        </div>
+        <div class="mk-band"><div class="mk-band-title">Start with other beginners</div>
+          <div class="mk-card"><div class="lvl" style="color:#F3C87E">Monday 18:30</div><h5>Bachata Beginner 0</h5><p>Absolute beginners — start here.</p></div>
+          <div class="mk-card"><div class="lvl" style="color:#F3C87E">Tuesday 20:30</div><h5>Afro Beginner</h5><p>Grounded rhythm and footwork.</p></div>
+          <div class="mk-card"><div class="lvl" style="color:#F3C87E">Wednesday 19:30</div><h5>Sensual Foundation</h5><p>Waves, body isolation, connection.</p></div>
+        </div>
+        <div class="mk-review"><span class="mk-stars" style="color:#C8811E">★★★★★</span><p style="color:var(--mut1)">"I started as a complete beginner and after a few weeks I can already social dance." <b style="color:var(--t1)">— Laura M, Google Review</b></p></div>
+        <div class="mk-footer" style="background:var(--m2); color:var(--mutcard)"><span><b style="color:#F3C87E">AXcent Dance</b> · Hermetschloostrasse 73, Zürich</span><span>Book Free Trial · Schedule · Contact</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= R2-05 NOIR & BRASS, CABARET ================= -->
+  <section class="palette" id="n5" style="--m1:#141210; --m2:#9C7A3C; --accent:#D9243B; --detail:#9C7A3C; --t1:#F3EAD8; --mut1:#A79E8D; --t2:#171106; --card:#221E18; --tcard:#F3EAD8; --mutcard:#B5AB98; --onacc:#FFFFFF;">
+    <div class="wrap">
+      <div class="palette-head">
+        <span class="num">R2 · 05</span><h2>Noir &amp; Brass</h2>
+        <span class="mood">Art-Deco ballroom — jazz age glamour, cabaret heat</span>
+      </div>
+      <div class="swatch-row">
+        <div class="swatch" data-hex="#141210"><div class="chip" style="background:#141210"></div><div class="meta"><div class="role">Main 1 · canvas</div><div class="hex">#141210</div><div class="pct">~60% — page canvas</div></div></div>
+        <div class="swatch" data-hex="#9C7A3C"><div class="chip" style="background:#9C7A3C"></div><div class="meta"><div class="role">Main 2 · bands</div><div class="hex">#9C7A3C</div><div class="pct">~30% — brass bands, frames, big numerals</div></div></div>
+        <div class="swatch" data-hex="#D9243B"><div class="chip" style="background:#D9243B"></div><div class="meta"><div class="role">Accent · CTA</div><div class="hex">#D9243B</div><div class="pct">~10% — cabaret red buttons, highlights</div></div></div>
+        <div class="swatch" data-hex="#F3EAD8"><div class="chip" style="background:#F3EAD8"></div><div class="meta"><div class="role">Text</div><div class="hex">#F3EAD8</div><div class="pct">cream on noir</div></div></div>
+        <div class="swatch" data-hex="#A79E8D"><div class="chip" style="background:#A79E8D"></div><div class="meta"><div class="role">Muted text</div><div class="hex">#A79E8D</div><div class="pct">supporting copy</div></div></div>
+      </div>
+      <div class="split-bar"><div style="flex:60; background:#141210"></div><div style="flex:30; background:#9C7A3C"></div><div style="flex:10; background:#D9243B"></div></div>
+      <div class="notes">
+        <div class="note-block"><h3>Psychology &amp; rationale</h3><p>Where round one used gold as a garnish, this makes brass a true second main — bands, frames, oversized schedule numerals — for full Art-Deco ballroom glamour: jazz age, cabaret, brushed metal under warm light. It is the most "dance heritage" of all ten directions and instantly signals premium event energy (congress and show pages would look spectacular). The cabaret-red accent stays scarce, so it hits like a spotlight, not a theme.</p></div>
+        <div class="note-block"><h3>Contrast (WCAG)</h3><div class="contrast-chips"><span>Cream on noir <b>15:1 AAA</b></span><span>Brass text on noir <b>4.7:1 AA</b></span><span>Ink on brass bands <b>4.8:1 AA</b></span><span>White on cabaret CTA <b>4.9:1 AA</b></span></div><p style="margin-top:8px">Brass carries large type and surfaces; body copy on brass uses near-black ink. Red is never body text.</p></div>
+      </div>
+      <div class="mockup">
+        <div class="mk-nav"><span class="mk-logo">AX<em>c</em>ent</span><span class="mk-links"><span>HOME</span><span>CLASSES</span><span>EVENTS</span><span>CONTACT</span></span><span class="mk-cta-sm">Book Free Trial</span></div>
+        <div class="mk-hero">
+          <div><h4>Learn Bachata in Zurich — <em>no partner needed</em></h4><p>Small classes, real connection, and teachers who remember what the first step feels like.</p><div class="mk-btns"><span class="mk-btn-primary">Book Free Trial</span><span class="mk-btn-ghost">Class Schedule</span></div><div class="mk-chips"><span>Beginner friendly</span><span>No experience required</span><span>No partner needed</span></div></div>
+          <div class="mk-hero-visual"></div>
+        </div>
+        <div class="mk-band"><div class="mk-band-title" style="color:var(--t2)">Start with other beginners</div>
+          <div class="mk-card"><div class="lvl" style="color:#E8B04B">Monday 18:30</div><h5>Bachata Beginner 0</h5><p>Absolute beginners — start here.</p></div>
+          <div class="mk-card"><div class="lvl" style="color:#E8B04B">Tuesday 20:30</div><h5>Afro Beginner</h5><p>Grounded rhythm and footwork.</p></div>
+          <div class="mk-card"><div class="lvl" style="color:#E8B04B">Wednesday 19:30</div><h5>Sensual Foundation</h5><p>Waves, body isolation, connection.</p></div>
+        </div>
+        <div class="mk-review"><span class="mk-stars" style="color:#9C7A3C">★★★★★</span><p>"I started as a complete beginner and after a few weeks I can already social dance." <b>— Laura M, Google Review</b></p></div>
+        <div class="mk-footer"><span><b>AXcent Dance</b> · Hermetschloostrasse 73, Zürich</span><span>Book Free Trial · Schedule · Contact</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= COMPARISON (ROUND 2) ================= -->
+  <section class="compare" id="compare">
+    <div class="wrap">
+      <h2>Round 2 — side-by-side</h2>
+      <table>
+        <thead><tr><th>Palette</th><th>Colors</th><th>Feels like</th><th>Best for</th><th>Risk / watch-out</th></tr></thead>
+        <tbody>
+          <tr><td>R2·01 Ultramarine &amp; Bone</td><td><span class="dots"><i style="background:#182F8A"></i><i style="background:#F2EEE3"></i><i style="background:#FFB020"></i></span></td><td>Artistic, confident, contemporary</td><td>Positioning dance as craft/culture; strong logo canvas</td><td>Saturated blue canvas is bold — needs disciplined photography treatment</td></tr>
+          <tr><td>R2·02 Graphite &amp; Porcelain</td><td><span class="dots"><i style="background:#1A1A1C"></i><i style="background:#F5F3EF"></i><i style="background:#F5B301"></i></span></td><td>Luxury minimalism, timeless</td><td>Letting photos/video carry emotion; slowest to age; total logo freedom</td><td>Monochrome lives or dies by photography quality</td></tr>
+          <tr><td>R2·03 Night &amp; Mist</td><td><span class="dots"><i style="background:#0B1626"></i><i style="background:#DCE4EC"></i><i style="background:#D02460"></i></span></td><td>Modern club, sensual, cool</td><td>Nightlife-native identity; social/party audience</td><td>Raspberry must stay scarce or it tips playful/feminine</td></tr>
+          <tr><td>R2·04 Porcelain &amp; French Blue</td><td><span class="dots"><i style="background:#F4EFE6"></i><i style="background:#2C4E75"></i><i style="background:#E8A13D"></i></span></td><td>Daylight, trustworthy, Swiss</td><td>Beginner acquisition; least intimidating first impression</td><td>Gentlest personality — motion & typography must add the energy</td></tr>
+          <tr><td>R2·05 Noir &amp; Brass</td><td><span class="dots"><i style="background:#141210"></i><i style="background:#9C7A3C"></i><i style="background:#D9243B"></i></span></td><td>Art-Deco ballroom, glamorous</td><td>Events, congress, show-driven brand; strongest heritage story</td><td>Brass at 30% is daring — cheap execution would look gaudy; needs restraint</td></tr>
+        </tbody>
+      </table>
+      <div class="reco"><b>My recommendation (round 2):</b> <b>R2·02 Graphite &amp; Porcelain with the saffron spark</b> if you want the safest premium foundation that gives your new logo total freedom and never ages — or <b>R2·01 Ultramarine &amp; Bone</b> if you want the site itself to carry a bold, ownable color identity. A strong pairing strategy: R2·02 as the site system with R2·05's brass+cabaret reserved for events and congress pages. Practical next step: pick two finalists and I will apply each to the live homepage behind a toggle so you can compare them on the real page, not just mockups.</div>
+    </div>
+  </section>
+
+  <!-- ================= ROUND 1 (REFERENCE) ================= -->
+  <section class="principles" id="round1">
+    <div class="wrap">
+      <h2>Round 1 — earlier proposals (reference)</h2>
+      <p style="color:#A89F92; font-size:.92rem">Kept for comparison. These leaned on the current logo's coral; the brief has since changed to a full palette + logo redesign. 03–05 remain valid clean-break candidates.</p>
+    </div>
+  </section>
+
+  <!-- ================= 01 MIDNIGHT & IVORY ================= -->
+  <section class="palette" id="p1" style="--m1:#101B2D; --m2:#F6EFE3; --accent:#FF5A3C; --detail:#C9A227; --t1:#F6EFE3; --mut1:#93A0B4; --t2:#131A26; --card:#FFFDF8; --tcard:#131A26; --mutcard:#6B7280; --onacc:#131313;">
+    <div class="wrap">
+      <div class="palette-head">
+        <span class="num">01</span><h2>Midnight &amp; Ivory</h2>
+        <span class="mood">Editorial contrast — the city at night, the studio by day</span>
+      </div>
+      <div class="swatch-row">
+        <div class="swatch" data-hex="#101B2D"><div class="chip" style="background:#101B2D"></div><div class="meta"><div class="role">Main 1 · canvas</div><div class="hex">#101B2D</div><div class="pct">~60% — hero, dark sections, footer</div></div></div>
+        <div class="swatch" data-hex="#F6EFE3"><div class="chip" style="background:#F6EFE3"></div><div class="meta"><div class="role">Main 2 · canvas</div><div class="hex">#F6EFE3</div><div class="pct">~30% — light bands, cards, forms</div></div></div>
+        <div class="swatch" data-hex="#FF5A3C"><div class="chip" style="background:#FF5A3C"></div><div class="meta"><div class="role">Accent · CTA</div><div class="hex">#FF5A3C</div><div class="pct">~10% — buttons, highlights, hovers</div></div></div>
+        <div class="swatch" data-hex="#C9A227"><div class="chip" style="background:#C9A227"></div><div class="meta"><div class="role">Detail</div><div class="hex">#C9A227</div><div class="pct">hairlines, stars, icons</div></div></div>
+        <div class="swatch" data-hex="#93A0B4"><div class="chip" style="background:#93A0B4"></div><div class="meta"><div class="role">Muted text</div><div class="hex">#93A0B4</div><div class="pct">on midnight</div></div></div>
+      </div>
+      <div class="split-bar"><div style="flex:60; background:#101B2D"></div><div style="flex:30; background:#F6EFE3"></div><div style="flex:10; background:#FF5A3C"></div></div>
+      <div class="notes">
+        <div class="note-block"><h3>Psychology &amp; rationale</h3><p>Deep blue is the most trusted color in branding; coral is your logo's fire. Together they are the textbook complementary pair — trust from the midnight canvas, passion from the coral accent — and the ivory second main keeps the studio feeling human and daylight-honest, not nightclub-only. Direct continuity with the coral the brand already owns.</p></div>
+        <div class="note-block"><h3>Contrast (WCAG)</h3><div class="contrast-chips"><span>Ivory on midnight <b>14.9:1 AAA</b></span><span>Coral text on midnight <b>5.5:1 AA</b></span><span>Ink on coral CTA <b>6.0:1 AA</b></span><span>Ink on ivory <b>13+:1 AAA</b></span></div><p style="margin-top:8px">Rule: CTA labels are near-black ink — never white on coral (3.1:1, fails).</p></div>
+      </div>
+      <div class="mockup">
+        <div class="mk-nav"><span class="mk-logo">AX<em>c</em>ent</span><span class="mk-links"><span>HOME</span><span>CLASSES</span><span>EVENTS</span><span>CONTACT</span></span><span class="mk-cta-sm">Book Free Trial</span></div>
+        <div class="mk-hero">
+          <div><h4>Learn Bachata in Zurich — <em>no partner needed</em></h4><p>Small classes, real connection, and teachers who remember what the first step feels like.</p><div class="mk-btns"><span class="mk-btn-primary">Book Free Trial</span><span class="mk-btn-ghost">Class Schedule</span></div><div class="mk-chips"><span>Beginner friendly</span><span>No experience required</span><span>No partner needed</span></div></div>
+          <div class="mk-hero-visual"></div>
+        </div>
+        <div class="mk-band"><div class="mk-band-title">Start with other beginners</div>
+          <div class="mk-card"><div class="lvl">Monday 18:30</div><h5>Bachata Beginner 0</h5><p>Absolute beginners — start here.</p></div>
+          <div class="mk-card"><div class="lvl">Tuesday 20:30</div><h5>Afro Beginner</h5><p>Grounded rhythm and footwork.</p></div>
+          <div class="mk-card"><div class="lvl">Wednesday 19:30</div><h5>Sensual Foundation</h5><p>Waves, body isolation, connection.</p></div>
+        </div>
+        <div class="mk-review"><span class="mk-stars">★★★★★</span><p>"I started as a complete beginner and after a few weeks I can already social dance." <b>— Laura M, Google Review</b></p></div>
+        <div class="mk-footer"><span><b>AXcent Dance</b> · Hermetschloostrasse 73, Zürich</span><span>Book Free Trial · Schedule · Contact</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 02 ESPRESSO & CHAMPAGNE ================= -->
+  <section class="palette" id="p2" style="--m1:#221510; --m2:#F3E7D3; --accent:#FF6A3D; --detail:#D9A85C; --t1:#F6EDE0; --mut1:#B3A697; --t2:#2A1B12; --card:#FFFBF2; --tcard:#2A1B12; --mutcard:#7A6A57; --onacc:#1C0F08;">
+    <div class="wrap">
+      <div class="palette-head">
+        <span class="num">02</span><h2>Espresso &amp; Champagne</h2>
+        <span class="mood">Candlelight social — the warmest evolution of today's logo</span>
+      </div>
+      <div class="swatch-row">
+        <div class="swatch" data-hex="#221510"><div class="chip" style="background:#221510"></div><div class="meta"><div class="role">Main 1 · canvas</div><div class="hex">#221510</div><div class="pct">~60% — hero, dark sections, footer</div></div></div>
+        <div class="swatch" data-hex="#F3E7D3"><div class="chip" style="background:#F3E7D3"></div><div class="meta"><div class="role">Main 2 · canvas</div><div class="hex">#F3E7D3</div><div class="pct">~30% — light bands, cards, forms</div></div></div>
+        <div class="swatch" data-hex="#FF6A3D"><div class="chip" style="background:#FF6A3D"></div><div class="meta"><div class="role">Accent · CTA</div><div class="hex">#FF6A3D</div><div class="pct">~10% — buttons, highlights</div></div></div>
+        <div class="swatch" data-hex="#D9A85C"><div class="chip" style="background:#D9A85C"></div><div class="meta"><div class="role">Detail</div><div class="hex">#D9A85C</div><div class="pct">brass hairlines, stars</div></div></div>
+        <div class="swatch" data-hex="#B3A697"><div class="chip" style="background:#B3A697"></div><div class="meta"><div class="role">Muted text</div><div class="hex">#B3A697</div><div class="pct">on espresso</div></div></div>
+      </div>
+      <div class="split-bar"><div style="flex:60; background:#221510"></div><div style="flex:30; background:#F3E7D3"></div><div style="flex:10; background:#FF6A3D"></div></div>
+      <div class="notes">
+        <div class="note-block"><h3>Psychology &amp; rationale</h3><p>Brown-black reads as espresso, leather, and candlelit bars — premium without coldness, and unusual in the dance niche. The champagne main is the direct heir of the current site's warmth, so photos and existing assets keep working. Coral-orange accent = social energy and appetite for action. Lowest-risk premium move; everything already on brand.</p></div>
+        <div class="note-block"><h3>Contrast (WCAG)</h3><div class="contrast-chips"><span>Champagne on espresso <b>~14:1 AAA</b></span><span>Coral text on espresso <b>6.2:1 AA</b></span><span>Brass on espresso <b>8.2:1 AAA</b></span><span>Ink on coral CTA <b>≥5:1 AA</b></span></div><p style="margin-top:8px">Same ink-on-coral CTA rule; brass reserved for details, never long text on champagne.</p></div>
+      </div>
+      <div class="mockup">
+        <div class="mk-nav"><span class="mk-logo">AX<em>c</em>ent</span><span class="mk-links"><span>HOME</span><span>CLASSES</span><span>EVENTS</span><span>CONTACT</span></span><span class="mk-cta-sm">Book Free Trial</span></div>
+        <div class="mk-hero">
+          <div><h4>Learn Bachata in Zurich — <em>no partner needed</em></h4><p>Small classes, real connection, and teachers who remember what the first step feels like.</p><div class="mk-btns"><span class="mk-btn-primary">Book Free Trial</span><span class="mk-btn-ghost">Class Schedule</span></div><div class="mk-chips"><span>Beginner friendly</span><span>No experience required</span><span>No partner needed</span></div></div>
+          <div class="mk-hero-visual"></div>
+        </div>
+        <div class="mk-band"><div class="mk-band-title">Start with other beginners</div>
+          <div class="mk-card"><div class="lvl">Monday 18:30</div><h5>Bachata Beginner 0</h5><p>Absolute beginners — start here.</p></div>
+          <div class="mk-card"><div class="lvl">Tuesday 20:30</div><h5>Afro Beginner</h5><p>Grounded rhythm and footwork.</p></div>
+          <div class="mk-card"><div class="lvl">Wednesday 19:30</div><h5>Sensual Foundation</h5><p>Waves, body isolation, connection.</p></div>
+        </div>
+        <div class="mk-review"><span class="mk-stars">★★★★★</span><p>"I started as a complete beginner and after a few weeks I can already social dance." <b>— Laura M, Google Review</b></p></div>
+        <div class="mk-footer"><span><b>AXcent Dance</b> · Hermetschloostrasse 73, Zürich</span><span>Book Free Trial · Schedule · Contact</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 03 NOIR & BORDEAUX ================= -->
+  <section class="palette" id="p3" style="--m1:#161114; --m2:#6E1F2E; --accent:#E8B04B; --detail:#E8B04B; --t1:#F4EBDD; --mut1:#A99AA0; --t2:#F4EBDD; --card:#241A1E; --tcard:#F4EBDD; --mutcard:#B7A6AC; --onacc:#1C1206;">
+    <div class="wrap">
+      <div class="palette-head">
+        <span class="num">03</span><h2>Noir &amp; Bordeaux</h2>
+        <span class="mood">Passion premium — wine, night, and gold</span>
+      </div>
+      <div class="swatch-row">
+        <div class="swatch" data-hex="#161114"><div class="chip" style="background:#161114"></div><div class="meta"><div class="role">Main 1 · canvas</div><div class="hex">#161114</div><div class="pct">~60% — page canvas</div></div></div>
+        <div class="swatch" data-hex="#6E1F2E"><div class="chip" style="background:#6E1F2E"></div><div class="meta"><div class="role">Main 2 · bands</div><div class="hex">#6E1F2E</div><div class="pct">~30% — hero shade, contrast strips, hovers</div></div></div>
+        <div class="swatch" data-hex="#E8B04B"><div class="chip" style="background:#E8B04B"></div><div class="meta"><div class="role">Accent · CTA</div><div class="hex">#E8B04B</div><div class="pct">~10% — gold buttons, stars, highlights</div></div></div>
+        <div class="swatch" data-hex="#F4EBDD"><div class="chip" style="background:#F4EBDD"></div><div class="meta"><div class="role">Text</div><div class="hex">#F4EBDD</div><div class="pct">cream headings/body on dark</div></div></div>
+        <div class="swatch" data-hex="#A99AA0"><div class="chip" style="background:#A99AA0"></div><div class="meta"><div class="role">Muted text</div><div class="hex">#A99AA0</div><div class="pct">supporting copy</div></div></div>
+      </div>
+      <div class="split-bar"><div style="flex:60; background:#161114"></div><div style="flex:30; background:#6E1F2E"></div><div style="flex:10; background:#E8B04B"></div></div>
+      <div class="notes">
+        <div class="note-block"><h3>Psychology &amp; rationale</h3><p>The most sensual option: bordeaux is red wine and late-night intimacy — bachata's own emotional register — while the noir canvas gives Equinox-style luxury and the gold accent says premium celebration. Fully dark (no light canvas), so it commits hardest to the nightlife identity. The boldest statement of the five; also the one that photographs of dim studios and socials will blend into most naturally.</p></div>
+        <div class="note-block"><h3>Contrast (WCAG)</h3><div class="contrast-chips"><span>Cream on noir <b>~15:1 AAA</b></span><span>Cream on bordeaux <b>9.1:1 AAA</b></span><span>Gold text on noir <b>9.3:1 AAA</b></span><span>Ink on gold CTA <b>9.6:1 AAA</b></span></div><p style="margin-top:8px">Bordeaux is a surface color only — never text on the noir canvas (too close in luminance).</p></div>
+      </div>
+      <div class="mockup">
+        <div class="mk-nav"><span class="mk-logo">AX<em>c</em>ent</span><span class="mk-links"><span>HOME</span><span>CLASSES</span><span>EVENTS</span><span>CONTACT</span></span><span class="mk-cta-sm">Book Free Trial</span></div>
+        <div class="mk-hero">
+          <div><h4>Learn Bachata in Zurich — <em>no partner needed</em></h4><p>Small classes, real connection, and teachers who remember what the first step feels like.</p><div class="mk-btns"><span class="mk-btn-primary">Book Free Trial</span><span class="mk-btn-ghost">Class Schedule</span></div><div class="mk-chips"><span>Beginner friendly</span><span>No experience required</span><span>No partner needed</span></div></div>
+          <div class="mk-hero-visual"></div>
+        </div>
+        <div class="mk-band"><div class="mk-band-title">Start with other beginners</div>
+          <div class="mk-card"><div class="lvl">Monday 18:30</div><h5>Bachata Beginner 0</h5><p>Absolute beginners — start here.</p></div>
+          <div class="mk-card"><div class="lvl">Tuesday 20:30</div><h5>Afro Beginner</h5><p>Grounded rhythm and footwork.</p></div>
+          <div class="mk-card"><div class="lvl">Wednesday 19:30</div><h5>Sensual Foundation</h5><p>Waves, body isolation, connection.</p></div>
+        </div>
+        <div class="mk-review"><span class="mk-stars">★★★★★</span><p>"I started as a complete beginner and after a few weeks I can already social dance." <b>— Laura M, Google Review</b></p></div>
+        <div class="mk-footer"><span><b>AXcent Dance</b> · Hermetschloostrasse 73, Zürich</span><span>Book Free Trial · Schedule · Contact</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 04 SAND & TERRACOTTA ================= -->
+  <section class="palette" id="p4" style="--m1:#F2E4D0; --m2:#B34A32; --accent:#16324F; --detail:#8A6F5C; --t1:#1D130B; --mut1:#7A6A57; --t2:#FFF6EA; --card:#FFFBF2; --tcard:#1D130B; --mutcard:#7A6A57; --onacc:#F6EFE3;">
+    <div class="wrap">
+      <div class="palette-head">
+        <span class="num">04</span><h2>Sand &amp; Terracotta</h2>
+        <span class="mood">Daylight studio — Mediterranean warmth, zero darkness</span>
+      </div>
+      <div class="swatch-row">
+        <div class="swatch" data-hex="#F2E4D0"><div class="chip" style="background:#F2E4D0"></div><div class="meta"><div class="role">Main 1 · canvas</div><div class="hex">#F2E4D0</div><div class="pct">~60% — page canvas, whitespace</div></div></div>
+        <div class="swatch" data-hex="#B34A32"><div class="chip" style="background:#B34A32"></div><div class="meta"><div class="role">Main 2 · bands</div><div class="hex">#B34A32</div><div class="pct">~30% — hero band, contrast strips, footer</div></div></div>
+        <div class="swatch" data-hex="#16324F"><div class="chip" style="background:#16324F"></div><div class="meta"><div class="role">Accent · CTA</div><div class="hex">#16324F</div><div class="pct">~10% — ink-blue buttons, links</div></div></div>
+        <div class="swatch" data-hex="#8A6F5C"><div class="chip" style="background:#8A6F5C"></div><div class="meta"><div class="role">Detail</div><div class="hex">#8A6F5C</div><div class="pct">clay hairlines, captions</div></div></div>
+        <div class="swatch" data-hex="#1D130B"><div class="chip" style="background:#1D130B"></div><div class="meta"><div class="role">Text</div><div class="hex">#1D130B</div><div class="pct">ink on sand</div></div></div>
+      </div>
+      <div class="split-bar"><div style="flex:60; background:#F2E4D0"></div><div style="flex:30; background:#B34A32"></div><div style="flex:10; background:#16324F"></div></div>
+      <div class="notes">
+        <div class="note-block"><h3>Psychology &amp; rationale</h3><p>The anti-nightclub move: while every competitor goes dark, AXcent goes daylight. Terracotta is Latin warmth in its most architectural form (clay, Havana walls, summer), sand keeps it airy and welcoming for nervous beginners, and the deep ink-blue accent inverts the usual logic — a calm, authoritative CTA that stands out precisely because the page is warm. Most differentiated for beginner acquisition; least "night scene."</p></div>
+        <div class="note-block"><h3>Contrast (WCAG)</h3><div class="contrast-chips"><span>Ink on sand <b>~13:1 AAA</b></span><span>Cream on terracotta <b>4.7:1 AA</b></span><span>Cream on ink-blue CTA <b>11.5:1 AAA</b></span><span>Terracotta as large text on sand <b>AA-Large</b></span></div><p style="margin-top:8px">Terracotta works for headings/large type on sand, not for small body copy.</p></div>
+      </div>
+      <div class="mockup">
+        <div class="mk-nav"><span class="mk-logo">AX<em>c</em>ent</span><span class="mk-links"><span>HOME</span><span>CLASSES</span><span>EVENTS</span><span>CONTACT</span></span><span class="mk-cta-sm">Book Free Trial</span></div>
+        <div class="mk-hero">
+          <div><h4>Learn Bachata in Zurich — <em>no partner needed</em></h4><p>Small classes, real connection, and teachers who remember what the first step feels like.</p><div class="mk-btns"><span class="mk-btn-primary">Book Free Trial</span><span class="mk-btn-ghost">Class Schedule</span></div><div class="mk-chips"><span>Beginner friendly</span><span>No experience required</span><span>No partner needed</span></div></div>
+          <div class="mk-hero-visual"></div>
+        </div>
+        <div class="mk-band"><div class="mk-band-title">Start with other beginners</div>
+          <div class="mk-card"><div class="lvl">Monday 18:30</div><h5>Bachata Beginner 0</h5><p>Absolute beginners — start here.</p></div>
+          <div class="mk-card"><div class="lvl">Tuesday 20:30</div><h5>Afro Beginner</h5><p>Grounded rhythm and footwork.</p></div>
+          <div class="mk-card"><div class="lvl">Wednesday 19:30</div><h5>Sensual Foundation</h5><p>Waves, body isolation, connection.</p></div>
+        </div>
+        <div class="mk-review"><span class="mk-stars">★★★★★</span><p>"I started as a complete beginner and after a few weeks I can already social dance." <b>— Laura M, Google Review</b></p></div>
+        <div class="mk-footer"><span><b>AXcent Dance</b> · Hermetschloostrasse 73, Zürich</span><span>Book Free Trial · Schedule · Contact</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 05 ROSE & SLATE ================= -->
+  <section class="palette" id="p5" style="--m1:#EFD7CA; --m2:#26313F; --accent:#D7263D; --detail:#C77B4F; --t1:#26313F; --mut1:#7C6A61; --t2:#F7EDE6; --card:#33404F; --tcard:#F7EDE6; --mutcard:#AFB9C4; --onacc:#FFFFFF;">
+    <div class="wrap">
+      <div class="palette-head">
+        <span class="num">05</span><h2>Rose &amp; Slate</h2>
+        <span class="mood">Contemporary romance — soft warmth, sharp passion</span>
+      </div>
+      <div class="swatch-row">
+        <div class="swatch" data-hex="#EFD7CA"><div class="chip" style="background:#EFD7CA"></div><div class="meta"><div class="role">Main 1 · canvas</div><div class="hex">#EFD7CA</div><div class="pct">~60% — rose-sand page canvas</div></div></div>
+        <div class="swatch" data-hex="#26313F"><div class="chip" style="background:#26313F"></div><div class="meta"><div class="role">Main 2 · bands</div><div class="hex">#26313F</div><div class="pct">~30% — slate hero, cards, footer; also the text color</div></div></div>
+        <div class="swatch" data-hex="#D7263D"><div class="chip" style="background:#D7263D"></div><div class="meta"><div class="role">Accent · CTA</div><div class="hex">#D7263D</div><div class="pct">~10% — crimson buttons, highlights</div></div></div>
+        <div class="swatch" data-hex="#C77B4F"><div class="chip" style="background:#C77B4F"></div><div class="meta"><div class="role">Detail</div><div class="hex">#C77B4F</div><div class="pct">copper hairlines, icons</div></div></div>
+        <div class="swatch" data-hex="#7C6A61"><div class="chip" style="background:#7C6A61"></div><div class="meta"><div class="role">Muted text</div><div class="hex">#7C6A61</div><div class="pct">on rose-sand</div></div></div>
+      </div>
+      <div class="split-bar"><div style="flex:60; background:#EFD7CA"></div><div style="flex:30; background:#26313F"></div><div style="flex:10; background:#D7263D"></div></div>
+      <div class="notes">
+        <div class="note-block"><h3>Psychology &amp; rationale</h3><p>Rose-sand is skin-warm and modern (fashion and beauty language — strong pull for the styling / lady-styling audience), slate grounds it with cool professional weight, and the crimson accent is undiluted bachata passion. The dual mains double as the text system: slate IS the text color on rose, cream is the text on slate — maximum coherence with a minimal token set. The most contemporary and Instagram-native of the five.</p></div>
+        <div class="note-block"><h3>Contrast (WCAG)</h3><div class="contrast-chips"><span>Slate on rose-sand <b>9.6:1 AAA</b></span><span>Cream on slate <b>~12:1 AAA</b></span><span>White on crimson CTA <b>5.0:1 AA</b></span><span>Crimson as large text on rose <b>AA-Large</b></span></div><p style="margin-top:8px">The only palette here where white-on-accent passes AA — crimson buttons can carry white labels.</p></div>
+      </div>
+      <div class="mockup">
+        <div class="mk-nav" style="background:var(--m2)"><span class="mk-logo" style="color:var(--t2)">AX<em>c</em>ent</span><span class="mk-links" style="color:var(--mutcard)"><span>HOME</span><span>CLASSES</span><span>EVENTS</span><span>CONTACT</span></span><span class="mk-cta-sm">Book Free Trial</span></div>
+        <div class="mk-hero">
+          <div><h4>Learn Bachata in Zurich — <em>no partner needed</em></h4><p>Small classes, real connection, and teachers who remember what the first step feels like.</p><div class="mk-btns"><span class="mk-btn-primary">Book Free Trial</span><span class="mk-btn-ghost">Class Schedule</span></div><div class="mk-chips"><span>Beginner friendly</span><span>No experience required</span><span>No partner needed</span></div></div>
+          <div class="mk-hero-visual"></div>
+        </div>
+        <div class="mk-band"><div class="mk-band-title">Start with other beginners</div>
+          <div class="mk-card"><div class="lvl" style="color:#F08A9B">Monday 18:30</div><h5>Bachata Beginner 0</h5><p>Absolute beginners — start here.</p></div>
+          <div class="mk-card"><div class="lvl" style="color:#F08A9B">Tuesday 20:30</div><h5>Afro Beginner</h5><p>Grounded rhythm and footwork.</p></div>
+          <div class="mk-card"><div class="lvl" style="color:#F08A9B">Wednesday 19:30</div><h5>Sensual Foundation</h5><p>Waves, body isolation, connection.</p></div>
+        </div>
+        <div class="mk-review"><span class="mk-stars">★★★★★</span><p style="color:var(--mut1)">"I started as a complete beginner and after a few weeks I can already social dance." <b style="color:var(--t1)">— Laura M, Google Review</b></p></div>
+        <div class="mk-footer" style="background:var(--m2); color:var(--mutcard)"><span><b>AXcent Dance</b> · Hermetschloostrasse 73, Zürich</span><span>Book Free Trial · Schedule · Contact</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= COMPARISON (ROUND 1) ================= -->
+  <section class="compare" id="compare-r1">
+    <div class="wrap">
+      <h2>Round 1 — side-by-side</h2>
+      <table>
+        <thead><tr><th>Palette</th><th>Colors</th><th>Feels like</th><th>Best for</th><th>Risk / watch-out</th></tr></thead>
+        <tbody>
+          <tr><td>01 Midnight &amp; Ivory</td><td><span class="dots"><i style="background:#101B2D"></i><i style="background:#F6EFE3"></i><i style="background:#FF5A3C"></i></span></td><td>Trustworthy, editorial, city-premium</td><td>Broad appeal; keeps logo coral; safest strong choice</td><td>Navy is common in corporate branding — the coral + typography must carry the personality</td></tr>
+          <tr><td>02 Espresso &amp; Champagne</td><td><span class="dots"><i style="background:#221510"></i><i style="background:#F3E7D3"></i><i style="background:#FF6A3D"></i></span></td><td>Warm, intimate, candlelit</td><td>Smoothest transition from today's site; warm photography</td><td>Lowest contrast personality — differentiation rides on the details</td></tr>
+          <tr><td>03 Noir &amp; Bordeaux</td><td><span class="dots"><i style="background:#161114"></i><i style="background:#6E1F2E"></i><i style="background:#E8B04B"></i></span></td><td>Sensual, luxurious, night</td><td>Strongest bachata-passion statement; events &amp; congress pages</td><td>Fully dark; can feel less welcoming to nervous daytime beginners</td></tr>
+          <tr><td>04 Sand &amp; Terracotta</td><td><span class="dots"><i style="background:#F2E4D0"></i><i style="background:#B34A32"></i><i style="background:#16324F"></i></span></td><td>Sunlit, honest, Mediterranean</td><td>Maximum differentiation; beginner-friendliest first impression</td><td>Farthest from the "night social" energy of the videos; hero video needs a dark frame</td></tr>
+          <tr><td>05 Rose &amp; Slate</td><td><span class="dots"><i style="background:#EFD7CA"></i><i style="background:#26313F"></i><i style="background:#D7263D"></i></span></td><td>Modern, fashion-forward, romantic</td><td>Styling/lady-styling audience; Instagram cohesion</td><td>Rose can skew feminine — verify it speaks to leads/followers equally</td></tr>
+        </tbody>
+      </table>
+      <div class="reco"><b>Note:</b> this round's original recommendation (01, on coral-continuity grounds) is superseded — the brief changed to a full palette + logo redesign. See the Round 2 recommendation above. From this round, <b>03 Noir &amp; Bordeaux</b> and <b>05 Rose &amp; Slate</b> remain valid clean-break candidates.</div>
+    </div>
+  </section>
+
+  <section class="sources">
+    <div class="wrap">
+      <h2>Guidelines &amp; sources used</h2>
+      <ul>
+        <li><a href="https://www.wix.com/wixel/resources/60-30-10-color-rule" target="_blank" rel="noopener">Wix — What Is the 60-30-10 Color Rule?</a></li>
+        <li><a href="https://blog.logrocket.com/ux-design/60-30-10-rule/" target="_blank" rel="noopener">LogRocket — Enhance aesthetics with the 60-30-10 rule</a></li>
+        <li><a href="https://logofarmers.com/blog/60-30-10-rule-color-theory/" target="_blank" rel="noopener">LogoFarmers — 60-30-10 Rule in Color Theory for Logos</a></li>
+        <li><a href="https://looka.com/blog/brand-colors/" target="_blank" rel="noopener">Looka — Intro to Brand Colors: The Ultimate Guide</a></li>
+        <li><a href="https://brandingcompass.com/branding/how-many-colors-should-a-brand-have/" target="_blank" rel="noopener">Branding Compass — How many colors should a brand have</a></li>
+        <li><a href="https://www.canva.com/learn/100-color-combinations/" target="_blank" rel="noopener">Canva — 100 color combination ideas (complementary pairing psychology)</a></li>
+        <li><a href="https://www.dancestudiobreakthrough.com/how-to-use-color-psychology-when-branding-your-dance-studio/" target="_blank" rel="noopener">Dance Studio Breakthrough — Color Psychology for Dance Studios</a></li>
+        <li><a href="https://marketmuscles.com/2025/04/exploring-the-color-theory-in-dance-studio-website-design/" target="_blank" rel="noopener">Market Muscles — Color Theory for Dance Websites</a></li>
+        <li><a href="https://www.stellendesign.com/colors-for-fitness-branding/" target="_blank" rel="noopener">Stellen Design — Colors for Fitness Branding (premium dark = Equinox)</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <script>
+    // Inject the studio logo, recolored by each palette's own tokens, on both mains
+    document.querySelectorAll('section.palette').forEach(sec => {
+      const mock = sec.querySelector('.mockup');
+      if (!mock) return;
+      const tile = (bg, textVar, cap) =>
+        `<div class="logo-tile" style="background:var(${bg}); --lgA:var(${textVar}); --lgB:var(--accent); --lgDiv:var(--detail)">` +
+        `<svg viewBox="0 0 460 400" role="img" aria-label="AXcent logo recolored"><use href="#axcent-logo"/></svg>` +
+        `<span class="cap">${cap}</span></div>`;
+      const row = document.createElement('div');
+      row.className = 'logo-row';
+      row.innerHTML = tile('--m1', '--t1', 'Logo on main 1') + tile('--m2', '--t2', 'Logo on main 2');
+      const note = document.createElement('p');
+      note.className = 'logo-note';
+      note.textContent = 'Logo shown as a vector re-draw of its shapes, recolored with this palette’s tokens — figures and X take the accent/primary pair, divider takes the detail color. The real logo file would be recolored the same way.';
+      mock.before(row);
+      row.after(note);
+    });
+
+    document.querySelectorAll('.swatch').forEach(sw => {
+      sw.addEventListener('click', () => {
+        navigator.clipboard.writeText(sw.dataset.hex).then(() => {
+          sw.classList.add('copied');
+          setTimeout(() => sw.classList.remove('copied'), 1400);
+        });
+      });
+    });
+
+    // Palette switcher: click a chip -> show ONLY that palette at the top (instant recolor);
+    // "View all" restores the full scrolling document.
+    (() => {
+      const chips = document.querySelectorAll('.jump a[data-pal]');
+      const allChip = document.querySelector('.jump a[data-all]');
+      const sections = document.querySelectorAll('section.palette');
+
+      function showPalette(id) {
+        // Preserve scroll height when already comparing, so the same component
+        // (logo, mockup, swatches) stays in view across palette switches
+        const wasSingle = document.body.classList.contains('single-mode');
+        const y = window.scrollY;
+        document.body.classList.add('single-mode');
+        sections.forEach(s => { s.style.display = (s.id === id) ? '' : 'none'; });
+        chips.forEach(c => c.classList.toggle('active', c.dataset.pal === id));
+        allChip.classList.remove('active');
+        window.scrollTo({ top: wasSingle ? y : 0, behavior: 'instant' });
+      }
+
+      function showAll() {
+        document.body.classList.remove('single-mode');
+        sections.forEach(s => { s.style.display = ''; });
+        chips.forEach(c => c.classList.remove('active'));
+        allChip.classList.add('active');
+        window.scrollTo({ top: 0, behavior: 'instant' });
+      }
+
+      chips.forEach(chip => chip.addEventListener('click', e => { e.preventDefault(); showPalette(chip.dataset.pal); }));
+      allChip.addEventListener('click', e => { e.preventDefault(); showAll(); });
+
+      // Favorites: star on each chip, persisted in localStorage
+      const FAV_KEY = 'axcent-palette-favs';
+      const favBar = document.getElementById('favBar');
+      let favs = new Set(JSON.parse(localStorage.getItem(FAV_KEY) || '[]'));
+
+      function renderFavs() {
+        chips.forEach(c => c.classList.toggle('faved', favs.has(c.dataset.pal)));
+        const names = [...chips].filter(c => favs.has(c.dataset.pal)).map(c => c.dataset.name);
+        favBar.innerHTML = names.length
+          ? '<b>★ Favorites:</b> ' + names.join(' · ')
+          : 'Click the ★ on a palette to shortlist it — your picks are saved and listed here.';
+      }
+
+      function toggleFav(id) {
+        favs.has(id) ? favs.delete(id) : favs.add(id);
+        localStorage.setItem(FAV_KEY, JSON.stringify([...favs]));
+        renderFavs();
+      }
+
+      chips.forEach(chip => {
+        chip.dataset.name = chip.textContent.trim();
+        const star = document.createElement('span');
+        star.className = 'fav';
+        star.textContent = '★';
+        star.title = 'Mark as favorite';
+        star.addEventListener('click', e => { e.preventDefault(); e.stopPropagation(); toggleFav(chip.dataset.pal); });
+        chip.appendChild(star);
+      });
+      renderFavs();
+
+      // Start in compare mode on the first shortlisted-family palette
+      showPalette('r3a');
+    })();
+  </script>
+</body>
+</html>

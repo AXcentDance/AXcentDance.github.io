@@ -234,7 +234,7 @@
   </url>
   <url>
     <loc>https://axcentdance.com/</loc>
-    <lastmod>2026-06-03T12:00:00+02:00</lastmod>
+    <lastmod>2026-07-04T12:00:00+02:00</lastmod>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/" />
@@ -338,26 +338,26 @@
   </url>
   <url>
     <loc>https://axcentdance.com/contact</loc>
-    <lastmod>2026-05-19T12:00:00+02:00</lastmod>
+    <lastmod>2026-06-15T12:00:00+02:00</lastmod>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/contact" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/contact" />
     <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/contact" />
     <image:image>
-      <image:loc>https://axcentdance.com/assets/images/empty_studio_mirrors.webp</image:loc>
-      <image:title>AXcent Dance Studio Zurich</image:title>
+      <image:loc>https://axcentdance.com/assets/images/studio/studio_room_view_1_1200w.webp</image:loc>
+      <image:title>AXcent Dance Studio in Zurich Altstetten</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://axcentdance.com/de/contact</loc>
-    <lastmod>2026-05-19T12:00:00+02:00</lastmod>
+    <lastmod>2026-06-15T12:00:00+02:00</lastmod>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/contact" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/contact" />
     <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/contact" />
     <image:image>
-      <image:loc>https://axcentdance.com/assets/images/empty_studio_mirrors.webp</image:loc>
-      <image:title>AXcent Dance Studio Zurich</image:title>
+      <image:loc>https://axcentdance.com/assets/images/studio/studio_room_view_1_1200w.webp</image:loc>
+      <image:title>AXcent Dance Studio in Zürich Altstetten</image:title>
     </image:image>
   </url>
   <url>
