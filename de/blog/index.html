@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <title>Blog | AXcent Dance Zürich</title>
+    <link rel="canonical" href="https://axcentdance.com/de/blog">
+    <link rel="alternate" hreflang="en" href="https://axcentdance.com/blog" />
+    <link rel="alternate" hreflang="x-default" href="https://axcentdance.com/blog" />
+    <link rel="alternate" hreflang="de" href="https://axcentdance.com/de/blog" />
+    <meta name="description"
+        content="Lies die neuesten Artikel über Bachata, Tanz-Tipps, Musik und die Tanz-Community in Zürich.">
+    <meta property="og:title" content="Blog | AXcent Dance Zürich">
+    <meta property="og:url" content="https://axcentdance.com/de/blog">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://axcentdance.com/assets/images/hero_new.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Blog | AXcent Dance Zürich">
+    <meta name="twitter:description" content="Lies die neuesten Artikel über Bachata, Tanz-Tipps, Musik und die Tanz-Community in Zürich.">
+    <meta name="twitter:image" content="https://axcentdance.com/assets/images/hero_new.jpg">
+    <meta property="og:description"
+        content="Lies die neuesten Artikel über Bachata, Tanz-Tipps, Musik und die Tanz-Community in Zürich.">
+    <meta property="og:locale" content="de_CH">
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://cdn.jsdelivr.net https://connect.facebook.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com https://placehold.co https://*.googleapis.com https://*.gstatic.com https://www.facebook.com https://connect.facebook.net; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://script.google.com https://formsubmit.co https://www.facebook.com https://connect.facebook.net; frame-src 'self' https://www.google.com; object-src 'none'; base-uri 'self'; media-src 'self' blob:; worker-src 'self' blob:;">
+
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@200..900&family=Outfit:wght@500;600;700;800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Teko:wght@300..700&display=swap">
+    <link rel="stylesheet" href="../../style.css?v=2.3">
+    <link rel="apple-touch-icon" href="/apple-touch-icon-v2.png">
+    <link rel="icon" href="/favicon-axcent-transparent.svg" type="image/svg+xml">
+
+
+    <style>
+        .blog-hero {
+            padding: calc(var(--header-height) + 40px) 20px 80px;
+            text-align: center;
+            background: linear-gradient(to bottom, rgba(5, 2, 8, 0.8), var(--bg-main));
+            /* background-image removed per user request */
+        }
+
+        .blog-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 4rem 20px;
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .blog-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-start);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .blog-image {
+            width: 100%;
+            height: 200px;
+            background: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .blog-content {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .blog-meta {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .blog-title {
+            font-size: 1.3rem;
+            color: white;
+            margin-bottom: 1rem;
+            line-height: 1.4;
+        }
+
+        .blog-excerpt {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .read-more {
+            color: var(--accent-start);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            transition: transform 0.3s ease;
+        }
+
+        .read-more:hover {
+            transform: translateX(5px);
+        }
+
+        .read-more::after {
+            content: '→';
+            margin-left: 5px;
+        }
+
+        /* Compact post rows on phones only, mirroring the EN blog mobile
+           layout. Desktop keeps the shared .modern-card grid from
+           style.css; this inline block never touches other pages. */
+        @media (max-width: 700px) {
+            .blog-grid-modern {
+                grid-template-columns: 1fr;
+                gap: 0.85rem;
+            }
+
+            .modern-card {
+                flex-direction: row;
+                align-items: stretch;
+            }
+
+            .card-image-wrap {
+                position: relative;
+                flex: 0 0 112px;
+                height: auto;
+                min-height: 112px;
+            }
+
+            .card-image {
+                position: absolute;
+                inset: 0;
+                width: 100%;
+                height: 100%;
+            }
+
+            .card-desc,
+            .card-category {
+                display: none;
+            }
+
+            .card-body {
+                padding: 0.8rem 0.95rem;
+                justify-content: center;
+            }
+
+            .card-date {
+                font-size: 0.68rem;
+                margin-bottom: 0.3rem;
+            }
+
+            .card-title {
+                font-size: 1rem;
+                line-height: 1.3;
+                margin-bottom: 0.35rem;
+            }
+
+            .card-link {
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+
+    <!-- Cookie Consent -->
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-E2SYCF7R7X"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-E2SYCF7R7X');
+    </script>
+
+    
+    <!-- Structured Data (Schema.org) -->
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://axcentdance.com/de/blog#webpage",
+      "url": "https://axcentdance.com/de/blog",
+      "name": "Blog | AXcent Dance Zürich",
+      "isPartOf": {
+        "@id": "https://axcentdance.com/#website"
+      },
+      "description": "Lies die neuesten Artikel über Bachata, Tanz-Tipps, Musik und die Tanz-Community in Zürich."
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://axcentdance.com/de/blog#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Startseite",
+          "item": "https://axcentdance.com/de/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Blog",
+          "item": "https://axcentdance.com/de/blog"
+        }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://axcentdance.com/#website",
+      "url": "https://axcentdance.com/",
+      "name": "AXcent Dance",
+      "publisher": {
+        "@id": "https://axcentdance.com/#organization"
+      },
+      "inLanguage": [
+        "en",
+        "de"
+      ]
+    },
+        {
+      "@id": "https://axcentdance.com/#organization",
+      "@type": [
+        "LocalBusiness",
+        "DanceSchool"
+      ],
+      "name": "AXcent Dance",
+      "url": "https://axcentdance.com/",
+      "logo": "https://axcentdance.com/assets/images/logo.webp",
+      "image": "https://axcentdance.com/assets/images/hero_new.webp",
+      "description": "AXcent Dance is a Bachata dance school in Zurich Altstetten offering Bachata Sensual, Dominican Bachata, Salsa, and Latin dance classes for all levels.",
+      "telephone": "+41799668481",
+      "email": "info@axcentdance.com",
+      "hasMap": "https://www.google.com/maps?cid=15680757943659417558",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Hermetschloostrasse 73",
+        "addressLocality": "Zurich",
+        "addressRegion": "ZH",
+        "postalCode": "8048",
+        "addressCountry": "CH"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 47.3941999,
+        "longitude": 8.4745859
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "opens": "11:00",
+          "closes": "22:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Sunday",
+          "opens": "13:00",
+          "closes": "17:00"
+        }
+      ],
+      "serviceArea": [
+        { "@type": "AdministrativeArea", "name": "Zurich" },
+        { "@type": "AdministrativeArea", "name": "Baden" },
+        { "@type": "AdministrativeArea", "name": "Winterthur" },
+        { "@type": "AdministrativeArea", "name": "Urdorf" },
+        { "@type": "AdministrativeArea", "name": "Schlieren" },
+        { "@type": "AdministrativeArea", "name": "Dietikon" }
+      ],
+      "priceRange": "$$"
+    },
+        {
+      "@id": "https://axcentdance.com/#person1",
+      "@type": "Person",
+      "name": "Ale",
+      "jobTitle": "Co-Founder",
+      "knowsAbout": ["Dance", "Bachata", "Salsa", "Reggaeton", "Pedagogy", "Movement", "Dating", "Modern", "Afro", "Kizomba", "Zouk"],
+      "sameAs": [
+        "https://www.instagram.com/aleyxidan/",
+        "https://www.youtube.com/@AXcentDance"
+      ]
+    },
+        {
+      "@id": "https://axcentdance.com/#person2",
+      "@type": "Person",
+      "name": "Xidan",
+      "jobTitle": "Co-Founder",
+      "knowsAbout": ["Dance", "Bachata", "Salsa", "Reggaeton", "Pedagogy", "Movement", "Dating", "Modern", "Afro", "Kizomba", "Zouk"],
+      "sameAs": [
+        "https://www.instagram.com/aleyxidan/",
+        "https://www.youtube.com/@AXcentDance"
+      ]
+    }
+  ]
+}
+</script>
+  <!-- Meta Pixel Code -->
+  <script src="../../meta-pixel.js?v=1.1"></script>
+  <noscript><img height="1" width="1" style="display:none" alt=""
+      src="https://www.facebook.com/tr?id=2846140112392262&ev=PageView&noscript=1" /></noscript>
+  <!-- End Meta Pixel Code -->
+  </head>
+
+<body>
+
+    <!-- Background Elements -->
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+
+    <!-- Navigation Bar -->
+    <header class="main-header">
+        <div class="container navbar">
+            <a href="../" class="logo">
+                <span class="logo-title">AXcent</span><span class="logo-subtitle text-gradient">DANCE</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Toggle menu">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="3" y1="12" x2="21" y2="12" class="line-middle"></line>
+                    <line x1="3" y1="6" x2="21" y2="6" class="line-top"></line>
+                    <line x1="3" y1="18" x2="21" y2="18" class="line-bottom"></line>
+                </svg>
+            </button>
+            <nav class="nav-links">
+        <a href="../../">Home</a>
+        <a href="../about">Über uns</a>
+                <a href="../schedule">Unsere Kurse</a>
+                <a href="../events">Events</a>
+                <a href="../contact">Kontakt</a>
+
+                <div class="dropdown">
+                    <button class="dropbtn">Mehr ▾</button>
+                    <div class="dropdown-content">
+                        <a href="../room-rental"><span>Raumvermietung</span></a>
+                        <a href="../corporate-events"><span>Firmenevents</span></a>
+                        <a href="../wedding-dance"><span>Hochzeitstanz</span></a>
+                        <a href="../private-lessons"><span>Privatstunden</span></a>
+                        <a href="../gallery"><span>Galerie</span></a>
+                        <a href="../education"><span>Ausbildung</span></a>
+                        <a href="../beginner-guide"><span>Anfänger Guide</span></a>
+                        <a href="../blog"><span>Blog</span></a>
+                        <a href="../faq"><span>FAQ</span></a>
+                        <a href="../etiquette"><span>Tanzetikette</span></a>
+                        <a href="../portal"><span>Login</span></a>
+                    </div>
+                </div>
+        <a href="/de/#trial-form" class="btn-header-cta">Probelektion buchen</a>
+      </nav>
+      <div class="lang-switch">
+          <a href="../../blog">EN</a>
+          <span class="divider">|</span>
+          <span class="active">DE</span>
+        </div>
+      
+        </div>
+    </header>
+
+    <main>
+
+        <!-- Hero Section -->
+        <section class="blog-hero">
+            <div class="container">
+
+                <div class="hero-badge">
+                    <span class="hero-badge-line"></span>
+                    <span class="hero-badge-text">EINBLICKE</span>
+                    <span class="hero-badge-line"></span>
+                </div>
+                <h1 class="page-title">Dance Blog</h1>
+                <p class="hero-desc-border" style="border: none; padding: 0;">
+                    Tipps, Geschichten und Inspiration für deine Tanzreise.
+                </p>
+            </div>
+        </section>
+
+        <!-- Featured Article -->
+        <div class="blog-featured reveal">
+            <article class="featured-card" data-category="education">
+                <div class="featured-image-wrapper">
+                    <img src="../../assets/images/blog/dance-tips-1-title.webp"
+                        srcset="../assets/images/blog/dance-tips-1-title_480w.webp 480w, ../assets/images/blog/dance-tips-1-title_800w.webp 800w, ../assets/images/blog/dance-tips-1-title_1200w.webp 1200w"
+                        sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px" alt="Rahmen-Technik"
+                        width="819" height="1024" class="featured-image">
+                </div>
+                <div class="featured-content">
+                    <span class="featured-badge">Bildung</span>
+                    <h2 class="featured-title">Der Rahmen im Bachata: Dance Tips Ep. 1</h2>
+                    <p class="featured-excerpt">
+                        Kleine Dinge machen einen großen Unterschied. Lerne die korrekte Rahmen-Technik, um dein Leading
+                        und Following sofort zu verbessern.
+                    </p>
+                    <a href="/de/blog/dance-tips-1-frame" class="read-more">Ganzen Artikel lesen</a>
+                </div>
+            </article>
+        </div>
+
+        <!-- Filter Bar -->
+        <div class="container">
+            <div class="blog-filters reveal">
+                <button class="filter-btn active" data-filter="all">Alle</button>
+                <button class="filter-btn" data-filter="music">Musik</button>
+                <button class="filter-btn" data-filter="tips">Tanz-Tipps</button>
+                <button class="filter-btn" data-filter="community">Community</button>
+                <button class="filter-btn" data-filter="education">Bildung</button>
+                <button class="filter-btn" data-filter="wellness">Wellness</button>
+                <button class="filter-btn" data-filter="events">Events</button>
+            </div>
+        </div>
+
+        <!-- Blog Grid -->
+        <section class="blog-container" style="padding-top: 0;">
+            <div class="blog-grid-modern">
+                <!-- Teacher Collaboration Post -->
+                <article class="modern-card reveal" data-category="wellness">
+                    <div class="card-image-wrap">
+                        <span class="card-category">Studio</span>
+                        <img src="../../assets/images/blog/discover/rent-space-zurich-1200x675.webp"
+                            alt="AXcent Dance Studio für Yoga, Pilates, Fitness, Reggaeton und Afro Lehrpersonen in Zürich" width="1200" height="675"
+                            loading="lazy" class="card-image" decoding="async">
+                    </div>
+                    <div class="card-body">
+                        <div class="card-date">10. Mai 2026</div>
+                        <h2 class="card-title">Yoga, Salsa oder Pilates in Zürich unterrichten</h2>
+                        <p class="card-desc">
+                            Unterrichten Sie Yoga, Pilates, Salsa, Kizomba, Reggaeton, Afro, Fitness oder andere
+                            Solo-Kurse? AXcent Dance ist offen für sorgfältig ausgewählte Lehrpersonen.
+                        </p>
+                        <a href="/de/blog/teach-yoga-pilates-reggaeton-zurich" class="card-link">
+                            Artikel lesen <span style="font-size: 1.2em;">→</span>
+                        </a>
+                    </div>
+                </article>
+                <!-- IDO Schweizermeisterschaft Schüler-Podestplatz -->
+                <article class="modern-card reveal" data-category="community">
+                    <div class="card-image-wrap">
+                        <span class="card-category">Gemeinschaft</span>
+                        <img src="../../assets/images/blog/discover/ido-swiss-championship-second-place-2026-1200x675.webp"
+                            alt="AXcent gewinnt IDO Schweizer Bachata Silber durch Alex Elsig Urkunde und Pokal" width="1200" height="675"
+                            loading="lazy" class="card-image" decoding="async">
+                    </div>
+                    <div class="card-body">
+                        <div class="card-date">9. Mai 2026</div>
+                        <h2 class="card-title">AXcent gewinnt IDO Schweizer Bachata Silber durch Alex Elsig</h2>
+                        <p class="card-desc">
+                            AXcent Dance erreichte durch Alex Elsig Platz zwei in Bachata Jack and Jill Leader 17+, ein
+                            starkes Resultat für seriöses Training, Musikalität und hohe Ausbildungsqualität.
+                        </p>
+                        <a href="/de/blog/ido-schweizermeisterschaft-bachata-zweiter-platz-2026" class="card-link">
+                            Artikel lesen <span style="font-size: 1.2em;">→</span>
+                        </a>
+                    </div>
+                </article>
+                <!-- IDO Swiss Championship Judging Announcement -->
+                <article class="modern-card reveal" data-category="events">
+                    <div class="card-image-wrap">
+                        <span class="card-category">Events</span>
+                        <img src="../../assets/images/blog/salsa_bachata_music.webp"
+                            srcset="../assets/images/blog/salsa_bachata_music_480w.webp 480w, ../assets/images/blog/salsa_bachata_music_800w.webp 800w, ../assets/images/blog/salsa_bachata_music_1200w.webp 1200w"
+                            sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px"
+                            alt="Salsa- und Bachata-Musik als Symbol für die Schweizer Meisterschaft" width="1024" height="1024"
+                            loading="lazy" class="card-image" decoding="async">
+                    </div>
+                    <div class="card-body">
+                        <div class="card-date">5. Mai 2026</div>
+                        <h2 class="card-title">Wir jurieren Salsa und Bachata an der Schweizer Meisterschaft</h2>
+                        <p class="card-desc">
+                            Dieses Wochenende, am 9. Mai, werden wir an der Offenen Schweizermeisterschaft in Solothurn
+                            jurieren, einem nationalen Tanzsport-Event, das bei Swiss IDO gelistet ist. AXcent Dance
+                            dort zu vertreten verbindet unsere Zürcher Bachata-Community mit einem breiteren
+                            internationalen Wettbewerbsstandard.
+                        </p>
+                        <a href="/de/blog/ido-schweizermeisterschaft-salsa-bachata-jury-2026" class="card-link">
+                            Artikel lesen <span style="font-size: 1.2em;">→</span>
+                        </a>
+                    </div>
+                </article>
+                <!-- Seasonal Happiness Hack Post -->
+                <article class="modern-card reveal" data-category="wellness">
+                    <div class="card-image-wrap">
+                        <span class="card-category">Wellness</span>
+                        <img src="../../assets/images/private_lesson_hero.webp"
+                            alt="Authentischer Bachata-Tanz bei AXcent Dance Zürich" width="1200" height="1200"
+                            loading="lazy" class="card-image" decoding="async">
+                    </div>
+                    <div class="card-body">
+                        <div class="card-date">5. Apr 2026</div>
+                        <h2 class="card-title">Frühlings-Hack für Zürich: Wie du dein Glück jetzt aktivierst</h2>
+                        <p class="card-desc">
+                            Entfessle deine Energie in diesem Zürcher Frühling. Entdecke, wie Bachata als Katalysator für Glück und Lebensfreude wirkt. Kein Partner nötig.
+                        </p>
+                        <a href="/de/blog/hack-your-happiness" class="card-link">
+                            Artikel lesen <span style="font-size: 1.2em;">→</span>
+                        </a>
+                    </div>
+                </article>
+                <!-- Finding the One Post -->
+                <article class="modern-card reveal" data-category="music">
+                    <div class="card-image-wrap">
+                        <span class="card-category">Musik</span>
+                        <img src="../../assets/images/blog/roots-of-bachata-hero.webp"
+                            alt="Die 1 in der Bachata Musik finden" width="1200" height="675"
+                            loading="lazy" class="card-image" decoding="async">
+                    </div>
+                    <div class="card-body">
+                        <div class="card-date">28. Mär 2026</div>
+                        <h2 class="card-title">Hör auf zu zählen, fang an zu fühlen: Wie man die 1 in der Bachata-Musik findet</h2>
+                        <p class="card-desc">
+                            Lerne die geheime Sprache der Bachata-Musikalität. Entdecke, wie du die Instrumente hörst, die '1' findest und dein Social Dancing in Zürich verwandelst.
+                        </p>
+                        <a href="/de/blog/finding-the-one-bachata-musicality" class="card-link">
+                            Artikel lesen <span style="font-size: 1.2em;">→</span>
+                        </a>
+                    </div>
+                </article>
+                <!-- Lady Styling Zurich Guide -->
+                <article class="modern-card reveal" data-category="education">
+                    <div class="card-image-wrap">
+                        <span class="card-category">Bildung</span>
+                        <img src="../../assets/images/blog/lady_styling_hero.webp"
+                            alt="Bachata Lady Styling Kurse in Zürich" width="1200" height="701"
+                            loading="lazy" class="card-image" decoding="async">
+                    </div>
+                    <div class="card-body">
+                        <div class="card-date">21. März 2026</div>
+                        <h2 class="card-title">Lady Styling Entfesseln: Warum es mehr als nur Bachata ist</h2>
+                        <p class="card-desc">
+                            Entdecken Sie die Kraft der Weiblichkeit mit Bachata Lady Styling in Zürich. Entfesseln Sie Ihren Stil durch moderne Konzepte.
+                        </p>
+                        <a href="/de/blog/lady-styling-zurich-guide" class="card-link">
+                            Artikel lesen <span style="font-size: 1.2em;">→</span>
+                        </a>
+                    </div>
+                </article>
+                <!-- Top Couples Activities in Zurich -->
+                <article class="modern-card reveal" data-category="community">
+                    <div class="card-image-wrap">
+                        <span class="card-category">Gemeinschaft</span>
+                        <img src="../../assets/images/gallery/gallery_12.webp"
+                            alt="Paaraktivitäten in Zürich" width="1200" height="800"
+                            loading="lazy" class="card-image" decoding="async">
+                    </div>
+                    <div class="card-body">
+                        <div class="card-date">14. März 2026</div>
+                        <h2 class="card-title">Top Paaraktivitäten in Zürich: Warum Bachata die perfekte Date-Night ist</h2>
+                        <p class="card-desc">
+                            Auf der Suche nach einzigartigen Paaraktivitäten in Zürich? Entdecken Sie, warum Bachata die perfekte Date-Night ist, um gemeinsam Neues zu erleben und Spass zu haben.
+                        </p>
+                        <a href="/de/blog/couples-activities-zurich" class="card-link">
+                            Artikel lesen <span style="font-size: 1.2em;">→</span>
+                        </a>
+                    </div>
+                </article>
+                <!-- Hobbies to Meet People Post -->
+                <article class="modern-card reveal" data-category="community">
+                    <div class="card-image-wrap">
+                        <span class="card-category">Gemeinschaft</span>
+                        <img src="../../assets/images/gallery/gallery_1.webp"
+                            alt="Internationale Gemeinschaft im AXcent Dance Zürich" width="1200" height="800"
+                            loading="lazy" class="card-image" decoding="async">
+                    </div>
+                    <div class="card-body">
+                        <div class="card-date">7. März 2026</div>
+                        <h2 class="card-title">Top Hobbys zum Leute kennenlernen in Zürich: Dein Wegweiser</h2>
+                        <p class="card-desc">
+                            Suchst du Hobbys in Zürich, um Leute kennenzulernen? Werde Teil unserer Gemeinschaft, lerne
+                            Bachata und finde Freunde. Kein Partner nötig!
+                        </p>
+                        <a href="/de/blog/hobbies-to-meet-people-zurich" class="card-link">
+                            Artikel lesen <span style="font-size: 1.2em;">→</span>
+                        </a>
+                    </div>
+                </article>
+                <!-- Bachata Parties Guide Post -->
+                <article class="modern-card reveal" data-category="events">
+                    <div class="card-image-wrap">
+                        <span class="card-category">Events</span>
+                        <img src="../../assets/images/blog/burkliplatz_night.webp"
+                            alt="Bachata Partys in Zürich - Bürkliplatz" width="1024" height="576" loading="lazy"
+                            class="card-image" decoding="async">
+                    </div>
+                    <div class="card-body">
+                        <div class="card-date">2. März 2026</div>
+                        <h2 class="card-title">Der ultimative Guide für Bachata-Partys in Zürich: Wo du jede Nacht
+                            tanzen kannst</h2>
+                        <p class="card-desc">
+                            Suchst du nach Möglichkeiten, in Zürich Bachata zu tanzen? Vom Bürkliplatz bis zu den Clubs,
+                            entdecke die besten Orte zum Tanzen an jedem Abend der Woche.
+                        </p>
+                        <a href="/de/blog/bachata-parties-zurich-guide" class="card-link">
+                            Artikel lesen <span style="font-size: 1.2em;">→</span>
+                        </a>
+                    </div>
+                </article>
+                <!-- Start a New Hobby Post -->
+                <article class="modern-card reveal" data-category="education">
+                    <div class="card-image-wrap">
+                        <span class="card-category">Bildung</span>
+                        <img src="../../assets/images/blog/salsa_vs_bachata_hero.webp"
+                            srcset="../assets/images/blog/salsa_vs_bachata_hero_480w.webp 480w, ../assets/images/blog/salsa_vs_bachata_hero_800w.webp 800w, ../assets/images/blog/salsa_vs_bachata_hero_1200w.webp 1200w"
+                            sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px"
+                            alt="Salsa vs Bachata Vergleich" width="1024" height="1024" loading="lazy"
+                            class="card-image" decoding="async">
+                    </div>
+                    <div class="card-body">
+                        <div class="card-date">14. Feb 2026</div>
+                        <h2 class="card-title">Salsa vs Bachata: Die Unterschiede, die jeder Tänzer kennen sollte</h2>
+                        <p class="card-desc">
+                            Was ist der Unterschied zwischen Salsa und Bachata? Vergleiche Musik, Rhythmus und
+                            Schwierigkeit — und finde heraus, was einfacher für Anfänger ist.
+                        </p>
+                        <a href="/de/blog/salsa-vs-bachata" class="card-link">
+                            Artikel lesen <span style="font-size: 1.2em;">→</span>
+                        </a>
+                    </div>
+                </article>
+                <!-- Dominican Bachata Bootcamp Post -->
+                <article class="modern-card reveal" data-category="events">
+                    <div class="card-image-wrap">
+                        <span class="card-category">Events</span>
+                        <img src="../../assets/images/dominican_bootcamp.webp"
+                            srcset="../assets/images/dominican_bootcamp_480w.webp 480w, ../assets/images/dominican_bootcamp_800w.webp 800w, ../assets/images/dominican_bootcamp_1200w.webp 1200w"
+                            sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px"
+                            alt="Dominican Bachata Bootcamp Flyer mit Aitor Gomez und Sarah La Morena" width="1080" height="1350" loading="lazy"
+                            class="card-image" style="object-position: top;" decoding="async">
+                    </div>
+                    <div class="card-body">
+                        <div class="card-date">8. Feb 2026</div>
+                        <h2 class="card-title">Dominican Bachata Bootcamp mit Aitor & Sarah</h2>
+                        <p class="card-desc">
+                            7 Stunden Intensiv-Training. Lerne authentischen Dominican Bachata von den internationalen
+                            Meistern Aitor Gomez & Sarah La Morena.
+                        </p>
+                        <a href="/de/blog/dominican-bachata-bootcamp-aitor-sara" class="card-link">
+                            Artikel lesen <span style="font-size: 1.2em;">→</span>
+                        </a>
+                    </div>
+                </article>
+                <!-- Sensation Night Congress Post -->
+                <article class="modern-card reveal" data-category="events">
+                    <div class="card-image-wrap">
+                        <span class="card-category">Events</span>
+                        <img src="../../assets/images/blog/sensation-body2.webp"
+                            srcset="../assets/images/blog/sensation-body2_480w.webp 480w, ../assets/images/blog/sensation-body2_800w.webp 800w, ../assets/images/blog/sensation-body2_1200w.webp 1200w"
+                            sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px"
+                            alt="Sensation Night Congress 2026 Lineup" width="800" height="800" loading="lazy"
+                            class="card-image" decoding="async">
+                    </div>
+                    <div class="card-body">
+                        <div class="card-date">4. Feb 2026</div>
+                        <h2 class="card-title">Sensation Night Congress 2026: Komm mit den Stars!</h2>
+                        <p class="card-desc">
+                            Komm mit Ale & Xidan zum Sensation Night Congress 2026! Wir unterrichten zusammen mit
+                            Weltklasse-Künstlern wie Korke & Judith.
+                        </p>
+                        <a href="/de/blog/sensation-night-congress-2026" class="card-link">
+                            Artikel lesen <span style="font-size: 1.2em;">→</span>
+                        </a>
+                    </div>
+                </article>
+                <!-- Room Rental Post -->
+                <article class="modern-card reveal" data-category="wellness">
+                    <div class="card-image-wrap">
+                        <span class="card-category">Wellness</span>
+                        <img src="../../assets/images/studio/studio_room_view_1.webp"
+                            srcset="../assets/images/studio/studio_room_view_1_480w.webp 480w, ../assets/images/studio/studio_room_view_1_800w.webp 800w, ../assets/images/studio/studio_room_view_1_1200w.webp 1200w"
+                            sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px"
+                            alt="AXcent Dance Studio Raumvermietung" width="1200" height="800" loading="lazy"
+                            class="card-image" decoding="async">
+                    </div>
+                    <div class="card-body">
+                        <div class="card-date">31. Jan 2026</div>
+                        <h2 class="card-title">Mehr als ein Tanzstudio: 5 Arten unseren Raum zu nutzen</h2>
+                        <p class="card-desc">
+                            Entdecken Sie 5 kreative Wege, unser 138qm Studio zu nutzen – von Yoga und Pilates bis zu
+                            Fotoshootings und privaten Events.
+                        </p>
+                        <a href="/de/blog/rent-space-zurich" class="card-link">
+                            Artikel lesen <span style="font-size: 1.2em;">→</span>
+                        </a>
+                    </div>
+                </article>
+                <!-- Latin Dance School Post -->
+                <article class="modern-card reveal" data-category="education">
+                    <div class="card-image-wrap">
+                        <span class="card-category">Bildung</span>
+                        <img src="../../assets/images/blog/latin_salsa.webp"
+                            srcset="../assets/images/blog/latin_salsa_480w.webp 480w, ../assets/images/blog/latin_salsa_800w.webp 800w, ../assets/images/blog/latin_salsa.webp 1024w"
+                            sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px"
+                            alt="Latin Dance School Zürich" width="1024" height="1024" loading="lazy"
+                            class="card-image" decoding="async">
+                    </div>
+                    <div class="card-body">
+                        <div class="card-date">25. Jan 2026</div>
+                        <h2 class="card-title">Mehr als nur Bachata: Das komplette Latin Dance Erlebnis</h2>
+                        <p class="card-desc">
+                            Entdecke, warum eine echte Latin Dance School mehr als nur einen Stil unterrichtet. Von
+                            Salsa bis Styling – wir formen komplette Tänzer.
+                        </p>
+                        <a href="/de/blog/latin-dance-school-zurich" class="card-link">
+                            Artikel lesen <span style="font-size: 1.2em;">→</span>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- First Week Success -->
+                <article class="modern-card reveal" data-category="community">
+                    <div class="card-image-wrap">
+                        <span class="card-category">Community</span>
+                        <img src="../../assets/images/blog/first-week-new-studio.webp"
+                            srcset="../assets/images/blog/first-week-new-studio_480w.webp 480w, ../assets/images/blog/first-week-new-studio_800w.webp 800w, ../assets/images/blog/first-week-new-studio_1200w.webp 1200w"
+                            sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px"
+                            alt="Erste Woche im neuen AXcent Dance Studio" width="1024" height="768" loading="lazy"
+                            class="card-image" decoding="async">
+                    </div>
+                    <div class="card-body">
+                        <div class="card-date">18. Jan 2026</div>
+                        <h2 class="card-title">Erste Woche: Unser neues Zuhause in Zürich feiern</h2>
+                        <p class="card-desc">
+                            Was für eine Woche! Danke an alle, die in unserer ersten Kurswoche dabei waren.
+                            Die Energie im neuen Studio war elektrisierend.
+                        </p>
+                        <a href="/de/blog/first-week-new-studio" class="card-link">
+                            Artikel lesen <span style="font-size: 1.2em;">→</span>
+                        </a>
+                    </div>
+                </article>
+
+
+
+
+                <!-- Romeo Santos Tour Post -->
+                <article class="modern-card reveal" data-category="music">
+                    <div class="card-image-wrap">
+                        <span class="card-category">Music</span>
+                        <img src="../../assets/images/blog/romeo-prince-tour-2026.webp"
+                            srcset="../assets/images/blog/romeo-prince-tour-2026_480w.webp 480w, ../assets/images/blog/romeo-prince-tour-2026_800w.webp 800w, ../assets/images/blog/romeo-prince-tour-2026_1200w.webp 1200w"
+                            sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px"
+                            alt="Romeo Santos Tour 2026" width="838" height="1024" loading="lazy" class="card-image" decoding="async">
+                    </div>
+                    <div class="card-body">
+                        <div class="card-date">10. Jan 2026</div>
+                        <h2 class="card-title">Romeo Santos Tour 2026: Offizielle Daten</h2>
+                        <p class="card-desc">
+                            Die Könige des Bachata touren durch Europa! Entdecke die bestätigten Daten für Mailand,
+                            Paris und
+                            erfahre mehr über Zürich.
+                        </p>
+                        <a href="/de/blog/romeo-prince-tour-2026" class="card-link">
+                            Artikel lesen <span style="font-size: 1.2em;">→</span>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Mental Health Post -->
+                <article class="modern-card reveal" data-category="wellness">
+                    <div class="card-image-wrap">
+                        <span class="card-category">Wellness</span>
+                        <img src="../../assets/images/blog/science-of-dance-mental-health.webp"
+                            srcset="../assets/images/blog/science-of-dance-mental-health_480w.webp 480w, ../assets/images/blog/science-of-dance-mental-health_800w.webp 800w, ../assets/images/blog/science-of-dance-mental-health_1200w.webp 1200w"
+                            sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px"
+                            alt="Weniger Stress, Mehr Tanzen" width="1024" height="1024" loading="lazy"
+                            class="card-image" decoding="async">
+                    </div>
+                    <div class="card-body">
+                        <div class="card-date">4. Jan 2026</div>
+                        <h2 class="card-title">Weniger Stress, mehr Tanzen: Die Wissenschaft hinter dem 'Dancer's High'
+                        </h2>
+                        <p class="card-desc">
+                            Burnout? Angst? Die Wissenschaft sagt, die Heilung könnte auf der Tanzfläche liegen.
+                            Entdecke, wie Bachata
+                            Cortisol senkt und deine Stimmung hebt.
+                        </p>
+                        <a href="/de/blog/science-of-dance-mental-health" class="card-link">
+                            Artikel lesen <span style="font-size: 1.2em;">→</span>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- We Are Moving Post -->
+                <article class="modern-card reveal" data-category="community">
+                    <div class="card-image-wrap">
+                        <span class="card-category">News</span>
+                        <img src="../../assets/images/empty_studio_mirrors.webp"
+                            srcset="../assets/images/empty_studio_mirrors_480w.webp 480w, ../assets/images/empty_studio_mirrors_800w.webp 800w, ../assets/images/empty_studio_mirrors_1200w.webp 1200w"
+                            sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px"
+                            alt="Neuer Standort Zürich" width="1024" height="1024" loading="lazy" class="card-image" decoding="async">
+                    </div>
+                    <div class="card-body">
+                        <div class="card-date">12. Jan 2025</div>
+                        <h2 class="card-title">Wir ziehen um! Neues Studio in Zürich Altstetten</h2>
+                        <p class="card-desc">
+                            Große Neuigkeiten! AXcent Dance zieht an einen wunderschönen neuen 138m² großen Standort an
+                            der Hermetschloostrasse
+                            73.
+                        </p>
+                        <a href="/de/blog/blog-new-location" class="card-link">
+                            Artikel lesen <span style="font-size: 1.2em;">→</span>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Christmas Break moved to grid -->
+                <article class="modern-card reveal" data-category="community">
+                    <div class="card-image-wrap">
+                        <span class="card-category">News</span>
+                        <img src="../../assets/images/christmas_break_2025.webp"
+                            srcset="../assets/images/christmas_break_2025_480w.webp 480w, ../assets/images/christmas_break_2025_800w.webp 800w, ../assets/images/christmas_break_2025_1200w.webp 1200w"
+                            sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px" alt="Weihnachtspause"
+                            width="1024" height="1024" loading="lazy" class="card-image" decoding="async">
+                    </div>
+                    <div class="card-body">
+                        <div class="card-date">16. Dez 2025</div>
+                        <h2 class="card-title">Weihnachtspause & Neue Saison 2025</h2>
+                        <p class="card-desc">
+                            Studio geschlossen 22. Dez - 11. Jan. Wiedereröffnung 12. Jan. Check die Daten und mach dich
+                            bereit für
+                            2025!
+                        </p>
+                        <a href="/de/blog/christmas-break-2025" class="card-link">
+                            Artikel lesen <span style="font-size: 1.2em;">→</span>
+                        </a>
+                    </div>
+                </article>
+
+                <article class="modern-card reveal" data-category="music">
+                    <div class="card-image-wrap">
+                        <span class="card-category">Music</span>
+                        <img src="../../assets/images/romeo_santos.webp"
+                            srcset="../assets/images/romeo_santos_480w.webp 480w, ../assets/images/romeo_santos_800w.webp 800w, ../assets/images/romeo_santos_1200w.webp 1200w"
+                            sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px"
+                            alt="Romeo Santos and Prince Royce" width="1024" height="1024" loading="lazy"
+                            class="card-image" decoding="async">
+                    </div>
+                    <div class="card-body">
+                        <div class="card-date">12. Dez 2025</div>
+                        <h2 class="card-title">Die Könige vereint: Romeo Santos & Prince Royce veröffentlichen
+                            Überraschungsalbum</h2>
+                        <p class="card-desc">
+                            Das Warten hat ein Ende! Romeo Santos und Prince Royce haben ihr erstes gemeinsames Album
+                            'Better Late Than Never' veröffentlicht.
+                        </p>
+                        <a href="/de/blog/romeo-prince-collaboration-2025" class="card-link">
+                            Artikel lesen <span style="font-size: 1.2em;">→</span>
+                        </a>
+                    </div>
+                </article>
+
+                <article class="modern-card reveal" data-category="tips">
+                    <div class="card-image-wrap">
+                        <span class="card-category">Dance Tips</span>
+                        <img src="../../assets/images/bachata_essentials_flatlay.webp"
+                            srcset="../assets/images/bachata_essentials_flatlay_480w.webp 480w, ../assets/images/bachata_essentials_flatlay_800w.webp 800w, ../assets/images/bachata_essentials_flatlay_1200w.webp 1200w"
+                            sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px"
+                            alt="Tanz-Essentials Flatlay" width="1024" height="1024" loading="lazy" class="card-image" decoding="async">
+                    </div>
+                    <div class="card-body">
+                        <div class="card-date">9. Dez 2025</div>
+                        <h2 class="card-title">Kleidung für Bachata: Ein Anfänger-Guide</h2>
+                        <p class="card-desc">
+                            Fragst du dich, was du anziehen sollst? Hier ist unser kompletter Guide, um dich auf der
+                            Tanzfläche wohl
+                            und selbstbewusst zu fühlen.
+                        </p>
+                        <a href="/de/blog/what-to-wear-bachata" class="card-link">
+                            Artikel lesen <span style="font-size: 1.2em;">→</span>
+                        </a>
+                    </div>
+                </article>
+
+
+
+                <article class="modern-card reveal" data-category="tips">
+                    <div class="card-image-wrap">
+                        <span class="card-category">Dance Tips</span>
+                        <img src="../../assets/images/blog/connection-101.webp"
+                            srcset="../assets/images/blog/connection-101_480w.webp 480w, ../assets/images/blog/connection-101_800w.webp 800w, ../assets/images/blog/connection-101_1200w.webp 1200w"
+                            sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px" alt="Verbindung 101"
+                            width="1024" height="1024" loading="lazy" class="card-image" decoding="async">
+                    </div>
+                    <div class="card-body">
+                        <div class="card-date">7. Dez 2025</div>
+                        <h2 class="card-title">Verbindung 101: Wie du dein Social Dancing verbesserst</h2>
+                        <p class="card-desc">
+                            Es geht nicht um die Figuren, es geht um das Gefühl. 3 einfache Tipps, um deine Verbindung
+                            mit jedem
+                            Partner sofort zu verbessern.
+                        </p>
+                        <a href="/de/blog/connection-101" class="card-link">
+                            Artikel lesen <span style="font-size: 1.2em;">→</span>
+                        </a>
+                    </div>
+                </article>
+
+                <article class="modern-card reveal" data-category="education">
+                    <div class="card-image-wrap">
+                        <span class="card-category">Education</span>
+                        <img src="../../assets/images/blog/roots-of-bachata-hero.webp"
+                            srcset="../assets/images/blog/roots-of-bachata_480w.webp 480w, ../assets/images/blog/roots-of-bachata_800w.webp 800w, ../assets/images/blog/roots-of-bachata_1200w.webp 1200w"
+                            sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px" alt="Bachata Wurzeln"
+                            width="1024" height="1024" loading="lazy" class="card-image" decoding="async">
+                    </div>
+                    <div class="card-body">
+                        <div class="card-date">7. Dez 2025</div>
+                        <h2 class="card-title">Die Wurzeln des Bachata: Von der Dom. Rep. in die Welt</h2>
+                        <p class="card-desc">
+                            Entdecke die bescheidenen Ursprünge des Bachata in der Dominikanischen Republik und seine
+                            Reise zu
+                            einem globalen Tanzphänomen.
+                        </p>
+                        <a href="/de/blog/roots-of-bachata" class="card-link">
+                            Artikel lesen <span style="font-size: 1.2em;">→</span>
+                        </a>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="main-footer">
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <a href="../" class="logo footer-logo"><span class="logo-title">AXcent</span><span
+                        class="logo-subtitle text-gradient">DANCE</span></a>
+                <p class="footer-address">
+                    Hermetschloostrasse 73,<br>
+                    8048 Zurich Altstetten<br> 2 Minuten zu Fuss von Tram 2 und Bus 31 Haltestelle
+                </p>
+                <div class="footer-socials">
+                    <a href="https://www.instagram.com/axcent_dance/" target="_blank" aria-label="Instagram">
+                        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                        </svg>
+                    </a>
+                    <a href="mailto:info@axcentdance.com" aria-label="Email">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                            </path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h2 class="footer-heading">Schnellzugriff</h2>
+                <ul class="footer-links">
+                    <li><a href="../guide-bachata">Was ist Bachata</a></li>
+                    <li><a href="/de/blog/roots-of-bachata">Wurzeln des Bachatas</a></li>
+                    <li><a href="../schedule">Stundenplan</a></li>
+                    <li><a href="../blog">Unser Blog</a></li>
+
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h2 class="footer-heading">Rechtliches</h2>
+                <ul class="footer-links">
+                    <li><a href="../terms">AGB</a></li>
+                    <li><a href="../privacy">Datenschutz</a></li>
+                    <li><a href="../imprint">Impressum</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="container footer-map-full" style="margin-bottom: 2rem;">
+            <h2 class="footer-heading" style="margin-bottom: 1rem;">Finde uns</h2>
+            <div class="footer-map-wrapper-large"
+                style="border-radius: 12px; overflow: hidden; border: 1px solid var(--glass-border);">
+                <iframe title="Google Maps Standort von AXcent Dance"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2701.365!2d8.472010!3d47.394204!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47900b995a7d8e03%3A0xd99d3e4500b44fd6!2sAXcent%20Dance%20%7C%20Bachata%20Classes!5e0!3m2!1sen!2sch!4v1710680000000!5m2!1sde!2sch&hl=de"
+                    width="100%" height="250" style="border:0; width: 100%; display: block;" allowfullscreen=""
+                    loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 AXcent Dance. Alle Rechte vorbehalten.</p>
+        </div>
+    </footer>
+
+    <script src="../../script.js?v=6.0"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

@@ -127,7 +127,7 @@ def refuse_dirty_targets(root: Path, plans: Iterable[FilePlan], force: bool) -> 
 
 
 def html_files(root: Path) -> list[Path]:
-    ignored_dirs = {".git", "node_modules"}
+    ignored_dirs = {".git", ".claude", "node_modules"}
     files: list[Path] = []
     for current_root, dirs, names in os.walk(root):
         dirs[:] = [name for name in dirs if name not in ignored_dirs]
@@ -159,7 +159,12 @@ def target_files(root: Path, locale: str, section: str, path_arg: str | None) ->
 def validate_repo(root: Path) -> int:
     issues: list[str] = []
     total = 0
-    skipped = {"index.html", "404.html", "de/index.html", "de/404.html"}
+    skipped = {
+        "index.html", "404.html", "de/index.html", "de/404.html",
+        # Private account pages (noindex): no breadcrumb schema by design.
+        "portal.html", "_login.html", "_signup.html",
+        "de/portal.html", "de/_login.html", "de/_signup.html",
+    }
 
     for path in html_files(root):
         rel = rel_path(path, root)

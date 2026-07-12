@@ -1,0 +1,28 @@
+name: Supabase Keep-Alive
+
+# Free-tier Supabase pauses a project after ~7 days without activity, which
+# would take the student portal, logins, and the Stripe webhook offline.
+# This job runs a real (RLS-protected, empty-result) database query twice a
+# week so the project always registers activity. The anon key below is the
+# same public key shipped in the website's client code.
+
+on:
+  schedule:
+    - cron: "17 6 * * 1,4" # Mondays and Thursdays, 06:17 UTC
+  workflow_dispatch: {}
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Query Supabase REST API
+        run: |
+          ANON_KEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imp3cmF2bnZ5dGttc3Zxb3FrbXdiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM3NjU1MTIsImV4cCI6MjA5OTM0MTUxMn0.t4waGFmjD2hDQkGOhYg8rPt1rtf4iyRyTIC6T5KsFag"
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" \
+            "https://jwravnvytkmsvqoqkmwb.supabase.co/rest/v1/registrations?select=id&limit=1" \
+            -H "apikey: ${ANON_KEY}" -H "Authorization: Bearer ${ANON_KEY}")
+          echo "Supabase responded with HTTP ${STATUS}"
+          if [ "${STATUS}" != "200" ]; then
+            echo "Keep-alive ping FAILED - check whether the project is paused or the key rotated."
+            exit 1
+          fi

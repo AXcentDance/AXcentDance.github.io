@@ -18,17 +18,17 @@
     <meta property="og:description" content="Intensive Bachata bootcamps in Zurich and a group trip to the Milano Sensual Congress. Train with international artists and travel with us.">
     <meta property="og:url" content="https://axcentdance.com/events">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="https://axcentdance.com/assets/images/dominican_bootcamp_1200w.webp">
+    <meta property="og:image" content="https://axcentdance.com/assets/images/dominican_bootcamp_1200w.jpg">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Bachata Events &amp; Bootcamps in Zurich | AXcent Dance">
     <meta name="twitter:description" content="Intensive Bachata bootcamps in Zurich and a group trip to the Milano Sensual Congress. Train with international artists and travel with us.">
-    <meta name="twitter:image" content="https://axcentdance.com/assets/images/dominican_bootcamp_1200w.webp">
+    <meta name="twitter:image" content="https://axcentdance.com/assets/images/dominican_bootcamp_1200w.jpg">
     <meta http-equiv="Content-Security-Policy"
         content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://cdn.jsdelivr.net https://connect.facebook.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com https://placehold.co https://*.googleapis.com https://*.gstatic.com https://www.facebook.com https://connect.facebook.net; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://script.google.com https://script.googleusercontent.com https://formsubmit.co https://www.facebook.com https://connect.facebook.net; frame-src 'self' https://www.google.com; object-src 'none'; base-uri 'self'; media-src 'self' blob:; worker-src 'self' blob:;">
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@200..900&family=Outfit:wght@500;600;700;800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Teko:wght@300..700&display=swap">
     <link rel="stylesheet" href="style.css?v=9.2">
-    <link rel="stylesheet" href="tropic-noir.css?v=4.3">
+    <link rel="stylesheet" href="tropic-noir.css?v=5.0">
     <link rel="apple-touch-icon" href="/apple-touch-icon-v2.png">
     <link rel="icon" href="/favicon-axcent-192.png" type="image/png" sizes="192x192">
     <link rel="icon" href="/favicon-axcent-transparent.svg" type="image/svg+xml">
@@ -123,29 +123,28 @@
                 "@type": "Offer",
                 "url": "https://lasalsadelbaile.com/MSC2026/AleyXidan",
                 "availability": "https://schema.org/InStock",
-                "price": "140",
+                "price": "125",
                 "priceCurrency": "EUR",
                 "validFrom": "2025-01-01",
                 "priceSpecification": [
                     {
                         "@type": "UnitPriceSpecification",
-                        "name": "Early-Bird Pass",
-                        "price": "120",
-                        "priceCurrency": "EUR",
-                        "validThrough": "2026-07-01T23:59:59"
-                    },
-                    {
-                        "@type": "UnitPriceSpecification",
-                        "name": "Standard Pass",
-                        "price": "140",
-                        "priceCurrency": "EUR",
-                        "validFrom": "2026-07-02T00:00:00"
+                        "name": "Full Pass",
+                        "price": "125",
+                        "priceCurrency": "EUR"
                     },
                     {
                         "@type": "UnitPriceSpecification",
                         "name": "Advanced Masterclass Add-on",
                         "description": "Advanced masterclasses with Gero y Migle, Klau y Ros, and Cristian y Gabriella. A full congress ticket is required.",
                         "price": "59",
+                        "priceCurrency": "EUR"
+                    },
+                    {
+                        "@type": "UnitPriceSpecification",
+                        "name": "International Jack & Jill Competition",
+                        "description": "Entry to the International Jack & Jill competition. A full congress ticket is required.",
+                        "price": "20",
                         "priceCurrency": "EUR"
                     }
                 ]
@@ -323,7 +322,6 @@
                 <a href="./">Home</a>
                 <a href="about">About us</a>
                 <a href="schedule">Our classes</a>
-                <a href="beginner-guide">Beginner Guide</a>
                 <a href="events">Events</a>
                 <a href="contact">Contact</a>
 
@@ -336,9 +334,11 @@
                         <a href="private-lessons"><span>Private Lessons</span></a>
                         <a href="gallery"><span>Gallery</span></a>
                         <a href="education"><span>Education</span></a>
+            <a href="beginner-guide"><span>Beginner Guide</span></a>
                         <a href="blog"><span>Blog</span></a>
                         <a href="faq"><span>FAQ</span></a>
                         <a href="etiquette"><span>Dance Etiquette</span></a>
+                        <a href="portal"><span>Login</span></a>
                     </div>
                 </div>
                 <a href="/#trial-form" class="btn-header-cta">Book Free Trial</a>
@@ -352,21 +352,15 @@
         </div>
     </header>
 
-    <nav class="events-waypoints" aria-label="Jump to an event" data-events-waypoints>
-        <ul class="events-waypoints__list">
-            <li class="events-waypoints__item">
-                <a href="#bootcamp" class="events-waypoints__link">
-                    <span class="events-waypoints__label">Dominican Intensive</span>
-                    <span class="events-waypoints__dot" aria-hidden="true"></span>
-                </a>
-            </li>
-            <li class="events-waypoints__item">
-                <a href="#milano" class="events-waypoints__link">
-                    <span class="events-waypoints__label">International Congress</span>
-                    <span class="events-waypoints__dot" aria-hidden="true"></span>
-                </a>
-            </li>
-        </ul>
+    <nav class="events-subheader" aria-label="Jump to an event" data-events-subheader>
+        <a href="#bootcamp" class="events-subheader__item">
+            <span class="events-subheader__dates">17–19 OCT</span>
+            <span class="events-subheader__name">Dominican Bachata Bootcamp</span>
+        </a>
+        <a href="#milano" class="events-subheader__item">
+            <span class="events-subheader__dates">20–22 NOV</span>
+            <span class="events-subheader__name">Milano Sensual Congress</span>
+        </a>
     </nav>
 
     <main>
@@ -393,31 +387,6 @@
             </div>
         </section>
 
-        <!-- 2. Season rail -->
-        <section class="season-section" aria-label="Upcoming event dates">
-            <div class="container">
-                <h2 class="section-title-modern">The <em class="title-accent">season</em> ahead</h2>
-                <p class="section-subtitle">Two dates on the calendar. October in Zurich. November in Milan.</p>
-                <div class="season-rail">
-                    <a href="#bootcamp" class="season-rail__item">
-                        <span class="season-rail__dates">17–19 OCT</span>
-                        <span class="season-rail__info">
-                            <span class="season-rail__city">Zurich · Our Studio</span>
-                            <span class="season-rail__name">Dominican Bachata Bootcamp</span>
-                        </span>
-                        <span class="season-rail__cue" aria-hidden="true">→</span>
-                    </a>
-                    <a href="#milano" class="season-rail__item">
-                        <span class="season-rail__dates">20–22 NOV</span>
-                        <span class="season-rail__info">
-                            <span class="season-rail__city">Milan · Group Trip</span>
-                            <span class="season-rail__name">Milano Sensual Congress 2026</span>
-                        </span>
-                        <span class="season-rail__cue" aria-hidden="true">→</span>
-                    </a>
-                </div>
-            </div>
-        </section>
 
         <!-- 3. Act I: Dominican Bachata Bootcamp -->
         <section id="bootcamp" class="event-act event-act--zurich" aria-label="Dominican Bachata Bootcamp in Zurich">
@@ -428,7 +397,7 @@
                             srcset="assets/images/dominican_bootcamp_480w.webp 480w, assets/images/dominican_bootcamp_800w.webp 800w, assets/images/dominican_bootcamp_1200w.webp 1200w"
                             sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px"
                             alt="Dominican Bachata Bootcamp flyer with Aitor Gomez and Sarah La Morena" width="1080"
-                            height="1350" loading="lazy" decoding="async">
+                            height="1350" loading="eager" fetchpriority="high" decoding="async">
                     </figure>
                     <div class="event-act__content">
                         <span class="event-act__kicker">Act I — Zurich, our studio</span>
@@ -616,7 +585,7 @@
                 <ul class="footer-links">
                     <li><a href="/#trial-form">Book Free Trial</a></li>
                     <li><a href="guide-bachata">What is Bachata</a></li>
-                    <li><a href="blog-posts/roots-of-bachata">Roots of Bachata</a></li>
+                    <li><a href="blog/roots-of-bachata">Roots of Bachata</a></li>
                     <li><a href="schedule">Schedule</a></li>
                     <li><a href="blog">Our Blog</a></li>
 

@@ -1,0 +1,374 @@
+{
+  "version": 1,
+  "sourceOfTruth": "blog/index.html — the static HTML remains canonical. Update this file whenever a post is added, removed, or recategorized on the blog listing.",
+  "categories": {
+    "education": "Education",
+    "community": "Community",
+    "wellness": "Wellness",
+    "events": "Events",
+    "music": "Music",
+    "tips": "Dance Tips"
+  },
+  "posts": [
+    {
+      "slug": "dance-tips-1-frame",
+      "url": "blog/dance-tips-1-frame",
+      "title": "Frame Technique in Bachata: Dance Tips Ep. 1",
+      "date": "2025-12-27T12:00:00+01:00",
+      "dateLabel": null,
+      "category": "education",
+      "excerpt": "Little things make a big difference. Learn the correct frame technique to improve your leading and following instantly.",
+      "image": {
+        "src": "assets/images/blog/dance-tips-1-title.webp",
+        "width": 819,
+        "height": 1024
+      },
+      "featured": true
+    },
+    {
+      "slug": "teach-yoga-pilates-reggaeton-zurich",
+      "url": "blog/teach-yoga-pilates-reggaeton-zurich",
+      "title": "Teach Yoga, Salsa or Pilates in Zurich",
+      "date": "2026-05-10T12:00:00+02:00",
+      "dateLabel": "May 10, 2026",
+      "category": "wellness",
+      "excerpt": "Do you teach Yoga, Pilates, Salsa, Kizomba, Reggaeton, Afro, fitness or another solo class? AXcent Dance is open to serious, people-first instructors in Zurich.",
+      "image": {
+        "src": "assets/images/blog/discover/rent-space-zurich-1200x675.webp",
+        "width": 1200,
+        "height": 675
+      },
+      "featured": false
+    },
+    {
+      "slug": "ido-swiss-championship-bachata-second-place-2026",
+      "url": "blog/ido-swiss-championship-bachata-second-place-2026",
+      "title": "AXcent Wins IDO Swiss Bachata Silver Through Student Alex Elsig",
+      "date": "2026-05-09T12:00:00+02:00",
+      "dateLabel": "May 9, 2026",
+      "category": "community",
+      "excerpt": "AXcent Dance earned second place through Alex Elsig in Bachata Jack and Jill Leader 17+, a proud result that reflects serious training, musicality, and high-level formation.",
+      "image": {
+        "src": "assets/images/blog/discover/ido-swiss-championship-second-place-2026-1200x675.webp",
+        "width": 1200,
+        "height": 675
+      },
+      "featured": false
+    },
+    {
+      "slug": "ido-swiss-championship-salsa-bachata-judges-2026",
+      "url": "blog/ido-swiss-championship-salsa-bachata-judges-2026",
+      "title": "Judging Salsa and Bachata at the Swiss Championship",
+      "date": "2026-05-05T12:00:00+02:00",
+      "dateLabel": "May 5, 2026",
+      "category": "events",
+      "excerpt": "This weekend, May 9, we will judge at the Open Swiss Championship in Solothurn, a national dance-sport event listed by Swiss IDO. Representing AXcent Dance there connects our Zurich Bachata community with a wider international competition standard.",
+      "image": {
+        "src": "assets/images/blog/salsa_bachata_music.webp",
+        "width": 1024,
+        "height": 1024
+      },
+      "featured": false
+    },
+    {
+      "slug": "hack-your-happiness",
+      "url": "blog/hack-your-happiness",
+      "title": "How to Act on Your Happiness This Zurich Spring: The Science of Bloom",
+      "date": "2026-04-05T12:00:00+02:00",
+      "dateLabel": "Apr 5, 2026",
+      "category": "wellness",
+      "excerpt": "Unleash your spring energy. Discover how Bachata acts as a catalyst for happiness and connection. No partner needed. Start today!",
+      "image": {
+        "src": "assets/images/private_lesson_hero.webp",
+        "width": 1200,
+        "height": 1200
+      },
+      "featured": false
+    },
+    {
+      "slug": "finding-the-one-bachata-musicality",
+      "url": "blog/finding-the-one-bachata-musicality",
+      "title": "Stop Counting, Start Feeling: How to Find the 1 in Bachata Music",
+      "date": "2026-03-28T12:00:00+01:00",
+      "dateLabel": "Mar 28, 2026",
+      "category": "music",
+      "excerpt": "Learn the secret language of Bachata musicality. Discover how to hear the instruments, find the '1', and transform your social dancing.",
+      "image": {
+        "src": "assets/images/blog/roots-of-bachata-hero.webp",
+        "width": 1200,
+        "height": 675
+      },
+      "featured": false
+    },
+    {
+      "slug": "lady-styling-zurich-guide",
+      "url": "blog/lady-styling-zurich-guide",
+      "title": "Unleashing Your Style: Why Lady Styling Is More Than Bachata",
+      "date": "2026-03-21T12:00:00+01:00",
+      "dateLabel": "Mar 21, 2026",
+      "category": "education",
+      "excerpt": "Discover the power of femininity with Bachata Lady Styling in Zurich. Unleash your style through modern and contemporary concepts.",
+      "image": {
+        "src": "assets/images/blog/lady_styling_hero.webp",
+        "width": 1200,
+        "height": 701
+      },
+      "featured": false
+    },
+    {
+      "slug": "couples-activities-zurich",
+      "url": "blog/couples-activities-zurich",
+      "title": "Top Couples Activities in Zurich: Why Bachata is the Perfect Date Night",
+      "date": "2026-03-14T12:00:00+01:00",
+      "dateLabel": "Mar 14, 2026",
+      "category": "community",
+      "excerpt": "Looking for unique couples activities in Zurich? Discover why learning Bachata is the perfect date night idea to connect, have fun, and try something new together.",
+      "image": {
+        "src": "assets/images/gallery/gallery_12.webp",
+        "width": 1200,
+        "height": 800
+      },
+      "featured": false
+    },
+    {
+      "slug": "hobbies-to-meet-people-zurich",
+      "url": "blog/hobbies-to-meet-people-zurich",
+      "title": "Top Hobbies to Meet People in Zurich: Your Social Guide",
+      "date": "2026-03-07T12:00:00+01:00",
+      "dateLabel": "Mar 7, 2026",
+      "category": "community",
+      "excerpt": "Looking for hobbies to meet people in Zurich? Join our international community, learn Bachata, and make new friends. No partner needed!",
+      "image": {
+        "src": "assets/images/gallery/gallery_1.webp",
+        "width": 1200,
+        "height": 800
+      },
+      "featured": false
+    },
+    {
+      "slug": "bachata-parties-zurich-guide",
+      "url": "blog/bachata-parties-zurich-guide",
+      "title": "The Ultimate Guide to Bachata Parties in Zurich: Where to Dance Every Night",
+      "date": "2026-03-02T12:00:00+01:00",
+      "dateLabel": "Mar 2, 2026",
+      "category": "events",
+      "excerpt": "Looking for where to dance Bachata in Zurich? From lakeside socials to high-energy clubs, discover the best places to dance every night of the week.",
+      "image": {
+        "src": "assets/images/blog/burkliplatz_night.webp",
+        "width": 1024,
+        "height": 576
+      },
+      "featured": false
+    },
+    {
+      "slug": "salsa-vs-bachata",
+      "url": "blog/salsa-vs-bachata",
+      "title": "Salsa vs Bachata: Key Differences Every Dancer Should Know",
+      "date": "2026-02-14T12:00:00+01:00",
+      "dateLabel": "Feb 14, 2026",
+      "category": "education",
+      "excerpt": "What is the difference between Salsa and Bachata? Compare the music, rhythm, difficulty, and find out which one is easier for beginners.",
+      "image": {
+        "src": "assets/images/blog/salsa_vs_bachata_hero.webp",
+        "width": 1024,
+        "height": 1024
+      },
+      "featured": false
+    },
+    {
+      "slug": "dominican-bachata-bootcamp-aitor-sara",
+      "url": "blog/dominican-bachata-bootcamp-aitor-sara",
+      "title": "Dominican Bachata Bootcamp with Aitor & Sarah",
+      "date": "2026-02-08T12:00:00+01:00",
+      "dateLabel": "Feb 8, 2026",
+      "category": "events",
+      "excerpt": "7 Hours of Intensive Training. Learn authentic Dominican Bachata from international masters Aitor Gomez & Sarah La Morena.",
+      "image": {
+        "src": "assets/images/dominican_bootcamp.webp",
+        "width": 1080,
+        "height": 1350
+      },
+      "featured": false
+    },
+    {
+      "slug": "sensation-night-congress-2026",
+      "url": "blog/sensation-night-congress-2026",
+      "title": "Sensation Night Congress 2026: Join Us & The Stars!",
+      "date": "2026-02-04T12:00:00+01:00",
+      "dateLabel": "Feb 4, 2026",
+      "category": "events",
+      "excerpt": "Join Ale & Xidan at Sensation Night Congress 2026! We are teaching alongside world-class artists like Korke & Judith.",
+      "image": {
+        "src": "assets/images/blog/sensation-body2.webp",
+        "width": 800,
+        "height": 800
+      },
+      "featured": false
+    },
+    {
+      "slug": "rent-space-zurich",
+      "url": "blog/rent-space-zurich",
+      "title": "More Than a Dance Studio: 5 Ways to Use Our Space",
+      "date": "2026-01-31T12:00:00+01:00",
+      "dateLabel": "Jan 31, 2026",
+      "category": "wellness",
+      "excerpt": "Discover 5 creative ways to use our 138qm studio, from yoga and pilates to photo shoots and private events.",
+      "image": {
+        "src": "assets/images/studio/studio_room_view_1.webp",
+        "width": 1200,
+        "height": 800
+      },
+      "featured": false
+    },
+    {
+      "slug": "latin-dance-school-zurich",
+      "url": "blog/latin-dance-school-zurich",
+      "title": "More Than Bachata: The Complete Latin Dance Experience",
+      "date": "2026-01-25T12:00:00+01:00",
+      "dateLabel": "Jan 25, 2026",
+      "category": "education",
+      "excerpt": "Discover why a true Latin Dance School teaches more than just one style. From Salsa to Styling, we build complete dancers.",
+      "image": {
+        "src": "assets/images/blog/latin_salsa.webp",
+        "width": 1024,
+        "height": 1024
+      },
+      "featured": false
+    },
+    {
+      "slug": "first-week-new-studio",
+      "url": "blog/first-week-new-studio",
+      "title": "First Week Magic: Celebrating Our New Home in Zurich",
+      "date": "2026-01-18T12:00:00+01:00",
+      "dateLabel": "Jan 18, 2026",
+      "category": "community",
+      "excerpt": "What a week! Thank you to everyone who joined us for our first week of classes. The energy at our new studio was electric.",
+      "image": {
+        "src": "assets/images/blog/first-week-new-studio.webp",
+        "width": 1024,
+        "height": 768
+      },
+      "featured": false
+    },
+    {
+      "slug": "romeo-prince-tour-2026",
+      "url": "blog/romeo-prince-tour-2026",
+      "title": "Mejor Tarde Que Nunca Tour 2026: Official Dates",
+      "date": "2026-01-10T12:00:00+01:00",
+      "dateLabel": "Jan 10, 2026",
+      "category": "music",
+      "excerpt": "The Kings of Bachata are touring Europe! Discover the confirmed dates for Milan, Paris, and find out about Zurich.",
+      "image": {
+        "src": "assets/images/blog/romeo-prince-tour-2026.webp",
+        "width": 838,
+        "height": 1024
+      },
+      "featured": false
+    },
+    {
+      "slug": "science-of-dance-mental-health",
+      "url": "blog/science-of-dance-mental-health",
+      "title": "Stress Less, Dance More: The Science Behind the 'Dancer's High'",
+      "date": "2026-01-04T12:00:00+01:00",
+      "dateLabel": "Jan 4, 2026",
+      "category": "wellness",
+      "excerpt": "Burnout? Anxiety? Science says the cure might be on the dance floor. Discover how Bachata lowers cortisol and boosts your mood.",
+      "image": {
+        "src": "assets/images/blog/science-of-dance-mental-health.webp",
+        "width": 1024,
+        "height": 1024
+      },
+      "featured": false
+    },
+    {
+      "slug": "blog-new-location",
+      "url": "blog/blog-new-location",
+      "title": "We Are Moving! New Studio in Zurich Altstetten",
+      "date": "2025-01-12T12:00:00+01:00",
+      "dateLabel": "Jan 12, 2025",
+      "category": "community",
+      "excerpt": "Big news! AXcent Dance is moving to a beautiful new 138m² location at Hermetschloostrasse 73.",
+      "image": {
+        "src": "assets/images/empty_studio_mirrors.webp",
+        "width": 1024,
+        "height": 1024
+      },
+      "featured": false
+    },
+    {
+      "slug": "christmas-break-2025",
+      "url": "blog/christmas-break-2025",
+      "title": "Christmas Break & New Season 2025",
+      "date": "2025-12-16T12:00:00+01:00",
+      "dateLabel": "Dec 16, 2025",
+      "category": "community",
+      "excerpt": "Studio closed Dec 22 - Jan 11. Re-opening Jan 12. Check out the dates and get ready for 2025!",
+      "image": {
+        "src": "assets/images/christmas_break_2025.webp",
+        "width": 1024,
+        "height": 1024
+      },
+      "featured": false
+    },
+    {
+      "slug": "romeo-prince-collaboration-2025",
+      "url": "blog/romeo-prince-collaboration-2025",
+      "title": "The Kings Unite: Romeo Santos & Prince Royce Drop Surprise Album",
+      "date": "2025-12-12T12:00:00+01:00",
+      "dateLabel": "Dec 12, 2025",
+      "category": "music",
+      "excerpt": "The wait is over! Romeo Santos and Prince Royce have released their first collaborative album 'Better Late Than Never'.",
+      "image": {
+        "src": "assets/images/romeo_santos.webp",
+        "width": 1024,
+        "height": 1024
+      },
+      "featured": false
+    },
+    {
+      "slug": "what-to-wear-bachata",
+      "url": "blog/what-to-wear-bachata",
+      "title": "What to Wear to Bachata Class: A Beginner's Guide",
+      "date": "2025-12-09T12:00:00+01:00",
+      "dateLabel": "Dec 9, 2025",
+      "category": "tips",
+      "excerpt": "Wondering about shoes or clothes? Here is our complete guide to feeling comfortable and confident on the dance floor.",
+      "image": {
+        "src": "assets/images/bachata_essentials_flatlay.webp",
+        "width": 1024,
+        "height": 1024
+      },
+      "featured": false
+    },
+    {
+      "slug": "connection-101",
+      "url": "blog/connection-101",
+      "title": "Connection 101: How to Improve Your Social Dancing",
+      "date": "2025-12-07T12:00:00+01:00",
+      "dateLabel": "Dec 7, 2025",
+      "category": "tips",
+      "excerpt": "It is not about the moves, it is about the feeling. 3 simple tips to instantly improve your connection with any partner.",
+      "image": {
+        "src": "assets/images/blog/connection-101.webp",
+        "width": 1024,
+        "height": 1024
+      },
+      "featured": false
+    },
+    {
+      "slug": "roots-of-bachata",
+      "url": "blog/roots-of-bachata",
+      "title": "The Roots of Bachata: From Dominican Republic to the World",
+      "date": "2025-12-07T12:00:00+01:00",
+      "dateLabel": "Dec 7, 2025",
+      "category": "education",
+      "excerpt": "Discover the humble origins of Bachata in the Dominican Republic and its journey to becoming a global dance phenomenon.",
+      "image": {
+        "src": "assets/images/blog/roots-of-bachata-hero.webp",
+        "width": 1024,
+        "height": 1024
+      },
+      "featured": false
+    }
+  ]
+}

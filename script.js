@@ -272,9 +272,15 @@ document.addEventListener('DOMContentLoaded', () => {
                     heroPosterFrame.classList.remove('is-active');
                 }
 
+                const hlsSource = choice.dataset.heroHls;
                 const webmSource = choice.dataset.heroWebm;
                 const mp4Source = choice.dataset.heroVideo;
-                const nextSource = webmSource && heroShowcaseVideo.canPlayType('video/webm') ? webmSource : mp4Source;
+                // HLS (3-second segmented streaming) when hls-video.js upgraded
+                // this video; progressive webm/mp4 otherwise.
+                const useHls = Boolean(hlsSource && window.AXHls && heroShowcaseVideo.dataset.hlsActive);
+                const nextSource = useHls
+                    ? hlsSource
+                    : (webmSource && heroShowcaseVideo.canPlayType('video/webm') ? webmSource : mp4Source);
                 const startTime = Number(choice.dataset.heroStart || 0);
 
                 heroShowcaseVideo.classList.add('is-switching');
@@ -305,17 +311,29 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 };
 
-                if (heroShowcaseVideo.getAttribute('src') !== nextSource) {
-                    heroShowcaseVideo.setAttribute('src', nextSource);
-                    heroShowcaseVideo.load();
+                if (heroShowcaseVideo.dataset.currentSource !== nextSource) {
+                    heroShowcaseVideo.dataset.currentSource = nextSource;
                     heroShowcaseVideo.addEventListener('loadedmetadata', finishSwitch, { once: true });
+                    if (useHls) {
+                        window.AXHls.attach(heroShowcaseVideo, nextSource, { autoStart: true });
+                    } else {
+                        if (window.AXHls) {
+                            window.AXHls.detach(heroShowcaseVideo);
+                        }
+                        heroShowcaseVideo.setAttribute('src', nextSource);
+                        heroShowcaseVideo.load();
+                    }
                 } else {
                     finishSwitch();
                 }
             });
         });
 
-        playHeroVideo();
+        // When hls-video.js manages this video (data-hls), it starts playback
+        // itself after attaching the stream; avoid racing it with the mp4 src.
+        if (!heroShowcaseVideo.dataset.hls) {
+            playHeroVideo();
+        }
     }
 
     // Free-trial CTA motion is handled in CSS so the border can orbit without tracking the pointer.
@@ -1367,26 +1385,27 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        // --- Waypoints rail: the fixed side navigator on the events listing.
-        // Highlights the link of the event act currently on screen; runs
-        // regardless of reduced-motion because it conveys state, not motion.
-        const waypointsNav = document.querySelector('[data-events-waypoints]');
-        if (waypointsNav && 'IntersectionObserver' in window) {
-            const waypointLinks = Array.from(waypointsNav.querySelectorAll('a[href^="#"]'));
-            const waypointTargets = waypointLinks
+        // --- Subheader rail: the compact bar pinned under the main nav on the
+        // events listing. Highlights the link of the event act currently on
+        // screen; runs regardless of reduced-motion because it conveys
+        // state, not motion.
+        const subheaderNav = document.querySelector('[data-events-subheader]');
+        if (subheaderNav && 'IntersectionObserver' in window) {
+            const subheaderLinks = Array.from(subheaderNav.querySelectorAll('a[href^="#"]'));
+            const subheaderTargets = subheaderLinks
                 .map((link) => document.getElementById(link.hash.slice(1)))
                 .filter(Boolean);
-            const setActiveWaypoint = (id) => {
-                waypointLinks.forEach((link) => {
-                    link.classList.toggle('events-waypoints__link--active', link.hash === `#${id}`);
+            const setActiveSubheaderLink = (id) => {
+                subheaderLinks.forEach((link) => {
+                    link.classList.toggle('events-subheader__item--active', link.hash === `#${id}`);
                 });
             };
-            const waypointObserver = new IntersectionObserver((entries) => {
+            const subheaderObserver = new IntersectionObserver((entries) => {
                 entries.forEach((entry) => {
-                    if (entry.isIntersecting) setActiveWaypoint(entry.target.id);
+                    if (entry.isIntersecting) setActiveSubheaderLink(entry.target.id);
                 });
             }, { rootMargin: '-40% 0px -50% 0px' });
-            waypointTargets.forEach((target) => waypointObserver.observe(target));
+            subheaderTargets.forEach((target) => subheaderObserver.observe(target));
         }
 
     };
@@ -2527,33 +2546,721 @@ document.addEventListener('DOMContentLoaded', () => {
 const filterBtns = document.querySelectorAll('.filter-btn');
 const blogCards = document.querySelectorAll('.modern-card'); // Ensure this matches your card class
 
+// The Tropic Noir journal (EN blog.html) carries body.blog-page and gets the
+// animated FLIP filter plus the editorial grid; every other page that owns
+// .filter-btn (de/blog.html) keeps the original instant toggle untouched.
+const isNoirBlog = document.body.classList.contains('blog-page')
+    && Boolean(document.querySelector('link[href*="tropic-noir"]'));
+const blogPrefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const blogGrid = document.querySelector('.blog-grid-modern');
+
 if (filterBtns.length > 0 && blogCards.length > 0) {
+    const isCardShown = (card) => card.style.display !== 'none';
+    const cardMatches = (card, filterValue) =>
+        filterValue === 'all' || card.getAttribute('data-category') === filterValue;
+
+    const setFilteredState = (filterValue) => {
+        if (blogGrid) blogGrid.classList.toggle('is-filtered', filterValue !== 'all');
+    };
+
+    // Every filter application bumps the run id; async callbacks from an
+    // earlier run (a killed stagger master still fires onComplete) check it
+    // and stand down instead of hiding cards the newer run just showed.
+    let filterRunId = 0;
+
+    const applyFilterInstant = (filterValue) => {
+        filterRunId += 1;
+        setFilteredState(filterValue);
+        blogCards.forEach(card => {
+            if (cardMatches(card, filterValue)) {
+                // The Noir grid decides card display in CSS (flex tiles,
+                // grid spotlights); inline flex would override it.
+                card.style.display = isNoirBlog ? '' : 'flex';
+                setTimeout(() => card.style.opacity = '1', 10);
+            } else {
+                card.style.display = 'none';
+                card.style.opacity = '0';
+            }
+        });
+    };
+
+    let filterAnimating = false;
+
+    const applyFilterAnimated = (filterValue) => {
+        const gsapRef = window.gsap;
+        if (filterAnimating) {
+            // A run is still in flight: land everything instantly instead of
+            // stacking timelines on half-moved cards.
+            gsapRef.killTweensOf(Array.from(blogCards));
+            gsapRef.set(Array.from(blogCards), { clearProps: 'opacity,visibility,transform' });
+            applyFilterInstant(filterValue);
+            filterAnimating = false;
+            return;
+        }
+
+        const cards = Array.from(blogCards);
+        const leaving = cards.filter(card => isCardShown(card) && !cardMatches(card, filterValue));
+        const staying = cards.filter(card => isCardShown(card) && cardMatches(card, filterValue));
+        const entering = cards.filter(card => !isCardShown(card) && cardMatches(card, filterValue));
+
+        filterAnimating = true;
+        gsapRef.killTweensOf(cards);
+        const runId = ++filterRunId;
+
+        const settle = () => {
+            if (runId !== filterRunId) {
+                filterAnimating = false;
+                return;
+            }
+            // FLIP: measure where the surviving cards were, relayout, then
+            // glide them from the old position (transform/opacity only).
+            const firstRects = new Map(staying.map(card => [card, card.getBoundingClientRect()]));
+
+            leaving.forEach(card => {
+                card.style.display = 'none';
+                card.style.opacity = '0';
+            });
+            entering.forEach(card => {
+                card.style.display = '';
+                card.style.opacity = '1';
+            });
+            setFilteredState(filterValue);
+
+            let remaining = staying.length + entering.length;
+            const finishOne = () => {
+                remaining -= 1;
+                if (remaining <= 0) filterAnimating = false;
+            };
+            if (remaining === 0) filterAnimating = false;
+
+            staying.forEach(card => {
+                const first = firstRects.get(card);
+                const last = card.getBoundingClientRect();
+                const dx = first.left - last.left;
+                const dy = first.top - last.top;
+                if (Math.abs(dx) < 1 && Math.abs(dy) < 1) {
+                    finishOne();
+                    return;
+                }
+                gsapRef.fromTo(card, { x: dx, y: dy }, {
+                    x: 0,
+                    y: 0,
+                    duration: 0.5,
+                    ease: 'power3.out',
+                    clearProps: 'transform',
+                    onComplete: finishOne
+                });
+            });
+
+            entering.forEach((card, index) => {
+                gsapRef.fromTo(card, { autoAlpha: 0, y: 14 }, {
+                    autoAlpha: 1,
+                    y: 0,
+                    duration: 0.45,
+                    ease: 'power3.out',
+                    delay: 0.05 + index * 0.03,
+                    clearProps: 'opacity,visibility,transform',
+                    onComplete: finishOne
+                });
+            });
+        };
+
+        if (leaving.length > 0) {
+            gsapRef.to(leaving, {
+                autoAlpha: 0,
+                y: 10,
+                duration: 0.2,
+                ease: 'power2.in',
+                stagger: 0.015,
+                onComplete: settle
+            });
+        } else {
+            settle();
+        }
+    };
+
     filterBtns.forEach(btn => {
         btn.addEventListener('click', () => {
-            // 1. Remove active class from all buttons
-            filterBtns.forEach(b => b.classList.remove('active'));
-            // 2. Add active class to clicked button
+            // 1. Reflect the pressed state on the rail
+            filterBtns.forEach(b => {
+                b.classList.remove('active');
+                b.setAttribute('aria-pressed', 'false');
+            });
             btn.classList.add('active');
+            btn.setAttribute('aria-pressed', 'true');
 
-            // 3. Get filter value
+            // 2. Get filter value
             const filterValue = btn.getAttribute('data-filter');
 
-            // 4. Filter cards
-            blogCards.forEach(card => {
-                const cardCategory = card.getAttribute('data-category');
+            // 3. Filter cards (animated path only on the Noir journal)
+            if (isNoirBlog && window.gsap && !blogPrefersReducedMotion) {
+                applyFilterAnimated(filterValue);
+            } else {
+                applyFilterInstant(filterValue);
+            }
 
-                if (filterValue === 'all' || filterValue === cardCategory) {
-                    card.style.display = 'flex'; // Or 'block' depending on your card layout
-                    // Optional: Add a fade-in animation/class here if desired
-                    setTimeout(() => card.style.opacity = '1', 10);
-                } else {
-                    card.style.display = 'none';
-                    card.style.opacity = '0';
-                }
-            });
+            // 4. Let listeners (featured shader) hear the page turn
+            document.dispatchEvent(new CustomEvent('blog:filter', { detail: { filter: filterValue } }));
         });
     });
 }
+
+/* BLOG PAGE — Tropic Noir journal enhancements (EN blog.html only) */
+const enhanceBlogNoir = () => {
+    if (!isNoirBlog) return;
+
+    const gsapRef = window.gsap;
+    const reduceMotion = blogPrefersReducedMotion;
+
+    const observeOnce = (target, onEnter, options) => {
+        if (!('IntersectionObserver' in window)) {
+            onEnter();
+            return;
+        }
+        const observer = new IntersectionObserver((entries) => {
+            if (entries.some(entry => entry.isIntersecting)) {
+                observer.disconnect();
+                onEnter();
+            }
+        }, options);
+        observer.observe(target);
+    };
+
+    // Sticky filter shelf: strengthen the hairline once it is pinned.
+    const shelf = document.querySelector('[data-blog-filter-shelf]');
+    if (shelf && 'IntersectionObserver' in window) {
+        const sentinel = document.createElement('div');
+        sentinel.setAttribute('aria-hidden', 'true');
+        shelf.parentNode.insertBefore(sentinel, shelf);
+        new IntersectionObserver(([entry]) => {
+            shelf.classList.toggle('is-stuck', !entry.isIntersecting);
+        }).observe(sentinel);
+    }
+
+    // Category counts + masthead ledger from the JSON mirror of the grid.
+    // The DOM stays the source of truth: on any count mismatch we warn and
+    // render nothing rather than show wrong numbers.
+    fetch('/assets/data/blog-posts.json')
+        .then(response => (response.ok ? response.json() : null))
+        .then(data => {
+            if (!data || !Array.isArray(data.posts) || !data.categories) return;
+
+            const jsonCounts = {};
+            data.posts.forEach(post => {
+                jsonCounts[post.category] = (jsonCounts[post.category] || 0) + 1;
+            });
+
+            const domTotal = document.querySelectorAll('article[data-category]').length;
+            const parityHolds = data.posts.length === domTotal
+                && Object.keys(data.categories).every(slug =>
+                    (jsonCounts[slug] || 0) ===
+                    document.querySelectorAll('article[data-category="' + slug + '"]').length);
+
+            if (!parityHolds) {
+                console.warn('blog-posts.json is out of sync with the blog listing; skipping counts.');
+                return;
+            }
+
+            filterBtns.forEach(btn => {
+                const filterValue = btn.getAttribute('data-filter');
+                const count = filterValue === 'all' ? data.posts.length : (jsonCounts[filterValue] || 0);
+                const chip = document.createElement('span');
+                chip.className = 'filter-btn__count';
+                chip.setAttribute('aria-hidden', 'true');
+                chip.textContent = String(count);
+                btn.appendChild(chip);
+            });
+
+            const ledger = document.querySelector('[data-blog-ledger]');
+            if (ledger) {
+                Object.keys(data.categories).forEach(slug => {
+                    const target = document.querySelector('.filter-btn[data-filter="' + slug + '"]');
+                    if (!target) return;
+                    const item = document.createElement('li');
+                    const button = document.createElement('button');
+                    button.type = 'button';
+                    button.className = 'blog-masthead__ledger-btn';
+                    button.innerHTML = '<span class="blog-masthead__ledger-count">'
+                        + (jsonCounts[slug] || 0) + '</span><span>' + data.categories[slug] + '</span>';
+                    button.addEventListener('click', () => {
+                        target.click();
+                        const gridSection = document.querySelector('.blog-container');
+                        if (gridSection) {
+                            gridSection.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth' });
+                        }
+                    });
+                    item.appendChild(button);
+                    ledger.appendChild(item);
+                });
+            }
+        })
+        .catch(() => { /* enhancement only; the static page stands */ });
+
+    if (!gsapRef || reduceMotion) return;
+
+    // Masthead intro: kicker leads, the title answers, the underline draws
+    // its three steps, then the featured panel rises. Hidden states are set
+    // from JS only, so the masthead is fully visible without JavaScript.
+    const kicker = document.querySelector('[data-masthead-kicker]');
+    const title = document.querySelector('[data-masthead-title]');
+    const dek = document.querySelector('[data-masthead-dek]');
+    const ledgerList = document.querySelector('[data-blog-ledger]');
+    const feature = document.querySelector('[data-blog-feature]');
+
+    if (title) {
+        const intro = gsapRef.timeline({ defaults: { ease: 'power3.out' } });
+        gsapRef.set(title, { '--title-underline-scale': 0 });
+        if (kicker) intro.from(kicker, { autoAlpha: 0, y: 12, duration: 0.5 });
+        intro.from(title, { autoAlpha: 0, y: 18, duration: 0.6 }, '-=0.25');
+        intro.to(title, {
+            keyframes: [
+                { '--title-underline-scale': 0.33, duration: 0.18, ease: 'power2.out' },
+                { '--title-underline-scale': 0.66, duration: 0.18, ease: 'power2.out' },
+                { '--title-underline-scale': 1.04, duration: 0.18, ease: 'power2.out' },
+                { '--title-underline-scale': 1, duration: 0.24, ease: 'expo.out' }
+            ]
+        }, '-=0.2');
+        if (dek) intro.from(dek, { autoAlpha: 0, y: 14, duration: 0.5 }, '-=0.45');
+        if (ledgerList) intro.from(ledgerList, { autoAlpha: 0, y: 12, duration: 0.45 }, '-=0.3');
+        if (feature) intro.from(feature, { autoAlpha: 0, y: 22, duration: 0.65 }, '-=0.4');
+        intro.set([kicker, title, dek, ledgerList, feature].filter(Boolean), {
+            clearProps: 'opacity,visibility,transform'
+        });
+    }
+
+    // Dancing underline for the grid heading (same recipe as the homepage).
+    gsapRef.utils.toArray('body.blog-page .section-title-modern').forEach((heading) => {
+        gsapRef.set(heading, { '--title-underline-scale': 0 });
+        observeOnce(heading, () => {
+            gsapRef.to(heading, {
+                keyframes: [
+                    { '--title-underline-scale': 0.33, duration: 0.18, ease: 'power2.out' },
+                    { '--title-underline-scale': 0.66, duration: 0.18, ease: 'power2.out' },
+                    { '--title-underline-scale': 1.04, duration: 0.18, ease: 'power2.out' },
+                    { '--title-underline-scale': 1, duration: 0.24, ease: 'expo.out' }
+                ]
+            });
+        }, { threshold: 0.4, rootMargin: '0px 0px -10% 0px' });
+    });
+
+    // Card reveals on scroll. Disconnected on the first filter click so the
+    // FLIP owns every inline style from then on.
+    if ('IntersectionObserver' in window && blogGrid) {
+        const cards = Array.from(blogGrid.querySelectorAll('.modern-card'));
+        gsapRef.set(cards, { autoAlpha: 0, y: 16 });
+        let revealIndex = 0;
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                revealObserver.unobserve(entry.target);
+                gsapRef.to(entry.target, {
+                    autoAlpha: 1,
+                    y: 0,
+                    duration: 0.55,
+                    ease: 'power3.out',
+                    delay: (revealIndex++ % 3) * 0.08,
+                    clearProps: 'opacity,visibility,transform'
+                });
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -6% 0px' });
+        cards.forEach(card => revealObserver.observe(card));
+
+        document.addEventListener('blog:filter', () => {
+            revealObserver.disconnect();
+            gsapRef.killTweensOf(cards);
+            gsapRef.set(cards, { clearProps: 'opacity,visibility,transform' });
+        }, { once: true });
+    }
+};
+
+/* BLOG PAGE — featured image shader (Three.js, no particles, no lights).
+   A single plane over the featured photo: a faint fabric wave, a duotone
+   that blooms to full colour on attention, and one soft ripple ring per
+   filter change. The <img> underneath stays the no-JS / no-WebGL /
+   reduced-motion rendition; any failure just leaves it in place. */
+const enhanceBlogFeatureShader = () => {
+    if (!isNoirBlog || blogPrefersReducedMotion) return;
+
+    const media = document.querySelector('[data-blog-feature-media]');
+    const image = media ? media.querySelector('img') : null;
+    const featurePanel = document.querySelector('[data-blog-feature]');
+    if (!media || !image) return;
+
+    const canUseWebGL = () => {
+        if (!window.WebGLRenderingContext) return false;
+        try {
+            const testCanvas = document.createElement('canvas');
+            return Boolean(
+                testCanvas.getContext('webgl') ||
+                testCanvas.getContext('experimental-webgl')
+            );
+        } catch (error) {
+            return false;
+        }
+    };
+    if (!canUseWebGL()) return;
+
+    const parseHexColor = (value, fallback) => {
+        const hex = (value || '').trim().replace('#', '');
+        if (!/^[0-9a-fA-F]{6}$/.test(hex)) return fallback;
+        return [
+            parseInt(hex.slice(0, 2), 16) / 255,
+            parseInt(hex.slice(2, 4), 16) / 255,
+            parseInt(hex.slice(4, 6), 16) / 255
+        ];
+    };
+
+    let shaderStarted = false;
+
+    const startShader = () => {
+        if (shaderStarted) return;
+        shaderStarted = true;
+
+        const decoded = image.decode ? image.decode().catch(() => {}) : Promise.resolve();
+        const threePromise = import('https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js')
+            .catch(() => null);
+
+        Promise.all([threePromise, decoded]).then(([THREE]) => {
+            if (!THREE) return;
+
+            let renderer;
+            try {
+                renderer = new THREE.WebGLRenderer({
+                    alpha: true,
+                    antialias: false,
+                    powerPreference: 'low-power'
+                });
+            } catch (error) {
+                return;
+            }
+
+            const bodyStyles = getComputedStyle(document.body);
+            const duoShadow = parseHexColor(bodyStyles.getPropertyValue('--bg-dark'), [0.016, 0.075, 0.063]);
+            const duoLift = parseHexColor(bodyStyles.getPropertyValue('--title-cream'), [0.949, 0.906, 0.812]);
+
+            const texture = new THREE.TextureLoader().load(image.currentSrc || image.src, () => {
+                canvas.classList.add('is-live');
+                requestRender();
+            });
+            texture.colorSpace = THREE.SRGBColorSpace;
+
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));
+            const canvas = renderer.domElement;
+            canvas.className = 'blog-masthead__feature-canvas';
+            canvas.setAttribute('aria-hidden', 'true');
+            media.appendChild(canvas);
+
+            const scene = new THREE.Scene();
+            const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+            const uniforms = {
+                uTexture: { value: texture },
+                uTime: { value: 0 },
+                uProgress: { value: 0 },
+                uPulse: { value: 0 },
+                uPlaneAspect: { value: 1 },
+                uImageAspect: { value: (image.naturalWidth || 819) / (image.naturalHeight || 1024) },
+                uDuoShadow: { value: new THREE.Vector3(duoShadow[0], duoShadow[1], duoShadow[2]) },
+                uDuoLift: { value: new THREE.Vector3(duoLift[0], duoLift[1], duoLift[2]) }
+            };
+
+            const material = new THREE.ShaderMaterial({
+                uniforms,
+                vertexShader: [
+                    'varying vec2 vUv;',
+                    'void main() {',
+                    '    vUv = uv;',
+                    '    gl_Position = vec4(position, 1.0);',
+                    '}'
+                ].join('\n'),
+                fragmentShader: [
+                    'uniform sampler2D uTexture;',
+                    'uniform float uTime;',
+                    'uniform float uProgress;',
+                    'uniform float uPulse;',
+                    'uniform float uPlaneAspect;',
+                    'uniform float uImageAspect;',
+                    'uniform vec3 uDuoShadow;',
+                    'uniform vec3 uDuoLift;',
+                    'varying vec2 vUv;',
+                    'void main() {',
+                    '    vec2 uv = vUv - 0.5;',
+                    '    if (uPlaneAspect > uImageAspect) { uv.y *= uImageAspect / uPlaneAspect; }',
+                    '    else { uv.x *= uPlaneAspect / uImageAspect; }',
+                    '    uv += 0.5;',
+                    '    float calm = 1.0 - uProgress;',
+                    '    uv.y += sin(uv.x * 6.2831 + uTime * 0.55) * 0.012 * calm;',
+                    '    float dist = distance(vUv, vec2(0.5));',
+                    '    float ring = sin(dist * 24.0 - uPulse * 7.0) * uPulse * (1.0 - uPulse);',
+                    '    uv += normalize(vUv - vec2(0.5) + 0.0001) * ring * 0.05;',
+                    '    vec4 tex = texture2D(uTexture, clamp(uv, 0.001, 0.999));',
+                    '    float luma = dot(tex.rgb, vec3(0.299, 0.587, 0.114));',
+                    '    vec3 duo = mix(uDuoShadow, uDuoLift, luma);',
+                    '    vec3 color = mix(duo, tex.rgb, smoothstep(0.0, 1.0, uProgress));',
+                    '    gl_FragColor = vec4(color, 1.0);',
+                    '}'
+                ].join('\n'),
+                depthTest: false,
+                depthWrite: false
+            });
+
+            scene.add(new THREE.Mesh(new THREE.PlaneGeometry(2, 2), material));
+
+            const setSize = () => {
+                const width = Math.max(media.clientWidth, 1);
+                const height = Math.max(media.clientHeight, 1);
+                renderer.setSize(width, height, false);
+                uniforms.uPlaneAspect.value = width / height;
+            };
+            setSize();
+
+            let rafId = null;
+            let isVisible = true;
+            const renderLoop = (time) => {
+                rafId = null;
+                if (!isVisible || document.hidden) return;
+                uniforms.uTime.value = time * 0.001;
+                renderer.render(scene, camera);
+                rafId = requestAnimationFrame(renderLoop);
+            };
+            const requestRender = () => {
+                if (rafId === null && isVisible && !document.hidden) {
+                    rafId = requestAnimationFrame(renderLoop);
+                }
+            };
+            const stopRender = () => {
+                if (rafId !== null) {
+                    cancelAnimationFrame(rafId);
+                    rafId = null;
+                }
+            };
+
+            const tweenUniform = (uniform, target, duration) => {
+                if (window.gsap) {
+                    window.gsap.to(uniform, { value: target, duration, ease: 'power2.out' });
+                } else {
+                    uniform.value = target;
+                }
+            };
+
+            // Duotone resolve on arrival, then settle back: colour stays the
+            // reward for attention, exactly like the CSS duotone cards.
+            const restProgress = 0.18;
+            tweenUniform(uniforms.uProgress, 1, 1.4);
+            if (window.gsap) {
+                window.gsap.to(uniforms.uProgress, {
+                    value: restProgress,
+                    duration: 0.9,
+                    delay: 1.75,
+                    ease: 'power2.inOut'
+                });
+            }
+
+            if (featurePanel) {
+                featurePanel.addEventListener('pointerenter', () => tweenUniform(uniforms.uProgress, 1, 0.6));
+                featurePanel.addEventListener('pointerleave', () => tweenUniform(uniforms.uProgress, restProgress, 0.8));
+                featurePanel.addEventListener('focusin', () => tweenUniform(uniforms.uProgress, 1, 0.6));
+                featurePanel.addEventListener('focusout', () => tweenUniform(uniforms.uProgress, restProgress, 0.8));
+            }
+
+            // One soft ripple ring per category change: the page turn.
+            document.addEventListener('blog:filter', () => {
+                uniforms.uPulse.value = 0;
+                if (window.gsap) {
+                    window.gsap.to(uniforms.uPulse, { value: 1, duration: 0.9, ease: 'power1.out' });
+                }
+            });
+
+            if ('ResizeObserver' in window) {
+                new ResizeObserver(setSize).observe(media);
+            } else {
+                window.addEventListener('resize', setSize);
+            }
+
+            if ('IntersectionObserver' in window) {
+                new IntersectionObserver(([entry]) => {
+                    isVisible = entry.isIntersecting;
+                    if (isVisible) requestRender();
+                    else stopRender();
+                }).observe(media);
+            }
+            document.addEventListener('visibilitychange', () => {
+                if (document.hidden) stopRender();
+                else requestRender();
+            });
+
+            requestRender();
+        });
+    };
+
+    if ('IntersectionObserver' in window) {
+        const initObserver = new IntersectionObserver((entries) => {
+            if (entries.some(entry => entry.isIntersecting)) {
+                initObserver.disconnect();
+                startShader();
+            }
+        }, { rootMargin: '160px' });
+        initObserver.observe(media);
+    } else {
+        startShader();
+    }
+};
+
+enhanceBlogNoir();
+enhanceBlogFeatureShader();
+
+/* BEGINNER GUIDE — Tropic Noir field manual (EN beginner-guide.html only).
+   The scroll spy and the sticky-shelf hairline are functional and run
+   without GSAP and under reduced motion; everything below the gate is
+   entrance choreography with hidden states set from JS only. */
+const enhanceGuidePage = () => {
+    if (!document.body.classList.contains('guide-page')) return;
+    if (!document.querySelector('link[href*="tropic-noir"]')) return;
+
+    const gsapRef = window.gsap;
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // 1. Count-in scroll spy: light the rail chapter that is on the floor.
+    const railLinks = Array.from(document.querySelectorAll('.guide-rail__link'));
+    const chapters = railLinks
+        .map(link => document.querySelector(link.getAttribute('href')))
+        .filter(Boolean);
+    const rail = document.querySelector('[data-guide-rail]');
+
+    if ('IntersectionObserver' in window && railLinks.length && chapters.length) {
+        const setActive = (id) => {
+            railLinks.forEach(link => {
+                const isActive = link.getAttribute('href') === '#' + id;
+                link.classList.toggle('is-active', isActive);
+                if (isActive && rail && window.matchMedia('(max-width: 1080px)').matches) {
+                    link.scrollIntoView({
+                        block: 'nearest',
+                        inline: 'center',
+                        behavior: reduceMotion ? 'auto' : 'smooth'
+                    });
+                }
+            });
+        };
+        const spy = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) setActive(entry.target.id);
+            });
+        }, { rootMargin: '-100px 0px -60% 0px' });
+        chapters.forEach(chapter => spy.observe(chapter));
+    }
+
+    // 2. Shelf hairline: strengthen once the rail is pinned (mobile shelf).
+    //    The sentinel sits BEFORE the shell grid, not inside it, so it does
+    //    not occupy the rail's 232px grid column.
+    const shell = document.querySelector('.guide-shell');
+    if (rail && shell && 'IntersectionObserver' in window) {
+        const sentinel = document.createElement('div');
+        sentinel.setAttribute('aria-hidden', 'true');
+        shell.parentNode.insertBefore(sentinel, shell);
+        new IntersectionObserver(([entry]) => {
+            rail.classList.toggle('is-stuck', !entry.isIntersecting);
+        }).observe(sentinel);
+    }
+
+    if (!gsapRef || reduceMotion) return;
+
+    const observeOnce = (target, onEnter, options) => {
+        if (!('IntersectionObserver' in window)) {
+            onEnter();
+            return;
+        }
+        const observer = new IntersectionObserver((entries) => {
+            if (entries.some(entry => entry.isIntersecting)) {
+                observer.disconnect();
+                onEnter();
+            }
+        }, options);
+        observer.observe(target);
+    };
+
+    const underlineKeyframes = [
+        { '--title-underline-scale': 0.33, duration: 0.18, ease: 'power2.out' },
+        { '--title-underline-scale': 0.66, duration: 0.18, ease: 'power2.out' },
+        { '--title-underline-scale': 1.04, duration: 0.18, ease: 'power2.out' },
+        { '--title-underline-scale': 1, duration: 0.24, ease: 'expo.out' }
+    ];
+
+    // 3. Masthead intro: kicker leads, the title answers, the underline
+    //    draws its three steps, then the photo steps in.
+    const kicker = document.querySelector('[data-guide-kicker]');
+    const title = document.querySelector('[data-guide-title]');
+    const dek = document.querySelector('[data-guide-dek]');
+    const assurance = document.querySelector('[data-guide-assurance]');
+    const figure = document.querySelector('[data-guide-figure]');
+
+    if (title) {
+        const intro = gsapRef.timeline({ defaults: { ease: 'power3.out' } });
+        gsapRef.set(title, { '--title-underline-scale': 0 });
+        if (kicker) intro.from(kicker, { autoAlpha: 0, y: 12, duration: 0.5 });
+        intro.from(title, { autoAlpha: 0, y: 18, duration: 0.6 }, '-=0.25');
+        intro.to(title, { keyframes: underlineKeyframes }, '-=0.2');
+        if (dek) intro.from(dek, { autoAlpha: 0, y: 14, duration: 0.5 }, '-=0.45');
+        if (assurance) intro.from(assurance, { autoAlpha: 0, y: 12, duration: 0.45 }, '-=0.3');
+        if (figure) intro.from(figure, { autoAlpha: 0, y: 22, duration: 0.65 }, '-=0.4');
+        intro.set([kicker, title, dek, assurance, figure].filter(Boolean), {
+            clearProps: 'opacity,visibility,transform'
+        });
+    }
+
+    // 4. Chapter choreography: the header leads, the cards answer with a
+    //    1-2-3-tap stagger (a breath after every fourth item).
+    const beatStagger = (index) => 0.07 * index + Math.floor(index / 4) * 0.07;
+
+    document.querySelectorAll('.guide-chapter').forEach((chapter) => {
+        const heading = chapter.querySelector('.guide-chapter__title');
+        const lead = Array.from(chapter.querySelectorAll('.guide-chapter__header > *'));
+        const follow = Array.from(chapter.querySelectorAll(
+            '.guide-card, .guide-step, .guide-mirror__half, .guide-rules'
+        ));
+
+        if (heading) gsapRef.set(heading, { '--title-underline-scale': 0 });
+        if (lead.length) gsapRef.set(lead, { autoAlpha: 0, y: 16 });
+        if (follow.length) gsapRef.set(follow, { autoAlpha: 0, y: 18 });
+
+        observeOnce(chapter, () => {
+            const beat = gsapRef.timeline({ defaults: { ease: 'power3.out' } });
+            if (lead.length) {
+                beat.to(lead, {
+                    autoAlpha: 1,
+                    y: 0,
+                    duration: 0.55,
+                    stagger: 0.09,
+                    clearProps: 'opacity,visibility,transform'
+                });
+            }
+            if (heading) beat.to(heading, { keyframes: underlineKeyframes }, '-=0.3');
+            if (follow.length) {
+                beat.to(follow, {
+                    autoAlpha: 1,
+                    y: 0,
+                    duration: 0.5,
+                    stagger: beatStagger,
+                    clearProps: 'opacity,visibility,transform'
+                }, '-=0.35');
+            }
+        }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+    });
+
+    // 5. Offramp: one quiet fade-up when the close arrives.
+    const offramp = document.querySelector('[data-guide-offramp]');
+    if (offramp) {
+        gsapRef.set(offramp, { autoAlpha: 0, y: 16 });
+        observeOnce(offramp, () => {
+            gsapRef.to(offramp, {
+                autoAlpha: 1,
+                y: 0,
+                duration: 0.55,
+                ease: 'power3.out',
+                clearProps: 'opacity,visibility,transform'
+            });
+        }, { threshold: 0.2 });
+    }
+};
+enhanceGuidePage();
 
 /* MOBILE BOTTOM NAV INJECTION */
 /* MOBILE BOTTOM NAV REPLACEMENT */
@@ -3699,3 +4406,72 @@ info@axcentdance.com`,
         updateScannerOpacity();
     }
 });
+
+// Tropic Noir subpages: generic "Lead & Follow" entrance. Sections below the
+// fold are armed (hidden via CSS class) only after JS confirms they are
+// offscreen, so content is always visible without JavaScript, with reduced
+// motion, and above the fold (no flash, no CLS — transform/opacity only).
+// The heading leads because it is the first armed child; siblings follow via
+// the CSS transition-delay ladder in tropic-noir.css.
+(function enhanceTropicSubpageEntrances() {
+    if (!document.body.classList.contains('tropic')) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (!('IntersectionObserver' in window)) return;
+
+    const sections = Array.from(document.querySelectorAll('main section'));
+    if (!sections.length) return;
+
+    const io = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            io.unobserve(entry.target);
+            entry.target.classList.add('tropic-reveal--in');
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -6% 0px' });
+
+    sections.forEach((section) => {
+        const rect = section.getBoundingClientRect();
+        if (rect.top <= window.innerHeight * 0.9) return;
+        const stage = section.querySelector(':scope > .container') || section;
+        if (!stage.children.length || stage.children.length > 14) {
+            return;
+        }
+        section.classList.add('tropic-reveal');
+        io.observe(section);
+    });
+})();
+
+// About page hero: brass step-diagram panel. A brushed-brass plaque with the
+// Bachata basic-step count (1-2-3-4) traced in raised brass, not an abstract
+// shape — see .agent/rules/axcent-rules.md §4.2. The SVG in the markup is the
+// full static fallback (no JS, reduced motion, or WebGL required); this only
+// upgrades it to a lit, gently tilting 3D read once it is safe to do so.
+(function enhanceAboutHeroIntro() {
+    if (!document.body.classList.contains('about-page')) return;
+
+    const gsap = window.gsap;
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const heroContent = document.querySelector('.about-hero__content');
+
+    if (!gsap || prefersReducedMotion || !heroContent) return;
+
+    const textTargets = gsap.utils.toArray([
+        '.about-hero__content .hero-badge',
+        '.about-hero__content .page-title',
+        '.about-hero__content .hero-desc-border'
+    ].join(', '));
+    if (!textTargets.length) return;
+
+    gsap.set(textTargets, { autoAlpha: 0, y: 18 });
+
+    const clearIntroStyles = () => gsap.set(textTargets, { clearProps: 'opacity,visibility,transform' });
+
+    gsap.timeline({
+        defaults: { ease: 'power3.out' },
+        onComplete: clearIntroStyles
+    }).to(textTargets, { autoAlpha: 1, y: 0, duration: 0.5, stagger: 0.09 });
+
+    // Safety net: if the tab is backgrounded mid-tween, content must not
+    // stay invisible indefinitely.
+    window.setTimeout(clearIntroStyles, 1700);
+})();

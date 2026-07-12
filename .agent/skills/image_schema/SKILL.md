@@ -33,9 +33,15 @@ A plain URL string is *technically valid*, but **`ImageObject` with explicit `wi
   "@type": "ImageObject",
   "url": "https://axcentdance.com/assets/images/blog/YOUR-IMAGE.webp",
   "width": 1200,
-  "height": 675
+  "height": 675,
+  "creditText": "AXcent Dance",
+  "copyrightNotice": "© AXcent Dance",
+  "creator": { "@id": "https://axcentdance.com/#organization" },
+  "license": "https://axcentdance.com/terms"
 }
 ```
+
+> **Credit fields (added 2026-07-05):** every hero `ImageObject` (any block that carries `width`/`height`) MUST include `creditText`, `copyrightNotice`, `creator` (as an `@id` reference to `#organization`), and `license` pointing to `https://axcentdance.com/terms`. Google reads these for image credit/licensing information in Google Images. Do NOT add them to the publisher `logo` ImageObject, and do NOT add `acquireLicensePage` (our photos are not offered for licensing).
 
 ### Multiple aspect ratios (ideal for Google Discover — flagship posts only)
 

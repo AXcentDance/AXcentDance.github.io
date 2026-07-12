@@ -1,60 +1,100 @@
-import subprocess
+import argparse
 import os
 import shutil
+import subprocess
+import sys
 
-def generate_hls():
-    # Configuration
-    input_video = "assets/videos/HeroVideoAleXidan.mp4"
-    output_dir = "assets/videos/hls"
-    
-    # Ensure output directory exists
+ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+HLS_ROOT = os.path.join(ROOT_DIR, "assets", "videos", "hls")
+SEGMENT_SECONDS = 3
+
+
+def probe_fps(input_video):
+    """Read the source frame rate so the keyframe interval can be locked to
+    exactly SEGMENT_SECONDS. HLS can only cut segments on keyframes."""
+    out = subprocess.run(
+        ["ffprobe", "-v", "quiet", "-select_streams", "v:0",
+         "-show_entries", "stream=r_frame_rate",
+         "-of", "default=noprint_wrappers=1:nokey=1", input_video],
+        check=True, capture_output=True, text=True,
+    ).stdout.strip()
+    num, _, den = out.partition("/")
+    return float(num) / float(den or 1)
+
+
+def generate_hls(input_video, name, keep_audio=False, mobile_only=False):
+    output_dir = os.path.join(HLS_ROOT, name)
     if os.path.exists(output_dir):
         shutil.rmtree(output_dir)
     os.makedirs(output_dir)
 
-    # Command to generate HLS
-    # We create two streams:
-    # 1. 1080p for desktop (scaled from 4k, crf 23 for quality/size balance)
-    # 2. 720x406 for mobile (re-using the scaling logic, optimized)
-    # HLS segment time 4 seconds
-    
+    fps = probe_fps(input_video)
+    gop = round(fps * SEGMENT_SECONDS)  # one keyframe per segment boundary
+
+    # Two renditions:
+    # 1. 720p for mobile/tablet (low bitrate ceiling)
+    # 2. 1080p for desktop (higher quality)
+    # The browser/hls.js picks a rendition from playlist.m3u8 by bandwidth.
     cmd = [
-        "ffmpeg",
-        "-i", input_video,
-        
-        # Stream 0: 720p (Mobile/Tablet optimized)
-        "-filter:v:0", "scale=w=720:h=-2",
+        "ffmpeg", "-y", "-i", input_video,
+
+        # Stream 0: 720p (Mobile/Tablet optimized). min(...) prevents upscaling
+        # when the source is smaller than the rendition target.
+        "-filter:v:0", "scale=w='min(720,iw)':h=-2",
         "-c:v:0", "libx264", "-crf:v:0", "28", "-preset:v:0", "slow",
         "-b:v:0", "800k", "-maxrate:v:0", "1000k", "-bufsize:v:0", "1500k",
-        "-g:v:0", "75", "-keyint_min:v:0", "75", "-sc_threshold:v:0", "0",
-        
-        # Stream 1: 1080p (Desktop optimized)
-        "-filter:v:1", "scale=w=1920:h=-2",
-        "-c:v:1", "libx264", "-crf:v:1", "24", "-preset:v:1", "slow",
-        "-b:v:1", "4500k", "-maxrate:v:1", "6000k", "-bufsize:v:1", "9000k",
-        "-g:v:1", "75", "-keyint_min:v:1", "75", "-sc_threshold:v:1", "0",
-
-        # HLS Settings
-        "-map", "0:v", "-map", "0:v",
-        "-var_stream_map", "v:0,name:mobile v:1,name:desktop",
-        "-master_pl_name", "playlist.m3u8",
-        "-f", "hls",
-        "-hls_time", "3",
-        "-hls_playlist_type", "vod",
-        "-hls_segment_filename", f"{output_dir}/%v_segment_%03d.ts",
-        # Remove audio as it is a background video
-        "-an",
-        f"{output_dir}/stream_%v.m3u8"
+        "-g:v:0", str(gop), "-keyint_min:v:0", str(gop), "-sc_threshold:v:0", "0",
     ]
 
-    print("Running FFmpeg HLS generation...")
+    if not mobile_only:
+        cmd += [
+            # Stream 1: 1080p (Desktop optimized)
+            "-filter:v:1", "scale=w='min(1920,iw)':h=-2",
+            "-c:v:1", "libx264", "-crf:v:1", "24", "-preset:v:1", "slow",
+            "-b:v:1", "4500k", "-maxrate:v:1", "6000k", "-bufsize:v:1", "9000k",
+            "-g:v:1", str(gop), "-keyint_min:v:1", str(gop), "-sc_threshold:v:1", "0",
+        ]
+
+    cmd += ["-map", "0:v"] * (1 if mobile_only else 2)
+
+    audio_maps = 1 if mobile_only else 2
+    if keep_audio:
+        cmd += ["-map", "0:a?"] * audio_maps + ["-c:a", "aac", "-b:a", "96k"]
+        var_stream_map = "v:0,a:0,name:mobile" if mobile_only \
+            else "v:0,a:0,name:mobile v:1,a:1,name:desktop"
+    else:
+        cmd += ["-an"]
+        var_stream_map = "v:0,name:mobile" if mobile_only \
+            else "v:0,name:mobile v:1,name:desktop"
+
+    cmd += [
+        "-var_stream_map", var_stream_map,
+        "-master_pl_name", "playlist.m3u8",
+        "-f", "hls",
+        "-hls_time", str(SEGMENT_SECONDS),
+        "-hls_playlist_type", "vod",
+        "-hls_segment_filename", os.path.join(output_dir, "%v_segment_%03d.ts"),
+        os.path.join(output_dir, "stream_%v.m3u8"),
+    ]
+
+    print("Running FFmpeg HLS generation (%.6g fps, keyframe every %d frames)..." % (fps, gop))
     print(" ".join(cmd))
-    
-    try:
-        subprocess.run(cmd, check=True)
-        print("HLS Generation Successful!")
-    except subprocess.CalledProcessError as e:
-        print(f"Error generating HLS: {e}")
+    subprocess.run(cmd, check=True)
+    print("HLS output written to %s" % os.path.relpath(output_dir, ROOT_DIR))
+
 
 if __name__ == "__main__":
-    generate_hls()
+    parser = argparse.ArgumentParser(
+        description="Segment a video into 3-second HLS chunks under assets/videos/hls/<name>/. "
+                    "See .agent/rules/video_upload_policy.md for the full publishing workflow.")
+    parser.add_argument("input", help="Path to the source video (master file)")
+    parser.add_argument("name", help="Output folder name, e.g. 'hero-home' or 'aitor-demo'")
+    parser.add_argument("--keep-audio", action="store_true",
+                        help="Keep the audio track (default: stripped, for background/hero videos)")
+    parser.add_argument("--mobile-only", action="store_true",
+                        help="Generate only the 720p rendition (for portrait or small-display videos "
+                             "where a desktop rendition wastes tens of MB)")
+    args = parser.parse_args()
+    if not os.path.isfile(args.input):
+        sys.exit("Input file not found: %s" % args.input)
+    generate_hls(args.input, args.name, keep_audio=args.keep_audio, mobile_only=args.mobile_only)

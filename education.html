@@ -17,11 +17,11 @@
     <meta property="og:description" content="The ultimate Bachata knowledge hub. Explore history, street styles, musicality instruments, and terminology with AXcent Dance Zurich.">
     <meta property="og:url" content="https://axcentdance.com/education">
     <meta property="og:type" content="article">
-    <meta property="og:image" content="https://axcentdance.com/assets/images/education_hero.webp">
+    <meta property="og:image" content="https://axcentdance.com/assets/images/bachata_education_book_1200w.jpg">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Bachata Education: History, Styles &amp; Musicality | AXcent">
     <meta name="twitter:description" content="The ultimate Bachata knowledge hub. Explore history, street styles, musicality instruments, and terminology with AXcent Dance Zurich.">
-    <meta name="twitter:image" content="https://axcentdance.com/assets/images/education_hero.webp">
+    <meta name="twitter:image" content="https://axcentdance.com/assets/images/bachata_education_book_1200w.jpg">
     <meta http-equiv="Content-Security-Policy"
         content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://cdn.jsdelivr.net https://connect.facebook.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com https://placehold.co https://*.googleapis.com https://*.gstatic.com https://www.facebook.com https://connect.facebook.net; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://script.google.com https://formsubmit.co https://www.facebook.com https://connect.facebook.net; frame-src 'self' https://www.google.com; object-src 'none'; base-uri 'self'; media-src 'self' blob:; worker-src 'self' blob:;">
 
@@ -29,6 +29,7 @@
     <!-- Styles -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@200..900&family=Outfit:wght@500;600;700;800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Teko:wght@300..700&display=swap">
     <link rel="stylesheet" href="style.css?v=2.3">
+    <link rel="stylesheet" href="tropic-noir.css?v=5.0">
     <link rel="apple-touch-icon" href="/apple-touch-icon-v2.png">
     <link rel="icon" href="/favicon-axcent-transparent.svg" type="image/svg+xml">
 
@@ -101,8 +102,12 @@
                 "@type": "ImageObject",
                 "url": "https://axcentdance.com/assets/images/education_hero.webp",
                 "width": 1200,
-                "height": 1200
-            }
+                "height": 1200,
+                "creditText": "AXcent Dance",
+                "copyrightNotice": "© AXcent Dance",
+                "creator": { "@id": "https://axcentdance.com/#organization" },
+                "license": "https://axcentdance.com/terms"
+              }
         },
         {
             "@type": "BreadcrumbList",
@@ -224,7 +229,7 @@
   <!-- End Meta Pixel Code -->
   </head>
 
-<body>
+<body class="tropic info-page education-page">
 
     <!-- Navigation Bar -->
     <header class="main-header">
@@ -260,6 +265,7 @@
                         <a href="blog"><span>Blog</span></a>
                         <a href="faq"><span>FAQ</span></a>
                         <a href="etiquette"><span>Dance Etiquette</span></a>
+                        <a href="portal"><span>Login</span></a>
                     </div>
                 </div>
                 <a href="/#trial-form" class="btn-header-cta">Book Free Trial</a>
@@ -313,24 +319,23 @@
         <div class="container edu-content">
 
             <section id="history" class="edu-section">
-                <h2>History of Bachata</h2>
+                <h2><span class="edu-num">01</span>History of Bachata</h2>
                 <p>
                     Bachata originated in the rural neighborhoods of the <strong>Dominican Republic</strong> in the
                     early 1960s. Initially, it was known as "amargue" (bitterness) music, reflecting themes of
                     heartbreak, loss, and longing.
                 </p>
-                <div
-                    style="background: rgba(255,59,48,0.05); padding: 1.5rem; border-radius: 12px; margin: 1.5rem 0; border-left: 4px solid var(--accent-start);">
+                <div class="edu-callout">
                     <p style="margin-bottom: 0.5rem; color: white; font-weight: 700;">Deep Dive into the Roots</p>
                     <p style="margin-bottom: 1rem; font-size: 0.95rem;">Want to know why Bachata was prohibited and how
                         it became a global sensation? Start with our <a href="guide-bachata"
                             style="color: var(--accent-start); text-decoration: underline;">complete guide to Bachata music and dance</a>.</p>
-                    <a href="blog-posts/roots-of-bachata" class="btn-text"
+                    <a href="blog/roots-of-bachata" class="btn-text"
                         style="color: var(--accent-start); font-weight: 700; text-decoration: none;">READ THE FULL STORY
                         →</a>
                 </div>
                 <p>
-                    It wasn't until the 1990s, with artists like <strong>Juan Luis Guerra</strong>, that Bachata gained
+                    It was not until the 1990s, with artists like <strong>Juan Luis Guerra</strong>, that Bachata gained
                     international recognition. In the early 2000s, the group <strong>Aventura</strong> revolutionized
                     the genre by infusing it with R&B and Pop elements.
                 </p>
@@ -338,7 +343,7 @@
 
             <!-- 2. Styles Explained -->
             <section id="styles" class="edu-section">
-                <h2>Bachata Styles Explained</h2>
+                <h2><span class="edu-num">02</span>Bachata Styles Explained</h2>
                 <p>As Bachata spread across the globe, it evolved into distinct styles. Understanding these differences
                     helps you respect the roots while enjoying modern interpretations. <strong>Mastering each style is
                         essential to becoming a complete dancer, as different songs and energies call for different ways
@@ -368,6 +373,9 @@
                             <li><strong>Connection:</strong> Close contact position, leading through frame and body
                                 points.</li>
                         </ul>
+                        <p class="edu-crosslink">Curious? Read our <a href="guide-bachata-sensual">Bachata Sensual
+                                guide</a> or start with the <a href="bachata-sensual-foundation">Foundation
+                                course</a>.</p>
                     </div>
 
                     <div class="style-card">
@@ -382,11 +390,13 @@
                         </ul>
                     </div>
                 </div>
+                <p class="edu-crosslink">Terms covered &mdash; now learn the manners: our
+                    <a href="etiquette">dance etiquette guide</a>.</p>
             </section>
 
             <!-- 3. Musicality Guide -->
             <section id="musicality" class="edu-section">
-                <h2>Musicality Guide</h2>
+                <h2><span class="edu-num">03</span>Musicality Guide</h2>
                 <p>Bachata music is driven by a specific set of instruments. Learning to listen to them allows you to
                     predict the music and dance "in the pocket."</p>
 
@@ -424,11 +434,13 @@
                     bongo rolls), and <strong>Mambo</strong> (High energy, instrumental section). Good dancers
                     anticipate these changes to adjust their energy and movement style accordingly.
                 </p>
+                <p class="edu-crosslink">Go deeper: <a href="blog/finding-the-one-bachata-musicality">Finding the
+                        &ldquo;One&rdquo; in Bachata music</a>.</p>
             </section>
 
             <!-- 4. Glossary -->
             <section id="glossary" class="edu-section">
-                <h2>Dance Glossary</h2>
+                <h2><span class="edu-num">04</span>Dance Glossary</h2>
                 <div class="glossary-grid">
                     <div class="term-item">
                         <span class="term-name">Basic Step</span>
@@ -468,66 +480,75 @@
     </main>
 
     <footer class="main-footer">
-        <div class="container footer-grid">
-            <div class="footer-col">
-                <a href="./" class="logo footer-logo"><span class="logo-title">AXcent</span><span
-                        class="logo-subtitle text-gradient">DANCE</span></a>
-                <p class="footer-address">
-                    Hermetschloostrasse 73,<br>
-                    8048 Zurich Altstetten<br> 2 minute walking from Tram 2 stop and Bus 31 stop
-                </p>
-                <div class="footer-socials">
-                    <a href="https://www.instagram.com/axcent_dance/" target="_blank" aria-label="Instagram">
-                        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-                            <path
-                                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-                        </svg>
-                    </a>
-                    <a href="mailto:info@axcentdance.com" aria-label="Email">
-                        <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
-                            </path>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-
-            <div class="footer-col">
-                <h2 class="footer-heading">Quick Links</h2>
-                <ul class="footer-links">
-                    <li><a href="guide-bachata">What is Bachata</a></li>
-                    <li><a href="blog-posts/roots-of-bachata">Roots of Bachata</a></li>
-                    <li><a href="schedule">Schedule</a></li>
-                    <li><a href="blog">Our Blog</a></li>
-
-                </ul>
-            </div>
-
-            <div class="footer-col">
-                <h2 class="footer-heading">Legal</h2>
-                <ul class="footer-links">
-                    <li><a href="terms">Terms & Conditions</a></li>
-                    <li><a href="privacy">Privacy Policy</a></li>
-                    <li><a href="imprint">Imprint</a></li>
-                </ul>
-            </div>
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <a href="./" class="logo footer-logo"><span class="logo-title">AXcent</span><span
+            class="logo-subtitle text-gradient">DANCE</span></a>
+        <p class="footer-address">
+          Hermetschloostrasse 73,<br>
+          8048 Zurich Altstetten<br> 2 minute walking from Tram 2 stop and Bus 31 stop
+        </p>
+        <p class="footer-contact">
+          <a href="https://wa.me/41799668481" target="_blank" rel="noopener noreferrer">WhatsApp: +41 79 966 84 81</a>
+        </p>
+        <div class="footer-socials">
+          <a href="https://www.instagram.com/axcent_dance/" target="_blank" aria-label="Instagram">
+            <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+              <path
+                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+            </svg>
+          </a>
+          <a href="mailto:info@axcentdance.com" aria-label="Email">
+            <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+              </path>
+            </svg>
+          </a>
         </div>
+      </div>
 
-        <div class="container footer-map-full" style="margin-bottom: 2rem;">
-            <h2 class="footer-heading" style="margin-bottom: 1rem;">Find Us</h2>
-            <div class="footer-map-wrapper-large"
-                style="border-radius: 12px; overflow: hidden; border: 1px solid var(--glass-border);">
-                <iframe title="Google Maps Location of AXcent Dance"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2701.365!2d8.472010!3d47.394204!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47900b995a7d8e03%3A0xd99d3e4500b44fd6!2sAXcent%20Dance%20%7C%20Bachata%20Classes!5e0!3m2!1sen!2sch!4v1710680000000!5m2!1sen!2sch&hl=en"
-                    width="100%" height="250" style="border:0; width: 100%; display: block;" allowfullscreen=""
-                    loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2025 AXcent Dance. All rights reserved.</p>
-        </div>
-    </footer>
+      <div class="footer-col">
+        <h2 class="footer-heading">Quick Links</h2>
+        <ul class="footer-links">
+          <li><a href="/#trial-form">Book Free Trial</a></li>
+          <li><a href="guide-bachata">What is Bachata</a></li>
+          <li><a href="blog/roots-of-bachata">Roots of Bachata</a></li>
+          <li><a href="schedule">Schedule</a></li>
+          <li><a href="blog">Our Blog</a></li>
+
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h2 class="footer-heading">Legal</h2>
+        <ul class="footer-links">
+          <li><a href="terms">Terms & Conditions</a></li>
+          <li><a href="privacy">Privacy Policy</a></li>
+          <li><a href="imprint">Imprint</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container footer-map-full">
+      <h2 class="footer-heading footer-map-full__heading">Find Us</h2>
+      <a class="footer-map-card" href="https://www.google.com/maps?cid=15680757943659417558" target="_blank"
+        rel="noopener noreferrer" aria-label="Open the AXcent Dance studio location in Google Maps">
+        <span class="footer-map-card__pin" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+            <circle cx="12" cy="10" r="3" />
+          </svg>
+        </span>
+        <span class="footer-map-card__address">Hermetschloostrasse 73, 8048 Zurich Altstetten</span>
+        <span class="footer-map-card__hint">2 minutes from Tram 2 and Bus 31 · Open in Google Maps</span>
+      </a>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 AXcent Dance. All rights reserved.</p>
+    </div>
+  </footer>
 
     <script src="script.js?v=5.8"></script>
 

@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="canonical" href="https://axcentdance.com/de/portal">
+    <link rel="alternate" hreflang="en" href="https://axcentdance.com/portal">
+    <link rel="alternate" hreflang="de" href="https://axcentdance.com/de/portal">
+    <link rel="alternate" hreflang="x-default" href="https://axcentdance.com/portal">
+    <title>Mein Pass - AXcent Dance</title>
+    <meta name="description" content="Sieh deinen aktuellen AXcent Dance Pass und gib Abwesenheitstage an.">
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://jwravnvytkmsvqoqkmwb.supabase.co https://formsubmit.co; object-src 'none'; base-uri 'self';">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@200..900&family=Outfit:wght@500;600;700;800&display=swap">
+    <link rel="stylesheet" href="../style.css?v=4.2">
+    <link rel="stylesheet" href="../tropic-noir.css?v=5.0">
+    <link rel="apple-touch-icon" href="/apple-touch-icon-v2.png">
+    <link rel="icon" href="/favicon-axcent-192.png" type="image/png" sizes="192x192">
+    <link rel="icon" href="/favicon-axcent-transparent.svg" type="image/svg+xml">
+    <style>
+        .portal-container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .portal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .portal-header h1 {
+            color: white;
+            font-size: 1.8rem;
+            margin: 0;
+        }
+
+        .btn-logout {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 30px;
+            color: var(--text-muted);
+            padding: 8px 20px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+
+        .btn-logout:hover {
+            opacity: 0.8;
+        }
+
+        .portal-card {
+            background: rgba(20, 20, 20, 0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 30px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .portal-card h2 {
+            color: white;
+            font-size: 1.2rem;
+            margin: 0 0 1.2rem;
+        }
+
+        .pass-name {
+            font-size: 1.5rem;
+            color: white;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .pass-dates {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .pass-badge {
+            display: inline-block;
+            padding: 4px 14px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .badge-active {
+            color: #51cf66;
+            background: rgba(81, 207, 102, 0.12);
+            border: 1px solid rgba(81, 207, 102, 0.35);
+        }
+
+        .badge-expired {
+            color: #ff6b6b;
+            background: rgba(255, 107, 107, 0.12);
+            border: 1px solid rgba(255, 107, 107, 0.35);
+        }
+
+        .badge-upcoming {
+            color: #ffd43b;
+            background: rgba(255, 212, 59, 0.12);
+            border: 1px solid rgba(255, 212, 59, 0.35);
+        }
+
+        .quota-line {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .quota-line strong {
+            color: white;
+        }
+
+        .absence-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 1.2rem;
+        }
+
+        .absence-list li {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .absence-type {
+            color: white;
+            font-weight: 600;
+        }
+
+        .reg-note {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: 12px;
+            padding: 12px;
+            margin-bottom: 1.2rem;
+            line-height: 1.5;
+        }
+
+        .portal-card .form-group {
+            margin-bottom: 1.2rem;
+            text-align: left;
+        }
+
+        .portal-card .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-muted);
+        }
+
+        .portal-card .form-group input,
+        .portal-card .form-group select {
+            width: 100%;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            color: white;
+            font-size: 1rem;
+        }
+
+        .portal-card .form-group select option {
+            background: #1a1a1a;
+        }
+
+        .btn-declare {
+            width: 100%;
+            padding: 12px;
+            background: rgba(255, 59, 48, 0.15);
+            border: 1px solid var(--accent-start);
+            border-radius: 30px;
+            color: white;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+
+        .btn-declare:hover {
+            opacity: 0.9;
+        }
+
+        .btn-declare:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        .history-item {
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .history-item strong {
+            color: white;
+        }
+
+        #feedback,
+        #absenceFeedback {
+            margin-top: 1rem;
+            padding: 10px;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            display: none;
+        }
+
+        .error {
+            color: #ff6b6b;
+            background: rgba(255, 107, 107, 0.1);
+            display: block !important;
+        }
+
+        .success {
+            color: #51cf66;
+            background: rgba(81, 207, 102, 0.1);
+            display: block !important;
+        }
+
+        .muted-note {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .renew-option {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 14px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            margin-bottom: 8px;
+            color: var(--text-muted);
+            cursor: pointer;
+            font-size: 0.95rem;
+        }
+
+        .renew-option:has(input:checked) {
+            border-color: var(--accent-start);
+            color: white;
+        }
+
+        .renew-option .price {
+            white-space: nowrap;
+            font-weight: 600;
+        }
+
+        .renew-class {
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 10px 14px;
+            margin-bottom: 8px;
+        }
+
+        .renew-class label.main {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-muted);
+            cursor: pointer;
+            font-size: 0.95rem;
+        }
+
+        .renew-class:has(> label.main input:checked) {
+            border-color: var(--accent-start);
+        }
+
+        .renew-class:has(> label.main input:checked) label.main {
+            color: white;
+        }
+
+        .renew-roles {
+            display: none;
+            gap: 16px;
+            margin-top: 8px;
+            padding-left: 26px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .renew-class:has(> label.main input:checked) .renew-roles {
+            display: flex;
+        }
+
+        .renew-roles label {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body style="padding-top: 80px;">
+
+    <header class="main-header">
+        <div class="container navbar">
+            <a href="/de/" class="logo">
+                <span class="logo-title">AXCENT</span><span class="logo-subtitle text-gradient">DANCE</span>
+            </a>
+            <nav class="nav-links">
+                <a href="/de/">Home</a>
+                <a href="/portal" aria-label="English version">EN</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="portal-container">
+        <div class="portal-header">
+            <h1>Mein Pass</h1>
+            <button class="btn-logout" id="logoutBtn">Abmelden</button>
+        </div>
+
+        <div class="portal-card" id="loadingCard">
+            <p class="muted-note">Dein Pass wird geladen...</p>
+        </div>
+
+        <div class="portal-card" id="passCard" style="display: none;">
+            <h2>Dein aktueller Pass</h2>
+            <div class="pass-name" id="passName"></div>
+            <div class="pass-dates" id="passDates"></div>
+            <span class="pass-badge" id="passBadge"></span>
+        </div>
+
+        <div class="portal-card" id="noPassCard" style="display: none;">
+            <h2>Kein Pass gefunden</h2>
+            <p class="muted-note">
+                Wir konnten keinen Pass finden, der mit <strong id="accountEmail"></strong> verknüpft ist.
+                Falls du gerade erst einen Pass gekauft hast, kann die Aktivierung nach der Zahlung einen Moment
+                dauern. Falls du dich mit einer anderen E-Mail-Adresse registriert hast,
+                <a href="contact" style="color: var(--accent-gold);">kontaktiere uns</a> bitte,
+                damit wir deinen Pass verknüpfen können.
+            </p>
+        </div>
+
+        <div class="portal-card" id="absenceCard" style="display: none;">
+            <h2>Abwesenheit angeben</h2>
+            <p class="quota-line" id="quotaLine"></p>
+
+            <div class="reg-note" id="regNote" style="display: none;"></div>
+
+            <ul class="absence-list" id="absenceList"></ul>
+
+            <form id="absenceForm">
+                <div class="form-group">
+                    <label for="absenceType">Art</label>
+                    <select id="absenceType" required>
+                        <option value="excused">Geplante Abwesenheit (verlängert deinen Pass)</option>
+                        <option value="sick">Krankheitstag (in einem anderen Kurs nachholen)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="absenceDate">Datum</label>
+                    <input type="date" id="absenceDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="absenceNote">Notiz (optional)</label>
+                    <input type="text" id="absenceNote" maxlength="200" placeholder="z.B. Ferien, welche Lektion du verpasst...">
+                </div>
+                <button type="submit" class="btn-declare" id="declareBtn">Abwesenheit angeben</button>
+            </form>
+            <div id="absenceFeedback"></div>
+        </div>
+
+        <div class="portal-card" id="renewCard" style="display: none;">
+            <h2>Pass erneuern</h2>
+            <p class="muted-note" style="margin-bottom: 1.2rem;">Deine Angaben sind bereits gespeichert — wähle einfach
+                dein neues Paket, deine Kurse und das Startdatum. Die Zahlung erfolgt auf unserer sicheren
+                Stripe-Seite.</p>
+
+            <form id="renewForm">
+                <div class="form-group">
+                    <label>Paket</label>
+                    <div id="renewPackages"></div>
+                </div>
+                <div class="form-group">
+                    <label>Kurse</label>
+                    <div id="renewClasses"></div>
+                </div>
+                <div class="form-group">
+                    <label for="renewStartDate">Startdatum</label>
+                    <select id="renewStartDate" required></select>
+                </div>
+                <button type="submit" class="btn-declare" id="renewBtn">Weiter zur Zahlung</button>
+            </form>
+            <div id="renewFeedback"></div>
+        </div>
+
+        <div class="portal-card" id="historyCard" style="display: none;">
+            <h2>Pass-Verlauf</h2>
+            <div id="historyList"></div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../assets/js/axcent-passes.js"></script>
+    <script type="module">
+        import { supabase } from '../assets/js/supabase-client.js';
+
+        const FLEX_PASS = '10-Class Flexible Package';
+        const STUDIO_NOTIFY_EMAIL = 'slamitza@gmail.com';
+
+        const el = (id) => document.getElementById(id);
+        const show = (id) => { el(id).style.display = 'block'; };
+        const hide = (id) => { el(id).style.display = 'none'; };
+
+        // Escape DB-derived strings before any innerHTML use (defense in depth
+        // on top of the server-side input validation trigger).
+        const esc = (s) => String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+
+        const formatDate = (iso) => {
+            if (!iso) return '?';
+            return new Date(iso + 'T00:00:00').toLocaleDateString('de-CH', {
+                weekday: 'short', month: 'short', day: 'numeric', year: 'numeric'
+            });
+        };
+
+        const statusLabels = {
+            active: 'aktiv',
+            expired: 'abgelaufen',
+            cancelled: 'storniert'
+        };
+
+        const { data: { session } } = await supabase.auth.getSession();
+        if (!session) {
+            window.location.href = '_login.html';
+            throw new Error('Not authenticated');
+        }
+        const userEmail = session.user.email;
+
+        el('logoutBtn').addEventListener('click', async () => {
+            await supabase.auth.signOut();
+            window.location.href = '_login.html';
+        });
+
+        // RLS beschränkt die Zeilen auf die E-Mail dieses Nutzers; die Abfrage braucht keinen Filter.
+        const { data: registrations, error: regError } = await supabase
+            .from('registrations')
+            .select('*')
+            .order('created_at', { ascending: false });
+
+        hide('loadingCard');
+
+        if (regError) {
+            el('loadingCard').innerHTML = '<p class="muted-note">Beim Laden deines Passes ist etwas schiefgelaufen. Bitte versuche es später erneut.</p>';
+            show('loadingCard');
+            throw regError;
+        }
+
+        const activePasses = (registrations || []).filter(r => r.status === 'active');
+        const currentPass = activePasses[0] || null;
+
+        if (!currentPass) {
+            el('accountEmail').textContent = userEmail;
+            show('noPassCard');
+        } else {
+            el('passName').textContent = currentPass.pass_type || 'Kurspass';
+            el('passDates').textContent = formatDate(currentPass.pass_start_date) + ' → ' + formatDate(currentPass.pass_end_date);
+
+            const today = new Date(); today.setHours(0, 0, 0, 0);
+            const start = currentPass.pass_start_date ? new Date(currentPass.pass_start_date + 'T00:00:00') : null;
+            const end = currentPass.pass_end_date ? new Date(currentPass.pass_end_date + 'T00:00:00') : null;
+            const badge = el('passBadge');
+            if (start && today < start) {
+                badge.textContent = 'Startet am ' + formatDate(currentPass.pass_start_date);
+                badge.className = 'pass-badge badge-upcoming';
+            } else if (end && today > end) {
+                badge.textContent = 'Abgelaufen';
+                badge.className = 'pass-badge badge-expired';
+            } else {
+                badge.textContent = 'Aktiv';
+                badge.className = 'pass-badge badge-active';
+            }
+            show('passCard');
+
+            await setupAbsences(currentPass);
+        }
+
+        // Pass-Verlauf: alles ausser dem aktuellen aktiven Pass.
+        const history = (registrations || []).filter(r => r !== currentPass && r.status !== 'pending_payment');
+        if (history.length > 0) {
+            el('historyList').innerHTML = history.map(r =>
+                '<div class="history-item"><strong>' + esc(r.pass_type || 'Kurspass') + '</strong><br>' +
+                formatDate(r.pass_start_date) + ' → ' + formatDate(r.pass_end_date) +
+                ' · ' + esc(statusLabels[r.status] || r.status) + '</div>'
+            ).join('');
+            show('historyCard');
+        }
+
+        // Erneuerung: angeboten in den letzten 2 Wochen des aktuellen Passes,
+        // nach dessen Ablauf oder wenn nur vergangene Pässe existieren. Der
+        // neueste Pass dient als Vorlage für Paket, Kurse und Studententarif.
+        (function setupRenewal() {
+            const template = currentPass || history[0];
+            if (!template) return;
+            if (currentPass && currentPass.pass_end_date) {
+                const today = new Date(); today.setHours(0, 0, 0, 0);
+                const end = new Date(currentPass.pass_end_date + 'T00:00:00');
+                const showFrom = new Date(end); showFrom.setDate(end.getDate() - 13);
+                if (today < showFrom) return; // Pass noch lange gültig
+            } else if (currentPass) {
+                return; // aktiver Pass ohne Enddatum: noch nichts zu erneuern
+            }
+
+            const P = window.AXCENT_PASSES;
+            const tier = template.is_student ? 'student' : 'regular';
+
+            el('renewPackages').innerHTML = P.packages.map(p =>
+                '<label class="renew-option"><span style="display:flex;align-items:center;gap:10px;">' +
+                '<input type="radio" name="renew_package" value="' + p.value + '"' +
+                (p.value === template.pass_type ? ' checked' : '') + '>' + p.de +
+                '</span><span class="price">' + p[tier] + '</span></label>'
+            ).join('');
+
+            // Frühere Kurse/Rollen, gespeichert als "Wert (Rolle), Wert (Rolle)".
+            const previous = {};
+            (template.selected_classes || '').split(', ').forEach(entry => {
+                const m = entry.match(/^(.*) \((Leader|Follower)\)$/);
+                if (m) previous[m[1]] = m[2];
+            });
+
+            el('renewClasses').innerHTML = P.classes.map((c, i) =>
+                '<div class="renew-class"><label class="main">' +
+                '<input type="checkbox" name="renew_class" value="' + c.value + '"' +
+                (previous[c.value] ? ' checked' : '') + '>' + c.de +
+                ' <span style="opacity:0.7;">(' + c.value.split(' ').slice(0, 2).join(' ') + ')</span></label>' +
+                '<div class="renew-roles">' +
+                ['Leader', 'Follower'].map(role =>
+                    '<label><input type="radio" name="renew_role_' + i + '" value="' + role + '"' +
+                    (previous[c.value] === role ? ' checked' : '') + '>' + role + '</label>'
+                ).join('') + '</div></div>'
+            ).join('');
+
+            const startSelect = el('renewStartDate');
+            P.startDateOptions().forEach(d => {
+                const opt = document.createElement('option');
+                opt.value = P.toLocalISO(d);
+                opt.textContent = d.toLocaleDateString('de-CH', { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' });
+                startSelect.appendChild(opt);
+            });
+
+            show('renewCard');
+
+            el('renewForm').addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const feedback = el('renewFeedback');
+                const fail = (msg) => { feedback.textContent = msg; feedback.className = 'error'; feedback.style.display = 'block'; };
+
+                const pkg = document.querySelector('input[name="renew_package"]:checked');
+                if (!pkg) { fail('Bitte wähle ein Paket.'); return; }
+                const pkgData = P.packages.find(p => p.value === pkg.value);
+
+                const chosen = [];
+                let missingRole = null;
+                document.querySelectorAll('input[name="renew_class"]:checked').forEach((cb) => {
+                    const wrapper = cb.closest('.renew-class');
+                    const role = wrapper.querySelector('.renew-roles input:checked');
+                    if (!role) missingRole = cb.value;
+                    else chosen.push(cb.value + ' (' + role.value + ')');
+                });
+                if (chosen.length === 0 && !missingRole) { fail('Bitte wähle mindestens einen Kurs.'); return; }
+                if (missingRole) { fail('Bitte wähle Leader oder Follower für ' + missingRole + '.'); return; }
+
+                const startISO = startSelect.value;
+                const endDate = new Date(startISO + 'T00:00:00');
+                endDate.setDate(endDate.getDate() + pkgData.durationDays);
+
+                const btn = el('renewBtn');
+                btn.disabled = true;
+                feedback.textContent = 'Dein Checkout wird vorbereitet...';
+                feedback.className = '';
+                feedback.style.display = 'block';
+
+                const { error: insertError } = await supabase.from('registrations').insert({
+                    email: userEmail,
+                    first_name: template.first_name,
+                    last_name: template.last_name,
+                    phone: template.phone,
+                    pass_type: pkg.value,
+                    is_student: template.is_student,
+                    pass_start_date: startISO,
+                    pass_end_date: P.toLocalISO(endDate),
+                    selected_classes: chosen.join(', '),
+                    status: 'pending_payment'
+                });
+
+                if (insertError) {
+                    btn.disabled = false;
+                    fail('Etwas ist schiefgelaufen: ' + insertError.message);
+                    return;
+                }
+
+                const link = P.stripeLinks[pkg.value][tier] +
+                    '?prefilled_email=' + encodeURIComponent(userEmail) +
+                    '&client_reference_id=' + encodeURIComponent(userEmail);
+                feedback.textContent = 'Weiterleitung zur sicheren Zahlung...';
+                feedback.className = 'success';
+                window.location.href = link;
+            });
+        })();
+
+        async function setupAbsences(pass) {
+            const isFlexPass = pass.pass_type === FLEX_PASS;
+
+            const { data: absences, error } = await supabase
+                .from('absences')
+                .select('*')
+                .eq('registration_id', pass.id)
+                .order('absence_date', { ascending: true });
+            if (error) { console.error(error); return; }
+
+            const excusedUsed = absences.filter(a => a.type === 'excused').length;
+            const sickUsed = absences.filter(a => a.type === 'sick').length;
+
+            // Kontingent-Zusammenfassung
+            const parts = [];
+            if (!isFlexPass) parts.push('<strong>' + excusedUsed + ' von 2</strong> geplanten Abwesenheitstagen genutzt');
+            parts.push(sickUsed >= 1 ? '<strong>Krankheitstag genutzt</strong>' : '<strong>Krankheitstag verfügbar</strong>');
+            el('quotaLine').innerHTML = parts.join(' · ');
+
+            // Bei der Anmeldung als Freitext angegebene Abwesenheiten
+            if (pass.dates_unavailable) {
+                el('regNote').innerHTML = '<strong>Bei der Anmeldung angegeben:</strong> ' +
+                    esc(pass.dates_unavailable) +
+                    '<br>Diese zählen zu deinen 2 geplanten Abwesenheitstagen.';
+                show('regNote');
+            }
+
+            // Liste der angegebenen Abwesenheiten
+            if (absences.length > 0) {
+                el('absenceList').innerHTML = absences.map(a =>
+                    '<li><span class="absence-type">' + (a.type === 'excused' ? 'Geplante Abwesenheit' : 'Krankheitstag') + '</span>' +
+                    '<span>' + formatDate(a.absence_date) + '</span></li>'
+                ).join('');
+            }
+
+            // Der flexible Pass hat kein festes Enddatum zum Verlängern; nur Krankheitstage gelten.
+            const typeSelect = el('absenceType');
+            if (isFlexPass) {
+                typeSelect.querySelector('option[value="excused"]').remove();
+            }
+
+            const excusedFull = excusedUsed >= 2 || isFlexPass;
+            const sickFull = sickUsed >= 1;
+            if (excusedFull && typeSelect.querySelector('option[value="excused"]')) {
+                typeSelect.querySelector('option[value="excused"]').disabled = true;
+                typeSelect.value = 'sick';
+            }
+            if (sickFull && typeSelect.querySelector('option[value="sick"]')) {
+                typeSelect.querySelector('option[value="sick"]').disabled = true;
+                if (!excusedFull) typeSelect.value = 'excused';
+            }
+            if (excusedFull && sickFull) {
+                el('declareBtn').disabled = true;
+                el('absenceForm').style.opacity = '0.5';
+            }
+
+            // Datumsgrenzen: geplante Abwesenheiten nur in der Zukunft, Krankheitstage ab heute.
+            const setMinDate = () => {
+                const d = new Date();
+                if (typeSelect.value === 'excused') d.setDate(d.getDate() + 1);
+                // Local components, not toISOString(): UTC conversion shifts the day.
+                el('absenceDate').min = d.getFullYear() + '-' +
+                    String(d.getMonth() + 1).padStart(2, '0') + '-' +
+                    String(d.getDate()).padStart(2, '0');
+                if (pass.pass_end_date) el('absenceDate').max = pass.pass_end_date;
+            };
+            typeSelect.addEventListener('change', setMinDate);
+            setMinDate();
+
+            show('absenceCard');
+
+            el('absenceForm').addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const feedback = el('absenceFeedback');
+                feedback.textContent = 'Wird übermittelt...';
+                feedback.className = '';
+                feedback.style.display = 'block';
+
+                const type = typeSelect.value;
+                const date = el('absenceDate').value;
+                const note = el('absenceNote').value || null;
+
+                const { error: insertError } = await supabase.from('absences').insert({
+                    registration_id: pass.id,
+                    email: userEmail,
+                    type: type,
+                    absence_date: date,
+                    note: note
+                });
+
+                if (insertError) {
+                    feedback.textContent = insertError.message;
+                    feedback.className = 'error';
+                    return;
+                }
+
+                // Studio benachrichtigen, damit das Team den Pass verlängern / die Nachholstunde planen kann.
+                try {
+                    await fetch('https://formsubmit.co/ajax/' + STUDIO_NOTIFY_EMAIL, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                        body: JSON.stringify({
+                            _subject: 'Portal Absence Declared: ' + userEmail,
+                            _template: 'table',
+                            _captcha: 'false',
+                            Email: userEmail,
+                            Pass: pass.pass_type || 'Kurspass',
+                            Type: type === 'excused' ? 'Planned absence (extend pass)' : 'Sick day (makeup class)',
+                            Date: date,
+                            Note: note || 'None'
+                        })
+                    });
+                } catch (notifyErr) {
+                    console.error('Studio notification failed:', notifyErr);
+                }
+
+                feedback.textContent = type === 'excused'
+                    ? 'Abwesenheit angegeben! Wir wurden benachrichtigt und verlängern deinen Pass entsprechend.'
+                    : 'Abwesenheit angegeben! Wir wurden benachrichtigt. Gute Besserung!';
+                feedback.className = 'success';
+                setTimeout(() => window.location.reload(), 2500);
+            });
+        }
+    </script>
+</body>
+
+</html>

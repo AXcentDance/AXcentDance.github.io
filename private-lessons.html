@@ -17,11 +17,11 @@
     <meta property="og:description" content="Book private Bachata lessons in Zurich for fast results. 1-on-1 coaching for technique, styling, and musicality. No partner needed. Contact AXcent Dance today.">
     <meta property="og:url" content="https://axcentdance.com/private-lessons">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="https://axcentdance.com/assets/images/hero_new.webp">
+    <meta property="og:image" content="https://axcentdance.com/assets/images/hero_new.jpg">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Private Bachata Lessons Zurich — 1-on-1 Coaching | AXcent Dance">
     <meta name="twitter:description" content="Book private Bachata lessons in Zurich for fast results. 1-on-1 coaching for technique, styling, and musicality. No partner needed. Contact AXcent Dance today.">
-    <meta name="twitter:image" content="https://axcentdance.com/assets/images/hero_new.webp">
+    <meta name="twitter:image" content="https://axcentdance.com/assets/images/hero_new.jpg">
     <meta http-equiv="Content-Security-Policy"
         content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://cdn.jsdelivr.net https://connect.facebook.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com https://placehold.co https://*.googleapis.com https://*.gstatic.com https://www.facebook.com https://connect.facebook.net; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://script.google.com https://formsubmit.co https://www.facebook.com https://connect.facebook.net; frame-src 'self' https://www.google.com; object-src 'none'; base-uri 'self'; media-src 'self' blob:; worker-src 'self' blob:;">
 
@@ -29,145 +29,11 @@
     <!-- Styles -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@200..900&family=Outfit:wght@500;600;700;800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Teko:wght@300..700&display=swap">
     <link rel="stylesheet" href="style.css?v=2.3">
+    <link rel="stylesheet" href="tropic-noir.css?v=5.0">
     <link rel="apple-touch-icon" href="/apple-touch-icon-v2.png">
     <link rel="icon" href="/favicon-axcent-transparent.svg" type="image/svg+xml">
 
 
-    <style>
-        .private-hero {
-            padding: calc(var(--header-height) + 40px) 20px 80px;
-            text-align: center;
-            background: linear-gradient(to bottom, rgba(5, 2, 8, 0.7), var(--bg-main)), url('assets/images/private_lesson_hero.webp');
-            background-size: cover;
-            background-position: center;
-        }
-
-        .private-container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 4rem 20px;
-        }
-
-        .benefits-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-bottom: 4rem;
-        }
-
-        .benefit-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            padding: 2rem;
-            text-align: center;
-        }
-
-        .benefit-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: var(--accent-start);
-        }
-
-        .benefit-card h3 {
-            font-size: 1.5rem;
-            color: white;
-            margin-bottom: 1rem;
-        }
-
-        .benefit-card p {
-            color: var(--text-muted);
-            line-height: 1.6;
-        }
-
-        .pricing-section {
-            text-align: center;
-            margin-top: 4rem;
-        }
-
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .pricing-card {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            padding: 2rem;
-            position: relative;
-            transition: transform 0.3s ease;
-        }
-
-        .pricing-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--accent-start);
-        }
-
-        .pricing-card.featured {
-            border-color: var(--accent-start);
-            background: rgba(255, 255, 255, 0.08);
-        }
-
-        .pricing-card.featured::before {
-            content: 'MOST POPULAR';
-            position: absolute;
-            top: -12px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--accent-start);
-            color: white;
-            padding: 4px 12px;
-            border-radius: 12px;
-            font-size: 0.8rem;
-            font-weight: 700;
-        }
-
-        .price-amount {
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: white;
-            margin: 1rem 0;
-        }
-
-        .price-unit {
-            font-size: 1rem;
-            color: var(--text-muted);
-            font-weight: 400;
-        }
-
-        .price-features {
-            list-style: none;
-            padding: 0;
-            margin: 2rem 0;
-            text-align: left;
-        }
-
-        .price-features li {
-            margin-bottom: 0.8rem;
-            color: var(--text-light);
-            display: flex;
-            align-items: center;
-        }
-
-        .price-features li::before {
-            content: '✓';
-            color: var(--accent-start);
-            margin-right: 10px;
-            font-weight: bold;
-        }
-
-        .cta-box {
-            background: linear-gradient(45deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
-            border-radius: 20px;
-            padding: 3rem;
-            text-align: center;
-            margin-top: 4rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-    </style>
 
     <!-- Cookie Consent -->
 
@@ -379,13 +245,7 @@
   <!-- End Meta Pixel Code -->
   </head>
 
-<body>
-
-    <!-- Background Elements -->
-    <div class="blob blob-1"></div>
-    <div class="blob blob-2"></div>
-    <div class="blob blob-3"></div>
-
+<body class="tropic service-page private-page">
     <!-- Navigation Bar -->
     <header class="main-header">
         <div class="container navbar">
@@ -420,6 +280,7 @@
                         <a href="blog"><span>Blog</span></a>
                         <a href="faq"><span>FAQ</span></a>
                         <a href="etiquette"><span>Dance Etiquette</span></a>
+                        <a href="portal"><span>Login</span></a>
                     </div>
                 </div>
         <a href="/#trial-form" class="btn-header-cta">Book Free Trial</a>
@@ -452,8 +313,7 @@
                     <span class="hero-badge-text">PERSONAL COACHING</span>
                     <span class="hero-badge-line"></span>
                 </div>
-                <h1 class="hero-title reveal" style="font-size: clamp(3rem, 6vw, 6rem); line-height: 1;">
-                    PRIVATE<br><span class="text-stroke">BACHATA</span></h1>
+                <h1 class="hero-title service-hero__title">Private <em class="title-accent">Bachata</em></h1>
                 <p class="hero-desc reveal"
                     style="max-width: 600px; margin: 2rem auto; font-size: 1.2rem; color: var(--text-muted);">
                     Fast-track your progress with 1-on-1 coaching tailored specifically to your unique goals and
@@ -475,33 +335,27 @@
 
                 <div class="benefits-grid"
                     style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
-                    <div class="glass-card" style="padding: 2.5rem; border-radius: 20px; text-align: left;">
-                        <div class="icon-glow"
-                            style="font-size: 3rem; margin-bottom: 1.5rem; background: var(--grad); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">
-                            🚀</div>
-                        <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: white;">Accelerated Learning</h3>
-                        <p style="color: var(--text-muted); line-height: 1.6;">
+                    <div class="glass-card service-card">
+                        <span class="service-num">01</span>
+                        <h3 class="service-card__title">Accelerated Learning</h3>
+                        <p class="service-card__desc">
                             One hour of private coaching can be worth weeks of group classes. We focus 100% on you,
                             speeding up your muscle memory and understanding. If you prefer a group rhythm, compare
                             your options in the <a href="schedule" style="color: var(--accent-start);">weekly Bachata schedule</a>.
                         </p>
                     </div>
-                    <div class="glass-card" style="padding: 2.5rem; border-radius: 20px; text-align: left;">
-                        <div class="icon-glow"
-                            style="font-size: 3rem; margin-bottom: 1.5rem; background: var(--grad); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">
-                            💎</div>
-                        <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: white;">Detail & Styling</h3>
-                        <p style="color: var(--text-muted); line-height: 1.6;">
+                    <div class="glass-card service-card">
+                        <span class="service-num">02</span>
+                        <h3 class="service-card__title">Detail & Styling</h3>
+                        <p class="service-card__desc">
                             Refine your movement quality. We dive deep into micro-movements, musicality, and styling
                             that transform you from a good dancer to a great one.
                         </p>
                     </div>
-                    <div class="glass-card" style="padding: 2.5rem; border-radius: 20px; text-align: left;">
-                        <div class="icon-glow"
-                            style="font-size: 3rem; margin-bottom: 1.5rem; background: var(--grad); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">
-                            🎯</div>
-                        <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: white;">Custom Goals</h3>
-                        <p style="color: var(--text-muted); line-height: 1.6;">
+                    <div class="glass-card service-card">
+                        <span class="service-num">03</span>
+                        <h3 class="service-card__title">Custom Goals</h3>
+                        <p class="service-card__desc">
                             Whether you want to master the fundamentals, learn "that move you saw online", or refine
                             your basic step and styling—we build the entire session around your personal goals.
                         </p>
@@ -510,36 +364,76 @@
             </div>
         </section>
 
-        <!-- Testimonial / Social Proof -->
+        <!-- How it works -->
+        <section class="service-steps">
+            <div class="container">
+                <h2 class="section-title-modern">How it <em class="title-accent">works</em></h2>
+                <ol class="service-steps__list">
+                    <li class="service-steps__item">
+                        <span class="service-num">01</span>
+                        <strong>Tell us your goal</strong>
+                        <p>Fundamentals, styling, a performance, or that one move you cannot crack.</p>
+                    </li>
+                    <li class="service-steps__item">
+                        <span class="service-num">02</span>
+                        <strong>We propose a plan</strong>
+                        <p>Number of sessions, focus points, and the teacher who fits your goal.</p>
+                    </li>
+                    <li class="service-steps__item">
+                        <span class="service-num">03</span>
+                        <strong>Train 1-on-1</strong>
+                        <p>Full attention, honest feedback, and visible progress every session.</p>
+                    </li>
+                </ol>
+            </div>
+        </section>
 
+        <!-- Student voice -->
+        <section class="service-quote">
+            <div class="container">
+                <blockquote class="service-quote__text">
+                    &ldquo;The teachers Ale and Xidan combine high technical skills with a warm and welcoming
+                    environment.&rdquo;
+                </blockquote>
+                <p class="service-quote__attribution">&mdash; Giulia P, Google review</p>
+            </div>
+        </section>
+
+        <!-- Inquiry band -->
+        <section class="service-inquiry">
+            <div class="container">
+                <h2 class="service-inquiry__title">Tell us your goal &mdash; we will build the plan.</h2>
+                <p class="service-inquiry__copy">Message us on WhatsApp or through the contact form, and a real person
+                    answers within a few hours.</p>
+                <a href="contact" class="service-inquiry__cta">Contact Us</a>
+            </div>
+        </section>
 
         <!-- FAQ Accordion -->
-        <section class="section-padding" style="padding-top: 4rem; padding-bottom: 15rem;">
+        <section class="section-padding service-faq">
             <div class="container" style="max-width: 800px;">
                 <h2 class="section-title-modern" style="text-align: center; margin-bottom: 3rem;">FAQs</h2>
 
                 <div class="faq-list" style="display: flex; flex-direction: column; gap: 1rem;">
                     <!-- FAQ Item 1 -->
-                    <details class="glass-panel" style="border-radius: 12px; overflow: hidden;">
-                        <summary
-                            style="padding: 1.5rem; cursor: pointer; color: white; font-weight: 600; font-size: 1.1rem; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                    <details class="glass-panel sched-faq">
+                        <summary class="sched-faq__summary">
                             Do I need a dance partner?
-                            <span style="color: var(--accent-start);">+</span>
+                            <span class="sched-faq__icon" aria-hidden="true">+</span>
                         </summary>
-                        <div style="padding: 0 1.5rem 1.5rem; color: var(--text-muted); line-height: 1.6;">
+                        <div class="sched-faq__body">
                             No partner required! Our instructors will dance with you, allowing you to focus purely on
                             your own technique and leading/following skills.
                         </div>
                     </details>
 
                     <!-- FAQ Item 2 -->
-                    <details class="glass-panel" style="border-radius: 12px; overflow: hidden;">
-                        <summary
-                            style="padding: 1.5rem; cursor: pointer; color: white; font-weight: 600; font-size: 1.1rem; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                    <details class="glass-panel sched-faq">
+                        <summary class="sched-faq__summary">
                             Can we prepare a Wedding Dance?
-                            <span style="color: var(--accent-start);">+</span>
+                            <span class="sched-faq__icon" aria-hidden="true">+</span>
                         </summary>
-                        <div style="padding: 0 1.5rem 1.5rem; color: var(--text-muted); line-height: 1.6;">
+                        <div class="sched-faq__body">
                             Absolutely. We specialize in creating beautiful, memorable wedding choreographies that match
                             your song and skill level. Visit our <a href="wedding-dance"
                                 style="color: var(--accent-start);">Wedding Dance page</a> for more details.
@@ -548,26 +442,24 @@
 
                     <!-- FAQ Item 3 -->
                     <!-- FAQ Item 3 -->
-                    <details class="glass-panel" style="border-radius: 12px; overflow: hidden;">
-                        <summary
-                            style="padding: 1.5rem; cursor: pointer; color: white; font-weight: 600; font-size: 1.1rem; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                    <details class="glass-panel sched-faq">
+                        <summary class="sched-faq__summary">
                             What should I wear?
-                            <span style="color: var(--accent-start);">+</span>
+                            <span class="sched-faq__icon" aria-hidden="true">+</span>
                         </summary>
-                        <div style="padding: 0 1.5rem 1.5rem; color: var(--text-muted); line-height: 1.6;">
+                        <div class="sched-faq__body">
                             Comfortable clothing that allows movement. For shoes, standard dance shoes or clean indoor
                             sneakers are best. Avoid heavy boots or flip-flops.
                         </div>
                     </details>
 
                     <!-- FAQ Item 4 (Price) -->
-                    <details class="glass-panel" style="border-radius: 12px; overflow: hidden;">
-                        <summary
-                            style="padding: 1.5rem; cursor: pointer; color: white; font-weight: 600; font-size: 1.1rem; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                    <details class="glass-panel sched-faq">
+                        <summary class="sched-faq__summary">
                             How much does it cost?
-                            <span style="color: var(--accent-start);">+</span>
+                            <span class="sched-faq__icon" aria-hidden="true">+</span>
                         </summary>
-                        <div style="padding: 0 1.5rem 1.5rem; color: var(--text-muted); line-height: 1.6;">
+                        <div class="sched-faq__body">
                             We will discuss the investment personally with you. Please fill out the <a href="contact"
                                 style="color: var(--accent-start);">contact form</a>, and we will
                             get back to you via WhatsApp or Email.
@@ -575,26 +467,24 @@
                     </details>
 
                     <!-- FAQ Item 5 (Location) -->
-                    <details class="glass-panel" style="border-radius: 12px; overflow: hidden;">
-                        <summary
-                            style="padding: 1.5rem; cursor: pointer; color: white; font-weight: 600; font-size: 1.1rem; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                    <details class="glass-panel sched-faq">
+                        <summary class="sched-faq__summary">
                             Where do the lessons take place?
-                            <span style="color: var(--accent-start);">+</span>
+                            <span class="sched-faq__icon" aria-hidden="true">+</span>
                         </summary>
-                        <div style="padding: 0 1.5rem 1.5rem; color: var(--text-muted); line-height: 1.6;">
+                        <div class="sched-faq__body">
                             All private lessons are held at our home base: <strong>AXcent Dance Studio</strong>
                             (Hermetschloostrasse 73, Zurich).
                         </div>
                     </details>
 
                     <!-- FAQ Item 6 (Cancellation) -->
-                    <details class="glass-panel" style="border-radius: 12px; overflow: hidden;">
-                        <summary
-                            style="padding: 1.5rem; cursor: pointer; color: white; font-weight: 600; font-size: 1.1rem; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                    <details class="glass-panel sched-faq">
+                        <summary class="sched-faq__summary">
                             What is your cancellation policy?
-                            <span style="color: var(--accent-start);">+</span>
+                            <span class="sched-faq__icon" aria-hidden="true">+</span>
                         </summary>
-                        <div style="padding: 0 1.5rem 1.5rem; color: var(--text-muted); line-height: 1.6;">
+                        <div class="sched-faq__body">
                             We understand plans change. Please cancel at least <strong>24 hours in advance</strong> to
                             avoid being charged the full lesson fee.
                         </div>
@@ -608,67 +498,75 @@
     </main>
 
     <footer class="main-footer">
-        <div class="container footer-grid">
-            <div class="footer-col">
-                <a href="./" class="logo footer-logo"><span class="logo-title">AXcent</span><span
-                        class="logo-subtitle text-gradient">DANCE</span></a>
-                <p class="footer-address">
-                    Hermetschloostrasse 73,<br>
-                    8048 Zurich Altstetten<br> 2 minute walking from Tram 2 stop and Bus 31 stop
-                </p>
-                <div class="footer-socials">
-                    <a href="https://www.instagram.com/axcent_dance/" target="_blank" aria-label="Instagram">
-                        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-                            <path
-                                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-                        </svg>
-                    </a>
-                    <a href="mailto:info@axcentdance.com" aria-label="Email">
-                        <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
-                            </path>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-
-            <div class="footer-col">
-                <h2 class="footer-heading">Quick Links</h2>
-                <ul class="footer-links">
-                    <li><a href="guide-bachata">What is Bachata</a></li>
-                    <li><a href="blog-posts/roots-of-bachata">Roots of Bachata</a>
-                    </li>
-                    <li><a href="schedule">Schedule</a></li>
-                    <li><a href="blog">Our Blog</a></li>
-
-                </ul>
-            </div>
-
-            <div class="footer-col">
-                <h2 class="footer-heading">Legal</h2>
-                <ul class="footer-links">
-                    <li><a href="terms">Terms & Conditions</a></li>
-                    <li><a href="privacy">Privacy Policy</a></li>
-                    <li><a href="imprint">Imprint</a></li>
-                </ul>
-            </div>
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <a href="./" class="logo footer-logo"><span class="logo-title">AXcent</span><span
+            class="logo-subtitle text-gradient">DANCE</span></a>
+        <p class="footer-address">
+          Hermetschloostrasse 73,<br>
+          8048 Zurich Altstetten<br> 2 minute walking from Tram 2 stop and Bus 31 stop
+        </p>
+        <p class="footer-contact">
+          <a href="https://wa.me/41799668481" target="_blank" rel="noopener noreferrer">WhatsApp: +41 79 966 84 81</a>
+        </p>
+        <div class="footer-socials">
+          <a href="https://www.instagram.com/axcent_dance/" target="_blank" aria-label="Instagram">
+            <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+              <path
+                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+            </svg>
+          </a>
+          <a href="mailto:info@axcentdance.com" aria-label="Email">
+            <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+              </path>
+            </svg>
+          </a>
         </div>
+      </div>
 
-        <div class="container footer-map-full" style="margin-bottom: 2rem;">
-            <h2 class="footer-heading" style="margin-bottom: 1rem;">Find Us</h2>
-            <div class="footer-map-wrapper-large"
-                style="border-radius: 12px; overflow: hidden; border: 1px solid var(--glass-border);">
-                <iframe title="Google Maps Location of AXcent Dance"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2701.365!2d8.472010!3d47.394204!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47900b995a7d8e03%3A0xd99d3e4500b44fd6!2sAXcent%20Dance%20%7C%20Bachata%20Classes!5e0!3m2!1sen!2sch!4v1710680000000!5m2!1sen!2sch&hl=en"
-                    width="100%" height="250" style="border:0; width: 100%; display: block;" allowfullscreen=""
-                    loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2025 AXcent Dance. All rights reserved.</p>
-        </div>
-    </footer>
+      <div class="footer-col">
+        <h2 class="footer-heading">Quick Links</h2>
+        <ul class="footer-links">
+          <li><a href="/#trial-form">Book Free Trial</a></li>
+          <li><a href="guide-bachata">What is Bachata</a></li>
+          <li><a href="blog/roots-of-bachata">Roots of Bachata</a></li>
+          <li><a href="schedule">Schedule</a></li>
+          <li><a href="blog">Our Blog</a></li>
+
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h2 class="footer-heading">Legal</h2>
+        <ul class="footer-links">
+          <li><a href="terms">Terms & Conditions</a></li>
+          <li><a href="privacy">Privacy Policy</a></li>
+          <li><a href="imprint">Imprint</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container footer-map-full">
+      <h2 class="footer-heading footer-map-full__heading">Find Us</h2>
+      <a class="footer-map-card" href="https://www.google.com/maps?cid=15680757943659417558" target="_blank"
+        rel="noopener noreferrer" aria-label="Open the AXcent Dance studio location in Google Maps">
+        <span class="footer-map-card__pin" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+            <circle cx="12" cy="10" r="3" />
+          </svg>
+        </span>
+        <span class="footer-map-card__address">Hermetschloostrasse 73, 8048 Zurich Altstetten</span>
+        <span class="footer-map-card__hint">2 minutes from Tram 2 and Bus 31 · Open in Google Maps</span>
+      </a>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 AXcent Dance. All rights reserved.</p>
+    </div>
+  </footer>
 
     <script src="script.js?v=5.8"></script>
 

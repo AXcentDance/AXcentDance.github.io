@@ -17,11 +17,11 @@
     <meta property="og:description" content="Master Bachata Sensual foundations in Zurich. Learn body movement, isolation, and safe connection for dancers with around 1-1.5 years of experience.">
     <meta property="og:url" content="https://axcentdance.com/bachata-sensual-foundation">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="https://axcentdance.com/assets/images/hero_new.webp">
+    <meta property="og:image" content="https://axcentdance.com/assets/images/course_hero_bg-og-1200x630.jpg">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Bachata Sensual Foundation Classes Zurich | AXcent Dance">
     <meta name="twitter:description" content="Master Bachata Sensual foundations in Zurich. Learn body movement, isolation, and safe connection for dancers with around 1-1.5 years of experience.">
-    <meta name="twitter:image" content="https://axcentdance.com/assets/images/hero_new.webp">
+    <meta name="twitter:image" content="https://axcentdance.com/assets/images/course_hero_bg-og-1200x630.jpg">
   <meta http-equiv="Content-Security-Policy"
     content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://cdn.jsdelivr.net https://connect.facebook.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com https://placehold.co https://*.googleapis.com https://*.gstatic.com https://www.facebook.com https://connect.facebook.net; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://script.google.com https://formsubmit.co https://www.facebook.com https://connect.facebook.net; frame-src 'self' https://www.google.com; object-src 'none'; base-uri 'self'; media-src 'self' blob:; worker-src 'self' blob:;">
 
@@ -53,6 +53,15 @@
       "description": "Master Bachata Sensual foundations in Zurich. Learn body movement, isolation, and safe connection for dancers with around 1-1.5 years of experience.",
       "provider": {
         "@id": "https://axcentdance.com/#organization"
+      },
+      "coursePrerequisites": "Around 1-1.5 years of dancing experience, or completion of Bachata Beginner 2",
+      "offers": {
+        "@type": "Offer",
+        "price": "200",
+        "priceCurrency": "CHF",
+        "category": "8-week course block",
+        "availability": "https://schema.org/InStock",
+        "url": "https://axcentdance.com/registration"
       },
       "hasCourseInstance": {
         "@type": "CourseInstance",
@@ -193,6 +202,7 @@
   <!-- Styles -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@200..900&family=Outfit:wght@500;600;700;800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Teko:wght@300..700&display=swap">
   <link rel="stylesheet" href="style.css?v=2.3">
+  <link rel="stylesheet" href="tropic-noir.css?v=5.0">
   <link rel="apple-touch-icon" href="/apple-touch-icon-v2.png">
   <link rel="icon" href="/favicon-axcent-transparent.svg" type="image/svg+xml">
 
@@ -214,14 +224,9 @@
   <noscript><img height="1" width="1" style="display:none" alt=""
       src="https://www.facebook.com/tr?id=2846140112392262&ev=PageView&noscript=1" /></noscript>
   <!-- End Meta Pixel Code -->
-  </head>>
+  </head>
 
-<body>
-
-  <!-- Background Elements -->
-  <div class="blob blob-1"></div>
-  <div class="blob blob-2"></div>
-  <div class="blob blob-3"></div>
+<body class="tropic course-page">
 
   <!-- Navigation Bar -->
   <header class="main-header">
@@ -257,6 +262,7 @@
             <a href="blog"><span>Blog</span></a>
             <a href="faq"><span>FAQ</span></a>
             <a href="etiquette"><span>Dance Etiquette</span></a>
+            <a href="portal"><span>Login</span></a>
           </div>
         </div>
         <a href="/#trial-form" class="btn-header-cta">Book Free Trial</a>
@@ -272,110 +278,280 @@
 
   <main>
 
-    <!-- Course Hero -->
-    <section class="course-hero relative-container" style="background: none;">
-      <img src="assets/images/course_hero_bg.webp"
-        srcset="assets/images/course_hero_bg_480w.webp 480w, assets/images/course_hero_bg_800w.webp 800w, assets/images/course_hero_bg_1200w.webp 1200w"
-        sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px" alt="Bachata Dance Class Zurich" width="768"
-        height="1024" class="hero-bg-img">
-      <div class="hero-overlay"></div>
-      <div class="container course-hero-content hero-content-z">
-        <!-- Visual Breadcrumbs -->
+    <!-- Course masthead: the call sheet -->
+    <section class="course-masthead">
+      <div class="container course-masthead__grid">
+        <div class="course-masthead__copy">
+          <p class="course-masthead__kicker">Weekly course &middot; Wednesdays 19:30</p>
+          <h1 class="course-masthead__title">Bachata Sensual <em class="title-accent">Foundation</em></h1>
+          <p class="course-masthead__dek">
+            The techniques that define Bachata Sensual &mdash; body movement, isolation, and a smooth, safe
+            connection &mdash; built properly, from the ground up. New to the style? Read our
+            <a href="guide-bachata-sensual">guide to Bachata Sensual</a> first.
+          </p>
 
+          <dl class="course-callsheet">
+            <div class="course-callsheet__item">
+              <dt>Day &amp; time</dt>
+              <dd>Wednesdays, 19:30</dd>
+            </div>
+            <div class="course-callsheet__item">
+              <dt>Level</dt>
+              <dd>~1&ndash;1.5 years of dancing, or Beginner 2 completed</dd>
+            </div>
+            <div class="course-callsheet__item">
+              <dt>Studio</dt>
+              <dd>Hermetschloostrasse 73, Zurich Altstetten</dd>
+            </div>
+            <div class="course-callsheet__item">
+              <dt>Language</dt>
+              <dd>English</dd>
+            </div>
+            <div class="course-callsheet__item">
+              <dt>Block</dt>
+              <dd>8 weeks &middot; 200 CHF (students 170 CHF)</dd>
+            </div>
+            <div class="course-callsheet__item">
+              <dt>Entry</dt>
+              <dd>Join any week &mdash; the syllabus rotates</dd>
+            </div>
+          </dl>
 
-        <div class="course-level-badge">SENSUAL FOUNDATION</div>
-        <h1 class="page-title">Bachata Sensual Foundation</h1>
-        <p class="hero-desc-border" style="border: none; padding: 0;">
-          Dive into the world of Bachata Sensual. This course focuses on the essential techniques of body
-          movement, isolation, and smooth connection that define this style.
+          <div class="course-masthead__actions">
+            <a href="/?class=foundation#trial-form" class="course-cta-primary">Book a Free Trial</a>
+            <a href="registration" class="course-cta-secondary">Register for the course</a>
+          </div>
+        </div>
+
+        <!-- MEDIA PLACEHOLDER: replace with a real Bachata Sensual Foundation class photo, or a
+             15-30s HLS clip in this taped frame when footage exists (System/site-revamp-plan.md, section 14). -->
+        <figure class="course-masthead__figure">
+          <div class="course-masthead__media">
+            <img src="assets/images/home/gallery_1_800w.webp"
+              srcset="assets/images/home/gallery_1_480w.webp 480w, assets/images/home/gallery_1_800w.webp 800w, assets/images/home/gallery_1_1200w.webp 1200w"
+              sizes="(max-width: 900px) 92vw, 40vw"
+              alt="Two dancers practicing Bachata Sensual body movement and connection at AXcent Dance in Zurich"
+              width="1200" height="1802" loading="eager" fetchpriority="high" decoding="async">
+          </div>
+          <figcaption class="course-masthead__caption">Connection before patterns &mdash; the Foundation promise.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- Syllabus -->
+    <section class="course-syllabus">
+      <div class="container">
+        <h2 class="section-title-modern">What you will <em class="title-accent">learn</em></h2>
+        <p class="section-subtitle course-syllabus__subtitle">
+          Bachata Sensual is structured around <strong>10 fundamental techniques</strong>. This course rotates
+          through all of them &mdash; the cycle repeats, so any week is a valid entry point.
         </p>
 
-        <div class="course-meta-grid">
-          <div class="course-meta-item">
-            <div class="course-meta-label">Day & Time</div>
-            <div class="course-meta-value">Wednesdays 19:30</div>
-          </div>
-          <div class="course-meta-item">
-            <div class="course-meta-label">Location</div>
-            <div class="course-meta-value">AXcent Dance Studio</div>
-          </div>
-          <div class="course-meta-item">
-            <div class="course-meta-label">Level</div>
-            <div class="course-meta-value">~ 1-1.5 years</div>
-          </div>
-        </div>
+        <!-- CONTENT PLACEHOLDER: owner to supply the names of the 10 techniques to upgrade this
+             grid into a full 01-10 syllabus ledger (System/site-revamp-plan.md, section 1). -->
+        <ol class="course-syllabus__grid">
+          <li class="course-syllabus__item">
+            <span class="course-syllabus__num">01</span>
+            <h3 class="course-syllabus__name">Fundamental techniques</h3>
+            <p class="course-syllabus__desc">The core vocabulary of Bachata Sensual, taught with a strong emphasis
+              on safety and clean execution.</p>
+          </li>
+          <li class="course-syllabus__item">
+            <span class="course-syllabus__num">02</span>
+            <h3 class="course-syllabus__name">Body waves &amp; isolations</h3>
+            <p class="course-syllabus__desc">The movement quality that makes the style &mdash; waves, isolations,
+              and circular movement, drilled solo before they enter partnerwork.</p>
+          </li>
+          <li class="course-syllabus__item">
+            <span class="course-syllabus__num">03</span>
+            <h3 class="course-syllabus__name">Frame &amp; connection</h3>
+            <p class="course-syllabus__desc">How leading and following actually communicate &mdash; a frame that
+              protects both partners and makes every movement feel smooth.</p>
+          </li>
+          <li class="course-syllabus__item">
+            <span class="course-syllabus__num">04</span>
+            <h3 class="course-syllabus__name">Foundational partnerwork</h3>
+            <p class="course-syllabus__desc">Each technique placed into real partnerwork you will meet on every
+              social dance floor.</p>
+          </li>
+        </ol>
+
+        <p class="course-syllabus__rotation">
+          These techniques are <strong>required for the higher levels</strong> and are explained in detail only
+          here &mdash; which is why many experienced dancers return to Foundation to review.
+        </p>
       </div>
     </section>
 
-    <!-- Course Content -->
-    <section class="course-content-section">
+    <!-- One night in the room -->
+    <!-- OWNER TO CONFIRM: generic class structure below - adjust to the real Foundation hour if it differs. -->
+    <section class="course-night">
       <div class="container">
-        <div class="course-content-grid">
-          <!-- Left: Description -->
-          <div class="course-details">
-            <div class="course-info-block">
-              <h2 class="course-info-title">What to Expect</h2>
-              <p style="color: var(--text-muted); line-height: 1.6; margin-bottom: 1.5rem;">
-                Bachata Sensual is structured around <strong>10 Fundamental Techniques</strong>. The objective of this
-                course is to rotate through these 10 fundamentals, ensuring you build the absolute best foundation for
-                social dancing. If you want the bigger picture first, read our <a href="guide-bachata-sensual"
-                  style="color: var(--accent-start);">guide to Bachata Sensual</a>.
-              </p>
-              <p style="color: var(--text-muted); line-height: 1.6; margin-bottom: 1.5rem;">
-                We introduce body waves, isolations, and circular movements with a strong emphasis on safety and
-                technique.
-              </p>
-              <p style="color: var(--text-muted); line-height: 1.6;">
-                This course is essential for everyone, even for reviewing. These techniques are <strong>strictly
-                  required</strong> for
-                higher levels and <strong>will not be explained in detail in later classes</strong>—only here.
-              </p>
+        <h2 class="section-title-modern">One night in the <em class="title-accent">room</em></h2>
+        <p class="section-subtitle course-night__subtitle">Sixty minutes, one technique, many partners.</p>
+        <ol class="course-night__steps">
+          <li class="course-night__step">
+            <span class="course-night__num">01</span>
+            <div class="course-night__body">
+              <strong>Warm up &amp; review</strong>
+              <p>Arrive, settle in, and revisit what the room learned last week.</p>
             </div>
-
-            <div class="course-info-block">
-              <h2 class="course-info-title">What You Will Learn</h2>
-              <ul class="course-info-list">
-                <li>Fundamental Techniques of Bachata Sensual</li>
-                <li>Isolations</li>
-                <li>Frame and Connections</li>
-                <li>Foundational Partnerwork and Techniques</li>
-              </ul>
+          </li>
+          <li class="course-night__step">
+            <span class="course-night__num">02</span>
+            <div class="course-night__body">
+              <strong>The technique of the week</strong>
+              <p>One fundamental, broken down solo &mdash; mechanics first, so it is safe and clean.</p>
             </div>
-
-            <div class="course-info-block">
-              <h2 class="course-info-title">Prerequisites</h2>
-              <p style="color: var(--text-muted); line-height: 1.6;">
-                Around 1-1.5 years of dancing experience, or completion of Bachata Beginner 2.
-              </p>
+          </li>
+          <li class="course-night__step">
+            <span class="course-night__num">03</span>
+            <div class="course-night__body">
+              <strong>Into partnerwork</strong>
+              <p>The same technique inside a combination you can take to any social.</p>
             </div>
-            <!-- Compact Welcome Block -->
-            <!-- Compact Welcome Block Removed -->
+          </li>
+          <li class="course-night__step">
+            <span class="course-night__num">04</span>
+            <div class="course-night__body">
+              <strong>Rotate &amp; dance</strong>
+              <p>Partners rotate through the class &mdash; you leave having danced it with everyone.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
 
+    <!-- Level fork -->
+    <section class="course-fork">
+      <div class="container">
+        <h2 class="section-title-modern">Is this your <em class="title-accent">class?</em></h2>
+        <div class="course-fork__grid">
+          <div class="course-fork__path course-fork__path--here">
+            <p class="course-fork__voice">&ldquo;I know my Bachata basics &mdash; I want the sensual style.&rdquo;</p>
+            <p class="course-fork__answer">
+              You are in the right room. Around 1&ndash;1.5 years of dancing, or a completed
+              <a href="bachata-beginner-2">Bachata Beginner 2</a>, is all you need.
+            </p>
           </div>
+          <div class="course-fork__divider" aria-hidden="true"><span>or</span></div>
+          <div class="course-fork__path">
+            <p class="course-fork__voice">&ldquo;I have never danced a step in my life.&rdquo;</p>
+            <p class="course-fork__answer">
+              Start with <strong>Bachata Beginner 0</strong>, Mondays 18:30 &mdash; everyone in that room is a
+              first-timer too. <a href="beginner-guide">Read the beginner guide</a>.
+            </p>
+          </div>
+        </div>
+        <p class="course-fork__unsure">
+          Not sure? <a href="/?class=unsure#trial-form">Book a free trial</a> &mdash; we will place you.
+        </p>
+      </div>
+    </section>
 
-          <!-- Right: Sticky CTA -->
-          <div class="course-sidebar">
-            <div class="reg-form-container" style="padding: 2rem; position: sticky; top: 100px;">
-              <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: white;">Ready to level up?</h3>
-              <p style="color: var(--text-muted); margin-bottom: 2rem;">
-                Join us for a trial class or sign up for the full course.
-              </p>
-              <a href="/#trial-form" class="btn-primary"
-                style="width: 100%; display: block; text-align: center; margin-bottom: 1rem; text-decoration: none; border-radius: 12px; padding: 1rem;">
-                BOOK FREE TRIAL
-              </a>
-              <a href="registration" class="btn-secondary"
-                style="width: 100%; display: block; text-align: center; text-decoration: none; border-radius: 12px; padding: 1rem; background: rgba(255,255,255,0.1);">
-                REGISTER NOW
-              </a>
-            </div>
+    <!-- Teachers -->
+    <section class="course-teachers">
+      <div class="container">
+        <div class="founders-strip course-founders">
+          <img class="founders-strip__photo" src="assets/images/ale-xidan-about_480w.webp"
+            alt="Ale and Xidan, founders of AXcent Dance" width="480" height="768" loading="lazy" decoding="async">
+          <div class="founders-strip__copy">
+            <strong class="founders-strip__names">Ale &amp; Xidan</strong>
+            <span class="founders-strip__role">Founders, international Bachata artists, and official IDO Swiss
+              Championship judges &mdash; they teach this course personally.</span>
+            <a href="about" class="founders-strip__link">Meet your teachers</a>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- Pathway -->
+    <section class="course-path">
+      <div class="container">
+        <h2 class="section-title-modern">Where this course <em class="title-accent">leads</em></h2>
+        <ol class="course-path__ladder">
+          <li class="course-path__rung">
+            <a class="course-path__name" href="bachata-beginner-2">Beginner 2</a>
+            <span class="course-path__when">Tuesdays 19:30</span>
+          </li>
+          <li class="course-path__rung course-path__rung--current" aria-current="page">
+            <span class="course-path__name">Sensual Foundation</span>
+            <span class="course-path__when">Wednesdays 19:30 &middot; you are here</span>
+          </li>
+          <li class="course-path__rung">
+            <a class="course-path__name" href="bachata-sensual-improver">Sensual Improver</a>
+            <span class="course-path__when">Wednesdays 20:30</span>
+          </li>
+          <li class="course-path__rung">
+            <a class="course-path__name" href="bachata-sensual-inter-adv">Intermediate / Advanced</a>
+            <span class="course-path__when">Thursdays 19:30 &amp; 20:30</span>
+          </li>
+        </ol>
+      </div>
+    </section>
 
+    <!-- Conversion island -->
+    <section class="course-register">
+      <div class="container">
+        <div class="course-register__panel">
+          <h2 class="course-register__title">The first class is <em class="title-accent">free</em></h2>
+          <p class="course-register__lede">
+            Come once, dance the whole hour, then decide. If Foundation is not the right fit, we place you in the
+            level that is.
+          </p>
+          <div class="course-register__actions">
+            <a href="/?class=foundation#trial-form" class="course-cta-primary">Book a Free Trial</a>
+            <a href="registration" class="course-register__submit">Register for the course</a>
+          </div>
+          <p class="course-register__pricing">
+            8-week block &middot; 200 CHF &asymp; 25 CHF per class &middot; 15% off your first sign-up &middot;
+            Student discount &middot; No subscription
+          </p>
+          <p class="course-register__trust">A real person confirms your spot on WhatsApp.</p>
+        </div>
+      </div>
+    </section>
 
+    <!-- Course FAQ (visible only - no FAQPage schema by house rule) -->
+    <section class="course-faq">
+      <div class="container">
+        <h2 class="section-title-modern">Good <em class="title-accent">questions</em></h2>
+        <div class="course-faq__list">
+          <details class="course-faq__item">
+            <summary class="course-faq__summary">Can I join in the middle of a block?<span
+                class="course-faq__icon" aria-hidden="true">+</span></summary>
+            <div class="course-faq__body">
+              <p>Yes. The syllabus rotates through the 10 fundamentals, so any week is a valid entry point. Book a
+                free trial and start whenever suits you.</p>
+            </div>
+          </details>
+          <details class="course-faq__item">
+            <summary class="course-faq__summary">Do I need a partner?<span class="course-faq__icon"
+                aria-hidden="true">+</span></summary>
+            <div class="course-faq__body">
+              <p>No. Partners rotate throughout the class, so you dance with everyone &mdash; most people come
+                alone.</p>
+            </div>
+          </details>
+          <details class="course-faq__item">
+            <summary class="course-faq__summary">What should I wear?<span class="course-faq__icon"
+                aria-hidden="true">+</span></summary>
+            <div class="course-faq__body">
+              <p>Comfortable clothes you can move in and shoes that let you turn &mdash; clean sneakers are
+                perfect. Our <a href="blog/what-to-wear-bachata">what-to-wear guide</a> has the details.</p>
+            </div>
+          </details>
+          <details class="course-faq__item">
+            <summary class="course-faq__summary">What if I miss a week?<span class="course-faq__icon"
+                aria-hidden="true">+</span></summary>
+            <div class="course-faq__body">
+              <p>If you are ill, you can make up one missed class per term in another suitable course. The full
+                policy is in our <a href="terms">terms</a>.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
 
   </main>
 
@@ -387,6 +563,9 @@
         <p class="footer-address">
           Hermetschloostrasse 73,<br>
           8048 Zurich Altstetten<br> 2 minute walking from Tram 2 stop and Bus 31 stop
+        </p>
+        <p class="footer-contact">
+          <a href="https://wa.me/41799668481" target="_blank" rel="noopener noreferrer">WhatsApp: +41 79 966 84 81</a>
         </p>
         <div class="footer-socials">
           <a href="https://www.instagram.com/axcent_dance/" target="_blank" aria-label="Instagram">
@@ -408,8 +587,9 @@
       <div class="footer-col">
         <h2 class="footer-heading">Quick Links</h2>
         <ul class="footer-links">
+          <li><a href="/#trial-form">Book Free Trial</a></li>
           <li><a href="guide-bachata">What is Bachata</a></li>
-          <li><a href="blog-posts/roots-of-bachata">Roots of Bachata</a></li>
+          <li><a href="blog/roots-of-bachata">Roots of Bachata</a></li>
           <li><a href="schedule">Schedule</a></li>
           <li><a href="blog">Our Blog</a></li>
 
@@ -426,20 +606,31 @@
       </div>
     </div>
 
-    <div class="container footer-map-full" style="margin-bottom: 2rem;">
-      <h2 class="footer-heading" style="margin-bottom: 1rem;">Find Us</h2>
-      <div class="footer-map-wrapper-large"
-        style="border-radius: 12px; overflow: hidden; border: 1px solid var(--glass-border);">
-        <iframe title="Google Maps Location of AXcent Dance"
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2701.365!2d8.472010!3d47.394204!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47900b995a7d8e03%3A0xd99d3e4500b44fd6!2sAXcent%20Dance%20%7C%20Bachata%20Classes!5e0!3m2!1sen!2sch!4v1710680000000!5m2!1sen!2sch&hl=en"
-          width="100%" height="250" style="border:0; width: 100%; display: block;" allowfullscreen="" loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"></iframe>
-      </div>
+    <div class="container footer-map-full">
+      <h2 class="footer-heading footer-map-full__heading">Find Us</h2>
+      <a class="footer-map-card" href="https://www.google.com/maps?cid=15680757943659417558" target="_blank"
+        rel="noopener noreferrer" aria-label="Open the AXcent Dance studio location in Google Maps">
+        <span class="footer-map-card__pin" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+            <circle cx="12" cy="10" r="3" />
+          </svg>
+        </span>
+        <span class="footer-map-card__address">Hermetschloostrasse 73, 8048 Zurich Altstetten</span>
+        <span class="footer-map-card__hint">2 minutes from Tram 2 and Bus 31 · Open in Google Maps</span>
+      </a>
     </div>
     <div class="footer-bottom">
-      <p>&copy; 2025 AXcent Dance. All rights reserved.</p>
+      <p>&copy; 2026 AXcent Dance. All rights reserved.</p>
     </div>
   </footer>
+
+  <div class="mobile-cta-bar" data-mobile-cta-bar>
+    <a href="/?class=foundation#trial-form" class="mobile-cta-bar__link">
+      Book Free Trial<span class="mobile-cta-bar__hint"> · First class free</span>
+    </a>
+  </div>
 
   <script src="script.js?v=5.8"></script>
 

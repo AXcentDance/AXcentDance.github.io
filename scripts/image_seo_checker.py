@@ -1,7 +1,7 @@
 import os
 import re
 
-ROOT_DIR = "/Users/slamitza/AXcentWebsiteGitHub"
+ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 def check_image_seo():
     print(f"{'File':<40} | {'Issue':<40} | {'Details'}")

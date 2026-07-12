@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="canonical" href="https://axcentdance.com/de/_login">
+    <link rel="alternate" hreflang="en" href="https://axcentdance.com/_login">
+    <link rel="alternate" hreflang="de" href="https://axcentdance.com/de/_login">
+    <link rel="alternate" hreflang="x-default" href="https://axcentdance.com/_login">
+    <title>Anmelden - AXcent Dance</title>
+    <meta name="description" content="Melde dich bei deinem AXcent Dance Konto an, um deinen aktuellen Pass zu sehen und Abwesenheitstage anzugeben.">
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://jwravnvytkmsvqoqkmwb.supabase.co; object-src 'none'; base-uri 'self';">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@200..900&family=Outfit:wght@500;600;700;800&display=swap">
+    <link rel="stylesheet" href="../style.css?v=4.2">
+    <link rel="stylesheet" href="../tropic-noir.css?v=5.0">
+    <link rel="apple-touch-icon" href="/apple-touch-icon-v2.png">
+    <link rel="icon" href="/favicon-axcent-192.png" type="image/png" sizes="192x192">
+    <link rel="icon" href="/favicon-axcent-transparent.svg" type="image/svg+xml">
+    <style>
+        .auth-container {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .auth-card {
+            background: rgba(20, 20, 20, 0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 40px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            text-align: center;
+        }
+
+        .auth-title {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: white;
+        }
+
+        .auth-card .form-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .auth-card .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-muted);
+        }
+
+        .auth-card .form-group input {
+            width: 100%;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            color: white;
+            font-size: 1rem;
+        }
+
+        .btn-auth {
+            width: 100%;
+            padding: 12px;
+            background: rgba(255, 59, 48, 0.15);
+            border: 1px solid var(--accent-start);
+            border-radius: 30px;
+            color: white;
+            font-weight: bold;
+            font-size: 1.1rem;
+            cursor: pointer;
+            margin-top: 1rem;
+            transition: opacity 0.2s;
+        }
+
+        .btn-auth:hover {
+            opacity: 0.9;
+        }
+
+        .auth-link {
+            display: block;
+            margin-top: 1.5rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .auth-link a {
+            color: var(--accent-gold);
+            text-decoration: none;
+        }
+
+        #feedback {
+            margin-top: 1rem;
+            padding: 10px;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            display: none;
+        }
+
+        .error {
+            color: #ff6b6b;
+            background: rgba(255, 107, 107, 0.1);
+            display: block !important;
+        }
+
+        .success {
+            color: #51cf66;
+            background: rgba(81, 207, 102, 0.1);
+            display: block !important;
+        }
+    </style>
+</head>
+
+<body style="padding-top: 80px;">
+
+    <header class="main-header">
+        <div class="container navbar">
+            <a href="/de/" class="logo">
+                <span class="logo-title">AXCENT</span><span class="logo-subtitle text-gradient">DANCE</span>
+            </a>
+            <nav class="nav-links">
+                <a href="/de/">Home</a>
+                <a href="/_login" aria-label="English version">EN</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="auth-container">
+        <div class="auth-card">
+            <h1 class="auth-title">Willkommen zurück</h1>
+
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="email">E-Mail</label>
+                    <input type="email" id="email" required autocomplete="email" placeholder="du@beispiel.ch">
+                </div>
+                <div class="form-group">
+                    <label for="password">Passwort</label>
+                    <input type="password" id="password" required autocomplete="current-password" placeholder="••••••••">
+                </div>
+                <button type="submit" class="btn-auth">Anmelden</button>
+            </form>
+
+            <!-- Wird anstelle des Login-Formulars angezeigt, wenn der Nutzer aus einer Passwort-Wiederherstellungs-E-Mail kommt -->
+            <form id="recoveryForm" style="display: none;">
+                <div class="form-group">
+                    <label for="newPassword">Neues Passwort</label>
+                    <input type="password" id="newPassword" required minlength="8" autocomplete="new-password"
+                        placeholder="Mindestens 8 Zeichen">
+                </div>
+                <button type="submit" class="btn-auth">Neues Passwort speichern</button>
+            </form>
+
+            <div id="feedback"></div>
+
+            <p class="auth-link">
+                <a href="#" id="forgotLink">Passwort vergessen?</a>
+                <br><br>
+                Noch kein Konto? <a href="_signup">Registrieren</a>
+                <br><br>
+                <a href="/de/" style="opacity: 0.6;">← Zurück zur Website</a>
+            </p>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script type="module">
+        import { supabase } from '../assets/js/supabase-client.js';
+
+        const loginForm = document.getElementById('loginForm');
+        const recoveryForm = document.getElementById('recoveryForm');
+        const feedback = document.getElementById('feedback');
+
+        const showFeedback = (message, cls) => {
+            feedback.textContent = message;
+            feedback.className = cls || '';
+            feedback.style.display = 'block';
+        };
+
+        // Passwort-Wiederherstellung: Supabase leitet mit type=recovery im URL-Hash hierher.
+        supabase.auth.onAuthStateChange((event) => {
+            if (event === 'PASSWORD_RECOVERY') {
+                loginForm.style.display = 'none';
+                recoveryForm.style.display = 'block';
+                showFeedback('Bitte wähle ein neues Passwort.', '');
+            }
+        });
+
+        loginForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            showFeedback('Anmeldung läuft...', '');
+
+            const { error } = await supabase.auth.signInWithPassword({
+                email: document.getElementById('email').value,
+                password: document.getElementById('password').value,
+            });
+
+            if (error) {
+                showFeedback(error.message, 'error');
+            } else {
+                showFeedback('Erfolgreich! Weiterleitung...', 'success');
+                setTimeout(() => { window.location.href = 'portal.html'; }, 800);
+            }
+        });
+
+        recoveryForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const { error } = await supabase.auth.updateUser({
+                password: document.getElementById('newPassword').value
+            });
+            if (error) {
+                showFeedback(error.message, 'error');
+            } else {
+                showFeedback('Passwort aktualisiert! Weiterleitung...', 'success');
+                setTimeout(() => { window.location.href = 'portal.html'; }, 800);
+            }
+        });
+
+        document.getElementById('forgotLink').addEventListener('click', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            if (!email) {
+                showFeedback('Gib zuerst oben deine E-Mail ein und klicke dann erneut auf den Link.', 'error');
+                return;
+            }
+            const { error } = await supabase.auth.resetPasswordForEmail(email, {
+                redirectTo: window.location.origin + '/de/_login.html'
+            });
+            if (error) {
+                showFeedback(error.message, 'error');
+            } else {
+                showFeedback('E-Mail zum Zurücksetzen des Passworts gesendet. Bitte prüfe deinen Posteingang.', 'success');
+            }
+        });
+    </script>
+</body>
+
+</html>

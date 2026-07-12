@@ -1,22 +1,83 @@
-/* 
-   AXcent Dance - Blog Post Styles
-   Specific styles for modern blog posts (Latin Dance School, etc.)
-*/
+/* ==========================================================================
+   AXcent Dance — Blog post template (Tropic Noir), v2.0
+   One skin for all EN posts. Every rule is scoped to body.post-page so it
+   out-specifies the legacy per-post <style> blocks without editing them.
+   Load order on a post: style.css -> tropic-noir.css -> blog-post.css.
+   body.tropic (shared chrome) supplies tokens, header/footer, grain, CTAs.
+   ========================================================================== */
 
-/* --- BREADCRUMBS --- */
-.breadcrumb-nav {
+/* --- Breadcrumbs stay visual-only (schema carries them) --- */
+body.post-page .breadcrumb-nav {
     display: none !important;
 }
 
-/* --- HERO SECTION --- */
-.post-header {
+/* ==========================================================================
+   1. Post masthead — family A (.post-hero: image hero with overlay title)
+   ========================================================================== */
+
+body.post-page .post-hero {
+    position: relative;
+    overflow: hidden;
+}
+
+body.post-page .post-hero .hero-bg-img {
+    filter: grayscale(1) sepia(0.65) hue-rotate(108deg) saturate(0.9) brightness(0.82) contrast(1.08);
+}
+
+body.post-page .post-hero .hero-overlay {
+    background: linear-gradient(180deg, rgba(6, 26, 23, 0.55) 0%, rgba(6, 26, 23, 0.78) 70%, var(--bg-main) 100%);
+}
+
+body.post-page .post-meta {
+    display: inline-block;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent-bronze);
+}
+
+body.post-page .page-title,
+body.post-page .post-title {
+    font-family: var(--font-heading);
+    font-weight: 500;
+    color: var(--title-cream);
+    line-height: 1.16;
+}
+
+/* Static left-anchored dancing underline under the post title (no JS) */
+body.post-page .page-title::after,
+body.post-page .post-title::after {
+    content: '';
+    display: block;
+    width: 4.5rem;
+    height: 2px;
+    margin-top: 0.85rem;
+    background: linear-gradient(90deg, var(--accent-bronze) 0 calc(100% - 8px), transparent calc(100% - 8px)),
+        radial-gradient(circle 3px at calc(100% - 3px) 50%, var(--accent-start) 98%, transparent);
+    background-repeat: no-repeat;
+}
+
+/* Both hero families center their titles; the underline follows */
+body.post-page .post-header .post-title::after,
+body.post-page .post-hero .page-title::after {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ==========================================================================
+   2. Post masthead — family B (.post-header: centered editorial header)
+   ========================================================================== */
+
+body.post-page .post-header {
     padding-top: calc(var(--header-height) + 2.5rem);
     padding-bottom: 2rem;
     text-align: center;
-    background: radial-gradient(circle at top center, rgba(82, 45, 128, 0.2), transparent 70%);
+    background: transparent;
 }
 
-.badge-wrapper {
+body.post-page .badge-wrapper {
     display: inline-flex;
     align-items: center;
     gap: 1rem;
@@ -25,30 +86,26 @@
     justify-content: center;
 }
 
-.badge {
-    padding: 0.25rem 0.75rem;
+body.post-page .badge {
+    padding: 0.28rem 0.8rem;
     border-radius: 999px;
-    font-size: 0.75rem;
-    font-weight: 700;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.12em;
+    background: rgba(232, 176, 75, 0.12) !important;
+    color: var(--accent-bronze) !important;
+    border: 1px solid rgba(232, 176, 75, 0.35) !important;
 }
 
-.badge--education {
-    background: rgba(255, 59, 48, 0.15);
-    color: var(--accent-start);
-    border: 1px solid rgba(255, 59, 48, 0.3);
-}
-
-.post-date {
+body.post-page .post-date {
     color: var(--text-muted);
     font-size: 0.85rem;
 }
 
-.post-title {
-    font-family: var(--font-heading);
+body.post-page .post-title {
     font-size: 2.5rem;
-    line-height: 1.2;
     margin-bottom: 1.5rem;
     max-width: 900px;
     margin-left: auto;
@@ -56,73 +113,226 @@
 }
 
 @media (min-width: 768px) {
-    .post-title {
-        font-size: 3.5rem;
+    body.post-page .post-title {
+        font-size: 3.2rem;
     }
 }
 
-.post-hero-image {
+body.post-page .post-hero-image {
+    position: relative;
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
-    border-radius: 20px;
+    border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    position: relative;
+    box-shadow: var(--shadow-soft);
+    border: 1px solid var(--glass-border);
 }
 
-.post-hero-image img {
+body.post-page .post-hero-image::before,
+body.post-page .post-hero-image::after {
+    content: '';
+    position: absolute;
+    width: 1.05rem;
+    height: 1.05rem;
+    pointer-events: none;
+    z-index: 3;
+}
+
+body.post-page .post-hero-image::before {
+    top: 0.55rem;
+    left: 0.55rem;
+    border-top: 2px solid rgba(232, 176, 75, 0.55);
+    border-left: 2px solid rgba(232, 176, 75, 0.55);
+}
+
+body.post-page .post-hero-image::after {
+    right: 0.55rem;
+    bottom: 0.55rem;
+    border-right: 2px solid rgba(232, 176, 75, 0.55);
+    border-bottom: 2px solid rgba(232, 176, 75, 0.55);
+}
+
+body.post-page .post-hero-image img {
     width: 100%;
     height: auto;
     display: block;
 }
 
-.post-hero-image figcaption {
+body.post-page .post-hero-image figcaption {
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
-    background: rgba(0, 0, 0, 0.7);
-    backdrop-filter: blur(4px);
-    color: rgba(255, 255, 255, 0.8);
+    background: rgba(4, 19, 16, 0.82);
+    backdrop-filter: none;
+    color: var(--text-muted);
     padding: 0.5rem 1rem;
     font-size: 0.85rem;
     text-align: left;
 }
 
-/* --- CONTENT GENERAL --- */
-.post-content {
+/* ==========================================================================
+   3. Byline strip (inserted after the masthead on every post)
+   ========================================================================== */
+
+body.post-page .post-byline {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.45rem;
+    max-width: 800px;
+    margin: 0 auto 1.6rem;
+    padding: 0.7rem 0.2rem;
+    border-top: 1px solid rgba(232, 176, 75, 0.22);
+    border-bottom: 1px solid rgba(232, 176, 75, 0.22);
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+body.post-page .post-byline strong {
+    color: var(--title-cream);
+    font-weight: 600;
+}
+
+body.post-page .post-byline a {
+    color: var(--text-muted);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(232, 176, 75, 0.35);
+}
+
+body.post-page .post-byline a:hover,
+body.post-page .post-byline a:focus-visible {
+    color: var(--accent-start);
+    border-bottom-color: var(--accent-start);
+}
+
+/* ==========================================================================
+   4. Reading column
+   ========================================================================== */
+
+body.post-page .post-content {
     max-width: 800px;
     margin: 0 auto;
     padding: 2rem 1rem;
-    font-size: 1.125rem;
-    line-height: 1.7;
-    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.1rem;
+    line-height: 1.75;
+    color: var(--text-main);
 }
 
-.lead-text {
-    font-size: 1.35rem;
+body.post-page .lead-text {
+    font-size: 1.3rem;
     line-height: 1.6;
-    color: white;
+    color: var(--title-cream);
     margin-bottom: 2rem;
     font-weight: 300;
 }
 
-.post-content h2 {
+body.post-page .post-content h2 {
     font-family: var(--font-heading);
-    color: white;
-    font-size: 2rem;
+    font-weight: 500;
+    color: var(--title-cream);
+    font-size: 1.9rem;
+    line-height: 1.25;
     margin-top: 3rem;
     margin-bottom: 1rem;
 }
 
-.post-content p {
+body.post-page .post-content h3 {
+    font-family: var(--font-heading);
+    font-weight: 500;
+    color: var(--text-main);
+    font-size: 1.4rem;
+    margin-top: 2.2rem;
+    margin-bottom: 0.8rem;
+}
+
+body.post-page .post-content p {
     margin-bottom: 1.5rem;
 }
 
-/* --- BENTO GRID MODULE --- */
-.bento-grid {
+body.post-page .post-content a:not([class]) {
+    color: var(--accent-start);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(232, 176, 75, 0.45);
+    transition: color 0.25s ease, border-color 0.25s ease;
+}
+
+body.post-page .post-content a:not([class]):hover,
+body.post-page .post-content a:not([class]):focus-visible {
+    color: var(--accent-end);
+    border-bottom-color: var(--accent-start);
+}
+
+body.post-page .post-content ul:not([class]) li::marker,
+body.post-page .post-content ol:not([class]) li::marker {
+    color: var(--accent-bronze);
+}
+
+body.post-page .post-content hr {
+    border: 0;
+    height: 1px;
+    background: rgba(232, 176, 75, 0.25);
+    margin: 2.5rem 0;
+}
+
+body.post-page .post-content blockquote {
+    margin: 2rem 0;
+    padding: 0.3rem 0 0.3rem 1.2rem;
+    border-left: 2px solid var(--accent-bronze);
+    font-family: var(--font-heading);
+    font-style: italic;
+    font-size: 1.25rem;
+    color: var(--title-cream);
+}
+
+/* Inline article images (tips, figures) */
+body.post-page .post-content img:not(.collage-img),
+body.post-page .tip-image {
+    border-radius: 14px;
+    border: 1px solid var(--glass-border);
+}
+
+/* ==========================================================================
+   5. Chapters sidebar (roots-of-bachata)
+   ========================================================================== */
+
+body.post-page .blog-sidebar .sidebar-title {
+    color: var(--accent-bronze);
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+body.post-page .chapter-link {
+    color: var(--text-muted);
+    border-left: 2px solid rgba(232, 176, 75, 0.2);
+    transition: color 0.25s ease, border-color 0.25s ease, background-color 0.25s ease;
+}
+
+body.post-page .chapter-link:hover,
+body.post-page .chapter-link:focus-visible {
+    color: var(--text-main);
+    border-left-color: rgba(232, 176, 75, 0.6);
+    background: rgba(232, 176, 75, 0.06);
+    /* Legacy inline styles slide the link on hover; movement on hover is banned */
+    transform: none !important;
+}
+
+body.post-page .chapter-link.active {
+    color: var(--accent-start);
+    border-left-color: var(--accent-start);
+    background: rgba(255, 90, 60, 0.07);
+    transform: none !important;
+}
+
+/* ==========================================================================
+   6. Bento / cards module (re-inked; geometry preserved from v1)
+   ========================================================================== */
+
+body.post-page .bento-grid {
     display: grid;
     grid-template-columns: 1fr;
     gap: 1.5rem;
@@ -131,12 +341,12 @@
 }
 
 @media (min-width: 768px) {
-    .bento-grid {
+    body.post-page .bento-grid {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
-.bento-card {
+body.post-page .bento-card {
     padding: 2rem;
     border-radius: 16px;
     display: flex;
@@ -144,12 +354,17 @@
     align-items: flex-start;
     text-align: left;
     height: 100%;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--shadow-soft);
+    backdrop-filter: none;
 }
 
-.bento-icon {
-    font-size: 2.5rem;
+body.post-page .bento-icon {
+    font-size: 2.2rem;
     margin-bottom: 1rem;
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(232, 176, 75, 0.1);
+    border: 1px solid rgba(232, 176, 75, 0.25);
     width: 60px;
     height: 60px;
     display: flex;
@@ -158,108 +373,321 @@
     border-radius: 12px;
 }
 
-.bento-card h3 {
+body.post-page .bento-card h3 {
     font-family: var(--font-heading);
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     margin-bottom: 0.5rem;
-    color: white;
+    color: var(--title-cream);
 }
 
-.bento-card p {
+body.post-page .bento-card p {
     font-size: 1rem;
     color: var(--text-muted);
     margin-bottom: 0;
 }
 
-.highlight-card {
-    background: linear-gradient(135deg, rgba(255, 59, 48, 0.1), rgba(15, 8, 22, 0.6));
-    border-color: rgba(255, 59, 48, 0.3);
+body.post-page .highlight-card,
+body.post-page .feature-highlight {
+    background: linear-gradient(135deg, rgba(255, 90, 60, 0.12), var(--glass-bg) 60%) !important;
+    border-color: rgba(255, 90, 60, 0.35) !important;
 }
 
-/* --- COLLAGE MODULE --- */
-.collage-section {
-    display: grid;
-    gap: 1.5rem;
+/* Use-case cards (teach-yoga / rent-space posts) share the bento skin */
+body.post-page .use-case-card {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--shadow-soft);
 }
 
-.collage-text {
-    margin-bottom: 1rem;
+body.post-page .use-case-card:hover {
+    /* Legacy inline styles lift the card on hover; movement on hover is banned */
+    transform: none !important;
+    border-color: rgba(232, 176, 75, 0.5);
+    box-shadow: var(--shadow-soft);
 }
 
-.collage-img {
-    transition: transform 0.3s ease;
+body.post-page .use-case-title {
+    color: var(--title-cream);
 }
 
-.collage-img:hover {
-    transform: scale(1.02);
+body.post-page .use-case-desc {
+    color: var(--text-muted);
 }
 
-/* --- CTA SECTION --- */
-.cta-section {
-    background: radial-gradient(circle at center, rgba(82, 45, 128, 0.1), rgba(15, 8, 22, 0.8));
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
-    padding: 5rem 2rem !important;
-    border-radius: 40px !important;
+/* Result cards (championship posts) */
+body.post-page .result-card__value {
+    font-family: 'Teko', sans-serif;
+    color: var(--accent-bronze);
+}
+
+body.post-page .result-card__label {
+    color: var(--text-muted);
+}
+
+/* Tour table (romeo tour post) */
+body.post-page .tour-date {
+    color: var(--accent-bronze);
+}
+
+body.post-page .tour-city {
+    color: var(--title-cream);
+}
+
+body.post-page .tour-venue {
+    color: var(--text-muted);
+}
+
+/* ==========================================================================
+   7. Collage module
+   ========================================================================== */
+
+body.post-page .collage-img {
+    border-radius: 14px !important;
+    border: 1px solid var(--glass-border) !important;
+    transition: filter 0.4s ease;
+    transform: none !important;
+}
+
+body.post-page .collage-img:hover {
+    transform: none !important;
+    filter: brightness(1.06);
+}
+
+/* ==========================================================================
+   8. CTA modules — tier-2 band (inline legacy styles out-ranked on purpose)
+   ========================================================================== */
+
+body.post-page .cta-box,
+body.post-page .cta-section {
+    background: rgba(255, 106, 74, 0.09) !important;
+    border: 1px solid rgba(255, 138, 92, 0.4) !important;
+    border-radius: 18px !important;
+    box-shadow: none !important;
+    padding: 2.6rem 2rem !important;
     text-align: center;
     position: relative;
     overflow: hidden;
+    margin: 3rem 0;
 }
 
-.cta-section::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(255, 59, 48, 0.05) 0%, transparent 60%);
-    pointer-events: none;
+body.post-page .cta-section::before {
+    content: none !important;
 }
 
-.cta-section h2 {
-    position: relative;
-    font-size: 2.8rem !important;
-    margin-bottom: 2rem !important;
-    background: linear-gradient(180deg, #fff 0%, rgba(255, 255, 255, 0.7) 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-family: var(--font-heading);
+body.post-page .cta-box h2,
+body.post-page .cta-box h3,
+body.post-page .cta-section h2 {
+    font-family: var(--font-heading) !important;
+    font-weight: 500;
+    font-size: 1.9rem !important;
+    color: var(--title-cream) !important;
+    -webkit-text-fill-color: currentcolor !important;
+    background: none !important;
+    margin-bottom: 1rem !important;
 }
 
-.cta-section p {
-    position: relative;
-    font-size: 1.15rem;
-    color: var(--text-muted);
+body.post-page .cta-box p,
+body.post-page .cta-section p {
+    color: var(--text-muted) !important;
+    font-size: 1.05rem;
     line-height: 1.7;
-    margin-bottom: 3rem !important;
     max-width: 650px;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 1.8rem !important;
 }
 
-.btn-cta-premium {
-    position: relative;
-    display: inline-block;
-    padding: 1.25rem 3.5rem;
-    background: rgba(15, 8, 22, 0.6);
-    color: white;
+/* Tier-1 button inside CTA bands (covers .btn-primary, .btn-hero, legacy premium) */
+body.post-page .cta-box .btn-primary,
+body.post-page .cta-box .btn-hero,
+body.post-page .cta-section .btn-hero,
+body.post-page .btn-cta-premium {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding: 0.85rem 2.2rem !important;
+    border-radius: var(--cta-radius) !important;
+    background: var(--cta-grad) !important;
+    background-size: 160% 100% !important;
+    background-position: 0% 50% !important;
+    color: var(--cta-ink) !important;
+    font-family: 'Outfit', sans-serif;
     font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.15em;
-    border-radius: 60px;
-    border: 1px solid var(--accent-start);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    letter-spacing: 0.02em;
+    text-transform: none !important;
     text-decoration: none;
-    cursor: pointer;
+    border: 0 !important;
+    box-shadow: none !important;
+    transition: background-position 0.35s ease, box-shadow 0.3s ease;
 }
 
-.btn-cta-premium:hover {
-    background: rgba(255, 59, 48, 0.1);
-    box-shadow: 0 15px 40px rgba(255, 59, 48, 0.25);
-    transform: translateY(-3px);
-    border-color: var(--accent-start);
-    color: white;
+body.post-page .cta-box .btn-primary:hover,
+body.post-page .cta-box .btn-primary:focus-visible,
+body.post-page .cta-box .btn-hero:hover,
+body.post-page .cta-box .btn-hero:focus-visible,
+body.post-page .cta-section .btn-hero:hover,
+body.post-page .cta-section .btn-hero:focus-visible,
+body.post-page .btn-cta-premium:hover,
+body.post-page .btn-cta-premium:focus-visible {
+    background-position: 100% 50% !important;
+    box-shadow: 0 10px 26px rgba(255, 90, 60, 0.22) !important;
+    color: var(--cta-ink) !important;
+    transform: none !important;
+}
+
+/* ==========================================================================
+   9. Post FAQ skin (visible list; schema lives in the head)
+   ========================================================================== */
+
+body.post-page .faq-section .faq-item {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-left: 3px solid rgba(232, 176, 75, 0.55);
+    border-radius: 12px;
+    padding: 1.2rem 1.4rem;
+    margin-bottom: 1rem;
+}
+
+body.post-page .faq-section .faq-question {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    color: var(--title-cream);
+    margin-bottom: 0.5rem;
+}
+
+body.post-page .faq-section .faq-answer {
+    color: var(--text-muted);
+    margin-bottom: 0;
+}
+
+/* ==========================================================================
+   10. Recirculation band (inserted before the end of every post)
+   ========================================================================== */
+
+body.post-page .post-recirc {
+    max-width: 800px;
+    margin: 3.2rem auto 1rem;
+    padding: 2rem 1rem 0;
+    border-top: 1px solid rgba(232, 176, 75, 0.25);
+    text-align: center;
+}
+
+body.post-page .post-recirc__title {
+    font-family: var(--font-heading);
+    font-weight: 500;
+    font-size: 1.7rem;
+    color: var(--title-cream);
+    margin-bottom: 0.5rem;
+}
+
+body.post-page .post-recirc__title .title-accent {
+    font-style: italic;
+    background: linear-gradient(100deg, #FF5A3C 0%, #F58042 46%, #E8B04B 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: #FF5A3C;
+}
+
+body.post-page .post-recirc__lede {
+    color: var(--text-muted);
+    margin-bottom: 1.6rem;
+}
+
+body.post-page .post-recirc__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.9rem;
+    justify-content: center;
+    align-items: center;
+}
+
+body.post-page .post-recirc__trial {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding: 0.85rem 1.9rem;
+    border-radius: var(--cta-radius);
+    background: var(--cta-grad);
+    background-size: 160% 100%;
+    background-position: 0% 50%;
+    color: var(--cta-ink);
+    font-family: 'Outfit', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+    transition: background-position 0.35s ease, box-shadow 0.3s ease;
+}
+
+body.post-page .post-recirc__trial:hover,
+body.post-page .post-recirc__trial:focus-visible {
+    background-position: 100% 50%;
+    box-shadow: 0 10px 26px rgba(255, 90, 60, 0.22);
+    color: var(--cta-ink);
+}
+
+body.post-page .post-recirc__back {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding: 0.85rem 1.5rem;
+    border-radius: var(--cta-radius);
+    background: transparent;
+    border: 1px solid rgba(232, 176, 75, 0.45);
+    color: var(--text-main);
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.96rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+body.post-page .post-recirc__back:hover,
+body.post-page .post-recirc__back:focus-visible {
+    background: rgba(232, 176, 75, 0.1);
+    border-color: rgba(232, 176, 75, 0.7);
+    color: var(--title-cream);
+}
+
+/* ==========================================================================
+   11. Legacy cleanup inside posts
+   ========================================================================== */
+
+/* Old decorative blobs (two posts still carry the divs) */
+body.post-page .blob {
+    display: none !important;
+}
+
+/* Old purple radials that per-post <style> blocks paint on sections */
+body.post-page .post-header,
+body.post-page .relative-container {
+    background-image: none;
+}
+
+/* ==========================================================================
+   12. Small screens
+   ========================================================================== */
+
+@media (max-width: 767px) {
+    body.post-page .post-content {
+        font-size: 1.03rem;
+    }
+
+    body.post-page .post-title {
+        font-size: 2rem;
+    }
+
+    body.post-page .cta-box,
+    body.post-page .cta-section {
+        padding: 2rem 1.2rem !important;
+    }
+
+    body.post-page .post-recirc__actions {
+        flex-direction: column;
+    }
 }

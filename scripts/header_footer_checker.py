@@ -45,9 +45,9 @@ def normalize(block):
 def collect_pages(lang):
     pages = []
     if lang == "en":
-        dirs = ["", "blog-posts"]
+        dirs = ["", "blog"]
     else:
-        dirs = ["de", os.path.join("de", "blog-posts")]
+        dirs = ["de", os.path.join("de", "blog")]
     for d in dirs:
         abs_dir = os.path.join(ROOT_DIR, d)
         if not os.path.isdir(abs_dir):

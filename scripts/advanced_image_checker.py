@@ -1,7 +1,7 @@
 import os
 import re
 
-ROOT_DIR = "/Users/slamitza/AXcentWebsiteGitHub"
+ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 def check_advanced_image_quality():
     print(f"{'File':<40} | {'Issue':<30} | {'Details'}")
@@ -12,6 +12,9 @@ def check_advanced_image_quality():
     
     for root, dirs, files in os.walk(ROOT_DIR):
         if ".git" in root or "node_modules" in root or "scripts" in root or "System" in root:
+            continue
+        # blog-posts/ and de/blog-posts/ hold noindex redirect stubs only
+        if "blog-posts" in root:
             continue
             
         for file in files:

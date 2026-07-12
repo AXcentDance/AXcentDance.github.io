@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="canonical" href="https://axcentdance.com/de/_signup">
+    <link rel="alternate" hreflang="en" href="https://axcentdance.com/_signup">
+    <link rel="alternate" hreflang="de" href="https://axcentdance.com/de/_signup">
+    <link rel="alternate" hreflang="x-default" href="https://axcentdance.com/_signup">
+    <title>Registrieren - AXcent Dance</title>
+    <meta name="description" content="Erstelle dein AXcent Dance Konto, um deinen aktuellen Pass zu sehen und Abwesenheitstage anzugeben.">
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://jwravnvytkmsvqoqkmwb.supabase.co; object-src 'none'; base-uri 'self';">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@200..900&family=Outfit:wght@500;600;700;800&display=swap">
+    <link rel="stylesheet" href="../style.css?v=4.2">
+    <link rel="stylesheet" href="../tropic-noir.css?v=5.0">
+    <link rel="apple-touch-icon" href="/apple-touch-icon-v2.png">
+    <link rel="icon" href="/favicon-axcent-192.png" type="image/png" sizes="192x192">
+    <link rel="icon" href="/favicon-axcent-transparent.svg" type="image/svg+xml">
+    <style>
+        .auth-container {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .auth-card {
+            background: rgba(20, 20, 20, 0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 40px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            text-align: center;
+        }
+
+        .auth-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .auth-subtitle {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+            line-height: 1.5;
+        }
+
+        .auth-card .form-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .auth-card .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-muted);
+        }
+
+        .auth-card .form-group input {
+            width: 100%;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            color: white;
+            font-size: 1rem;
+        }
+
+        .btn-auth {
+            width: 100%;
+            padding: 12px;
+            background: rgba(255, 59, 48, 0.15);
+            border: 1px solid var(--accent-start);
+            border-radius: 30px;
+            color: white;
+            font-weight: bold;
+            font-size: 1.1rem;
+            cursor: pointer;
+            margin-top: 1rem;
+            transition: opacity 0.2s;
+        }
+
+        .btn-auth:hover {
+            opacity: 0.9;
+        }
+
+        .auth-link {
+            display: block;
+            margin-top: 1.5rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .auth-link a {
+            color: var(--accent-gold);
+            text-decoration: none;
+        }
+
+        #feedback {
+            margin-top: 1rem;
+            padding: 10px;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            display: none;
+        }
+
+        .error {
+            color: #ff6b6b;
+            background: rgba(255, 107, 107, 0.1);
+            display: block !important;
+        }
+
+        .success {
+            color: #51cf66;
+            background: rgba(81, 207, 102, 0.1);
+            display: block !important;
+        }
+    </style>
+</head>
+
+<body style="padding-top: 80px;">
+
+    <header class="main-header">
+        <div class="container navbar">
+            <a href="/de/" class="logo">
+                <span class="logo-title">AXCENT</span><span class="logo-subtitle text-gradient">DANCE</span>
+            </a>
+            <nav class="nav-links">
+                <a href="/de/">Home</a>
+                <a href="/_signup" aria-label="English version">EN</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="auth-container">
+        <div class="auth-card">
+            <h1 class="auth-title">Konto erstellen</h1>
+            <p class="auth-subtitle">Verwende dieselbe E-Mail-Adresse, mit der du deinen Pass registriert hast, damit
+                wir dir deine Pass-Details automatisch anzeigen können.</p>
+
+            <form id="signupForm">
+                <div class="form-group">
+                    <label for="email">E-Mail</label>
+                    <input type="email" id="email" required autocomplete="email" placeholder="du@beispiel.ch">
+                </div>
+                <div class="form-group">
+                    <label for="password">Passwort</label>
+                    <input type="password" id="password" required minlength="8" autocomplete="new-password"
+                        placeholder="Mindestens 8 Zeichen">
+                </div>
+                <button type="submit" class="btn-auth">Registrieren</button>
+            </form>
+
+            <div id="feedback"></div>
+
+            <p class="auth-link">
+                Bereits ein Konto? <a href="_login">Anmelden</a>
+                <br><br>
+                <a href="/de/" style="opacity: 0.6;">← Zurück zur Website</a>
+            </p>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script type="module">
+        import { supabase } from '../assets/js/supabase-client.js';
+
+        const form = document.getElementById('signupForm');
+        const feedback = document.getElementById('feedback');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            feedback.textContent = 'Konto wird erstellt...';
+            feedback.className = '';
+            feedback.style.display = 'block';
+
+            const { data, error } = await supabase.auth.signUp({
+                email: document.getElementById('email').value,
+                password: document.getElementById('password').value,
+            });
+
+            if (error) {
+                feedback.textContent = error.message;
+                feedback.className = 'error';
+            } else if (data.session) {
+                // E-Mail-Bestätigung deaktiviert: direkt angemeldet.
+                feedback.textContent = 'Konto erstellt! Weiterleitung...';
+                feedback.className = 'success';
+                setTimeout(() => { window.location.href = 'portal.html'; }, 800);
+            } else {
+                feedback.textContent = 'Konto erstellt! Bitte bestätige deine E-Mail-Adresse über den Link in deinem Posteingang und melde dich dann an.';
+                feedback.className = 'success';
+            }
+        });
+    </script>
+</body>
+
+</html>

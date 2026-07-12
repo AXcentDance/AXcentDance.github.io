@@ -1,7 +1,7 @@
 import os
 import re
 
-ROOT_DIR = "/Users/slamitza/AXcentWebsiteGitHub"
+ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 def check_headings():
     print(f"{'File':<40} | {'Status':<10} | {'Message'}")

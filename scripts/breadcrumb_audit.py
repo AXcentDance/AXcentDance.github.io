@@ -4,7 +4,12 @@ import sys
 from breadcrumb_validation import validate_breadcrumb_content
 
 
-SKIPPED_FILES = {"index.html", "404.html", "de/index.html", "de/404.html"}
+SKIPPED_FILES = {
+    "index.html", "404.html", "de/index.html", "de/404.html",
+    # Private account pages (noindex): no breadcrumb schema by design.
+    "portal.html", "_login.html", "_signup.html",
+    "de/portal.html", "de/_login.html", "de/_signup.html",
+}
 
 
 def audit_breadcrumbs(root_dir):
@@ -16,7 +21,7 @@ def audit_breadcrumbs(root_dir):
     total_files = 0
 
     for subdir, dirs, files in os.walk(root_dir):
-        dirs[:] = [name for name in dirs if name not in {".git", "node_modules"}]
+        dirs[:] = [name for name in dirs if name not in {".git", ".claude", "node_modules"}]
         for file in files:
             if not file.endswith(".html"):
                 continue

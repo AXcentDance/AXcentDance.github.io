@@ -15,22 +15,23 @@
     <meta property="og:title" content="Bachata Preise &amp; Anmeldung Zürich | Kosten &amp; Infos | AXcent">
     <meta property="og:url" content="https://axcentdance.com/de/registration">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="https://axcentdance.com/assets/images/hero_new.webp">
+    <meta property="og:image" content="https://axcentdance.com/assets/images/hero_new.jpg">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Bachata Preise &amp; Anmeldung Zürich | Kosten &amp; Infos | AXcent">
     <meta name="twitter:description" content="Melde dich für unseren Bachata-Kurs in Zürich an. Klare Preise für alle Levels und Mitgliedschaftsvorteile. Werde Teil der Familie an der Hermetschloostrasse 73.">
-    <meta name="twitter:image" content="https://axcentdance.com/assets/images/hero_new.webp">
+    <meta name="twitter:image" content="https://axcentdance.com/assets/images/hero_new.jpg">
     <meta property="og:description"
         content="Melde dich für unseren Bachata-Kurs in Zürich an. Klare Preise für alle Levels und Mitgliedschaftsvorteile. Werde Teil der Familie an der Hermetschloostrasse 73.">
     <meta property="og:locale" content="de_CH">
     <meta http-equiv="Content-Security-Policy"
-        content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://cdn.jsdelivr.net https://connect.facebook.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com https://placehold.co https://*.googleapis.com https://*.gstatic.com https://www.facebook.com https://connect.facebook.net; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://script.google.com https://formsubmit.co https://www.facebook.com https://connect.facebook.net; frame-src 'self' https://www.google.com; object-src 'none'; base-uri 'self'; media-src 'self' blob:; worker-src 'self' blob:;">
+        content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://cdn.jsdelivr.net https://connect.facebook.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com https://placehold.co https://*.googleapis.com https://*.gstatic.com https://www.facebook.com https://connect.facebook.net; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://script.google.com https://formsubmit.co https://www.facebook.com https://connect.facebook.net https://jwravnvytkmsvqoqkmwb.supabase.co; frame-src 'self' https://www.google.com; object-src 'none'; base-uri 'self'; media-src 'self' blob:; worker-src 'self' blob:;">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@200..900&family=Outfit:wght@500;600;700;800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Teko:wght@300..700&display=swap">
     <link rel="stylesheet" href="../style.css?v=4.2">
     <link rel="apple-touch-icon" href="/apple-touch-icon-v2.png">
     <link rel="icon" href="/favicon-axcent-192.png" type="image/png" sizes="192x192">
     <link rel="icon" href="/favicon-axcent-transparent.svg" type="image/svg+xml">
     <!-- Supabase JS CDN -->
+    <script src="../assets/js/axcent-passes.js" defer></script>
 
     <!-- Structured Data (Schema.org) -->
     <script type="application/ld+json">
@@ -212,7 +213,7 @@
           "name": "Was passiert, wenn ich eine Stunde verpasse?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Kein Problem! Das Leben spielt manchmal verrückt. Du kannst eine verpasste Lektion wegen Krankheit innerhalb deiner 8-Wochen-Periode in einem anderen Kurs deines Niveaus (oder tiefer) nachholen. Bitte beachte jedoch: Wenn du bereits zwei geplante Abwesenheiten (z.B. Ferien) für einen reduzierten Preis angegeben hast, ist ein dritter Nachholtermin nicht möglich. Gib uns einfach im Voraus Bescheid, damit wir die Verfügbarkeit prüfen können."
+            "text": "Kein Problem! Das Leben spielt manchmal verrückt. Du kannst bis zu zwei geplante Abwesenheitstage (z.B. Ferien) angeben, damit wir deinen Pass verlängern können, und zusätzlich eine verpasste Lektion wegen Krankheit innerhalb deiner 8-Wochen-Periode in einem anderen Kurs deines Niveaus (oder tiefer) nachholen. Diese Tage kannst du bei der Anmeldung oder später im Online-Portal angeben. Gib uns einfach im Voraus Bescheid, damit wir die Verfügbarkeit prüfen können."
           }
         },
         {
@@ -721,6 +722,7 @@
                         <a href="blog"><span>Blog</span></a>
                         <a href="faq"><span>FAQ</span></a>
                         <a href="etiquette"><span>Tanzetikette</span></a>
+                        <a href="portal"><span>Login</span></a>
                     </div>
                 </div>
         <a href="/de/#trial-form" class="btn-header-cta">Probelektion buchen</a>
@@ -897,6 +899,12 @@
                             <div class="form-group">
                                 <label for="email">E-Mail</label>
                                 <input type="email" id="email" name="email" required placeholder="jane@example.com">
+                                <div id="returningNote"
+                                    style="display: none; margin-top: 8px; padding: 10px 14px; border-radius: 12px; background: rgba(81, 207, 102, 0.1); border: 1px solid rgba(81, 207, 102, 0.35); color: #51cf66; font-size: 0.85rem; line-height: 1.5;">
+                                    Willkommen zurück! Diese E-Mail hat bereits ein Profil bei uns — dein neuer Pass
+                                    wird nach der Zahlung automatisch hinzugefügt. Alle deine Pässe findest du im
+                                    <a href="portal" style="color: #51cf66; text-decoration: underline;">Online-Portal</a>.
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label for="phone">Telefon</label>
@@ -1349,11 +1357,12 @@
                         <span style="color: var(--accent-start); font-size: 1.5rem;">+</span>
                     </summary>
                     <div style="padding: 0 1.5rem 1.5rem; color: var(--text-muted); line-height: 1.6;">
-                        Kein Problem! Das Leben spielt manchmal verrückt. Du kannst <strong>eine</strong> verpasste
-                        Lektion wegen Krankheit innerhalb deiner 8-Wochen-Periode in einem anderen Kurs deines Niveaus
-                        (oder tiefer) nachholen. Bitte beachte jedoch: Wenn du bereits zwei geplante Abwesenheiten (zum Beispiel
-                        Ferien) für einen reduzierten Preis angegeben hast, ist ein dritter Nachholtermin nicht möglich.
-                        Gib uns einfach im Voraus Bescheid, damit wir die Verfügbarkeit prüfen können.
+                        Kein Problem! Das Leben spielt manchmal verrückt. Du kannst bis zu <strong>zwei</strong> geplante
+                        Abwesenheitstage (zum Beispiel Ferien) angeben, damit wir deinen Pass verlängern können, und
+                        zusätzlich <strong>eine</strong> verpasste Lektion wegen Krankheit innerhalb deiner 8-Wochen-Periode
+                        in einem anderen Kurs deines Niveaus (oder tiefer) nachholen. Diese Tage kannst du bei der Anmeldung
+                        oder später im Online-Portal angeben. Gib uns einfach im Voraus Bescheid, damit wir die
+                        Verfügbarkeit prüfen können.
                     </div>
                 </details>
 
@@ -1401,66 +1410,66 @@
     </main>
 
     <footer class="main-footer">
-        <div class="container footer-grid">
-            <div class="footer-col">
-                <a href="./" class="logo footer-logo"><span class="logo-title">AXcent</span><span
-                        class="logo-subtitle text-gradient">DANCE</span></a>
-                <p class="footer-address">
-                    Hermetschloostrasse 73,<br>
-                    8048 Zurich Altstetten<br> 2 minute walking from Tram 2 stop and Bus 31 stop
-                </p>
-                <div class="footer-socials">
-                    <a href="https://www.instagram.com/axcent_dance/" target="_blank" aria-label="Instagram">
-                        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-                            <path
-                                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-                        </svg>
-                    </a>
-                    <a href="mailto:info@axcentdance.com" aria-label="Email">
-                        <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
-                            </path>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-
-            <div class="footer-col">
-                <h2 class="footer-heading">Schnellzugriff</h2>
-                <ul class="footer-links">
-                    <li><a href="guide-bachata">Was ist Bachata</a></li>
-                    <li><a href="blog-posts/roots-of-bachata">Wurzeln des Bachatas</a></li>
-                    <li><a href="schedule">Stundenplan</a></li>
-                    <li><a href="blog">Unser Blog</a></li>
-
-                </ul>
-            </div>
-
-            <div class="footer-col">
-                <h2 class="footer-heading">Rechtliches</h2>
-                <ul class="footer-links">
-                    <li><a href="terms">AGB</a></li>
-                    <li><a href="privacy">Datenschutz</a></li>
-                    <li><a href="imprint">Impressum</a></li>
-                </ul>
-            </div>
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <a href="./" class="logo footer-logo"><span class="logo-title">AXcent</span><span
+            class="logo-subtitle text-gradient">DANCE</span></a>
+        <p class="footer-address">
+          Hermetschloostrasse 73,<br>
+          8048 Zurich Altstetten<br> 2 Minuten zu Fuss von Tram 2 und Bus 31 Haltestelle
+        </p>
+        <div class="footer-socials">
+          <a href="https://www.instagram.com/axcent_dance/" target="_blank" aria-label="Instagram">
+            <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+              <path
+                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+            </svg>
+          </a>
+          <a href="mailto:info@axcentdance.com" aria-label="Email">
+            <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+              </path>
+            </svg>
+          </a>
         </div>
+      </div>
 
-        <div class="container footer-map-full" style="margin-bottom: 2rem;">
-            <h2 class="footer-heading" style="margin-bottom: 1rem;">Finde uns</h2>
-            <div class="footer-map-wrapper-large"
-                style="border-radius: 12px; overflow: hidden; border: 1px solid var(--glass-border);">
-                <iframe title="Google Maps Location of AXcent Dance"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2701.365!2d8.472010!3d47.394204!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47900b995a7d8e03%3A0xd99d3e4500b44fd6!2sAXcent%20Dance%20%7C%20Bachata%20Classes!5e0!3m2!1sen!2sch!4v1710680000000!5m2!1sde!2sch&hl=de"
-                    width="100%" height="250" style="border:0; width: 100%; display: block;" allowfullscreen=""
-                    loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2025 AXcent Dance. Alle Rechte vorbehalten.</p>
-        </div>
-    </footer>
+      <div class="footer-col">
+        <h2 class="footer-heading">Schnellzugriff</h2>
+        <ul class="footer-links">
+          <li><a href="guide-bachata">Was ist Bachata</a></li>
+          <li><a href="blog/roots-of-bachata">Wurzeln des Bachatas</a></li>
+          <li><a href="schedule">Stundenplan</a></li>
+          <li><a href="blog">Unser Blog</a></li>
+
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h2 class="footer-heading">Rechtliches</h2>
+        <ul class="footer-links">
+          <li><a href="terms">AGB</a></li>
+          <li><a href="privacy">Datenschutz</a></li>
+          <li><a href="imprint">Impressum</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container footer-map-full" style="margin-bottom: 2rem;">
+      <h2 class="footer-heading" style="margin-bottom: 1rem;">Finde uns</h2>
+      <div class="footer-map-wrapper-large"
+        style="border-radius: 12px; overflow: hidden; border: 1px solid var(--glass-border);">
+        <iframe title="Google Maps Standort von AXcent Dance"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2701.365!2d8.472010!3d47.394204!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47900b995a7d8e03%3A0xd99d3e4500b44fd6!2sAXcent%20Dance%20%7C%20Bachata%20Classes!5e0!3m2!1sen!2sch!4v1710680000000!5m2!1sde!2sch&hl=de"
+          width="100%" height="250" style="border:0; width: 100%; display: block;" allowfullscreen="" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 AXcent Dance. Alle Rechte vorbehalten.</p>
+    </div>
+  </footer>
 
     <script src="../script.js?v=5.8"></script>
     <script>
@@ -1582,6 +1591,11 @@
 
                 // Format: "Wed, Mar 11 2026"
                 endInput.value = endDate.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' });
+                // ISO copy for the Supabase submission. Built from local components:
+                // toISOString() would shift local midnight back a day (UTC conversion).
+                window.axcentPassEndISO = endDate.getFullYear() + '-' +
+                    String(endDate.getMonth() + 1).padStart(2, '0') + '-' +
+                    String(endDate.getDate()).padStart(2, '0');
             }
         }
 
@@ -1649,28 +1663,8 @@
 
                         // 3. Determine Stripe Link
                         let stripeLink = '';
-                        const links = {
-                            "10-Class Flexible Package": {
-                                student: "https://buy.stripe.com/aFa00l1sz1Dz90jewWfnO09",
-                                regular: "https://buy.stripe.com/8x2cN71szaa5b8r88yfnO08"
-                            },
-                            "4 Classes/Week (8 Weeks)": {
-                                student: "https://buy.stripe.com/dRmdRbdbh4PLccv74ufnO07",
-                                regular: "https://buy.stripe.com/00w14p9Z59610tN1KafnO06"
-                            },
-                            "3 Classes/Week (8 Weeks)": {
-                                student: "https://buy.stripe.com/aFabJ37QXgyt90j60qfnO05",
-                                regular: "https://buy.stripe.com/cNiaEZ8V13LH90j74ufnO04"
-                            },
-                            "2 Classes/Week (8 Weeks)": {
-                                student: "https://buy.stripe.com/aFaeVf4ELeqla4n3SifnO03",
-                                regular: "https://buy.stripe.com/eVqeVf9Z581X1xR60qfnO02"
-                            },
-                            "1 Course (8 Weeks)": {
-                                student: "https://buy.stripe.com/cNidRb9Z56XTccv0G6fnO01",
-                                regular: "https://buy.stripe.com/eVq28tb395TP5O7agGfnO00"
-                            }
-                        };
+                        // Package -> Stripe Payment Link map lives in assets/js/axcent-passes.js
+                        const links = window.AXCENT_PASSES.stripeLinks;
 
                         if (links[selectedPackage]) {
                             stripeLink = isStudent ? links[selectedPackage].student : links[selectedPackage].regular;
@@ -1711,9 +1705,42 @@
                         };
 
                         try {
-                            // Parallel Submission: Google Sheets Only
+                            // Parallel Submission: Supabase + Google Sheets
                             // Use a timeout to ensure we don't hang if a service is down
                             const timeout = (ms) => new Promise((_, reject) => setTimeout(() => reject(new Error('Timeout')), ms));
+
+                            // Supabase: create a pending registration so the webhook can
+                            // activate it after payment (best-effort, never blocks checkout).
+                            const SUPABASE_URL = 'https://jwravnvytkmsvqoqkmwb.supabase.co';
+                            const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imp3cmF2bnZ5dGttc3Zxb3FrbXdiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM3NjU1MTIsImV4cCI6MjA5OTM0MTUxMn0.t4waGFmjD2hDQkGOhYg8rPt1rtf4iyRyTIC6T5KsFag';
+                            const startDateOpt = document.getElementById('activation_date').selectedOptions[0];
+                            const supabasePromise = fetch(SUPABASE_URL + '/rest/v1/registrations', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                    'apikey': SUPABASE_ANON_KEY,
+                                    'Authorization': 'Bearer ' + SUPABASE_ANON_KEY,
+                                    'Prefer': 'return=minimal'
+                                },
+                                body: JSON.stringify({
+                                    email: formData.get('email'),
+                                    first_name: formData.get('firstname'),
+                                    last_name: formData.get('lastname'),
+                                    phone: formData.get('phone'),
+                                    pass_type: selectedPackage,
+                                    is_student: isStudent,
+                                    pass_start_date: (function () {
+                                        if (!startDateOpt || !startDateOpt.dataset.dateObj) return null;
+                                        // Local components, not toISOString(): UTC conversion shifts the day.
+                                        const d = new Date(startDateOpt.dataset.dateObj);
+                                        return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+                                    })(),
+                                    pass_end_date: window.axcentPassEndISO || null,
+                                    selected_classes: submissionPayload.selected_classes,
+                                    dates_unavailable: datesUnavailable,
+                                    status: 'pending_payment'
+                                })
+                            });
 
                             const googleSheetsPromise = fetch(GOOGLE_SCRIPT_URL, {
                                 method: "POST",
@@ -1724,7 +1751,7 @@
 
                             // Race with a 5-second timeout for background tasks
                             await Promise.race([
-                                googleSheetsPromise,
+                                Promise.allSettled([supabasePromise, googleSheetsPromise]),
                                 timeout(5000)
                             ]);
 
@@ -1818,6 +1845,32 @@
 
 
 
+
+    <!-- Returning-customer greeting: shows a note when the email already has a profile -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var emailInput = document.getElementById('email');
+            var note = document.getElementById('returningNote');
+            if (!emailInput || !note) return;
+            var lastChecked = '';
+            emailInput.addEventListener('blur', function () {
+                var email = emailInput.value.trim();
+                if (!email || email.indexOf('@') === -1 || email === lastChecked) return;
+                lastChecked = email;
+                fetch('https://jwravnvytkmsvqoqkmwb.supabase.co/rest/v1/rpc/email_has_profile', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imp3cmF2bnZ5dGttc3Zxb3FrbXdiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM3NjU1MTIsImV4cCI6MjA5OTM0MTUxMn0.t4waGFmjD2hDQkGOhYg8rPt1rtf4iyRyTIC6T5KsFag',
+                        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imp3cmF2bnZ5dGttc3Zxb3FrbXdiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM3NjU1MTIsImV4cCI6MjA5OTM0MTUxMn0.t4waGFmjD2hDQkGOhYg8rPt1rtf4iyRyTIC6T5KsFag'
+                    },
+                    body: JSON.stringify({ check_email: email })
+                }).then(function (r) { return r.json(); }).then(function (exists) {
+                    note.style.display = exists === true ? 'block' : 'none';
+                }).catch(function () { /* best-effort greeting only */ });
+            });
+        });
+    </script>
 </body>
 
 </html>

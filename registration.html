@@ -17,19 +17,21 @@
     <meta property="og:description" content="Sign up for our Bachata course in Zurich. Clear pricing for all levels, and membership benefits. Join the family at Hermetschloostrasse 73.">
     <meta property="og:url" content="https://axcentdance.com/registration">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="https://axcentdance.com/assets/images/hero_new.webp">
+    <meta property="og:image" content="https://axcentdance.com/assets/images/hero_new.jpg">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Bachata Course Prices Zurich | Registration &amp; Fees | AXcent">
     <meta name="twitter:description" content="Sign up for our Bachata course in Zurich. Clear pricing for all levels, and membership benefits. Join the family at Hermetschloostrasse 73.">
-    <meta name="twitter:image" content="https://axcentdance.com/assets/images/hero_new.webp">
+    <meta name="twitter:image" content="https://axcentdance.com/assets/images/hero_new.jpg">
     <meta http-equiv="Content-Security-Policy"
-        content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://cdn.jsdelivr.net https://connect.facebook.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com https://placehold.co https://*.googleapis.com https://*.gstatic.com https://www.facebook.com https://connect.facebook.net; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://script.google.com https://formsubmit.co https://www.facebook.com https://connect.facebook.net; frame-src 'self' https://www.google.com; object-src 'none'; base-uri 'self'; media-src 'self' blob:; worker-src 'self' blob:;">
+        content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://cdn.jsdelivr.net https://connect.facebook.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com https://placehold.co https://*.googleapis.com https://*.gstatic.com https://www.facebook.com https://connect.facebook.net; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://script.google.com https://formsubmit.co https://www.facebook.com https://connect.facebook.net https://jwravnvytkmsvqoqkmwb.supabase.co; frame-src 'self' https://www.google.com; object-src 'none'; base-uri 'self'; media-src 'self' blob:; worker-src 'self' blob:;">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@200..900&family=Outfit:wght@500;600;700;800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Teko:wght@300..700&display=swap">
     <link rel="stylesheet" href="style.css?v=4.2">
+    <link rel="stylesheet" href="tropic-noir.css?v=5.0">
     <link rel="apple-touch-icon" href="/apple-touch-icon-v2.png">
     <link rel="icon" href="/favicon-axcent-192.png" type="image/png" sizes="192x192">
     <link rel="icon" href="/favicon-axcent-transparent.svg" type="image/svg+xml">
     <!-- Supabase JS CDN -->
+    <script src="assets/js/axcent-passes.js" defer></script>
 
     <!-- Structured Data (Schema.org) -->
     <script type="application/ld+json">
@@ -211,7 +213,7 @@
           "name": "What if I miss a class? Can I catch up?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "No worries! Life happens. You can make up one missed class due to sickness within your 8-week period by attending another class of your level (or lower). However, please note that if you have already declared two planned absences (e.g. for holidays) for a pro-rated price, a third makeup day is not possible. Just let us know in advance so we can check availability."
+            "text": "No worries! Life happens. You can declare up to two planned absence days (e.g. for holidays) so that we can extend your pass, and additionally make up one missed class due to sickness within your 8-week period by attending another class of your level (or lower). You can declare these days during registration or later in the Student Portal. Just let us know in advance so we can check availability."
           }
         },
         {
@@ -355,310 +357,7 @@
 </script>
 
 
-    <style>
-        /* Registration Specific Styles */
-        /* Registration Specific Styles */
-        /* .reg-hero removed in favor of .schedule-hero-modern */
-
-        /* Fix for select dropdown options in dark mode */
-        select#activation_date option {
-            background-color: #0f0816;
-            /* Fallback */
-            background-color: var(--bg-secondary);
-            color: white;
-        }
-
-        .reg-form-container {
-            max-width: 800px;
-            margin: 0 auto 80px;
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 2rem;
-            padding: 3rem 2rem;
-            backdrop-filter: blur(12px);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-        }
-
-        .form-section-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            color: var(--text-light);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            padding-bottom: 0.5rem;
-        }
-
-        .price-toggle {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 2rem;
-            background: rgba(255, 255, 255, 0.05);
-            padding: 10px;
-            border-radius: 50px;
-            width: fit-content;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .toggle-btn {
-            background: transparent;
-            border: none;
-            color: var(--text-muted);
-            padding: 8px 20px;
-            border-radius: 30px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-
-        .toggle-btn.active {
-            background: var(--accent-start);
-            color: #fff;
-            box-shadow: 0 4px 15px rgba(108, 92, 231, 0.4);
-        }
-
-        .package-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-            margin-bottom: 2rem;
-        }
-
-        .package-option {
-            cursor: pointer;
-            position: relative;
-        }
-
-        .package-option input {
-            position: absolute;
-            opacity: 0;
-        }
-
-        .package-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 2rem 1.5rem;
-            border-radius: 16px;
-            text-align: center;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .package-card:hover {
-            transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.08);
-            border-color: rgba(255, 255, 255, 0.3);
-        }
-
-        .package-option input:checked+.package-card {
-            border-color: var(--accent-start);
-            background: rgba(108, 92, 231, 0.15);
-            box-shadow: 0 0 30px rgba(108, 92, 231, 0.3);
-            transform: scale(1.02);
-        }
-
-        .pkg-name {
-            display: block;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
-
-        .pkg-price {
-            display: block;
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: var(--accent-light);
-        }
-
-        .pkg-desc {
-            display: block;
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-top: 0.5rem;
-        }
-
-        .class-checkbox-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1rem;
-        }
-
-        .checkbox-label {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            background: rgba(255, 255, 255, 0.03);
-            padding: 12px;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-
-        .checkbox-label:hover {
-            background: rgba(255, 255, 255, 0.08);
-        }
-
-        .checkbox-label input {
-            accent-color: var(--accent-start);
-            width: 18px;
-            height: 18px;
-        }
-
-        @media (max-width: 768px) {
-            .reg-form-container {
-                padding: 20px;
-            }
-
-            .reg-hero {
-                padding-top: 120px;
-            }
-        }
-
-
-
-        /* Pricing Table Styles */
-        .pricing-overview {
-            background: linear-gradient(135deg, rgba(255, 59, 48, 0.08) 0%, rgba(15, 8, 22, 0.4) 100%);
-            border: 1px solid rgba(255, 59, 48, 0.2);
-            border-radius: 20px;
-            padding: 1.25rem;
-            margin-bottom: 3rem;
-            backdrop-filter: blur(12px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        .pricing-table-wrapper {
-            overflow-x: hidden;
-        }
-
-        .pricing-table {
-            width: 100%;
-            border-collapse: collapse;
-            color: var(--text-light);
-            min-width: 0;
-        }
-
-        .pricing-table th {
-            text-align: left;
-            padding: 0.5rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            color: var(--accent-start);
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        .pricing-table td {
-            padding: 0.5rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            font-size: 0.95rem;
-        }
-
-        .pricing-table tr:last-child td {
-            border-bottom: none;
-        }
-
-        .price-regular {
-            font-weight: 700;
-            color: white;
-        }
-
-        .price-student {
-            color: var(--accent-light);
-            font-weight: 600;
-        }
-
-        /* Desktop: Show all columns, Hide toggle */
-        @media (min-width: 769px) {
-            .pricing-table-toggle {
-                display: none;
-            }
-        }
-
-        .pass-name {
-            font-weight: 600;
-        }
-
-        .pass-duration {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            display: block;
-        }
-
-        /* Surgical Compact Passes Overrides */
-        .pricing-grid {
-            gap: 0.75rem !important;
-        }
-
-        .pricing-card {
-            padding: 0.75rem 1rem !important;
-        }
-
-        .pricing-header {
-            margin-bottom: 0 !important;
-        }
-
-        .pricing-title {
-            font-size: 1rem !important;
-        }
-
-        .pricing-price {
-            font-size: 1.4rem !important;
-            margin-bottom: 0 !important;
-            line-height: 1.2 !important;
-        }
-
-        .pricing-desc {
-            font-size: 0.8rem !important;
-            opacity: 0.8;
-        }
-
-        /* Section 3 Compact Overrides */
-        .timetable-selection-grid {
-            gap: 1.5rem !important;
-        }
-
-        .timetable-col {
-            gap: 0.5rem !important;
-        }
-
-        .timetable-day-header {
-            margin-bottom: 0.25rem !important;
-            font-size: 1.1rem !important;
-        }
-
-        .class-option-wrapper {
-            padding: 0.5rem !important;
-            gap: 0.25rem !important;
-        }
-
-        .class-option-card {
-            min-height: 4.5rem !important;
-            padding: 0.5rem 0.75rem !important;
-        }
-
-        .class-role-select {
-            margin-top: 0.25rem !important;
-        }
-
-        .form-section {
-            margin-top: 1.5rem !important;
-        }
-
-        /* Hide spacers on mobile for compactness */
-        @media (max-width: 768px) {
-            .desktop-only-spacer {
-                display: none !important;
-            }
-        }
-    </style>
+    <!-- Page-specific styles live in tropic-noir.css (body.registration-page scope) -->
 
     <!-- Cookie Consent -->
 
@@ -679,12 +378,7 @@
   <!-- End Meta Pixel Code -->
   </head>
 
-<body>
-
-    <!-- Background Blobs -->
-    <div class="blob blob-1"></div>
-    <div class="blob blob-2"></div>
-    <div class="blob blob-3"></div>
+<body class="tropic registration-page">
 
     <!-- Navigation -->
     <header class="main-header">
@@ -720,6 +414,7 @@
                         <a href="blog"><span>Blog</span></a>
                         <a href="faq"><span>FAQ</span></a>
                         <a href="etiquette"><span>Dance Etiquette</span></a>
+                        <a href="portal"><span>Login</span></a>
                     </div>
                 </div>
         <a href="/#trial-form" class="btn-header-cta">Book Free Trial</a>
@@ -733,58 +428,35 @@
         </div>
     </header>
 
-    <!-- Hero Section (Modern Split) -->
-    <section class="schedule-hero-modern">
-        <div class="container">
-            <div class="hero-grid">
-                <!-- Left: Text Content -->
-                <div class="hero-content-left">
-                    <!-- Visual Breadcrumbs -->
-
-
-                    <div class="hero-badge">
-                        <div class="hero-badge-line"></div>
-                        <div class="hero-badge-text">JOIN THE MOVEMENT</div>
-                    </div>
-                    <h1 class="page-title" style="margin-bottom: 1rem;">
-                        REGISTRATION & PRICES
-                    </h1>
-
-                    <p class="hero-desc-border" style="border: none; padding: 0; margin: 0; max-width: 500px;">
-                        Register now for Bachata Sensual classes in Zurich Altstetten. Partnerwork and ladystyle.
-                        <strong>No partner needed.</strong>
-                    </p>
-                    <div class="reg-description" style="margin-top: 1.5rem; color: var(--text-muted);">
-                        <p>All classes run continuously. Each pass is valid for <strong>8 weeks</strong>.</p>
-                    </div>
-                </div>
-
-                <!-- Right: Image -->
-                <div class="hero-content-right">
-                    <div class="framed-hero-wrapper">
-                        <div class="framed-hero-inner">
-                            <img src="assets/images/home/gallery_3.webp"
-                                srcset="assets/images/home/gallery_3_480w.webp 480w, assets/images/home/gallery_3_800w.webp 800w, assets/images/home/gallery_3_1200w.webp 1200w"
-                                sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px"
-                                alt="Bachata dance class group photo" width="1024" height="768">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <main>
 
-        <section class="container" style="margin-top: 4rem;">
+        <!-- Masthead: compact studio-desk header -->
+        <section class="reg-masthead">
+            <div class="container">
+                <p class="reg-masthead__kicker">Join the movement</p>
+                <h1 class="page-title reg-masthead__title">
+                    REGISTRATION & PRICES
+                </h1>
+                <p class="reg-masthead__dek">
+                    Register now for Bachata Sensual classes in Zurich Altstetten. Partnerwork and ladystyle.
+                    <strong>No partner needed.</strong>
+                </p>
+                <ul class="reg-masthead__chips">
+                    <li class="reg-masthead__chip">8-week blocks</li>
+                    <li class="reg-masthead__chip">Student &minus;15%</li>
+                    <li class="reg-masthead__chip">No subscription</li>
+                </ul>
+                <p class="reg-masthead__note">All classes run continuously. Each pass is valid for <strong>8
+                        weeks</strong>.</p>
+            </div>
+        </section>
 
-
-
+        <section class="container reg-desk">
 
             <!-- Pricing Table -->
-            <div class="pricing-overview">
-                <h2 class="section-title-modern" style="margin-bottom: 2rem; font-size: 2.5rem; text-align: center;">
-                    Pass <span class="text-gradient">Prices</span></h2>
+            <div class="pricing-overview reg-pricing">
+                <h2 class="section-title-modern reg-pricing__title">
+                    Pass <em class="title-accent">Prices</em></h2>
                 <div class="pricing-table-wrapper">
                     <!-- Mobile Toggle for Table -->
                     <div class="pricing-table-toggle">
@@ -873,12 +545,8 @@
             </div>
 
             <div class="form-wrapper reg-form-container">
-                <!-- FAQ Section (Inside Container or Before?) - Let's put it AFTER the pricing container but BEFORE form container or INSIDE form container? 
-                     User asked "Add a FAQs in Registration ... aiming at words that I am weak it." 
-                     Best place is likely below the form or pricing. Let's put it at the very bottom of the main container.
-                -->
 
-                <h2 class="section-title-modern" style="margin-bottom: 2rem; text-align: center;">Registration Form</h2>
+                <h2 class="section-title-modern reg-form__title">Registration <em class="title-accent">Form</em></h2>
 
                 <form class="registration-form" id="registrationForm">
                     <input type="hidden" name="pricing_tier" id="pricingTier" value="Regular">
@@ -901,6 +569,12 @@
                             <div class="form-group">
                                 <label for="email">Email</label>
                                 <input type="email" id="email" name="email" required placeholder="jane@example.com">
+                                <div id="returningNote"
+                                    style="display: none; margin-top: 8px; padding: 10px 14px; border-radius: 12px; background: rgba(81, 207, 102, 0.1); border: 1px solid rgba(81, 207, 102, 0.35); color: #51cf66; font-size: 0.85rem; line-height: 1.5;">
+                                    Welcome back! This email already has a profile with us — your new pass will be
+                                    added to it automatically after payment. You can see all your passes in the
+                                    <a href="portal" style="color: #51cf66; text-decoration: underline;">Student Portal</a>.
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label for="phone">Phone</label>
@@ -912,7 +586,7 @@
                     </div>
 
                     <!-- 2. Class Passes -->
-                    <div class="form-section" style="margin-top: 3rem;">
+                    <div class="form-section">
                         <h2 class="form-section-title">2. Class Passes</h2>
                         <p style="color: var(--text-muted); margin-bottom: 1rem; font-size: 0.9rem;">
                             Select the package that fits your schedule.
@@ -994,7 +668,7 @@
                     </div>
 
                     <!-- Pass Activation Date -->
-                    <div class="form-section" style="margin-top: 3rem;">
+                    <div class="form-section">
                         <h2 class="form-section-title">2a. Activation Date</h2>
                         <div class="form-group">
                             <label for="activation_date"
@@ -1021,7 +695,7 @@
                     </div>
 
                     <!-- 3. Select Classes -->
-                    <div class="form-section" style="margin-top: 3rem;">
+                    <div class="form-section">
                         <h2 class="form-section-title">3. Select Your Classes</h2>
                         <p
                             style="color: var(--text-muted); margin-bottom: 1rem; font-size: 0.9rem; line-height: 1.5; background: rgba(255,255,255,0.05); padding: 15px; border-radius: 8px; border-left: 3px solid var(--accent-light);">
@@ -1291,7 +965,7 @@
                     </div>
 
                     <!-- 4. Agreements -->
-                    <div class="form-section" style="margin-top: 3rem;">
+                    <div class="form-section">
                         <div class="form-group">
                             <label class="checkbox-label" style="background: none; padding: 0;">
                                 <input type="checkbox" name="axcent_news" value="yes" checked>
@@ -1351,10 +1025,11 @@
                         <span style="color: var(--accent-start); font-size: 1.5rem;">+</span>
                     </summary>
                     <div style="padding: 0 1.5rem 1.5rem; color: var(--text-muted); line-height: 1.6;">
-                        No worries! Life happens. You can make up <strong>one</strong> missed class due to sickness within
-                        your 8-week period by attending another class of your level (or lower). However, please note that if
-                        you have already declared two planned absences (e.g. for holidays) for a pro-rated price, a third
-                        makeup day is not possible. Please let us know in advance so we can check availability.
+                        No worries! Life happens. You can declare up to <strong>two</strong> planned absence days (e.g. for
+                        holidays) so that we can extend your pass, and additionally make up <strong>one</strong> missed class
+                        due to sickness within your 8-week period by attending another class of your level (or lower). You
+                        can declare these days during registration or later in the Student Portal. Please let us know in
+                        advance so we can check availability.
                     </div>
                 </details>
 
@@ -1403,67 +1078,75 @@
     </main>
 
     <footer class="main-footer">
-        <div class="container footer-grid">
-            <div class="footer-col">
-                <a href="./" class="logo footer-logo"><span class="logo-title">AXcent</span><span
-                        class="logo-subtitle text-gradient">DANCE</span></a>
-                <p class="footer-address">
-                    Hermetschloostrasse 73,<br>
-                    8048 Zurich Altstetten<br> 2 minute walking from Tram 2 stop and Bus 31 stop
-                </p>
-                <div class="footer-socials">
-                    <a href="https://www.instagram.com/axcent_dance/" target="_blank" aria-label="Instagram">
-                        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-                            <path
-                                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-                        </svg>
-                    </a>
-                    <a href="mailto:info@axcentdance.com" aria-label="Email">
-                        <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
-                            </path>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-
-            <div class="footer-col">
-                <h2 class="footer-heading">Quick Links</h2>
-                <ul class="footer-links">
-                    <li><a href="guide-bachata">What is Bachata</a></li>
-                    <li><a href="blog-posts/roots-of-bachata">Roots of Bachata</a>
-                    </li>
-                    <li><a href="schedule">Schedule</a></li>
-                    <li><a href="blog">Our Blog</a></li>
-
-                </ul>
-            </div>
-
-            <div class="footer-col">
-                <h2 class="footer-heading">Legal</h2>
-                <ul class="footer-links">
-                    <li><a href="terms">Terms & Conditions</a></li>
-                    <li><a href="privacy">Privacy Policy</a></li>
-                    <li><a href="imprint">Imprint</a></li>
-                </ul>
-            </div>
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <a href="./" class="logo footer-logo"><span class="logo-title">AXcent</span><span
+            class="logo-subtitle text-gradient">DANCE</span></a>
+        <p class="footer-address">
+          Hermetschloostrasse 73,<br>
+          8048 Zurich Altstetten<br> 2 minute walking from Tram 2 stop and Bus 31 stop
+        </p>
+        <p class="footer-contact">
+          <a href="https://wa.me/41799668481" target="_blank" rel="noopener noreferrer">WhatsApp: +41 79 966 84 81</a>
+        </p>
+        <div class="footer-socials">
+          <a href="https://www.instagram.com/axcent_dance/" target="_blank" aria-label="Instagram">
+            <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+              <path
+                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+            </svg>
+          </a>
+          <a href="mailto:info@axcentdance.com" aria-label="Email">
+            <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+              </path>
+            </svg>
+          </a>
         </div>
+      </div>
 
-        <div class="container footer-map-full" style="margin-bottom: 2rem;">
-            <h2 class="footer-heading" style="margin-bottom: 1rem;">Find Us</h2>
-            <div class="footer-map-wrapper-large"
-                style="border-radius: 12px; overflow: hidden; border: 1px solid var(--glass-border);">
-                <iframe title="Google Maps Location of AXcent Dance"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2701.365!2d8.472010!3d47.394204!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47900b995a7d8e03%3A0xd99d3e4500b44fd6!2sAXcent%20Dance%20%7C%20Bachata%20Classes!5e0!3m2!1sen!2sch!4v1710680000000!5m2!1sen!2sch&hl=en"
-                    width="100%" height="250" style="border:0; width: 100%; display: block;" allowfullscreen=""
-                    loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2025 AXcent Dance. All rights reserved.</p>
-        </div>
-    </footer>
+      <div class="footer-col">
+        <h2 class="footer-heading">Quick Links</h2>
+        <ul class="footer-links">
+          <li><a href="/#trial-form">Book Free Trial</a></li>
+          <li><a href="guide-bachata">What is Bachata</a></li>
+          <li><a href="blog/roots-of-bachata">Roots of Bachata</a></li>
+          <li><a href="schedule">Schedule</a></li>
+          <li><a href="blog">Our Blog</a></li>
+
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h2 class="footer-heading">Legal</h2>
+        <ul class="footer-links">
+          <li><a href="terms">Terms & Conditions</a></li>
+          <li><a href="privacy">Privacy Policy</a></li>
+          <li><a href="imprint">Imprint</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container footer-map-full">
+      <h2 class="footer-heading footer-map-full__heading">Find Us</h2>
+      <a class="footer-map-card" href="https://www.google.com/maps?cid=15680757943659417558" target="_blank"
+        rel="noopener noreferrer" aria-label="Open the AXcent Dance studio location in Google Maps">
+        <span class="footer-map-card__pin" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+            <circle cx="12" cy="10" r="3" />
+          </svg>
+        </span>
+        <span class="footer-map-card__address">Hermetschloostrasse 73, 8048 Zurich Altstetten</span>
+        <span class="footer-map-card__hint">2 minutes from Tram 2 and Bus 31 · Open in Google Maps</span>
+      </a>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 AXcent Dance. All rights reserved.</p>
+    </div>
+  </footer>
 
     <script src="script.js?v=5.8"></script>
     <script>
@@ -1586,6 +1269,11 @@
 
                 // Format: "Wed, Mar 11 2026"
                 endInput.value = endDate.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' });
+                // ISO copy for the Supabase submission. Built from local components:
+                // toISOString() would shift local midnight back a day (UTC conversion).
+                window.axcentPassEndISO = endDate.getFullYear() + '-' +
+                    String(endDate.getMonth() + 1).padStart(2, '0') + '-' +
+                    String(endDate.getDate()).padStart(2, '0');
             }
         }
 
@@ -1653,28 +1341,8 @@
 
                         // 3. Determine Stripe Link
                         let stripeLink = '';
-                        const links = {
-                            "10-Class Flexible Package": {
-                                student: "https://buy.stripe.com/aFa00l1sz1Dz90jewWfnO09",
-                                regular: "https://buy.stripe.com/8x2cN71szaa5b8r88yfnO08"
-                            },
-                            "4 Classes/Week (8 Weeks)": {
-                                student: "https://buy.stripe.com/dRmdRbdbh4PLccv74ufnO07",
-                                regular: "https://buy.stripe.com/00w14p9Z59610tN1KafnO06"
-                            },
-                            "3 Classes/Week (8 Weeks)": {
-                                student: "https://buy.stripe.com/aFabJ37QXgyt90j60qfnO05",
-                                regular: "https://buy.stripe.com/cNiaEZ8V13LH90j74ufnO04"
-                            },
-                            "2 Classes/Week (8 Weeks)": {
-                                student: "https://buy.stripe.com/aFaeVf4ELeqla4n3SifnO03",
-                                regular: "https://buy.stripe.com/eVqeVf9Z581X1xR60qfnO02"
-                            },
-                            "1 Course (8 Weeks)": {
-                                student: "https://buy.stripe.com/cNidRb9Z56XTccv0G6fnO01",
-                                regular: "https://buy.stripe.com/eVq28tb395TP5O7agGfnO00"
-                            }
-                        };
+                        // Package -> Stripe Payment Link map lives in assets/js/axcent-passes.js
+                        const links = window.AXCENT_PASSES.stripeLinks;
 
                         if (links[selectedPackage]) {
                             stripeLink = isStudent ? links[selectedPackage].student : links[selectedPackage].regular;
@@ -1715,9 +1383,42 @@
                         };
 
                         try {
-                            // Parallel Submission: Google Sheets Only
+                            // Parallel Submission: Supabase + Google Sheets
                             // Use a timeout to ensure we don't hang if a service is down
                             const timeout = (ms) => new Promise((_, reject) => setTimeout(() => reject(new Error('Timeout')), ms));
+
+                            // Supabase: create a pending registration so the webhook can
+                            // activate it after payment (best-effort, never blocks checkout).
+                            const SUPABASE_URL = 'https://jwravnvytkmsvqoqkmwb.supabase.co';
+                            const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imp3cmF2bnZ5dGttc3Zxb3FrbXdiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM3NjU1MTIsImV4cCI6MjA5OTM0MTUxMn0.t4waGFmjD2hDQkGOhYg8rPt1rtf4iyRyTIC6T5KsFag';
+                            const startDateOpt = document.getElementById('activation_date').selectedOptions[0];
+                            const supabasePromise = fetch(SUPABASE_URL + '/rest/v1/registrations', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                    'apikey': SUPABASE_ANON_KEY,
+                                    'Authorization': 'Bearer ' + SUPABASE_ANON_KEY,
+                                    'Prefer': 'return=minimal'
+                                },
+                                body: JSON.stringify({
+                                    email: formData.get('email'),
+                                    first_name: formData.get('firstname'),
+                                    last_name: formData.get('lastname'),
+                                    phone: formData.get('phone'),
+                                    pass_type: selectedPackage,
+                                    is_student: isStudent,
+                                    pass_start_date: (function () {
+                                        if (!startDateOpt || !startDateOpt.dataset.dateObj) return null;
+                                        // Local components, not toISOString(): UTC conversion shifts the day.
+                                        const d = new Date(startDateOpt.dataset.dateObj);
+                                        return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+                                    })(),
+                                    pass_end_date: window.axcentPassEndISO || null,
+                                    selected_classes: submissionPayload.selected_classes,
+                                    dates_unavailable: datesUnavailable,
+                                    status: 'pending_payment'
+                                })
+                            });
 
                             const googleSheetsPromise = fetch(GOOGLE_SCRIPT_URL, {
                                 method: "POST",
@@ -1728,7 +1429,7 @@
 
                             // Race with a 5-second timeout for background tasks
                             await Promise.race([
-                                googleSheetsPromise,
+                                Promise.allSettled([supabasePromise, googleSheetsPromise]),
                                 timeout(5000)
                             ]);
 
@@ -1822,6 +1523,32 @@
 
 
 
+
+    <!-- Returning-customer greeting: shows a note when the email already has a profile -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var emailInput = document.getElementById('email');
+            var note = document.getElementById('returningNote');
+            if (!emailInput || !note) return;
+            var lastChecked = '';
+            emailInput.addEventListener('blur', function () {
+                var email = emailInput.value.trim();
+                if (!email || email.indexOf('@') === -1 || email === lastChecked) return;
+                lastChecked = email;
+                fetch('https://jwravnvytkmsvqoqkmwb.supabase.co/rest/v1/rpc/email_has_profile', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imp3cmF2bnZ5dGttc3Zxb3FrbXdiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM3NjU1MTIsImV4cCI6MjA5OTM0MTUxMn0.t4waGFmjD2hDQkGOhYg8rPt1rtf4iyRyTIC6T5KsFag',
+                        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imp3cmF2bnZ5dGttc3Zxb3FrbXdiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM3NjU1MTIsImV4cCI6MjA5OTM0MTUxMn0.t4waGFmjD2hDQkGOhYg8rPt1rtf4iyRyTIC6T5KsFag'
+                    },
+                    body: JSON.stringify({ check_email: email })
+                }).then(function (r) { return r.json(); }).then(function (exists) {
+                    note.style.display = exists === true ? 'block' : 'none';
+                }).catch(function () { /* best-effort greeting only */ });
+            });
+        });
+    </script>
 </body>
 
 </html>

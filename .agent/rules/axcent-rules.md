@@ -77,6 +77,8 @@ Alt Text: Mandatory.
 
 Google Discover Optimization: Every blog post MUST have a hero image that is at least 1200×675px (16:9 aspect ratio). This is required for large image cards in Google Discover. Avoid using the site logo as the hero image — use vibrant, story-driven photography instead.
 
+Videos: every video published on the site MUST follow `.agent/rules/video_upload_policy.md` — 3-second HLS segmenting via `scripts/generate_hls.py`, a compliant poster image, and lazy chunk-by-chunk playback. Never publish a full-length progressive video file as the primary source.
+
 3.2. CSS Architecture
 
 Methodology: BEM (Block Element Modifier) is mandatory (e.g., .card__title, .nav--active).

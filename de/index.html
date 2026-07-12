@@ -30,9 +30,12 @@
   <meta property="og:title" content="Bachata Tanzkurs in Zürich | Werde Teil unserer Community | AXcent Dance">
   <meta property="og:description"
     content="Werde Teil von 100+ Tänzern in Bachata Kursen in Zürich. Lerne Bachata mit erfahrenen Lehrern, vom Anfänger bis Fortgeschritten. Kein Partner nötig. Jetzt gratis Probelektion buchen!">
-  <meta property="og:image" content="https://axcentdance.com/assets/images/hero_new.webp">
+  <meta property="og:image" content="https://axcentdance.com/assets/images/og-home-1200x630.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="628">
+  <meta property="og:image:alt" content="Tanzpaare in einem Bachata Kurs bei AXcent Dance in Zürich Altstetten">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="https://axcentdance.com/assets/images/hero_new.webp">
+  <meta name="twitter:image" content="https://axcentdance.com/assets/images/og-home-1200x630.jpg">
 
   <!-- Styles -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@200..900&family=Outfit:wght@500;600;700;800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Teko:wght@300..700&display=swap">
@@ -300,6 +303,7 @@
             <a href="blog"><span>Blog</span></a>
             <a href="faq"><span>FAQ</span></a>
             <a href="etiquette"><span>Tanzetikette</span></a>
+            <a href="portal"><span>Login</span></a>
           </div>
         </div>
         <a href="/de/#trial-form" class="btn-header-cta">Probelektion buchen</a>
@@ -319,7 +323,8 @@
       <div class="home-hero__grid">
         <div class="home-hero__stage">
           <video id="hero-showcase-video" class="home-hero__video" autoplay muted loop playsinline preload="metadata"
-            poster="../assets/images/hero-poster.webp" src="../assets/videos/HeroVideo_mobile.mp4"></video>
+            poster="../assets/images/hero-poster.webp" src="../assets/videos/HeroVideo_mobile.mp4"
+            data-hls="../assets/videos/hls/hero-home/playlist.m3u8"></video>
           <div class="home-hero__shade" aria-hidden="true"></div>
           <div class="home-hero__actions">
             <a href="#trial-form" class="btn-hero btn-hero-primary">
@@ -354,36 +359,29 @@
 
           <div class="home-hero__selector" aria-label="Tanzvideo auswählen">
             <span class="home-hero__selector-divider">Wöchentliche Kurse</span>
-            <button class="home-hero__choice is-active" type="button" data-hero-video="../assets/videos/HeroVideo_mobile.mp4"
+            <button class="home-hero__choice is-active" type="button" data-hero-video="../assets/videos/HeroVideo_mobile.mp4" data-hero-hls="../assets/videos/hls/hero-home/playlist.m3u8"
               data-hero-start="0" aria-pressed="true">
               <span class="home-hero__choice-copy">
                 <span class="home-hero__choice-title">Bachata</span>
                 <span class="home-hero__choice-note">Partnerwork</span>
               </span>
             </button>
-            <button class="home-hero__choice" type="button" data-hero-video="../assets/videos/HeroVideo_mobile.mp4"
+            <button class="home-hero__choice" type="button" data-hero-video="../assets/videos/HeroVideo_mobile.mp4" data-hero-hls="../assets/videos/hls/hero-home/playlist.m3u8"
               data-hero-start="10" aria-pressed="false">
               <span class="home-hero__choice-copy">
                 <span class="home-hero__choice-title">Bachata Styling</span>
                 <span class="home-hero__choice-note">Solo Ausdruck</span>
               </span>
             </button>
-            <button class="home-hero__choice" type="button" data-hero-video="../assets/videos/HeroVideo_mobile.mp4"
-              data-hero-start="5" aria-pressed="false">
-              <span class="home-hero__choice-copy">
-                <span class="home-hero__choice-title">Afro</span>
-                <span class="home-hero__choice-note">Geerdete Energie</span>
-              </span>
-            </button>
             <span class="home-hero__selector-divider">Events</span>
-            <button class="home-hero__choice" type="button" data-hero-video="../assets/videos/AitorGomezDemo.mp4"
+            <button class="home-hero__choice" type="button" data-hero-video="../assets/videos/AitorGomezDemo.mp4" data-hero-hls="../assets/videos/hls/aitor-demo/playlist.m3u8"
               data-hero-webm="../assets/videos/AitorGomezDemo.webm" data-hero-start="0" aria-pressed="false">
               <span class="home-hero__choice-copy">
                 <span class="home-hero__choice-title">Dominican Bachata</span>
                 <span class="home-hero__choice-note">Intensivtraining</span>
               </span>
             </button>
-            <button class="home-hero__choice" type="button" data-hero-video="../assets/videos/HeroVideo_mobile.mp4"
+            <button class="home-hero__choice" type="button" data-hero-video="../assets/videos/HeroVideo_mobile.mp4" data-hero-hls="../assets/videos/hls/hero-home/playlist.m3u8"
               data-hero-start="0" aria-pressed="false">
               <span class="home-hero__choice-copy">
                 <span class="home-hero__choice-title">Milano Sensual Congress</span>
@@ -437,19 +435,6 @@
             </a>
           </article>
 
-          <article class="guide-card beginner-course-card beginner-course-card--photo beginner-course-card--afro glass-card">
-            <span class="guide-badge">Solo Bewegungen</span>
-            <div class="guide-card__copy">
-              <div class="guide-card__course">
-                <h3 class="guide-title">Afro Beginner</h3>
-                <span class="beginner-course-card__time">Dienstag: 20:30</span>
-                <p class="guide-excerpt">Verwurzelt in afrikanischen Tanzkulturen: Afro verbindet geerdeten Rhythmus, Footwork und ausdrucksstarke Solo-Bewegung.</p>
-              </div>
-            </div>
-            <a href="blog-posts/new-afro-dance-classes-september" class="beginner-course-card__arrow" aria-label="Afro Beginner Seite öffnen">
-              <span aria-hidden="true">→</span>
-            </a>
-          </article>
         </div>
       </div>
     </section>
@@ -1339,7 +1324,7 @@
         <h2 class="footer-heading">Schnellzugriff</h2>
         <ul class="footer-links">
           <li><a href="guide-bachata">Was ist Bachata</a></li>
-          <li><a href="blog-posts/roots-of-bachata">Wurzeln des Bachatas</a></li>
+          <li><a href="blog/roots-of-bachata">Wurzeln des Bachatas</a></li>
           <li><a href="schedule">Stundenplan</a></li>
           <li><a href="blog">Unser Blog</a></li>
 
@@ -1372,6 +1357,7 @@
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script type="module" src="../hls-video.js?v=1.0"></script>
   <script src="../script.js?v=5.8"></script>
 
 

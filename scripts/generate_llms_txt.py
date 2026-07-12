@@ -10,7 +10,8 @@ OUTPUT_FILE = os.path.join(ROOT_DIR, 'llms-full.txt')
 # Files to ignore
 IGNORE_PATTERNS = [
     'node_modules', '.git', 'tmp', '.gemini', '__pycache__', 'scripts',
-    'google', 'google', 'assets' # Ignore assets folder if it accidentally has html
+    'google', 'google', 'assets', # Ignore assets folder if it accidentally has html
+    '_login.html', '_signup.html', 'portal.html' # Private account pages (noindex)
 ]
 
 # Order priority (filenames containing these strings come first)
