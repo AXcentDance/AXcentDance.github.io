@@ -8,12 +8,14 @@ ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 IGNORE_FILES = {
     "404.html",
     "admin.html",
+    "_admin.html",
     "_login.html",
     "_signup.html",
     "portal.html",
     "thank-you.html",
     "thank-you-contact.html",
     "thank-you-trial.html",
+    "new-afro-dance-classes-september.html",  # retired post, noindex redirect stub
 }
 
 MASTERS = {

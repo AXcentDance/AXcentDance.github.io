@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Owner Dashboard - AXcent Dance</title>
+    <meta name="description" content="AXcent Dance owner dashboard.">
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://jwravnvytkmsvqoqkmwb.supabase.co; object-src 'none'; base-uri 'self';">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@200..900&family=Outfit:wght@500;600;700;800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap">
+    <link rel="stylesheet" href="style.css?v=4.2">
+    <link rel="stylesheet" href="tropic-noir.css?v=5.2">
+    <link rel="apple-touch-icon" href="/apple-touch-icon-v2.png">
+    <link rel="icon" href="/favicon-axcent-192.png" type="image/png" sizes="192x192">
+    <link rel="icon" href="/favicon-axcent-transparent.svg" type="image/svg+xml">
+    <style>
+        body.tropic {
+            --portal-hairline: var(--glass-border);
+            --portal-divider: rgba(157, 180, 171, 0.16);
+        }
+
+        .admin-container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 20px 16px 60px;
+        }
+
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin: 2rem 0 1.6rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .admin-eyebrow {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.16em;
+            color: var(--accent-gold);
+            margin: 0 0 0.4rem;
+        }
+
+        .admin-header h1 {
+            font-family: var(--font-heading, 'Playfair Display', serif);
+            font-size: clamp(2rem, 4vw, 2.6rem);
+            font-weight: 600;
+            color: var(--title-cream);
+            margin: 0;
+        }
+
+        .btn-logout {
+            background: transparent;
+            border: 1px solid rgba(157, 180, 171, 0.28);
+            border-radius: 10px;
+            color: var(--text-muted);
+            padding: 9px 18px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+        }
+
+        .btn-logout:hover {
+            color: var(--text-main);
+            border-color: var(--accent-gold);
+        }
+
+        .admin-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--portal-hairline);
+            border-radius: 20px;
+            padding: 26px 24px;
+            margin-bottom: 1.2rem;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .admin-card h2 {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            color: var(--text-muted);
+            margin: 0 0 1.1rem;
+        }
+
+        .stat-row {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 0.4rem;
+        }
+
+        .stat-chip {
+            border: 1px solid var(--portal-divider);
+            border-radius: 999px;
+            padding: 6px 14px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .stat-chip strong {
+            color: var(--title-cream);
+        }
+
+        .req {
+            border: 1px solid var(--portal-divider);
+            border-radius: 14px;
+            padding: 14px 16px;
+            margin-bottom: 10px;
+        }
+
+        .req__top {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 6px;
+        }
+
+        .req__type {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            font-size: 0.66rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            padding: 3px 10px;
+            border-radius: 999px;
+        }
+
+        .req__type--freeze {
+            background: rgba(102, 178, 255, 0.14);
+            border: 1px solid rgba(102, 178, 255, 0.35);
+            color: #9CCBFF;
+        }
+
+        .req__type--room_booking {
+            background: rgba(232, 176, 75, 0.14);
+            border: 1px solid rgba(232, 176, 75, 0.35);
+            color: var(--accent-gold);
+        }
+
+        .req__type--private_class {
+            background: rgba(255, 90, 60, 0.12);
+            border: 1px solid rgba(255, 90, 60, 0.35);
+            color: #FF8A70;
+        }
+
+        .req__type--bootcamp {
+            background: rgba(143, 217, 160, 0.12);
+            border: 1px solid rgba(143, 217, 160, 0.35);
+            color: #8FD9A0;
+        }
+
+        .req__who {
+            color: var(--title-cream);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .req__who a {
+            color: var(--accent-gold);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .req__meta {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-left: auto;
+            white-space: nowrap;
+        }
+
+        .req__dates {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.85rem;
+            color: var(--text-main);
+            margin-bottom: 4px;
+        }
+
+        .req__details {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.45;
+            margin-bottom: 10px;
+            white-space: pre-wrap;
+        }
+
+        .req__actions {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .req__btn {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 0.78rem;
+            padding: 6px 14px;
+            border-radius: 8px;
+            cursor: pointer;
+            background: transparent;
+            border: 1px solid var(--portal-divider);
+            color: var(--text-muted);
+        }
+
+        .req__btn:hover {
+            color: var(--text-main);
+            border-color: var(--accent-gold);
+        }
+
+        .req__btn--confirm {
+            border-color: rgba(81, 207, 102, 0.4);
+            color: #8FD9A0;
+        }
+
+        .req__btn--decline {
+            border-color: rgba(255, 107, 107, 0.35);
+            color: #FFB4A6;
+        }
+
+        .req__status {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 3px 10px;
+            border-radius: 8px;
+            border: 1px solid var(--portal-divider);
+            color: var(--text-muted);
+        }
+
+        .req--handled {
+            opacity: 0.65;
+        }
+
+        .muted-note {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .muted-note a {
+            color: var(--accent-gold);
+        }
+
+        #adminFeedback {
+            display: none;
+            margin-top: 0.6rem;
+            font-size: 0.9rem;
+        }
+
+        #adminFeedback.error {
+            display: block;
+            color: #FFB4A6;
+        }
+    </style>
+</head>
+
+<body class="tropic">
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo-area" aria-label="AXcent Dance home">
+                <span class="logo-main">AXCENT</span>
+                <span class="logo-sub">DANCE</span>
+            </a>
+            <nav class="nav-links">
+                <a href="/">Home</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="admin-container">
+        <div class="admin-header">
+            <div>
+                <p class="admin-eyebrow">Owner Dashboard</p>
+                <h1>Requests Inbox</h1>
+            </div>
+            <button class="btn-logout" id="logoutBtn" style="display: none;">Log Out</button>
+        </div>
+
+        <div class="admin-card" id="gateCard">
+            <p class="muted-note" id="gateMessage">Checking access...</p>
+        </div>
+
+        <div class="admin-card" id="statsCard" style="display: none;">
+            <h2>Overview</h2>
+            <div class="stat-row" id="statRow"></div>
+        </div>
+
+        <div class="admin-card" id="openCard" style="display: none;">
+            <h2>Open Requests</h2>
+            <div id="openList"></div>
+        </div>
+
+        <div class="admin-card" id="privateCard" style="display: none;">
+            <h2>Private Class Bookings (Paid)</h2>
+            <p class="muted-note" style="margin-bottom: 0.9rem;">
+                Already paid — schedule the exact time with the student by email.
+            </p>
+            <div id="privateList"></div>
+        </div>
+
+        <div class="admin-card" id="pendingCard" style="display: none;">
+            <h2>Awaiting Payment</h2>
+            <p class="muted-note" style="margin-bottom: 0.9rem;">
+                Started checkout but no confirmed payment yet — these move to Open
+                Requests automatically when Stripe confirms.
+            </p>
+            <div id="pendingList"></div>
+        </div>
+
+        <div class="admin-card" id="handledCard" style="display: none;">
+            <h2>Handled</h2>
+            <div id="handledList"></div>
+        </div>
+
+        <div id="adminFeedback"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script type="module">
+        import { supabase } from './assets/js/supabase-client.js';
+
+        const OWNER_EMAIL = 'info@axcentdance.com';
+        const TYPE_LABELS = {
+            freeze: 'Pass Freeze',
+            room_booking: 'Room Booking',
+            private_class: 'Private Class',
+            bootcamp: 'Bootcamp'
+        };
+
+        const el = (id) => document.getElementById(id);
+        const show = (id) => { el(id).style.display = 'block'; };
+        const hide = (id) => { el(id).style.display = 'none'; };
+
+        const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({
+            '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+        }[c]));
+
+        const formatDate = (iso) => {
+            if (!iso) return '?';
+            return new Date(iso.slice(0, 10) + 'T00:00:00').toLocaleDateString('en-US', {
+                weekday: 'short', month: 'short', day: 'numeric', year: 'numeric'
+            });
+        };
+
+        const { data: { session } } = await supabase.auth.getSession();
+        if (!session) {
+            window.location.href = '_login.html';
+            throw new Error('Not authenticated');
+        }
+
+        show('logoutBtn');
+        el('logoutBtn').addEventListener('click', async () => {
+            await supabase.auth.signOut();
+            window.location.href = '_login.html';
+        });
+
+        if (session.user.email.toLowerCase() !== OWNER_EMAIL) {
+            el('gateMessage').innerHTML = 'This page is reserved for the studio owner. ' +
+                'Looking for your pass? Head to the <a href="portal" style="color: var(--accent-gold);">Student Portal</a>.';
+            throw new Error('Not the owner');
+        }
+
+        async function loadRequests() {
+            // RLS: only the owner account gets rows other than its own.
+            const { data: requests, error } = await supabase
+                .from('requests')
+                .select('*')
+                .order('created_at', { ascending: false });
+
+            if (error) {
+                el('gateMessage').textContent = 'Could not load requests: ' + error.message;
+                show('gateCard');
+                return;
+            }
+
+            hide('gateCard');
+
+            // Paid private classes need no accept/decline decision — they are
+            // already booked; the owner only schedules the time by email.
+            const paidPrivate = requests.filter(r => r.status === 'new' && r.type === 'private_class');
+            const open = requests.filter(r => r.status === 'new' && r.type !== 'private_class');
+            const pendingPay = requests.filter(r => r.status === 'pending_payment');
+            const handled = requests.filter(r => r.status !== 'new' && r.status !== 'pending_payment');
+
+            const counts = { freeze: 0, room_booking: 0, private_class: paidPrivate.length, bootcamp: 0 };
+            open.forEach(r => { counts[r.type] = (counts[r.type] || 0) + 1; });
+            el('statRow').innerHTML =
+                '<span class="stat-chip"><strong>' + open.length + '</strong> open</span>' +
+                Object.entries(TYPE_LABELS).map(([t, label]) =>
+                    '<span class="stat-chip">' + esc(label) + ': <strong>' + (counts[t] || 0) + '</strong></span>'
+                ).join('') +
+                '<span class="stat-chip"><strong>' + handled.length + '</strong> handled</span>';
+            show('statsCard');
+
+            // mode: 'open' (action buttons), 'plain' (no actions), 'handled'
+            const renderRequest = (r, mode) => {
+                const timeRange = (r.time_from && r.time_until)
+                    ? ', ' + esc(r.time_from) + ' &ndash; ' + esc(r.time_until)
+                    : '';
+                const dates = (r.date_from || r.date_until)
+                    ? '<div class="req__dates">' + formatDate(r.date_from) +
+                      (r.date_until ? ' &rarr; ' + formatDate(r.date_until) : '') + timeRange + '</div>'
+                    : '';
+                let actions = '';
+                if (mode === 'open') {
+                    actions = '<div class="req__actions">' +
+                        '<button class="req__btn req__btn--confirm" data-id="' + r.id + '" data-status="confirmed">Confirm</button>' +
+                        '<button class="req__btn req__btn--decline" data-id="' + r.id + '" data-status="declined">Decline</button>' +
+                        '<button class="req__btn" data-id="' + r.id + '" data-status="done">Done</button>' +
+                        '</div>';
+                } else if (mode === 'handled') {
+                    actions = '<div class="req__actions">' +
+                        '<span class="req__status">' + esc(r.status) + '</span>' +
+                        '<button class="req__btn" data-id="' + r.id + '" data-status="new">' +
+                        (r.status === 'pending_payment' ? 'Mark as Paid' : 'Reopen') + '</button>' +
+                        '</div>';
+                }
+                return '<div class="req' + (mode === 'handled' ? ' req--handled' : '') + '">' +
+                    '<div class="req__top">' +
+                    '<span class="req__type req__type--' + esc(r.type) + '">' + esc(TYPE_LABELS[r.type] || r.type) + '</span>' +
+                    '<span class="req__who">' + esc(r.name || '') +
+                    ' <a href="mailto:' + esc(r.email) + '">' + esc(r.email) + '</a></span>' +
+                    '<span class="req__meta">' + formatDate(r.created_at) + '</span>' +
+                    '</div>' +
+                    dates +
+                    (r.details ? '<div class="req__details">' + esc(r.details) + '</div>' : '') +
+                    actions +
+                    '</div>';
+            };
+
+            el('openList').innerHTML = open.length
+                ? open.map(r => renderRequest(r, 'open')).join('')
+                : '<p class="muted-note">No open requests — all caught up.</p>';
+            show('openCard');
+
+            if (paidPrivate.length) {
+                el('privateList').innerHTML = paidPrivate.map(r => renderRequest(r, 'plain')).join('');
+                show('privateCard');
+            } else {
+                hide('privateCard');
+            }
+
+            if (pendingPay.length) {
+                el('pendingList').innerHTML = pendingPay.map(r => renderRequest(r, 'handled')).join('');
+                show('pendingCard');
+            } else {
+                hide('pendingCard');
+            }
+
+            el('handledList').innerHTML = handled.length
+                ? handled.map(r => renderRequest(r, 'handled')).join('')
+                : '<p class="muted-note">Nothing handled yet.</p>';
+            show('handledCard');
+        }
+
+        document.addEventListener('click', async (e) => {
+            const btn = e.target.closest('.req__btn[data-id]');
+            if (!btn) return;
+            btn.disabled = true;
+            const status = btn.dataset.status;
+            const { error } = await supabase
+                .from('requests')
+                .update({ status: status, handled_at: status === 'new' ? null : new Date().toISOString() })
+                .eq('id', btn.dataset.id);
+            if (error) {
+                const fb = el('adminFeedback');
+                fb.textContent = 'Update failed: ' + error.message;
+                fb.className = 'error';
+                btn.disabled = false;
+                return;
+            }
+            await loadRequests();
+        });
+
+        await loadRequests();
+    </script>
+</body>
+
+</html>
