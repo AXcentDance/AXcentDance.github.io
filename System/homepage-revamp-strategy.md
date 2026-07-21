@@ -145,6 +145,16 @@ Virtually no dance studio uses deep green — the niche is saturated with black/
 
 Dark video hero stays, body flips to warm gallery-white. Highest distinctiveness, highest risk — largest rebuild of 12k lines of dark-assuming CSS.
 
+### Option D — "Ember Bloom" (owner-suggested, pink/orange/red, needs contrast audit)
+
+| Token | Hex |
+|---|---|
+| bg-main | `#210D1B` near-black plum/wine |
+| accent-primary | `#F472B6` pink |
+| accent-secondary | gradient, orange → red (exact stops TBD, e.g. `#FF7A3C` → `#E8302A`) |
+
+Owner-flagged candidate, added 2026-07-21 for consideration alongside A–C. Untested for AA contrast and unmapped to the usage/token system below — needs a text-on-pink and text-on-gradient contrast pass before it can be scored against Tropic Noir.
+
 ### Tropic Noir usage map
 
 | Section | Treatment |

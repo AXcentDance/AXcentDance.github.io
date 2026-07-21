@@ -29,7 +29,7 @@
     <!-- Styles -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@200..900&family=Outfit:wght@500;600;700;800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Teko:wght@300..700&display=swap">
     <link rel="stylesheet" href="../style.css?v=9.2">
-    <link rel="stylesheet" href="../tropic-noir.css?v=5.0">
+    <link rel="stylesheet" href="../tropic-noir.css?v=5.2">
     <link rel="preload" as="image" href="../assets/images/blog/dance-tips-1-title_800w.webp"
         imagesrcset="../assets/images/blog/dance-tips-1-title_480w.webp 480w, ../assets/images/blog/dance-tips-1-title_800w.webp 800w, ../assets/images/blog/dance-tips-1-title_1200w.webp 1200w"
         imagesizes="(max-width: 900px) 92vw, 40vw" fetchpriority="high">
@@ -184,7 +184,7 @@
   <!-- End Meta Pixel Code -->
   </head>
 
-<body class="blog-page">
+<body class="blog-page nav-declutter">
 
     <!-- Navigation Bar -->
     <header class="main-header">
@@ -201,11 +201,13 @@
                 </svg>
             </button>
       <nav class="nav-links">
-        <a href="../">Home</a>
+        <a href="../" class="nav-home">Home</a>
         <a href="../about">About us</a>
         <a href="../schedule">Our classes</a>
+        <a href="../registration">Prices &amp; Registration</a>
         <a href="../events">Events</a>
-        <a href="../contact">Contact</a>
+        <a href="../contact" class="nav-contact-item">Contact</a>
+        <a href="../portal" class="nav-portal-item">Login</a>
 
         <div class="dropdown">
           <button class="dropbtn">More ▾</button>
@@ -220,7 +222,7 @@
             <a href="../blog"><span>Blog</span></a>
             <a href="../faq"><span>FAQ</span></a>
             <a href="../etiquette"><span>Dance Etiquette</span></a>
-            <a href="../portal"><span>Login</span></a>
+            <a href="../contact" class="nav-contact-dropdown"><span>Contact</span></a>
           </div>
         </div>
         <a href="/#trial-form" class="btn-header-cta">Book Free Trial</a>
@@ -230,6 +232,14 @@
           <span class="divider">|</span>
           <a href="../de/blog">DE</a>
         </div>
+      <div class="header-login">
+        <a href="../portal" class="header-login__link header-login__link--icon" aria-label="Login" title="Login">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 21a8 8 0 0 0-16 0"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+        </a>
+      </div>
 
     </div>
   </header>
@@ -290,6 +300,28 @@
         <section class="blog-container">
             <h2 class="section-title-modern section-title-left blog-grid-heading">Every <em class="title-accent">story</em></h2>
             <div class="blog-grid-modern">
+                <!-- Bachata Sensual vs Dominican Bachata Post -->
+                <article class="modern-card reveal" data-category="education">
+                    <div class="card-image-wrap">
+                        <span class="card-category">Education</span>
+                        <img src="../assets/images/home/gallery_4_1200w.webp"
+                            srcset="../assets/images/home/gallery_4_480w.webp 480w, ../assets/images/home/gallery_4_800w.webp 800w, ../assets/images/home/gallery_4_1200w.webp 1200w"
+                            sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px"
+                            alt="AXcent Dance instructors teaching a Bachata workshop in Zurich" width="1200" height="829" loading="lazy"
+                            class="card-image" decoding="async">
+                    </div>
+                    <div class="card-body">
+                        <div class="card-date">Jul 13, 2026</div>
+                        <h2 class="card-title">Bachata Sensual vs Dominican Bachata: Which One Should You Learn First?</h2>
+                        <p class="card-desc">
+                            Bachata Sensual or Dominican Bachata? Compare the music, movement, and vibe of each style
+                            to find the right class to start with.
+                        </p>
+                        <a href="/blog/bachata-sensual-vs-dominican" class="card-link">
+                            Read Article <span style="font-size: 1.2em;">→</span>
+                        </a>
+                    </div>
+                </article>
                 <!-- Teacher Collaboration Post -->
                 <article class="modern-card reveal" data-category="wellness">
                     <div class="card-image-wrap">
@@ -471,6 +503,25 @@
                     </div>
                 </article>
                 <!-- Start a New Hobby Post -->
+                <article class="modern-card reveal" data-category="community">
+                    <div class="card-image-wrap">
+                        <span class="card-category">Community</span>
+                        <img src="../assets/images/blog/discover/start-new-hobby-meet-people-zurich-1200x675.webp"
+                            alt="Dancers laughing together while learning Bachata at a social dance class in Zurich" width="1200" height="675"
+                            loading="lazy" class="card-image" decoding="async">
+                    </div>
+                    <div class="card-body">
+                        <div class="card-date">Feb 22, 2026</div>
+                        <h2 class="card-title">Why Bachata is the Best New Hobby for Meeting People in Zurich</h2>
+                        <p class="card-desc">
+                            Thinking about starting a new hobby in Zurich? Here is why Bachata beats the rest:
+                            exercise, music, and a built-in social circle from your very first class.
+                        </p>
+                        <a href="/blog/start-new-hobby-meet-people-zurich" class="card-link">
+                            Read Article <span style="font-size: 1.2em;">→</span>
+                        </a>
+                    </div>
+                </article>
                 <!-- Salsa vs Bachata Post -->
                 <article class="modern-card reveal" data-category="education">
                     <div class="card-image-wrap">
@@ -608,6 +659,27 @@
 
 
 
+                <!-- We Are Moving Post -->
+                <article class="modern-card reveal" data-category="community">
+                    <div class="card-image-wrap">
+                        <span class="card-category">News</span>
+                        <img src="../assets/images/empty_studio_mirrors.webp"
+                            srcset="../assets/images/empty_studio_mirrors_480w.webp 480w, ../assets/images/empty_studio_mirrors_800w.webp 800w, ../assets/images/empty_studio_mirrors_1200w.webp 1200w"
+                            sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px" alt="New Location Zurich"
+                            width="1024" height="1024" loading="lazy" class="card-image" decoding="async">
+                    </div>
+                    <div class="card-body">
+                        <div class="card-date">Jan 12, 2026</div>
+                        <h2 class="card-title">We Are Moving! New Studio in Zurich Altstetten</h2>
+                        <p class="card-desc">
+                            Big news! AXcent Dance is moving to a beautiful new 138m² location at Hermetschloostrasse
+                            73.
+                        </p>
+                        <a href="/blog/blog-new-location" class="card-link">
+                            Read Article <span style="font-size: 1.2em;">→</span>
+                        </a>
+                    </div>
+                </article>
                 <!-- Romeo Santos Tour Post -->
                 <article class="modern-card reveal" data-category="music">
                     <div class="card-image-wrap">
@@ -652,27 +724,6 @@
                     </div>
                 </article>
 
-                <!-- We Are Moving Post -->
-                <article class="modern-card reveal" data-category="community">
-                    <div class="card-image-wrap">
-                        <span class="card-category">News</span>
-                        <img src="../assets/images/empty_studio_mirrors.webp"
-                            srcset="../assets/images/empty_studio_mirrors_480w.webp 480w, ../assets/images/empty_studio_mirrors_800w.webp 800w, ../assets/images/empty_studio_mirrors_1200w.webp 1200w"
-                            sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px" alt="New Location Zurich"
-                            width="1024" height="1024" loading="lazy" class="card-image" decoding="async">
-                    </div>
-                    <div class="card-body">
-                        <div class="card-date">Jan 12, 2025</div>
-                        <h2 class="card-title">We Are Moving! New Studio in Zurich Altstetten</h2>
-                        <p class="card-desc">
-                            Big news! AXcent Dance is moving to a beautiful new 138m² location at Hermetschloostrasse
-                            73.
-                        </p>
-                        <a href="/blog/blog-new-location" class="card-link">
-                            Read Article <span style="font-size: 1.2em;">→</span>
-                        </a>
-                    </div>
-                </article>
 
                 <!-- Christmas Break moved to grid -->
                 <article class="modern-card reveal" data-category="community">
@@ -825,6 +876,7 @@
                     <li><a href="/blog/roots-of-bachata">Roots of Bachata</a></li>
                     <li><a href="../schedule">Schedule</a></li>
                     <li><a href="../blog">Our Blog</a></li>
+                    <li><a href="https://www.google.com/maps?cid=15680757943659417558" target="_blank" rel="noopener noreferrer">Read our reviews on Google</a></li>
 
                 </ul>
             </div>
@@ -860,7 +912,7 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-    <script src="../script.js?v=6.0"></script>
+    <script src="../script.js?v=6.1"></script>
 
 
 

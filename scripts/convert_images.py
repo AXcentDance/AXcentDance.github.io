@@ -1,7 +1,7 @@
 import os
 import subprocess
 
-ROOT_DIR = "/Users/slamitza/AXcentWebsiteGitHub"
+ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # List of images to optimize (relative to repo root)
 IMAGES_TO_CONVERT = [

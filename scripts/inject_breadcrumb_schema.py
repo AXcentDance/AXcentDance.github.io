@@ -3,7 +3,7 @@ import os
 import re
 import json
 
-ROOT_DIR = '/Users/slamitza/AXcentWebsiteGitHub'
+ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 def get_breadcrumb_data(file_path, title, lang):
     base_url = "https://axcentdance.com"

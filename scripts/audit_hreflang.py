@@ -27,7 +27,11 @@ def audit_hreflang():
         path = os.path.join(ROOT_DIR, en_file)
         with open(path, 'r', encoding='utf-8') as f:
             content = f.read()
-            
+
+        # noindex pages are excluded from search; hreflang is meaningless there
+        if re.search(r'<meta\s+name=["\']robots["\']\s+content=["\'][^"\']*noindex', content, re.I):
+            continue
+
         hreflangs = get_hreflangs(content)
         
         # Check if it has DE link

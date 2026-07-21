@@ -1,0 +1,79 @@
+name: Supabase Monitor
+
+# Pings the Supabase REST API every 20 minutes. Two consecutive failures
+# send a DOWN email to the studio (via FormSubmit, same channel the portal
+# uses); the first successful check after a confirmed outage sends an UP
+# email. Exactly one email per transition — no repeats while down.
+#
+# State ("<consecutive-failures>:<alerted yes/no>") lives in the repository
+# Actions variable SUPABASE_MONITOR_STATE so it survives between runs.
+#
+# Notes:
+#   * Scheduled workflows only run from the default branch — this activates
+#     when the branch merges to main (same as the keep-alive workflow).
+#   * GitHub may delay or occasionally skip scheduled runs under load, so
+#     timings are approximate. The alert therefore fires roughly 40-60
+#     minutes into an outage.
+#   * As a side effect the pings count as project activity, which also
+#     protects against the free-tier inactivity pause.
+
+on:
+  schedule:
+    - cron: "*/20 * * * *"
+  workflow_dispatch: {}
+
+permissions:
+  actions: write
+
+concurrency: supabase-monitor
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+      VAR_NAME: SUPABASE_MONITOR_STATE
+    steps:
+      - name: Ping Supabase and alert on state change
+        run: |
+          # The anon key is the same public key shipped in the website code.
+          ANON_KEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imp3cmF2bnZ5dGttc3Zxb3FrbXdiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM3NjU1MTIsImV4cCI6MjA5OTM0MTUxMn0.t4waGFmjD2hDQkGOhYg8rPt1rtf4iyRyTIC6T5KsFag"
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" --max-time 25 \
+            "https://jwravnvytkmsvqoqkmwb.supabase.co/rest/v1/registrations?select=id&limit=1" \
+            -H "apikey: ${ANON_KEY}" -H "Authorization: Bearer ${ANON_KEY}" || echo "000")
+          echo "Supabase responded with HTTP ${STATUS}"
+
+          STATE=$(gh api "repos/${GITHUB_REPOSITORY}/actions/variables/${VAR_NAME}" --jq .value 2>/dev/null || echo "0:no")
+          FAILS="${STATE%%:*}"
+          ALERTED="${STATE##*:}"
+          echo "Previous state: ${FAILS} consecutive failure(s), alerted=${ALERTED}"
+
+          send_mail() {
+            curl -s "https://formsubmit.co/ajax/info@axcentdance.com" \
+              -H "Content-Type: application/json" -H "Accept: application/json" \
+              -d "{\"_subject\":\"$1\",\"_template\":\"table\",\"_captcha\":\"false\",\"Status\":\"$2\",\"Time\":\"$(date -u '+%Y-%m-%d %H:%M UTC')\",\"Checked\":\"Supabase REST API (registrations endpoint)\"}" \
+              > /dev/null || true
+          }
+
+          if [ "${STATUS}" = "200" ]; then
+            if [ "${ALERTED}" = "yes" ]; then
+              send_mail "Supabase is UP again ✅" "Recovered — portal logins, admin pages and the Stripe webhook are reachable again."
+              echo "Recovery email sent."
+            fi
+            NEW_STATE="0:no"
+          else
+            FAILS=$((FAILS + 1))
+            if [ "${FAILS}" -ge 2 ] && [ "${ALERTED}" != "yes" ]; then
+              send_mail "Supabase appears DOWN 🔴" "Two consecutive checks failed (last HTTP ${STATUS}). Portal logins and admin pages are likely unavailable. Stripe payments keep working and webhooks retry automatically — no money is lost. Check https://status.supabase.com"
+              echo "Down alert sent."
+              NEW_STATE="${FAILS}:yes"
+            else
+              NEW_STATE="${FAILS}:${ALERTED}"
+            fi
+          fi
+
+          echo "New state: ${NEW_STATE}"
+          gh api -X PATCH "repos/${GITHUB_REPOSITORY}/actions/variables/${VAR_NAME}" \
+            -f name="${VAR_NAME}" -f value="${NEW_STATE}" 2>/dev/null || \
+          gh api -X POST "repos/${GITHUB_REPOSITORY}/actions/variables" \
+            -f name="${VAR_NAME}" -f value="${NEW_STATE}"

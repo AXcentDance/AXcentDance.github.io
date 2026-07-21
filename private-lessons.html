@@ -29,7 +29,7 @@
     <!-- Styles -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@200..900&family=Outfit:wght@500;600;700;800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Teko:wght@300..700&display=swap">
     <link rel="stylesheet" href="style.css?v=2.3">
-    <link rel="stylesheet" href="tropic-noir.css?v=5.0">
+    <link rel="stylesheet" href="tropic-noir.css?v=5.15">
     <link rel="apple-touch-icon" href="/apple-touch-icon-v2.png">
     <link rel="icon" href="/favicon-axcent-transparent.svg" type="image/svg+xml">
 
@@ -245,7 +245,7 @@
   <!-- End Meta Pixel Code -->
   </head>
 
-<body class="tropic service-page private-page">
+<body class="tropic service-page private-page nav-declutter">
     <!-- Navigation Bar -->
     <header class="main-header">
         <div class="container navbar">
@@ -261,11 +261,13 @@
                 </svg>
             </button>
             <nav class="nav-links">
-        <a href="./">Home</a>
+        <a href="./" class="nav-home">Home</a>
         <a href="about">About us</a>
                 <a href="schedule">Our classes</a>
+                <a href="registration">Prices &amp; Registration</a>
                 <a href="events">Events</a>
-                <a href="contact">Contact</a>
+                <a href="contact" class="nav-contact-item">Contact</a>
+                <a href="portal" class="nav-portal-item">Login</a>
 
                 <div class="dropdown">
                     <button class="dropbtn">More ▾</button>
@@ -280,7 +282,7 @@
                         <a href="blog"><span>Blog</span></a>
                         <a href="faq"><span>FAQ</span></a>
                         <a href="etiquette"><span>Dance Etiquette</span></a>
-                        <a href="portal"><span>Login</span></a>
+                        <a href="contact" class="nav-contact-dropdown"><span>Contact</span></a>
                     </div>
                 </div>
         <a href="/#trial-form" class="btn-header-cta">Book Free Trial</a>
@@ -290,38 +292,47 @@
           <span class="divider">|</span>
           <a href="de/private-lessons">DE</a>
         </div>
+      <div class="header-login">
+        <a href="portal" class="header-login__link header-login__link--icon" aria-label="Login" title="Login">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 21a8 8 0 0 0-16 0"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+        </a>
+      </div>
       
         </div>
     </header>
 
     <main>
 
-        <!-- Hero Section -->
-        <section class="head-hero relative-container"
-            style="min-height: 80vh; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;">
-            <!-- Background Image (SEO) -->
-            <img src="assets/images/private_lesson_hero.webp"
-                srcset="assets/images/private_lesson_hero_480w.webp 480w, assets/images/private_lesson_hero_800w.webp 800w, assets/images/private_lesson_hero_1200w.webp 1200w"
-                sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px" alt="Private Dance Lessons Zurich"
-                width="1024" height="1024" class="hero-bg-img">
-            <div class="hero-overlay"></div>
-
-            <div class="container relative-z hero-content-z" style="text-align: center;">
-
-                <div class="hero-badge reveal">
-                    <span class="hero-badge-line"></span>
-                    <span class="hero-badge-text">PERSONAL COACHING</span>
-                    <span class="hero-badge-line"></span>
+        <!-- Masthead -->
+        <section class="split-masthead">
+            <div class="container split-masthead__split">
+                <span class="split-masthead__ghost" aria-hidden="true">Coaching</span>
+                <div class="split-masthead__copy">
+                    <p class="split-masthead__kicker">1-on-1 Bachata Coaching</p>
+                    <h1 class="page-title split-masthead__title">
+                        Private <em class="title-accent">Classes</em>
+                    </h1>
+                    <p class="split-masthead__dek">
+                        Fast-track your Bachata progress in Zurich with 1-on-1 coaching tailored to your goals,
+                        your timeline, and your learning style.
+                    </p>
+                    <p class="split-masthead__facts">No partner required for any session.</p>
+                    <div class="split-masthead__actions">
+                        <a href="contact" class="btn-hero btn-hero-secondary">
+                            <span class="btn-hero-content">Contact Us</span>
+                        </a>
+                    </div>
                 </div>
-                <h1 class="hero-title service-hero__title">Private <em class="title-accent">Bachata</em></h1>
-                <p class="hero-desc reveal"
-                    style="max-width: 600px; margin: 2rem auto; font-size: 1.2rem; color: var(--text-muted);">
-                    Fast-track your progress with 1-on-1 coaching tailored specifically to your unique goals and
-                    learning style.
-                </p>
-                <div class="hero-buttons-group reveal" style="justify-content: center;">
-                    <a href="contact" class="btn-hero btn-hero-secondary">CONTACT US</a>
-                </div>
+                <figure class="split-masthead__media">
+                    <img src="assets/images/private_lesson_hero_1200w.webp"
+                        srcset="assets/images/private_lesson_hero_480w.webp 480w, assets/images/private_lesson_hero_800w.webp 800w, assets/images/private_lesson_hero_1200w.webp 1200w"
+                        sizes="(max-width: 899px) 100vw, 40vw"
+                        alt="Private Bachata coaching session in Zurich" width="1200" height="1200"
+                        loading="eager" fetchpriority="high">
+                </figure>
             </div>
         </section>
 
@@ -534,6 +545,7 @@
           <li><a href="blog/roots-of-bachata">Roots of Bachata</a></li>
           <li><a href="schedule">Schedule</a></li>
           <li><a href="blog">Our Blog</a></li>
+          <li><a href="https://www.google.com/maps?cid=15680757943659417558" target="_blank" rel="noopener noreferrer">Read our reviews on Google</a></li>
 
         </ul>
       </div>

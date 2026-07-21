@@ -346,6 +346,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const photoCards = guideCards.filter(card => card.classList.contains('beginner-course-card--photo'));
         const photoMotionActiveClass = 'beginner-course-card--motion-active';
         const startBridge = gateway.querySelector('[data-beginner-start-bridge]');
+        const footsteps = Array.from(gateway.querySelectorAll('[data-guides-steps] .guides-steps__print'));
         const introMotionTargets = [
             gateway.querySelector('.guides-section__story'),
             startBridge,
@@ -407,6 +408,17 @@ document.addEventListener('DOMContentLoaded', () => {
                         ease: 'sine.out'
                     }, '-=0.12');
             }
+
+            if (footsteps.length) {
+                revealTimeline.to(footsteps, {
+                    autoAlpha: 1,
+                    y: 0,
+                    scale: 1,
+                    duration: 0.46,
+                    ease: 'back.out(1.7)',
+                    stagger: 0.09
+                }, riseMotionTargets.length ? '-=0.32' : 0);
+            }
         };
 
         let revealPlayed = false;
@@ -434,6 +446,15 @@ document.addEventListener('DOMContentLoaded', () => {
                     transformOrigin: (index) => (index % 2 === 0 ? 'left center' : 'right center'),
                     '--beginner-card-reveal': 0,
                     '--beginner-card-sheen-x': '-128%'
+                });
+            }
+
+            if (footsteps.length) {
+                gsap.set(footsteps, {
+                    autoAlpha: 0,
+                    y: 16,
+                    scale: 0.5,
+                    transformOrigin: '50% 100%'
                 });
             }
 
@@ -1408,9 +1429,549 @@ document.addEventListener('DOMContentLoaded', () => {
             subheaderTargets.forEach((target) => subheaderObserver.observe(target));
         }
 
+        // --- Artist lineup switcher (bootcamp page): a page switch between
+        // the Aitor and Sarah panels. Without JS both panels stay visible in
+        // normal flow; nav buttons/dots and the hidden state are added here
+        // only, so the page degrades gracefully with JS disabled.
+        const lineupSwitcher = document.querySelector('[data-artist-switcher]');
+        if (lineupSwitcher) {
+            const lineupSection = lineupSwitcher.closest('.bootcamp-lineup');
+            const panels = Array.from(lineupSwitcher.querySelectorAll('[data-artist-panel]'));
+            const dots = Array.from(document.querySelectorAll('[data-artist-dot]'));
+            const navButtons = Array.from(lineupSwitcher.querySelectorAll('[data-artist-nav]'));
+            const reduceLineupMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+            if (lineupSection && panels.length > 1) {
+                let activeIndex = 0;
+
+                const showPanel = (nextIndex) => {
+                    if (nextIndex === activeIndex) return;
+                    const current = panels[activeIndex];
+                    const next = panels[nextIndex];
+                    activeIndex = nextIndex;
+                    dots.forEach((dot, i) => dot.setAttribute('aria-selected', String(i === activeIndex)));
+
+                    const activate = () => {
+                        current.hidden = true;
+                        current.classList.remove('is-fading');
+                        next.hidden = false;
+                        requestAnimationFrame(() => next.classList.remove('is-fading'));
+                    };
+
+                    if (reduceLineupMotion) {
+                        activate();
+                        return;
+                    }
+
+                    current.classList.add('is-fading');
+                    next.classList.add('is-fading');
+                    let settled = false;
+                    const onFadeOut = (event) => {
+                        if (event.target !== current || event.propertyName !== 'opacity' || settled) return;
+                        settled = true;
+                        current.removeEventListener('transitionend', onFadeOut);
+                        activate();
+                    };
+                    current.addEventListener('transitionend', onFadeOut);
+                    setTimeout(onFadeOut, 500, { target: current, propertyName: 'opacity' });
+                };
+
+                navButtons.forEach((btn) => {
+                    btn.addEventListener('click', () => {
+                        const dir = btn.dataset.artistNav === 'next' ? 1 : -1;
+                        showPanel((activeIndex + dir + panels.length) % panels.length);
+                    });
+                });
+
+                dots.forEach((dot, i) => {
+                    dot.addEventListener('click', () => showPanel(i));
+                });
+
+                panels.forEach((panel, i) => { panel.hidden = i !== 0; });
+                dots.forEach((dot, i) => dot.setAttribute('aria-selected', String(i === 0)));
+                lineupSection.classList.add('is-enhanced');
+            }
+        }
+
     };
 
     enhanceEventsPage();
+
+    const enhanceCourseDossier = () => {
+        // Course-page motion system for the Tropic Noir dossier template.
+        // Content stays fully visible without JavaScript and under
+        // prefers-reduced-motion; everything here is additive.
+        if (!document.body.classList.contains('course-page')) return;
+        if (!document.querySelector('link[href*="tropic-noir"]')) return;
+
+        const observeOnce = (target, onEnter, options) => {
+            if (!target) return;
+            if (!('IntersectionObserver' in window)) {
+                onEnter();
+                return;
+            }
+            const observer = new IntersectionObserver((entries) => {
+                if (entries.some(entry => entry.isIntersecting)) {
+                    observer.disconnect();
+                    onEnter();
+                }
+            }, options);
+            observer.observe(target);
+        };
+
+        // FAQ soft open: animated height instead of the native snap. The
+        // native toggle stays in place for reduced motion and without GSAP.
+        const faqList = document.querySelector('.course-faq__list');
+        if (faqList) {
+            faqList.querySelectorAll('details').forEach((item) => {
+                const summary = item.querySelector('summary');
+                const content = summary ? summary.nextElementSibling : null;
+                if (!summary || !content) return;
+
+                const contentPaddingBottom = window.getComputedStyle(content).paddingBottom;
+
+                summary.addEventListener('click', (event) => {
+                    if (!gsap || prefersReducedMotion) return;
+                    event.preventDefault();
+                    if (item.dataset.faqAnimating === 'true') return;
+                    item.dataset.faqAnimating = 'true';
+
+                    if (item.open) {
+                        gsap.to(content, {
+                            height: 0,
+                            paddingBottom: 0,
+                            autoAlpha: 0,
+                            duration: 0.32,
+                            ease: 'power2.in',
+                            onComplete: () => {
+                                item.open = false;
+                                gsap.set(content, { clearProps: 'height,opacity,visibility' });
+                                gsap.set(content, { paddingBottom: contentPaddingBottom });
+                                delete item.dataset.faqAnimating;
+                            }
+                        });
+                    } else {
+                        item.open = true;
+                        gsap.set(content, { paddingBottom: contentPaddingBottom });
+                        gsap.from(content, {
+                            height: 0,
+                            paddingBottom: 0,
+                            autoAlpha: 0,
+                            duration: 0.45,
+                            ease: 'power3.out',
+                            onComplete: () => {
+                                gsap.set(content, { clearProps: 'height,opacity,visibility' });
+                                gsap.set(content, { paddingBottom: contentPaddingBottom });
+                                delete item.dataset.faqAnimating;
+                            }
+                        });
+                    }
+                });
+            });
+        }
+
+        // Studio haze: warm brass dust drifting inside the masthead's taped
+        // frame - dust in stage light, the one ambient WebGL scene of the
+        // page. Built lazily, DPR-capped, paused offscreen; without WebGL or
+        // with reduced motion the transparent canvas simply stays empty.
+        const masthead = document.querySelector('.course-masthead');
+        const hazeCanvas = document.querySelector('[data-course-haze]');
+        const hazeHost = document.querySelector('[data-course-media]');
+        const canUseWebGL = () => {
+            if (!window.WebGLRenderingContext) return false;
+
+            try {
+                const testCanvas = document.createElement('canvas');
+                return Boolean(
+                    testCanvas.getContext('webgl') ||
+                    testCanvas.getContext('experimental-webgl')
+                );
+            } catch (error) {
+                return false;
+            }
+        };
+
+        let threeModulePromise = null;
+        const loadThreeModule = () => {
+            if (!threeModulePromise) {
+                threeModulePromise = import('https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js')
+                    .catch(() => null);
+            }
+            return threeModulePromise;
+        };
+
+        const enhanceStudioHaze = () => {
+            if (!masthead || !hazeCanvas || !hazeHost || prefersReducedMotion || !canUseWebGL()) return;
+
+            let hazeLoaded = false;
+            let hazeRenderer = null;
+            let hazeScene = null;
+            let hazeCamera = null;
+            let hazePoints = null;
+            let hazeSeeds = null;
+            let hazeFrame = 0;
+            let hazeVisible = false;
+
+            const resizeHaze = () => {
+                if (!hazeRenderer || !hazeCamera) return;
+
+                const width = Math.max(1, hazeHost.clientWidth);
+                const height = Math.max(1, hazeHost.clientHeight);
+                hazeRenderer.setSize(width, height, false);
+                hazeCamera.aspect = width / height;
+                hazeCamera.updateProjectionMatrix();
+            };
+
+            const startHazeLoop = () => {
+                if (hazeFrame || !hazeRenderer || !hazeScene || !hazeCamera || !hazePoints) return;
+                hazeVisible = true;
+
+                const render = (time) => {
+                    const positions = hazePoints.geometry.attributes.position;
+                    for (let index = 0; index < positions.count; index += 1) {
+                        const seed = hazeSeeds[index];
+                        let y = positions.getY(index) + seed.rise;
+                        if (y > 1.6) y = -1.6;
+                        positions.setY(index, y);
+                        positions.setX(index, seed.baseX + Math.sin((time * 0.00045) + seed.phase) * seed.sway);
+                    }
+                    positions.needsUpdate = true;
+                    hazeRenderer.render(hazeScene, hazeCamera);
+
+                    if (hazeVisible) {
+                        hazeFrame = window.requestAnimationFrame(render);
+                    }
+                };
+
+                hazeFrame = window.requestAnimationFrame(render);
+            };
+
+            const stopHazeLoop = () => {
+                hazeVisible = false;
+                if (hazeFrame) {
+                    window.cancelAnimationFrame(hazeFrame);
+                    hazeFrame = 0;
+                }
+            };
+
+            const buildHaze = async () => {
+                if (hazeLoaded) return;
+                hazeLoaded = true;
+
+                const THREE = await loadThreeModule();
+                if (!THREE) return;
+
+                try {
+                    hazeRenderer = new THREE.WebGLRenderer({
+                        canvas: hazeCanvas,
+                        alpha: true,
+                        antialias: true,
+                        powerPreference: 'low-power'
+                    });
+                } catch (error) {
+                    return;
+                }
+
+                hazeRenderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));
+                hazeRenderer.setClearColor(0x000000, 0);
+
+                hazeScene = new THREE.Scene();
+                hazeCamera = new THREE.PerspectiveCamera(45, 1, 0.1, 20);
+                hazeCamera.position.set(0, 0, 3.2);
+
+                const count = window.innerWidth < 768 ? 45 : 80;
+                const positions = new Float32Array(count * 3);
+                hazeSeeds = [];
+                for (let index = 0; index < count; index += 1) {
+                    const offset = index * 3;
+                    const baseX = (Math.random() - 0.5) * 2.4;
+                    positions[offset] = baseX;
+                    positions[offset + 1] = (Math.random() - 0.5) * 3.2;
+                    positions[offset + 2] = (Math.random() - 0.5) * 0.8;
+                    hazeSeeds.push({
+                        baseX,
+                        rise: 0.0009 + Math.random() * 0.0014,
+                        sway: 0.03 + Math.random() * 0.05,
+                        phase: Math.random() * Math.PI * 2
+                    });
+                }
+
+                const hazeGeometry = new THREE.BufferGeometry();
+                hazeGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+                const hazeMaterial = new THREE.PointsMaterial({
+                    color: 0xE8B04B,
+                    size: 0.035,
+                    transparent: true,
+                    opacity: 0.32,
+                    depthWrite: false
+                });
+                hazePoints = new THREE.Points(hazeGeometry, hazeMaterial);
+                hazeScene.add(hazePoints);
+
+                resizeHaze();
+                startHazeLoop();
+            };
+
+            window.addEventListener('resize', resizeHaze, { passive: true });
+
+            if ('IntersectionObserver' in window) {
+                const hazeObserver = new IntersectionObserver((entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            buildHaze();
+                            startHazeLoop();
+                        } else {
+                            stopHazeLoop();
+                        }
+                    });
+                }, {
+                    rootMargin: '260px 0px',
+                    threshold: 0.01
+                });
+                hazeObserver.observe(masthead);
+            } else {
+                buildHaze();
+            }
+        };
+
+        enhanceStudioHaze();
+
+        if (!gsap || prefersReducedMotion) return;
+
+        // Safety settle, shared by every choreographed block: guarantees the
+        // resting (fully visible) state shortly after a timeline starts, even
+        // if the browser throttles requestAnimationFrame and the tween stalls.
+        const createSettle = (targets, onClear) => {
+            let animation = null;
+            let settled = false;
+            const settle = () => {
+                if (settled) return;
+                settled = true;
+                if (animation) animation.kill();
+                gsap.set(targets, { clearProps: 'opacity,visibility,transform,borderColor' });
+                if (onClear) onClear();
+            };
+            return {
+                attach: (createdAnimation) => {
+                    animation = createdAnimation;
+                    window.setTimeout(settle, 3200);
+                },
+                settle
+            };
+        };
+
+        // Dancing underline: the same three-steps-and-a-tap as the homepage.
+        gsap.utils.toArray('.section-title-modern').forEach((title) => {
+            gsap.set(title, { '--title-underline-scale': 0 });
+            observeOnce(title, () => {
+                const settle = createSettle([], () => {
+                    title.style.removeProperty('--title-underline-scale');
+                });
+                settle.attach(gsap.to(title, {
+                    keyframes: [
+                        { '--title-underline-scale': 0.33, duration: 0.18, ease: 'power2.out' },
+                        { '--title-underline-scale': 0.66, duration: 0.18, ease: 'power2.out' },
+                        { '--title-underline-scale': 1.04, duration: 0.18, ease: 'power2.out' },
+                        { '--title-underline-scale': 1, duration: 0.24, ease: 'expo.out' }
+                    ]
+                }));
+            }, { threshold: 0.4, rootMargin: '0px 0px -10% 0px' });
+        });
+
+        const beatStagger = (index) => 0.07 * index + Math.floor(index / 4) * 0.07;
+
+        // Masthead entrance: kicker and title lead; the call sheet, actions,
+        // and taped figure answer a half-beat later.
+        const mastheadLead = gsap.utils.toArray('.course-masthead__kicker, .course-masthead__title');
+        const mastheadFollow = gsap.utils.toArray('.course-masthead__dek, .course-callsheet__item, .course-masthead__actions a');
+        const mastheadFigure = document.querySelector('.course-masthead__figure');
+        const mastheadTargets = [...mastheadLead, ...mastheadFollow, mastheadFigure].filter(Boolean);
+        if (mastheadTargets.length) {
+            let mastheadTimeline = null;
+            const clearMastheadStyles = () => {
+                // Also kills a still-running timeline (a background tab can
+                // throttle rAF past the safety timeout) so nothing re-hides
+                // content after the clear.
+                if (mastheadTimeline) {
+                    mastheadTimeline.kill();
+                    mastheadTimeline = null;
+                }
+                gsap.set(mastheadTargets, { clearProps: 'opacity,visibility,transform' });
+            };
+
+            mastheadTimeline = gsap.timeline({
+                defaults: { ease: 'power3.out' },
+                onComplete: clearMastheadStyles
+            });
+            if (mastheadLead.length) {
+                mastheadTimeline.from(mastheadLead, { autoAlpha: 0, y: 18, duration: 0.55, stagger: 0.09 });
+            }
+            if (mastheadFigure) {
+                mastheadTimeline.from(mastheadFigure, { autoAlpha: 0, x: 18, duration: 0.6 }, '-=0.38');
+            }
+            if (mastheadFollow.length) {
+                mastheadTimeline.from(mastheadFollow, {
+                    autoAlpha: 0,
+                    y: 14,
+                    duration: 0.5,
+                    stagger: beatStagger
+                }, '-=0.45');
+            }
+
+            window.setTimeout(clearMastheadStyles, 2400);
+        }
+
+        // One night in the room: the count-in. Steps land strictly in order
+        // and each connector dash draws in with the step it belongs to.
+        const nightSteps = gsap.utils.toArray('.course-night__step');
+        if (nightSteps.length) {
+            gsap.set(nightSteps, { autoAlpha: 0, x: 16 });
+            nightSteps.forEach((step) => step.style.setProperty('--rail-draw', 0));
+            observeOnce(document.querySelector('.course-night'), () => {
+                const settle = createSettle(nightSteps, () => {
+                    nightSteps.forEach((step) => step.style.removeProperty('--rail-draw'));
+                });
+                const nightTimeline = gsap.timeline({
+                    defaults: { ease: 'power3.out' },
+                    onComplete: settle.settle
+                });
+                nightSteps.forEach((step, index) => {
+                    nightTimeline.to(step, { autoAlpha: 1, x: 0, duration: 0.5 }, index === 0 ? 0 : '-=0.32');
+                    if (index > 0) {
+                        nightTimeline.to(step, { '--rail-draw': 1, duration: 0.3, ease: 'power2.out' }, '<');
+                    }
+                });
+                settle.attach(nightTimeline);
+            }, { threshold: 0.2, rootMargin: '0px 0px -8% 0px' });
+        }
+
+        // Pathway ladder: rungs draw left to right; when the sequence
+        // reaches "you are here" the rung answers with a short, finite
+        // border pulse - colour only, then rest.
+        const pathRungs = gsap.utils.toArray('.course-path__rung');
+        if (pathRungs.length) {
+            gsap.set(pathRungs, { autoAlpha: 0, x: 14 });
+            pathRungs.forEach((rung) => rung.style.setProperty('--rail-draw', 0));
+            observeOnce(document.querySelector('.course-path'), () => {
+                const settle = createSettle(pathRungs, () => {
+                    pathRungs.forEach((rung) => rung.style.removeProperty('--rail-draw'));
+                });
+                const pathTimeline = gsap.timeline({
+                    defaults: { ease: 'power3.out' },
+                    onComplete: settle.settle
+                });
+                pathRungs.forEach((rung, index) => {
+                    pathTimeline.to(rung, { autoAlpha: 1, x: 0, duration: 0.45 }, index === 0 ? 0 : '-=0.28');
+                    if (index > 0) {
+                        pathTimeline.to(rung, { '--rail-draw': 1, duration: 0.26, ease: 'power2.out' }, '<');
+                    }
+                    if (rung.classList.contains('course-path__rung--current')) {
+                        pathTimeline.to(rung, {
+                            borderColor: 'rgba(232, 176, 75, 0.9)',
+                            duration: 0.22,
+                            ease: 'power1.inOut',
+                            repeat: 3,
+                            yoyo: true,
+                            onComplete: () => {
+                                gsap.set(rung, { clearProps: 'borderColor' });
+                            }
+                        }, '>-0.05');
+                    }
+                });
+                settle.attach(pathTimeline);
+            }, { threshold: 0.2, rootMargin: '0px 0px -8% 0px' });
+        }
+
+        // Level fork: "your" voice leads in from the left, the other voice
+        // answers from the right a half-beat later.
+        const forkRoot = document.querySelector('.course-fork');
+        if (forkRoot) {
+            const forkTitle = forkRoot.querySelector('.section-title-modern');
+            const forkHere = forkRoot.querySelector('.course-fork__path--here');
+            const forkOther = gsap.utils.toArray('.course-fork__path:not(.course-fork__path--here)', forkRoot);
+            const forkUnsure = forkRoot.querySelector('.course-fork__unsure');
+            const forkTargets = [forkTitle, forkHere, ...forkOther, forkUnsure].filter(Boolean);
+            if (forkTargets.length) {
+                if (forkTitle) gsap.set(forkTitle, { autoAlpha: 0, y: 18 });
+                if (forkHere) gsap.set(forkHere, { autoAlpha: 0, x: -14 });
+                if (forkOther.length) gsap.set(forkOther, { autoAlpha: 0, x: 14 });
+                if (forkUnsure) gsap.set(forkUnsure, { autoAlpha: 0, y: 12 });
+                observeOnce(forkRoot, () => {
+                    const settle = createSettle(forkTargets);
+                    const forkTimeline = gsap.timeline({
+                        defaults: { ease: 'power3.out' },
+                        onComplete: settle.settle
+                    });
+                    if (forkTitle) forkTimeline.to(forkTitle, { autoAlpha: 1, y: 0, duration: 0.5 });
+                    if (forkHere) forkTimeline.to(forkHere, { autoAlpha: 1, x: 0, duration: 0.55 }, '-=0.25');
+                    if (forkOther.length) forkTimeline.to(forkOther, { autoAlpha: 1, x: 0, duration: 0.55 }, '-=0.35');
+                    if (forkUnsure) forkTimeline.to(forkUnsure, { autoAlpha: 1, y: 0, duration: 0.45 }, '-=0.25');
+                    settle.attach(forkTimeline);
+                }, { threshold: 0.2, rootMargin: '0px 0px -8% 0px' });
+            }
+        }
+
+        // Remaining dossier sections: the title leads, content answers with
+        // the 1-2-3-tap stagger.
+        const dossierSections = [
+            {
+                root: '.course-syllabus',
+                lead: '.section-title-modern, .course-syllabus__subtitle',
+                follow: ['.course-syllabus__item', '.course-syllabus__rotation'],
+                followFrom: { x: 14 }
+            },
+            {
+                root: '.course-teachers',
+                lead: '.section-title-modern',
+                follow: ['.founders-strip__photo', '.founders-strip__names', '.founders-strip__role', '.founders-strip__link']
+            },
+            {
+                root: '.course-register',
+                lead: '.course-register__title',
+                follow: ['.course-register__lede', '.course-register__actions > *', '.course-register__pricing', '.course-register__trust']
+            },
+            {
+                root: '.course-faq',
+                lead: '.section-title-modern',
+                follow: ['.course-faq__item']
+            }
+        ];
+
+        dossierSections.forEach(({ root, lead, follow, followFrom }) => {
+            const rootElement = document.querySelector(root);
+            if (!rootElement) return;
+
+            const leadTargets = gsap.utils.toArray(lead, rootElement);
+            const followTargets = follow.flatMap((selector) => gsap.utils.toArray(selector, rootElement));
+            if (!leadTargets.length && !followTargets.length) return;
+
+            if (leadTargets.length) gsap.set(leadTargets, { autoAlpha: 0, y: 18 });
+            if (followTargets.length) gsap.set(followTargets, { autoAlpha: 0, ...(followFrom || { y: 14 }) });
+
+            observeOnce(rootElement, () => {
+                const settle = createSettle([...leadTargets, ...followTargets]);
+                const sectionTimeline = gsap.timeline({
+                    defaults: { ease: 'power3.out' },
+                    onComplete: settle.settle
+                });
+                if (leadTargets.length) {
+                    sectionTimeline.to(leadTargets, { autoAlpha: 1, y: 0, duration: 0.6, stagger: 0.07 });
+                }
+                if (followTargets.length) {
+                    sectionTimeline.to(followTargets, {
+                        autoAlpha: 1,
+                        x: 0,
+                        y: 0,
+                        duration: 0.6,
+                        stagger: beatStagger
+                    }, leadTargets.length ? '-=0.35' : 0);
+                }
+                settle.attach(sectionTimeline);
+            }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+        });
+    };
+
+    enhanceCourseDossier();
 
     // Mobile sticky trial bar: visible while browsing, steps aside once the
     // trial form itself is on screen (no point pointing at what is visible).
@@ -2873,240 +3434,7 @@ const enhanceBlogNoir = () => {
     }
 };
 
-/* BLOG PAGE — featured image shader (Three.js, no particles, no lights).
-   A single plane over the featured photo: a faint fabric wave, a duotone
-   that blooms to full colour on attention, and one soft ripple ring per
-   filter change. The <img> underneath stays the no-JS / no-WebGL /
-   reduced-motion rendition; any failure just leaves it in place. */
-const enhanceBlogFeatureShader = () => {
-    if (!isNoirBlog || blogPrefersReducedMotion) return;
-
-    const media = document.querySelector('[data-blog-feature-media]');
-    const image = media ? media.querySelector('img') : null;
-    const featurePanel = document.querySelector('[data-blog-feature]');
-    if (!media || !image) return;
-
-    const canUseWebGL = () => {
-        if (!window.WebGLRenderingContext) return false;
-        try {
-            const testCanvas = document.createElement('canvas');
-            return Boolean(
-                testCanvas.getContext('webgl') ||
-                testCanvas.getContext('experimental-webgl')
-            );
-        } catch (error) {
-            return false;
-        }
-    };
-    if (!canUseWebGL()) return;
-
-    const parseHexColor = (value, fallback) => {
-        const hex = (value || '').trim().replace('#', '');
-        if (!/^[0-9a-fA-F]{6}$/.test(hex)) return fallback;
-        return [
-            parseInt(hex.slice(0, 2), 16) / 255,
-            parseInt(hex.slice(2, 4), 16) / 255,
-            parseInt(hex.slice(4, 6), 16) / 255
-        ];
-    };
-
-    let shaderStarted = false;
-
-    const startShader = () => {
-        if (shaderStarted) return;
-        shaderStarted = true;
-
-        const decoded = image.decode ? image.decode().catch(() => {}) : Promise.resolve();
-        const threePromise = import('https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js')
-            .catch(() => null);
-
-        Promise.all([threePromise, decoded]).then(([THREE]) => {
-            if (!THREE) return;
-
-            let renderer;
-            try {
-                renderer = new THREE.WebGLRenderer({
-                    alpha: true,
-                    antialias: false,
-                    powerPreference: 'low-power'
-                });
-            } catch (error) {
-                return;
-            }
-
-            const bodyStyles = getComputedStyle(document.body);
-            const duoShadow = parseHexColor(bodyStyles.getPropertyValue('--bg-dark'), [0.016, 0.075, 0.063]);
-            const duoLift = parseHexColor(bodyStyles.getPropertyValue('--title-cream'), [0.949, 0.906, 0.812]);
-
-            const texture = new THREE.TextureLoader().load(image.currentSrc || image.src, () => {
-                canvas.classList.add('is-live');
-                requestRender();
-            });
-            texture.colorSpace = THREE.SRGBColorSpace;
-
-            renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));
-            const canvas = renderer.domElement;
-            canvas.className = 'blog-masthead__feature-canvas';
-            canvas.setAttribute('aria-hidden', 'true');
-            media.appendChild(canvas);
-
-            const scene = new THREE.Scene();
-            const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
-            const uniforms = {
-                uTexture: { value: texture },
-                uTime: { value: 0 },
-                uProgress: { value: 0 },
-                uPulse: { value: 0 },
-                uPlaneAspect: { value: 1 },
-                uImageAspect: { value: (image.naturalWidth || 819) / (image.naturalHeight || 1024) },
-                uDuoShadow: { value: new THREE.Vector3(duoShadow[0], duoShadow[1], duoShadow[2]) },
-                uDuoLift: { value: new THREE.Vector3(duoLift[0], duoLift[1], duoLift[2]) }
-            };
-
-            const material = new THREE.ShaderMaterial({
-                uniforms,
-                vertexShader: [
-                    'varying vec2 vUv;',
-                    'void main() {',
-                    '    vUv = uv;',
-                    '    gl_Position = vec4(position, 1.0);',
-                    '}'
-                ].join('\n'),
-                fragmentShader: [
-                    'uniform sampler2D uTexture;',
-                    'uniform float uTime;',
-                    'uniform float uProgress;',
-                    'uniform float uPulse;',
-                    'uniform float uPlaneAspect;',
-                    'uniform float uImageAspect;',
-                    'uniform vec3 uDuoShadow;',
-                    'uniform vec3 uDuoLift;',
-                    'varying vec2 vUv;',
-                    'void main() {',
-                    '    vec2 uv = vUv - 0.5;',
-                    '    if (uPlaneAspect > uImageAspect) { uv.y *= uImageAspect / uPlaneAspect; }',
-                    '    else { uv.x *= uPlaneAspect / uImageAspect; }',
-                    '    uv += 0.5;',
-                    '    float calm = 1.0 - uProgress;',
-                    '    uv.y += sin(uv.x * 6.2831 + uTime * 0.55) * 0.012 * calm;',
-                    '    float dist = distance(vUv, vec2(0.5));',
-                    '    float ring = sin(dist * 24.0 - uPulse * 7.0) * uPulse * (1.0 - uPulse);',
-                    '    uv += normalize(vUv - vec2(0.5) + 0.0001) * ring * 0.05;',
-                    '    vec4 tex = texture2D(uTexture, clamp(uv, 0.001, 0.999));',
-                    '    float luma = dot(tex.rgb, vec3(0.299, 0.587, 0.114));',
-                    '    vec3 duo = mix(uDuoShadow, uDuoLift, luma);',
-                    '    vec3 color = mix(duo, tex.rgb, smoothstep(0.0, 1.0, uProgress));',
-                    '    gl_FragColor = vec4(color, 1.0);',
-                    '}'
-                ].join('\n'),
-                depthTest: false,
-                depthWrite: false
-            });
-
-            scene.add(new THREE.Mesh(new THREE.PlaneGeometry(2, 2), material));
-
-            const setSize = () => {
-                const width = Math.max(media.clientWidth, 1);
-                const height = Math.max(media.clientHeight, 1);
-                renderer.setSize(width, height, false);
-                uniforms.uPlaneAspect.value = width / height;
-            };
-            setSize();
-
-            let rafId = null;
-            let isVisible = true;
-            const renderLoop = (time) => {
-                rafId = null;
-                if (!isVisible || document.hidden) return;
-                uniforms.uTime.value = time * 0.001;
-                renderer.render(scene, camera);
-                rafId = requestAnimationFrame(renderLoop);
-            };
-            const requestRender = () => {
-                if (rafId === null && isVisible && !document.hidden) {
-                    rafId = requestAnimationFrame(renderLoop);
-                }
-            };
-            const stopRender = () => {
-                if (rafId !== null) {
-                    cancelAnimationFrame(rafId);
-                    rafId = null;
-                }
-            };
-
-            const tweenUniform = (uniform, target, duration) => {
-                if (window.gsap) {
-                    window.gsap.to(uniform, { value: target, duration, ease: 'power2.out' });
-                } else {
-                    uniform.value = target;
-                }
-            };
-
-            // Duotone resolve on arrival, then settle back: colour stays the
-            // reward for attention, exactly like the CSS duotone cards.
-            const restProgress = 0.18;
-            tweenUniform(uniforms.uProgress, 1, 1.4);
-            if (window.gsap) {
-                window.gsap.to(uniforms.uProgress, {
-                    value: restProgress,
-                    duration: 0.9,
-                    delay: 1.75,
-                    ease: 'power2.inOut'
-                });
-            }
-
-            if (featurePanel) {
-                featurePanel.addEventListener('pointerenter', () => tweenUniform(uniforms.uProgress, 1, 0.6));
-                featurePanel.addEventListener('pointerleave', () => tweenUniform(uniforms.uProgress, restProgress, 0.8));
-                featurePanel.addEventListener('focusin', () => tweenUniform(uniforms.uProgress, 1, 0.6));
-                featurePanel.addEventListener('focusout', () => tweenUniform(uniforms.uProgress, restProgress, 0.8));
-            }
-
-            // One soft ripple ring per category change: the page turn.
-            document.addEventListener('blog:filter', () => {
-                uniforms.uPulse.value = 0;
-                if (window.gsap) {
-                    window.gsap.to(uniforms.uPulse, { value: 1, duration: 0.9, ease: 'power1.out' });
-                }
-            });
-
-            if ('ResizeObserver' in window) {
-                new ResizeObserver(setSize).observe(media);
-            } else {
-                window.addEventListener('resize', setSize);
-            }
-
-            if ('IntersectionObserver' in window) {
-                new IntersectionObserver(([entry]) => {
-                    isVisible = entry.isIntersecting;
-                    if (isVisible) requestRender();
-                    else stopRender();
-                }).observe(media);
-            }
-            document.addEventListener('visibilitychange', () => {
-                if (document.hidden) stopRender();
-                else requestRender();
-            });
-
-            requestRender();
-        });
-    };
-
-    if ('IntersectionObserver' in window) {
-        const initObserver = new IntersectionObserver((entries) => {
-            if (entries.some(entry => entry.isIntersecting)) {
-                initObserver.disconnect();
-                startShader();
-            }
-        }, { rootMargin: '160px' });
-        initObserver.observe(media);
-    } else {
-        startShader();
-    }
-};
-
 enhanceBlogNoir();
-enhanceBlogFeatureShader();
 
 /* BEGINNER GUIDE — Tropic Noir field manual (EN beginner-guide.html only).
    The scroll spy and the sticky-shelf hairline are functional and run
@@ -4474,4 +4802,599 @@ info@axcentdance.com`,
     // Safety net: if the tab is backgrounded mid-tween, content must not
     // stay invisible indefinitely.
     window.setTimeout(clearIntroStyles, 1700);
+})();
+
+// Education page — "The Count". Bachata is danced 1-2-3-4 with the accent on
+// the tap, and the page's four sections are the four counts. Three motion
+// layers, each optional and independently guarded so the static page stays
+// fully readable with no JavaScript, no GSAP, no WebGL, or reduced motion:
+//   1. Hero string scene (three.js): five guitar strings plucked on a
+//      four-count at bachata tempo — the fourth pluck (the tap) is the coral
+//      string and lands harder. See .agent/rules/axcent-rules.md §4.2.
+//   2. Rhythm map playhead (GSAP): sweeps the 8-count grid in the musicality
+//      section, lighting the columns where each instrument hits.
+//   3. Section entrances + count-rail/nav scroll-spy.
+(function enhanceEducationPage() {
+    if (!document.body.classList.contains('education-page')) return;
+
+    const gsap = window.gsap;
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const BEAT_SECONDS = 60 / 108; // typical bachata tempo
+
+    // --- 1. Section + hero entrances -----------------------------------
+    const enhanceEntrances = () => {
+        if (!gsap || prefersReducedMotion) return;
+
+        const heroTargets = gsap.utils.toArray([
+            '.education-hero .hero-badge',
+            '.education-hero .page-title',
+            '.education-hero .edu-hero__desc',
+            '.education-hero .edu-hero__counts .edu-hero__count'
+        ].join(', '));
+
+        if (heroTargets.length) {
+            const clearHero = () => gsap.set(heroTargets, { clearProps: 'opacity,visibility,transform' });
+            gsap.set(heroTargets, { autoAlpha: 0, y: 16 });
+            gsap.timeline({
+                defaults: { ease: 'power3.out' },
+                onComplete: clearHero
+            }).to(heroTargets, { autoAlpha: 1, y: 0, duration: 0.55, stagger: 0.09 });
+            window.setTimeout(clearHero, 2200);
+        }
+
+        if (!('IntersectionObserver' in window)) return;
+
+        gsap.utils.toArray('.edu-section').forEach((section) => {
+            if (section.getBoundingClientRect().top <= window.innerHeight * 0.85) return;
+
+            const head = section.querySelector('.edu-section__head');
+            const headTargets = head ? Array.from(head.children) : [];
+            const bodyTargets = Array.from(section.children)
+                .filter((child) => !child.classList.contains('edu-section__head'));
+            const targets = [...headTargets, ...bodyTargets];
+            if (!targets.length) return;
+
+            gsap.set(headTargets, { autoAlpha: 0, y: 22 });
+            gsap.set(bodyTargets, { autoAlpha: 0, y: 18 });
+
+            let played = false;
+            const play = () => {
+                if (played) return;
+                played = true;
+                gsap.timeline({
+                    defaults: { ease: 'power3.out' },
+                    onComplete: () => gsap.set(targets, { clearProps: 'opacity,visibility,transform' })
+                })
+                    .to(headTargets, { autoAlpha: 1, y: 0, duration: 0.5, stagger: 0.08 })
+                    .to(bodyTargets, { autoAlpha: 1, y: 0, duration: 0.55, stagger: 0.07 }, '-=0.28');
+                window.setTimeout(
+                    () => gsap.set(targets, { clearProps: 'opacity,visibility,transform' }),
+                    2600
+                );
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                if (entries.some((entry) => entry.isIntersecting)) {
+                    play();
+                    observer.disconnect();
+                }
+            }, { threshold: 0.12 });
+            observer.observe(section);
+        });
+    };
+
+    // --- 2. Scroll-spy for the sticky nav and the count rail ------------
+    const enhanceScrollSpy = () => {
+        if (!('IntersectionObserver' in window)) return;
+
+        const sections = ['history', 'styles', 'musicality', 'glossary']
+            .map((id) => document.getElementById(id))
+            .filter(Boolean);
+        if (!sections.length) return;
+
+        const setActive = (id) => {
+            document.querySelectorAll('.edu-nav__link').forEach((link) => {
+                link.classList.toggle('edu-nav__link--active', link.getAttribute('href') === `#${id}`);
+            });
+            document.querySelectorAll('.edu-rail__step').forEach((step) => {
+                step.classList.toggle('edu-rail__step--active', step.dataset.eduRail === id);
+            });
+        };
+
+        const spy = new IntersectionObserver((entries) => {
+            const visible = entries.find((entry) => entry.isIntersecting);
+            if (visible) setActive(visible.target.id);
+        }, { rootMargin: '-38% 0px -52% 0px', threshold: 0 });
+
+        sections.forEach((section) => spy.observe(section));
+        setActive(sections[0].id);
+    };
+
+    // --- 3. Rhythm map playhead -----------------------------------------
+    const enhanceRhythmMap = () => {
+        const rhythm = document.querySelector('.edu-rhythm');
+        if (!rhythm || !gsap || prefersReducedMotion) return;
+
+        const playhead = rhythm.querySelector('.edu-rhythm__playhead');
+        const counts = Array.from(rhythm.querySelectorAll('.edu-rhythm__count'));
+        const cellRows = Array.from(rhythm.querySelectorAll('.edu-rhythm__cells'));
+        if (!playhead || counts.length !== 8 || !cellRows.length) return;
+
+        const columns = counts.map((count, index) => {
+            const column = [count];
+            cellRows.forEach((row) => {
+                if (row.children[index]) column.push(row.children[index]);
+            });
+            return column;
+        });
+
+        let laneWidth = 0;
+        let activeColumn = -1;
+        let inView = false;
+        let playTween = null;
+
+        const setColumn = (index) => {
+            if (index === activeColumn) return;
+            if (columns[activeColumn]) {
+                columns[activeColumn].forEach((el) => el.classList.remove('is-count-live'));
+            }
+            activeColumn = index;
+            if (columns[activeColumn]) {
+                columns[activeColumn].forEach((el) => el.classList.add('is-count-live'));
+            }
+        };
+
+        const clearColumns = () => setColumn(-1);
+
+        const measure = () => {
+            const rhythmRect = rhythm.getBoundingClientRect();
+            const firstRow = cellRows[0].getBoundingClientRect();
+            const lastRow = cellRows[cellRows.length - 1].getBoundingClientRect();
+            const countsRect = rhythm.querySelector('.edu-rhythm__counts').getBoundingClientRect();
+
+            laneWidth = firstRow.width;
+            playhead.style.left = `${firstRow.left - rhythmRect.left}px`;
+            playhead.style.top = `${countsRect.top - rhythmRect.top}px`;
+            playhead.style.height = `${lastRow.bottom - countsRect.top}px`;
+        };
+
+        const buildTween = (progress = 0) => {
+            if (playTween) playTween.kill();
+            playTween = gsap.fromTo(playhead, { x: 0 }, {
+                x: () => laneWidth,
+                duration: BEAT_SECONDS * 8,
+                ease: 'none',
+                repeat: -1,
+                onUpdate: function updatePlayhead() {
+                    setColumn(Math.min(7, Math.floor(this.ratio * 8)));
+                }
+            });
+            playTween.progress(progress);
+        };
+
+        const start = () => {
+            if (!inView) return;
+            rhythm.classList.add('edu-rhythm--live');
+            measure();
+            if (playTween) {
+                playTween.play();
+            } else {
+                buildTween();
+            }
+        };
+
+        const stop = () => {
+            if (playTween) playTween.pause();
+            rhythm.classList.remove('edu-rhythm--live');
+            clearColumns();
+        };
+
+        if ('IntersectionObserver' in window) {
+            const observer = new IntersectionObserver((entries) => {
+                inView = entries.some((entry) => entry.isIntersecting);
+                if (inView && !document.hidden) {
+                    start();
+                } else {
+                    stop();
+                }
+            }, { threshold: 0.2 });
+            observer.observe(rhythm);
+        } else {
+            inView = true;
+            start();
+        }
+
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                stop();
+            } else if (inView) {
+                start();
+            }
+        });
+
+        let resizeFrame = 0;
+        window.addEventListener('resize', () => {
+            if (resizeFrame) return;
+            resizeFrame = window.requestAnimationFrame(() => {
+                resizeFrame = 0;
+                if (!playTween) return;
+                const progress = playTween.progress();
+                measure();
+                buildTween(progress);
+                if (!inView || document.hidden) playTween.pause();
+            });
+        }, { passive: true });
+    };
+
+    // --- 4. Hero string scene (three.js) ---------------------------------
+    const enhanceHeroStrings = () => {
+        const hero = document.querySelector('.education-hero');
+        const canvas = document.querySelector('.edu-hero__canvas');
+        if (!hero || !canvas || prefersReducedMotion) return;
+
+        const canUseWebGL = () => {
+            if (!window.WebGLRenderingContext) return false;
+            try {
+                const testCanvas = document.createElement('canvas');
+                return Boolean(
+                    testCanvas.getContext('webgl') ||
+                    testCanvas.getContext('experimental-webgl')
+                );
+            } catch (error) {
+                return false;
+            }
+        };
+        if (!canUseWebGL()) return;
+
+        let threePromise = null;
+        const loadThree = () => {
+            if (!threePromise) {
+                threePromise = import('https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js')
+                    .catch(() => null);
+            }
+            return threePromise;
+        };
+
+        const POINTS = 130;
+        const SPAN = 9.4;
+        let built = false;
+        let renderer = null;
+        let scene = null;
+        let camera = null;
+        let stringGroup = null;
+        let strings = [];
+        let frame = 0;
+        let visible = false;
+        let heroInView = false;
+        let lastTime = 0;
+        let beatClock = 0;
+        let count = 0;
+        let bronzeIndex = 0;
+
+        const resize = () => {
+            if (!renderer || !camera) return;
+            const width = Math.max(1, hero.clientWidth);
+            const height = Math.max(1, hero.clientHeight);
+            renderer.setSize(width, height, false);
+            camera.aspect = width / height;
+            camera.updateProjectionMatrix();
+        };
+
+        const pluck = (string, strength) => {
+            string.amp = strength;
+            string.phase = Math.random() * Math.PI * 2;
+        };
+
+        const renderLoop = (time) => {
+            if (!visible) return;
+
+            const seconds = time * 0.001;
+            const delta = lastTime ? Math.min(0.1, seconds - lastTime) : 0;
+            lastTime = seconds;
+
+            // Metronome: one pluck per beat, cycling counts 1-2-3-4. The tap
+            // (count 4) goes to the coral string and lands harder.
+            beatClock += delta;
+            if (beatClock >= BEAT_SECONDS) {
+                beatClock -= BEAT_SECONDS;
+                count = (count % 4) + 1;
+                if (count === 4) {
+                    pluck(strings[strings.length - 1], 0.3);
+                } else {
+                    pluck(strings[bronzeIndex % (strings.length - 1)], 0.17);
+                    bronzeIndex += 1;
+                }
+            }
+
+            strings.forEach((string) => {
+                string.amp *= Math.exp(-delta * 2.1);
+                const positions = string.line.geometry.attributes.position;
+                for (let index = 0; index < POINTS; index += 1) {
+                    const t = index / (POINTS - 1);
+                    const x = (t - 0.5) * SPAN;
+                    const envelope = Math.sin(t * Math.PI);
+                    const ripple = Math.sin((t * string.waves * Math.PI * 2) + (seconds * string.speed) + string.phase);
+                    const idle = Math.sin((t * 2.2 * Math.PI) + (seconds * 0.6) + string.offset) * 0.014;
+                    positions.setY(index, string.baseY + ((ripple * string.amp) + idle) * envelope);
+                }
+                positions.needsUpdate = true;
+                string.line.material.opacity = string.baseOpacity + (string.amp * 1.1);
+            });
+
+            renderer.render(scene, camera);
+            frame = window.requestAnimationFrame(renderLoop);
+        };
+
+        const startLoop = () => {
+            if (frame || !renderer) return;
+            visible = true;
+            lastTime = 0;
+            frame = window.requestAnimationFrame(renderLoop);
+        };
+
+        const stopLoop = () => {
+            visible = false;
+            if (frame) {
+                window.cancelAnimationFrame(frame);
+                frame = 0;
+            }
+        };
+
+        const build = async () => {
+            if (built) return;
+            built = true;
+
+            const THREE = await loadThree();
+            if (!THREE) return;
+
+            try {
+                renderer = new THREE.WebGLRenderer({
+                    canvas,
+                    alpha: true,
+                    antialias: true,
+                    powerPreference: 'low-power'
+                });
+            } catch (error) {
+                return;
+            }
+
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));
+            renderer.setClearColor(0x000000, 0);
+
+            scene = new THREE.Scene();
+            camera = new THREE.PerspectiveCamera(42, 1, 0.1, 100);
+            camera.position.set(0, 0, 7);
+
+            stringGroup = new THREE.Group();
+            stringGroup.rotation.z = -0.055;
+            scene.add(stringGroup);
+
+            // Five strings: four bronze (counts 1-2-3) and one coral for the
+            // tap, spread across the hero like a fretboard seen up close.
+            const layout = [
+                { baseY: 1.35, color: 0xe8b04b, baseOpacity: 0.16, waves: 3, speed: 2.3 },
+                { baseY: 0.7, color: 0xe8b04b, baseOpacity: 0.2, waves: 4, speed: 2.7 },
+                { baseY: 0.05, color: 0xe8b04b, baseOpacity: 0.24, waves: 5, speed: 3.1 },
+                { baseY: -0.62, color: 0xe8b04b, baseOpacity: 0.2, waves: 4, speed: 2.5 },
+                { baseY: -1.28, color: 0xff5a3c, baseOpacity: 0.26, waves: 3, speed: 2.1 }
+            ];
+
+            strings = layout.map((config, stringIndex) => {
+                const points = [];
+                for (let index = 0; index < POINTS; index += 1) {
+                    const t = index / (POINTS - 1);
+                    points.push(new THREE.Vector3((t - 0.5) * SPAN, config.baseY, 0));
+                }
+                const geometry = new THREE.BufferGeometry().setFromPoints(points);
+                const material = new THREE.LineBasicMaterial({
+                    color: config.color,
+                    transparent: true,
+                    opacity: config.baseOpacity,
+                    depthWrite: false
+                });
+                const line = new THREE.Line(geometry, material);
+                stringGroup.add(line);
+                return {
+                    line,
+                    baseY: config.baseY,
+                    baseOpacity: config.baseOpacity,
+                    waves: config.waves,
+                    speed: config.speed,
+                    offset: stringIndex * 1.7,
+                    amp: 0,
+                    phase: 0
+                };
+            });
+
+            resize();
+            startLoop();
+
+            canvas.style.transition = 'opacity 1.1s ease';
+            canvas.style.opacity = '1';
+        };
+
+        window.addEventListener('resize', resize, { passive: true });
+
+        if ('IntersectionObserver' in window) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    heroInView = entry.isIntersecting;
+                    if (heroInView) {
+                        build();
+                        startLoop();
+                    } else {
+                        stopLoop();
+                    }
+                });
+            }, { threshold: 0.05 });
+            observer.observe(hero);
+        } else {
+            heroInView = true;
+            build();
+        }
+
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                stopLoop();
+            } else if (built && heroInView) {
+                startLoop();
+            }
+        });
+    };
+
+    enhanceEntrances();
+    enhanceScrollSpy();
+    enhanceRhythmMap();
+    enhanceHeroStrings();
+})();
+
+// Gallery page lightbox: click any photo to view it full-screen with prev/next
+// arrows, keyboard navigation, and captions. Progressive enhancement over the
+// plain <a> links to the 1200w files — without JavaScript (or without native
+// <dialog> support) the links simply open the image. showModal() supplies the
+// focus trap, ESC handling, and background inertness; all fades live in
+// reduced-motion-gated CSS, so this module animates nothing itself.
+(function galleryLightbox() {
+    if (!document.body.classList.contains('gallery-page')) return;
+    if (typeof HTMLDialogElement === 'undefined' || !HTMLDialogElement.prototype.showModal) return;
+
+    const links = Array.from(document.querySelectorAll('.gallery-item__link'));
+    if (!links.length) return;
+
+    const german = (document.documentElement.lang || 'en').toLowerCase().startsWith('de');
+    const labels = german
+        ? { prev: 'Vorheriges Foto', next: 'Nächstes Foto', close: 'Schliessen', of: 'Foto {i} von {n}' }
+        : { prev: 'Previous photo', next: 'Next photo', close: 'Close', of: 'Photo {i} of {n}' };
+
+    const slides = links.map((link) => {
+        const img = link.querySelector('img');
+        const figure = link.closest('.gallery-item');
+        const captionEl = figure ? figure.querySelector('.gallery-caption') : null;
+        return {
+            link,
+            href: link.getAttribute('href'),
+            srcset: img ? img.getAttribute('srcset') : '',
+            alt: img ? img.getAttribute('alt') : '',
+            caption: captionEl ? captionEl.textContent.trim() : ''
+        };
+    });
+
+    let dialog = null;
+    let imgEl = null;
+    let captionEl = null;
+    let countEl = null;
+    let current = 0;
+    let opener = null;
+
+    const chevron = (dir) =>
+        '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" ' +
+        'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="' +
+        (dir === 'left' ? '15 18 9 12 15 6' : '9 18 15 12 9 6') + '"></polyline></svg>';
+
+    const build = () => {
+        dialog = document.createElement('dialog');
+        dialog.className = 'gallery-lightbox';
+        dialog.innerHTML =
+            '<figure class="gallery-lightbox__figure">' +
+            '<img class="gallery-lightbox__img" alt="">' +
+            '<figcaption class="gallery-lightbox__meta">' +
+            '<span class="gallery-lightbox__caption"></span>' +
+            '<span class="gallery-lightbox__count"></span>' +
+            '</figcaption>' +
+            '</figure>' +
+            '<button type="button" class="gallery-lightbox__btn gallery-lightbox__btn--close" aria-label="' + labels.close + '">' +
+            '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" ' +
+            'stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"></line>' +
+            '<line x1="6" y1="6" x2="18" y2="18"></line></svg></button>' +
+            '<button type="button" class="gallery-lightbox__btn gallery-lightbox__btn--prev" aria-label="' + labels.prev + '">' + chevron('left') + '</button>' +
+            '<button type="button" class="gallery-lightbox__btn gallery-lightbox__btn--next" aria-label="' + labels.next + '">' + chevron('right') + '</button>';
+        document.body.appendChild(dialog);
+
+        imgEl = dialog.querySelector('.gallery-lightbox__img');
+        captionEl = dialog.querySelector('.gallery-lightbox__caption');
+        countEl = dialog.querySelector('.gallery-lightbox__count');
+
+        dialog.querySelector('.gallery-lightbox__btn--close').addEventListener('click', () => closeLightbox());
+        dialog.querySelector('.gallery-lightbox__btn--prev').addEventListener('click', () => update(current - 1));
+        dialog.querySelector('.gallery-lightbox__btn--next').addEventListener('click', () => update(current + 1));
+
+        dialog.addEventListener('keydown', (event) => {
+            if (event.key === 'ArrowLeft') {
+                event.preventDefault();
+                update(current - 1);
+            } else if (event.key === 'ArrowRight') {
+                event.preventDefault();
+                update(current + 1);
+            } else if (event.key === 'Escape') {
+                event.preventDefault();
+                closeLightbox();
+            }
+        });
+
+        // A click on the dialog element itself is a click on the backdrop —
+        // every visible part of the content is a child element.
+        dialog.addEventListener('click', (event) => {
+            if (event.target === dialog) closeLightbox();
+        });
+
+        // cleanup() is not tied to the close event alone: closeLightbox() runs
+        // it directly, and cancel/close cover the native ESC path. It is
+        // idempotent, so overlapping paths are harmless.
+        dialog.addEventListener('cancel', cleanup);
+        dialog.addEventListener('close', cleanup);
+    };
+
+    const cleanup = () => {
+        document.body.classList.remove('gallery-lightbox-open');
+        document.body.style.removeProperty('padding-right');
+        // Focus can only leave the dialog once it is closed (the page behind
+        // a modal is inert), so the restore is skipped on the cancel event and
+        // happens on the close event or in closeLightbox().
+        if (!dialog.open && opener) {
+            opener.focus();
+            opener = null;
+        }
+    };
+
+    const closeLightbox = () => {
+        if (dialog.open) dialog.close();
+        cleanup();
+    };
+
+    const update = (index) => {
+        current = (index + slides.length) % slides.length;
+        const slide = slides[current];
+        imgEl.src = slide.href;
+        if (slide.srcset) imgEl.setAttribute('srcset', slide.srcset);
+        imgEl.setAttribute('sizes', '92vw');
+        imgEl.alt = slide.alt;
+        captionEl.textContent = slide.caption;
+        countEl.textContent = labels.of.replace('{i}', current + 1).replace('{n}', slides.length);
+        dialog.setAttribute('aria-label', slide.caption || slide.alt);
+
+        // Warm the neighbours so prev/next feels instant.
+        [current - 1, current + 1].forEach((n) => {
+            const neighbour = slides[(n + slides.length) % slides.length];
+            const preload = new Image();
+            preload.src = neighbour.href;
+        });
+    };
+
+    const open = (index, trigger) => {
+        if (!dialog) build();
+        opener = trigger;
+        update(index);
+        // Compensate for the vanishing scrollbar so the page does not shift.
+        const scrollbar = window.innerWidth - document.documentElement.clientWidth;
+        if (scrollbar > 0) document.body.style.paddingRight = scrollbar + 'px';
+        document.body.classList.add('gallery-lightbox-open');
+        dialog.showModal();
+    };
+
+    links.forEach((link, index) => {
+        link.addEventListener('click', (event) => {
+            event.preventDefault();
+            open(index, link);
+        });
+    });
 })();

@@ -29,7 +29,7 @@
     <!-- Styles -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@200..900&family=Outfit:wght@500;600;700;800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Teko:wght@300..700&display=swap">
     <link rel="stylesheet" href="style.css?v=2.3">
-    <link rel="stylesheet" href="tropic-noir.css?v=5.0">
+    <link rel="stylesheet" href="tropic-noir.css?v=5.2">
     <link rel="apple-touch-icon" href="/apple-touch-icon-v2.png">
     <link rel="icon" href="/favicon-axcent-transparent.svg" type="image/svg+xml">
 
@@ -206,7 +206,7 @@
   <!-- End Meta Pixel Code -->
   </head>
 
-<body class="tropic service-page wedding-page">
+<body class="tropic service-page wedding-page nav-declutter">
     <!-- Navigation Bar -->
     <header class="main-header">
         <div class="container navbar">
@@ -222,11 +222,13 @@
                 </svg>
             </button>
             <nav class="nav-links">
-        <a href="./">Home</a>
+        <a href="./" class="nav-home">Home</a>
         <a href="about">About us</a>
                 <a href="schedule">Our classes</a>
+                <a href="registration">Prices &amp; Registration</a>
                 <a href="events">Events</a>
-                <a href="contact">Contact</a>
+                <a href="contact" class="nav-contact-item">Contact</a>
+                <a href="portal" class="nav-portal-item">Login</a>
 
                 <div class="dropdown">
                     <button class="dropbtn">More ▾</button>
@@ -241,7 +243,7 @@
                         <a href="blog"><span>Blog</span></a>
                         <a href="faq"><span>FAQ</span></a>
                         <a href="etiquette"><span>Dance Etiquette</span></a>
-                        <a href="portal"><span>Login</span></a>
+                        <a href="contact" class="nav-contact-dropdown"><span>Contact</span></a>
                     </div>
                 </div>
         <a href="/#trial-form" class="btn-header-cta">Book Free Trial</a>
@@ -251,6 +253,14 @@
           <span class="divider">|</span>
           <a href="de/wedding-dance">DE</a>
         </div>
+      <div class="header-login">
+        <a href="portal" class="header-login__link header-login__link--icon" aria-label="Login" title="Login">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 21a8 8 0 0 0-16 0"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+        </a>
+      </div>
       
         </div>
     </header>
@@ -426,9 +436,9 @@
                             <span class="sched-faq__icon" aria-hidden="true">+</span>
                         </summary>
                         <div class="sched-faq__body">
-                            That depends on your song, your goals, and how much time you have before the wedding. We
-                            define the plan together at the consultation, and the package covers a complete
-                            preparation.
+                            Most couples need around eight hours of lessons, or continue until they feel comfortable
+                            and confident for the big day. The final price may vary depending on the number of hours
+                            and the choreography you choose.
                         </div>
                     </details>
                     <details class="glass-panel sched-faq">
@@ -443,12 +453,14 @@
                     </details>
                     <details class="glass-panel sched-faq">
                         <summary class="sched-faq__summary">
-                            Can it be our song?
+                            Why Bachata as a wedding dance?
                             <span class="sched-faq__icon" aria-hidden="true">+</span>
                         </summary>
                         <div class="sched-faq__body">
-                            Yes. Any song, any style &mdash; and if you are unsure, we help you choose and edit the
-                            music so it fits the dance.
+                            Bachata is naturally romantic and intimate, with warm rhythms and often sensual lyrics
+                            about love, trust, and connection. Its close partnership and flowing movements make it a
+                            beautiful way to tell your story together while still feeling natural and personal on the
+                            dance floor.
                         </div>
                     </details>
                 </div>
@@ -462,15 +474,6 @@
                 <p class="service-inquiry__copy">Book a consultation &mdash; we listen to your song, hear your vision,
                     and build the plan together.</p>
                 <a href="contact" class="service-inquiry__cta">Book a Consultation</a>
-            </div>
-        </section>
-
-        <!-- Cross-link to Couples Activities -->
-        <section class="reveal" style="padding: 4rem 0; background: var(--bg-main); text-align: center;">
-            <div class="container">
-                <p style="color: var(--text-muted); font-size: 1.1rem; max-width: 600px; margin: 0 auto;">
-                    Not quite ready for a wedding dance? Try <a href="blog/couples-activities-zurich" style="color: var(--accent-start); text-decoration: underline; font-weight: 500;">Bachata as a casual couples activity</a> first.
-                </p>
             </div>
         </section>
 
@@ -513,6 +516,7 @@
           <li><a href="blog/roots-of-bachata">Roots of Bachata</a></li>
           <li><a href="schedule">Schedule</a></li>
           <li><a href="blog">Our Blog</a></li>
+          <li><a href="https://www.google.com/maps?cid=15680757943659417558" target="_blank" rel="noopener noreferrer">Read our reviews on Google</a></li>
 
         </ul>
       </div>

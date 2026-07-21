@@ -159,6 +159,352 @@
             color: #8FD9A0;
         }
 
+        .req__type--sick_day {
+            background: rgba(255, 180, 166, 0.12);
+            border: 1px solid rgba(255, 180, 166, 0.35);
+            color: #FFB4A6;
+        }
+
+        .req__type--room_rental {
+            background: rgba(186, 148, 255, 0.14);
+            border: 1px solid rgba(186, 148, 255, 0.35);
+            color: #C9AFFF;
+        }
+
+        .req__proposal {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.85rem;
+            color: var(--text-main);
+            background: rgba(232, 176, 75, 0.08);
+            border: 1px solid rgba(232, 176, 75, 0.25);
+            border-radius: 10px;
+            padding: 8px 12px;
+            margin-bottom: 10px;
+        }
+
+        .req__proposal strong {
+            color: var(--accent-gold);
+        }
+
+        .pass-row {
+            border: 1px solid var(--portal-divider);
+            border-radius: 14px;
+            padding: 14px 16px;
+            margin-bottom: 10px;
+        }
+
+        .pass-row__top {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 4px;
+        }
+
+        .pass-row__who {
+            color: var(--title-cream);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .pass-row__who a {
+            color: var(--accent-gold);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .pass-row__pass {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-left: auto;
+            white-space: nowrap;
+        }
+
+        .pass-row__notes {
+            color: #F2E7CF;
+            background: rgba(232, 176, 75, 0.08);
+            border: 1px dashed rgba(232, 176, 75, 0.3);
+            border-radius: 10px;
+            padding: 7px 11px;
+            font-size: 0.85rem;
+            margin: 6px 0 10px;
+        }
+
+        .pass-row__edit {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .pass-row__edit input[type="date"] {
+            background: var(--accent-navy, #10322B);
+            border: 1px solid rgba(157, 180, 171, 0.28);
+            border-radius: 8px;
+            color: var(--text-main);
+            padding: 6px 10px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.85rem;
+        }
+
+        /* Class roster schedule grid (same language as the portal timetable) */
+        .tt-grid {
+            display: grid;
+            gap: 8px;
+            font-family: 'Outfit', sans-serif;
+            max-width: 640px;
+        }
+
+        .tt-head {
+            font-size: 0.72rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: #F2E7CF;
+            text-align: center;
+            padding: 2px 0 4px;
+        }
+
+        .tt-time {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #F2E7CF;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 10px;
+            white-space: nowrap;
+        }
+
+        .tt-cell {
+            background: #10322B;
+            border: 1px solid rgba(232, 176, 75, 0.14);
+            border-radius: 10px;
+            min-height: 56px;
+            padding: 7px 9px;
+            font-size: 0.74rem;
+            font-weight: 500;
+            line-height: 1.25;
+            color: #9DB4AB;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .tt-cell--empty {
+            background: transparent;
+            border: 1px dashed rgba(157, 180, 171, 0.14);
+        }
+
+        button.tt-cell {
+            cursor: pointer;
+            transition: border-color 0.2s ease, background 0.2s ease;
+        }
+
+        button.tt-cell:hover,
+        button.tt-cell:focus-visible {
+            border-color: var(--accent-gold);
+            background: #144036;
+            color: #F4EFE6;
+        }
+
+        .tt-cell--selected {
+            border-color: rgba(255, 90, 60, 0.5);
+            background: #144036;
+            color: #F4EFE6;
+        }
+
+        .tt-cell__count {
+            margin-top: 3px;
+            font-size: 0.68rem;
+            color: var(--accent-gold);
+            font-weight: 700;
+        }
+
+        .roster-cols {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+            margin-top: 1rem;
+        }
+
+        @media (max-width: 700px) {
+            .roster-cols {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .roster-cols h4 {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--accent-gold);
+            margin: 0 0 0.5rem;
+        }
+
+        .roster-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.88rem;
+        }
+
+        .roster-table th {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--text-muted);
+            text-align: left;
+            padding: 6px 8px;
+            border-bottom: 1px solid var(--portal-divider);
+        }
+
+        .roster-table td {
+            padding: 7px 8px;
+            border-bottom: 1px solid var(--portal-divider);
+            color: var(--text-main);
+        }
+
+        .roster-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .roster-table .ends-soon {
+            color: #FFB4A6;
+        }
+
+        #rosterTitle {
+            font-family: var(--font-heading, 'Playfair Display', serif);
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--title-cream);
+            margin: 1.4rem 0 0.2rem;
+        }
+
+        #rosterSummary {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        .week-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+            margin-bottom: 12px;
+            max-width: 420px;
+        }
+
+        .week-bar__label {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            font-size: 0.92rem;
+            color: var(--title-cream);
+            text-align: center;
+            flex: 1;
+        }
+
+        .week-bar button {
+            background: transparent;
+            border: 1px solid rgba(157, 180, 171, 0.28);
+            border-radius: 10px;
+            color: var(--text-main);
+            font-size: 1rem;
+            line-height: 1;
+            padding: 7px 13px;
+            cursor: pointer;
+        }
+
+        .week-bar button:hover {
+            border-color: var(--accent-gold);
+        }
+
+        .btn-email-all {
+            display: inline-block;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            font-size: 0.85rem;
+            padding: 9px 16px;
+            border-radius: 10px;
+            border: 1px solid rgba(232, 176, 75, 0.45);
+            background: rgba(232, 176, 75, 0.12);
+            color: var(--accent-gold);
+            text-decoration: none;
+            margin-bottom: 12px;
+        }
+
+        .btn-email-all:hover {
+            background: rgba(232, 176, 75, 0.2);
+        }
+
+        .lookup-controls {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 1rem;
+        }
+
+        @media (max-width: 700px) {
+            .lookup-controls {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .lookup-label {
+            display: block;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+            margin-bottom: 0.4rem;
+        }
+
+        .lookup-input {
+            width: 100%;
+            background: var(--accent-navy, #10322B);
+            border: 1px solid rgba(157, 180, 171, 0.28);
+            border-radius: 10px;
+            color: var(--text-main);
+            padding: 9px 12px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.9rem;
+        }
+
+        .lookup-input option {
+            background: var(--bg-secondary);
+        }
+
+        .att-mark {
+            display: inline-block;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            font-size: 0.68rem;
+            text-transform: uppercase;
+            border-radius: 6px;
+            padding: 2px 8px;
+        }
+
+        .att-mark--present {
+            background: rgba(81, 207, 102, 0.12);
+            border: 1px solid rgba(81, 207, 102, 0.4);
+            color: #8FD9A0;
+        }
+
+        .att-mark--absent {
+            background: rgba(255, 107, 107, 0.1);
+            border: 1px solid rgba(255, 107, 107, 0.4);
+            color: #FFB4A6;
+        }
+
         .req__who {
             color: var(--title-cream);
             font-weight: 600;
@@ -284,7 +630,10 @@
                 <p class="admin-eyebrow">Owner Dashboard</p>
                 <h1>Requests Inbox</h1>
             </div>
-            <button class="btn-logout" id="logoutBtn" style="display: none;">Log Out</button>
+            <div style="display: flex; gap: 8px;">
+                <a class="btn-logout" href="_attendance" style="text-decoration: none; display: inline-block;">Sign Presences</a>
+                <button class="btn-logout" id="logoutBtn" style="display: none;">Log Out</button>
+            </div>
         </div>
 
         <div class="admin-card" id="gateCard">
@@ -301,10 +650,20 @@
             <div id="openList"></div>
         </div>
 
-        <div class="admin-card" id="privateCard" style="display: none;">
-            <h2>Private Class Bookings (Paid)</h2>
+        <div class="admin-card" id="roomRentalCard" style="display: none;">
+            <h2>Outside Room Requests</h2>
             <p class="muted-note" style="margin-bottom: 0.9rem;">
-                Already paid — schedule the exact time with the student by email.
+                Public rental inquiries from the room-rental page — no account, no payment yet.
+                Confirm availability and reply, then send a Stripe payment link yourself.
+            </p>
+            <div id="roomRentalList"></div>
+        </div>
+
+        <div class="admin-card" id="privateCard" style="display: none;">
+            <h2>Privates</h2>
+            <p class="muted-note" style="margin-bottom: 0.9rem;">
+                Paid private packages — tick off each delivered hour with +1.
+                Schedule the exact times with the student by email.
             </p>
             <div id="privateList"></div>
         </div>
@@ -318,6 +677,76 @@
             <div id="pendingList"></div>
         </div>
 
+        <div class="admin-card" id="passCard" style="display: none;">
+            <h2>Pass Management</h2>
+            <p class="muted-note" style="margin-bottom: 0.9rem;">
+                Every purchased pass with its registration-form availability notes.
+                Adjust the start or end date and save — changes apply immediately
+                and the student sees them in the portal right away.
+            </p>
+            <div id="passList"></div>
+        </div>
+
+        <div class="admin-card" id="expiringCard" style="display: none;">
+            <h2>Passes Ending in a Week</h2>
+            <div class="week-bar">
+                <button type="button" id="expPrevWeek" aria-label="Previous week">&larr;</button>
+                <span class="week-bar__label" id="expWeekLabel"></span>
+                <button type="button" id="expNextWeek" aria-label="Next week">&rarr;</button>
+            </div>
+            <div id="expEmailAll"></div>
+
+            <label for="waTemplate" style="display: block; font-family: 'Outfit', sans-serif; font-weight: 600; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin: 0.9rem 0 0.4rem;">
+                WhatsApp message (edit freely — {{name}} and {{date}} are filled in per person)
+            </label>
+            <textarea id="waTemplate" rows="3" style="width: 100%; background: var(--accent-navy, #10322B); border: 1px solid rgba(157, 180, 171, 0.28); border-radius: 10px; color: var(--text-main); padding: 10px 12px; font-family: inherit; font-size: 0.9rem; margin-bottom: 1rem;"></textarea>
+
+            <div id="expiringList"></div>
+        </div>
+
+        <div class="admin-card" id="rosterCard" style="display: none;">
+            <h2>Class Rosters</h2>
+            <p class="muted-note" style="margin-bottom: 0.9rem;">
+                Click a class to see everyone with an active pass for it,
+                split by role. Numbers show dancers (leaders / followers).
+            </p>
+            <div class="tt-grid" id="rosterGrid"></div>
+            <div id="rosterPanel" style="display: none;">
+                <h3 id="rosterTitle"></h3>
+                <p id="rosterSummary"></p>
+                <div class="roster-cols">
+                    <div>
+                        <h4>Leaders</h4>
+                        <table class="roster-table" id="rosterLeaders"></table>
+                    </div>
+                    <div>
+                        <h4>Followers</h4>
+                        <table class="roster-table" id="rosterFollowers"></table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="admin-card" id="lookupCard" style="display: none;">
+            <h2>Attendance Lookup</h2>
+            <div class="lookup-controls">
+                <div>
+                    <label class="lookup-label" for="personSelect">By person</label>
+                    <select id="personSelect" class="lookup-input">
+                        <option value="">Choose a dancer...</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="lookup-label" for="lookupClass">By class &amp; date</label>
+                    <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                        <select id="lookupClass" class="lookup-input" style="flex: 2; min-width: 180px;"></select>
+                        <input type="date" id="lookupDate" class="lookup-input" style="flex: 1; min-width: 140px;">
+                    </div>
+                </div>
+            </div>
+            <div id="lookupResult"></div>
+        </div>
+
         <div class="admin-card" id="handledCard" style="display: none;">
             <h2>Handled</h2>
             <div id="handledList"></div>
@@ -327,16 +756,41 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="assets/js/axcent-passes.js"></script>
     <script type="module">
         import { supabase } from './assets/js/supabase-client.js';
 
         const OWNER_EMAIL = 'info@axcentdance.com';
         const TYPE_LABELS = {
             freeze: 'Pass Freeze',
-            room_booking: 'Room Booking',
+            room_booking: 'Practice Room',
             private_class: 'Private Class',
-            bootcamp: 'Bootcamp'
+            bootcamp: 'Bootcamp',
+            sick_day: 'Sick Day',
+            room_rental: 'Outside Room Request'
         };
+
+        // Weekday prefixes in selected_classes ("Tue 19:30 ...") drive the
+        // proposed extension: the next date after the current end on which
+        // the student has a class.
+        const DAY_NUMBERS = { Sun: 0, Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6 };
+
+        function nextClassDay(reg) {
+            if (!reg || !reg.pass_end_date || !reg.selected_classes) return null;
+            const matches = [...reg.selected_classes.matchAll(/(Mon|Tue|Wed|Thu|Fri|Sat|Sun) \d/g)];
+            const classDays = new Set(matches.map(m => DAY_NUMBERS[m[1]]));
+            if (classDays.size === 0) return null;
+            const d = new Date(reg.pass_end_date + 'T00:00:00');
+            for (let i = 1; i <= 7; i++) {
+                d.setDate(d.getDate() + 1);
+                if (classDays.has(d.getDay())) {
+                    return d.getFullYear() + '-' +
+                        String(d.getMonth() + 1).padStart(2, '0') + '-' +
+                        String(d.getDate()).padStart(2, '0');
+                }
+            }
+            return null;
+        }
 
         const el = (id) => document.getElementById(id);
         const show = (id) => { el(id).style.display = 'block'; };
@@ -371,12 +825,124 @@
             throw new Error('Not the owner');
         }
 
+        let registrations = [];
+        let attendance = [];
+
+        function activeRegByEmail(email) {
+            return registrations.find(r =>
+                r.status === 'active' && r.email.toLowerCase() === email.toLowerCase());
+        }
+
+        // ----- Class rosters -----------------------------------------------
+        // selected_classes stores entries like "Tue 19:30 Beginner 2 (Leader)".
+        // The roster maps each class value to its enrolled dancers by role.
+
+        const WEEK_ORDER = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+        const DAY_FULL = { Mon: 'Monday', Tue: 'Tuesday', Wed: 'Wednesday', Thu: 'Thursday', Fri: 'Friday', Sat: 'Saturday', Sun: 'Sunday' };
+        let selectedClassValue = null;
+
+        function buildRosters() {
+            const rosters = {};
+            window.AXCENT_PASSES.classes.forEach(c => {
+                rosters[c.value] = { leaders: [], followers: [], unknown: [] };
+            });
+            registrations.filter(r => r.status === 'active').forEach(r => {
+                (r.selected_classes || '').split(', ').forEach(entry => {
+                    const m = entry.trim().match(/^(.*?)(?: \((Leader|Follower)\))?$/);
+                    if (!m || !rosters[m[1]]) return;
+                    const bucket = m[2] === 'Leader' ? 'leaders'
+                        : m[2] === 'Follower' ? 'followers' : 'unknown';
+                    rosters[m[1]][bucket].push(r);
+                });
+            });
+            return rosters;
+        }
+
+        function renderRosterGrid(rosters) {
+            const slots = window.AXCENT_PASSES.classes.map(c => {
+                const m = c.value.match(/^(Mon|Tue|Wed|Thu|Fri|Sat|Sun) (\d{1,2}:\d{2}) /);
+                return m ? { day: m[1], time: m[2], name: c.en, value: c.value } : null;
+            }).filter(Boolean);
+
+            const days = [...new Set(slots.map(s => s.day))]
+                .sort((a, b) => WEEK_ORDER.indexOf(a) - WEEK_ORDER.indexOf(b));
+            const times = [...new Set(slots.map(s => s.time))].sort();
+
+            const cellMap = {};
+            slots.forEach(s => { cellMap[s.day + '|' + s.time] = s; });
+
+            let html = '<div class="tt-head"></div>' +
+                days.map(d => '<div class="tt-head" title="' + esc(DAY_FULL[d]) + '">' + d + '</div>').join('');
+            times.forEach(t => {
+                html += '<div class="tt-time">' + esc(t) + '</div>';
+                days.forEach(d => {
+                    const slot = cellMap[d + '|' + t];
+                    if (!slot) {
+                        html += '<div class="tt-cell tt-cell--empty"></div>';
+                        return;
+                    }
+                    const ros = rosters[slot.value];
+                    const total = ros.leaders.length + ros.followers.length + ros.unknown.length;
+                    html += '<button type="button" class="tt-cell' +
+                        (slot.value === selectedClassValue ? ' tt-cell--selected' : '') +
+                        '" data-class="' + esc(slot.value) + '">' +
+                        esc(slot.name) +
+                        '<span class="tt-cell__count">' + total + ' (' +
+                        ros.leaders.length + 'L / ' + ros.followers.length + 'F' +
+                        (ros.unknown.length ? ' / ' + ros.unknown.length + '?' : '') +
+                        ')</span></button>';
+                });
+            });
+            el('rosterGrid').innerHTML = html;
+            el('rosterGrid').style.gridTemplateColumns = '52px repeat(' + days.length + ', 1fr)';
+        }
+
+        function rosterTable(rows) {
+            if (!rows.length) return '<tr><td class="muted-note">Nobody yet.</td></tr>';
+            const today = new Date(); today.setHours(0, 0, 0, 0);
+            const soon = new Date(today); soon.setDate(soon.getDate() + 14);
+            return '<tr><th>First name</th><th>Last name</th><th>Pass ends</th></tr>' +
+                rows
+                    .slice()
+                    .sort((a, b) => (a.first_name || '').localeCompare(b.first_name || ''))
+                    .map(r => {
+                        const end = r.pass_end_date ? new Date(r.pass_end_date + 'T00:00:00') : null;
+                        const endClass = end && end <= soon ? ' class="ends-soon"' : '';
+                        return '<tr><td>' + esc(r.first_name || '?') + '</td>' +
+                            '<td>' + esc(r.last_name || '?') + '</td>' +
+                            '<td' + endClass + '>' + formatDate(r.pass_end_date) + '</td></tr>';
+                    }).join('');
+        }
+
+        function renderRosterPanel(rosters, classValue) {
+            const ros = rosters[classValue];
+            const def = window.AXCENT_PASSES.classes.find(c => c.value === classValue);
+            const total = ros.leaders.length + ros.followers.length + ros.unknown.length;
+            el('rosterTitle').textContent = (def ? def.en : classValue) +
+                ' — ' + classValue.replace(/ .*$/, '') + ' ' + (classValue.match(/\d{1,2}:\d{2}/) || [''])[0];
+            el('rosterSummary').textContent = total + ' active ' + (total === 1 ? 'dancer' : 'dancers') +
+                ' · ' + ros.leaders.length + ' leaders · ' + ros.followers.length + ' followers' +
+                (ros.unknown.length ? ' · ' + ros.unknown.length + ' without role' : '');
+            el('rosterLeaders').innerHTML = rosterTable(ros.leaders);
+            el('rosterFollowers').innerHTML = rosterTable(ros.followers);
+            show('rosterPanel');
+        }
+        // -------------------------------------------------------------------
+
         async function loadRequests() {
             // RLS: only the owner account gets rows other than its own.
-            const { data: requests, error } = await supabase
-                .from('requests')
-                .select('*')
-                .order('created_at', { ascending: false });
+            const [reqRes, regRes, attRes] = await Promise.all([
+                supabase.from('requests').select('*').order('created_at', { ascending: false }),
+                supabase.from('registrations').select('*')
+                    .neq('status', 'pending_payment')
+                    .order('pass_end_date', { ascending: true }),
+                supabase.from('attendance').select('*')
+                    .order('class_date', { ascending: false })
+            ]);
+            const requests = reqRes.data;
+            const error = reqRes.error || regRes.error || attRes.error;
+            registrations = regRes.data || [];
+            attendance = attRes.data || [];
 
             if (error) {
                 el('gateMessage').textContent = 'Could not load requests: ' + error.message;
@@ -387,13 +953,19 @@
             hide('gateCard');
 
             // Paid private classes need no accept/decline decision — they are
-            // already booked; the owner only schedules the time by email.
-            const paidPrivate = requests.filter(r => r.status === 'new' && r.type === 'private_class');
-            const open = requests.filter(r => r.status === 'new' && r.type !== 'private_class');
+            // already booked; the owner ticks off delivered hours instead.
+            const privates = requests.filter(r => r.type === 'private_class' &&
+                ['new', 'confirmed', 'done'].includes(r.status));
+            // Outside (public, no-account) room rental inquiries get their own
+            // card, kept apart from the logged-in-student "Open Requests" mix.
+            const roomRentalOpen = requests.filter(r => r.type === 'room_rental' && r.status === 'new');
+            const open = requests.filter(r => r.status === 'new' &&
+                r.type !== 'private_class' && r.type !== 'room_rental');
             const pendingPay = requests.filter(r => r.status === 'pending_payment');
-            const handled = requests.filter(r => r.status !== 'new' && r.status !== 'pending_payment');
+            const handled = requests.filter(r => r.status !== 'new' && r.status !== 'pending_payment' &&
+                !(r.type === 'private_class' && r.status !== 'declined'));
 
-            const counts = { freeze: 0, room_booking: 0, private_class: paidPrivate.length, bootcamp: 0 };
+            const counts = { freeze: 0, room_booking: 0, private_class: privates.length, bootcamp: 0, room_rental: roomRentalOpen.length };
             open.forEach(r => { counts[r.type] = (counts[r.type] || 0) + 1; });
             el('statRow').innerHTML =
                 '<span class="stat-chip"><strong>' + open.length + '</strong> open</span>' +
@@ -412,8 +984,28 @@
                     ? '<div class="req__dates">' + formatDate(r.date_from) +
                       (r.date_until ? ' &rarr; ' + formatDate(r.date_until) : '') + timeRange + '</div>'
                     : '';
+                let proposal = '';
                 let actions = '';
-                if (mode === 'open') {
+                if (mode === 'open' && r.type === 'sick_day') {
+                    const reg = activeRegByEmail(r.email);
+                    const proposed = nextClassDay(reg);
+                    if (reg && proposed) {
+                        proposal = '<div class="req__proposal">Pass ends ' + formatDate(reg.pass_end_date) +
+                            ' &rarr; proposed new end: <strong>' + formatDate(proposed) + '</strong>' +
+                            ' (next class day)</div>';
+                        actions = '<div class="req__actions">' +
+                            '<button class="req__btn req__btn--confirm" data-extend-reg="' + reg.id +
+                            '" data-newend="' + proposed + '" data-id="' + r.id + '">Extend to ' + formatDate(proposed) + '</button>' +
+                            '<button class="req__btn req__btn--decline" data-id="' + r.id + '" data-status="declined">Decline</button>' +
+                            '</div>';
+                    } else {
+                        proposal = '<div class="req__proposal">No proposal possible (no active pass or no fixed class days) — adjust manually in Pass Management.</div>';
+                        actions = '<div class="req__actions">' +
+                            '<button class="req__btn" data-id="' + r.id + '" data-status="done">Done</button>' +
+                            '<button class="req__btn req__btn--decline" data-id="' + r.id + '" data-status="declined">Decline</button>' +
+                            '</div>';
+                    }
+                } else if (mode === 'open') {
                     actions = '<div class="req__actions">' +
                         '<button class="req__btn req__btn--confirm" data-id="' + r.id + '" data-status="confirmed">Confirm</button>' +
                         '<button class="req__btn req__btn--decline" data-id="' + r.id + '" data-status="declined">Decline</button>' +
@@ -426,6 +1018,15 @@
                         (r.status === 'pending_payment' ? 'Mark as Paid' : 'Reopen') + '</button>' +
                         '</div>';
                 }
+                const waDigits = r.type === 'room_rental' ? phoneToWaDigits(r.phone) : null;
+                if (waDigits) {
+                    const msg = 'Hi ' + (r.name || 'there').split(' ')[0] +
+                        ', thanks for your room rental inquiry at AXcent Dance!';
+                    actions = actions.replace('<div class="req__actions">',
+                        '<div class="req__actions">' +
+                        '<a class="req__btn req__btn--confirm" target="_blank" href="https://wa.me/' + waDigits +
+                        '?text=' + encodeURIComponent(msg) + '">WhatsApp ' + esc(r.phone) + '</a>');
+                }
                 return '<div class="req' + (mode === 'handled' ? ' req--handled' : '') + '">' +
                     '<div class="req__top">' +
                     '<span class="req__type req__type--' + esc(r.type) + '">' + esc(TYPE_LABELS[r.type] || r.type) + '</span>' +
@@ -435,6 +1036,7 @@
                     '</div>' +
                     dates +
                     (r.details ? '<div class="req__details">' + esc(r.details) + '</div>' : '') +
+                    proposal +
                     actions +
                     '</div>';
             };
@@ -444,8 +1046,38 @@
                 : '<p class="muted-note">No open requests — all caught up.</p>';
             show('openCard');
 
-            if (paidPrivate.length) {
-                el('privateList').innerHTML = paidPrivate.map(r => renderRequest(r, 'plain')).join('');
+            if (roomRentalOpen.length) {
+                el('roomRentalList').innerHTML = roomRentalOpen.map(r => renderRequest(r, 'open')).join('');
+                show('roomRentalCard');
+            } else {
+                hide('roomRentalCard');
+            }
+
+            if (privates.length) {
+                el('privateList').innerHTML = privates.map(r => {
+                    const total = r.sessions_total ||
+                        (parseInt((r.details || '').match(/(\d+)\s*(hour|Stunde)/i)?.[1], 10) || null);
+                    const done = r.sessions_done || 0;
+                    const finished = total !== null && done >= total;
+                    return '<div class="req' + (finished ? ' req--handled' : '') + '">' +
+                        '<div class="req__top">' +
+                        '<span class="req__type req__type--private_class">Private Class</span>' +
+                        '<span class="req__who">' + esc(r.name || '') +
+                        ' <a href="mailto:' + esc(r.email) + '">' + esc(r.email) + '</a></span>' +
+                        '<span class="req__meta">' + formatDate(r.created_at) + '</span>' +
+                        '</div>' +
+                        (r.details ? '<div class="req__details">' + esc(r.details) +
+                            (r.date_from ? ' · preferred date ' + formatDate(r.date_from) : '') + '</div>' : '') +
+                        '<div class="req__proposal"><strong>' + done + ' of ' + (total !== null ? total : '?') +
+                        '</strong> hours used' + (finished ? ' — package complete' : '') + '</div>' +
+                        '<div class="req__actions">' +
+                        '<button class="req__btn req__btn--confirm" data-priv-id="' + r.id + '" data-priv-done="' + done + '" data-priv-delta="1">+1 hour</button>' +
+                        (done > 0
+                            ? '<button class="req__btn" data-priv-id="' + r.id + '" data-priv-done="' + done + '" data-priv-delta="-1">−1</button>'
+                            : '') +
+                        '</div>' +
+                        '</div>';
+                }).join('');
                 show('privateCard');
             } else {
                 hide('privateCard');
@@ -462,24 +1094,312 @@
                 ? handled.map(r => renderRequest(r, 'handled')).join('')
                 : '<p class="muted-note">Nothing handled yet.</p>';
             show('handledCard');
+
+            // Pass Management: every bought pass, availability notes, editable
+            // start and end dates. Active passes first.
+            const boughtPasses = registrations.slice().sort((a, b) =>
+                (a.status === 'active' ? 0 : 1) - (b.status === 'active' ? 0 : 1) ||
+                (a.pass_end_date || '').localeCompare(b.pass_end_date || ''));
+            el('passList').innerHTML = boughtPasses.length
+                ? boughtPasses.map(r =>
+                    '<div class="pass-row"' + (r.status === 'active' ? '' : ' style="opacity: 0.65;"') + '>' +
+                    '<div class="pass-row__top">' +
+                    '<span class="pass-row__who">' + esc(((r.first_name || '') + ' ' + (r.last_name || '')).trim() || 'Unknown') +
+                    ' <a href="mailto:' + esc(r.email) + '">' + esc(r.email) + '</a></span>' +
+                    '<span class="pass-row__pass">' + esc(r.pass_type || 'Class Pass') +
+                    ' · <span class="req__status">' + esc(r.status) + '</span></span>' +
+                    '</div>' +
+                    (r.dates_unavailable
+                        ? '<div class="pass-row__notes">Declared at registration: ' + esc(r.dates_unavailable) + '</div>'
+                        : '') +
+                    '<div class="pass-row__edit">' +
+                    '<input type="date" value="' + esc(r.pass_start_date || '') + '" data-start-input="' + r.id + '" aria-label="Pass start date">' +
+                    '<span>&rarr;</span>' +
+                    '<input type="date" value="' + esc(r.pass_end_date || '') + '" data-end-input="' + r.id + '" aria-label="Pass end date">' +
+                    '<button class="req__btn req__btn--confirm" data-save-reg="' + r.id + '">Save Dates</button>' +
+                    '</div>' +
+                    '</div>'
+                ).join('')
+                : '<p class="muted-note">No purchased passes yet.</p>';
+            show('passCard');
+
+            // Class rosters: schedule grid + per-class tables.
+            const rosters = buildRosters();
+            renderRosterGrid(rosters);
+            if (selectedClassValue) renderRosterPanel(rosters, selectedClassValue);
+            show('rosterCard');
+
+            el('rosterGrid').onclick = (e) => {
+                const cell = e.target.closest('button.tt-cell[data-class]');
+                if (!cell) return;
+                selectedClassValue = cell.dataset.class;
+                renderRosterGrid(rosters);
+                renderRosterPanel(rosters, selectedClassValue);
+            };
+
+            renderExpiring();
+            show('expiringCard');
+
+            setupLookup();
+            show('lookupCard');
         }
 
-        document.addEventListener('click', async (e) => {
-            const btn = e.target.closest('.req__btn[data-id]');
+        // ----- Expiring passes ---------------------------------------------
+        // Week picker (Mon-Sun) listing active passes that end inside the
+        // selected week, with a one-click BCC reminder email.
+        let expWeekOffset = 0;
+
+        const isoDate = (d) => d.getFullYear() + '-' +
+            String(d.getMonth() + 1).padStart(2, '0') + '-' +
+            String(d.getDate()).padStart(2, '0');
+
+        function expWeekRange() {
+            const mon = new Date();
+            mon.setHours(0, 0, 0, 0);
+            mon.setDate(mon.getDate() - ((mon.getDay() + 6) % 7) + expWeekOffset * 7);
+            const sun = new Date(mon);
+            sun.setDate(sun.getDate() + 6);
+            return { from: isoDate(mon), until: isoDate(sun) };
+        }
+
+        const WA_TEMPLATE_DEFAULT = 'Hi {{name}}! Just a heads-up that your AXcent Dance pass ends on {{date}}. ' +
+            'You can renew in a minute from your Student Portal to keep your spot — let us know if you have any questions!';
+
+        // wa.me needs digits only (country code, no +, no spaces/dashes).
+        function phoneToWaDigits(phone) {
+            if (!phone) return null;
+            const digits = phone.replace(/[^\d]/g, '');
+            return digits.length >= 8 ? digits : null;
+        }
+
+        function renderExpiring() {
+            const { from, until } = expWeekRange();
+            el('expWeekLabel').textContent = formatDate(from) + ' – ' + formatDate(until) +
+                (expWeekOffset === 0 ? ' (this week)' : expWeekOffset === 1 ? ' (next week)' : '');
+
+            if (!el('waTemplate').value) el('waTemplate').value = WA_TEMPLATE_DEFAULT;
+
+            const ending = registrations.filter(r =>
+                r.status === 'active' && r.pass_end_date &&
+                r.pass_end_date >= from && r.pass_end_date <= until
+            ).sort((a, b) => (a.pass_end_date || '').localeCompare(b.pass_end_date || ''));
+
+            if (ending.length) {
+                const emails = [...new Set(ending.map(r => r.email))];
+                el('expEmailAll').innerHTML =
+                    '<a class="btn-email-all" href="mailto:?bcc=' +
+                    encodeURIComponent(emails.join(',')) +
+                    '&subject=' + encodeURIComponent('Your AXcent Dance pass is ending soon') +
+                    '">Email all ' + emails.length + ' (BCC)</a>';
+            } else {
+                el('expEmailAll').innerHTML = '';
+            }
+
+            el('expiringList').innerHTML = ending.length
+                ? ending.map(r => {
+                    const waDigits = phoneToWaDigits(r.phone);
+                    return '<div class="pass-row">' +
+                    '<div class="pass-row__top">' +
+                    '<span class="pass-row__who">' + esc(((r.first_name || '') + ' ' + (r.last_name || '')).trim() || 'Unknown') +
+                    ' <a href="mailto:' + esc(r.email) + '?subject=' +
+                    encodeURIComponent('Your AXcent Dance pass is ending soon') + '">' + esc(r.email) + '</a></span>' +
+                    '<span class="pass-row__pass">' + esc(r.pass_type || 'Class Pass') +
+                    ' · ends <strong style="color: var(--title-cream);">' + formatDate(r.pass_end_date) + '</strong></span>' +
+                    '</div>' +
+                    (r.selected_classes
+                        ? '<div class="muted-note" style="font-size: 0.82rem;">' + esc(r.selected_classes) + '</div>'
+                        : '') +
+                    '<div class="req__actions">' +
+                    (waDigits
+                        ? '<button type="button" class="req__btn req__btn--confirm" data-wa-reg="' + r.id + '">WhatsApp ' + esc(r.phone) + '</button>'
+                        : '<span class="muted-note" style="font-size: 0.8rem;">No phone on file</span>') +
+                    '</div>' +
+                    '</div>';
+                }).join('')
+                : '<p class="muted-note">No active passes end in this week.</p>';
+        }
+
+        el('expPrevWeek').addEventListener('click', () => { expWeekOffset--; renderExpiring(); });
+        el('expNextWeek').addEventListener('click', () => { expWeekOffset++; renderExpiring(); });
+
+        el('expiringList').addEventListener('click', (e) => {
+            const btn = e.target.closest('[data-wa-reg]');
             if (!btn) return;
+            const reg = registrations.find(r => r.id === btn.dataset.waReg);
+            if (!reg) return;
+            const waDigits = phoneToWaDigits(reg.phone);
+            if (!waDigits) return;
+            const message = (el('waTemplate').value || WA_TEMPLATE_DEFAULT)
+                .replace(/\{\{name\}\}/g, reg.first_name || 'there')
+                .replace(/\{\{date\}\}/g, formatDate(reg.pass_end_date));
+            window.open('https://wa.me/' + waDigits + '?text=' + encodeURIComponent(message), '_blank');
+        });
+        // -------------------------------------------------------------------
+
+        // ----- Attendance lookup -------------------------------------------
+        const classLabel = (value) => {
+            const def = window.AXCENT_PASSES.classes.find(c => c.value === value);
+            const slot = value.match(/^(\w{3}) (\d{1,2}:\d{2})/);
+            return (def ? def.en : value) + (slot ? ' (' + slot[1] + ' ' + slot[2] + ')' : '');
+        };
+
+        const markChip = (status) =>
+            '<span class="att-mark att-mark--' + esc(status) + '">' + esc(status) + '</span>';
+
+        function renderPersonLookup(email) {
+            const passes = registrations
+                .filter(r => r.email.toLowerCase() === email.toLowerCase())
+                .sort((a, b) => (b.pass_start_date || '').localeCompare(a.pass_start_date || ''));
+            const marks = attendance.filter(a => a.email.toLowerCase() === email.toLowerCase());
+            const presentCount = marks.filter(a => a.status === 'present').length;
+
+            el('lookupResult').innerHTML =
+                '<h3 style="font-family: var(--font-heading); color: var(--title-cream); font-size: 1.15rem; margin: 0.4rem 0 0.6rem;">Passes</h3>' +
+                passes.map(r =>
+                    '<div class="history-item" style="padding: 8px 0; border-bottom: 1px solid var(--portal-divider); color: var(--text-muted); font-size: 0.9rem;">' +
+                    '<strong style="color: var(--text-main);">' + esc(r.pass_type || 'Class Pass') + '</strong> · ' +
+                    formatDate(r.pass_start_date) + ' &rarr; ' + formatDate(r.pass_end_date) +
+                    ' · ' + esc(r.status) +
+                    (r.selected_classes ? '<br>' + esc(r.selected_classes) : '') +
+                    '</div>'
+                ).join('') +
+                '<h3 style="font-family: var(--font-heading); color: var(--title-cream); font-size: 1.15rem; margin: 1.1rem 0 0.6rem;">Presences (' +
+                presentCount + ' present / ' + marks.length + ' marked)</h3>' +
+                (marks.length
+                    ? marks.map(a =>
+                        '<div style="padding: 7px 0; border-bottom: 1px solid var(--portal-divider); font-size: 0.9rem; color: var(--text-main);">' +
+                        formatDate(a.class_date) + ' · ' + esc(classLabel(a.class_value)) + ' ' + markChip(a.status) +
+                        '</div>'
+                    ).join('')
+                    : '<p class="muted-note">No attendance marked yet.</p>');
+        }
+
+        function renderClassLookup(classValue, dateStr) {
+            const regById = Object.fromEntries(registrations.map(r => [r.id, r]));
+            const marks = attendance.filter(a =>
+                a.class_value === classValue && a.class_date === dateStr);
+            el('lookupResult').innerHTML =
+                '<h3 style="font-family: var(--font-heading); color: var(--title-cream); font-size: 1.15rem; margin: 0.4rem 0 0.6rem;">' +
+                esc(classLabel(classValue)) + ' — ' + formatDate(dateStr) + '</h3>' +
+                (marks.length
+                    ? marks.map(a => {
+                        const r = regById[a.registration_id];
+                        const who = r ? ((r.first_name || '') + ' ' + (r.last_name || '')).trim() : a.email;
+                        return '<div style="padding: 7px 0; border-bottom: 1px solid var(--portal-divider); font-size: 0.9rem; color: var(--text-main);">' +
+                            esc(who || a.email) + ' <span class="muted-note">' + esc(a.email) + '</span> ' + markChip(a.status) +
+                            '</div>';
+                    }).join('') +
+                    '<p class="muted-note" style="margin-top: 0.5rem;">' +
+                    marks.filter(a => a.status === 'present').length + ' present · ' +
+                    marks.filter(a => a.status === 'absent').length + ' absent</p>'
+                    : '<p class="muted-note">Nothing marked for this class on this date. ' +
+                    'Use <a href="_attendance">Sign Presences</a> to mark it.</p>');
+        }
+
+        let lookupWired = false;
+        function setupLookup() {
+            if (lookupWired) return;
+            lookupWired = true;
+
+            const people = [...new Map(registrations.map(r =>
+                [r.email.toLowerCase(), ((r.first_name || '') + ' ' + (r.last_name || '')).trim() || r.email]
+            )).entries()].sort((a, b) => a[1].localeCompare(b[1]));
+            el('personSelect').innerHTML = '<option value="">Choose a dancer...</option>' +
+                people.map(([email, name]) =>
+                    '<option value="' + esc(email) + '">' + esc(name) + ' — ' + esc(email) + '</option>').join('');
+
+            el('lookupClass').innerHTML = '<option value="">Choose a class...</option>' +
+                window.AXCENT_PASSES.classes.map(c =>
+                    '<option value="' + esc(c.value) + '">' + esc(classLabel(c.value)) + '</option>').join('');
+
+            el('personSelect').addEventListener('change', () => {
+                if (!el('personSelect').value) return;
+                el('lookupClass').value = '';
+                renderPersonLookup(el('personSelect').value);
+            });
+            const tryClassLookup = () => {
+                if (el('lookupClass').value && el('lookupDate').value) {
+                    el('personSelect').value = '';
+                    renderClassLookup(el('lookupClass').value, el('lookupDate').value);
+                }
+            };
+            el('lookupClass').addEventListener('change', tryClassLookup);
+            el('lookupDate').addEventListener('change', tryClassLookup);
+        }
+        // -------------------------------------------------------------------
+
+        const failFeedback = (msg, btn) => {
+            const fb = el('adminFeedback');
+            fb.textContent = msg;
+            fb.className = 'error';
+            if (btn) btn.disabled = false;
+        };
+
+        document.addEventListener('click', async (e) => {
+            const btn = e.target.closest('.req__btn');
+            if (!btn) return;
+
+            // Tick delivered private hours up or down.
+            if (btn.dataset.privId) {
+                btn.disabled = true;
+                const next = Math.max(0, parseInt(btn.dataset.privDone, 10) + parseInt(btn.dataset.privDelta, 10));
+                const { error: privError } = await supabase
+                    .from('requests')
+                    .update({ sessions_done: next })
+                    .eq('id', btn.dataset.privId);
+                if (privError) { failFeedback('Update failed: ' + privError.message, btn); return; }
+                await loadRequests();
+                return;
+            }
+
+            // Apply the proposed sick-day extension, then close the request.
+            if (btn.dataset.extendReg) {
+                btn.disabled = true;
+                const { error: regError } = await supabase
+                    .from('registrations')
+                    .update({ pass_end_date: btn.dataset.newend })
+                    .eq('id', btn.dataset.extendReg);
+                if (regError) { failFeedback('Extension failed: ' + regError.message, btn); return; }
+                const { error: reqError } = await supabase
+                    .from('requests')
+                    .update({ status: 'done', handled_at: new Date().toISOString() })
+                    .eq('id', btn.dataset.id);
+                if (reqError) { failFeedback('Pass extended, but closing the request failed: ' + reqError.message, btn); return; }
+                await loadRequests();
+                return;
+            }
+
+            // Manual start/end date save from Pass Management.
+            if (btn.dataset.saveReg) {
+                const startInput = document.querySelector('input[data-start-input="' + btn.dataset.saveReg + '"]');
+                const endInput = document.querySelector('input[data-end-input="' + btn.dataset.saveReg + '"]');
+                if (!startInput || !startInput.value || !endInput || !endInput.value) {
+                    failFeedback('Pick valid start and end dates first.', btn);
+                    return;
+                }
+                if (endInput.value < startInput.value) {
+                    failFeedback('The end date cannot be before the start date.', btn);
+                    return;
+                }
+                btn.disabled = true;
+                const { error: saveError } = await supabase
+                    .from('registrations')
+                    .update({ pass_start_date: startInput.value, pass_end_date: endInput.value })
+                    .eq('id', btn.dataset.saveReg);
+                if (saveError) { failFeedback('Saving failed: ' + saveError.message, btn); return; }
+                await loadRequests();
+                return;
+            }
+
+            // Plain status change on a request.
+            if (!btn.dataset.id) return;
             btn.disabled = true;
             const status = btn.dataset.status;
             const { error } = await supabase
                 .from('requests')
                 .update({ status: status, handled_at: status === 'new' ? null : new Date().toISOString() })
                 .eq('id', btn.dataset.id);
-            if (error) {
-                const fb = el('adminFeedback');
-                fb.textContent = 'Update failed: ' + error.message;
-                fb.className = 'error';
-                btn.disabled = false;
-                return;
-            }
+            if (error) { failFeedback('Update failed: ' + error.message, btn); return; }
             await loadRequests();
         });
 

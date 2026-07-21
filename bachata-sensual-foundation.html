@@ -54,10 +54,11 @@
       "provider": {
         "@id": "https://axcentdance.com/#organization"
       },
+      "url": "https://axcentdance.com/bachata-sensual-foundation",
       "coursePrerequisites": "Around 1-1.5 years of dancing experience, or completion of Bachata Beginner 2",
       "offers": {
         "@type": "Offer",
-        "price": "200",
+        "price": "220",
         "priceCurrency": "CHF",
         "category": "8-week course block",
         "availability": "https://schema.org/InStock",
@@ -65,7 +66,7 @@
       },
       "hasCourseInstance": {
         "@type": "CourseInstance",
-        "courseMode": "onsite",
+        "courseMode": "Onsite",
         "location": {
           "@type": "Place",
           "name": "AXcent Dance Studio",
@@ -202,7 +203,7 @@
   <!-- Styles -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@200..900&family=Outfit:wght@500;600;700;800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Teko:wght@300..700&display=swap">
   <link rel="stylesheet" href="style.css?v=2.3">
-  <link rel="stylesheet" href="tropic-noir.css?v=5.0">
+  <link rel="stylesheet" href="tropic-noir.css?v=5.2">
   <link rel="apple-touch-icon" href="/apple-touch-icon-v2.png">
   <link rel="icon" href="/favicon-axcent-transparent.svg" type="image/svg+xml">
 
@@ -226,7 +227,7 @@
   <!-- End Meta Pixel Code -->
   </head>
 
-<body class="tropic course-page">
+<body class="tropic course-page nav-declutter">
 
   <!-- Navigation Bar -->
   <header class="main-header">
@@ -243,11 +244,13 @@
                 </svg>
             </button>
       <nav class="nav-links">
-        <a href="./">Home</a>
+        <a href="./" class="nav-home">Home</a>
         <a href="about">About us</a>
         <a href="schedule">Our classes</a>
+        <a href="registration">Prices &amp; Registration</a>
         <a href="events">Events</a>
-        <a href="contact">Contact</a>
+        <a href="contact" class="nav-contact-item">Contact</a>
+        <a href="portal" class="nav-portal-item">Login</a>
 
         <div class="dropdown">
           <button class="dropbtn">More ▾</button>
@@ -262,7 +265,7 @@
             <a href="blog"><span>Blog</span></a>
             <a href="faq"><span>FAQ</span></a>
             <a href="etiquette"><span>Dance Etiquette</span></a>
-            <a href="portal"><span>Login</span></a>
+            <a href="contact" class="nav-contact-dropdown"><span>Contact</span></a>
           </div>
         </div>
         <a href="/#trial-form" class="btn-header-cta">Book Free Trial</a>
@@ -272,6 +275,14 @@
           <span class="divider">|</span>
           <a href="de/bachata-sensual-foundation">DE</a>
         </div>
+      <div class="header-login">
+        <a href="portal" class="header-login__link header-login__link--icon" aria-label="Login" title="Login">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 21a8 8 0 0 0-16 0"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+        </a>
+      </div>
       
     </div>
   </header>
@@ -309,7 +320,7 @@
             </div>
             <div class="course-callsheet__item">
               <dt>Block</dt>
-              <dd>8 weeks &middot; 200 CHF (students 170 CHF)</dd>
+              <dd>8 weeks &middot; 220 CHF (students 185 CHF)</dd>
             </div>
             <div class="course-callsheet__item">
               <dt>Entry</dt>
@@ -323,10 +334,23 @@
           </div>
         </div>
 
-        <!-- MEDIA PLACEHOLDER: replace with a real Bachata Sensual Foundation class photo, or a
-             15-30s HLS clip in this taped frame when footage exists (System/site-revamp-plan.md, section 14). -->
+        <!-- MEDIA PLACEHOLDER: replace with a real Bachata Sensual Foundation class photo
+             (System/site-revamp-plan.md, section 14). -->
+        <!-- COMBO REEL SLOT (workflow: .agent/rules/video_upload_policy.md): when
+             assets/videos/hls/foundation-combo/playlist.m3u8 and a poster exist, replace the
+             img below with
+               <video class="course-masthead__video" controls playsinline preload="none"
+                      poster="assets/images/courses/foundation_combo_poster.webp"
+                      width="1280" height="720"
+                      aria-label="A short class combination from Bachata Sensual Foundation at AXcent Dance"
+                      data-hls="assets/videos/hls/foundation-combo/playlist.m3u8">
+                 (plus a progressive MP4 fallback at assets/videos/foundation-combo.mp4 inside the video tag)
+               </video>
+             then add the course-masthead__media--video class to the media div and preload the
+             poster in <head> (link rel="preload" as="image"). hls-video.js is already loaded. -->
         <figure class="course-masthead__figure">
-          <div class="course-masthead__media">
+          <div class="course-masthead__media" data-course-media>
+            <canvas class="course-masthead__haze" data-course-haze aria-hidden="true"></canvas>
             <img src="assets/images/home/gallery_1_800w.webp"
               srcset="assets/images/home/gallery_1_480w.webp 480w, assets/images/home/gallery_1_800w.webp 800w, assets/images/home/gallery_1_1200w.webp 1200w"
               sizes="(max-width: 900px) 92vw, 40vw"
@@ -383,11 +407,38 @@
       </div>
     </section>
 
-    <!-- One night in the room -->
+    <!-- Level fork -->
+    <section class="course-fork">
+      <div class="container">
+        <h2 class="section-title-modern">Is this your <em class="title-accent">class?</em></h2>
+        <div class="course-fork__grid">
+          <div class="course-fork__path course-fork__path--here">
+            <p class="course-fork__voice">&ldquo;I know my Bachata basics &mdash; I want the sensual style.&rdquo;</p>
+            <p class="course-fork__answer">
+              You are in the right room. Around 1&ndash;1.5 years of dancing, or a completed
+              <a href="bachata-beginner-2">Bachata Beginner 2</a>, is all you need.
+            </p>
+          </div>
+          <div class="course-fork__divider" aria-hidden="true"><span>or</span></div>
+          <div class="course-fork__path">
+            <p class="course-fork__voice">&ldquo;I have never danced a step in my life.&rdquo;</p>
+            <p class="course-fork__answer">
+              Start with <strong>Bachata Beginner 0</strong>, Mondays 19:30 &mdash; everyone in that room is a
+              first-timer too. <a href="beginner-guide">Read the beginner guide</a>.
+            </p>
+          </div>
+        </div>
+        <p class="course-fork__unsure">
+          Not sure? <a href="/?class=unsure#trial-form">Book a free trial</a> &mdash; we will place you.
+        </p>
+      </div>
+    </section>
+
+    <!-- How a class works -->
     <!-- OWNER TO CONFIRM: generic class structure below - adjust to the real Foundation hour if it differs. -->
     <section class="course-night">
       <div class="container">
-        <h2 class="section-title-modern">One night in the <em class="title-accent">room</em></h2>
+        <h2 class="section-title-modern">How a class <em class="title-accent">works</em></h2>
         <p class="section-subtitle course-night__subtitle">Sixty minutes, one technique, many partners.</p>
         <ol class="course-night__steps">
           <li class="course-night__step">
@@ -422,36 +473,10 @@
       </div>
     </section>
 
-    <!-- Level fork -->
-    <section class="course-fork">
-      <div class="container">
-        <h2 class="section-title-modern">Is this your <em class="title-accent">class?</em></h2>
-        <div class="course-fork__grid">
-          <div class="course-fork__path course-fork__path--here">
-            <p class="course-fork__voice">&ldquo;I know my Bachata basics &mdash; I want the sensual style.&rdquo;</p>
-            <p class="course-fork__answer">
-              You are in the right room. Around 1&ndash;1.5 years of dancing, or a completed
-              <a href="bachata-beginner-2">Bachata Beginner 2</a>, is all you need.
-            </p>
-          </div>
-          <div class="course-fork__divider" aria-hidden="true"><span>or</span></div>
-          <div class="course-fork__path">
-            <p class="course-fork__voice">&ldquo;I have never danced a step in my life.&rdquo;</p>
-            <p class="course-fork__answer">
-              Start with <strong>Bachata Beginner 0</strong>, Mondays 18:30 &mdash; everyone in that room is a
-              first-timer too. <a href="beginner-guide">Read the beginner guide</a>.
-            </p>
-          </div>
-        </div>
-        <p class="course-fork__unsure">
-          Not sure? <a href="/?class=unsure#trial-form">Book a free trial</a> &mdash; we will place you.
-        </p>
-      </div>
-    </section>
-
     <!-- Teachers -->
     <section class="course-teachers">
       <div class="container">
+        <h2 class="section-title-modern">Meet your <em class="title-accent">teachers</em></h2>
         <div class="founders-strip course-founders">
           <img class="founders-strip__photo" src="assets/images/ale-xidan-about_480w.webp"
             alt="Ale and Xidan, founders of AXcent Dance" width="480" height="768" loading="lazy" decoding="async">
@@ -459,7 +484,7 @@
             <strong class="founders-strip__names">Ale &amp; Xidan</strong>
             <span class="founders-strip__role">Founders, international Bachata artists, and official IDO Swiss
               Championship judges &mdash; they teach this course personally.</span>
-            <a href="about" class="founders-strip__link">Meet your teachers</a>
+            <a href="about" class="founders-strip__link">More about us</a>
           </div>
         </div>
       </div>
@@ -470,6 +495,10 @@
       <div class="container">
         <h2 class="section-title-modern">Where this course <em class="title-accent">leads</em></h2>
         <ol class="course-path__ladder">
+          <li class="course-path__rung">
+            <a class="course-path__name" href="bachata-beginner-1">Beginner 1</a>
+            <span class="course-path__when">Mondays 19:30</span>
+          </li>
           <li class="course-path__rung">
             <a class="course-path__name" href="bachata-beginner-2">Beginner 2</a>
             <span class="course-path__when">Tuesdays 19:30</span>
@@ -504,7 +533,7 @@
             <a href="registration" class="course-register__submit">Register for the course</a>
           </div>
           <p class="course-register__pricing">
-            8-week block &middot; 200 CHF &asymp; 25 CHF per class &middot; 15% off your first sign-up &middot;
+            8-week block &middot; 220 CHF (27.50 per class) &middot; 15% off your first sign-up &middot;
             Student discount &middot; No subscription
           </p>
           <p class="course-register__trust">A real person confirms your spot on WhatsApp.</p>
@@ -592,6 +621,7 @@
           <li><a href="blog/roots-of-bachata">Roots of Bachata</a></li>
           <li><a href="schedule">Schedule</a></li>
           <li><a href="blog">Our Blog</a></li>
+          <li><a href="https://www.google.com/maps?cid=15680757943659417558" target="_blank" rel="noopener noreferrer">Read our reviews on Google</a></li>
 
         </ul>
       </div>
@@ -632,7 +662,9 @@
     </a>
   </div>
 
-  <script src="script.js?v=5.8"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script type="module" src="hls-video.js?v=1.0"></script>
+  <script src="script.js?v=6.2"></script>
 
 
 

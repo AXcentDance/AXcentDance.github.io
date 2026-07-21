@@ -38,15 +38,15 @@
     content="Join 100+ dancers in our Bachata classes in Zurich Altstetten. All levels, international instructors, no partner needed. Book your free trial class today!">
   <meta property="og:image" content="https://axcentdance.com/assets/images/og-home-1200x630.jpg">
   <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="628">
+  <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Dancers at a Bachata class at AXcent Dance in Zurich Altstetten">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="https://axcentdance.com/assets/images/og-home-1200x630.jpg">
 
   <!-- Styles -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@200..900&family=Outfit:wght@500;600;700;800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Teko:wght@300..700&display=swap">
-  <link rel="stylesheet" href="style.css?v=9.2">
-  <link rel="stylesheet" href="tropic-noir.css?v=5.0">
+  <link rel="stylesheet" href="style.css?v=9.3">
+  <link rel="stylesheet" href="tropic-noir.css?v=5.3">
 
   <link rel="apple-touch-icon" href="/apple-touch-icon-v2.png">
   <link rel="icon" href="/favicon-axcent-transparent.svg" type="image/svg+xml">
@@ -85,7 +85,7 @@
         "@id": "https://axcentdance.com/#organization"
       },
       "description": "Discover Bachata classes in Zurich at AXcent Dance. We offer Bachata Sensual, Dominican Bachata, and Salsa classes for all levels at Hermetschloostrasse 73.",
-      "dateModified": "2026-07-05T12:00:00+02:00"
+      "dateModified": "2026-07-19T12:00:00+02:00"
     },
     {
       "@type": "VideoObject",
@@ -176,7 +176,7 @@
           "name": "What happens after the free trial?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "If you enjoyed the class, you simply continue with the course. Courses run in 8-week blocks, and one course per week costs 200 CHF (170 CHF for students). Your first course sign-up comes with 15% off. You can compare all options on our registration page."
+            "text": "If you enjoyed the class, you simply continue with the course. Courses run in 8-week blocks, and one course per week costs 220 CHF (185 CHF for students). Your first course sign-up comes with 15% off. You can compare all options on our registration page."
           }
         },
         {
@@ -331,7 +331,7 @@
   <!-- End Meta Pixel Code -->
 </head>
 
-<body class="home-page">
+<body class="home-page nav-declutter">
 
   <div class="page-loader" aria-hidden="true">
     <div class="page-loader__mark">
@@ -355,11 +355,13 @@
                 </svg>
             </button>
       <nav class="nav-links">
-        <a href="./">Home</a>
+        <a href="./" class="nav-home">Home</a>
         <a href="about">About us</a>
         <a href="schedule">Our classes</a>
+        <a href="registration">Prices &amp; Registration</a>
         <a href="events">Events</a>
-        <a href="contact">Contact</a>
+        <a href="contact" class="nav-contact-item">Contact</a>
+        <a href="portal" class="nav-portal-item">Login</a>
 
         <div class="dropdown">
           <button class="dropbtn">More ▾</button>
@@ -374,7 +376,7 @@
             <a href="blog"><span>Blog</span></a>
             <a href="faq"><span>FAQ</span></a>
             <a href="etiquette"><span>Dance Etiquette</span></a>
-            <a href="portal"><span>Login</span></a>
+            <a href="contact" class="nav-contact-dropdown"><span>Contact</span></a>
           </div>
         </div>
         <a href="/#trial-form" class="btn-header-cta">Book Free Trial</a>
@@ -384,7 +386,14 @@
           <span class="divider">|</span>
           <a href="de/">DE</a>
         </div>
-      
+      <div class="header-login">
+        <a href="portal" class="header-login__link header-login__link--icon" aria-label="Login" title="Login">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 21a8 8 0 0 0-16 0"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+        </a>
+      </div>
     </div>
   </header>
 
@@ -401,6 +410,10 @@
             loading="lazy" decoding="async" alt="Milano Sensual Congress 2026" aria-hidden="true">
           <div class="home-hero__shade" aria-hidden="true"></div>
           <div class="home-hero__actions">
+            <p class="home-hero__launch-note">
+              <strong>Classes start week of Sept 8.</strong>
+              <span>15% discount on your first pass with code <code>AXcent15</code> at checkout.</span>
+            </p>
             <a href="#trial-form" class="btn-hero btn-hero-primary">
               <span class="btn-hero-content">Book Free Trial</span>
             </a>
@@ -440,7 +453,7 @@
             <li>Beginner friendly</li>
             <li>No experience required</li>
             <li>No partner needed</li>
-            <li>Student discount available</li>
+            <li class="home-hero__assurance-offer">Special offer: 15% off of your first pass</li>
           </ul>
 
           <div class="home-hero__selector" aria-label="Choose a dance video">
@@ -466,7 +479,7 @@
                 <span class="home-hero__choice-note">Solo expression</span>
               </span>
             </button>
-            <span class="home-hero__selector-divider">Events</span>
+            <span class="home-hero__selector-divider">Our events</span>
             <button class="home-hero__choice" type="button" data-hero-video="assets/videos/AitorGomezDemo.mp4" data-hero-hls="assets/videos/hls/aitor-demo/playlist.m3u8"
               data-hero-webm="assets/videos/AitorGomezDemo.webm" data-hero-start="0" aria-pressed="false">
               <span class="home-hero__choice-copy">
@@ -518,10 +531,32 @@
           <div class="guides-section__story">
             <h2 class="section-title-modern">
               <span>New to <em class="title-accent">dancing</em>?</span>
-              <span>Everyone starts somewhere.</span>
+              <span>Take your first step
+                <span class="guides-steps" aria-hidden="true" data-guides-steps>
+                  <svg class="guides-steps__print" viewBox="0 0 100 220">
+                    <use href="#guides-shoe"></use>
+                  </svg>
+                  <svg class="guides-steps__print guides-steps__print--lead" viewBox="0 0 100 220">
+                    <use href="#guides-shoe"></use>
+                  </svg>
+                </span>
+              </span>
             </h2>
+            <svg width="0" height="0" style="position: absolute" aria-hidden="true">
+              <symbol id="guides-shoe" viewBox="0 0 100 220">
+                <!-- Classic shoe-print icon: a rounded teardrop forefoot
+                     tapering to a point, a separate oval heel with a
+                     gap between them, both tilted at a walking angle. -->
+                <g transform="rotate(-16 50 110)">
+                  <path
+                    d="M50 8 C74 8 90 28 90 58 C90 85 82 108 70 128 C64 137 56 142 50 142 C44 142 36 137 30 128 C18 108 10 85 10 58 C10 28 26 8 50 8 Z">
+                  </path>
+                  <ellipse cx="50" cy="185" rx="26" ry="32"></ellipse>
+                </g>
+              </symbol>
+            </svg>
             <p class="section-subtitle">
-              Both begin the week of September 7 — come solo and pick the line that sounds like you.
+              Classes start the week of Sept 8.
             </p>
           </div>
         </div>
@@ -536,7 +571,7 @@
             <p class="starter-fork__voice">&ldquo;I have never danced a step in my life.&rdquo;</p>
             <div class="starter-fork__body">
               <h3 class="starter-fork__course">Bachata Beginner 0</h3>
-              <p class="starter-fork__when">Monday 18:30 &middot; New cycle</p>
+              <p class="starter-fork__when">Monday 19:30 &middot; New cycle</p>
               <p class="starter-fork__promise">
                 Built for absolute first-timers — no experience expected. Join any week.
               </p>
@@ -595,26 +630,17 @@
           <div class="schedule-row">
             <div class="time-slot">18:30</div>
 
-            <!-- Mon Class -->
-            <a href="beginner-guide" class="class-card class-card--recommended">
-              <span class="level-tag tag-recommended">Start here</span>
-              <h3 class="class-name">Bachata Beginner 0</h3>
-              <p class="class-experience">Absolute beginners</p>
-            </a>
+            <!-- Mon Class (Empty) -->
+            <div>&nbsp;</div>
 
             <!-- Tue Class (Empty) -->
             <div>&nbsp;</div>
 
-            <!-- Wed Class -->
-            <a href="bachata-beginner-2" class="class-card">
-              <span class="badge-full">Full</span>
-              <h3 class="class-name">Bachata Beginner 2</h3>
-              <p class="class-experience">~ 4-8 months of experience</p>
-            </a>
+            <!-- Wed Class (Empty) -->
+            <div>&nbsp;</div>
 
             <!-- Thu Class -->
             <a href="lady-styling" class="class-card">
-              <span class="level-tag tag-styling">Styling</span>
               <h3 class="class-name">Bachata Lady Style</h3>
               <p class="class-experience">~ 1 year of experience</p>
             </a>
@@ -624,8 +650,12 @@
           <div class="schedule-row">
             <div class="time-slot">19:30</div>
 
-            <!-- Mon Class (Empty) -->
-            <div>&nbsp;</div>
+            <!-- Mon Class -->
+            <a href="beginner-guide" class="class-card class-card--recommended">
+              <span class="level-tag tag-recommended">Start here</span>
+              <h3 class="class-name">Bachata Beginner 0</h3>
+              <p class="class-experience">Absolute beginners</p>
+            </a>
 
             <!-- Tue Class -->
             <a href="bachata-beginner-2" class="class-card">
@@ -677,7 +707,7 @@
             <div class="schedule-row">
               <a href="beginner-guide" class="class-card class-card--recommended">
                 <span class="level-tag tag-recommended">Start here</span>
-                <div class="mobile-time">18:30</div>
+                <div class="mobile-time">19:30</div>
                 <h3 class="class-name">Bachata Beginner 0</h3>
                 <p class="class-experience">Absolute beginners</p>
               </a>
@@ -696,12 +726,6 @@
           <div class="mobile-schedule-day">
             <h3 class="mobile-day-title">Wednesday</h3>
             <div class="schedule-row">
-              <a href="bachata-beginner-2" class="class-card">
-                <div class="mobile-time">18:30</div>
-                <span class="badge-full">Full</span>
-                <h3 class="class-name">Bachata Beginner 2</h3>
-                <p class="class-experience">~ 4-8 months of experience</p>
-              </a>
               <a href="bachata-sensual-foundation" class="class-card">
                 <div class="mobile-time">19:30</div>
                 <h3 class="class-name">Bachata Sensual Foundation</h3>
@@ -754,6 +778,11 @@
             <div class="stay-visual__header atelier-copy atelier-copy--intro">
               <span class="stay-eyebrow">Inside AXcent</span>
               <h2 class="section-title-modern section-title-left">A Place to Move, Connect, <em class="title-accent">Belong</em></h2>
+              <div class="atelier-gallery-meta">
+                <a href="gallery" class="atelier-gallery-link" aria-label="View Full Gallery">
+                  <span class="atelier-gallery-link__text">View Full Gallery</span>
+                </a>
+              </div>
             </div>
             <div class="atelier-fallback atelier-fallback--story" aria-label="Real AXcent student moments">
               <figure class="atelier-photo atelier-photo--hero">
@@ -791,12 +820,6 @@
                   loading="lazy" decoding="async">
                 <figcaption class="atelier-photo__caption">Event atmosphere</figcaption>
               </figure>
-            </div>
-
-            <div class="atelier-gallery-meta">
-              <a href="gallery" class="atelier-gallery-link" aria-label="View Full Gallery">
-                <span class="atelier-gallery-link__text">View Full Gallery</span>
-              </a>
             </div>
 
             <div class="atelier-sheen" aria-hidden="true"></div>
@@ -947,6 +970,70 @@
               </p>
             </div>
 
+            <!-- Review: Steven M -->
+            <div class="review-card glass-card">
+              <div class="review-header">
+                <span class="review-avatar" aria-hidden="true">SM</span>
+                <div class="reviewer-info">
+                  <h3 class="reviewer-name">Steven M</h3>
+                  <span class="review-date">Google Review</span>
+                </div>
+                <div class="google-badge" title="Verified Google Review"><svg viewBox="0 0 24 24" width="16"
+                    height="16">
+                    <path fill="currentColor"
+                      d="M21.35,11.1H12.18V13.83H18.69C18.36,17.64 15.19,19.27 12.19,19.27C8.36,19.27 5,16.25 5,12C5,7.9 8.2,4.73 12.2,4.73C15.29,4.73 17.1,6.7 17.1,6.7L19,4.72C19,4.72 16.56,2 12.1,2C6.42,2 2.03,6.8 2.03,12C2.03,17.05 6.16,22 12.25,22C17.6,22 21.5,18.33 21.5,12.91C21.5,11.76 21.35,11.1 21.35,11.1V11.1Z" />
+                  </svg></div>
+              </div>
+              <div class="review-stars">★★★★★</div>
+              <p class="review-text">
+                "Ale & Xidan are the best for bachata classes in Zurich! Their ability to spot the tiniest of details is
+                incredible. They take the guesswork out of improving, making every lesson a breakthrough!! 10/10"
+              </p>
+            </div>
+
+            <!-- Review: Alex E -->
+            <div class="review-card glass-card">
+              <div class="review-header">
+                <span class="review-avatar" aria-hidden="true">AE</span>
+                <div class="reviewer-info">
+                  <h3 class="reviewer-name">Alex E</h3>
+                  <span class="review-date">Google Review</span>
+                </div>
+                <div class="google-badge" title="Verified Google Review"><svg viewBox="0 0 24 24" width="16"
+                    height="16">
+                    <path fill="currentColor"
+                      d="M21.35,11.1H12.18V13.83H18.69C18.36,17.64 15.19,19.27 12.19,19.27C8.36,19.27 5,16.25 5,12C5,7.9 8.2,4.73 12.2,4.73C15.29,4.73 17.1,6.7 17.1,6.7L19,4.72C19,4.72 16.56,2 12.1,2C6.42,2 2.03,6.8 2.03,12C2.03,17.05 6.16,22 12.25,22C17.6,22 21.5,18.33 21.5,12.91C21.5,11.76 21.35,11.1 21.35,11.1V11.1Z" />
+                  </svg></div>
+              </div>
+              <div class="review-stars">★★★★★</div>
+              <p class="review-text">
+                "Ale and Xidan are the most amazing bachata teachers I've ever had. They bring the perfect
+                balance of technique... and create a wonderful atmosphere to facilitate learning and make asking
+                questions easy!"
+              </p>
+            </div>
+
+            <!-- Review: Denis B -->
+            <div class="review-card glass-card">
+              <div class="review-header">
+                <span class="review-avatar" aria-hidden="true">DB</span>
+                <div class="reviewer-info">
+                  <h3 class="reviewer-name">Denis B</h3>
+                  <span class="review-date">Google Review</span>
+                </div>
+                <div class="google-badge" title="Verified Google Review"><svg viewBox="0 0 24 24" width="16"
+                    height="16">
+                    <path fill="currentColor"
+                      d="M21.35,11.1H12.18V13.83H18.69C18.36,17.64 15.19,19.27 12.19,19.27C8.36,19.27 5,16.25 5,12C5,7.9 8.2,4.73 12.2,4.73C15.29,4.73 17.1,6.7 17.1,6.7L19,4.72C19,4.72 16.56,2 12.1,2C6.42,2 2.03,6.8 2.03,12C2.03,17.05 6.16,22 12.25,22C17.6,22 21.5,18.33 21.5,12.91C21.5,11.76 21.35,11.1 21.35,11.1V11.1Z" />
+                  </svg></div>
+              </div>
+              <div class="review-stars">★★★★★</div>
+              <p class="review-text">
+                "It’s rare to find instructors who can teach Bachata Sensual at such an authentic level... In Zurich,
+                they are without a doubt among the very best teachers for Bachata Sensual."
+              </p>
+            </div>
+
               </div>
             </div>
             <div class="reviews-rail reviews-rail--right" aria-label="Student story row two">
@@ -1038,6 +1125,69 @@
               </p>
             </div>
 
+            <!-- Review: Daiva M -->
+            <div class="review-card glass-card">
+              <div class="review-header">
+                <span class="review-avatar" aria-hidden="true">DM</span>
+                <div class="reviewer-info">
+                  <h3 class="reviewer-name">Daiva M</h3>
+                  <span class="review-date">Google Review</span>
+                </div>
+                <div class="google-badge" title="Verified Google Review"><svg viewBox="0 0 24 24" width="16"
+                    height="16">
+                    <path fill="currentColor"
+                      d="M21.35,11.1H12.18V13.83H18.69C18.36,17.64 15.19,19.27 12.19,19.27C8.36,19.27 5,16.25 5,12C5,7.9 8.2,4.73 12.2,4.73C15.29,4.73 17.1,6.7 17.1,6.7L19,4.72C19,4.72 16.56,2 12.1,2C6.42,2 2.03,6.8 2.03,12C2.03,17.05 6.16,22 12.25,22C17.6,22 21.5,18.33 21.5,12.91C21.5,11.76 21.35,11.1 21.35,11.1V11.1Z" />
+                  </svg></div>
+              </div>
+              <div class="review-stars">★★★★★</div>
+              <p class="review-text">
+                "For a great mix of energy, fun, and correct dance technique, this is where you need to be. The classes
+                are entertaining, and the teachers bring top-level expertise you won’t find anywhere else in Zurich."
+              </p>
+            </div>
+
+            <!-- Review: Marco F -->
+            <div class="review-card glass-card">
+              <div class="review-header">
+                <span class="review-avatar" aria-hidden="true">MF</span>
+                <div class="reviewer-info">
+                  <h3 class="reviewer-name">Marco F</h3>
+                  <span class="review-date">Google Review</span>
+                </div>
+                <div class="google-badge" title="Verified Google Review"><svg viewBox="0 0 24 24" width="16"
+                    height="16">
+                    <path fill="currentColor"
+                      d="M21.35,11.1H12.18V13.83H18.69C18.36,17.64 15.19,19.27 12.19,19.27C8.36,19.27 5,16.25 5,12C5,7.9 8.2,4.73 12.2,4.73C15.29,4.73 17.1,6.7 17.1,6.7L19,4.72C19,4.72 16.56,2 12.1,2C6.42,2 2.03,6.8 2.03,12C2.03,17.05 6.16,22 12.25,22C17.6,22 21.5,18.33 21.5,12.91C21.5,11.76 21.35,11.1 21.35,11.1V11.1Z" />
+                  </svg></div>
+              </div>
+              <div class="review-stars">★★★★★</div>
+              <p class="review-text">
+                "Teachers immensely humble and down to earth, they create a welcoming atmosphere where you can have fun
+                while learning. They are the top teachers of bachata in switzerland nowadays."
+              </p>
+            </div>
+
+            <!-- Review: Florian R -->
+            <div class="review-card glass-card">
+              <div class="review-header">
+                <span class="review-avatar" aria-hidden="true">FR</span>
+                <div class="reviewer-info">
+                  <h3 class="reviewer-name">Florian R</h3>
+                  <span class="review-date">Google Review</span>
+                </div>
+                <div class="google-badge" title="Verified Google Review"><svg viewBox="0 0 24 24" width="16"
+                    height="16">
+                    <path fill="currentColor"
+                      d="M21.35,11.1H12.18V13.83H18.69C18.36,17.64 15.19,19.27 12.19,19.27C8.36,19.27 5,16.25 5,12C5,7.9 8.2,4.73 12.2,4.73C15.29,4.73 17.1,6.7 17.1,6.7L19,4.72C19,4.72 16.56,2 12.1,2C6.42,2 2.03,6.8 2.03,12C2.03,17.05 6.16,22 12.25,22C17.6,22 21.5,18.33 21.5,12.91C21.5,11.76 21.35,11.1 21.35,11.1V11.1Z" />
+                  </svg></div>
+              </div>
+              <div class="review-stars">★★★★★</div>
+              <p class="review-text">
+                "I learned so much from Ale and Xidan. They are the most knowledgeable teachers around. If you are
+                looking for high quality Bachata classes in Zurich, then look no further."
+              </p>
+            </div>
+
               </div>
             </div>
           </div>
@@ -1094,6 +1244,38 @@
 
         <div class="events-strip__meta">
           <a href="events" class="events-strip__all">View all events</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing Strip -->
+    <section class="pricing-strip reveal" aria-label="Course prices at a glance">
+      <div class="container">
+        <div class="pricing-strip__inner">
+          <div class="pricing-strip__copy">
+            <div class="pricing-strip__title-row">
+              <h2 class="pricing-strip__title">Our prices</h2>
+              <span class="pricing-strip__badge">
+                15% off your first pass
+                <svg class="pricing-strip__badge-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m0 0l-5-5m5 5l-5 5"></path>
+                </svg>
+              </span>
+            </div>
+            <p class="pricing-strip__lead">
+              Courses run in 8-week blocks in small groups — no subscription, no hidden fees. Students always save
+              15%.
+            </p>
+            <a href="registration" class="pricing-strip__cta">See all passes and prices<span aria-hidden="true">
+                →</span></a>
+          </div>
+          <div class="pricing-strip__figure">
+            <span class="pricing-strip__from">Courses from</span>
+            <span class="pricing-strip__amount">CHF 27.50</span>
+            <span class="pricing-strip__per">per class</span>
+            <span class="pricing-strip__equivalent">8-week course · CHF 220 · about CHF 110 per month</span>
+          </div>
         </div>
       </div>
     </section>
@@ -1167,12 +1349,19 @@
                   <h3 class="day-title">Monday</h3>
                   <div class="compact-class-list">
 
+                    <div class="compact-option compact-option--spacer" aria-hidden="true">
+                      <div class="compact-card">
+                        <span class="compact-time">18:30</span>
+                        <span class="compact-name">&nbsp;</span>
+                      </div>
+                    </div>
+
                     <label class="compact-option compact-option--recommended">
-                      <input type="radio" name="class-select" value="Monday 18:30 - Bachata Beginner 0"
+                      <input type="radio" name="class-select" value="Monday 19:30 - Bachata Beginner 0"
                         data-preselect="beginner0" required>
                       <div class="compact-card">
                         <span class="compact-status compact-status--recommended">New? Start here</span>
-                        <span class="compact-time">18:30</span>
+                        <span class="compact-time">19:30</span>
                         <span class="compact-name">Bachata <br>Beginner 0</span>
                       </div>
                     </label>
@@ -1192,7 +1381,8 @@
                     </div>
 
                     <label class="compact-option">
-                      <input type="radio" name="class-select" value="Tuesday 19:30 - Beginner 2">
+                      <input type="radio" name="class-select" value="Tuesday 19:30 - Beginner 2"
+                        data-preselect="beginner2">
                       <div class="compact-card">
                         <span class="compact-time">19:30</span>
                         <span class="compact-name">Bachata <br>Beginner 2</span>
@@ -1206,14 +1396,12 @@
                   <h3 class="day-title">Wednesday</h3>
                   <div class="compact-class-list">
 
-                    <label class="compact-option compact-option--disabled" aria-label="Wednesday 18:30 Bachata Beginner 2 is currently full">
-                      <input type="radio" name="class-select" value="Wednesday 18:30 - Bachata Beginner 2 (Full)" disabled>
+                    <div class="compact-option compact-option--spacer" aria-hidden="true">
                       <div class="compact-card">
                         <span class="compact-time">18:30</span>
-                        <span class="compact-name">Bachata <br>Beginner 2</span>
-                        <span class="compact-status">Full</span>
+                        <span class="compact-name">&nbsp;</span>
                       </div>
-                    </label>
+                    </div>
 
                     <label class="compact-option">
                       <input type="radio" name="class-select" value="Wednesday 19:30 - Foundation" data-preselect="foundation" required>
@@ -1224,7 +1412,8 @@
                     </label>
 
                     <label class="compact-option">
-                      <input type="radio" name="class-select" value="Wednesday 20:30 - Improver">
+                      <input type="radio" name="class-select" value="Wednesday 20:30 - Improver"
+                        data-preselect="improver">
                       <div class="compact-card">
                         <span class="compact-time">20:30</span>
                         <span class="compact-name">Bachata Sensual Improver</span>
@@ -1240,7 +1429,8 @@
 
 
                     <label class="compact-option">
-                      <input type="radio" name="class-select" value="Thursday 18:30 - Bachata Lady Style">
+                      <input type="radio" name="class-select" value="Thursday 18:30 - Bachata Lady Style"
+                        data-preselect="ladystyle">
                       <div class="compact-card">
                         <span class="compact-time">18:30</span>
                         <span class="compact-name">Bachata <br>Lady Style</span>
@@ -1248,7 +1438,8 @@
                     </label>
 
                     <label class="compact-option">
-                      <input type="radio" name="class-select" value="Thursday 19:30 - Bachata Sensual Intermediate">
+                      <input type="radio" name="class-select" value="Thursday 19:30 - Bachata Sensual Intermediate"
+                        data-preselect="intermediate">
                       <div class="compact-card">
                         <span class="compact-time">19:30</span>
                         <span class="compact-name compact-name--single-line">Bachata Sensual Intermediate</span>
@@ -1256,7 +1447,8 @@
                     </label>
 
                     <label class="compact-option">
-                      <input type="radio" name="class-select" value="Thursday 20:30 - Int/Adv">
+                      <input type="radio" name="class-select" value="Thursday 20:30 - Int/Adv"
+                        data-preselect="interadv">
                       <div class="compact-card">
                         <span class="compact-time">20:30</span>
                         <span class="compact-name">Bachata Sensual Int/Adv</span>
@@ -1307,7 +1499,7 @@
             </button>
             <p class="trial-submit-note">No payment required today. A real person confirms your class by WhatsApp.</p>
             <p class="trial-submit-pricing">
-              Afterwards, if you love it: courses run in 8-week blocks at 200 CHF — about 25 CHF per class. Your first
+              Afterwards, if you love it: courses run in 8-week blocks at 220 CHF — 27.50 CHF per class. Your first
               course sign-up comes with 15% off, and students receive a discount as well. No subscription, no pressure.
             </p>
             <p class="trial-submit-proof">
@@ -1417,7 +1609,7 @@
           </summary>
           <div class="faq-item__body">
             If you enjoyed the class, you simply continue with the course. Courses run in <strong>8-week blocks</strong>,
-            and one course per week costs 200 CHF (170 CHF for students). Your first course sign-up comes with
+            and one course per week costs 220 CHF (185 CHF for students). Your first course sign-up comes with
             <strong>15% off</strong>. You can compare all options on our
             <a href="registration">registration page</a>.
           </div>
@@ -1512,6 +1704,7 @@
           <li><a href="blog/roots-of-bachata">Roots of Bachata</a></li>
           <li><a href="schedule">Schedule</a></li>
           <li><a href="blog">Our Blog</a></li>
+          <li><a href="https://www.google.com/maps?cid=15680757943659417558" target="_blank" rel="noopener noreferrer">Read our reviews on Google</a></li>
 
         </ul>
       </div>

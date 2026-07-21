@@ -29,5 +29,8 @@ jobs:
       - name: Run breadcrumb audit
         run: python3 scripts/breadcrumb_audit.py
 
+      - name: Run site health gate
+        run: python3 scripts/site_health.py
+
       - name: Check whitespace errors
         run: git diff --check

@@ -12,6 +12,16 @@ from bs4 import BeautifulSoup
 
 BASE_URL = "https://axcentdance.com"
 
+META_REFRESH_PATTERN = re.compile(
+    r'<meta\s[^>]*http-equiv=["\']refresh["\']',
+    re.IGNORECASE,
+)
+
+
+def is_redirect_stub(content: str) -> bool:
+    """Meta-refresh redirect stubs are not destination pages and carry no JSON-LD by design."""
+    return bool(META_REFRESH_PATTERN.search(content))
+
 
 class BreadcrumbValidationError(Exception):
     """Raised when breadcrumb schema cannot be parsed for validation."""

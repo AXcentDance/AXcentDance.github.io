@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://axcentdance.com/guide-social-dancing</loc>
-    <lastmod>2026-05-10T12:00:00+02:00</lastmod>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/guide-social-dancing" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/guide-social-dancing" />
@@ -14,7 +14,7 @@
   </url>
   <url>
     <loc>https://axcentdance.com/de/guide-social-dancing</loc>
-    <lastmod>2026-05-10T12:00:00+02:00</lastmod>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/guide-social-dancing" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/guide-social-dancing" />
@@ -25,8 +25,1072 @@
     </image:image>
   </url>
   <url>
+    <loc>https://axcentdance.com/</loc>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/" />
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/MilanoSensualCongress2026_1200w.webp</image:loc>
+      <image:title>Milano Sensual Congress 2026</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/gallery/gallery_12_1200w.webp</image:loc>
+      <image:title>Beginners practicing their first Bachata steps together at AXcent Dance in Zurich</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/home/gallery_1_1200w.webp</image:loc>
+      <image:title>Two dancers practicing Bachata Sensual styling and connection at AXcent Dance in Zurich</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/home/gallery_new_1.webp</image:loc>
+      <image:title>Smiling AXcent students celebrating together after Bachata class in Zurich</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/gallery/gallery_12.webp</image:loc>
+      <image:title>Students smiling while practicing Bachata steps in the Zurich studio</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/home/gallery_3.webp</image:loc>
+      <image:title>AXcent Bachata students smiling together in the Zurich studio</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/home/gallery_4.webp</image:loc>
+      <image:title>AXcent instructors leading a Bachata event workshop on stage with students following behind them</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/ale-xidan-about_480w.webp</image:loc>
+      <image:title>Ale and Xidan, founders of AXcent Dance</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/dominican_bootcamp_480w.webp</image:loc>
+      <image:title>Dominican Bachata Bootcamp in Zurich with Aitor Gomez and Sarah La Morena</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/MilanoSensualCongress2026_480w.webp</image:loc>
+      <image:title>Milano Sensual Congress 2026 international artist lineup</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/brand/axcent-dance-couple-mark.webp</image:loc>
+      <image:title>AXcent Dance couple mark</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://axcentdance.com/de/</loc>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/" />
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/MilanoSensualCongress2026_1200w.webp</image:loc>
+      <image:title>Milano Sensual Congress 2026</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/gallery/gallery_12_1200w.webp</image:loc>
+      <image:title>Anfänger üben ihre ersten Bachata-Schritte gemeinsam bei AXcent Dance in Zürich</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/home/gallery_1_1200w.webp</image:loc>
+      <image:title>Zwei Tänzer üben Bachata Sensual Styling und Verbindung bei AXcent Dance in Zürich</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/home/gallery_new_1.webp</image:loc>
+      <image:title>Lächelnde AXcent Schüler feiern zusammen nach dem Bachata Kurs in Zürich</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/gallery/gallery_12.webp</image:loc>
+      <image:title>Schüler lachen beim Üben von Bachata Schritten im Zürcher Studio</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/home/gallery_2.webp</image:loc>
+      <image:title>AXcent Schüler lächeln zusammen während eines Bachata Social Events in Zürich</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/home/gallery_3.webp</image:loc>
+      <image:title>AXcent Bachata Schüler lächeln zusammen im Zürcher Studio</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/gallery/gallery_7.webp</image:loc>
+      <image:title>Lächelnde AXcent Schüler kommen nach einem Bachata Kurs in Zürich zusammen</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/home/gallery_4.webp</image:loc>
+      <image:title>AXcent Instruktoren leiten einen Bachata Event Workshop auf der Bühne, während Schüler hinter ihnen folgen</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/ale-xidan-about_480w.webp</image:loc>
+      <image:title>Ale und Xidan, Gründer von AXcent Dance</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/dominican_bootcamp_480w.webp</image:loc>
+      <image:title>Dominican Bachata Bootcamp in Zürich mit Aitor Gomez und Sarah La Morena</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/MilanoSensualCongress2026_480w.webp</image:loc>
+      <image:title>Milano Sensual Congress 2026 internationales Künstler-Line-up</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/brand/axcent-dance-couple-mark.webp</image:loc>
+      <image:title>AXcent Dance Paar-Signet</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://axcentdance.com/Milano-Sensual-Congress-2026</loc>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/Milano-Sensual-Congress-2026" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/Milano-Sensual-Congress-2026" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/Milano-Sensual-Congress-2026" />
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/MilanoSensualCongress2026_Nov.webp</image:loc>
+      <image:title>Milano Sensual Congress 2026 Flyer</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/dominican_bootcamp.webp</image:loc>
+      <image:title>Bootcamp</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://axcentdance.com/de/Milano-Sensual-Congress-2026</loc>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/Milano-Sensual-Congress-2026" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/Milano-Sensual-Congress-2026" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/Milano-Sensual-Congress-2026" />
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/MilanoSensualCongress2026_Nov.webp</image:loc>
+      <image:title>Milano Sensual Congress 2026 Flyer</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/dominican_bootcamp.webp</image:loc>
+      <image:title>Bootcamp</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://axcentdance.com/about</loc>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/about" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/about" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/about" />
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/ale-xidan-about.webp</image:loc>
+      <image:title>Ale and Xidan - Founders of AXcent Dance</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/studio/studio_room_view_1_800w.webp</image:loc>
+      <image:title>The AXcent Dance studio room with mirrors and open floor</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/studio/studio_room_view_2_800w.webp</image:loc>
+      <image:title>A second view of the AXcent Dance studio in Zurich Altstetten</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://axcentdance.com/de/about</loc>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/about" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/about" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/about" />
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/ale-xidan-about.webp</image:loc>
+      <image:title>Ale und Xidan - Gründer von AXcent Dance</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/studio/studio_room_view_1_800w.webp</image:loc>
+      <image:title>Der AXcent Dance Studioraum mit Spiegeln und offener Tanzfläche</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/studio/studio_room_view_2_800w.webp</image:loc>
+      <image:title>Eine zweite Ansicht des AXcent Dance Studios in Zürich Altstetten</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://axcentdance.com/contact</loc>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/contact" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/contact" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/contact" />
+  </url>
+  <url>
+    <loc>https://axcentdance.com/de/contact</loc>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/contact" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/contact" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/contact" />
+  </url>
+  <url>
+    <loc>https://axcentdance.com/beginner-guide</loc>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/beginner-guide" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/beginner-guide" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/beginner-guide" />
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/bachata_class_zurich.webp</image:loc>
+      <image:title>Bachata Classes in Zurich</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://axcentdance.com/de/beginner-guide</loc>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/beginner-guide" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/beginner-guide" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/beginner-guide" />
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/bachata_class_zurich.webp</image:loc>
+      <image:title>Bachata-Kurse in Zürich</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://axcentdance.com/schedule</loc>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/schedule" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/schedule" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/schedule" />
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/gallery/gallery_6.webp</image:loc>
+      <image:title>Bachata Dance Class Atmosphere</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/private_lesson_hero.webp</image:loc>
+      <image:title>Private Bachata lesson at AXcent Dance</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://axcentdance.com/de/schedule</loc>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/schedule" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/schedule" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/schedule" />
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/gallery/gallery_6.webp</image:loc>
+      <image:title>Bachata Dance Class Atmosphere</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/private_lesson_hero.webp</image:loc>
+      <image:title>Private Bachata-Stunde bei AXcent Dance</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://axcentdance.com/terms</loc>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/terms" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/terms" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/terms" />
+  </url>
+  <url>
+    <loc>https://axcentdance.com/de/terms</loc>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/terms" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/terms" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/terms" />
+  </url>
+  <url>
+    <loc>https://axcentdance.com/bachata-beginner-2</loc>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/bachata-beginner-2" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/bachata-beginner-2" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/bachata-beginner-2" />
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/gallery/gallery_10_800w.webp</image:loc>
+      <image:title>Students learning new partnerwork moves in class at AXcent Dance in Zurich</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/ale-xidan-about_480w.webp</image:loc>
+      <image:title>Ale and Xidan, founders of AXcent Dance</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://axcentdance.com/de/bachata-beginner-2</loc>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/bachata-beginner-2" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/bachata-beginner-2" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/bachata-beginner-2" />
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/gallery/gallery_10_800w.webp</image:loc>
+      <image:title>Schüler lernen neue Partnerwork-Figuren in einer Klasse bei AXcent Dance in Zürich</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/ale-xidan-about_480w.webp</image:loc>
+      <image:title>Ale und Xidan, Gründer von AXcent Dance</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://axcentdance.com/guide-bachata-sensual</loc>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/guide-bachata-sensual" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/guide-bachata-sensual" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/guide-bachata-sensual" />
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/home/gallery_1_800w.webp</image:loc>
+      <image:title>Two dancers in a Bachata Sensual close-position frame</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://axcentdance.com/de/guide-bachata-sensual</loc>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/guide-bachata-sensual" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/guide-bachata-sensual" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/guide-bachata-sensual" />
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/home/gallery_1_800w.webp</image:loc>
+      <image:title>Zwei Tänzer in einer Bachata-Sensual-Nahposition</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://axcentdance.com/bachata-beginner-1</loc>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/bachata-beginner-1" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/bachata-beginner-1" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/bachata-beginner-1" />
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/home/gallery_3_800w.webp</image:loc>
+      <image:title>AXcent Bachata students smiling together in the Zurich studio</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/ale-xidan-about_480w.webp</image:loc>
+      <image:title>Ale and Xidan, founders of AXcent Dance</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://axcentdance.com/de/bachata-beginner-1</loc>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/bachata-beginner-1" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/bachata-beginner-1" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/bachata-beginner-1" />
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/home/gallery_3_800w.webp</image:loc>
+      <image:title>Lächelnde Bachata-Schüler zusammen im AXcent Studio in Zürich</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/ale-xidan-about_480w.webp</image:loc>
+      <image:title>Ale und Xidan, Gründer von AXcent Dance</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://axcentdance.com/gallery</loc>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/gallery" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/gallery" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/gallery" />
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/gallery/gallery_1.webp</image:loc>
+      <image:title>Large group photo from a weekend Bachata intensive workshop</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/gallery/gallery_10.webp</image:loc>
+      <image:title>Students learning new partnerwork moves in class</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/gallery/gallery_3.webp</image:loc>
+      <image:title>Students practicing footwork in the dance studio mirror</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/gallery/gallery_14.webp</image:loc>
+      <image:title>Focused practice session in our Zurich dance studio</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/gallery/gallery_12.webp</image:loc>
+      <image:title>Action shot of a fun moment during a couples dance class</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/gallery/gallery_6.webp</image:loc>
+      <image:title>Full house Bachata workshop with energetic students</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/gallery/gallery_7.webp</image:loc>
+      <image:title>Group of smiling dancers after a successful intensive session</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/gallery/gallery_4.webp</image:loc>
+      <image:title>Diverse group of students posing in AXcent Dance class Zurich</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/gallery/gallery_5.webp</image:loc>
+      <image:title>Social dancing night at AXcent Dance Zurich with happy dancers</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/gallery/gallery_13.webp</image:loc>
+      <image:title>Happy students celebrating friendship through dance</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/gallery/gallery_2.webp</image:loc>
+      <image:title>Ale and Xidan performing on stage at a festival</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/gallery/gallery_9.webp</image:loc>
+      <image:title>The AXcent Dance team lineup ready for performance</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/gallery/gallery_8.webp</image:loc>
+      <image:title>Students and instructors posing at an international dance festival</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/gallery/gallery_15.webp</image:loc>
+      <image:title>Expressive dance pose at a Bachata festival event</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://axcentdance.com/de/gallery</loc>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/gallery" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/gallery" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/gallery" />
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/gallery/gallery_1.webp</image:loc>
+      <image:title>Grosses Gruppenfoto von einem Bachata-Intensiv-Workshop am Wochenende</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/gallery/gallery_10.webp</image:loc>
+      <image:title>Schüler lernen neue Partnerwork-Figuren im Kurs</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/gallery/gallery_3.webp</image:loc>
+      <image:title>Schüler üben Footwork im Spiegel des Tanzstudios</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/gallery/gallery_14.webp</image:loc>
+      <image:title>Konzentrierte Trainingseinheit in unserem Zürcher Tanzstudio</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/gallery/gallery_12.webp</image:loc>
+      <image:title>Actionaufnahme eines lustigen Moments im Paartanzkurs</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/gallery/gallery_6.webp</image:loc>
+      <image:title>Ausgebuchter Bachata-Workshop mit energiegeladenen Schülern</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/gallery/gallery_7.webp</image:loc>
+      <image:title>Gruppe lächelnder Tänzer nach einem erfolgreichen Intensiv-Workshop</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/gallery/gallery_4.webp</image:loc>
+      <image:title>Vielfältige Gruppe von Schülern im AXcent Dance Kurs in Zürich</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/gallery/gallery_5.webp</image:loc>
+      <image:title>Social Dancing Abend bei AXcent Dance Zürich mit glücklichen Tänzern</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/gallery/gallery_13.webp</image:loc>
+      <image:title>Glückliche Schüler feiern Freundschaft durch den Tanz</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/gallery/gallery_2.webp</image:loc>
+      <image:title>Ale und Xidan bei einem Bühnenauftritt auf einem Festival</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/gallery/gallery_9.webp</image:loc>
+      <image:title>Das AXcent Dance Team bereit für den Auftritt</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/gallery/gallery_8.webp</image:loc>
+      <image:title>Schüler und Lehrer posieren bei einem internationalen Tanzfestival</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/gallery/gallery_15.webp</image:loc>
+      <image:title>Ausdrucksstarke Tanzpose bei einem Bachata-Festival</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://axcentdance.com/room-rental</loc>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/room-rental" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/room-rental" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/room-rental" />
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/empty_studio_mirrors_1200w.webp</image:loc>
+      <image:title>Empty mirrored dance studio ready for rent at AXcent Dance in Zurich Altstetten</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/studio/studio_room_view_1.webp</image:loc>
+      <image:title>Spacious dance studio with purple ceiling and mirrors</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/studio/studio_room_view_2.webp</image:loc>
+      <image:title>Wide angle view of the AXcent Dance studio hall</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://axcentdance.com/de/room-rental</loc>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/room-rental" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/room-rental" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/room-rental" />
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/empty_studio_mirrors_1200w.webp</image:loc>
+      <image:title>Leerer Spiegelsaal zur Miete bei AXcent Dance in Zürich Altstetten</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/studio/studio_room_view_1.webp</image:loc>
+      <image:title>Geräumiges Tanzstudio mit violetter Decke und Spiegeln</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/studio/studio_room_view_2.webp</image:loc>
+      <image:title>Weitwinkelansicht des AXcent Dance Studiosaals</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://axcentdance.com/lady-styling</loc>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/lady-styling" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/lady-styling" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/lady-styling" />
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/gallery/gallery_3_800w.webp</image:loc>
+      <image:title>A dancer practicing footwork and styling in the AXcent Dance studio mirror</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/ale-xidan-about_480w.webp</image:loc>
+      <image:title>Ale and Xidan, founders of AXcent Dance</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://axcentdance.com/de/lady-styling</loc>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/lady-styling" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/lady-styling" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/lady-styling" />
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/gallery/gallery_3_800w.webp</image:loc>
+      <image:title>Eine Tänzerin übt Footwork und Styling vor dem Spiegel im AXcent Dance Studio</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/ale-xidan-about_480w.webp</image:loc>
+      <image:title>Ale und Xidan, Gründer von AXcent Dance</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://axcentdance.com/imprint</loc>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/imprint" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/imprint" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/imprint" />
+  </url>
+  <url>
+    <loc>https://axcentdance.com/de/imprint</loc>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/imprint" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/imprint" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/imprint" />
+  </url>
+  <url>
+    <loc>https://axcentdance.com/bachata-sensual-inter-adv</loc>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/bachata-sensual-inter-adv" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/bachata-sensual-inter-adv" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/bachata-sensual-inter-adv" />
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/home/gallery_4_800w.webp</image:loc>
+      <image:title>AXcent instructors leading a Bachata workshop on stage with students following behind them</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/ale-xidan-about_480w.webp</image:loc>
+      <image:title>Ale and Xidan, founders of AXcent Dance</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://axcentdance.com/de/bachata-sensual-inter-adv</loc>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/bachata-sensual-inter-adv" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/bachata-sensual-inter-adv" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/bachata-sensual-inter-adv" />
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/home/gallery_4_800w.webp</image:loc>
+      <image:title>AXcent-Lehrer leiten einen Bachata-Workshop auf der Bühne, Schüler folgen hinter ihnen</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/ale-xidan-about_480w.webp</image:loc>
+      <image:title>Ale und Xidan, Gründer von AXcent Dance</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://axcentdance.com/dominican-bootcamp</loc>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/dominican-bootcamp" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/dominican-bootcamp" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/dominican-bootcamp" />
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/dominican_bootcamp.webp</image:loc>
+      <image:title>Dominican Bachata Bootcamp flyer: 4 hours with Aitor Gomez, 3 hours with Sarah La Morena, 17 to 19 October, AXcent Dance Studio Zurich</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/blog/discover/dominican-bachata-bootcamp-aitor-sara-1200x675.webp</image:loc>
+      <image:title>Sarah La Morena, Dominican Bachata artist teaching at AXcent Dance Zurich</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://axcentdance.com/de/dominican-bootcamp</loc>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/dominican-bootcamp" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/dominican-bootcamp" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/dominican-bootcamp" />
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/dominican_bootcamp.webp</image:loc>
+      <image:title>Dominican Bachata Bootcamp Flyer: 4 Stunden mit Aitor Gomez, 3 Stunden mit Sarah La Morena, 17. bis 19. Oktober, AXcent Dance Studio Zürich</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/blog/discover/dominican-bachata-bootcamp-aitor-sara-1200x675.webp</image:loc>
+      <image:title>Sarah La Morena, Dominican-Bachata-Künstlerin, unterrichtet bei AXcent Dance Zürich</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://axcentdance.com/bachata-sensual-improver</loc>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/bachata-sensual-improver" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/bachata-sensual-improver" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/bachata-sensual-improver" />
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/gallery/gallery_11_800w.webp</image:loc>
+      <image:title>Close connection and leading technique in a Bachata Sensual class at AXcent Dance</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/ale-xidan-about_480w.webp</image:loc>
+      <image:title>Ale and Xidan, founders of AXcent Dance</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://axcentdance.com/de/bachata-sensual-improver</loc>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/bachata-sensual-improver" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/bachata-sensual-improver" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/bachata-sensual-improver" />
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/gallery/gallery_11_800w.webp</image:loc>
+      <image:title>Enge Verbindung und Führungstechnik in einer Bachata Sensual Klasse bei AXcent Dance</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/ale-xidan-about_480w.webp</image:loc>
+      <image:title>Ale und Xidan, Gründer von AXcent Dance</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://axcentdance.com/corporate-events</loc>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/corporate-events" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/corporate-events" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/corporate-events" />
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/corporate_party_natural_1200w.webp</image:loc>
+      <image:title>Employees dancing together at a corporate team building event hosted by AXcent Dance</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/corporate_party_natural.webp</image:loc>
+      <image:title>Company Party Dancing</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://axcentdance.com/de/corporate-events</loc>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/corporate-events" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/corporate-events" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/corporate-events" />
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/corporate_party_natural_1200w.webp</image:loc>
+      <image:title>Mitarbeitende tanzen gemeinsam bei einer Firmenfeier von AXcent Dance</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/corporate_party_natural.webp</image:loc>
+      <image:title>Company Party Dancing</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://axcentdance.com/bachata-sensual-foundation</loc>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/bachata-sensual-foundation" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/bachata-sensual-foundation" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/bachata-sensual-foundation" />
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/home/gallery_1_800w.webp</image:loc>
+      <image:title>Two dancers practicing Bachata Sensual body movement and connection at AXcent Dance in Zurich</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/ale-xidan-about_480w.webp</image:loc>
+      <image:title>Ale and Xidan, founders of AXcent Dance</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://axcentdance.com/de/bachata-sensual-foundation</loc>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/bachata-sensual-foundation" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/bachata-sensual-foundation" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/bachata-sensual-foundation" />
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/home/gallery_1_800w.webp</image:loc>
+      <image:title>Zwei Tänzer üben Bachata Sensual Körperbewegung und Verbindung bei AXcent Dance in Zürich</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/ale-xidan-about_480w.webp</image:loc>
+      <image:title>Ale und Xidan, Gründer von AXcent Dance</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://axcentdance.com/registration</loc>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/registration" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/registration" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/registration" />
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/gallery/gallery_12_1200w.webp</image:loc>
+      <image:title>Students enjoying a Bachata class at AXcent Dance in Zurich Altstetten</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://axcentdance.com/de/registration</loc>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/registration" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/registration" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/registration" />
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/gallery/gallery_12_1200w.webp</image:loc>
+      <image:title>Bachata-Kurs bei AXcent Dance in Zürich Altstetten mit fröhlichen Teilnehmenden</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://axcentdance.com/etiquette</loc>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/etiquette" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/etiquette" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/etiquette" />
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/blog/connection-101.webp</image:loc>
+      <image:title>Dance Floor Etiquette and Connection</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://axcentdance.com/de/etiquette</loc>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/etiquette" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/etiquette" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/etiquette" />
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/blog/connection-101.webp</image:loc>
+      <image:title>Tanzflächen-Etikette und Verbindung</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://axcentdance.com/education</loc>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/education" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/education" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/education" />
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/bachata_education_book.webp</image:loc>
+      <image:title>Bachata Dance Education Book and Instruments</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://axcentdance.com/de/education</loc>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/education" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/education" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/education" />
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/bachata_education_book.webp</image:loc>
+      <image:title>Bachata Tanzausbildung – Buch und Instrumente</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://axcentdance.com/events</loc>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/events" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/events" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/events" />
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/gallery/gallery_15_1200w.webp</image:loc>
+      <image:title>Expressive dance pose at a Bachata festival event</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/dominican_bootcamp.webp</image:loc>
+      <image:title>Dominican Bachata Bootcamp flyer with Aitor Gomez and Sarah La Morena</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/gallery/gallery_7_800w.webp</image:loc>
+      <image:title>Group of smiling dancers after an intensive Bachata session at AXcent Dance</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/gallery/gallery_5_800w.webp</image:loc>
+      <image:title>Social dancing night at AXcent Dance Zurich with happy dancers</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/gallery/gallery_1_800w.webp</image:loc>
+      <image:title>AXcent dancers together at the Sensual Bachata Festival congress in Bucharest</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/MilanoSensualCongress2026_Nov.webp</image:loc>
+      <image:title>Milano Sensual Congress 2026 poster with the featured artist line-up</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://axcentdance.com/de/events</loc>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/events" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/events" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/events" />
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/gallery/gallery_15_1200w.webp</image:loc>
+      <image:title>Ausdrucksstarke Tanzpose bei einem Bachata-Festival</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/dominican_bootcamp.webp</image:loc>
+      <image:title>Flyer des Dominican Bachata Bootcamps mit Aitor Gomez und Sarah La Morena</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/gallery/gallery_7_800w.webp</image:loc>
+      <image:title>Gruppe lachender Tänzerinnen und Tänzer nach einer intensiven Bachata-Session bei AXcent Dance</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/gallery/gallery_5_800w.webp</image:loc>
+      <image:title>Social-Dancing-Abend bei AXcent Dance Zürich mit fröhlichen Tanzpaaren</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/gallery/gallery_1_800w.webp</image:loc>
+      <image:title>AXcent Tänzerinnen und Tänzer beim Sensual Bachata Festival in Bukarest</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/MilanoSensualCongress2026_Nov.webp</image:loc>
+      <image:title>Plakat des Milano Sensual Congress 2026 mit dem Künstler-Line-up</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://axcentdance.com/private-lessons</loc>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/private-lessons" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/private-lessons" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/private-lessons" />
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/private_lesson_hero_1200w.webp</image:loc>
+      <image:title>Private Bachata coaching session in Zurich</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://axcentdance.com/de/private-lessons</loc>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/private-lessons" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/private-lessons" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/private-lessons" />
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/private_lesson_hero_1200w.webp</image:loc>
+      <image:title>Private Bachata-Coachingstunde in Zürich</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://axcentdance.com/faq</loc>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/faq" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/faq" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/faq" />
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/faq_artistic_motion.webp</image:loc>
+      <image:title>Artistic Motion Blur of Couple Dancing Bachata</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://axcentdance.com/de/faq</loc>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/faq" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/faq" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/faq" />
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/faq_artistic_motion.webp</image:loc>
+      <image:title>Künstlerische Bewegungsunschärfe eines tanzenden Bachata-Paares</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://axcentdance.com/wedding-dance</loc>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/wedding-dance" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/wedding-dance" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/wedding-dance" />
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/wedding_dance_hero.webp</image:loc>
+      <image:title>A couple rehearsing their wedding first dance</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://axcentdance.com/de/wedding-dance</loc>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/wedding-dance" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/wedding-dance" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/wedding-dance" />
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/wedding_dance_hero.webp</image:loc>
+      <image:title>Ein Paar probt seinen Hochzeits-Eröffnungstanz</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://axcentdance.com/privacy</loc>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/privacy" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/privacy" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/privacy" />
+  </url>
+  <url>
+    <loc>https://axcentdance.com/de/privacy</loc>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/privacy" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/privacy" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/privacy" />
+  </url>
+  <url>
+    <loc>https://axcentdance.com/guide-bachata</loc>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/guide-bachata" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/guide-bachata" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/guide-bachata" />
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/bachata_guira_clear.webp</image:loc>
+      <image:title>Güira</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/bachata_bongos_clear.webp</image:loc>
+      <image:title>Bongo drums</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/bachata_segunda_clear.webp</image:loc>
+      <image:title>Segunda guitar</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/bachata_bass_clear.webp</image:loc>
+      <image:title>Bass guitar</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/bachata_requinto_clear.webp</image:loc>
+      <image:title>Requinto guitar</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://axcentdance.com/de/guide-bachata</loc>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/guide-bachata" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/guide-bachata" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/guide-bachata" />
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/bachata_guira_clear.webp</image:loc>
+      <image:title>Bachata Güira</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/bachata_bongos_clear.webp</image:loc>
+      <image:title>Bachata Bongos</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/bachata_segunda_clear.webp</image:loc>
+      <image:title>Bachata Segunda Gitarre</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/bachata_bass_clear.webp</image:loc>
+      <image:title>Bachata Bassgitarre</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/bachata_requinto_clear.webp</image:loc>
+      <image:title>Bachata Requinto Lead-Gitarre</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://axcentdance.com/blog/romeo-prince-tour-2026</loc>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/blog/romeo-prince-tour-2026" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/blog/romeo-prince-tour-2026" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/blog/romeo-prince-tour-2026" />
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/blog/romeo-prince-tour-2026.webp</image:loc>
+      <image:title>Romeo Santos &amp; Prince Royce Tour Poster</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://axcentdance.com/de/blog/romeo-prince-tour-2026</loc>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/blog/romeo-prince-tour-2026" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/blog/romeo-prince-tour-2026" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/blog/romeo-prince-tour-2026" />
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/blog/romeo-prince-tour-2026.webp</image:loc>
+      <image:title>Romeo Santos &amp; Prince Royce Tour Poster</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://axcentdance.com/blog/what-to-wear-bachata</loc>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/blog/what-to-wear-bachata" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/blog/what-to-wear-bachata" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/blog/what-to-wear-bachata" />
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/bachata_essentials_flatlay.webp</image:loc>
+      <image:title>What to Wear to Bachata Class: A Beginner</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://axcentdance.com/de/blog/what-to-wear-bachata</loc>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/blog/what-to-wear-bachata" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/blog/what-to-wear-bachata" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/blog/what-to-wear-bachata" />
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/bachata_essentials_flatlay.webp</image:loc>
+      <image:title>What to Wear to Bachata Class: A Beginner</image:title>
+    </image:image>
+  </url>
+  <url>
     <loc>https://axcentdance.com/blog</loc>
-    <lastmod>2026-06-06T12:00:00+02:00</lastmod>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/blog" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/blog" />
@@ -36,8 +1100,8 @@
       <image:title>Frame Technique</image:title>
     </image:image>
     <image:image>
-      <image:loc>https://axcentdance.com/assets/images/blog/discover/dance-tips-1-frame-1200x675.webp</image:loc>
-      <image:title>Afro dance classes coming to AXcent Dance in September</image:title>
+      <image:loc>https://axcentdance.com/assets/images/home/gallery_4_1200w.webp</image:loc>
+      <image:title>AXcent Dance instructors teaching a Bachata workshop in Zurich</image:title>
     </image:image>
     <image:image>
       <image:loc>https://axcentdance.com/assets/images/blog/discover/rent-space-zurich-1200x675.webp</image:loc>
@@ -76,6 +1140,10 @@
       <image:title>Bachata parties in Zurich - Bürkliplatz</image:title>
     </image:image>
     <image:image>
+      <image:loc>https://axcentdance.com/assets/images/blog/discover/start-new-hobby-meet-people-zurich-1200x675.webp</image:loc>
+      <image:title>Dancers laughing together while learning Bachata at a social dance class in Zurich</image:title>
+    </image:image>
+    <image:image>
       <image:loc>https://axcentdance.com/assets/images/blog/salsa_vs_bachata_hero.webp</image:loc>
       <image:title>Salsa vs Bachata comparison</image:title>
     </image:image>
@@ -100,16 +1168,16 @@
       <image:title>First Week at AXcent Dance New Studio</image:title>
     </image:image>
     <image:image>
+      <image:loc>https://axcentdance.com/assets/images/empty_studio_mirrors.webp</image:loc>
+      <image:title>New Location Zurich</image:title>
+    </image:image>
+    <image:image>
       <image:loc>https://axcentdance.com/assets/images/blog/romeo-prince-tour-2026.webp</image:loc>
       <image:title>Romeo Santos Tour 2026</image:title>
     </image:image>
     <image:image>
       <image:loc>https://axcentdance.com/assets/images/blog/science-of-dance-mental-health.webp</image:loc>
       <image:title>Stress Less, Dance More</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://axcentdance.com/assets/images/empty_studio_mirrors.webp</image:loc>
-      <image:title>New Location Zurich</image:title>
     </image:image>
     <image:image>
       <image:loc>https://axcentdance.com/assets/images/christmas_break_2025.webp</image:loc>
@@ -130,7 +1198,7 @@
   </url>
   <url>
     <loc>https://axcentdance.com/de/blog</loc>
-    <lastmod>2026-06-06T12:00:00+02:00</lastmod>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/blog" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/blog" />
@@ -140,8 +1208,8 @@
       <image:title>Rahmen-Technik</image:title>
     </image:image>
     <image:image>
-      <image:loc>https://axcentdance.com/assets/images/blog/discover/dance-tips-1-frame-1200x675.webp</image:loc>
-      <image:title>Afro Tanzkurse kommen im September zu AXcent Dance</image:title>
+      <image:loc>https://axcentdance.com/assets/images/home/gallery_4_1200w.webp</image:loc>
+      <image:title>AXcent Dance Lehrpersonen unterrichten einen Bachata-Workshop in Zürich</image:title>
     </image:image>
     <image:image>
       <image:loc>https://axcentdance.com/assets/images/blog/discover/rent-space-zurich-1200x675.webp</image:loc>
@@ -180,6 +1248,10 @@
       <image:title>Bachata Partys in Zürich - Bürkliplatz</image:title>
     </image:image>
     <image:image>
+      <image:loc>https://axcentdance.com/assets/images/blog/discover/start-new-hobby-meet-people-zurich-1200x675.webp</image:loc>
+      <image:title>Tanzende lachen gemeinsam beim Bachata-Kurs in Zürich</image:title>
+    </image:image>
+    <image:image>
       <image:loc>https://axcentdance.com/assets/images/blog/salsa_vs_bachata_hero.webp</image:loc>
       <image:title>Salsa vs Bachata Vergleich</image:title>
     </image:image>
@@ -204,6 +1276,10 @@
       <image:title>Erste Woche im neuen AXcent Dance Studio</image:title>
     </image:image>
     <image:image>
+      <image:loc>https://axcentdance.com/assets/images/empty_studio_mirrors.webp</image:loc>
+      <image:title>Neuer Standort Zürich</image:title>
+    </image:image>
+    <image:image>
       <image:loc>https://axcentdance.com/assets/images/blog/romeo-prince-tour-2026.webp</image:loc>
       <image:title>Romeo Santos Tour 2026</image:title>
     </image:image>
@@ -212,16 +1288,12 @@
       <image:title>Weniger Stress, Mehr Tanzen</image:title>
     </image:image>
     <image:image>
-      <image:loc>https://axcentdance.com/assets/images/empty_studio_mirrors.webp</image:loc>
-      <image:title>Neuer Standort Zürich</image:title>
-    </image:image>
-    <image:image>
       <image:loc>https://axcentdance.com/assets/images/christmas_break_2025.webp</image:loc>
       <image:title>Weihnachtspause</image:title>
     </image:image>
     <image:image>
       <image:loc>https://axcentdance.com/assets/images/romeo_santos.webp</image:loc>
-      <image:title>Romeo Santos and Prince Royce</image:title>
+      <image:title>Romeo Santos und Prince Royce</image:title>
     </image:image>
     <image:image>
       <image:loc>https://axcentdance.com/assets/images/bachata_essentials_flatlay.webp</image:loc>
@@ -233,897 +1305,9 @@
     </image:image>
   </url>
   <url>
-    <loc>https://axcentdance.com/</loc>
-    <lastmod>2026-07-04T12:00:00+02:00</lastmod>
-    <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/" />
-    <image:image>
-      <image:loc>https://axcentdance.com/assets/images/home/gallery_new_1.webp</image:loc>
-      <image:title>Happy Bachata students group photo in the dance studio mirror</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://axcentdance.com/assets/images/home/gallery_2.webp</image:loc>
-      <image:title>Group selfie at dance event</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://axcentdance.com/assets/images/home/gallery_3.webp</image:loc>
-      <image:title>Large group photo after class</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://axcentdance.com/assets/images/home/gallery_4.webp</image:loc>
-      <image:title>Stage performance at festival</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://axcentdance.com/de/</loc>
-    <lastmod>2026-06-03T12:00:00+02:00</lastmod>
-    <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/" />
-    <image:image>
-      <image:loc>https://axcentdance.com/assets/images/home/gallery_new_1.webp</image:loc>
-      <image:title>Gruppe glücklicher Bachata Schüler posiert im Studio Spiegel</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://axcentdance.com/assets/images/home/gallery_2.webp</image:loc>
-      <image:title>Gruppen-Selfie bei einem Tanzevent</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://axcentdance.com/assets/images/home/gallery_3.webp</image:loc>
-      <image:title>Gruppenfoto nach dem Tanzkurs</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://axcentdance.com/assets/images/home/gallery_4.webp</image:loc>
-      <image:title>Bühnenauftritt beim Festival</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://axcentdance.com/Milano-Sensual-Congress-2026</loc>
-    <lastmod>2026-05-28T12:00:00+02:00</lastmod>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/Milano-Sensual-Congress-2026" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/Milano-Sensual-Congress-2026" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/Milano-Sensual-Congress-2026" />
-    <image:image>
-      <image:loc>https://axcentdance.com/assets/images/MilanoSensualCongress2026_Nov.webp</image:loc>
-      <image:title>Milano Sensual Congress 2026 Flyer</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://axcentdance.com/assets/images/dominican_bootcamp.webp</image:loc>
-      <image:title>Bootcamp</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://axcentdance.com/de/Milano-Sensual-Congress-2026</loc>
-    <lastmod>2026-05-28T12:00:00+02:00</lastmod>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/Milano-Sensual-Congress-2026" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/Milano-Sensual-Congress-2026" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/Milano-Sensual-Congress-2026" />
-    <image:image>
-      <image:loc>https://axcentdance.com/assets/images/MilanoSensualCongress2026_Nov.webp</image:loc>
-      <image:title>Milano Sensual Congress 2026 Flyer</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://axcentdance.com/assets/images/dominican_bootcamp.webp</image:loc>
-      <image:title>Bootcamp</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://axcentdance.com/about</loc>
-    <lastmod>2026-05-13T12:00:00+02:00</lastmod>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/about" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/about" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/about" />
-    <image:image>
-      <image:loc>https://axcentdance.com/assets/images/ale-xidan-about.webp</image:loc>
-      <image:title>Ale and Xidan - Founders of AXcent Dance</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://axcentdance.com/de/about</loc>
-    <lastmod>2026-05-13T12:00:00+02:00</lastmod>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/about" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/about" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/about" />
-    <image:image>
-      <image:loc>https://axcentdance.com/assets/images/ale-xidan-about.webp</image:loc>
-      <image:title>Ale and Xidan, Founders of AXcent Dance</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://axcentdance.com/contact</loc>
-    <lastmod>2026-06-15T12:00:00+02:00</lastmod>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/contact" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/contact" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/contact" />
-    <image:image>
-      <image:loc>https://axcentdance.com/assets/images/studio/studio_room_view_1_1200w.webp</image:loc>
-      <image:title>AXcent Dance Studio in Zurich Altstetten</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://axcentdance.com/de/contact</loc>
-    <lastmod>2026-06-15T12:00:00+02:00</lastmod>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/contact" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/contact" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/contact" />
-    <image:image>
-      <image:loc>https://axcentdance.com/assets/images/studio/studio_room_view_1_1200w.webp</image:loc>
-      <image:title>AXcent Dance Studio in Zürich Altstetten</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://axcentdance.com/beginner-guide</loc>
-    <lastmod>2026-05-10T12:00:00+02:00</lastmod>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/beginner-guide" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/beginner-guide" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/beginner-guide" />
-    <image:image>
-      <image:loc>https://axcentdance.com/assets/images/bachata_class_zurich.webp</image:loc>
-      <image:title>Bachata Classes in Zurich</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://axcentdance.com/de/beginner-guide</loc>
-    <lastmod>2026-05-10T12:00:00+02:00</lastmod>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/beginner-guide" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/beginner-guide" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/beginner-guide" />
-    <image:image>
-      <image:loc>https://axcentdance.com/assets/images/bachata_class_zurich.webp</image:loc>
-      <image:title>Bachata Classes in Zurich</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://axcentdance.com/schedule</loc>
-    <lastmod>2026-06-03T12:00:00+02:00</lastmod>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/schedule" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/schedule" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/schedule" />
-    <image:image>
-      <image:loc>https://axcentdance.com/assets/images/gallery/gallery_6.webp</image:loc>
-      <image:title>Bachata Dance Class Atmosphere</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://axcentdance.com/de/schedule</loc>
-    <lastmod>2026-06-03T12:00:00+02:00</lastmod>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/schedule" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/schedule" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/schedule" />
-    <image:image>
-      <image:loc>https://axcentdance.com/assets/images/gallery/gallery_6.webp</image:loc>
-      <image:title>Bachata Dance Class Atmosphere</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://axcentdance.com/terms</loc>
-    <lastmod>2026-05-10T12:00:00+02:00</lastmod>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/terms" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/terms" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/terms" />
-  </url>
-  <url>
-    <loc>https://axcentdance.com/de/terms</loc>
-    <lastmod>2026-05-10T12:00:00+02:00</lastmod>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/terms" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/terms" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/terms" />
-  </url>
-  <url>
-    <loc>https://axcentdance.com/bachata-beginner-2</loc>
-    <lastmod>2026-05-18T12:00:00+02:00</lastmod>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/bachata-beginner-2" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/bachata-beginner-2" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/bachata-beginner-2" />
-    <image:image>
-      <image:loc>https://axcentdance.com/assets/images/course_hero_bg.webp</image:loc>
-      <image:title>Bachata Dance Class Zurich</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://axcentdance.com/de/bachata-beginner-2</loc>
-    <lastmod>2026-05-18T12:00:00+02:00</lastmod>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/bachata-beginner-2" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/bachata-beginner-2" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/bachata-beginner-2" />
-    <image:image>
-      <image:loc>https://axcentdance.com/assets/images/course_hero_bg.webp</image:loc>
-      <image:title>Bachata Tanzkurs Zürich</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://axcentdance.com/guide-bachata-sensual</loc>
-    <lastmod>2026-05-10T12:00:00+02:00</lastmod>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/guide-bachata-sensual" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/guide-bachata-sensual" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/guide-bachata-sensual" />
-    <image:image>
-      <image:loc>https://axcentdance.com/assets/images/schedule_hero_placeholder.webp</image:loc>
-      <image:title>Bachata Dance Class Zurich</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://axcentdance.com/de/guide-bachata-sensual</loc>
-    <lastmod>2026-05-10T12:00:00+02:00</lastmod>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/guide-bachata-sensual" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/guide-bachata-sensual" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/guide-bachata-sensual" />
-    <image:image>
-      <image:loc>https://axcentdance.com/assets/images/schedule_hero_placeholder.webp</image:loc>
-      <image:title>Bachata Tanzkurs Zürich</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://axcentdance.com/bachata-beginner-1</loc>
-    <lastmod>2026-05-18T12:00:00+02:00</lastmod>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/bachata-beginner-1" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/bachata-beginner-1" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/bachata-beginner-1" />
-    <image:image>
-      <image:loc>https://axcentdance.com/assets/images/course_hero_bg.webp</image:loc>
-      <image:title>Bachata Dance Class Zurich</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://axcentdance.com/de/bachata-beginner-1</loc>
-    <lastmod>2026-05-18T12:00:00+02:00</lastmod>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/bachata-beginner-1" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/bachata-beginner-1" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/bachata-beginner-1" />
-    <image:image>
-      <image:loc>https://axcentdance.com/assets/images/course_hero_bg.webp</image:loc>
-      <image:title>Bachata Tanzkurs Zürich</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://axcentdance.com/gallery</loc>
-    <lastmod>2026-05-10T12:00:00+02:00</lastmod>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/gallery" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/gallery" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/gallery" />
-    <image:image>
-      <image:loc>https://axcentdance.com/assets/images/gallery/gallery_4.webp</image:loc>
-      <image:title>Diverse group of students posing in AXcent Dance class Zurich</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://axcentdance.com/assets/images/gallery/gallery_5.webp</image:loc>
-      <image:title>Social dancing night at AXcent Dance Zurich with happy dancers</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://axcentdance.com/assets/images/gallery/gallery_6.webp</image:loc>
-      <image:title>Full house Bachata workshop with energetic students</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://axcentdance.com/assets/images/gallery/gallery_7.webp</image:loc>
-      <image:title>Group of smiling dancers after a successful intensive session</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://axcentdance.com/assets/images/gallery/gallery_8.webp</image:loc>
-      <image:title>Students and instructors posing at an international dance festival</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://axcentdance.com/assets/images/gallery/gallery_9.webp</image:loc>
-      <image:title>The AXcent Dance team lineup ready for performance</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://axcentdance.com/assets/images/gallery/gallery_10.webp</image:loc>
-      <image:title>Students learning new partnerwork moves in class</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://axcentdance.com/assets/images/gallery/gallery_11.webp</image:loc>
-      <image:title>Close connection and leading technique in Bachata Sensual</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://axcentdance.com/assets/images/gallery/gallery_12.webp</image:loc>
-      <image:title>Action shot of a fun moment during a couples dance class</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://axcentdance.com/assets/images/gallery/gallery_13.webp</image:loc>
-      <image:title>Happy students celebrating friendship through dance</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://axcentdance.com/assets/images/gallery/gallery_14.webp</image:loc>
-      <image:title>Focused practice session in our Zurich dance studio</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://axcentdance.com/assets/images/gallery/gallery_15.webp</image:loc>
-      <image:title>Expressive dance pose at a Bachata festival event</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://axcentdance.com/assets/images/gallery/gallery_1.webp</image:loc>
-      <image:title>Large group photo from a weekend Bachata intensive workshop</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://axcentdance.com/assets/images/gallery/gallery_2.webp</image:loc>
-      <image:title>Ale and Xidan performing on stage at a festival</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://axcentdance.com/assets/images/gallery/gallery_3.webp</image:loc>
-      <image:title>Students practicing footwork in the dance studio mirror</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://axcentdance.com/de/gallery</loc>
-    <lastmod>2026-05-10T12:00:00+02:00</lastmod>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/gallery" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/gallery" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/gallery" />
-    <image:image>
-      <image:loc>https://axcentdance.com/assets/images/gallery/gallery_4.webp</image:loc>
-      <image:title>Diverse group of students posing in AXcent Dance class Zurich</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://axcentdance.com/assets/images/gallery/gallery_5.webp</image:loc>
-      <image:title>Social Dancing Abend bei AXcent Dance Zürich mit glücklichen Tänzern</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://axcentdance.com/assets/images/gallery/gallery_6.webp</image:loc>
-      <image:title>Full house Bachata workshop with energetic students</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://axcentdance.com/assets/images/gallery/gallery_7.webp</image:loc>
-      <image:title>Group of smiling dancers after a successful intensive session</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://axcentdance.com/assets/images/gallery/gallery_8.webp</image:loc>
-      <image:title>Schüler und Lehrer posieren bei einem internationalen Tanzfestival</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://axcentdance.com/assets/images/gallery/gallery_9.webp</image:loc>
-      <image:title>Das AXcent Dance Team bereit für den Auftritt</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://axcentdance.com/assets/images/gallery/gallery_10.webp</image:loc>
-      <image:title>Schüler lernen neue Partnerwork-Figuren im Kurs</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://axcentdance.com/assets/images/gallery/gallery_11.webp</image:loc>
-      <image:title>Close connection and leading technique in Bachata Sensual</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://axcentdance.com/assets/images/gallery/gallery_12.webp</image:loc>
-      <image:title>Action shot of a fun moment during a couples dance class</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://axcentdance.com/assets/images/gallery/gallery_13.webp</image:loc>
-      <image:title>Happy students celebrating friendship through dance</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://axcentdance.com/assets/images/gallery/gallery_14.webp</image:loc>
-      <image:title>Focused practice session in our Zurich dance studio</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://axcentdance.com/assets/images/gallery/gallery_15.webp</image:loc>
-      <image:title>Expressive dance pose at a Bachata festival event</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://axcentdance.com/assets/images/gallery/gallery_1.webp</image:loc>
-      <image:title>Large group photo from a weekend Bachata intensive workshop</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://axcentdance.com/assets/images/gallery/gallery_2.webp</image:loc>
-      <image:title>Ale and Xidan performing on stage at a festival</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://axcentdance.com/assets/images/gallery/gallery_3.webp</image:loc>
-      <image:title>Schüler üben Footwork im Spiegel des Tanzstudios</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://axcentdance.com/room-rental</loc>
-    <lastmod>2026-05-10T12:00:00+02:00</lastmod>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/room-rental" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/room-rental" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/room-rental" />
-    <image:image>
-      <image:loc>https://axcentdance.com/assets/images/studio/studio_room_view_1.webp</image:loc>
-      <image:title>Spacious dance studio with purple ceiling and mirrors</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://axcentdance.com/assets/images/studio/studio_room_view_2.webp</image:loc>
-      <image:title>Wide angle view of the AXcent Dance studio hall</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://axcentdance.com/de/room-rental</loc>
-    <lastmod>2026-05-10T12:00:00+02:00</lastmod>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/room-rental" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/room-rental" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/room-rental" />
-    <image:image>
-      <image:loc>https://axcentdance.com/assets/images/studio/studio_room_view_1.webp</image:loc>
-      <image:title>Geräumiges Tanzstudio mit violetter Decke und Spiegeln</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://axcentdance.com/assets/images/studio/studio_room_view_2.webp</image:loc>
-      <image:title>Weitwinkelansicht des AXcent Dance Studiosaals</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://axcentdance.com/lady-styling</loc>
-    <lastmod>2026-05-10T12:00:00+02:00</lastmod>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/lady-styling" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/lady-styling" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/lady-styling" />
-    <image:image>
-      <image:loc>https://axcentdance.com/assets/images/course_hero_bg.webp</image:loc>
-      <image:title>Bachata Dance Class Zurich</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://axcentdance.com/de/lady-styling</loc>
-    <lastmod>2026-05-10T12:00:00+02:00</lastmod>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/lady-styling" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/lady-styling" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/lady-styling" />
-    <image:image>
-      <image:loc>https://axcentdance.com/assets/images/course_hero_bg.webp</image:loc>
-      <image:title>Bachata Tanzkurs Zürich</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://axcentdance.com/imprint</loc>
-    <lastmod>2026-05-10T12:00:00+02:00</lastmod>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/imprint" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/imprint" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/imprint" />
-  </url>
-  <url>
-    <loc>https://axcentdance.com/de/imprint</loc>
-    <lastmod>2026-05-10T12:00:00+02:00</lastmod>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/imprint" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/imprint" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/imprint" />
-  </url>
-  <url>
-    <loc>https://axcentdance.com/bachata-sensual-inter-adv</loc>
-    <lastmod>2026-05-10T12:00:00+02:00</lastmod>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/bachata-sensual-inter-adv" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/bachata-sensual-inter-adv" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/bachata-sensual-inter-adv" />
-    <image:image>
-      <image:loc>https://axcentdance.com/assets/images/course_hero_bg.webp</image:loc>
-      <image:title>Bachata Dance Class Zurich</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://axcentdance.com/de/bachata-sensual-inter-adv</loc>
-    <lastmod>2026-05-10T12:00:00+02:00</lastmod>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/bachata-sensual-inter-adv" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/bachata-sensual-inter-adv" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/bachata-sensual-inter-adv" />
-    <image:image>
-      <image:loc>https://axcentdance.com/assets/images/course_hero_bg.webp</image:loc>
-      <image:title>Bachata Tanzkurs Zürich</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://axcentdance.com/dominican-bootcamp</loc>
-    <lastmod>2026-05-10T12:00:00+02:00</lastmod>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/dominican-bootcamp" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/dominican-bootcamp" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/dominican-bootcamp" />
-    <image:image>
-      <image:loc>https://axcentdance.com/assets/images/dominican_bootcamp.webp</image:loc>
-      <image:title>Dominican Bachata Bootcamp flyer with Aitor Gomez and Sarah La Morena</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://axcentdance.com/de/dominican-bootcamp</loc>
-    <lastmod>2026-05-10T12:00:00+02:00</lastmod>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/dominican-bootcamp" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/dominican-bootcamp" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/dominican-bootcamp" />
-    <image:image>
-      <image:loc>https://axcentdance.com/assets/images/dominican_bootcamp.webp</image:loc>
-      <image:title>Dominican Bachata Bootcamp Flyer mit Aitor Gomez und Sarah La Morena</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://axcentdance.com/bachata-sensual-improver</loc>
-    <lastmod>2026-05-10T12:00:00+02:00</lastmod>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/bachata-sensual-improver" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/bachata-sensual-improver" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/bachata-sensual-improver" />
-    <image:image>
-      <image:loc>https://axcentdance.com/assets/images/course_hero_bg.webp</image:loc>
-      <image:title>Bachata Dance Class Zurich</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://axcentdance.com/de/bachata-sensual-improver</loc>
-    <lastmod>2026-05-10T12:00:00+02:00</lastmod>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/bachata-sensual-improver" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/bachata-sensual-improver" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/bachata-sensual-improver" />
-    <image:image>
-      <image:loc>https://axcentdance.com/assets/images/course_hero_bg.webp</image:loc>
-      <image:title>Bachata Tanzkurs Zürich</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://axcentdance.com/corporate-events</loc>
-    <lastmod>2026-05-10T12:00:00+02:00</lastmod>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/corporate-events" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/corporate-events" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/corporate-events" />
-    <image:image>
-      <image:loc>https://axcentdance.com/assets/images/corporate_party_natural.webp</image:loc>
-      <image:title>Company Party Dancing</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://axcentdance.com/de/corporate-events</loc>
-    <lastmod>2026-05-10T12:00:00+02:00</lastmod>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/corporate-events" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/corporate-events" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/corporate-events" />
-    <image:image>
-      <image:loc>https://axcentdance.com/assets/images/corporate_party_natural.webp</image:loc>
-      <image:title>Company Party Dancing</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://axcentdance.com/bachata-sensual-foundation</loc>
-    <lastmod>2026-05-10T12:00:00+02:00</lastmod>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/bachata-sensual-foundation" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/bachata-sensual-foundation" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/bachata-sensual-foundation" />
-    <image:image>
-      <image:loc>https://axcentdance.com/assets/images/course_hero_bg.webp</image:loc>
-      <image:title>Bachata Dance Class Zurich</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://axcentdance.com/de/bachata-sensual-foundation</loc>
-    <lastmod>2026-05-10T12:00:00+02:00</lastmod>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/bachata-sensual-foundation" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/bachata-sensual-foundation" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/bachata-sensual-foundation" />
-    <image:image>
-      <image:loc>https://axcentdance.com/assets/images/course_hero_bg.webp</image:loc>
-      <image:title>Bachata Tanzkurs Zürich</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://axcentdance.com/registration</loc>
-    <lastmod>2026-05-27T12:00:00+02:00</lastmod>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/registration" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/registration" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/registration" />
-    <image:image>
-      <image:loc>https://axcentdance.com/assets/images/home/gallery_3.webp</image:loc>
-      <image:title>Bachata dance class group photo</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://axcentdance.com/de/registration</loc>
-    <lastmod>2026-05-27T12:00:00+02:00</lastmod>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/registration" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/registration" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/registration" />
-    <image:image>
-      <image:loc>https://axcentdance.com/assets/images/home/gallery_3.webp</image:loc>
-      <image:title>Bachata Tanzkurs Gruppenfoto</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://axcentdance.com/etiquette</loc>
-    <lastmod>2026-05-10T12:00:00+02:00</lastmod>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/etiquette" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/etiquette" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/etiquette" />
-    <image:image>
-      <image:loc>https://axcentdance.com/assets/images/blog/connection-101.webp</image:loc>
-      <image:title>Dance Floor Etiquette and Connection</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://axcentdance.com/de/etiquette</loc>
-    <lastmod>2026-05-10T12:00:00+02:00</lastmod>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/etiquette" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/etiquette" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/etiquette" />
-    <image:image>
-      <image:loc>https://axcentdance.com/assets/images/blog/connection-101.webp</image:loc>
-      <image:title>Dance Floor Etiquette and Connection</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://axcentdance.com/education</loc>
-    <lastmod>2026-05-10T12:00:00+02:00</lastmod>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/education" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/education" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/education" />
-    <image:image>
-      <image:loc>https://axcentdance.com/assets/images/bachata_education_book.webp</image:loc>
-      <image:title>Bachata Dance Education Book and Instruments</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://axcentdance.com/de/education</loc>
-    <lastmod>2026-05-10T12:00:00+02:00</lastmod>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/education" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/education" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/education" />
-    <image:image>
-      <image:loc>https://axcentdance.com/assets/images/bachata_education_book.webp</image:loc>
-      <image:title>Bachata Dance Education Book and Instruments</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://axcentdance.com/events</loc>
-    <lastmod>2026-05-28T12:00:00+02:00</lastmod>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/events" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/events" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/events" />
-    <image:image>
-      <image:loc>https://axcentdance.com/assets/images/dominican_bootcamp.webp</image:loc>
-      <image:title>Dominican Bachata Bootcamp flyer with Aitor Gomez and Sarah La Morena</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://axcentdance.com/assets/images/MilanoSensualCongress2026_Nov.webp</image:loc>
-      <image:title>Milano Sensual Congress Logo</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://axcentdance.com/de/events</loc>
-    <lastmod>2026-05-28T12:00:00+02:00</lastmod>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/events" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/events" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/events" />
-    <image:image>
-      <image:loc>https://axcentdance.com/assets/images/dominican_bootcamp.webp</image:loc>
-      <image:title>Dominican Bachata Bootcamp Flyer mit Aitor Gomez und Sarah La Morena</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://axcentdance.com/assets/images/MilanoSensualCongress2026_Nov.webp</image:loc>
-      <image:title>Milano Sensual Congress Logo</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://axcentdance.com/private-lessons</loc>
-    <lastmod>2026-05-10T12:00:00+02:00</lastmod>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/private-lessons" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/private-lessons" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/private-lessons" />
-    <image:image>
-      <image:loc>https://axcentdance.com/assets/images/private_lesson_hero.webp</image:loc>
-      <image:title>Private Dance Lessons Zurich</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://axcentdance.com/de/private-lessons</loc>
-    <lastmod>2026-05-10T12:00:00+02:00</lastmod>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/private-lessons" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/private-lessons" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/private-lessons" />
-    <image:image>
-      <image:loc>https://axcentdance.com/assets/images/private_lesson_hero.webp</image:loc>
-      <image:title>Privatstunden Zürich</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://axcentdance.com/faq</loc>
-    <lastmod>2026-05-10T12:00:00+02:00</lastmod>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/faq" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/faq" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/faq" />
-    <image:image>
-      <image:loc>https://axcentdance.com/assets/images/faq_artistic_motion.webp</image:loc>
-      <image:title>Artistic Motion Blur of Couple Dancing Bachata</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://axcentdance.com/de/faq</loc>
-    <lastmod>2026-05-10T12:00:00+02:00</lastmod>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/faq" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/faq" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/faq" />
-    <image:image>
-      <image:loc>https://axcentdance.com/assets/images/faq_artistic_motion.webp</image:loc>
-      <image:title>Artistic Motion Blur of Couple Dancing Bachata</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://axcentdance.com/wedding-dance</loc>
-    <lastmod>2026-05-10T12:00:00+02:00</lastmod>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/wedding-dance" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/wedding-dance" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/wedding-dance" />
-    <image:image>
-      <image:loc>https://axcentdance.com/assets/images/wedding_dance_hero.webp</image:loc>
-      <image:title>Wedding Dance Couple</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://axcentdance.com/de/wedding-dance</loc>
-    <lastmod>2026-05-10T12:00:00+02:00</lastmod>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/wedding-dance" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/wedding-dance" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/wedding-dance" />
-    <image:image>
-      <image:loc>https://axcentdance.com/assets/images/wedding_dance_hero.webp</image:loc>
-      <image:title>Hochzeitstanz Paar</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://axcentdance.com/privacy</loc>
-    <lastmod>2026-05-10T12:00:00+02:00</lastmod>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/privacy" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/privacy" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/privacy" />
-  </url>
-  <url>
-    <loc>https://axcentdance.com/de/privacy</loc>
-    <lastmod>2026-05-10T12:00:00+02:00</lastmod>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/privacy" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/privacy" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/privacy" />
-  </url>
-  <url>
-    <loc>https://axcentdance.com/guide-bachata</loc>
-    <lastmod>2026-05-10T12:00:00+02:00</lastmod>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/guide-bachata" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/guide-bachata" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/guide-bachata" />
-    <image:image>
-      <image:loc>https://axcentdance.com/assets/images/bachata_guira_clear.webp</image:loc>
-      <image:title>Güira</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://axcentdance.com/assets/images/bachata_bongos_clear.webp</image:loc>
-      <image:title>Bongo drums</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://axcentdance.com/assets/images/bachata_segunda_clear.webp</image:loc>
-      <image:title>Segunda guitar</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://axcentdance.com/assets/images/bachata_bass_clear.webp</image:loc>
-      <image:title>Bass guitar</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://axcentdance.com/assets/images/bachata_requinto_clear.webp</image:loc>
-      <image:title>Requinto guitar</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://axcentdance.com/de/guide-bachata</loc>
-    <lastmod>2026-05-10T12:00:00+02:00</lastmod>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/guide-bachata" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/guide-bachata" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/guide-bachata" />
-    <image:image>
-      <image:loc>https://axcentdance.com/assets/images/bachata_guira_clear.webp</image:loc>
-      <image:title>Bachata Güira</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://axcentdance.com/assets/images/bachata_bongos_clear.webp</image:loc>
-      <image:title>Bachata Bongos</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://axcentdance.com/assets/images/bachata_segunda_clear.webp</image:loc>
-      <image:title>Bachata Segunda Gitarre</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://axcentdance.com/assets/images/bachata_bass_clear.webp</image:loc>
-      <image:title>Bachata Bassgitarre</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://axcentdance.com/assets/images/bachata_requinto_clear.webp</image:loc>
-      <image:title>Bachata Requinto Lead-Gitarre</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://axcentdance.com/blog/romeo-prince-tour-2026</loc>
-    <lastmod>2026-05-10T12:00:00+02:00</lastmod>
-    <priority>0.6</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/blog/romeo-prince-tour-2026" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/blog/romeo-prince-tour-2026" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/blog/romeo-prince-tour-2026" />
-    <image:image>
-      <image:loc>https://axcentdance.com/assets/images/blog/romeo-prince-tour-2026.webp</image:loc>
-      <image:title>Romeo Santos &amp; Prince Royce Tour Poster</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://axcentdance.com/de/blog/romeo-prince-tour-2026</loc>
-    <lastmod>2026-05-10T12:00:00+02:00</lastmod>
-    <priority>0.6</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/blog/romeo-prince-tour-2026" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/blog/romeo-prince-tour-2026" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/blog/romeo-prince-tour-2026" />
-    <image:image>
-      <image:loc>https://axcentdance.com/assets/images/blog/romeo-prince-tour-2026.webp</image:loc>
-      <image:title>Romeo Santos &amp; Prince Royce Tour Poster</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://axcentdance.com/blog/what-to-wear-bachata</loc>
-    <lastmod>2026-05-10T12:00:00+02:00</lastmod>
-    <priority>0.6</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/blog/what-to-wear-bachata" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/blog/what-to-wear-bachata" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/blog/what-to-wear-bachata" />
-    <image:image>
-      <image:loc>https://axcentdance.com/assets/images/bachata_essentials_flatlay.webp</image:loc>
-      <image:title>What to Wear to Bachata Class: A Beginner</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://axcentdance.com/de/blog/what-to-wear-bachata</loc>
-    <lastmod>2026-05-10T12:00:00+02:00</lastmod>
-    <priority>0.6</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/blog/what-to-wear-bachata" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/blog/what-to-wear-bachata" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/blog/what-to-wear-bachata" />
-    <image:image>
-      <image:loc>https://axcentdance.com/assets/images/bachata_essentials_flatlay.webp</image:loc>
-      <image:title>What to Wear to Bachata Class: A Beginner</image:title>
-    </image:image>
-  </url>
-  <url>
     <loc>https://axcentdance.com/blog/ido-swiss-championship-salsa-bachata-judges-2026</loc>
-    <lastmod>2026-05-10T12:00:00+02:00</lastmod>
-    <priority>0.6</priority>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/blog/ido-swiss-championship-salsa-bachata-judges-2026" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/blog/ido-swiss-championship-salsa-bachata-judges-2026" />
     <image:image>
@@ -1133,8 +1317,8 @@
   </url>
   <url>
     <loc>https://axcentdance.com/blog/science-of-dance-mental-health</loc>
-    <lastmod>2026-05-10T12:00:00+02:00</lastmod>
-    <priority>0.6</priority>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/blog/science-of-dance-mental-health" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/blog/science-of-dance-mental-health" />
     <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/blog/science-of-dance-mental-health" />
@@ -1145,8 +1329,8 @@
   </url>
   <url>
     <loc>https://axcentdance.com/de/blog/science-of-dance-mental-health</loc>
-    <lastmod>2026-05-10T12:00:00+02:00</lastmod>
-    <priority>0.6</priority>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/blog/science-of-dance-mental-health" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/blog/science-of-dance-mental-health" />
     <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/blog/science-of-dance-mental-health" />
@@ -1157,8 +1341,8 @@
   </url>
   <url>
     <loc>https://axcentdance.com/blog/latin-dance-school-zurich</loc>
-    <lastmod>2026-05-10T12:00:00+02:00</lastmod>
-    <priority>0.6</priority>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/blog/latin-dance-school-zurich" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/blog/latin-dance-school-zurich" />
     <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/blog/latin-dance-school-zurich" />
@@ -1173,8 +1357,8 @@
   </url>
   <url>
     <loc>https://axcentdance.com/de/blog/latin-dance-school-zurich</loc>
-    <lastmod>2026-05-10T12:00:00+02:00</lastmod>
-    <priority>0.6</priority>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/blog/latin-dance-school-zurich" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/blog/latin-dance-school-zurich" />
     <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/blog/latin-dance-school-zurich" />
@@ -1189,8 +1373,8 @@
   </url>
   <url>
     <loc>https://axcentdance.com/blog/start-new-hobby-meet-people-zurich</loc>
-    <lastmod>2026-05-10T12:00:00+02:00</lastmod>
-    <priority>0.6</priority>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/blog/start-new-hobby-meet-people-zurich" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/blog/start-new-hobby-meet-people-zurich" />
     <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/blog/start-new-hobby-meet-people-zurich" />
@@ -1205,8 +1389,8 @@
   </url>
   <url>
     <loc>https://axcentdance.com/de/blog/start-new-hobby-meet-people-zurich</loc>
-    <lastmod>2026-05-10T12:00:00+02:00</lastmod>
-    <priority>0.6</priority>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/blog/start-new-hobby-meet-people-zurich" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/blog/start-new-hobby-meet-people-zurich" />
     <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/blog/start-new-hobby-meet-people-zurich" />
@@ -1221,8 +1405,8 @@
   </url>
   <url>
     <loc>https://axcentdance.com/blog/rent-space-zurich</loc>
-    <lastmod>2026-05-10T12:00:00+02:00</lastmod>
-    <priority>0.6</priority>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/blog/rent-space-zurich" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/blog/rent-space-zurich" />
     <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/blog/rent-space-zurich" />
@@ -1237,8 +1421,8 @@
   </url>
   <url>
     <loc>https://axcentdance.com/de/blog/rent-space-zurich</loc>
-    <lastmod>2026-05-10T12:00:00+02:00</lastmod>
-    <priority>0.6</priority>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/blog/rent-space-zurich" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/blog/rent-space-zurich" />
     <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/blog/rent-space-zurich" />
@@ -1253,8 +1437,8 @@
   </url>
   <url>
     <loc>https://axcentdance.com/blog/bachata-parties-zurich-guide</loc>
-    <lastmod>2026-05-10T12:00:00+02:00</lastmod>
-    <priority>0.6</priority>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/blog/bachata-parties-zurich-guide" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/blog/bachata-parties-zurich-guide" />
     <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/blog/bachata-parties-zurich-guide" />
@@ -1269,8 +1453,8 @@
   </url>
   <url>
     <loc>https://axcentdance.com/de/blog/bachata-parties-zurich-guide</loc>
-    <lastmod>2026-05-10T12:00:00+02:00</lastmod>
-    <priority>0.6</priority>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/blog/bachata-parties-zurich-guide" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/blog/bachata-parties-zurich-guide" />
     <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/blog/bachata-parties-zurich-guide" />
@@ -1285,8 +1469,8 @@
   </url>
   <url>
     <loc>https://axcentdance.com/blog/lady-styling-zurich-guide</loc>
-    <lastmod>2026-05-10T12:00:00+02:00</lastmod>
-    <priority>0.6</priority>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/blog/lady-styling-zurich-guide" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/blog/lady-styling-zurich-guide" />
     <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/blog/lady-styling-zurich-guide" />
@@ -1301,8 +1485,8 @@
   </url>
   <url>
     <loc>https://axcentdance.com/de/blog/lady-styling-zurich-guide</loc>
-    <lastmod>2026-05-10T12:00:00+02:00</lastmod>
-    <priority>0.6</priority>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/blog/lady-styling-zurich-guide" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/blog/lady-styling-zurich-guide" />
     <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/blog/lady-styling-zurich-guide" />
@@ -1317,8 +1501,8 @@
   </url>
   <url>
     <loc>https://axcentdance.com/blog/christmas-break-2025</loc>
-    <lastmod>2026-05-10T12:00:00+02:00</lastmod>
-    <priority>0.6</priority>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/blog/christmas-break-2025" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/blog/christmas-break-2025" />
     <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/blog/christmas-break-2025" />
@@ -1329,20 +1513,20 @@
   </url>
   <url>
     <loc>https://axcentdance.com/de/blog/christmas-break-2025</loc>
-    <lastmod>2026-05-10T12:00:00+02:00</lastmod>
-    <priority>0.6</priority>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/blog/christmas-break-2025" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/blog/christmas-break-2025" />
     <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/blog/christmas-break-2025" />
     <image:image>
       <image:loc>https://axcentdance.com/assets/images/christmas_break_2025.webp</image:loc>
-      <image:title>Christmas Break &amp; New Season 2025</image:title>
+      <image:title>Weihnachtspause &amp; Neue Saison 2025</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://axcentdance.com/blog/dominican-bachata-bootcamp-aitor-sara</loc>
-    <lastmod>2026-05-10T12:00:00+02:00</lastmod>
-    <priority>0.6</priority>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/blog/dominican-bachata-bootcamp-aitor-sara" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/blog/dominican-bachata-bootcamp-aitor-sara" />
     <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/blog/dominican-bachata-bootcamp-aitor-sara" />
@@ -1353,8 +1537,8 @@
   </url>
   <url>
     <loc>https://axcentdance.com/de/blog/dominican-bachata-bootcamp-aitor-sara</loc>
-    <lastmod>2026-05-10T12:00:00+02:00</lastmod>
-    <priority>0.6</priority>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/blog/dominican-bachata-bootcamp-aitor-sara" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/blog/dominican-bachata-bootcamp-aitor-sara" />
     <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/blog/dominican-bachata-bootcamp-aitor-sara" />
@@ -1364,9 +1548,49 @@
     </image:image>
   </url>
   <url>
+    <loc>https://axcentdance.com/blog/bachata-sensual-vs-dominican</loc>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/blog/bachata-sensual-vs-dominican" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/blog/bachata-sensual-vs-dominican" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/blog/bachata-sensual-vs-dominican" />
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/home/gallery_1_1200w.webp</image:loc>
+      <image:title>Two AXcent Dance students holding a styled connection during a Bachata class in Zurich</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/blog/aitor_demo_poster.webp</image:loc>
+      <image:title>Dominican Bachata instructor Aitor Gomez demonstrating fast footwork and musicality</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/dominican_bootcamp_1200w.webp</image:loc>
+      <image:title>Dominican Bachata Bootcamp flyer with Aitor Gomez and Sarah La Morena, October 17-19, 2026</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://axcentdance.com/de/blog/bachata-sensual-vs-dominican</loc>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/blog/bachata-sensual-vs-dominican" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/blog/bachata-sensual-vs-dominican" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/blog/bachata-sensual-vs-dominican" />
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/home/gallery_1_1200w.webp</image:loc>
+      <image:title>Zwei AXcent Dance Schüler in einer stilvollen Verbindung während einer Bachata-Stunde in Zürich</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/blog/aitor_demo_poster.webp</image:loc>
+      <image:title>Dominican-Bachata-Lehrer Aitor Gomez demonstriert schnelle Beinarbeit und Musikalität</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/dominican_bootcamp_1200w.webp</image:loc>
+      <image:title>Dominican Bachata Bootcamp Flyer mit Aitor Gomez und Sarah La Morena, 17. bis 19. Oktober 2026</image:title>
+    </image:image>
+  </url>
+  <url>
     <loc>https://axcentdance.com/blog/hack-your-happiness</loc>
-    <lastmod>2026-05-10T12:00:00+02:00</lastmod>
-    <priority>0.6</priority>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/blog/hack-your-happiness" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/blog/hack-your-happiness" />
     <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/blog/hack-your-happiness" />
@@ -1377,20 +1601,20 @@
   </url>
   <url>
     <loc>https://axcentdance.com/de/blog/hack-your-happiness</loc>
-    <lastmod>2026-05-10T12:00:00+02:00</lastmod>
-    <priority>0.6</priority>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/blog/hack-your-happiness" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/blog/hack-your-happiness" />
     <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/blog/hack-your-happiness" />
     <image:image>
       <image:loc>https://axcentdance.com/assets/images/private_lesson_hero.webp</image:loc>
-      <image:title>Authentischer Bachat-Tanzkurs bei AXcent Dance Zürich</image:title>
+      <image:title>Authentischer Bachata-Tanzkurs bei AXcent Dance Zürich</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://axcentdance.com/blog/romeo-prince-collaboration-2025</loc>
-    <lastmod>2026-05-10T12:00:00+02:00</lastmod>
-    <priority>0.6</priority>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/blog/romeo-prince-collaboration-2025" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/blog/romeo-prince-collaboration-2025" />
     <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/blog/romeo-prince-collaboration-2025" />
@@ -1405,24 +1629,24 @@
   </url>
   <url>
     <loc>https://axcentdance.com/de/blog/romeo-prince-collaboration-2025</loc>
-    <lastmod>2026-05-10T12:00:00+02:00</lastmod>
-    <priority>0.6</priority>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/blog/romeo-prince-collaboration-2025" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/blog/romeo-prince-collaboration-2025" />
     <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/blog/romeo-prince-collaboration-2025" />
     <image:image>
       <image:loc>https://axcentdance.com/assets/images/hero_new.webp</image:loc>
-      <image:title>The Kings Unite: Romeo Santos &amp; Prince Royce Drop Surprise Album</image:title>
+      <image:title>Die Könige vereint: Romeo Santos &amp; Prince Royce Album Release</image:title>
     </image:image>
     <image:image>
       <image:loc>https://axcentdance.com/assets/images/romeo_santos.webp</image:loc>
-      <image:title>Romeo Santos performing live</image:title>
+      <image:title>Romeo Santos bei einem Live-Auftritt</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://axcentdance.com/blog/ido-swiss-championship-bachata-second-place-2026</loc>
-    <lastmod>2026-05-10T12:00:00+02:00</lastmod>
-    <priority>0.6</priority>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/blog/ido-swiss-championship-bachata-second-place-2026" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/blog/ido-swiss-championship-bachata-second-place-2026" />
     <image:image>
@@ -1436,8 +1660,8 @@
   </url>
   <url>
     <loc>https://axcentdance.com/blog/finding-the-one-bachata-musicality</loc>
-    <lastmod>2026-05-10T12:00:00+02:00</lastmod>
-    <priority>0.6</priority>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/blog/finding-the-one-bachata-musicality" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/blog/finding-the-one-bachata-musicality" />
     <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/blog/finding-the-one-bachata-musicality" />
@@ -1452,8 +1676,8 @@
   </url>
   <url>
     <loc>https://axcentdance.com/de/blog/finding-the-one-bachata-musicality</loc>
-    <lastmod>2026-05-10T12:00:00+02:00</lastmod>
-    <priority>0.6</priority>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/blog/finding-the-one-bachata-musicality" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/blog/finding-the-one-bachata-musicality" />
     <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/blog/finding-the-one-bachata-musicality" />
@@ -1468,8 +1692,8 @@
   </url>
   <url>
     <loc>https://axcentdance.com/blog/couples-activities-zurich</loc>
-    <lastmod>2026-05-10T12:00:00+02:00</lastmod>
-    <priority>0.6</priority>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/blog/couples-activities-zurich" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/blog/couples-activities-zurich" />
     <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/blog/couples-activities-zurich" />
@@ -1484,8 +1708,8 @@
   </url>
   <url>
     <loc>https://axcentdance.com/de/blog/couples-activities-zurich</loc>
-    <lastmod>2026-05-10T12:00:00+02:00</lastmod>
-    <priority>0.6</priority>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/blog/couples-activities-zurich" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/blog/couples-activities-zurich" />
     <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/blog/couples-activities-zurich" />
@@ -1500,8 +1724,8 @@
   </url>
   <url>
     <loc>https://axcentdance.com/blog/connection-101</loc>
-    <lastmod>2026-05-10T12:00:00+02:00</lastmod>
-    <priority>0.6</priority>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/blog/connection-101" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/blog/connection-101" />
     <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/blog/connection-101" />
@@ -1512,8 +1736,8 @@
   </url>
   <url>
     <loc>https://axcentdance.com/de/blog/connection-101</loc>
-    <lastmod>2026-05-10T12:00:00+02:00</lastmod>
-    <priority>0.6</priority>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/blog/connection-101" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/blog/connection-101" />
     <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/blog/connection-101" />
@@ -1524,8 +1748,8 @@
   </url>
   <url>
     <loc>https://axcentdance.com/blog/sensation-night-congress-2026</loc>
-    <lastmod>2026-05-10T12:00:00+02:00</lastmod>
-    <priority>0.6</priority>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/blog/sensation-night-congress-2026" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/blog/sensation-night-congress-2026" />
     <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/blog/sensation-night-congress-2026" />
@@ -1536,8 +1760,8 @@
   </url>
   <url>
     <loc>https://axcentdance.com/de/blog/sensation-night-congress-2026</loc>
-    <lastmod>2026-05-10T12:00:00+02:00</lastmod>
-    <priority>0.6</priority>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/blog/sensation-night-congress-2026" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/blog/sensation-night-congress-2026" />
     <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/blog/sensation-night-congress-2026" />
@@ -1548,8 +1772,8 @@
   </url>
   <url>
     <loc>https://axcentdance.com/blog/roots-of-bachata</loc>
-    <lastmod>2026-05-10T12:00:00+02:00</lastmod>
-    <priority>0.6</priority>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/blog/roots-of-bachata" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/blog/roots-of-bachata" />
     <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/blog/roots-of-bachata" />
@@ -1560,8 +1784,8 @@
   </url>
   <url>
     <loc>https://axcentdance.com/de/blog/roots-of-bachata</loc>
-    <lastmod>2026-05-10T12:00:00+02:00</lastmod>
-    <priority>0.6</priority>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/blog/roots-of-bachata" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/blog/roots-of-bachata" />
     <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/blog/roots-of-bachata" />
@@ -1572,8 +1796,8 @@
   </url>
   <url>
     <loc>https://axcentdance.com/blog/blog-new-location</loc>
-    <lastmod>2026-05-10T12:00:00+02:00</lastmod>
-    <priority>0.6</priority>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/blog/blog-new-location" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/blog/blog-new-location" />
     <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/blog/blog-new-location" />
@@ -1584,20 +1808,20 @@
   </url>
   <url>
     <loc>https://axcentdance.com/de/blog/blog-new-location</loc>
-    <lastmod>2026-05-10T12:00:00+02:00</lastmod>
-    <priority>0.6</priority>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/blog/blog-new-location" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/blog/blog-new-location" />
     <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/blog/blog-new-location" />
     <image:image>
       <image:loc>https://axcentdance.com/assets/images/empty_studio_mirrors.webp</image:loc>
-      <image:title>We Are Moving! New Studio in Zurich Altstetten</image:title>
+      <image:title>Wir ziehen um! Neues Studio in Zürich Altstetten</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://axcentdance.com/blog/dance-tips-1-frame</loc>
-    <lastmod>2026-05-10T12:00:00+02:00</lastmod>
-    <priority>0.6</priority>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/blog/dance-tips-1-frame" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/blog/dance-tips-1-frame" />
     <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/blog/dance-tips-1-frame" />
@@ -1624,8 +1848,8 @@
   </url>
   <url>
     <loc>https://axcentdance.com/de/blog/dance-tips-1-frame</loc>
-    <lastmod>2026-05-10T12:00:00+02:00</lastmod>
-    <priority>0.6</priority>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/blog/dance-tips-1-frame" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/blog/dance-tips-1-frame" />
     <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/blog/dance-tips-1-frame" />
@@ -1652,8 +1876,8 @@
   </url>
   <url>
     <loc>https://axcentdance.com/blog/hobbies-to-meet-people-zurich</loc>
-    <lastmod>2026-05-10T12:00:00+02:00</lastmod>
-    <priority>0.6</priority>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/blog/hobbies-to-meet-people-zurich" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/blog/hobbies-to-meet-people-zurich" />
     <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/blog/hobbies-to-meet-people-zurich" />
@@ -1668,8 +1892,8 @@
   </url>
   <url>
     <loc>https://axcentdance.com/de/blog/hobbies-to-meet-people-zurich</loc>
-    <lastmod>2026-05-10T12:00:00+02:00</lastmod>
-    <priority>0.6</priority>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/blog/hobbies-to-meet-people-zurich" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/blog/hobbies-to-meet-people-zurich" />
     <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/blog/hobbies-to-meet-people-zurich" />
@@ -1684,8 +1908,8 @@
   </url>
   <url>
     <loc>https://axcentdance.com/blog/teach-yoga-pilates-reggaeton-zurich</loc>
-    <lastmod>2026-05-10T12:00:00+02:00</lastmod>
-    <priority>0.6</priority>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/blog/teach-yoga-pilates-reggaeton-zurich" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/blog/teach-yoga-pilates-reggaeton-zurich" />
     <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/blog/teach-yoga-pilates-reggaeton-zurich" />
@@ -1696,8 +1920,8 @@
   </url>
   <url>
     <loc>https://axcentdance.com/de/blog/teach-yoga-pilates-reggaeton-zurich</loc>
-    <lastmod>2026-05-10T12:00:00+02:00</lastmod>
-    <priority>0.6</priority>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/blog/teach-yoga-pilates-reggaeton-zurich" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/blog/teach-yoga-pilates-reggaeton-zurich" />
     <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/blog/teach-yoga-pilates-reggaeton-zurich" />
@@ -1708,8 +1932,8 @@
   </url>
   <url>
     <loc>https://axcentdance.com/blog/salsa-vs-bachata</loc>
-    <lastmod>2026-05-10T12:00:00+02:00</lastmod>
-    <priority>0.6</priority>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/blog/salsa-vs-bachata" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/blog/salsa-vs-bachata" />
     <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/blog/salsa-vs-bachata" />
@@ -1724,8 +1948,8 @@
   </url>
   <url>
     <loc>https://axcentdance.com/de/blog/salsa-vs-bachata</loc>
-    <lastmod>2026-05-10T12:00:00+02:00</lastmod>
-    <priority>0.6</priority>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/blog/salsa-vs-bachata" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/blog/salsa-vs-bachata" />
     <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/blog/salsa-vs-bachata" />
@@ -1740,8 +1964,8 @@
   </url>
   <url>
     <loc>https://axcentdance.com/blog/first-week-new-studio</loc>
-    <lastmod>2026-05-10T12:00:00+02:00</lastmod>
-    <priority>0.6</priority>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/blog/first-week-new-studio" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/blog/first-week-new-studio" />
     <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/blog/first-week-new-studio" />
@@ -1752,8 +1976,8 @@
   </url>
   <url>
     <loc>https://axcentdance.com/de/blog/first-week-new-studio</loc>
-    <lastmod>2026-05-10T12:00:00+02:00</lastmod>
-    <priority>0.6</priority>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/blog/first-week-new-studio" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/blog/first-week-new-studio" />
     <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/blog/first-week-new-studio" />
@@ -1764,8 +1988,8 @@
   </url>
   <url>
     <loc>https://axcentdance.com/de/blog/ido-schweizermeisterschaft-bachata-zweiter-platz-2026</loc>
-    <lastmod>2026-05-10T12:00:00+02:00</lastmod>
-    <priority>0.6</priority>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/blog/ido-schweizermeisterschaft-bachata-zweiter-platz-2026" />
     <image:image>
       <image:loc>https://axcentdance.com/assets/images/blog/discover/ido-swiss-championship-second-place-2026-1200x675.webp</image:loc>
@@ -1778,8 +2002,8 @@
   </url>
   <url>
     <loc>https://axcentdance.com/de/blog/ido-schweizermeisterschaft-salsa-bachata-jury-2026</loc>
-    <lastmod>2026-05-10T12:00:00+02:00</lastmod>
-    <priority>0.6</priority>
+    <lastmod>2026-07-19T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/blog/ido-schweizermeisterschaft-salsa-bachata-jury-2026" />
     <image:image>
       <image:loc>https://axcentdance.com/assets/images/blog/salsa_bachata_music.webp</image:loc>

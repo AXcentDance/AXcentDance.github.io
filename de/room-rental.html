@@ -20,16 +20,16 @@
     <meta name="twitter:title" content="Tanzraum mieten Zürich | 138qm Saal in Altstetten">
     <meta name="twitter:description" content="Tanzraum mieten in Zürich Altstetten für Kurse, Events oder Proben. 138qm Spiegelsaal, Top-Sound und zentrale Lage.">
     <meta name="twitter:image" content="https://axcentdance.com/assets/images/hero_new.jpg">
-    <meta property="og:description"
-        content="Tanzraum mieten in Zürich Altstetten für Kurse, Events oder Proben. 138qm Spiegelsaal, Top-Sound und zentrale Lage.">
+    <meta property="og:description" content="Tanzraum mieten in Zürich Altstetten für Kurse, Events oder Proben. 138qm Spiegelsaal, Top-Sound und zentrale Lage.">
     <meta property="og:locale" content="de_CH">
     <meta http-equiv="Content-Security-Policy"
-        content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://cdn.jsdelivr.net https://connect.facebook.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com https://placehold.co https://*.googleapis.com https://*.gstatic.com https://www.facebook.com https://connect.facebook.net; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://script.google.com https://formsubmit.co https://www.facebook.com https://connect.facebook.net; frame-src 'self' https://www.google.com; object-src 'none'; base-uri 'self'; media-src 'self' blob:; worker-src 'self' blob:;">
+        content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://cdn.jsdelivr.net https://connect.facebook.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com https://placehold.co https://*.googleapis.com https://*.gstatic.com https://www.facebook.com https://connect.facebook.net; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://script.google.com https://formsubmit.co https://www.facebook.com https://connect.facebook.net https://jwravnvytkmsvqoqkmwb.supabase.co; frame-src 'self' https://www.google.com; object-src 'none'; base-uri 'self'; media-src 'self' blob:; worker-src 'self' blob:;">
 
 
     <!-- Styles -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@200..900&family=Outfit:wght@500;600;700;800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Teko:wght@300..700&display=swap">
     <link rel="stylesheet" href="../style.css?v=2.3">
+    <link rel="stylesheet" href="../tropic-noir.css?v=5.14">
     <link rel="apple-touch-icon" href="/apple-touch-icon-v2.png">
     <link rel="icon" href="/favicon-axcent-transparent.svg" type="image/svg+xml">
 
@@ -60,6 +60,7 @@
       "isPartOf": {
         "@id": "https://axcentdance.com/#website"
       },
+      "inLanguage": "de",
       "description": "Tanzraum mieten in Zürich Altstetten für Kurse, Events oder Proben. 138qm Spiegelsaal, Top-Sound und zentrale Lage."
     },
     {
@@ -91,6 +92,14 @@
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "Ja, es gibt Parkplätze direkt an der gleichen Strasse wie die Schule. Der öffentliche Verkehr (Tram 2, Bus 31) ist zudem nur 2 Gehminuten entfernt."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Wie sieht eure Stornierungsrichtlinie aus?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Bei Stornierung mindestens 1 Woche vor der Buchung erhältst du eine volle Rückerstattung. Bei Stornierung zwischen 1 Woche und 48 Stunden vorher gilt eine Rückerstattung von 50%. Stornierungen innerhalb der letzten 48 Stunden sind nicht erstattungsfähig."
           }
         }
       ]
@@ -136,7 +145,7 @@
       "url": "https://axcentdance.com/",
       "logo": "https://axcentdance.com/assets/images/logo.webp",
       "image": "https://axcentdance.com/assets/images/hero_new.webp",
-      "description": "AXcent Dance is a Bachata dance school in Zurich Altstetten offering Bachata Sensual, Dominican Bachata, Salsa, and Latin dance classes for all levels.",
+      "description": "AXcent Dance ist eine Bachata-Tanzschule in Zürich Altstetten mit Kursen in Bachata Sensual, Dominican Bachata, Salsa und Latin Dance für alle Niveaus.",
       "telephone": "+41799668481",
       "email": "info@axcentdance.com",
       "hasMap": "https://www.google.com/maps?cid=15680757943659417558",
@@ -215,13 +224,7 @@
   <!-- End Meta Pixel Code -->
   </head>
 
-<body>
-
-    <!-- Background Elements -->
-    <div class="blob blob-1"></div>
-    <div class="blob blob-2"></div>
-    <div class="blob blob-3"></div>
-
+<body class="tropic service-page rental-page nav-declutter">
     <!-- Navigation Bar -->
     <header class="main-header">
         <div class="container navbar">
@@ -237,11 +240,13 @@
                 </svg>
             </button>
             <nav class="nav-links">
-        <a href="../">Home</a>
+        <a href="./" class="nav-home">Home</a>
         <a href="about">Über uns</a>
                 <a href="schedule">Unsere Kurse</a>
+                <a href="registration">Preise &amp; Anmeldung</a>
                 <a href="events">Events</a>
-                <a href="contact">Kontakt</a>
+                <a href="contact" class="nav-contact-item">Kontakt</a>
+                <a href="portal" class="nav-portal-item">Login</a>
 
                 <div class="dropdown">
                     <button class="dropbtn">Mehr ▾</button>
@@ -256,7 +261,7 @@
                         <a href="blog"><span>Blog</span></a>
                         <a href="faq"><span>FAQ</span></a>
                         <a href="etiquette"><span>Tanzetikette</span></a>
-                        <a href="portal"><span>Login</span></a>
+                        <a href="contact" class="nav-contact-dropdown"><span>Kontakt</span></a>
                     </div>
                 </div>
         <a href="/de/#trial-form" class="btn-header-cta">Probelektion buchen</a>
@@ -266,32 +271,49 @@
           <span class="divider">|</span>
           <span class="active">DE</span>
         </div>
-      
+      <div class="header-login">
+        <a href="portal" class="header-login__link header-login__link--icon" aria-label="Login" title="Login">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 21a8 8 0 0 0-16 0"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+        </a>
+      </div>
+
         </div>
     </header>
 
     <main>
 
-        <!-- Kompakter Bereich für Raumvermietung -->
-        <section class="rental-section-compact" style="padding-top: calc(var(--header-height) + 3rem); padding-bottom: 4rem;">
-            <div class="container">
-                <div class="hero-content reveal" style="text-align: center; margin-bottom: 3rem;">
-                    <div class="hero-badge" style="justify-content: center;">
-                        <span class="hero-badge-line"></span>
-                        <span class="hero-badge-text">RAUM FÜR DICH</span>
-                        <span class="hero-badge-line"></span>
-                    </div>
-                    <h1 class="hero-title-large" style="margin-bottom: 0.5rem;">
-                        RAUMVERMIETUNG
+        <!-- Kopfbereich -->
+        <section class="split-masthead">
+            <div class="container split-masthead__split">
+                <span class="split-masthead__ghost" aria-hidden="true">Studio</span>
+                <div class="split-masthead__copy">
+                    <p class="split-masthead__kicker">Raum für dich</p>
+                    <h1 class="page-title split-masthead__title">
+                        Raum <em class="title-accent">Vermietung</em>
                     </h1>
-                    <p class="hero-desc-border" style="border: none; padding: 0; max-width: 700px; margin: 0 auto;">
+                    <p class="split-masthead__dek">
                         Erschaffe deine eigene Magie.
-                        <strong>Miete unseren wunderschönen Tanzsaal (~140m²) für deine Events, Workshops oder Proben.</strong>
+                        <strong>Miete unseren wunderschönen Studioraum (~140m²) für deine Events, Workshops oder Proben.</strong>
                     </p>
                 </div>
+                <figure class="split-masthead__media">
+                    <img src="../assets/images/empty_studio_mirrors_1200w.webp"
+                        srcset="../assets/images/empty_studio_mirrors_480w.webp 480w, ../assets/images/empty_studio_mirrors_800w.webp 800w, ../assets/images/empty_studio_mirrors_1200w.webp 1200w"
+                        sizes="(max-width: 899px) 100vw, 40vw"
+                        alt="Leerer Spiegelsaal zur Miete bei AXcent Dance in Zürich Altstetten"
+                        width="1200" height="1200" loading="eager" fetchpriority="high">
+                </figure>
+            </div>
+        </section>
 
+        <!-- Kompakter Bereich für Raumvermietung -->
+        <section class="rental-section-compact" style="padding-top: 2.5rem; padding-bottom: 4rem;">
+            <div class="container">
                 <div class="rental-main-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start;">
-                    
+
                     <!-- Links: Galerie-Bilder -->
                     <div class="rental-images-col reveal">
                         <div class="gallery-grid" style="display: flex; flex-direction: column; gap: 1.5rem;">
@@ -303,6 +325,7 @@
                                              ../assets/images/studio/studio_room_view_1_1200w.webp 1200w"
                                     sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 600px"
                                     alt="Geräumiges Tanzstudio mit violetter Decke und Spiegeln" width="1200" height="800"
+                                    loading="lazy"
                                     style="width: 100%; height: auto; object-fit: cover; transition: transform 0.5s ease; display: block; transform: scale(1.15); transform-origin: 85% center;">
                             </div>
 
@@ -324,12 +347,17 @@
                     <div class="rental-form-col reveal">
                         <div class="rental-inquiry-box" style="margin-top: 0;">
                             <h2 class="section-title-modern" style="font-size: 2rem; text-align: center; margin-bottom: 1.5rem;">Mietanfrage</h2>
-                            <p style="color: white; margin-bottom: 2rem;">
+                            <p style="color: white; margin-bottom: 1rem;">
                                 <strong>Bitte gib den Zweck deiner Miete an und ob es sich um eine einmalige oder wiederkehrende Buchung handelt.</strong>
                                 Für allgemeine Fragen vor dem Absenden des Formulars <a href="contact" style="color: var(--accent-start);">kontaktiere uns</a>.
                             </p>
+                            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 2rem;">
+                                <strong style="color: white;">So funktioniert es:</strong> Sende deine Anfrage mit
+                                Wunschtag und -uhrzeit, wir bestätigen die Verfügbarkeit per E-Mail, und du erhältst
+                                anschliessend einen sicheren Zahlungslink, um deine Buchung abzuschliessen.
+                            </p>
 
-                            <form action="https://formsubmit.co/info@axcentdance.com" method="POST">
+                            <form id="rentalInquiryForm" action="https://formsubmit.co/info@axcentdance.com" method="POST">
                                 <input type="hidden" name="_cc" value="slamitza@gmail.com">
                                 <input type="hidden" name="_webhook"
                                     value="https://script.google.com/macros/s/AKfycbytxnGMTaV1WfB9_DV7R1euJWhtqjBt10lHK-8bUnoQ76j2xypd5J7rIBJzW6S_cBPk/exec">
@@ -367,23 +395,21 @@
                                 <div class="form-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2rem;">
                                     <div class="form-group floating-label">
                                         <select id="rental_purpose" name="rental_purpose" class="form-input-modern" required style="padding-top: 1.25rem;">
-                                            <option value="" disabled selected hidden></option>
-                                            <option value="Event">Event (Workshop/Party)</option>
+                                            <option value="Event" selected>Workshop / Party</option>
                                             <option value="Regular Class">Regulärer Kurs</option>
                                             <option value="Training">Training / Probe</option>
                                             <option value="Private Lesson">Privatstunden</option>
                                             <option value="Production">Foto / Video Shoot</option>
                                             <option value="Other">Anderes</option>
                                         </select>
-                                        <label for="rental_purpose" style="color: white !important;">Mietzweck</label>
+                                        <label for="rental_purpose">Mietzweck</label>
                                     </div>
                                     <div class="form-group floating-label">
                                         <select id="frequency" name="frequency" class="form-input-modern" required style="padding-top: 1.25rem;">
-                                            <option value="" disabled selected hidden></option>
-                                            <option value="One-time">Einmalig</option>
+                                            <option value="One-time" selected>Einmalig</option>
                                             <option value="Recurring">Wiederkehrend</option>
                                         </select>
-                                        <label for="frequency" style="color: white !important;">Häufigkeit</label>
+                                        <label for="frequency">Häufigkeit</label>
                                     </div>
                                 </div>
 
@@ -405,80 +431,33 @@
                     </div>
                 </div>
             </div>
-            <style>
-                .rental-main-grid {
-                    display: grid;
-                    grid-template-columns: 1fr 1fr;
-                    gap: 3rem;
-                    align-items: start;
-                }
-                
-                @media (max-width: 900px) {
-                    .rental-main-grid {
-                        grid-template-columns: 1fr;
-                        gap: 2rem;
-                    }
-                    .hero-title-large {
-                        font-size: 3.5rem !important;
-                    }
-                }
-
-                .rental-inquiry-box {
-                    background: linear-gradient(145deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
-                    border: 1px solid rgba(255, 255, 255, 0.1);
-                    border-radius: 24px;
-                    padding: 2.5rem;
-                    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
-                    position: relative;
-                    overflow: hidden;
-                }
-
-                .rental-inquiry-box::before {
-                    content: '';
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    width: 100%;
-                    height: 4px;
-                    background: var(--grad);
-                }
-
-                .gallery-item-wrapper:hover img {
-                    transform: scale(1.05);
-                }
-
-                }
-            </style>
         </section>
 
         <!-- Studio Spezifikationen & Zwecke -->
         <section class="reveal" style="padding-bottom: 4rem;">
             <div class="container">
                 <div class="studio-details-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start;">
-                    
+
                     <!-- Links: Technische Details -->
                     <div class="specs-column">
                         <h2 class="section-title-modern" style="font-size: 2rem; margin-bottom: 2rem;">Studio Spezifikationen</h2>
                         <div class="specs-list" style="display: flex; flex-direction: column; gap: 1.5rem;">
-                            
+
                             <div class="spec-item-mini" style="display: flex; align-items: center; gap: 1rem;">
-                                <span style="font-size: 1.5rem; background: rgba(255,255,255,0.05); width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; border-radius: 10px; border: 1px solid var(--glass-border);">📐</span>
                                 <div>
                                     <strong style="color: white; display: block;">140m² Gesamtfläche</strong>
-                                    <span style="color: var(--text-muted); font-size: 0.9rem;">Ca. 100m² hochwertige Tanzfläche.</span>
+                                    <span style="color: var(--text-muted); font-size: 0.9rem;">Ca. 100m² professionelle Tanzfläche.</span>
                                 </div>
                             </div>
 
                             <div class="spec-item-mini" style="display: flex; align-items: center; gap: 1rem;">
-                                <span style="font-size: 1.5rem; background: rgba(255,255,255,0.05); width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; border-radius: 10px; border: 1px solid var(--glass-border);">💡</span>
                                 <div>
-                                    <strong style="color: white; display: block;">Profi-Lichtsystem</strong>
-                                    <span style="color: var(--text-muted); font-size: 0.9rem;">Verschiedene Intensitäten und anpassbare Farben für jede Stimmung.</span>
+                                    <strong style="color: white; display: block;">Professionelle Beleuchtung</strong>
+                                    <span style="color: var(--text-muted); font-size: 0.9rem;">Modernes System mit verschiedenen Intensitäten und anpassbaren Farben.</span>
                                 </div>
                             </div>
 
                             <div class="spec-item-mini" style="display: flex; align-items: center; gap: 1rem;">
-                                <span style="font-size: 1.5rem; background: rgba(255,255,255,0.05); width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; border-radius: 10px; border: 1px solid var(--glass-border);">🔊</span>
                                 <div>
                                     <strong style="color: white; display: block;">High-Fidelity Sound</strong>
                                     <span style="color: var(--text-muted); font-size: 0.9rem;">Professionelles Audiosystem mit Bluetooth- und AUX-Anschluss.</span>
@@ -486,15 +465,13 @@
                             </div>
 
                             <div class="spec-item-mini" style="display: flex; align-items: center; gap: 1rem;">
-                                <span style="font-size: 1.5rem; background: rgba(255,255,255,0.05); width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; border-radius: 10px; border: 1px solid var(--glass-border);">🔇</span>
                                 <div>
                                     <strong style="color: white; display: block;">Hervorragende Akustik</strong>
-                                    <span style="color: var(--text-muted); font-size: 0.9rem;">Integrierte Schallschutzpaneele für optimalen Klang.</span>
+                                    <span style="color: var(--text-muted); font-size: 0.9rem;">Integrierte Schallschutzpaneele für optimale Akustik.</span>
                                 </div>
                             </div>
 
                             <div class="spec-item-mini" style="display: flex; align-items: center; gap: 1rem;">
-                                <span style="font-size: 1.5rem; background: rgba(255,255,255,0.05); width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; border-radius: 10px; border: 1px solid var(--glass-border);">🛋️</span>
                                 <div>
                                     <strong style="color: white; display: block;">Separate Lounge</strong>
                                     <span style="color: var(--text-muted); font-size: 0.9rem;">Eigener Eingangsbereich für persönliches Gepäck und Pausen.</span>
@@ -522,37 +499,39 @@
                             <span class="purpose-tag">Teambuilding</span>
                         </div>
                         <p style="color: var(--text-muted); margin-top: 1.5rem; line-height: 1.6;">
-                            Unser vielseitiger Raum passt sich Ihren kreativen und professionellen Bedürfnissen an. Ob für einen energiegeladenen Workshop, eine fokussierte Produktion oder
-                            <a href="corporate-events" style="color: var(--accent-start);">Firmenevent-Planung</a> – AXcent Dance bietet das passende Premium-Umfeld.
+                            Unser vielseitiger Raum passt sich deinen kreativen und professionellen Bedürfnissen an. Ob für einen energiegeladenen Workshop, eine fokussierte Produktion oder
+                            <a href="corporate-events" style="color: var(--accent-start);">Firmenevent-Planung</a> — AXcent Dance bietet dir das Premium-Umfeld, das du brauchst.
                         </p>
                     </div>
 
                 </div>
             </div>
-            <style>
-                .purpose-tag {
-                    background: rgba(255, 59, 48, 0.1);
-                    color: white;
-                    padding: 0.5rem 1.2rem;
-                    border-radius: 30px;
-                    border: 1px solid rgba(255, 59, 48, 0.2);
-                    font-size: 0.9rem;
-                    transition: all 0.3s ease;
-                }
-                .purpose-tag:hover {
-                    background: var(--grad);
-                    border-color: transparent;
-                    transform: translateY(-2px);
-                }
-                @media (max-width: 900px) {
-                    .studio-details-grid {
-                        grid-template-columns: 1fr;
-                        gap: 3rem;
-                    }
-                }
-            </style>
         </section>
 
+
+
+
+
+        <!-- Preise -->
+        <section class="rental-rates">
+            <div class="container">
+                <h2 class="section-title-modern">Einfache <em class="title-accent">Preise</em></h2>
+                <div class="service-price-card">
+                    <span class="service-price-card__price">CHF 50</span>
+                    <span class="service-price-card__label">Einmalige Buchung für geschäftliche Zwecke</span>
+                    <ul class="service-price-card__list">
+                        <li>Voller Zugang zum ~140m&sup2; Studioraum</li>
+                        <li>Soundsystem, Spiegel und Beleuchtung inklusive</li>
+                        <li>Eingangslounge für deine Gäste und dein Gepäck</li>
+                    </ul>
+                    <p class="service-price-card__note">Planst du eine mehrwöchige oder mehrstündige Buchung? Die
+                        Preise werden dann günstiger &mdash; <a href="contact">melde dich bei uns</a> und wir finden
+                        die passende Lösung.</p>
+                    <span class="service-badge-callout">Aktive Schülerinnen und Schüler: Wir haben einen tollen
+                        Rabatt für Trainingszeit &mdash; frag uns einfach!</span>
+                </div>
+            </div>
+        </section>
 
         <!-- FAQ Section -->
         <section class="container" style="max-width: 800px; margin-bottom: 6rem; margin-top: 4rem;">
@@ -560,42 +539,56 @@
             </h2>
             <div class="faq-list" style="display: flex; flex-direction: column; gap: 1rem;">
                 <!-- FAQ Item 1 -->
-                <details class="glass-panel" style="border-radius: 12px; overflow: hidden;">
-                    <summary
-                        style="padding: 1.5rem; cursor: pointer; color: white; font-weight: 600; font-size: 1.1rem; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                <details class="glass-panel sched-faq">
+                    <summary class="sched-faq__summary">
                         Kann ich den Raum für private Partys mieten?
-                        <span style="color: var(--accent-start); font-size: 1.5rem;">+</span>
+                        <span class="sched-faq__icon" aria-hidden="true">+</span>
                     </summary>
-                    <div style="padding: 0 1.5rem 1.5rem; color: var(--text-muted); line-height: 1.6;">
-                        Ja, unser Studio eignet sich perfekt für Geburtstage, Workshops und private Events. Kontaktiere
-                        uns für Verfügbarkeit und individuelle Preise für einmalige Veranstaltungen.
+                    <div class="sched-faq__body">
+                        Ja, unser Studio eignet sich perfekt für Geburtstage, Workshops und private Events. Einmalige
+                        Buchungen für geschäftliche Zwecke beginnen bei CHF 50; kontaktiere uns für Verfügbarkeit und
+                        eine individuelle Offerte für Partys und besondere Anlässe.
                     </div>
                 </details>
 
                 <!-- FAQ Item 2 -->
-                <details class="glass-panel" style="border-radius: 12px; overflow: hidden;">
-                    <summary
-                        style="padding: 1.5rem; cursor: pointer; color: white; font-weight: 600; font-size: 1.1rem; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                <details class="glass-panel sched-faq">
+                    <summary class="sched-faq__summary">
                         Welches Equipment ist inklusive?
-                        <span style="color: var(--accent-start); font-size: 1.5rem;">+</span>
+                        <span class="sched-faq__icon" aria-hidden="true">+</span>
                     </summary>
-                    <div style="padding: 0 1.5rem 1.5rem; color: var(--text-muted); line-height: 1.6;">
+                    <div class="sched-faq__body">
                         Die Miete beinhaltet das hochwertige Soundsystem (Bluetooth/Aux), Spiegel und die
-                        Grundbeleuchtung. Weiteres Equipment wie Stühle oder Tische kann auf Anfrage arrangiert werden.
+                        Grundbeleuchtung. Weiteres Equipment wie Stühle oder Tische kann auf Anfrage arrangiert
+                        werden.
                     </div>
                 </details>
 
                 <!-- FAQ Item 3 -->
-                <details class="glass-panel" style="border-radius: 12px; overflow: hidden;">
-                    <summary
-                        style="padding: 1.5rem; cursor: pointer; color: white; font-weight: 600; font-size: 1.1rem; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                <details class="glass-panel sched-faq">
+                    <summary class="sched-faq__summary">
                         Gibt es Parkplätze?
-                        <span style="color: var(--accent-start); font-size: 1.5rem;">+</span>
+                        <span class="sched-faq__icon" aria-hidden="true">+</span>
                     </summary>
-                    <div style="padding: 0 1.5rem 1.5rem; color: var(--text-muted); line-height: 1.6;">
+                    <div class="sched-faq__body">
                         Ja, es gibt Parkplätze direkt an der gleichen Strasse wie die Schule. Der öffentliche Verkehr
-                        (Tram 2, Bus
-                        31) ist zudem nur 2 Gehminuten entfernt.
+                        (Tram 2, Bus 31) ist zudem nur 2 Gehminuten entfernt.
+                    </div>
+                </details>
+
+                <!-- FAQ Item 4 -->
+                <details class="glass-panel sched-faq">
+                    <summary class="sched-faq__summary">
+                        Wie sieht eure Stornierungsrichtlinie aus?
+                        <span class="sched-faq__icon" aria-hidden="true">+</span>
+                    </summary>
+                    <div class="sched-faq__body">
+                        Pläne ändern sich, das ist völlig in Ordnung. Bei Stornierung mindestens
+                        <strong>1 Woche</strong> vor deiner Buchung erhältst du eine volle Rückerstattung. Bei
+                        Stornierung zwischen <strong>1 Woche und 48 Stunden</strong> vorher gilt eine
+                        Rückerstattung von <strong>50%</strong>. Stornierungen innerhalb der
+                        <strong>letzten 48 Stunden</strong> sind leider nicht erstattungsfähig, da der Raum kurzfristig
+                        nicht mehr anderweitig vergeben werden kann.
                     </div>
                 </details>
             </div>
@@ -611,6 +604,9 @@
                 <p class="footer-address">
                     Hermetschloostrasse 73,<br>
                     8048 Zurich Altstetten<br> 2 Minuten zu Fuss von Tram 2 und Bus 31 Haltestelle
+                </p>
+                <p class="footer-contact">
+                    <a href="https://wa.me/41799668481" target="_blank" rel="noopener noreferrer">WhatsApp: +41 79 966 84 81</a>
                 </p>
                 <div class="footer-socials">
                     <a href="https://www.instagram.com/axcent_dance/" target="_blank" aria-label="Instagram">
@@ -632,10 +628,12 @@
             <div class="footer-col">
                 <h2 class="footer-heading">Schnellzugriff</h2>
                 <ul class="footer-links">
+                    <li><a href="/de/#trial-form">Kostenlose Probelektion buchen</a></li>
                     <li><a href="guide-bachata">Was ist Bachata</a></li>
                     <li><a href="blog/roots-of-bachata">Wurzeln des Bachatas</a></li>
                     <li><a href="schedule">Stundenplan</a></li>
                     <li><a href="blog">Unser Blog</a></li>
+                    <li><a href="https://www.google.com/maps?cid=15680757943659417558" target="_blank" rel="noopener noreferrer">Lies unsere Google-Bewertungen</a></li>
 
                 </ul>
             </div>
@@ -650,44 +648,76 @@
             </div>
         </div>
 
-        <div class="container footer-map-full" style="margin-bottom: 2rem;">
-            <h2 class="footer-heading" style="margin-bottom: 1rem;">Finde uns</h2>
-            <div class="footer-map-wrapper-large"
-                style="border-radius: 12px; overflow: hidden; border: 1px solid var(--glass-border);">
-                <iframe title="Google Maps Standort von AXcent Dance"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2701.365!2d8.472010!3d47.394204!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47900b995a7d8e03%3A0xd99d3e4500b44fd6!2sAXcent%20Dance%20%7C%20Bachata%20Classes!5e0!3m2!1sen!2sch!4v1710680000000!5m2!1sde!2sch&hl=de"
-                    width="100%" height="250" style="border:0; width: 100%; display: block;" allowfullscreen=""
-                    loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
+        <div class="container footer-map-full">
+            <h2 class="footer-heading footer-map-full__heading">Finde uns</h2>
+            <a class="footer-map-card" href="https://www.google.com/maps?cid=15680757943659417558" target="_blank"
+                rel="noopener noreferrer" aria-label="AXcent Dance Studio-Standort in Google Maps öffnen">
+                <span class="footer-map-card__pin" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                        <circle cx="12" cy="10" r="3" />
+                    </svg>
+                </span>
+                <span class="footer-map-card__address">Hermetschloostrasse 73, 8048 Zurich Altstetten</span>
+                <span class="footer-map-card__hint">2 Minuten von Tram 2 und Bus 31 · In Google Maps öffnen</span>
+            </a>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2025 AXcent Dance. Alle Rechte vorbehalten.</p>
+            <p>&copy; 2026 AXcent Dance. Alle Rechte vorbehalten.</p>
         </div>
     </footer>
 
     <script src="../script.js?v=5.8"></script>
 
+    <!-- Spiegelt die Mietanfrage ins Admin-Dashboard des Inhabers ("Outside
+         Room Requests"). Der bestehende FormSubmit + Google Sheets Webhook
+         (versteckte _webhook/_cc/_next Felder oben) bleibt unverändert und
+         läuft weiterhin genau wie zuvor über die native Formular-Übermittlung. -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script type="module">
+        import { supabase } from '../assets/js/supabase-client.js';
+
+        const form = document.getElementById('rentalInquiryForm');
+        if (form) {
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+
+                const fd = new FormData(form);
+                const details = [
+                    'Purpose: ' + (fd.get('rental_purpose') || ''),
+                    'Frequency: ' + (fd.get('frequency') || ''),
+                    'Timing: ' + (fd.get('timing') || ''),
+                    fd.get('businessname') ? 'Business: ' + fd.get('businessname') : null,
+                    fd.get('message') ? 'Message: ' + fd.get('message') : null
+                ].filter(Boolean).join(' | ');
+
+                try {
+                    await Promise.race([
+                        supabase.from('requests').insert({
+                            type: 'room_rental',
+                            status: 'new',
+                            email: fd.get('email'),
+                            name: ((fd.get('firstname') || '') + ' ' + (fd.get('lastname') || '')).trim(),
+                            phone: fd.get('phone'),
+                            details: details
+                        }),
+                        new Promise((resolve) => setTimeout(resolve, 3000))
+                    ]);
+                } catch (err) {
+                    console.error('Outside room request logging failed:', err);
+                }
+
+                // form.submit() umgeht das submit-Event (kein Wiedereintritt)
+                // und läuft danach genau wie zuvor weiter: FormSubmit-E-Mail,
+                // Google Sheets Webhook und Weiterleitung zur Danke-Seite.
+                form.submit();
+            });
+        }
+    </script>
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
 
 </body>
 

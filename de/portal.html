@@ -488,7 +488,8 @@
         }
 
         #feedback,
-        #absenceFeedback,
+        #sickFeedback,
+        #freezeFeedback,
         #renewFeedback,
         #requestFeedback {
             margin-top: 1rem;
@@ -661,43 +662,65 @@
             </p>
         </div>
 
+        <div class="portal-card" id="flexCard" style="display: none;">
+            <h2>Dein 10er-Abo</h2>
+            <p class="quota-line" id="flexQuota"></p>
+            <ul class="absence-list" id="flexList"></ul>
+            <p class="muted-note">
+                Lektionen werden gezählt, wenn das Studio dich als anwesend markiert — komm einfach
+                in jede Klasse im <a href="schedule" style="color: var(--accent-gold);">Wochenplan</a>.
+            </p>
+        </div>
+
         <div class="portal-card" id="timetableCard" style="display: none;">
             <h2>Deine Woche</h2>
             <div class="tt-grid" id="timetableGrid"></div>
         </div>
 
-        <div class="portal-card" id="absenceCard" style="display: none;">
-            <h2>Krankheitstag &amp; Pass-Pause</h2>
+        <div class="portal-card" id="purchasesCard" style="display: none;">
+            <h2>Deine Buchungen &amp; Privatstunden</h2>
+            <ul class="absence-list" id="purchasesList"></ul>
+        </div>
+
+        <div class="portal-card" id="sickCard" style="display: none;">
+            <h2>Krankheitstag</h2>
             <p class="quota-line" id="quotaLine"></p>
 
             <div class="reg-note" id="regNote" style="display: none;"></div>
 
             <ul class="absence-list" id="absenceList"></ul>
 
-            <form id="absenceForm">
-                <div class="form-group">
-                    <label for="absenceType">Anfrage</label>
-                    <select id="absenceType" required>
-                        <option value="sick">Krankheitstag — nur heute, vor 12:00</option>
-                        <option value="freeze">Pass-Pause — längere Auszeit (Ferien, Verletzung...)</option>
-                    </select>
-                </div>
-                <p class="muted-note" id="typeHint" style="margin-bottom: 1rem;"></p>
-                <div class="form-group" id="freezeFromGroup" style="display: none;">
-                    <label for="freezeFrom">Pause ab</label>
-                    <input type="date" id="freezeFrom">
-                </div>
-                <div class="form-group" id="freezeUntilGroup" style="display: none;">
-                    <label for="freezeUntil">Zurück am</label>
-                    <input type="date" id="freezeUntil">
-                </div>
-                <div class="form-group">
-                    <label for="absenceNote">Notiz (optional)</label>
-                    <input type="text" id="absenceNote" maxlength="200" placeholder="z.B. welche Lektion du verpasst, Grund der Pause...">
-                </div>
-                <button type="submit" class="btn-declare" id="declareBtn">Absenden</button>
+            <form id="sickForm">
+                <p class="muted-note" id="sickHint" style="margin-bottom: 1rem;"></p>
+                <button type="submit" class="btn-declare" id="sickBtn">Krankheitstag angeben (heute)</button>
             </form>
-            <div id="absenceFeedback"></div>
+            <div id="sickFeedback"></div>
+        </div>
+
+        <div class="portal-card" id="freezeCard" style="display: none;">
+            <h2>Pass-Pause</h2>
+            <p class="muted-note" style="margin-bottom: 1rem;">
+                Eine Pass-Pause pausiert deinen Pass für eine längere Auszeit von <strong>mindestens
+                zwei Wochen</strong> — Ferien, Arbeitsreisen, Verletzung. Gib uns den Zeitraum an; wir
+                bestätigen per E-Mail und passen deine Pass-Daten an. Für einen einzelnen verpassten
+                Tag nutze bitte den Krankheitstag oben.
+            </p>
+            <form id="freezeForm">
+                <div class="form-group">
+                    <label for="freezeFrom">Pause ab</label>
+                    <input type="date" id="freezeFrom" required>
+                </div>
+                <div class="form-group">
+                    <label for="freezeUntil">Zurück am</label>
+                    <input type="date" id="freezeUntil" required>
+                </div>
+                <div class="form-group">
+                    <label for="freezeNote">Notiz (optional)</label>
+                    <input type="text" id="freezeNote" maxlength="200" placeholder="z.B. Grund der Pause...">
+                </div>
+                <button type="submit" class="btn-declare" id="freezeBtn">Pass-Pause anfragen</button>
+            </form>
+            <div id="freezeFeedback"></div>
         </div>
 
         <div class="portal-card" id="requestCard" style="display: none;">
@@ -772,6 +795,7 @@
         import { supabase } from '../assets/js/supabase-client.js';
 
         const STUDIO_NOTIFY_EMAIL = 'slamitza@gmail.com';
+        const FLEX_PASS = '10-Class Flexible Package';
 
         // Google-Sheets-Spiegel für Anfragen (Apps-Script-Web-App-URL).
         // Leerer String deaktiviert den Spiegel, bis die Web-App deployed ist.
@@ -791,9 +815,9 @@
         // Stripe-Dashboard erstellt: Einmalzahlungen 150 / 360 / 550 CHF).
         // Leer lassen, bis der Link existiert.
         const PRIVATE_LINKS = {
-            'private-1h': { label: '1 Stunde privat', price: '150 CHF', amount: 150, url: 'https://buy.stripe.com/cNi00l7QX6XT5O760qfnO0g' },
-            'private-3h': { label: '3 Stunden privat', price: '360 CHF', amount: 360, url: 'https://buy.stripe.com/00w4gB9Z54PLa4nfB0fnO0h' },
-            'private-5h': { label: '5 Stunden privat', price: '550 CHF', amount: 550, url: 'https://buy.stripe.com/4gMcN77QX4PLdgz2OefnO0i' }
+            'private-1h': { label: '1 Stunde privat', price: '150 CHF', amount: 150, hours: 1, url: 'https://buy.stripe.com/cNi00l7QX6XT5O760qfnO0g' },
+            'private-3h': { label: '3 Stunden privat', price: '360 CHF', amount: 360, hours: 3, url: 'https://buy.stripe.com/00w4gB9Z54PLa4nfB0fnO0h' },
+            'private-5h': { label: '5 Stunden privat', price: '550 CHF', amount: 550, hours: 5, url: 'https://buy.stripe.com/4gMcN77QX4PLdgz2OefnO0i' }
         };
         const BOOTCAMP_LINK = 'https://buy.stripe.com/8x214p2wDgyt2BV9cCfnO0a';
         const BOOTCAMP_DATES = { from: '2026-10-17', until: '2026-10-19' };
@@ -991,12 +1015,14 @@
 
             setupClasses(currentPass);
             await setupAbsences(currentPass);
+            if (currentPass.pass_type === FLEX_PASS) await setupFlexUsage(currentPass);
         }
 
         // Pass-Verlauf: alles ausser dem aktuellen aktiven Pass.
         const history = (registrations || []).filter(r => r !== currentPass && r.status !== 'pending_payment');
 
         setupRequests(currentPass || history[0] || null);
+        await setupPurchases();
         if (history.length > 0) {
             el('historyList').innerHTML = history.map(r =>
                 '<div class="history-item"><strong>' + esc(r.pass_type || 'Kurspass') + '</strong><br>' +
@@ -1110,8 +1136,7 @@
                 }
 
                 const link = P.stripeLinks[pkg.value][tier] +
-                    '?prefilled_email=' + encodeURIComponent(userEmail) +
-                    '&client_reference_id=' + encodeURIComponent(userEmail);
+                    '?prefilled_email=' + encodeURIComponent(userEmail);
                 feedback.textContent = 'Weiterleitung zur sicheren Zahlung...';
                 feedback.className = 'success';
                 window.location.href = link;
@@ -1276,7 +1301,8 @@
                         type: 'private_class',
                         status: 'pending_payment',
                         date_from: from,
-                        details: pack.label + ' — ' + pack.price
+                        details: pack.label + ' — ' + pack.price,
+                        sessions_total: pack.hours
                     };
                 } else { // bootcamp
                     const phone = el('reqPhone').value.trim();
@@ -1303,9 +1329,33 @@
                 feedback.className = 'success';
                 const sep = payUrl.includes('?') ? '&' : '?';
                 window.location.href = payUrl + sep +
-                    'prefilled_email=' + encodeURIComponent(userEmail) +
-                    '&client_reference_id=' + encodeURIComponent(userEmail);
+                    'prefilled_email=' + encodeURIComponent(userEmail);
             });
+        }
+
+        // Flexibles Abo: das Studio markiert Anwesenheiten an der Tür; der
+        // Kunde sieht hier den Zähler (RLS erlaubt nur die eigenen Zeilen).
+        async function setupFlexUsage(pass) {
+            const { data: marks, error } = await supabase
+                .from('attendance')
+                .select('class_value, class_date')
+                .eq('registration_id', pass.id)
+                .eq('status', 'present')
+                .order('class_date', { ascending: true });
+            if (error) { console.error(error); return; }
+
+            const used = marks.length;
+            const left = Math.max(0, 10 - used);
+            el('flexQuota').innerHTML = '<strong>' + used + ' von 10</strong> Lektionen genutzt · ' +
+                '<strong>' + left + '</strong> ' + (left === 1 ? 'Lektion' : 'Lektionen') + ' übrig';
+
+            el('flexList').innerHTML = marks.map(m => {
+                const def = (window.AXCENT_PASSES.classes || []).find(c => c.value === m.class_value);
+                return '<li><span class="absence-type">' + esc(def ? def.de : m.class_value) + '</span>' +
+                    '<span>' + formatDate(m.class_date) + '</span></li>';
+            }).join('');
+
+            show('flexCard');
         }
 
         async function setupAbsences(pass) {
@@ -1319,8 +1369,8 @@
             const sickUsed = absences.filter(a => a.type === 'sick').length;
 
             el('quotaLine').innerHTML = sickUsed >= 1
-                ? '<strong>Krankheitstag genutzt</strong> für diesen Pass · längere Auszeiten per Pass-Pause'
-                : '<strong>Krankheitstag verfügbar</strong> · längere Auszeiten per Pass-Pause';
+                ? '<strong>Krankheitstag genutzt</strong> für diesen Pass'
+                : '<strong>Krankheitstag verfügbar</strong> — nur heute, vor 12:00';
 
             // Bei der Anmeldung als Freitext angegebene Abwesenheiten
             if (pass.dates_unavailable) {
@@ -1337,38 +1387,23 @@
                 ).join('');
             }
 
-            const typeSelect = el('absenceType');
-            const typeHint = el('typeHint');
             const zNow = zurichNow();
             const beforeMidday = zNow.getHours() < 12;
-            const sickOption = typeSelect.querySelector('option[value="sick"]');
+            const sickAllowed = sickUsed < 1 && beforeMidday;
 
-            if (sickUsed >= 1 || !beforeMidday) {
-                sickOption.disabled = true;
-                typeSelect.value = 'freeze';
+            if (sickAllowed) {
+                el('sickHint').textContent = 'Für heute (' + formatDate(localISODate(zNow)) +
+                    '), vor 12:00. Dein Pass wird automatisch um einen Kurstag verlängert.';
+            } else if (sickUsed >= 1) {
+                el('sickHint').textContent = 'Der Krankheitstag für diesen Pass wurde bereits genutzt. ' +
+                    'Für längere Auszeiten frage unten eine Pass-Pause an.';
+            } else {
+                el('sickHint').textContent = 'Krankheitstage können nur vor 12:00 am selben Tag angegeben werden. ' +
+                    'Für längere Auszeiten frage unten eine Pass-Pause an.';
             }
-
-            const applyTypeUI = () => {
-                const isSick = typeSelect.value === 'sick';
-                el('freezeFromGroup').style.display = isSick ? 'none' : '';
-                el('freezeUntilGroup').style.display = isSick ? 'none' : '';
-                el('freezeFrom').required = !isSick;
-                el('freezeUntil').required = !isSick;
-                if (isSick) {
-                    typeHint.textContent = 'Für heute (' + formatDate(localISODate(zNow)) +
-                        '). Dein Pass wird automatisch um einen Kurstag verlängert.';
-                } else if (sickUsed >= 1) {
-                    typeHint.textContent = 'Der Krankheitstag für diesen Pass wurde bereits genutzt. ' +
-                        'Für längere Auszeiten sende eine Pausen-Anfrage — wir bestätigen per E-Mail und passen deine Pass-Daten an.';
-                } else if (!beforeMidday) {
-                    typeHint.textContent = 'Krankheitstage können nur vor 12:00 am selben Tag angegeben werden. ' +
-                        'Für längere Auszeiten sende eine Pausen-Anfrage — wir bestätigen per E-Mail und passen deine Pass-Daten an.';
-                } else {
-                    typeHint.textContent = 'Pausen-Anfragen bestätigen wir per E-Mail und passen deine Pass-Daten an.';
-                }
-            };
-            typeSelect.addEventListener('change', applyTypeUI);
-            applyTypeUI();
+            if (!sickAllowed) {
+                el('sickBtn').disabled = true;
+            }
 
             // Pausen-Daten: frühestens ab morgen.
             const tomorrow = new Date(zNow);
@@ -1376,66 +1411,76 @@
             el('freezeFrom').min = localISODate(tomorrow);
             el('freezeUntil').min = localISODate(tomorrow);
 
-            show('absenceCard');
+            show('sickCard');
+            show('freezeCard');
 
-            el('absenceForm').addEventListener('submit', async (e) => {
+            el('sickForm').addEventListener('submit', async (e) => {
                 e.preventDefault();
-                const feedback = el('absenceFeedback');
+                const feedback = el('sickFeedback');
                 feedback.textContent = 'Wird übermittelt...';
                 feedback.className = '';
                 feedback.style.display = 'block';
 
-                const note = el('absenceNote').value || null;
+                const today = localISODate(zurichNow());
 
-                if (typeSelect.value === 'sick') {
-                    const today = localISODate(zurichNow());
+                const { error: insertError } = await supabase.from('absences').insert({
+                    registration_id: pass.id,
+                    email: userEmail,
+                    type: 'sick',
+                    absence_date: today
+                });
 
-                    const { error: insertError } = await supabase.from('absences').insert({
-                        registration_id: pass.id,
-                        email: userEmail,
-                        type: 'sick',
-                        absence_date: today,
-                        note: note
-                    });
-
-                    if (insertError) {
-                        feedback.textContent = insertError.message;
-                        feedback.className = 'error';
-                        return;
-                    }
-
-                    // Studio benachrichtigen, damit das Team planen kann.
-                    try {
-                        await fetch('https://formsubmit.co/ajax/' + STUDIO_NOTIFY_EMAIL, {
-                            method: 'POST',
-                            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-                            body: JSON.stringify({
-                                _subject: 'Portal Sick Day Declared: ' + userEmail,
-                                _template: 'table',
-                                _captcha: 'false',
-                                Email: userEmail,
-                                Pass: pass.pass_type || 'Kurspass',
-                                Type: 'Sick day (pass auto-extended by one class day)',
-                                Date: today,
-                                Note: note || 'None'
-                            })
-                        });
-                    } catch (notifyErr) {
-                        console.error('Studio notification failed:', notifyErr);
-                    }
-
-                    feedback.textContent = 'Krankheitstag angegeben — dein Pass wurde um einen Kurstag verlängert. Gute Besserung!';
-                    feedback.className = 'success';
-                    setTimeout(() => window.location.reload(), 2500);
+                if (insertError) {
+                    feedback.textContent = insertError.message;
+                    feedback.className = 'error';
                     return;
                 }
 
-                // Pausen-Anfrage: landet im Anfragen-Postfach des Studios;
-                // wir bestätigen per E-Mail und passen die Pass-Daten manuell an.
+                // Studio benachrichtigen, damit das Team planen kann.
+                // Die Pass-Verlängerung selbst ist automatisch (ein
+                // Datenbank-Trigger verschiebt das Enddatum auf den
+                // nächsten Kurstag des Kunden).
+                try {
+                    await fetch('https://formsubmit.co/ajax/' + STUDIO_NOTIFY_EMAIL, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                        body: JSON.stringify({
+                            _subject: 'Portal Sick Day Declared: ' + userEmail,
+                            _template: 'table',
+                            _captcha: 'false',
+                            Email: userEmail,
+                            Pass: pass.pass_type || 'Kurspass',
+                            Type: 'Sick day (pass auto-extended by one class day)',
+                            Date: today
+                        })
+                    });
+                } catch (notifyErr) {
+                    console.error('Studio notification failed:', notifyErr);
+                }
+
+                feedback.textContent = 'Krankheitstag angegeben — dein Pass wurde um einen Kurstag verlängert. Gute Besserung!';
+                feedback.className = 'success';
+                setTimeout(() => window.location.reload(), 2500);
+            });
+
+            el('freezeForm').addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const feedback = el('freezeFeedback');
+                feedback.textContent = 'Wird übermittelt...';
+                feedback.className = '';
+                feedback.style.display = 'block';
+
+                const note = el('freezeNote').value || null;
                 const from = el('freezeFrom').value;
                 const until = el('freezeUntil').value;
                 if (!from || !until || until < from) {
                     feedback.textContent = 'Bitte wähle einen gültigen Zeitraum (das Rückkehrdatum kann nicht vor dem Start liegen).';
+                    feedback.className = 'error';
+                    return;
+                }
+                const freezeDays = Math.round((new Date(until) - new Date(from)) / 86400000);
+                if (freezeDays < 14) {
+                    feedback.textContent = 'Eine Pass-Pause muss mindestens zwei Wochen umfassen. Für einen einzelnen verpassten Tag nutze den Krankheitstag; für alles dazwischen kontaktiere uns bitte per E-Mail.';
                     feedback.className = 'error';
                     return;
                 }
@@ -1486,8 +1531,47 @@
 
                 feedback.textContent = 'Pausen-Anfrage gesendet! Wir bestätigen per E-Mail und passen deine Pass-Daten an.';
                 feedback.className = 'success';
-                el('absenceForm').reset();
+                el('freezeForm').reset();
             });
+        }
+
+        // Buchungen & Privatstunden: bezahlte Privat-Pakete (mit genutzten
+        // Stunden) und Übungsraum-Anfragen aus den eigenen Request-Zeilen.
+        async function setupPurchases() {
+            const { data: rows, error } = await supabase
+                .from('requests')
+                .select('*')
+                .in('type', ['private_class', 'room_booking'])
+                .neq('status', 'pending_payment')
+                .order('created_at', { ascending: false });
+            if (error) { console.error(error); return; }
+            if (!rows || rows.length === 0) return;
+
+            const STATUS_LABELS = {
+                new: 'angefragt', confirmed: 'bestätigt', declined: 'abgelehnt', done: 'erledigt'
+            };
+
+            el('purchasesList').innerHTML = rows.map(r => {
+                if (r.type === 'private_class') {
+                    const total = r.sessions_total ||
+                        (parseInt((r.details || '').match(/(\d+)\s*(hour|Stunde)/i)?.[1], 10) || null);
+                    const usage = total
+                        ? r.sessions_done + ' von ' + total + ' Stunden genutzt'
+                        : r.sessions_done + ' Stunden genutzt';
+                    return '<li><span class="absence-type">Privatstunden · ' + esc(r.details || 'Paket') + '</span>' +
+                        '<span>' + usage + '</span></li>';
+                }
+                const shortDate = r.date_from
+                    ? new Date(r.date_from + 'T00:00:00').toLocaleDateString('de-DE', {
+                        weekday: 'short', month: 'short', day: 'numeric'
+                    })
+                    : '?';
+                const when = shortDate +
+                    (r.time_from && r.time_until ? ', ' + esc(r.time_from) + '–' + esc(r.time_until) : '');
+                return '<li><span class="absence-type">Übungsraum · ' + when + '</span>' +
+                    '<span>' + esc(STATUS_LABELS[r.status] || r.status) + '</span></li>';
+            }).join('');
+            show('purchasesCard');
         }
     </script>
 </body>

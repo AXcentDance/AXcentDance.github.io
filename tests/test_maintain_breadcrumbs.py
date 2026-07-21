@@ -97,6 +97,26 @@ def english_html_fixture(parent_url="https://axcentdance.com/blog", final_url="h
 """
 
 
+def redirect_stub_fixture(target="https://axcentdance.com/blog/example"):
+    return f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Example</title>
+    <meta name="robots" content="noindex">
+    <meta http-equiv="refresh" content="0; url=/blog/example">
+    <link rel="canonical" href="{target}">
+</head>
+<body>
+    <main>
+        <h1>This article has moved</h1>
+        <p><a href="../blog/example">Continue to the article: {target}</a></p>
+    </main>
+</body>
+</html>
+"""
+
+
 class BreadcrumbMaintenanceTests(unittest.TestCase):
     def write_fixture(self, root, relative_path, content):
         path = Path(root) / relative_path
@@ -198,6 +218,31 @@ class BreadcrumbMaintenanceTests(unittest.TestCase):
         issues = bv.validate_breadcrumb_content(content, "de/blog-posts/example.html")
 
         self.assertTrue(any("Missing BreadcrumbList" in issue for issue in issues))
+
+    def test_redirect_stub_detection(self):
+        self.assertTrue(bv.is_redirect_stub(redirect_stub_fixture()))
+        self.assertTrue(bv.is_redirect_stub(redirect_stub_fixture().replace('http-equiv="refresh"', "http-equiv='REFRESH'")))
+        self.assertFalse(bv.is_redirect_stub(html_fixture()))
+        self.assertFalse(bv.is_redirect_stub(english_html_fixture()))
+
+    def test_validate_repo_skips_redirect_stubs(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            self.write_fixture(root, "blog-posts/moved.html", redirect_stub_fixture())
+            self.write_fixture(
+                root,
+                "de/blog-posts/example.html",
+                html_fixture(parent_url="https://axcentdance.com/de/blog"),
+            )
+
+            self.assertEqual(mb.validate_repo(root), 0)
+
+    def test_validate_repo_still_flags_real_pages_without_schema(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            self.write_fixture(root, "blog-posts/real.html", "<html><head></head><body><h1>Real page</h1></body></html>")
+
+            self.assertEqual(mb.validate_repo(root), 1)
 
     def test_dirty_unrelated_file_does_not_block_target(self):
         original = mb.git_dirty_paths

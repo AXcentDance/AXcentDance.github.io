@@ -365,6 +365,7 @@
                 <div id="feedback"></div>
 
                 <div class="auth-links">
+                    <p class="auth-link"><a href="#" id="magicLink">Email me a login link</a></p>
                     <p class="auth-link"><a href="#" id="forgotLink">Forgot your password?</a></p>
                     <p class="auth-link">No account yet? <a href="_signup">Sign Up</a></p>
                     <p class="auth-link auth-link--quiet"><a href="/">← Back to Website</a></p>
@@ -406,13 +407,56 @@
             });
 
             if (error) {
-                showFeedback(error.message, 'error');
+                // Unconfirmed accounts get a resend path instead of a dead end.
+                if ((error.message || '').toLowerCase().includes('not confirmed')) {
+                    feedback.innerHTML = 'Your email address is not confirmed yet. ' +
+                        '<a href="#" id="resendConfirm" style="color: var(--accent-gold);">Resend the confirmation email</a>';
+                    feedback.className = 'error';
+                    feedback.style.display = 'block';
+                    document.getElementById('resendConfirm').addEventListener('click', async (ev) => {
+                        ev.preventDefault();
+                        const { error: resendError } = await supabase.auth.resend({
+                            type: 'signup',
+                            email: document.getElementById('email').value
+                        });
+                        showFeedback(resendError ? resendError.message :
+                            'Confirmation email sent — please also check your spam folder.',
+                            resendError ? 'error' : 'success');
+                    });
+                } else {
+                    showFeedback(error.message, 'error');
+                }
             } else {
                 showFeedback('Success! Redirecting...', 'success');
                 // The studio owner lands on the requests inbox, not the pass page.
                 const dest = document.getElementById('email').value.trim().toLowerCase() === 'info@axcentdance.com'
                     ? '_admin.html' : 'portal.html';
                 setTimeout(() => { window.location.href = dest; }, 800);
+            }
+        });
+
+        // Passwordless fallback: a one-time login link by email. Safer than a
+        // forgotten-password guess and rescues users without the reset dance.
+        document.getElementById('magicLink').addEventListener('click', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            if (!email) {
+                showFeedback('Enter your email above first, then click the link again.', 'error');
+                return;
+            }
+            const { error } = await supabase.auth.signInWithOtp({
+                email: email,
+                options: {
+                    shouldCreateUser: false,
+                    emailRedirectTo: window.location.origin + '/portal.html'
+                }
+            });
+            if (error) {
+                showFeedback((error.message || '').toLowerCase().includes('signups not allowed')
+                    ? 'No account exists for this email yet — please sign up first.'
+                    : error.message, 'error');
+            } else {
+                showFeedback('Login link sent! Check your inbox and open the link on this device.', 'success');
             }
         });
 

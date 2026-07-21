@@ -132,7 +132,7 @@ Use modern, elegant fonts available via Google Fonts. The typography should echo
     - `Article` for blog posts (MUST include `"image"` field).
     - ensure `og:image` and `twitter:image` tags are present for all pages.
     - `Product` for items/services.
-- **Schema Synchronization**: MANDATORY. Whenever any factual or transactional information (Dates, Prices, Artists, Locations, or event details) is changed in the page body, the corresponding JSON-LD Schema in the `<head>` MUST be updated immediately to ensure 100% parity between what the human sees and what the AI/Google reads. All dates (`datePublished`, `dateModified`, `startDate`, etc.) MUST include the full time and UTC offset using the ISO 8601 format (e.g., `2025-12-07T12:00:00+01:00`).
+- **Schema Synchronization**: MANDATORY. Whenever any factual or transactional information (Dates, Prices, Artists, Locations, or event details) is changed in the page body, the corresponding JSON-LD Schema in the `<head>` MUST be updated immediately to ensure 100% parity between what the human sees and what the AI/Google reads. All timestamped dates (`datePublished`, `startDate`, `endDate`, etc.) MUST include the full time and UTC offset using the ISO 8601 format (e.g., `2025-12-07T12:00:00+01:00`). Exception: `dateModified` uses the date-only ISO 8601 format `YYYY-MM-DD` (schema.org permits `Date`), matching the site-wide convention enforced by `scripts/sync_blog_dates.py` and `.agent/rules/axcent-rules.md`.
 
 ## 6. SEO Guidelines (Yoast)
 

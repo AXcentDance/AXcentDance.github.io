@@ -18,8 +18,7 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="article">
     <meta property="og:title" content="Die Könige vereint: Romeo Santos & Prince Royce Album Release">
-    <meta property="og:description"
-        content="Das Warten hat ein Ende! Romeo Santos und Prince Royce haben ihr erstes gemeinsames Album 'Better Late Than Never' veröffentlicht. Lies unsere Kritik zu den Top-Tracks.">
+    <meta property="og:description" content="Das Warten hat ein Ende! Romeo Santos und Prince Royce haben ihr erstes gemeinsames Album 'Better Late Than Never' veröffentlicht. Lies unsere Kritik zu den Top-Tracks.">
     <meta property="og:image" content="https://axcentdance.com/assets/images/blog/discover/romeo-prince-collaboration-2025-1200x675.jpg">
     <meta property="og:url" content="https://axcentdance.com/de/blog/romeo-prince-collaboration-2025">
     <meta property="og:site_name" content="AXcent Dance">
@@ -37,6 +36,8 @@
     <!-- Styles -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@200..900&family=Outfit:wght@500;600;700;800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Teko:wght@300..700&display=swap">
     <link rel="stylesheet" href="../../style.css?v=2.3">
+    <link rel="stylesheet" href="../../tropic-noir.css?v=5.2">
+    <link rel="stylesheet" href="../../blog-post.css?v=2.1">
     <link rel="apple-touch-icon" href="/apple-touch-icon-v2.png">
     <link rel="icon" href="/favicon-axcent-transparent.svg" type="image/svg+xml">
 
@@ -146,7 +147,7 @@
       },
       "headline": "Bachata-Exzellenz: Unsere technische Zusammenarbeit mit Romeo & Prince",
       "datePublished": "2025-11-20T12:00:00+01:00",
-      "dateModified": "2026-07-05",
+      "dateModified": "2026-07-15",
       "author": [
         {
           "@id": "https://axcentdance.com/#person1"
@@ -196,7 +197,7 @@
       "url": "https://axcentdance.com/",
       "logo": "https://axcentdance.com/assets/images/logo.webp",
       "image": "https://axcentdance.com/assets/images/hero_new.webp",
-      "description": "AXcent Dance is a Bachata dance school in Zurich Altstetten offering Bachata Sensual, Dominican Bachata, Salsa, and Latin dance classes for all levels.",
+      "description": "AXcent Dance ist eine Bachata-Tanzschule in Zürich Altstetten mit Kursen in Bachata Sensual, Dominican Bachata, Salsa und Latin Dance für alle Niveaus.",
       "telephone": "+41799668481",
       "email": "info@axcentdance.com",
       "hasMap": "https://www.google.com/maps?cid=15680757943659417558",
@@ -342,7 +343,7 @@
   <!-- End Meta Pixel Code -->
 </head>
 
-<body>
+<body class="tropic post-page nav-declutter">
 
     <!-- Navigation Bar -->
     <header class="main-header">
@@ -359,11 +360,13 @@
                 </svg>
             </button>
             <nav class="nav-links">
-        <a href="../../">Home</a>
+        <a href="../" class="nav-home">Home</a>
         <a href="../about">Über uns</a>
                 <a href="../schedule">Unsere Kurse</a>
+                <a href="../registration">Preise &amp; Anmeldung</a>
                 <a href="../events">Events</a>
-                <a href="../contact">Kontakt</a>
+                <a href="../contact" class="nav-contact-item">Kontakt</a>
+                <a href="../portal" class="nav-portal-item">Login</a>
                 <div class="dropdown">
                     <button class="dropbtn">Mehr ▾</button>
                     <div class="dropdown-content">
@@ -377,7 +380,7 @@
                         <a href="../blog"><span>Blog</span></a>
                         <a href="../faq"><span>FAQ</span></a>
                         <a href="../etiquette"><span>Tanzetikette</span></a>
-                        <a href="../portal"><span>Login</span></a>
+                        <a href="../contact" class="nav-contact-dropdown"><span>Kontakt</span></a>
                     </div>
                 </div>
         <a href="/de/#trial-form" class="btn-header-cta">Probelektion buchen</a>
@@ -387,6 +390,14 @@
           <span class="divider">|</span>
           <span class="active">DE</span>
         </div>
+      <div class="header-login">
+        <a href="../portal" class="header-login__link header-login__link--icon" aria-label="Login" title="Login">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 21a8 8 0 0 0-16 0"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+        </a>
+      </div>
       
         </div>
     </header>
@@ -398,7 +409,7 @@
             <img src="../../assets/images/hero_new.webp"
                 srcset="../../assets/images/hero_new_480w.webp 480w, ../../assets/images/hero_new_800w.webp 800w, ../../assets/images/hero_new_1200w.webp 1200w"
                 sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px"
-                alt="The Kings Unite: Romeo Santos & Prince Royce Drop Surprise Album" width="1024" height="768"
+                alt="Die Könige vereint: Romeo Santos & Prince Royce Album Release" width="1024" height="768"
                 class="hero-bg-img">
             <div class="hero-overlay"></div>
             <div class="container hero-content-z">
@@ -409,72 +420,76 @@
 
         <!-- Content -->
         <article class="post-container post-content">
+                <p class="post-byline">Von <strong>Ale &amp; Xidan</strong> · AXcent Dance · <a href="../about">Lerne unsere Tanzlehrer kennen</a></p>
             <p>
-                It’s the moment Bachata fans have been dreaming of for over a decade. The "King of Bachata" Romeo Santos
-                and the "Prince" Prince Royce have finally joined forces for a full collaborative album, aptly titled
-                <strong>"Better Late Than Never"</strong>. Released as a surprise this week, the album is already
-                dominating charts and dance floors worldwide.
+                Es ist der Moment, von dem Bachata-Fans seit über einem Jahrzehnt träumen. Der „König des Bachata"
+                Romeo Santos und der „Prince" Prince Royce haben endlich ihre Kräfte für ein komplettes gemeinsames
+                Album vereint, treffend betitelt <strong>„Better Late Than Never"</strong>. Diese Woche als
+                Überraschung veröffentlicht, dominiert das Album bereits weltweit die Charts und Tanzflächen.
             </p>
 
             <div class="post-image-wrapper">
                 <img src="../../assets/images/romeo_santos.webp"
                     srcset="../../assets/images/romeo_santos_480w.webp 480w, ../../assets/images/romeo_santos_800w.webp 800w, ../../assets/images/romeo_santos_1200w.webp 1200w"
                     sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px"
-                    alt="Romeo Santos performing live" width="1024" height="1024" loading="lazy" decoding="async">
+                    alt="Romeo Santos bei einem Live-Auftritt" width="1024" height="1024" loading="lazy" decoding="async">
             </div>
 
 
 
-            <h2>A Secret 7 Years in the Making</h2>
+            <h2>Ein Geheimnis, das 7 Jahre lang gereift ist</h2>
             <p>
-                In a stunning reveal, the duo announced that this project has been in the works for seven years! Using
-                the code names "Batman" and "Robin," they secretly recorded 13 tracks that blend their signature styles.
-                The result is a masterpiece that honors traditional Bachata while pushing the genre into new, modern
-                territory.
+                In einer verblüffenden Enthüllung gaben die beiden bekannt, dass dieses Projekt seit sieben Jahren in
+                Arbeit war! Unter den Decknamen „Batman" und „Robin" nahmen sie heimlich 13 Tracks auf, die ihre
+                charakteristischen Stile vereinen. Das Ergebnis ist ein Meisterwerk, das den traditionellen Bachata
+                ehrt und gleichzeitig das Genre in neues, modernes Terrain treibt.
             </p>
             <p>
-                If you want to understand the cultural roots behind this music, read our deep dive into the <a
-                    href="../blog/roots-of-bachata">history and origins of Bachata</a>.
+                Wenn du die kulturellen Wurzeln hinter dieser Musik verstehen möchtest, lies unseren tiefgehenden
+                Beitrag über die <a href="roots-of-bachata">Geschichte und Ursprünge des Bachata</a>.
             </p>
 
-            <h2>Top Tracks to Listen To</h2>
+            <h2>Top-Tracks zum Reinhören</h2>
             <p>
-                The album is packed with hits, but a few stand out immediately for dancers:
+                Das Album steckt voller Hits, aber einige stechen für Tänzer sofort heraus:
             </p>
             <ul>
                 <li style="margin-bottom: 1rem; color: var(--text-muted);">
-                    <strong style="color: white;">"Dardos"</strong>: The lead single is a heartbreakingly beautiful
-                    track about a toxic
-                    relationship. The metaphor of "darts" representing emotional pain is powerful, and the rhythm is
-                    perfect for sensual Bachata flow.
+                    <strong style="color: white;">„Dardos"</strong>: Die Lead-Single ist ein herzzerreissend schöner
+                    Track über eine
+                    toxische Beziehung. Die Metapher der "Pfeile", die emotionalen Schmerz darstellen, ist kraftvoll,
+                    und der Rhythmus ist perfekt für einen sinnlichen Bachata-Flow.
                 </li>
                 <li style="margin-bottom: 1rem; color: var(--text-muted);">
-                    <strong style="color: white;">"Estocolmo"</strong>: A deep dive into complex emotions, referencing
-                    Stockholm Syndrome.
-                    The interplay between Romeo's falsetto and Royce's smooth vocals creates a dynamic tension that is
-                    amazing to interpret musically.
+                    <strong style="color: white;">„Estocolmo"</strong>: Ein tiefer Einblick in komplexe Emotionen mit
+                    Bezug auf das Stockholm-Syndrom.
+                    Das Zusammenspiel zwischen Romeos Falsett und Royces samtiger Stimme erzeugt eine dynamische
+                    Spannung, die sich musikalisch grossartig interpretieren lässt.
                 </li>
                 <li style="margin-bottom: 1rem; color: var(--text-muted);">
-                    <strong style="color: white;">"Mi Plan"</strong>: A romantic anthem that we predict will be the
-                    wedding song of 2026.
-                    It’s pure, classic romance at its finest.
+                    <strong style="color: white;">„Mi Plan"</strong>: Eine romantische Hymne, von der wir vermuten,
+                    dass sie der Hochzeitssong des Jahres 2026 wird.
+                    Pure, klassische Romantik vom Feinsten.
                 </li>
             </ul>
 
-            <h2>What This Means for Dancers</h2>
+            <h2>Was das für Tänzer bedeutet</h2>
             <p>
-                For us in the dance community, this album is a goldmine. The production quality is top-tier, offering
-                rich musicality to play with. You'll find clear beats for beginners to practice their timing, and
-                complex
-                instrumentals for advanced dancers to showcase their musicality. Whether you prefer smooth <a
-                    href="../guide-bachata-sensual">Bachata Sensual</a> or traditional footwork, these tracks have
-                something for everyone.
+                Für uns in der Tanz-Community ist dieses Album eine Goldgrube. Die Produktionsqualität ist
+                erstklassig und bietet reiche Musikalität zum Erkunden. Du findest klare Beats, mit denen Anfänger ihr
+                Timing üben können, und
+                komplexe
+                Instrumentals, mit denen fortgeschrittene Tänzer ihre Musikalität zeigen können. Egal, ob du sanften
+                <a href="../guide-bachata-sensual">Bachata Sensual</a> oder traditionelle Fussarbeit bevorzugst, diese
+                Tracks bieten für jeden etwas.
             </p>
 
-            <h2>Conclusion</h2>
+            <h2>Fazit</h2>
             <p>
-                "Better Late Than Never" lives up to the hype. It is a celebration of Bachata’s past, present, and
-                future. We are already choreographing to these tracks, so get ready to hear them in class very soon! Check our <a href="../schedule">weekly schedule</a> to join us.
+                „Better Late Than Never" hält, was es verspricht. Es ist eine Feier der Vergangenheit, Gegenwart und
+                Zukunft des Bachata. Wir choreografieren bereits zu diesen Tracks, also mach dich bereit, sie schon
+                bald im Unterricht zu hören! Schau dir unseren <a href="../schedule">wöchentlichen Stundenplan</a> an,
+                um dazuzustossen.
             </p>
 
             <div class="cta-box">
@@ -487,6 +502,18 @@
             </div>
         </article>
 
+      <!-- Recirculation band (shared post template) -->
+      <section class="post-recirc">
+        <div class="container">
+          <h2 class="post-recirc__title">Der Rhythmus geht <em class="title-accent">weiter</em></h2>
+          <p class="post-recirc__lede">Weitere Geschichten aus dem Studio, oder mach den ersten Schritt selbst &mdash; die
+            erste Stunde ist kostenlos.</p>
+          <div class="post-recirc__actions">
+            <a href="/de/?class=unsure#trial-form" class="post-recirc__trial">Kostenlose Probelektion buchen</a>
+            <a href="../blog" class="post-recirc__back">Zurück zum Blog</a>
+          </div>
+        </div>
+      </section>
     </main>
 
     <footer class="main-footer">
@@ -497,6 +524,9 @@
         <p class="footer-address">
           Hermetschloostrasse 73,<br>
           8048 Zurich Altstetten<br> 2 Minuten zu Fuss von Tram 2 und Bus 31 Haltestelle
+        </p>
+        <p class="footer-contact">
+          <a href="https://wa.me/41799668481" target="_blank" rel="noopener noreferrer">WhatsApp: +41 79 966 84 81</a>
         </p>
         <div class="footer-socials">
           <a href="https://www.instagram.com/axcent_dance/" target="_blank" aria-label="Instagram">
@@ -518,10 +548,12 @@
       <div class="footer-col">
         <h2 class="footer-heading">Schnellzugriff</h2>
         <ul class="footer-links">
+          <li><a href="/de/#trial-form">Kostenlose Probelektion buchen</a></li>
           <li><a href="../guide-bachata">Was ist Bachata</a></li>
           <li><a href="roots-of-bachata">Wurzeln des Bachatas</a></li>
           <li><a href="../schedule">Stundenplan</a></li>
           <li><a href="../blog">Unser Blog</a></li>
+          <li><a href="https://www.google.com/maps?cid=15680757943659417558" target="_blank" rel="noopener noreferrer">Lies unsere Google-Bewertungen</a></li>
 
         </ul>
       </div>
@@ -536,18 +568,23 @@
       </div>
     </div>
 
-    <div class="container footer-map-full" style="margin-bottom: 2rem;">
-      <h2 class="footer-heading" style="margin-bottom: 1rem;">Finde uns</h2>
-      <div class="footer-map-wrapper-large"
-        style="border-radius: 12px; overflow: hidden; border: 1px solid var(--glass-border);">
-        <iframe title="Google Maps Standort von AXcent Dance"
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2701.365!2d8.472010!3d47.394204!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47900b995a7d8e03%3A0xd99d3e4500b44fd6!2sAXcent%20Dance%20%7C%20Bachata%20Classes!5e0!3m2!1sen!2sch!4v1710680000000!5m2!1sde!2sch&hl=de"
-          width="100%" height="250" style="border:0; width: 100%; display: block;" allowfullscreen="" loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"></iframe>
-      </div>
+    <div class="container footer-map-full">
+      <h2 class="footer-heading footer-map-full__heading">Finde uns</h2>
+      <a class="footer-map-card" href="https://www.google.com/maps?cid=15680757943659417558" target="_blank"
+        rel="noopener noreferrer" aria-label="AXcent Dance Studio-Standort in Google Maps öffnen">
+        <span class="footer-map-card__pin" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+            <circle cx="12" cy="10" r="3" />
+          </svg>
+        </span>
+        <span class="footer-map-card__address">Hermetschloostrasse 73, 8048 Zurich Altstetten</span>
+        <span class="footer-map-card__hint">2 Minuten von Tram 2 und Bus 31 · In Google Maps öffnen</span>
+      </a>
     </div>
     <div class="footer-bottom">
-      <p>&copy; 2025 AXcent Dance. Alle Rechte vorbehalten.</p>
+      <p>&copy; 2026 AXcent Dance. Alle Rechte vorbehalten.</p>
     </div>
   </footer>
 

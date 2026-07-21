@@ -1,0 +1,55 @@
+name: Update Sitemap
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "**.html"
+      - "scripts/generate_sitemap_final.py"
+
+permissions:
+  contents: write
+
+jobs:
+  update-sitemap:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository with full history
+        uses: actions/checkout@v4
+        with:
+          # Full history is required: <lastmod> dates come from git log.
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Python dependencies
+        run: pip install beautifulsoup4
+
+      - name: Regenerate sitemap
+        run: python3 scripts/generate_sitemap_final.py
+
+      - name: Commit updated sitemap
+        run: |
+          if git diff --quiet -- sitemap.xml; then
+            echo "sitemap.xml unchanged, nothing to commit"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add sitemap.xml
+          git commit -m "Update sitemap lastmod dates"
+          git pull --rebase origin main
+          git push
+
+      - name: Ping IndexNow with changed URLs
+        # Bing/DuckDuckGo/Yandex only; Google does not participate.
+        continue-on-error: true
+        env:
+          BEFORE_SHA: ${{ github.event.before }}
+          AFTER_SHA: ${{ github.sha }}
+        run: python3 scripts/indexnow_ping.py "$BEFORE_SHA" "$AFTER_SHA"

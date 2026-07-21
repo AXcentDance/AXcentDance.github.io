@@ -29,7 +29,7 @@
     <!-- Styles -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@200..900&family=Outfit:wght@500;600;700;800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Teko:wght@300..700&display=swap">
     <link rel="stylesheet" href="style.css?v=4.2">
-    <link rel="stylesheet" href="tropic-noir.css?v=5.0">
+    <link rel="stylesheet" href="tropic-noir.css?v=5.12">
     <link rel="apple-touch-icon" href="/apple-touch-icon-v2.png">
     <link rel="icon" href="/favicon-axcent-transparent.svg" type="image/svg+xml">
 
@@ -63,19 +63,18 @@
       "programPrerequisites": "Varies by level",
       "offers": {
         "@type": "Offer",
-        "price": "200.00",
+        "price": "220.00",
         "priceCurrency": "CHF",
         "category": "Educational Program"
       },
       "hasCourse": [
-        { "@id": "https://axcentdance.com/course/bachata-beginner-0#course" },
-        { "@id": "https://axcentdance.com/course/bachata-beginner-1#course" },
-        { "@id": "https://axcentdance.com/course/bachata-beginner-2#course" },
-        { "@id": "https://axcentdance.com/course/bachata-sensual-foundation#course" },
-        { "@id": "https://axcentdance.com/course/bachata-sensual-improver#course" },
-        { "@id": "https://axcentdance.com/course/bachata-sensual-intermediate#course" },
-        { "@id": "https://axcentdance.com/course/bachata-sensual-inter-adv#course" },
-        { "@id": "https://axcentdance.com/course/lady-styling#course" }
+        { "@id": "https://axcentdance.com/schedule#course-bachata-beginner-0" },
+        { "@id": "https://axcentdance.com/bachata-beginner-2#course" },
+        { "@id": "https://axcentdance.com/bachata-sensual-foundation#course" },
+        { "@id": "https://axcentdance.com/bachata-sensual-improver#course" },
+        { "@id": "https://axcentdance.com/schedule#course-bachata-sensual-intermediate" },
+        { "@id": "https://axcentdance.com/bachata-sensual-inter-adv#course" },
+        { "@id": "https://axcentdance.com/lady-styling#course" }
       ]
     },
     {
@@ -85,7 +84,7 @@
       "itemListElement": [
         {
           "@type": "Course",
-          "@id": "https://axcentdance.com/course/bachata-beginner-0#course",
+          "@id": "https://axcentdance.com/schedule#course-bachata-beginner-0",
           "position": 1,
           "name": "Bachata Beginner 0",
           "description": "Start Bachata from zero in Zurich Altstetten with foundations for absolute beginners.",
@@ -99,21 +98,21 @@
             {
               "@type": "Offer",
               "name": "Regular Pass",
-              "price": "200.00",
+              "price": "220.00",
               "priceCurrency": "CHF",
               "description": "8-week course pass"
             },
             {
               "@type": "Offer",
               "name": "Student Pass",
-              "price": "170.00",
+              "price": "185.00",
               "priceCurrency": "CHF",
               "description": "8-week course pass for students"
             }
           ],
           "hasCourseInstance": {
             "@type": "CourseInstance",
-            "courseMode": "Physical",
+            "courseMode": "Onsite",
             "location": {
               "@id": "https://axcentdance.com/#organization"
             },
@@ -125,44 +124,15 @@
               "@type": "Schedule",
               "repeatFrequency": "Weekly",
               "byDay": "https://schema.org/Monday",
-              "startTime": "18:30",
-              "endTime": "19:30"
+              "startTime": "19:30",
+              "endTime": "20:30"
             }
           }
         },
         {
           "@type": "Course",
-          "@id": "https://axcentdance.com/course/bachata-beginner-1#course",
+          "@id": "https://axcentdance.com/bachata-beginner-2#course",
           "position": 2,
-          "name": "Bachata Beginner 1",
-          "description": "Build your Bachata foundations in this Beginner 1 course for dancers with 2/4 months of experience.",
-          "educationalLevel": "2/4 months of experience",
-          "timeRequired": "P8W",
-          "provider": {
-            "@id": "https://axcentdance.com/#organization"
-          },
-          "url": "https://axcentdance.com/schedule",
-          "offers": [
-            {
-              "@type": "Offer",
-              "name": "Regular Pass",
-              "price": "200.00",
-              "priceCurrency": "CHF",
-              "description": "8-week course pass"
-            },
-            {
-              "@type": "Offer",
-              "name": "Student Pass",
-              "price": "170.00",
-              "priceCurrency": "CHF",
-              "description": "8-week course pass for students"
-            }
-          ]
-        },
-        {
-          "@type": "Course",
-          "@id": "https://axcentdance.com/course/bachata-beginner-2#course",
-          "position": 3,
           "name": "Bachata Beginner 2",
           "description": "Build slides, cambres, footwork, hip movement, and preparation for Sensual Foundation for dancers with around 4-8 months of experience.",
           "educationalLevel": "Beginner, ~ 4-8 months",
@@ -170,19 +140,19 @@
           "provider": {
             "@id": "https://axcentdance.com/#organization"
           },
-          "url": "https://axcentdance.com/schedule",
+          "url": "https://axcentdance.com/bachata-beginner-2",
           "offers": [
             {
               "@type": "Offer",
               "name": "Regular Pass",
-              "price": "200.00",
+              "price": "220.00",
               "priceCurrency": "CHF",
               "description": "8-week course pass"
             },
             {
               "@type": "Offer",
               "name": "Student Pass",
-              "price": "170.00",
+              "price": "185.00",
               "priceCurrency": "CHF",
               "description": "8-week course pass for students"
             }
@@ -190,7 +160,7 @@
           "hasCourseInstance": [
             {
               "@type": "CourseInstance",
-              "courseMode": "Physical",
+              "courseMode": "Onsite",
               "location": {
                 "@id": "https://axcentdance.com/#organization"
               },
@@ -205,31 +175,13 @@
                 "startTime": "19:30",
                 "endTime": "20:30"
               }
-            },
-            {
-              "@type": "CourseInstance",
-              "courseMode": "Physical",
-              "location": {
-                "@id": "https://axcentdance.com/#organization"
-              },
-              "instructor": {
-                "@type": "Person",
-                "name": "Ale"
-              },
-              "courseSchedule": {
-                "@type": "Schedule",
-                "repeatFrequency": "Weekly",
-                "byDay": "https://schema.org/Wednesday",
-                "startTime": "18:30",
-                "endTime": "19:30"
-              }
             }
           ]
         },
         {
           "@type": "Course",
-          "@id": "https://axcentdance.com/course/bachata-sensual-foundation#course",
-          "position": 4,
+          "@id": "https://axcentdance.com/bachata-sensual-foundation#course",
+          "position": 3,
           "name": "Bachata Sensual Foundation",
           "description": "Learn the technique and body movement of the Bachata Sensual style for dancers with around 1-1.5 years of experience.",
           "educationalLevel": "Beginner/Intermediate, ~ 1-1.5 years",
@@ -237,26 +189,26 @@
           "provider": {
             "@id": "https://axcentdance.com/#organization"
           },
-          "url": "https://axcentdance.com/schedule",
+          "url": "https://axcentdance.com/bachata-sensual-foundation",
           "offers": [
             {
               "@type": "Offer",
               "name": "Regular Pass",
-              "price": "200.00",
+              "price": "220.00",
               "priceCurrency": "CHF",
               "description": "8-week course pass"
             },
             {
               "@type": "Offer",
               "name": "Student Pass",
-              "price": "170.00",
+              "price": "185.00",
               "priceCurrency": "CHF",
               "description": "8-week course pass for students"
             }
           ],
           "hasCourseInstance": {
             "@type": "CourseInstance",
-            "courseMode": "Physical",
+            "courseMode": "Onsite",
             "location": {
               "@id": "https://axcentdance.com/#organization"
             },
@@ -275,8 +227,8 @@
         },
         {
           "@type": "Course",
-          "@id": "https://axcentdance.com/course/bachata-sensual-improver#course",
-          "position": 5,
+          "@id": "https://axcentdance.com/bachata-sensual-improver#course",
+          "position": 4,
           "name": "Bachata Sensual Improver",
           "description": "Refine your skills with complex movements and musicality for dancers with around 2 years of experience.",
           "educationalLevel": "Intermediate, ~ 2 years",
@@ -284,26 +236,26 @@
           "provider": {
             "@id": "https://axcentdance.com/#organization"
           },
-          "url": "https://axcentdance.com/schedule",
+          "url": "https://axcentdance.com/bachata-sensual-improver",
           "offers": [
             {
               "@type": "Offer",
               "name": "Regular Pass",
-              "price": "200.00",
+              "price": "220.00",
               "priceCurrency": "CHF",
               "description": "8-week course pass"
             },
             {
               "@type": "Offer",
               "name": "Student Pass",
-              "price": "170.00",
+              "price": "185.00",
               "priceCurrency": "CHF",
               "description": "8-week course pass for students"
             }
           ],
           "hasCourseInstance": {
             "@type": "CourseInstance",
-            "courseMode": "Physical",
+            "courseMode": "Onsite",
             "location": {
               "@id": "https://axcentdance.com/#organization"
             },
@@ -322,8 +274,8 @@
         },
         {
           "@type": "Course",
-          "@id": "https://axcentdance.com/course/bachata-sensual-intermediate#course",
-          "position": 6,
+          "@id": "https://axcentdance.com/schedule#course-bachata-sensual-intermediate",
+          "position": 5,
           "name": "Bachata Sensual Intermediate",
           "description": "Refine complex Sensual Bachata technique for dancers with around 2 years of experience.",
           "educationalLevel": "Intermediate, ~ 2 years",
@@ -336,21 +288,21 @@
             {
               "@type": "Offer",
               "name": "Regular Pass",
-              "price": "200.00",
+              "price": "220.00",
               "priceCurrency": "CHF",
               "description": "8-week course pass"
             },
             {
               "@type": "Offer",
               "name": "Student Pass",
-              "price": "170.00",
+              "price": "185.00",
               "priceCurrency": "CHF",
               "description": "8-week course pass for students"
             }
           ],
           "hasCourseInstance": {
             "@type": "CourseInstance",
-            "courseMode": "Physical",
+            "courseMode": "Onsite",
             "location": {
               "@id": "https://axcentdance.com/#organization"
             },
@@ -369,8 +321,8 @@
         },
         {
           "@type": "Course",
-          "@id": "https://axcentdance.com/course/bachata-sensual-inter-adv#course",
-          "position": 7,
+          "@id": "https://axcentdance.com/bachata-sensual-inter-adv#course",
+          "position": 6,
           "name": "Bachata Sensual Intermediate/Advanced",
           "description": "Complex figures and advanced technique for dancers with 2+ years and Improver experience.",
           "educationalLevel": "Advanced, 2+ years + Improver",
@@ -378,26 +330,26 @@
           "provider": {
             "@id": "https://axcentdance.com/#organization"
           },
-          "url": "https://axcentdance.com/schedule",
+          "url": "https://axcentdance.com/bachata-sensual-inter-adv",
           "offers": [
             {
               "@type": "Offer",
               "name": "Regular Pass",
-              "price": "200.00",
+              "price": "220.00",
               "priceCurrency": "CHF",
               "description": "8-week course pass"
             },
             {
               "@type": "Offer",
               "name": "Student Pass",
-              "price": "170.00",
+              "price": "185.00",
               "priceCurrency": "CHF",
               "description": "8-week course pass for students"
             }
           ],
           "hasCourseInstance": {
             "@type": "CourseInstance",
-            "courseMode": "Physical",
+            "courseMode": "Onsite",
             "location": {
               "@id": "https://axcentdance.com/#organization"
             },
@@ -416,8 +368,8 @@
         },
         {
           "@type": "Course",
-          "@id": "https://axcentdance.com/course/lady-styling#course",
-          "position": 8,
+          "@id": "https://axcentdance.com/lady-styling#course",
+          "position": 7,
           "name": "Bachata Lady Styling",
           "description": "Arm styling, body movement, and footwork for followers with around 1 year of dance experience.",
           "educationalLevel": "Open Level, ~ 1 year",
@@ -425,26 +377,26 @@
           "provider": {
             "@id": "https://axcentdance.com/#organization"
           },
-          "url": "https://axcentdance.com/schedule",
+          "url": "https://axcentdance.com/lady-styling",
           "offers": [
             {
               "@type": "Offer",
               "name": "Regular Pass",
-              "price": "200.00",
+              "price": "220.00",
               "priceCurrency": "CHF",
               "description": "8-week course pass"
             },
             {
               "@type": "Offer",
               "name": "Student Pass",
-              "price": "170.00",
+              "price": "185.00",
               "priceCurrency": "CHF",
               "description": "8-week course pass for students"
             }
           ],
           "hasCourseInstance": {
             "@type": "CourseInstance",
-            "courseMode": "Physical",
+            "courseMode": "Onsite",
             "location": {
               "@id": "https://axcentdance.com/#organization"
             },
@@ -499,7 +451,7 @@
           "name": "What if I miss a class?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "We understand that life can get busy! If you miss a class, do not worry — you will not fall behind. We allow you to catch up by attending a similar level class on a different day within the same course period. Plus, if you know your dates in advance, you can let us know during registration, and we will prorate the cost for pre-planned absences. Our goal is to make sure you get the most out of your dance journey with flexibility and support."
+            "text": "We know plans can change, so flexibility is built into your pass. Add any known absences when you register. If an unexpected one-day absence comes up later, let us know before 12:00 on the day you will miss. This gives you breathing room while helping us keep your learning rhythm and class planning consistent."
           }
         },
         {
@@ -645,7 +597,7 @@
   <!-- End Meta Pixel Code -->
   </head>
 
-<body class="tropic schedule-page">
+<body class="tropic schedule-page nav-declutter">
     <!-- Navigation -->
     <header class="main-header">
         <div class="container navbar">
@@ -661,11 +613,13 @@
                 </svg>
             </button>
             <nav class="nav-links">
-        <a href="./">Home</a>
+        <a href="./" class="nav-home">Home</a>
         <a href="about">About us</a>
                 <a href="schedule">Our classes</a>
+                <a href="registration">Prices &amp; Registration</a>
                 <a href="events">Events</a>
-                <a href="contact">Contact</a>
+                <a href="contact" class="nav-contact-item">Contact</a>
+                <a href="portal" class="nav-portal-item">Login</a>
 
                 <div class="dropdown">
                     <button class="dropbtn">More ▾</button>
@@ -680,7 +634,7 @@
                         <a href="blog"><span>Blog</span></a>
                         <a href="faq"><span>FAQ</span></a>
                         <a href="etiquette"><span>Dance Etiquette</span></a>
-                        <a href="portal"><span>Login</span></a>
+                        <a href="contact" class="nav-contact-dropdown"><span>Contact</span></a>
                     </div>
                 </div>
         <a href="/#trial-form" class="btn-header-cta">Book Free Trial</a>
@@ -690,6 +644,14 @@
           <span class="divider">|</span>
           <a href="de/schedule">DE</a>
         </div>
+      <div class="header-login">
+        <a href="portal" class="header-login__link header-login__link--icon" aria-label="Login" title="Login">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 21a8 8 0 0 0-16 0"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+        </a>
+      </div>
       
         </div>
     </header>
@@ -733,6 +695,9 @@
                                 </svg>
                             </span>
                         </a>
+                        <a href="registration" class="btn-hero btn-hero-secondary">
+                            <span class="btn-hero-content">SEE PRICES</span>
+                        </a>
                     </div>
                 </div>
 
@@ -743,7 +708,8 @@
                             <img src="assets/images/gallery/gallery_6.webp"
                                 srcset="assets/images/gallery/gallery_6_480w.webp 480w, assets/images/gallery/gallery_6_800w.webp 800w, assets/images/gallery/gallery_6_1200w.webp 1200w"
                                 sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px"
-                                alt="Bachata Dance Class Atmosphere" width="1024" height="682">
+                                alt="Bachata Dance Class Atmosphere" width="1024" height="682"
+                                loading="eager" fetchpriority="high">
                         </div>
                     </div>
                 </div>
@@ -774,26 +740,17 @@
                     <div class="schedule-row">
                         <div class="time-slot">18:30</div>
 
-                        <!-- Mon Class -->
-                        <a href="beginner-guide" class="class-card class-card--recommended">
-                            <span class="level-tag tag-recommended">Start here</span>
-                            <h3 class="class-name">Bachata Beginner 0</h3>
-                            <p class="class-experience">Absolute beginners</p>
-                        </a>
+                        <!-- Mon Class (Empty) -->
+                        <div>&nbsp;</div>
 
                         <!-- Tue Class (Empty) -->
                         <div>&nbsp;</div>
 
-                        <!-- Wed Class -->
-                        <a href="bachata-beginner-2" class="class-card">
-                            <span class="badge-full">Full</span>
-                            <h3 class="class-name">Bachata Beginner 2</h3>
-                            <p class="class-experience">~ 4-8 months of experience</p>
-                        </a>
+                        <!-- Wed Class (Empty) -->
+                        <div>&nbsp;</div>
 
                         <!-- Thu Class -->
                         <a href="lady-styling" class="class-card">
-                            <span class="level-tag tag-styling">Styling</span>
                             <h3 class="class-name">Bachata Lady Style</h3>
                             <p class="class-experience">~ 1 year of experience</p>
                         </a>
@@ -803,8 +760,12 @@
                     <div class="schedule-row">
                         <div class="time-slot">19:30</div>
 
-                        <!-- Mon Class (Empty) -->
-                        <div>&nbsp;</div>
+                        <!-- Mon Class -->
+                        <a href="beginner-guide" class="class-card class-card--recommended">
+                            <span class="level-tag tag-recommended">Start here</span>
+                            <h3 class="class-name">Bachata Beginner 0</h3>
+                            <p class="class-experience">Absolute beginners</p>
+                        </a>
 
                         <!-- Tue Class -->
                         <a href="bachata-beginner-2" class="class-card">
@@ -858,7 +819,7 @@
                         <h3 class="mobile-day-title">Monday</h3>
                         <div class="schedule-row">
                             <a href="beginner-guide" class="class-card class-card--recommended">
-                                <div class="mobile-time">18:30</div>
+                                <div class="mobile-time">19:30</div>
                                 <span class="level-tag tag-recommended">Start here</span>
                                 <h3 class="class-name">Bachata Beginner 0</h3>
                                 <p class="class-experience">Absolute beginners</p>
@@ -879,12 +840,6 @@
                         <h3 class="mobile-day-title">Wednesday</h3>
                         <div class="schedule-row">
 
-                            <a href="bachata-beginner-2" class="class-card">
-                                <div class="mobile-time">18:30</div>
-                                <span class="badge-full">Full</span>
-                                <h3 class="class-name">Bachata Beginner 2</h3>
-                                <p class="class-experience">~ 4-8 months of experience</p>
-                            </a>
                             <a href="bachata-sensual-foundation" class="class-card">
                                 <div class="mobile-time">19:30</div>
                                 <h3 class="class-name">Bachata Sensual Foundation</h3>
@@ -932,6 +887,50 @@
             </div>
         </section>
 
+        <!-- Private Classes Section -->
+        <section class="private-classes-section reveal">
+            <div class="container">
+                <div class="hero-grid private-classes-grid">
+                    <div class="hero-content-left">
+                        <div class="hero-badge">
+                            <div class="hero-badge-line"></div>
+                            <div class="hero-badge-text">1-ON-1 COACHING</div>
+                        </div>
+                        <h2 class="section-title-modern section-title-left">Private <em class="title-accent">Classes</em>
+                        </h2>
+                        <p class="hero-desc-border" style="border: none; padding: 0; margin: 0; max-width: 480px;">
+                            Want more flexibility? Ready to really focus on your learning? Private lessons provide the
+                            perfect environment to accelerate your growth.
+                        </p>
+                        <ul class="schedule-fact-chips">
+                            <li>Flexible scheduling</li>
+                            <li>1-on-1 feedback</li>
+                        </ul>
+                        <div class="hero-buttons-group" style="justify-content: flex-start; margin-top: 1.25rem;">
+                            <a href="private-lessons" class="btn-hero btn-hero-primary">
+                                <span class="btn-hero-content">
+                                    EXPLORE PRIVATE LESSONS
+                                    <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                                    </svg>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="hero-content-right">
+                        <div class="private-classes-photo">
+                            <img src="assets/images/private_lesson_hero.webp"
+                                srcset="assets/images/private_lesson_hero_480w.webp 480w, assets/images/private_lesson_hero_800w.webp 800w, assets/images/private_lesson_hero_1200w.webp 1200w"
+                                sizes="(max-width: 900px) 80vw, 40vw" alt="Private Bachata lesson at AXcent Dance"
+                                width="1024" height="1024" loading="lazy" decoding="async">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Journey Level Guide -->
         <section class="journey-section">
             <div class="section-header">
@@ -963,6 +962,7 @@
                                 <div class="role-title">Everyone</div>
                                 <ul class="role-list">
                                     <li>Bachata Beginner 0</li>
+                                    <li><a href="bachata-beginner-1">Bachata Beginner 1</a></li>
                                     <li>Bachata Beginner 2</li>
                                     <li>Sensual Foundation Preparation</li>
                                 </ul>
@@ -1077,27 +1077,347 @@
             </div>
         </section>
 
-        <!-- Private Classes Section -->
-        <section class="private-classes-section">
-            <div class="container" style="max-width: 900px; text-align: center;">
-                <h2 class="section-title-modern">Private Classes</h2>
-                <div class="private-content" style="margin-top: 2rem;">
-                    <p class="hero-desc-border" style="border: none; padding: 0; max-width: 700px; margin: 0 auto;">
-                        Want more <strong>flexibility</strong>? Ready to really <strong>focus on your learning</strong>?
-                        <br>
-                        Private lessons provide the perfect environment to accelerate your growth.
-                    </p>
-                    <div style="margin-top: 3rem;">
-                        <a href="private-lessons" class="btn-hero btn-hero-secondary" style="display: inline-flex;">
-                            <span class="btn-hero-content">EXPLORE PRIVATE LESSONS</span>
-                        </a>
-                    </div>
-                </div>
+        <!-- 3. Student Stories (Reviews) -->
+        <section id="reviews" class="reviews-section reveal">
+          <div class="container">
+            <h2 class="section-title-modern">Student <em class="title-accent">Stories</em></h2>
+            <div class="reviews-proof" aria-label="AXcent Dance Google rating and student reasons">
+              <div class="reviews-proof__rating-figure" aria-label="Rated 5 out of 5 stars from 40 Google reviews">
+                <strong class="reviews-proof__score">5/5</strong>
+                <span class="reviews-proof__starfield" aria-hidden="true">
+                  <span>★</span>
+                  <span>★</span>
+                  <span>★</span>
+                  <span>★</span>
+                  <span>★</span>
+                </span>
+                <a class="reviews-proof__source-line" href="https://www.google.com/maps?cid=15680757943659417558"
+                  target="_blank" rel="noopener noreferrer">from 40 Google reviews</a>
+              </div>
+              <p class="section-subtitle reviews-proof__copy">
+                Why people choose AXcent Dance.
+              </p>
             </div>
+    
+            <div class="reviews-slider-wrapper reviews-showcase" aria-label="Google reviews from AXcent Dance students">
+              <div class="reviews-grid">
+                <div class="reviews-rail reviews-rail--left" aria-label="Student story row one">
+                  <div class="reviews-rail__track">
+    
+    
+                <!-- Review: Laura M (beginner transformation — leads the rail) -->
+                <div class="review-card glass-card">
+                  <div class="review-header">
+                    <span class="review-avatar" aria-hidden="true">LM</span>
+                    <div class="reviewer-info">
+                      <h3 class="reviewer-name">Laura M</h3>
+                      <span class="review-date">Google Review</span>
+                    </div>
+                    <div class="google-badge" title="Verified Google Review"><svg viewBox="0 0 24 24" width="16"
+                        height="16">
+                        <path fill="currentColor"
+                          d="M21.35,11.1H12.18V13.83H18.69C18.36,17.64 15.19,19.27 12.19,19.27C8.36,19.27 5,16.25 5,12C5,7.9 8.2,4.73 12.2,4.73C15.29,4.73 17.1,6.7 17.1,6.7L19,4.72C19,4.72 16.56,2 12.1,2C6.42,2 2.03,6.8 2.03,12C2.03,17.05 6.16,22 12.25,22C17.6,22 21.5,18.33 21.5,12.91C21.5,11.76 21.35,11.1 21.35,11.1V11.1Z" />
+                      </svg></div>
+                  </div>
+                  <div class="review-stars">★★★★★</div>
+                  <p class="review-text">
+                    "I started at AXcent Dance as a complete beginner and after just a few weeks I can already social
+                    dance... The location in Zurich is easy to reach, and Ale and Xidan are fantastic teachers who make
+                    learning fun and clear."
+                  </p>
+                </div>
+    
+                <!-- Review 2: Neo M -->
+                <div class="review-card glass-card">
+                  <div class="review-header">
+                    <span class="review-avatar" aria-hidden="true">NM</span>
+                    <div class="reviewer-info">
+                      <h3 class="reviewer-name">Neo M</h3>
+                      <span class="review-date">Google Review</span>
+                    </div>
+                    <div class="google-badge" title="Verified Google Review">
+                      <svg viewBox="0 0 24 24" width="16" height="16">
+                        <path fill="currentColor"
+                          d="M21.35,11.1H12.18V13.83H18.69C18.36,17.64 15.19,19.27 12.19,19.27C8.36,19.27 5,16.25 5,12C5,7.9 8.2,4.73 12.2,4.73C15.29,4.73 17.1,6.7 17.1,6.7L19,4.72C19,4.72 16.56,2 12.1,2C6.42,2 2.03,6.8 2.03,12C2.03,17.05 6.16,22 12.25,22C17.6,22 21.5,18.33 21.5,12.91C21.5,11.76 21.35,11.1 21.35,11.1V11.1Z" />
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="review-stars">★★★★★</div>
+                  <p class="review-text">
+                    "Such a welcoming community and environment, and the teachers at AXcent Dance are very knowledgeable. If
+                    you are looking for Bachata dance classes in a place which really cares about you... this is the best
+                    place in Zurich 🤩🤩"
+                  </p>
+                </div>
+    
+                <!-- Review 6: Giulia P -->
+                <div class="review-card glass-card">
+                  <div class="review-header">
+                    <span class="review-avatar" aria-hidden="true">GP</span>
+                    <div class="reviewer-info">
+                      <h3 class="reviewer-name">Giulia P</h3>
+                      <span class="review-date">Google Review</span>
+                    </div>
+                    <div class="google-badge" title="Verified Google Review"><svg viewBox="0 0 24 24" width="16"
+                        height="16">
+                        <path fill="currentColor"
+                          d="M21.35,11.1H12.18V13.83H18.69C18.36,17.64 15.19,19.27 12.19,19.27C8.36,19.27 5,16.25 5,12C5,7.9 8.2,4.73 12.2,4.73C15.29,4.73 17.1,6.7 17.1,6.7L19,4.72C19,4.72 16.56,2 12.1,2C6.42,2 2.03,6.8 2.03,12C2.03,17.05 6.16,22 12.25,22C17.6,22 21.5,18.33 21.5,12.91C21.5,11.76 21.35,11.1 21.35,11.1V11.1Z" />
+                      </svg></div>
+                  </div>
+                  <div class="review-stars">★★★★★</div>
+                  <p class="review-text">
+                    "Great bachata classes in Zurich! I started dancing bachata about one year ago and it added so much
+                    flavour to my life :) The teachers Ale and Xidan combine high technical skills with a warm and welcoming
+                    environment."
+                  </p>
+                </div>
+    
+                <!-- Review 7: Leonard M -->
+                <div class="review-card glass-card">
+                  <div class="review-header">
+                    <span class="review-avatar" aria-hidden="true">LM</span>
+                    <div class="reviewer-info">
+                      <h3 class="reviewer-name">Leonard M</h3>
+                      <span class="review-date">Google Review</span>
+                    </div>
+                    <div class="google-badge" title="Verified Google Review"><svg viewBox="0 0 24 24" width="16"
+                        height="16">
+                        <path fill="currentColor"
+                          d="M21.35,11.1H12.18V13.83H18.69C18.36,17.64 15.19,19.27 12.19,19.27C8.36,19.27 5,16.25 5,12C5,7.9 8.2,4.73 12.2,4.73C15.29,4.73 17.1,6.7 17.1,6.7L19,4.72C19,4.72 16.56,2 12.1,2C6.42,2 2.03,6.8 2.03,12C2.03,17.05 6.16,22 12.25,22C17.6,22 21.5,18.33 21.5,12.91C21.5,11.76 21.35,11.1 21.35,11.1V11.1Z" />
+                      </svg></div>
+                  </div>
+                  <div class="review-stars">★★★★★</div>
+                  <p class="review-text">
+                    "Joining AXcent Dance has been the best decision I have made since moving to Zurich... The bachata
+                    sensual classes are well structured so you really improve every week. It’s also a friendly community..."
+                  </p>
+                </div>
+    
+                <!-- Review: Steven M -->
+                <div class="review-card glass-card">
+                  <div class="review-header">
+                    <span class="review-avatar" aria-hidden="true">SM</span>
+                    <div class="reviewer-info">
+                      <h3 class="reviewer-name">Steven M</h3>
+                      <span class="review-date">Google Review</span>
+                    </div>
+                    <div class="google-badge" title="Verified Google Review"><svg viewBox="0 0 24 24" width="16"
+                        height="16">
+                        <path fill="currentColor"
+                          d="M21.35,11.1H12.18V13.83H18.69C18.36,17.64 15.19,19.27 12.19,19.27C8.36,19.27 5,16.25 5,12C5,7.9 8.2,4.73 12.2,4.73C15.29,4.73 17.1,6.7 17.1,6.7L19,4.72C19,4.72 16.56,2 12.1,2C6.42,2 2.03,6.8 2.03,12C2.03,17.05 6.16,22 12.25,22C17.6,22 21.5,18.33 21.5,12.91C21.5,11.76 21.35,11.1 21.35,11.1V11.1Z" />
+                      </svg></div>
+                  </div>
+                  <div class="review-stars">★★★★★</div>
+                  <p class="review-text">
+                    "Ale & Xidan are the best for bachata classes in Zurich! Their ability to spot the tiniest of details is
+                    incredible. They take the guesswork out of improving, making every lesson a breakthrough!! 10/10"
+                  </p>
+                </div>
+    
+                <!-- Review: Alex E -->
+                <div class="review-card glass-card">
+                  <div class="review-header">
+                    <span class="review-avatar" aria-hidden="true">AE</span>
+                    <div class="reviewer-info">
+                      <h3 class="reviewer-name">Alex E</h3>
+                      <span class="review-date">Google Review</span>
+                    </div>
+                    <div class="google-badge" title="Verified Google Review"><svg viewBox="0 0 24 24" width="16"
+                        height="16">
+                        <path fill="currentColor"
+                          d="M21.35,11.1H12.18V13.83H18.69C18.36,17.64 15.19,19.27 12.19,19.27C8.36,19.27 5,16.25 5,12C5,7.9 8.2,4.73 12.2,4.73C15.29,4.73 17.1,6.7 17.1,6.7L19,4.72C19,4.72 16.56,2 12.1,2C6.42,2 2.03,6.8 2.03,12C2.03,17.05 6.16,22 12.25,22C17.6,22 21.5,18.33 21.5,12.91C21.5,11.76 21.35,11.1 21.35,11.1V11.1Z" />
+                      </svg></div>
+                  </div>
+                  <div class="review-stars">★★★★★</div>
+                  <p class="review-text">
+                    "Ale and Xidan are the most amazing bachata teachers I've ever had. They bring the perfect
+                    balance of technique... and create a wonderful atmosphere to facilitate learning and make asking
+                    questions easy!"
+                  </p>
+                </div>
+    
+                <!-- Review: Denis B -->
+                <div class="review-card glass-card">
+                  <div class="review-header">
+                    <span class="review-avatar" aria-hidden="true">DB</span>
+                    <div class="reviewer-info">
+                      <h3 class="reviewer-name">Denis B</h3>
+                      <span class="review-date">Google Review</span>
+                    </div>
+                    <div class="google-badge" title="Verified Google Review"><svg viewBox="0 0 24 24" width="16"
+                        height="16">
+                        <path fill="currentColor"
+                          d="M21.35,11.1H12.18V13.83H18.69C18.36,17.64 15.19,19.27 12.19,19.27C8.36,19.27 5,16.25 5,12C5,7.9 8.2,4.73 12.2,4.73C15.29,4.73 17.1,6.7 17.1,6.7L19,4.72C19,4.72 16.56,2 12.1,2C6.42,2 2.03,6.8 2.03,12C2.03,17.05 6.16,22 12.25,22C17.6,22 21.5,18.33 21.5,12.91C21.5,11.76 21.35,11.1 21.35,11.1V11.1Z" />
+                      </svg></div>
+                  </div>
+                  <div class="review-stars">★★★★★</div>
+                  <p class="review-text">
+                    "It’s rare to find instructors who can teach Bachata Sensual at such an authentic level... In Zurich,
+                    they are without a doubt among the very best teachers for Bachata Sensual."
+                  </p>
+                </div>
+    
+                  </div>
+                </div>
+                <div class="reviews-rail reviews-rail--right" aria-label="Student story row two">
+                  <div class="reviews-rail__track">
+    
+                <!-- Review 8: Federico M -->
+                <div class="review-card glass-card">
+                  <div class="review-header">
+                    <span class="review-avatar" aria-hidden="true">FM</span>
+                    <div class="reviewer-info">
+                      <h3 class="reviewer-name">Federico M</h3>
+                      <span class="review-date">Google Review</span>
+                    </div>
+                    <div class="google-badge" title="Verified Google Review"><svg viewBox="0 0 24 24" width="16"
+                        height="16">
+                        <path fill="currentColor"
+                          d="M21.35,11.1H12.18V13.83H18.69C18.36,17.64 15.19,19.27 12.19,19.27C8.36,19.27 5,16.25 5,12C5,7.9 8.2,4.73 12.2,4.73C15.29,4.73 17.1,6.7 17.1,6.7L19,4.72C19,4.72 16.56,2 12.1,2C6.42,2 2.03,6.8 2.03,12C2.03,17.05 6.16,22 12.25,22C17.6,22 21.5,18.33 21.5,12.91C21.5,11.76 21.35,11.1 21.35,11.1V11.1Z" />
+                      </svg></div>
+                  </div>
+                  <div class="review-stars">★★★★★</div>
+                  <p class="review-text">
+                    "Ale and Xidan bachata classes in Zurich are amazing for beginners... the steps are explained clearly,
+                    and the atmosphere is super welcoming. If you want to learn bachata sensual in a relaxed but
+                    professional way, this is the place to go."
+                  </p>
+                </div>
+    
+                <!-- Review: Valeria M -->
+                <div class="review-card glass-card">
+                  <div class="review-header">
+                    <span class="review-avatar" aria-hidden="true">VM</span>
+                    <div class="reviewer-info">
+                      <h3 class="reviewer-name">Valeria M</h3>
+                      <span class="review-date">Google Review</span>
+                    </div>
+                    <div class="google-badge" title="Verified Google Review"><svg viewBox="0 0 24 24" width="16"
+                        height="16">
+                        <path fill="currentColor"
+                          d="M21.35,11.1H12.18V13.83H18.69C18.36,17.64 15.19,19.27 12.19,19.27C8.36,19.27 5,16.25 5,12C5,7.9 8.2,4.73 12.2,4.73C15.29,4.73 17.1,6.7 17.1,6.7L19,4.72C19,4.72 16.56,2 12.1,2C6.42,2 2.03,6.8 2.03,12C2.03,17.05 6.16,22 12.25,22C17.6,22 21.5,18.33 21.5,12.91C21.5,11.76 21.35,11.1 21.35,11.1V11.1Z" />
+                      </svg></div>
+                  </div>
+                  <div class="review-stars">★★★★★</div>
+                  <p class="review-text">
+                    "Ale and Xidan are truly professional and attentive instructors... They’ve trained with the best in the
+                    world and continue to hone their skills... I don’t think you’ll find more specialized teachers than
+                    them."
+                  </p>
+                </div>
+    
+                <!-- Review: Miroslav -->
+                <div class="review-card glass-card">
+                  <div class="review-header">
+                    <span class="review-avatar" aria-hidden="true">M</span>
+                    <div class="reviewer-info">
+                      <h3 class="reviewer-name">Miroslav</h3>
+                      <span class="review-date">Google Review</span>
+                    </div>
+                    <div class="google-badge" title="Verified Google Review"><svg viewBox="0 0 24 24" width="16"
+                        height="16">
+                        <path fill="currentColor"
+                          d="M21.35,11.1H12.18V13.83H18.69C18.36,17.64 15.19,19.27 12.19,19.27C8.36,19.27 5,16.25 5,12C5,7.9 8.2,4.73 12.2,4.73C15.29,4.73 17.1,6.7 17.1,6.7L19,4.72C19,4.72 16.56,2 12.1,2C6.42,2 2.03,6.8 2.03,12C2.03,17.05 6.16,22 12.25,22C17.6,22 21.5,18.33 21.5,12.91C21.5,11.76 21.35,11.1 21.35,11.1V11.1Z" />
+                      </svg></div>
+                  </div>
+                  <div class="review-stars">★★★★★</div>
+                  <p class="review-text">
+                    "Been learning from Ale and Xidan for almost two years now. Excellent teachers that give personalized
+                    feedback. They put good emphasis on teaching proper technique... Would definitely recommend."
+                  </p>
+                </div>
+    
+                <!-- Review 15: Lenag M -->
+                <div class="review-card glass-card">
+                  <div class="review-header">
+                    <span class="review-avatar" aria-hidden="true">LM</span>
+                    <div class="reviewer-info">
+                      <h3 class="reviewer-name">Lenag M</h3>
+                      <span class="review-date">Google Review</span>
+                    </div>
+                    <div class="google-badge" title="Verified Google Review"><svg viewBox="0 0 24 24" width="16"
+                        height="16">
+                        <path fill="currentColor"
+                          d="M21.35,11.1H12.18V13.83H18.69C18.36,17.64 15.19,19.27 12.19,19.27C8.36,19.27 5,16.25 5,12C5,7.9 8.2,4.73 12.2,4.73C15.29,4.73 17.1,6.7 17.1,6.7L19,4.72C19,4.72 16.56,2 12.1,2C6.42,2 2.03,6.8 2.03,12C2.03,17.05 6.16,22 12.25,22C17.6,22 21.5,18.33 21.5,12.91C21.5,11.76 21.35,11.1 21.35,11.1V11.1Z" />
+                      </svg></div>
+                  </div>
+                  <div class="review-stars">★★★★★</div>
+                  <p class="review-text">
+                    "Best teachers!!! Not only are Ale and Xidan passionate and highly-skilled dancers, they are also very
+                    welcoming and kind-hearted mentors."
+                  </p>
+                </div>
+    
+                <!-- Review: Daiva M -->
+                <div class="review-card glass-card">
+                  <div class="review-header">
+                    <span class="review-avatar" aria-hidden="true">DM</span>
+                    <div class="reviewer-info">
+                      <h3 class="reviewer-name">Daiva M</h3>
+                      <span class="review-date">Google Review</span>
+                    </div>
+                    <div class="google-badge" title="Verified Google Review"><svg viewBox="0 0 24 24" width="16"
+                        height="16">
+                        <path fill="currentColor"
+                          d="M21.35,11.1H12.18V13.83H18.69C18.36,17.64 15.19,19.27 12.19,19.27C8.36,19.27 5,16.25 5,12C5,7.9 8.2,4.73 12.2,4.73C15.29,4.73 17.1,6.7 17.1,6.7L19,4.72C19,4.72 16.56,2 12.1,2C6.42,2 2.03,6.8 2.03,12C2.03,17.05 6.16,22 12.25,22C17.6,22 21.5,18.33 21.5,12.91C21.5,11.76 21.35,11.1 21.35,11.1V11.1Z" />
+                      </svg></div>
+                  </div>
+                  <div class="review-stars">★★★★★</div>
+                  <p class="review-text">
+                    "For a great mix of energy, fun, and correct dance technique, this is where you need to be. The classes
+                    are entertaining, and the teachers bring top-level expertise you won’t find anywhere else in Zurich."
+                  </p>
+                </div>
+    
+                <!-- Review: Marco F -->
+                <div class="review-card glass-card">
+                  <div class="review-header">
+                    <span class="review-avatar" aria-hidden="true">MF</span>
+                    <div class="reviewer-info">
+                      <h3 class="reviewer-name">Marco F</h3>
+                      <span class="review-date">Google Review</span>
+                    </div>
+                    <div class="google-badge" title="Verified Google Review"><svg viewBox="0 0 24 24" width="16"
+                        height="16">
+                        <path fill="currentColor"
+                          d="M21.35,11.1H12.18V13.83H18.69C18.36,17.64 15.19,19.27 12.19,19.27C8.36,19.27 5,16.25 5,12C5,7.9 8.2,4.73 12.2,4.73C15.29,4.73 17.1,6.7 17.1,6.7L19,4.72C19,4.72 16.56,2 12.1,2C6.42,2 2.03,6.8 2.03,12C2.03,17.05 6.16,22 12.25,22C17.6,22 21.5,18.33 21.5,12.91C21.5,11.76 21.35,11.1 21.35,11.1V11.1Z" />
+                      </svg></div>
+                  </div>
+                  <div class="review-stars">★★★★★</div>
+                  <p class="review-text">
+                    "Teachers immensely humble and down to earth, they create a welcoming atmosphere where you can have fun
+                    while learning. They are the top teachers of bachata in switzerland nowadays."
+                  </p>
+                </div>
+    
+                <!-- Review: Florian R -->
+                <div class="review-card glass-card">
+                  <div class="review-header">
+                    <span class="review-avatar" aria-hidden="true">FR</span>
+                    <div class="reviewer-info">
+                      <h3 class="reviewer-name">Florian R</h3>
+                      <span class="review-date">Google Review</span>
+                    </div>
+                    <div class="google-badge" title="Verified Google Review"><svg viewBox="0 0 24 24" width="16"
+                        height="16">
+                        <path fill="currentColor"
+                          d="M21.35,11.1H12.18V13.83H18.69C18.36,17.64 15.19,19.27 12.19,19.27C8.36,19.27 5,16.25 5,12C5,7.9 8.2,4.73 12.2,4.73C15.29,4.73 17.1,6.7 17.1,6.7L19,4.72C19,4.72 16.56,2 12.1,2C6.42,2 2.03,6.8 2.03,12C2.03,17.05 6.16,22 12.25,22C17.6,22 21.5,18.33 21.5,12.91C21.5,11.76 21.35,11.1 21.35,11.1V11.1Z" />
+                      </svg></div>
+                  </div>
+                  <div class="review-stars">★★★★★</div>
+                  <p class="review-text">
+                    "I learned so much from Ale and Xidan. They are the most knowledgeable teachers around. If you are
+                    looking for high quality Bachata classes in Zurich, then look no further."
+                  </p>
+                </div>
+    
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+    
         </section>
-
-
-
 
 
         <!-- FAQ Section -->
@@ -1145,11 +1465,10 @@
                         <span class="sched-faq__icon" aria-hidden="true">+</span>
                     </summary>
                     <div class="sched-faq__body">
-                        We understand that life can get busy! If you miss a class, do not worry &mdash; you will not
-                        fall behind. We allow you to catch up by attending a similar level class on a different day
-                        within the same course period. Plus, if you know your dates in advance, you can let us know
-                        during registration, and we will prorate the cost for pre-planned absences. Our goal is to make
-                        sure you get the most out of your dance journey with flexibility and support.
+                        We know plans can change, so flexibility is built into your pass. Add any known absences when
+                        you register. If an unexpected one-day absence comes up later, let us know before 12:00 on the
+                        day you will miss. This gives you breathing room while helping us keep your learning rhythm and
+                        class planning consistent.
                     </div>
                 </details>
 
@@ -1205,6 +1524,7 @@
           <li><a href="blog/roots-of-bachata">Roots of Bachata</a></li>
           <li><a href="schedule">Schedule</a></li>
           <li><a href="blog">Our Blog</a></li>
+          <li><a href="https://www.google.com/maps?cid=15680757943659417558" target="_blank" rel="noopener noreferrer">Read our reviews on Google</a></li>
 
         </ul>
       </div>

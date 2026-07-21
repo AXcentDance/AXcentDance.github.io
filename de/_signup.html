@@ -11,11 +11,12 @@
     <link rel="alternate" hreflang="x-default" href="https://axcentdance.com/_signup">
     <title>Registrieren - AXcent Dance</title>
     <meta name="description" content="Erstelle dein AXcent Dance Konto, um deinen aktuellen Pass zu sehen und Abwesenheitstage anzugeben.">
+    <meta property="og:description" content="Erstelle dein AXcent Dance Konto, um deinen aktuellen Pass zu sehen und Abwesenheitstage anzugeben.">
     <meta http-equiv="Content-Security-Policy"
         content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://jwravnvytkmsvqoqkmwb.supabase.co; object-src 'none'; base-uri 'self';">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@200..900&family=Outfit:wght@500;600;700;800&display=swap">
     <link rel="stylesheet" href="../style.css?v=4.2">
-    <link rel="stylesheet" href="../tropic-noir.css?v=5.0">
+    <link rel="stylesheet" href="../tropic-noir.css?v=5.2">
     <link rel="apple-touch-icon" href="/apple-touch-icon-v2.png">
     <link rel="icon" href="/favicon-axcent-192.png" type="image/png" sizes="192x192">
     <link rel="icon" href="/favicon-axcent-transparent.svg" type="image/svg+xml">
@@ -161,6 +162,10 @@
 
             <div id="feedback"></div>
 
+            <p class="auth-link" id="resendWrap" style="display: none;">
+                Keine E-Mail erhalten? <a href="#" id="resendLink">Bestätigung erneut senden</a>
+            </p>
+
             <p class="auth-link">
                 Bereits ein Konto? <a href="_login">Anmelden</a>
                 <br><br>
@@ -175,6 +180,33 @@
 
         const form = document.getElementById('signupForm');
         const feedback = document.getElementById('feedback');
+        const emailInput = document.getElementById('email');
+
+        // Willkommens-E-Mails verlinken hierher mit vorausgefüllter Kauf-E-Mail,
+        // damit das Konto immer zur E-Mail des Passes passt.
+        const prefill = new URLSearchParams(window.location.search).get('email');
+        if (prefill) emailInput.value = prefill;
+
+        // "Bestätigung erneut senden": ohne diesen Ausweg bleibt ein Konto
+        // stecken, wenn die Bestätigungs-E-Mail im Spam landet.
+        let lastSignupEmail = null;
+        const resendWrap = document.getElementById('resendWrap');
+        document.getElementById('resendLink').addEventListener('click', async (e) => {
+            e.preventDefault();
+            if (!lastSignupEmail) return;
+            const { error } = await supabase.auth.resend({ type: 'signup', email: lastSignupEmail });
+            if (error) {
+                feedback.textContent = error.message;
+                feedback.className = 'error';
+            } else {
+                feedback.textContent = 'Bestätigungs-E-Mail erneut gesendet — bitte prüfe auch deinen Spam-Ordner.';
+                feedback.className = 'success';
+            }
+        });
+
+        const NO_PASS_MESSAGE = 'Unter dieser E-Mail ist kein Pass registriert. Bitte verwende genau die E-Mail ' +
+            'deines Pass-Kaufs — falls du gerade erst bezahlt hast, warte kurz und versuche es erneut. ' +
+            'Neu bei AXcent? <a href="registration" style="color: var(--accent-start, #E8B04B);">Melde dich zuerst für einen Kurs an</a>.';
 
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
@@ -182,13 +214,29 @@
             feedback.className = '';
             feedback.style.display = 'block';
 
+            // Freundliche Vorprüfung: Konten gibt es nur für E-Mails mit einem
+            // echten Pass (ein Datenbank-Trigger erzwingt das unabhängig davon).
+            const { data: hasPass, error: checkError } = await supabase
+                .rpc('email_has_profile', { check_email: emailInput.value });
+            if (!checkError && hasPass === false) {
+                feedback.innerHTML = NO_PASS_MESSAGE;
+                feedback.className = 'error';
+                return;
+            }
+
             const { data, error } = await supabase.auth.signUp({
-                email: document.getElementById('email').value,
+                email: emailInput.value,
                 password: document.getElementById('password').value,
             });
 
             if (error) {
-                feedback.textContent = error.message;
+                // Die Trigger-Ablehnung erscheint als generischer Datenbankfehler.
+                if ((error.message || '').toLowerCase().includes('database error') ||
+                    (error.message || '').includes('registered pass')) {
+                    feedback.innerHTML = NO_PASS_MESSAGE;
+                } else {
+                    feedback.textContent = error.message;
+                }
                 feedback.className = 'error';
             } else if (data.session) {
                 // E-Mail-Bestätigung deaktiviert: direkt angemeldet.
@@ -198,6 +246,8 @@
             } else {
                 feedback.textContent = 'Konto erstellt! Bitte bestätige deine E-Mail-Adresse über den Link in deinem Posteingang und melde dich dann an.';
                 feedback.className = 'success';
+                lastSignupEmail = emailInput.value;
+                resendWrap.style.display = 'block';
             }
         });
     </script>

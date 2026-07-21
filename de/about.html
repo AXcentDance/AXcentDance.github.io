@@ -12,7 +12,9 @@
     <link rel="alternate" hreflang="de" href="https://axcentdance.com/de/about" />
     <meta name="description"
         content="Lerne das Team von AXcent Dance in Zürich kennen. Erfahre mehr über unsere Philosophie, unsere Lehrer und unsere Leidenschaft.">
+    <meta property="og:locale" content="de_CH">
     <meta property="og:title" content="Über uns | AXcent Dance Team &amp; Philosophie Zürich">
+    <meta property="og:description" content="Lerne das Team von AXcent Dance in Zürich kennen. Erfahre mehr über unsere Philosophie, unsere Lehrer und unsere Leidenschaft.">
     <meta property="og:url" content="https://axcentdance.com/de/about">
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://axcentdance.com/assets/images/ale-xidan-about.jpg">
@@ -20,9 +22,6 @@
     <meta name="twitter:title" content="Über uns | AXcent Dance Team &amp; Philosophie Zürich">
     <meta name="twitter:description" content="Lerne das Team von AXcent Dance in Zürich kennen. Erfahre mehr über unsere Philosophie, unsere Lehrer und unsere Leidenschaft.">
     <meta name="twitter:image" content="https://axcentdance.com/assets/images/ale-xidan-about.jpg">
-    <meta property="og:description"
-        content="Lerne das Team von AXcent Dance in Zürich kennen. Erfahre mehr über unsere Philosophie, unsere Lehrer und unsere Leidenschaft.">
-    <meta property="og:locale" content="de_CH">
     <meta http-equiv="Content-Security-Policy"
         content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://cdn.jsdelivr.net https://unpkg.com https://connect.facebook.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com https://placehold.co https://*.googleapis.com https://*.gstatic.com https://www.facebook.com https://connect.facebook.net; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://script.google.com https://formsubmit.co https://unpkg.com https://www.facebook.com https://connect.facebook.net; frame-src 'self' https://www.google.com; object-src 'none'; base-uri 'self'; media-src 'self' blob:; worker-src 'self' blob:;">
 
@@ -41,6 +40,7 @@
       "isPartOf": {
         "@id": "https://axcentdance.com/#website"
       },
+      "inLanguage": "de",
       "description": "Lerne das Team von AXcent Dance in Zürich kennen. Erfahre mehr über unsere Philosophie und unsere Leidenschaft."
     },
     {
@@ -70,39 +70,6 @@
         "https://www.instagram.com/aleyxidan/"
       ],
       "description": "Mitbegründer von AXcent Dance, internationaler Bachata-Künstler und Wertungsrichter der IDO Swiss Championship."
-    },
-    {
-      "@type": "FAQPage",
-      "@id": "https://axcentdance.com/de/about#faq",
-      "isPartOf": {
-        "@id": "https://axcentdance.com/de/about/#webpage"
-      },
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Unterrichtet ihr auf Englisch?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Ja! Alle unsere Kurse werden auf Englisch unterrichtet, um unsere internationale Community in Zürich willkommen zu heißen."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Sind die Lehrer zertifiziert?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Absolut. Unsere Lehrer sind in Bachata Sensual ausgebildet und bilden sich ständig auf internationalen Festivals weiter."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Was ist 'Bachata Sensual'?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Bachata Sensual ist ein Stil, der sich in Spanien aus dem traditionellen Bachata entwickelt hat und von Korke und Judith kreiert wurde. Der Fokus liegt mehr auf Verbindung und Körperbewegungen als auf Footwork. Lies mehr in unserem Bachata Style Guide."
-          }
-        }
-      ]
     },
     {
       "@type": "BreadcrumbList",
@@ -161,7 +128,7 @@
       "url": "https://axcentdance.com/",
       "logo": "https://axcentdance.com/assets/images/logo.webp",
       "image": "https://axcentdance.com/assets/images/hero_new.webp",
-      "description": "AXcent Dance is a Bachata dance school in Zurich Altstetten offering Bachata Sensual, Dominican Bachata, Salsa, and Latin dance classes for all levels.",
+      "description": "AXcent Dance ist eine Bachata-Tanzschule in Zürich Altstetten mit Kursen in Bachata Sensual, Dominican Bachata, Salsa und Latin Dance für alle Niveaus.",
       "telephone": "+41799668481",
       "email": "info@axcentdance.com",
       "hasMap": "https://www.google.com/maps?cid=15680757943659417558",
@@ -217,243 +184,12 @@
     <!-- Styles -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@200..900&family=Outfit:wght@500;600;700;800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Teko:wght@300..700&display=swap">
     <link rel="stylesheet" href="../style.css?v=2.3">
+    <link rel="stylesheet" href="../tropic-noir.css?v=5.2">
     <link rel="apple-touch-icon" href="/apple-touch-icon-v2.png">
     <link rel="icon" href="/favicon-axcent-transparent.svg" type="image/svg+xml">
 
 
-    <style>
-        .about-hero {
-            padding: calc(var(--header-height) + 40px) 20px 40px;
-            text-align: center;
-            background: linear-gradient(to bottom, rgba(5, 2, 8, 0.8), var(--bg-main));
-            position: relative;
-        }
 
-        .founders-section {
-            padding: 4rem 0;
-        }
-
-        .founders-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        @media (min-width: 992px) {
-            .founders-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
-        .founders-image-wrapper {
-            position: relative;
-            border-radius: 20px;
-            overflow: hidden;
-            border: 1px solid var(--glass-border);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-        }
-
-        .founders-image {
-            width: 100%;
-            height: auto;
-            display: block;
-            transition: transform 0.5s ease;
-        }
-
-        .founders-image-wrapper:hover .founders-image {
-            transform: scale(1.02);
-        }
-
-        .founders-content h2 {
-            font-family: var(--font-display);
-            font-size: 3rem;
-            color: white;
-            margin-bottom: 1.5rem;
-            line-height: 1;
-        }
-
-        .founders-content p {
-            color: var(--text-muted);
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
-            font-size: 1.1rem;
-        }
-
-        .highlight-box {
-            background: rgba(255, 255, 255, 0.03);
-            border-left: 4px solid var(--accent-start);
-            padding: 1.5rem;
-            margin: 2rem 0;
-            border-radius: 0 12px 12px 0;
-        }
-
-        .highlight-text {
-            color: white;
-            font-style: italic;
-            font-size: 1.2rem;
-            font-weight: 600;
-        }
-
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .team-card {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 16px;
-            overflow: hidden;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        .team-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--accent-start);
-        }
-
-        .team-placeholder {
-            width: 100%;
-            height: 300px;
-            background: linear-gradient(45deg, #1a1a1a, #2a2a2a);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-muted);
-            font-size: 3rem;
-        }
-
-        .team-info {
-            padding: 1.5rem;
-        }
-
-        .team-name {
-            color: white;
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
-
-        .team-role {
-            color: var(--accent-start);
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            font-weight: 600;
-        }
-    </style>
-    <style>
-        #globe-section {
-            padding: 0 0 2rem;
-            position: relative;
-            overflow: hidden;
-            background: linear-gradient(to right, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0));
-        }
-
-        .globe-wrapper {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            /* Reduced gap */
-            flex-wrap: wrap;
-            background: linear-gradient(145deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 30px;
-            padding: 1rem;
-            /* Reduced padding */
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
-        }
-
-        .globe-legend {
-            flex: 1;
-            min-width: 300px;
-            text-align: center;
-        }
-
-        .globe-legend h3 {
-            font-size: 2rem;
-            margin-bottom: 2rem;
-            color: white;
-        }
-
-        .city-list {
-            display: none;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
-            /* Reduced gap */
-            margin-top: 1rem;
-            /* Reduced margin */
-        }
-
-        .stat-card {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 1rem;
-            /* Reduced padding */
-            border-radius: 16px;
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            text-align: center;
-            transition: transform 0.3s ease;
-        }
-
-        .stat-card:hover {
-            transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.08);
-        }
-
-        .stat-number {
-            font-size: 2rem;
-            /* Slightly smaller font to save space */
-            font-weight: 800;
-            background: var(--grad);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 0.25rem;
-            display: block;
-        }
-
-        .stat-label {
-            color: var(--text-muted);
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        #globe-viz {
-            flex: 2;
-            min-width: 300px;
-            height: 380px;
-            /* Increased height */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: grab;
-        }
-
-        #globe-viz:active {
-            cursor: grabbing;
-        }
-
-        .scene-tooltip {
-            color: white !important;
-            background: rgba(20, 10, 30, 0.9) !important;
-            padding: 8px 12px !important;
-            border-radius: 8px !important;
-            font-family: var(--font-body) !important;
-            font-weight: 600 !important;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3) !important;
-            border: 1px solid rgba(255, 255, 255, 0.1) !important;
-        }
-    </style>
 
     <!-- Cookie Consent -->
 
@@ -473,7 +209,7 @@
   <!-- End Meta Pixel Code -->
   </head>
 
-<body>
+<body class="tropic about-page nav-declutter">
 
     <!-- Navigation Bar -->
     <header class="main-header">
@@ -490,11 +226,13 @@
                 </svg>
             </button>
             <nav class="nav-links">
-        <a href="../">Home</a>
+        <a href="./" class="nav-home">Home</a>
         <a href="about">Über uns</a>
                 <a href="schedule">Unsere Kurse</a>
+                <a href="registration">Preise &amp; Anmeldung</a>
                 <a href="events">Events</a>
-                <a href="contact">Kontakt</a>
+                <a href="contact" class="nav-contact-item">Kontakt</a>
+                <a href="portal" class="nav-portal-item">Login</a>
 
                 <div class="dropdown">
                     <button class="dropbtn">Mehr ▾</button>
@@ -509,7 +247,7 @@
                         <a href="blog"><span>Blog</span></a>
                         <a href="faq"><span>FAQ</span></a>
                         <a href="etiquette"><span>Tanzetikette</span></a>
-                        <a href="portal"><span>Login</span></a>
+                        <a href="contact" class="nav-contact-dropdown"><span>Kontakt</span></a>
                     </div>
                 </div>
         <a href="/de/#trial-form" class="btn-header-cta">Probelektion buchen</a>
@@ -519,7 +257,15 @@
           <span class="divider">|</span>
           <span class="active">DE</span>
         </div>
-      
+      <div class="header-login">
+        <a href="portal" class="header-login__link header-login__link--icon" aria-label="Login" title="Login">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 21a8 8 0 0 0-16 0"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+        </a>
+      </div>
+
         </div>
     </header>
 
@@ -528,32 +274,87 @@
         <!-- Hero Section -->
         <section class="about-hero">
             <div class="container">
-                <!-- Visual Breadcrumbs -->
-
-
-                <div class="hero-badge">
-                    <span class="hero-badge-line"></span>
-                    <span class="hero-badge-text">AXcent Team</span>
-                    <span class="hero-badge-line"></span>
+                <div class="about-hero__content">
+                    <div class="hero-badge">
+                        <span class="hero-badge-line"></span>
+                        <span class="hero-badge-text">AXcent Team</span>
+                        <span class="hero-badge-line"></span>
+                    </div>
+                    <h1 class="page-title">Die Köpfe hinter<br>AXcent Dance<br>in Zürich</h1>
+                    <p class="hero-desc-border" style="border: none; padding: 0;">
+                        Leidenschaft, Technik und Gemeinschaft.
+                    </p>
                 </div>
-                <h1 class="page-title">Das Team hinter AXcent Dance Zürich</h1>
-                <p class="hero-desc-border" style="border: none; padding: 0;">
-                    Leidenschaft, Technik und Gemeinschaft.
-                </p>
+            </div>
+        </section>
 
+        <!-- Founders Section -->
+        <section class="founders-section">
+            <div class="container">
+                <div style="text-align: center; margin-bottom: 3rem; position: relative;">
+                    <p class="founders-outline" aria-hidden="true">DIE GRÜNDER</p>
+                    <h2 class="founders-name">Ale y Xidan</h2>
+                </div>
+                <div class="founders-grid">
+                    <!-- Image -->
+                    <div class="founders-image-wrapper">
+                        <img src="../assets/images/ale-xidan-about.webp"
+                            srcset="../assets/images/ale-xidan-about_480w.webp 480w, ../assets/images/ale-xidan-about_800w.webp 800w, ../assets/images/ale-xidan-about_1200w.webp 1200w"
+                            sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px"
+                            alt="Ale und Xidan - Gründer von AXcent Dance" width="640" height="1024"
+                            class="founders-image">
+                    </div>
+
+                    <!-- Content -->
+                    <div class="founders-content">
+                        <p>
+                            Wir sind Ale und Xidan, die Gründer von AXcent Dance. Unsere Reise begann mit einer
+                            gemeinsamen Leidenschaft für Bachata Sensual und der Vision, eine Tanzschule zu schaffen,
+                            die weit mehr ist als reiner Schrittunterricht. Wir glauben an den Aufbau einer
+                            Gemeinschaft, in der sich jede Person willkommen, unterstützt und dazu inspiriert fühlt,
+                            sich selbst auszudrücken.
+                        </p>
+
+                        <h3>Als internationale Künstler</h3>
+                        <p>
+                            Wir haben unsere Leidenschaft bereits in über 12 Ländern geteilt. Zudem sind wir stolz
+                            darauf, als offizielle Wertungsrichter für die Schweizer Meisterschaft IDO zu wirken, und
+                            engagieren uns als aktive Event-Organisatoren für die Weiterentwicklung der
+                            Tanz-Community.
+                        </p>
+
+                        <h3>Unsere Philosophie</h3>
+                        <p>
+                            Unsere Lehrmethodik basiert auf einem starken Fundament aus Technik, Musikalität und
+                            Verbindung. Wir zeigen dir nicht nur <em>was</em> du tun sollst, sondern <em>wie</em> du
+                            es mit Stil und Fluss umsetzt. Wir lassen uns von verschiedenen Tanzstilen inspirieren,
+                            um einen einzigartigen und modernen Ansatz für Bachata zu schaffen.
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+
+
+        <!-- Taught around the world: globe + stat band -->
+        <section id="globe-section" class="about-globe">
+            <div class="container">
+                <h2 class="section-title-modern">Rund um die <em class="title-accent">Welt</em> unterrichtet</h2>
                 <!-- Globe Integration (Moved from separate section) -->
                 <div id="globe-integration" class="globe-wrapper"
-                    style="margin-top: 3rem; background: rgba(0,0,0,0.3); backdrop-filter: blur(10px);">
+                    >
                     <!-- Content Row -->
                     <div style="display: flex; width: 100%; align-items: center; gap: 2rem; flex-wrap: wrap;">
                         <!-- Legend Side -->
                         <div class="globe-legend" style="text-align: left;">
-
-                            <h2 style="font-size: 1.5rem; color: white; margin-bottom: 1rem; text-align: left;">Unsere
-                                Mission</h2>
+                            <h3 class="about-globe__mission-title">Unsere Mission</h3>
                             <p class="mission-text">
-                                Es ist uns eine Ehre, eingeladen zu werden, um unsere Leidenschaft mit Tanz-Communities
-                                auf der ganzen Welt zu teilen.
+                                Es ist uns eine Ehre, eingeladen zu werden, um unsere Leidenschaft mit
+                                Tanz-Communities auf der ganzen Welt zu teilen.
                             </p>
                             <div class="stats-grid">
                                 <div class="stat-card">
@@ -566,13 +367,9 @@
                                 </div>
                                 <div class="stat-card">
                                     <span class="stat-number">400+</span>
-                                    <span class="stat-label">Erreichte Tänzer</span>
+                                    <span class="stat-label">Erreichte internationale Tänzer</span>
                                 </div>
-                                <div class="stat-card">
-                                    <span class="stat-number">∞</span>
-                                    <span class="stat-label">Erinnerungen</span>
                                 </div>
-                            </div>
                         </div>
 
                         <!-- Globe Side -->
@@ -581,59 +378,6 @@
                 </div>
             </div>
         </section>
-
-        <!-- Founders Section -->
-        <section class="founders-section">
-            <div class="container">
-                <div style="text-align: center; margin-bottom: 3rem; position: relative;">
-                    <h2 class="founders-outline"
-                        style="font-size: clamp(3rem, 10vw, 7rem); margin-bottom: -2.5rem; position: relative; z-index: 1; color: transparent; -webkit-text-stroke: 1px rgba(255, 255, 255, 0.5); opacity: 0.5; letter-spacing: 0.1em; background: none; -webkit-background-clip: border-box; background-clip: border-box; width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-                        DIE GRÜNDER</h2>
-                    <h2
-                        style="position: relative; z-index: 10; font-size: 3.5rem; margin-top: 0; color: white; font-family: var(--font-display); text-transform: uppercase;">
-                        Ale y Xidan</h2>
-                </div>
-                <div class="founders-grid">
-                    <!-- Image -->
-                    <div class="founders-image-wrapper">
-                        <img src="../assets/images/ale-xidan-about.webp"
-                            srcset="../assets/images/ale-xidan-about_480w.webp 480w, ../assets/images/ale-xidan-about_800w.webp 800w, ../assets/images/ale-xidan-about_1200w.webp 1200w"
-                            sizes="(max-width: 600px) 480px, (max-width: 900px) 600px, 800px"
-                            alt="Ale and Xidan, Founders of AXcent Dance" class="founders-image" width="800"
-                            height="1000">
-                    </div>
-
-                    <!-- Content -->
-                    <div class="founders-content">
-                        <p>
-                            Wir sind Ale und Xidan, die Gründer von AXcent Dance. Unsere Reise begann mit einer
-                            gemeinsamen Leidenschaft für Bachata Sensual und der Vision einer Tanzschule, die mehr ist
-                            als nur Schritte zu lehren. Wir glauben an den Aufbau einer Gemeinschaft, in der sich jeder
-                            willkommen, unterstützt und inspiriert fühlt.
-                        </p>
-
-                        <h2>Als internationale Künstler</h2>
-                        <p>
-                            Wir haben unsere Leidenschaft in über 12 Ländern geteilt. Wir sind stolz darauf, als
-                            offizielle Wertungsrichter für die Schweizer Meisterschaft IDO zu dienen und sind aktive
-                            Event-Organisatoren, die sich der Förderung der Tanzszene widmen.
-                        </p>
-
-                        <h2>Unsere Philosophie</h2>
-                        <p>
-                            Unsere Lehrmethodik basiert auf einem starken Fundament aus Technik, Musikalität und
-                            Verbindung. Wir bringen dir nicht nur bei <em>was</em> du tun sollst, sondern <em>wie</em>
-                            du es mit Stil und Fluss tust. Wir lassen uns von verschiedenen Tanzstilen inspirieren, um
-                            einen einzigartigen und modernen Ansatz für Bachata zu schaffen.
-                        </p>
-
-                    </div>
-                </div>
-            </div>
-        </section>
-
-
-
 
         <!-- As Organizers Section (Premium Design) -->
         <section class="section-padding organizers-section">
@@ -662,7 +406,7 @@
                                 <div class="organizer-badge">DOMINICAN BACHATA INTENSIVE BOOTCAMP</div>
                                 <h2 class="organizer-event-title">Zürichs grösstes Dominican Event</h2>
                                 <p class="organizer-event-desc">
-                                    Wir veranstalten das <strong>größte Dominican Event in Zürich</strong> und
+                                    Wir veranstalten das <strong>grösste Dominican Event in Zürich</strong> und
                                     schaffen ein Zuhause für authentische Kultur und Musik im Herzen der Schweiz.
                                 </p>
                             </div>
@@ -677,9 +421,9 @@
                                 <div class="organizer-badge">INTERNATIONALER KONGRESS</div>
                                 <h2 class="organizer-event-title">Milano Sensual Congress</h2>
                                 <p class="organizer-event-desc">
-                                    Mitorganisatoren eines internationalen Bachata Sensual Kongresses in Italien.
-                                    <br><span class="highlight-text">Internationale Künstler</span> • <span
-                                        class="highlight-text">4.5 Sterne Luxus-Hotel</span>
+                                    Mitorganisatoren eines der renommiertesten Bachata-Sensual-Kongresse Italiens.
+                                    <br><span class="highlight-text">Weltklasse-Künstler</span> • <span
+                                        class="highlight-text">4.5-Sterne-Luxushotel</span>
                                 </p>
                             </div>
                         </a>
@@ -690,53 +434,37 @@
 
 
 
-        <!-- FAQ Section -->
-        <section class="container" style="max-width: 800px; margin-bottom: 6rem; margin-top: 4rem;">
-            <h2 class="section-title-modern" style="text-align: center; margin-bottom: 3rem;">Häufig gestellte Fragen
-            </h2>
-            <div class="faq-list" style="display: flex; flex-direction: column; gap: 1rem;">
-                <!-- FAQ Item 1 -->
-                <details class="glass-panel" style="border-radius: 12px; overflow: hidden;">
-                    <summary
-                        style="padding: 1.5rem; cursor: pointer; color: white; font-weight: 600; font-size: 1.1rem; list-style: none; display: flex; justify-content: space-between; align-items: center;">
-                        Unterrichtet ihr auf Englisch?
-                        <span style="color: var(--accent-start); font-size: 1.5rem;">+</span>
-                    </summary>
-                    <div style="padding: 0 1.5rem 1.5rem; color: var(--text-muted); line-height: 1.6;">
-                        Ja! Alle unsere Kurse werden auf <strong>Englisch</strong> unterrichtet, um unsere
-                        internationale Community in Zürich willkommen zu heißen. Wir sprechen auch Deutsch, Italienisch,
-                        Spanisch und Chinesisch, falls du Hilfe brauchst!
-                    </div>
-                </details>
+        <!-- Visit the studio -->
+        <section class="about-visit">
+            <div class="container">
+                <h2 class="section-title-modern">Besuche das <em class="title-accent">Studio</em></h2>
+                <div class="about-visit__grid">
+                    <figure class="about-visit__photo">
+                        <img src="../assets/images/studio/studio_room_view_1_800w.webp"
+                            srcset="../assets/images/studio/studio_room_view_1_480w.webp 480w, ../assets/images/studio/studio_room_view_1_800w.webp 800w, ../assets/images/studio/studio_room_view_1_1200w.webp 1200w"
+                            sizes="(max-width: 700px) 92vw, 42vw" alt="Der AXcent Dance Studioraum mit Spiegeln und offener Tanzfläche"
+                            width="1024" height="651" loading="lazy" decoding="async">
+                    </figure>
+                    <figure class="about-visit__photo">
+                        <img src="../assets/images/studio/studio_room_view_2_800w.webp"
+                            srcset="../assets/images/studio/studio_room_view_2_480w.webp 480w, ../assets/images/studio/studio_room_view_2_800w.webp 800w, ../assets/images/studio/studio_room_view_2_1200w.webp 1200w"
+                            sizes="(max-width: 700px) 92vw, 42vw" alt="Eine zweite Ansicht des AXcent Dance Studios in Zürich Altstetten"
+                            width="1024" height="493" loading="lazy" decoding="async">
+                    </figure>
+                </div>
+                <a class="about-visit__card" href="https://www.google.com/maps?cid=15680757943659417558" target="_blank"
+                    rel="noopener noreferrer">
+                    <span class="about-visit__address">Hermetschloostrasse 73, 8048 Zürich Altstetten</span>
+                    <span class="about-visit__hint">2 Minuten von Tram 2 und Bus 31 entfernt &middot; In Google Maps öffnen</span>
+                </a>
+            </div>
+        </section>
 
-                <!-- FAQ Item 2 -->
-                <details class="glass-panel" style="border-radius: 12px; overflow: hidden;">
-                    <summary
-                        style="padding: 1.5rem; cursor: pointer; color: white; font-weight: 600; font-size: 1.1rem; list-style: none; display: flex; justify-content: space-between; align-items: center;">
-                        Sind die Lehrer zertifiziert?
-                        <span style="color: var(--accent-start); font-size: 1.5rem;">+</span>
-                    </summary>
-                    <div style="padding: 0 1.5rem 1.5rem; color: var(--text-muted); line-height: 1.6;">
-                        Absolut. Unsere Instruktoren sind in <strong>Bachata Sensual</strong> ausgebildet und bilden
-                        sich ständig auf internationalen Festivals und Masterclasses weiter. Zudem sind Ale & Xidan
-                        zertifizierte IDO-Wertungsrichter.
-                    </div>
-                </details>
-
-                <!-- FAQ Item 3 -->
-                <details class="glass-panel" style="border-radius: 12px; overflow: hidden;">
-                    <summary
-                        style="padding: 1.5rem; cursor: pointer; color: white; font-weight: 600; font-size: 1.1rem; list-style: none; display: flex; justify-content: space-between; align-items: center;">
-                        Was ist "Bachata Sensual"?
-                        <span style="color: var(--accent-start); font-size: 1.5rem;">+</span>
-                    </summary>
-                    <div style="padding: 0 1.5rem 1.5rem; color: var(--text-muted); line-height: 1.6;">
-                        Bachata Sensual ist ein Stil, der sich in Spanien aus dem traditionellen Bachata entwickelt hat
-                        und von Korke und Judith kreiert wurde. Der Fokus liegt mehr auf Verbindung und Körperbewegungen
-                        als auf Footwork. Lies mehr in unserem <a href="guide-bachata"
-                            style="color: var(--accent-start);">Bachata Stil-Guide</a>.
-                    </div>
-                </details>
+        <!-- Closing bridge -->
+        <section class="about-bridge">
+            <div class="container">
+                <p class="about-bridge__copy">Lerne uns persönlich kennen. Die erste Lektion ist kostenlos.</p>
+                <a href="/de/?class=unsure#trial-form" class="about-bridge__cta">Kostenlose Probelektion buchen</a>
             </div>
         </section>
 
@@ -750,6 +478,9 @@
                 <p class="footer-address">
                     Hermetschloostrasse 73,<br>
                     8048 Zurich Altstetten<br> 2 Minuten zu Fuss von Tram 2 und Bus 31 Haltestelle
+                </p>
+                <p class="footer-contact">
+                  <a href="https://wa.me/41799668481" target="_blank" rel="noopener noreferrer">WhatsApp: +41 79 966 84 81</a>
                 </p>
                 <div class="footer-socials">
                     <a href="https://www.instagram.com/axcent_dance/" target="_blank" aria-label="Instagram">
@@ -771,10 +502,12 @@
             <div class="footer-col">
                 <h2 class="footer-heading">Schnellzugriff</h2>
                 <ul class="footer-links">
+                    <li><a href="/de/#trial-form">Kostenlose Probelektion buchen</a></li>
                     <li><a href="guide-bachata">Was ist Bachata</a></li>
                     <li><a href="blog/roots-of-bachata">Wurzeln des Bachatas</a></li>
                     <li><a href="schedule">Stundenplan</a></li>
                     <li><a href="blog">Unser Blog</a></li>
+                    <li><a href="https://www.google.com/maps?cid=15680757943659417558" target="_blank" rel="noopener noreferrer">Lies unsere Google-Bewertungen</a></li>
 
                 </ul>
             </div>
@@ -789,21 +522,27 @@
             </div>
         </div>
 
-        <div class="container footer-map-full" style="margin-bottom: 2rem;">
-            <h2 class="footer-heading" style="margin-bottom: 1rem;">Finde uns</h2>
-            <div class="footer-map-wrapper-large"
-                style="border-radius: 12px; overflow: hidden; border: 1px solid var(--glass-border);">
-                <iframe title="Google Maps Standort von AXcent Dance"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2701.365!2d8.472010!3d47.394204!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47900b995a7d8e03%3A0xd99d3e4500b44fd6!2sAXcent%20Dance%20%7C%20Bachata%20Classes!5e0!3m2!1sen!2sch!4v1710680000000!5m2!1sde!2sch&hl=de"
-                    width="100%" height="250" style="border:0; width: 100%; display: block;" allowfullscreen=""
-                    loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
+        <div class="container footer-map-full">
+          <h2 class="footer-heading footer-map-full__heading">Finde uns</h2>
+          <a class="footer-map-card" href="https://www.google.com/maps?cid=15680757943659417558" target="_blank"
+            rel="noopener noreferrer" aria-label="AXcent Dance Studio-Standort in Google Maps öffnen">
+            <span class="footer-map-card__pin" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+            </span>
+            <span class="footer-map-card__address">Hermetschloostrasse 73, 8048 Zurich Altstetten</span>
+            <span class="footer-map-card__hint">2 Minuten von Tram 2 und Bus 31 · In Google Maps öffnen</span>
+          </a>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2025 AXcent Dance. Alle Rechte vorbehalten.</p>
+            <p>&copy; 2026 AXcent Dance. Alle Rechte vorbehalten.</p>
         </div>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
     <script src="../script.js?v=5.8"></script>
     <script>
         // Lazy Load Map Strategy
@@ -859,32 +598,32 @@
                         lat: 46.8182, lng: 8.2275,
                         label: "Switzerland",
                         size: 1.5,
-                        color: '#ff3b30',
+                        color: '#FF5A3C',
                         cities: ["Zurich (HQ)", "Bern", "Lucerne", "Basel", "St. Gallen"]
                     },
-                    { lat: 45.4642, lng: 9.1900, label: "Milano", size: 0.5, color: '#ff3b30' },
-                    { lat: 45.4064, lng: 11.8768, label: "Padova", size: 0.5, color: '#ff3b30' },
-                    { lat: 45.0703, lng: 7.6869, label: "Torino", size: 0.5, color: '#ff3b30' },
-                    { lat: 45.6669, lng: 12.2423, label: "Treviso", size: 0.5, color: '#ff3b30' },
-                    { lat: 43.9125, lng: 12.9155, label: "Pesaro", size: 0.5, color: '#ff3b30' },
-                    { lat: 38.9098, lng: 16.5877, label: "Catanzaro", size: 0.5, color: '#ff3b30' },
-                    { lat: 37.5079, lng: 15.0830, label: "Catania", size: 0.5, color: '#ff3b30' },
-                    { lat: 48.7758, lng: 9.1829, label: "Stuttgart", size: 0.5, color: '#ff3b30' },
-                    { lat: 52.5200, lng: 13.4050, label: "Berlin", size: 0.5, color: '#ff3b30' },
-                    { lat: 51.5074, lng: -0.1278, label: "London", size: 0.5, color: '#ff3b30' },
-                    { lat: 55.9533, lng: -3.1883, label: "Edinburgh", size: 0.5, color: '#ff3b30' },
-                    { lat: 41.3851, lng: 2.1734, label: "Barcelona", size: 0.5, color: '#ff3b30' },
-                    { lat: 38.9667, lng: -0.1833, label: "Gandia", size: 0.5, color: '#ff3b30' },
-                    { lat: 54.6872, lng: 25.2797, label: "Vilnius", size: 0.5, color: '#ff3b30' },
-                    { lat: 44.4268, lng: 26.1025, label: "Bucharest", size: 0.5, color: '#ff3b30' },
-                    { lat: 25.2048, lng: 55.2708, label: "Dubai", size: 0.5, color: '#ff3b30' },
-                    { lat: 24.4539, lng: 54.3773, label: "Abu Dhabi", size: 0.5, color: '#ff3b30' },
-                    { lat: 35.6762, lng: 139.6503, label: "Tokyo", size: 0.5, color: '#ff3b30' },
-                    { lat: 34.3416, lng: 108.9398, label: "Xi'an", size: 0.5, color: '#ff3b30' },
-                    { lat: 47.6062, lng: -122.3321, label: "Seattle", size: 0.5, color: '#ff3b30' },
-                    { lat: 43.6150, lng: -116.2023, label: "Boise", size: 0.5, color: '#ff3b30' },
-                    { lat: 37.7749, lng: -122.4194, label: "San Francisco", size: 0.5, color: '#ff3b30' },
-                    { lat: 49.2827, lng: -123.1207, label: "Vancouver", size: 0.5, color: '#ff3b30' }
+                    { lat: 45.4642, lng: 9.1900, label: "Milano", size: 0.5, color: '#FF5A3C' },
+                    { lat: 45.4064, lng: 11.8768, label: "Padova", size: 0.5, color: '#FF5A3C' },
+                    { lat: 45.0703, lng: 7.6869, label: "Torino", size: 0.5, color: '#FF5A3C' },
+                    { lat: 45.6669, lng: 12.2423, label: "Treviso", size: 0.5, color: '#FF5A3C' },
+                    { lat: 43.9125, lng: 12.9155, label: "Pesaro", size: 0.5, color: '#FF5A3C' },
+                    { lat: 38.9098, lng: 16.5877, label: "Catanzaro", size: 0.5, color: '#FF5A3C' },
+                    { lat: 37.5079, lng: 15.0830, label: "Catania", size: 0.5, color: '#FF5A3C' },
+                    { lat: 48.7758, lng: 9.1829, label: "Stuttgart", size: 0.5, color: '#FF5A3C' },
+                    { lat: 52.5200, lng: 13.4050, label: "Berlin", size: 0.5, color: '#FF5A3C' },
+                    { lat: 51.5074, lng: -0.1278, label: "London", size: 0.5, color: '#FF5A3C' },
+                    { lat: 55.9533, lng: -3.1883, label: "Edinburgh", size: 0.5, color: '#FF5A3C' },
+                    { lat: 41.3851, lng: 2.1734, label: "Barcelona", size: 0.5, color: '#FF5A3C' },
+                    { lat: 38.9667, lng: -0.1833, label: "Gandia", size: 0.5, color: '#FF5A3C' },
+                    { lat: 54.6872, lng: 25.2797, label: "Vilnius", size: 0.5, color: '#FF5A3C' },
+                    { lat: 44.4268, lng: 26.1025, label: "Bucharest", size: 0.5, color: '#FF5A3C' },
+                    { lat: 25.2048, lng: 55.2708, label: "Dubai", size: 0.5, color: '#FF5A3C' },
+                    { lat: 24.4539, lng: 54.3773, label: "Abu Dhabi", size: 0.5, color: '#FF5A3C' },
+                    { lat: 35.6762, lng: 139.6503, label: "Tokyo", size: 0.5, color: '#FF5A3C' },
+                    { lat: 34.3416, lng: 108.9398, label: "Xi'an", size: 0.5, color: '#FF5A3C' },
+                    { lat: 47.6062, lng: -122.3321, label: "Seattle", size: 0.5, color: '#FF5A3C' },
+                    { lat: 43.6150, lng: -116.2023, label: "Boise", size: 0.5, color: '#FF5A3C' },
+                    { lat: 37.7749, lng: -122.4194, label: "San Francisco", size: 0.5, color: '#FF5A3C' },
+                    { lat: 49.2827, lng: -123.1207, label: "Vancouver", size: 0.5, color: '#FF5A3C' }
                 ];
 
                 const world = Globe()
@@ -912,7 +651,7 @@
                                 overlay.style.top = '50%';
                                 overlay.style.left = '50%';
                                 overlay.style.transform = 'translate(-50%, -50%)';
-                                overlay.style.background = 'rgba(10, 5, 20, 0.95)';
+                                overlay.style.background = 'rgba(4, 19, 16, 0.95)';
                                 overlay.style.padding = '20px';
                                 overlay.style.borderRadius = '12px';
                                 overlay.style.border = '1px solid var(--accent-light)';
@@ -937,7 +676,7 @@
                     })
                     // Add animated rings for a "modern" vibe
                     .ringsData(workshops)
-                    .ringColor(() => 'rgba(255, 59, 48, 0.3)') // Semi-transparent red
+                    .ringColor(() => 'rgba(255, 90, 60, 0.3)') // Semi-transparent coral
                     .ringMaxRadius(3)
                     .ringPropagationSpeed(2)
                     .ringRepeatPeriod(1000)
@@ -948,7 +687,7 @@
                     .labelText('label')
                     .labelSize(0.5)
                     .labelDotRadius(0.3)
-                    .labelColor(() => 'rgba(255, 255, 255, 0.9)')
+                    .labelColor(() => 'rgba(242, 231, 207, 0.92)')
                     .labelAltitude(0.01) // Slightly above surface
                     .width(container.clientWidth)
                     .height(380);
@@ -959,18 +698,20 @@
                     .then(land => {
                         world
                             .polygonsData(topojson.feature(land, land.objects.countries).features)
-                            .polygonCapColor(() => '#1a1a1a') // Dark fill for countries
+                            .polygonCapColor(() => '#0C2A24') // Petrol fill for countries
                             .polygonSideColor(() => 'rgba(0,0,0,0)')
-                            .polygonStrokeColor(() => '#555'); // Visible grey border
+                            .polygonStrokeColor(() => 'rgba(157, 180, 171, 0.55)'); // Sage border
                     });
 
                 // Auto-rotate
                 world.controls().autoRotate = false;
                 world.controls().autoRotateSpeed = 0.5;
 
-                // Initial Zoom
+                // Initial Zoom — centered on Switzerland (HQ)
                 world.pointOfView({
-                    altitude: 1.7
+                    lat: 46.8182,
+                    lng: 8.2275,
+                    altitude: 0.85
                 });
 
                 // Zoom limits
@@ -984,24 +725,6 @@
             } // End of initGlobe
         });
     </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 </body>
 

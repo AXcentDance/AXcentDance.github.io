@@ -488,7 +488,8 @@
         }
 
         #feedback,
-        #absenceFeedback,
+        #sickFeedback,
+        #freezeFeedback,
         #renewFeedback,
         #requestFeedback {
             margin-top: 1rem;
@@ -660,43 +661,64 @@
             </p>
         </div>
 
+        <div class="portal-card" id="flexCard" style="display: none;">
+            <h2>Your 10-Class Package</h2>
+            <p class="quota-line" id="flexQuota"></p>
+            <ul class="absence-list" id="flexList"></ul>
+            <p class="muted-note">
+                Classes are counted when the studio marks you present — just drop in
+                to any class on the <a href="schedule" style="color: var(--accent-gold);">weekly schedule</a>.
+            </p>
+        </div>
+
         <div class="portal-card" id="timetableCard" style="display: none;">
             <h2>Your Week</h2>
             <div class="tt-grid" id="timetableGrid"></div>
         </div>
 
-        <div class="portal-card" id="absenceCard" style="display: none;">
-            <h2>Sick Day &amp; Pass Freeze</h2>
+        <div class="portal-card" id="purchasesCard" style="display: none;">
+            <h2>Your Bookings &amp; Privates</h2>
+            <ul class="absence-list" id="purchasesList"></ul>
+        </div>
+
+        <div class="portal-card" id="sickCard" style="display: none;">
+            <h2>Sick Day</h2>
             <p class="quota-line" id="quotaLine"></p>
 
             <div class="reg-note" id="regNote" style="display: none;"></div>
 
             <ul class="absence-list" id="absenceList"></ul>
 
-            <form id="absenceForm">
-                <div class="form-group">
-                    <label for="absenceType">Request</label>
-                    <select id="absenceType" required>
-                        <option value="sick">Sick day — today only, before 12:00</option>
-                        <option value="freeze">Pass freeze — longer break (holidays, injury...)</option>
-                    </select>
-                </div>
-                <p class="muted-note" id="typeHint" style="margin-bottom: 1rem;"></p>
-                <div class="form-group" id="freezeFromGroup" style="display: none;">
-                    <label for="freezeFrom">Freeze from</label>
-                    <input type="date" id="freezeFrom">
-                </div>
-                <div class="form-group" id="freezeUntilGroup" style="display: none;">
-                    <label for="freezeUntil">Back on</label>
-                    <input type="date" id="freezeUntil">
-                </div>
-                <div class="form-group">
-                    <label for="absenceNote">Note (optional)</label>
-                    <input type="text" id="absenceNote" maxlength="200" placeholder="e.g. which class you will miss, reason for the freeze...">
-                </div>
-                <button type="submit" class="btn-declare" id="declareBtn">Submit</button>
+            <form id="sickForm">
+                <p class="muted-note" id="sickHint" style="margin-bottom: 1rem;"></p>
+                <button type="submit" class="btn-declare" id="sickBtn">Declare Sick Day (today)</button>
             </form>
-            <div id="absenceFeedback"></div>
+            <div id="sickFeedback"></div>
+        </div>
+
+        <div class="portal-card" id="freezeCard" style="display: none;">
+            <h2>Pass Freeze</h2>
+            <p class="muted-note" style="margin-bottom: 1rem;">
+                A pass freeze pauses your pass for a longer break of <strong>at least two weeks</strong> —
+                holidays, work travel, injury. Tell us the period; we confirm by email and adjust your
+                pass dates. For a single missed day, use the sick day above instead.
+            </p>
+            <form id="freezeForm">
+                <div class="form-group">
+                    <label for="freezeFrom">Freeze from</label>
+                    <input type="date" id="freezeFrom" required>
+                </div>
+                <div class="form-group">
+                    <label for="freezeUntil">Back on</label>
+                    <input type="date" id="freezeUntil" required>
+                </div>
+                <div class="form-group">
+                    <label for="freezeNote">Note (optional)</label>
+                    <input type="text" id="freezeNote" maxlength="200" placeholder="e.g. reason for the freeze...">
+                </div>
+                <button type="submit" class="btn-declare" id="freezeBtn">Request Pass Freeze</button>
+            </form>
+            <div id="freezeFeedback"></div>
         </div>
 
         <div class="portal-card" id="requestCard" style="display: none;">
@@ -770,6 +792,7 @@
         import { supabase } from './assets/js/supabase-client.js';
 
         const STUDIO_NOTIFY_EMAIL = 'slamitza@gmail.com';
+        const FLEX_PASS = '10-Class Flexible Package';
 
         // Google Sheets mirror for owner requests (Apps Script web app URL).
         // Empty string disables mirroring until the web app is deployed.
@@ -789,9 +812,9 @@
         // Stripe dashboard: one-time payments of 150 / 360 / 550 CHF).
         // Leave empty to disable the option until the link exists.
         const PRIVATE_LINKS = {
-            'private-1h': { label: '1 hour private', price: '150 CHF', amount: 150, url: 'https://buy.stripe.com/cNi00l7QX6XT5O760qfnO0g' },
-            'private-3h': { label: '3 hours private', price: '360 CHF', amount: 360, url: 'https://buy.stripe.com/00w4gB9Z54PLa4nfB0fnO0h' },
-            'private-5h': { label: '5 hours private', price: '550 CHF', amount: 550, url: 'https://buy.stripe.com/4gMcN77QX4PLdgz2OefnO0i' }
+            'private-1h': { label: '1 hour private', price: '150 CHF', amount: 150, hours: 1, url: 'https://buy.stripe.com/cNi00l7QX6XT5O760qfnO0g' },
+            'private-3h': { label: '3 hours private', price: '360 CHF', amount: 360, hours: 3, url: 'https://buy.stripe.com/00w4gB9Z54PLa4nfB0fnO0h' },
+            'private-5h': { label: '5 hours private', price: '550 CHF', amount: 550, hours: 5, url: 'https://buy.stripe.com/4gMcN77QX4PLdgz2OefnO0i' }
         };
         const BOOTCAMP_LINK = 'https://buy.stripe.com/8x214p2wDgyt2BV9cCfnO0a';
         const BOOTCAMP_DATES = { from: '2026-10-17', until: '2026-10-19' };
@@ -982,12 +1005,14 @@
 
             setupClasses(currentPass);
             await setupAbsences(currentPass);
+            if (currentPass.pass_type === FLEX_PASS) await setupFlexUsage(currentPass);
         }
 
         // Pass history: everything except the current active pass.
         const history = (registrations || []).filter(r => r !== currentPass && r.status !== 'pending_payment');
 
         setupRequests(currentPass || history[0] || null);
+        await setupPurchases();
         if (history.length > 0) {
             el('historyList').innerHTML = history.map(r =>
                 '<div class="history-item"><strong>' + esc(r.pass_type || 'Class Pass') + '</strong><br>' +
@@ -1101,8 +1126,7 @@
                 }
 
                 const link = P.stripeLinks[pkg.value][tier] +
-                    '?prefilled_email=' + encodeURIComponent(userEmail) +
-                    '&client_reference_id=' + encodeURIComponent(userEmail);
+                    '?prefilled_email=' + encodeURIComponent(userEmail);
                 feedback.textContent = 'Redirecting to secure payment...';
                 feedback.className = 'success';
                 window.location.href = link;
@@ -1267,7 +1291,8 @@
                         type: 'private_class',
                         status: 'pending_payment',
                         date_from: from,
-                        details: pack.label + ' — ' + pack.price
+                        details: pack.label + ' — ' + pack.price,
+                        sessions_total: pack.hours
                     };
                 } else { // bootcamp
                     const phone = el('reqPhone').value.trim();
@@ -1294,9 +1319,34 @@
                 feedback.className = 'success';
                 const sep = payUrl.includes('?') ? '&' : '?';
                 window.location.href = payUrl + sep +
-                    'prefilled_email=' + encodeURIComponent(userEmail) +
-                    '&client_reference_id=' + encodeURIComponent(userEmail);
+                    'prefilled_email=' + encodeURIComponent(userEmail);
             });
+        }
+
+        // Flexible package: the studio marks presences at the door; the
+        // student sees the used/remaining count here (RLS lets them read
+        // only their own attendance rows).
+        async function setupFlexUsage(pass) {
+            const { data: marks, error } = await supabase
+                .from('attendance')
+                .select('class_value, class_date')
+                .eq('registration_id', pass.id)
+                .eq('status', 'present')
+                .order('class_date', { ascending: true });
+            if (error) { console.error(error); return; }
+
+            const used = marks.length;
+            const left = Math.max(0, 10 - used);
+            el('flexQuota').innerHTML = '<strong>' + used + ' of 10</strong> classes used · ' +
+                '<strong>' + left + '</strong> ' + (left === 1 ? 'class' : 'classes') + ' left';
+
+            el('flexList').innerHTML = marks.map(m => {
+                const def = (window.AXCENT_PASSES.classes || []).find(c => c.value === m.class_value);
+                return '<li><span class="absence-type">' + esc(def ? def.en : m.class_value) + '</span>' +
+                    '<span>' + formatDate(m.class_date) + '</span></li>';
+            }).join('');
+
+            show('flexCard');
         }
 
         async function setupAbsences(pass) {
@@ -1328,38 +1378,23 @@
                 ).join('');
             }
 
-            const typeSelect = el('absenceType');
-            const typeHint = el('typeHint');
             const zNow = zurichNow();
             const beforeMidday = zNow.getHours() < 12;
-            const sickOption = typeSelect.querySelector('option[value="sick"]');
+            const sickAllowed = sickUsed < 1 && beforeMidday;
 
-            if (sickUsed >= 1 || !beforeMidday) {
-                sickOption.disabled = true;
-                typeSelect.value = 'freeze';
+            if (sickAllowed) {
+                el('sickHint').textContent = 'For today (' + formatDate(localISODate(zNow)) +
+                    '), before 12:00. Your pass is automatically extended by one class day.';
+            } else if (sickUsed >= 1) {
+                el('sickHint').textContent = 'The sick day for this pass has been used. ' +
+                    'For longer breaks, request a pass freeze below.';
+            } else {
+                el('sickHint').textContent = 'Sick days can only be declared before 12:00 on the day itself. ' +
+                    'For longer breaks, request a pass freeze below.';
             }
-
-            const applyTypeUI = () => {
-                const isSick = typeSelect.value === 'sick';
-                el('freezeFromGroup').style.display = isSick ? 'none' : '';
-                el('freezeUntilGroup').style.display = isSick ? 'none' : '';
-                el('freezeFrom').required = !isSick;
-                el('freezeUntil').required = !isSick;
-                if (isSick) {
-                    typeHint.textContent = 'For today (' + formatDate(localISODate(zNow)) +
-                        '). Your pass is automatically extended by one class day.';
-                } else if (sickUsed >= 1) {
-                    typeHint.textContent = 'The sick day for this pass has been used. ' +
-                        'Send a freeze request for longer breaks — we confirm by email and adjust your pass dates.';
-                } else if (!beforeMidday) {
-                    typeHint.textContent = 'Sick days can only be declared before 12:00 on the day itself. ' +
-                        'For longer breaks, send a freeze request — we confirm by email and adjust your pass dates.';
-                } else {
-                    typeHint.textContent = 'We confirm freeze requests by email and adjust your pass dates.';
-                }
-            };
-            typeSelect.addEventListener('change', applyTypeUI);
-            applyTypeUI();
+            if (!sickAllowed) {
+                el('sickBtn').disabled = true;
+            }
 
             // Freeze dates: from tomorrow at the earliest.
             const tomorrow = new Date(zNow);
@@ -1367,66 +1402,75 @@
             el('freezeFrom').min = localISODate(tomorrow);
             el('freezeUntil').min = localISODate(tomorrow);
 
-            show('absenceCard');
+            show('sickCard');
+            show('freezeCard');
 
-            el('absenceForm').addEventListener('submit', async (e) => {
+            el('sickForm').addEventListener('submit', async (e) => {
                 e.preventDefault();
-                const feedback = el('absenceFeedback');
+                const feedback = el('sickFeedback');
                 feedback.textContent = 'Submitting...';
                 feedback.className = '';
                 feedback.style.display = 'block';
 
-                const note = el('absenceNote').value || null;
+                const today = localISODate(zurichNow());
 
-                if (typeSelect.value === 'sick') {
-                    const today = localISODate(zurichNow());
+                const { error: insertError } = await supabase.from('absences').insert({
+                    registration_id: pass.id,
+                    email: userEmail,
+                    type: 'sick',
+                    absence_date: today
+                });
 
-                    const { error: insertError } = await supabase.from('absences').insert({
-                        registration_id: pass.id,
-                        email: userEmail,
-                        type: 'sick',
-                        absence_date: today,
-                        note: note
-                    });
-
-                    if (insertError) {
-                        feedback.textContent = insertError.message;
-                        feedback.className = 'error';
-                        return;
-                    }
-
-                    // Notify the studio so staff can plan around the absence.
-                    try {
-                        await fetch('https://formsubmit.co/ajax/' + STUDIO_NOTIFY_EMAIL, {
-                            method: 'POST',
-                            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-                            body: JSON.stringify({
-                                _subject: 'Portal Sick Day Declared: ' + userEmail,
-                                _template: 'table',
-                                _captcha: 'false',
-                                Email: userEmail,
-                                Pass: pass.pass_type || 'Class Pass',
-                                Type: 'Sick day (pass auto-extended by one class day)',
-                                Date: today,
-                                Note: note || 'None'
-                            })
-                        });
-                    } catch (notifyErr) {
-                        console.error('Studio notification failed:', notifyErr);
-                    }
-
-                    feedback.textContent = 'Sick day declared — your pass has been extended by one class day. Get well soon!';
-                    feedback.className = 'success';
-                    setTimeout(() => window.location.reload(), 2500);
+                if (insertError) {
+                    feedback.textContent = insertError.message;
+                    feedback.className = 'error';
                     return;
                 }
 
-                // Pass freeze request: recorded in the owner's requests inbox;
-                // the studio confirms by email and adjusts the pass dates manually.
+                // Notify the studio so staff can plan around the absence.
+                // The pass extension itself is automatic (database trigger
+                // pushes the end date to the student's next class day).
+                try {
+                    await fetch('https://formsubmit.co/ajax/' + STUDIO_NOTIFY_EMAIL, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                        body: JSON.stringify({
+                            _subject: 'Portal Sick Day Declared: ' + userEmail,
+                            _template: 'table',
+                            _captcha: 'false',
+                            Email: userEmail,
+                            Pass: pass.pass_type || 'Class Pass',
+                            Type: 'Sick day (pass auto-extended by one class day)',
+                            Date: today
+                        })
+                    });
+                } catch (notifyErr) {
+                    console.error('Studio notification failed:', notifyErr);
+                }
+
+                feedback.textContent = 'Sick day declared — your pass has been extended by one class day. Get well soon!';
+                feedback.className = 'success';
+                setTimeout(() => window.location.reload(), 2500);
+            });
+
+            el('freezeForm').addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const feedback = el('freezeFeedback');
+                feedback.textContent = 'Submitting...';
+                feedback.className = '';
+                feedback.style.display = 'block';
+
+                const note = el('freezeNote').value || null;
                 const from = el('freezeFrom').value;
                 const until = el('freezeUntil').value;
                 if (!from || !until || until < from) {
                     feedback.textContent = 'Please pick a valid freeze period (the return date cannot be before the start).';
+                    feedback.className = 'error';
+                    return;
+                }
+                const freezeDays = Math.round((new Date(until) - new Date(from)) / 86400000);
+                if (freezeDays < 14) {
+                    feedback.textContent = 'A pass freeze must cover at least two weeks. For a single missed day, use the sick day; for anything in between, please contact us by email.';
                     feedback.className = 'error';
                     return;
                 }
@@ -1477,8 +1521,47 @@
 
                 feedback.textContent = 'Freeze request sent! We will confirm by email and adjust your pass dates.';
                 feedback.className = 'success';
-                el('absenceForm').reset();
+                el('freezeForm').reset();
             });
+        }
+
+        // Bookings & privates: paid private packages (with hours used) and
+        // practice-room requests, read from the customer's own request rows.
+        async function setupPurchases() {
+            const { data: rows, error } = await supabase
+                .from('requests')
+                .select('*')
+                .in('type', ['private_class', 'room_booking'])
+                .neq('status', 'pending_payment')
+                .order('created_at', { ascending: false });
+            if (error) { console.error(error); return; }
+            if (!rows || rows.length === 0) return;
+
+            const STATUS_LABELS = {
+                new: 'requested', confirmed: 'confirmed', declined: 'declined', done: 'done'
+            };
+
+            el('purchasesList').innerHTML = rows.map(r => {
+                if (r.type === 'private_class') {
+                    const total = r.sessions_total ||
+                        (parseInt((r.details || '').match(/(\d+)\s*hour/i)?.[1], 10) || null);
+                    const usage = total
+                        ? r.sessions_done + ' of ' + total + ' hours used'
+                        : r.sessions_done + ' hours used';
+                    return '<li><span class="absence-type">Private classes · ' + esc(r.details || 'package') + '</span>' +
+                        '<span>' + usage + '</span></li>';
+                }
+                const shortDate = r.date_from
+                    ? new Date(r.date_from + 'T00:00:00').toLocaleDateString('en-US', {
+                        weekday: 'short', month: 'short', day: 'numeric'
+                    })
+                    : '?';
+                const when = shortDate +
+                    (r.time_from && r.time_until ? ', ' + esc(r.time_from) + '–' + esc(r.time_until) : '');
+                return '<li><span class="absence-type">Practice room · ' + when + '</span>' +
+                    '<span>' + esc(STATUS_LABELS[r.status] || r.status) + '</span></li>';
+            }).join('');
+            show('purchasesCard');
         }
     </script>
 </body>

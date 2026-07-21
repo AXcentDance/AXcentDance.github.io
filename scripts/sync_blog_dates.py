@@ -4,7 +4,7 @@ import re
 import json
 import datetime
 
-ROOT_DIR = '/Users/slamitza/AXcentWebsiteGitHub'
+ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 def get_offset(dt):
     """
@@ -27,56 +27,41 @@ def get_offset(dt):
         return "+01:00"
 
 def get_lastmod(filepath):
-    """Returns file modification time in ISO 8601 format with Zurich offset."""
+    """Returns file modification date (date-only ISO 8601, site convention for dateModified)."""
     timestamp = os.path.getmtime(filepath)
     dt = datetime.datetime.fromtimestamp(timestamp)
-    date_str = dt.strftime('%Y-%m-%d')
-    offset = get_offset(dt)
-    return f"{date_str}T12:00:00{offset}"
+    return dt.strftime('%Y-%m-%d')
 
 def update_blog_dates(filepath):
     rel_path = os.path.relpath(filepath, ROOT_DIR)
-    
+
     with open(filepath, 'r', encoding='utf-8') as f:
         content = f.read()
 
     lastmod = get_lastmod(filepath)
-    
-    # Pattern to find BlogPosting schema
-    script_pattern = r'(<script type="application/ld\+json">)(.*?)(</script>)'
-    
-    def replacer(match):
-        inner_content = match.group(2)
-        if '"@type": "BlogPosting"' in inner_content or '"@type":"BlogPosting"' in inner_content:
-            try:
-                data = json.loads(inner_content)
-                if data.get("@type") == "BlogPosting":
-                    if data.get("dateModified") != lastmod:
-                        data["dateModified"] = lastmod
-                        # Return formatted JSON, preserving some aesthetic if possible
-                        # but standard json.dumps is safest for well-formedness
-                        new_json = json.dumps(data, indent=4)
-                        return f'{match.group(1)}\n    {new_json}\n    {match.group(3)}'
-            except Exception as e:
-                print(f"Error parsing JSON in {rel_path}: {e}")
-        return match.group(0)
 
-    new_content = re.sub(script_pattern, replacer, content, flags=re.DOTALL)
-    
-    if new_content != content:
+    # Only touch pages that carry a BlogPosting node (live posts use a @graph)
+    if '"@type": "BlogPosting"' not in content and '"@type":"BlogPosting"' not in content:
+        return
+
+    # Replace the dateModified value in place; keeps the hand-formatted @graph intact
+    new_content, n = re.subn(
+        r'("dateModified":\s*")[^"]*(")',
+        lambda m: m.group(1) + lastmod + m.group(2),
+        content,
+    )
+
+    if n and new_content != content:
         with open(filepath, 'w', encoding='utf-8') as f:
             f.write(new_content)
         print(f"[UPDATED] {rel_path} -> dateModified set to {lastmod}")
-    else:
-        # print(f"[SKIP] {rel_path} -> Already up to date")
-        pass
 
 def main():
     print("Syncing Blog dateModified with file timestamps...")
-    
+
     blog_dirs = [
-        os.path.join(ROOT_DIR, 'blog-posts'),
-        os.path.join(ROOT_DIR, 'de/blog-posts')
+        os.path.join(ROOT_DIR, 'blog'),
+        os.path.join(ROOT_DIR, 'de/blog')
     ]
     
     for blog_dir in blog_dirs:

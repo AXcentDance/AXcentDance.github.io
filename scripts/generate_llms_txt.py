@@ -11,8 +11,20 @@ OUTPUT_FILE = os.path.join(ROOT_DIR, 'llms-full.txt')
 IGNORE_PATTERNS = [
     'node_modules', '.git', 'tmp', '.gemini', '__pycache__', 'scripts',
     'google', 'google', 'assets', # Ignore assets folder if it accidentally has html
-    '_login.html', '_signup.html', 'portal.html' # Private account pages (noindex)
+    '_login.html', '_signup.html', 'portal.html', # Private account pages (noindex)
+    '.claude', '.agent', 'System', 'tests', # Internal tooling / worktrees, never public content
+    'blog-posts', # Retired pre-migration blog tree (noindex redirect stubs only)
+    '404.html', 'palette-preview.html'
 ]
+
+def is_noindex(filepath):
+    """Checks if a file has <meta name="robots" content="noindex...">"""
+    try:
+        with open(filepath, 'r', encoding='utf-8') as f:
+            content = f.read(4096)
+        return re.search(r'<meta\s+name=["\']robots["\']\s+content=["\'][^"\']*noindex', content, re.IGNORECASE) is not None
+    except OSError:
+        return True
 
 # Order priority (filenames containing these strings come first)
 PRIORITY = [
@@ -98,7 +110,7 @@ def main():
         for file in files:
             if file.endswith('.html'):
                 full_path = os.path.join(root, file)
-                if not should_ignore(full_path):
+                if not should_ignore(full_path) and not is_noindex(full_path):
                     html_files.append(full_path)
     
     print(f"Found {len(html_files)} HTML files.")

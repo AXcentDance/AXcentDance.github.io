@@ -1,7 +1,7 @@
 import os
 import sys
 
-from breadcrumb_validation import validate_breadcrumb_content
+from breadcrumb_validation import is_redirect_stub, validate_breadcrumb_content
 
 
 SKIPPED_FILES = {
@@ -9,6 +9,9 @@ SKIPPED_FILES = {
     # Private account pages (noindex): no breadcrumb schema by design.
     "portal.html", "_login.html", "_signup.html",
     "de/portal.html", "de/_login.html", "de/_signup.html",
+    # Internal design references, never published as public pages.
+    "System/palette-proposals.html",
+    "palette-preview.html",
 }
 
 
@@ -35,11 +38,14 @@ def audit_breadcrumbs(root_dir):
 
             try:
                 with open(filepath, "r", encoding="utf-8") as handle:
-                    file_issues = validate_breadcrumb_content(handle.read(), rel_path)
-                    if file_issues:
-                        issues.append((rel_path, file_issues))
-                    else:
-                        valid_files += 1
+                    content = handle.read()
+                if is_redirect_stub(content):
+                    continue
+                file_issues = validate_breadcrumb_content(content, rel_path)
+                if file_issues:
+                    issues.append((rel_path, file_issues))
+                else:
+                    valid_files += 1
             except Exception as exc:
                 issues.append((rel_path, [f"Error processing file: {exc}"]))
 

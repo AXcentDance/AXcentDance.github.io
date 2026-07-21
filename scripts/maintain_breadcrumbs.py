@@ -24,6 +24,7 @@ from breadcrumb_validation import (
     breadcrumb_url,
     find_breadcrumb,
     find_breadcrumb_script,
+    is_redirect_stub,
     validate_breadcrumb_content,
 )
 
@@ -164,14 +165,20 @@ def validate_repo(root: Path) -> int:
         # Private account pages (noindex): no breadcrumb schema by design.
         "portal.html", "_login.html", "_signup.html",
         "de/portal.html", "de/_login.html", "de/_signup.html",
+        # Internal design references, never published as public pages.
+        "System/palette-proposals.html",
+        "palette-preview.html",
     }
 
     for path in html_files(root):
         rel = rel_path(path, root)
         if rel in skipped:
             continue
+        content = path.read_text(encoding="utf-8")
+        if is_redirect_stub(content):
+            continue
         total += 1
-        issues.extend(validate_breadcrumb_content(path.read_text(encoding="utf-8"), rel))
+        issues.extend(validate_breadcrumb_content(content, rel))
 
     print(f"Breadcrumb maintenance validation scanned {total} HTML files.")
     if issues:
@@ -290,6 +297,7 @@ def run_fix(args: argparse.Namespace) -> int:
     root = repo_root()
     warn_dirty_tree(root)
     paths = target_files(root, args.locale, args.section, args.path)
+    paths = [path for path in paths if not is_redirect_stub(path.read_text(encoding="utf-8"))]
     plans = [build_fix_plan(root, path) for path in paths]
     validate_plans(root, plans)
     print_plan(root, plans)

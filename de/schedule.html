@@ -20,8 +20,7 @@
     <meta name="twitter:title" content="Bachata Stundenplan Zürich | Kurszeiten &amp; Niveaus | AXcent">
     <meta name="twitter:description" content="Entdecke den Bachata Stundenplan in Zürich Altstetten mit klaren Kurszeiten von Beginner 0 und Lady Style bis Sensual Mittelstufe und Int/Adv.">
     <meta name="twitter:image" content="https://axcentdance.com/assets/images/gallery/gallery_6-og-1200x630.jpg">
-    <meta property="og:description"
-        content="Entdecke den Bachata Stundenplan in Zürich Altstetten mit klaren Kurszeiten von Beginner 0 und Lady Style bis Sensual Mittelstufe und Int/Adv.">
+    <meta property="og:description" content="Entdecke den Bachata Stundenplan in Zürich Altstetten mit klaren Kurszeiten von Beginner 0 und Lady Style bis Sensual Mittelstufe und Int/Adv.">
     <meta property="og:locale" content="de_CH">
     <meta http-equiv="Content-Security-Policy"
         content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://cdn.jsdelivr.net https://connect.facebook.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com https://placehold.co https://*.googleapis.com https://*.gstatic.com https://www.facebook.com https://connect.facebook.net; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://script.google.com https://formsubmit.co https://www.facebook.com https://connect.facebook.net; frame-src 'self' https://www.google.com; object-src 'none'; base-uri 'self'; media-src 'self' blob:; worker-src 'self' blob:;">
@@ -30,284 +29,10 @@
     <!-- Styles -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@200..900&family=Outfit:wght@500;600;700;800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Teko:wght@300..700&display=swap">
     <link rel="stylesheet" href="../style.css?v=4.2">
+    <link rel="stylesheet" href="../tropic-noir.css?v=5.12">
     <link rel="apple-touch-icon" href="/apple-touch-icon-v2.png">
     <link rel="icon" href="/favicon-axcent-transparent.svg" type="image/svg+xml">
 
-
-    <style>
-        /* --- Journey Level Guide --- */
-        /* Re-using standard variables for the journey section where possible, 
-           or defining local overrides that match the theme */
-        .journey-section {
-            padding: calc(var(--header-height) + 40px) 20px;
-            position: relative;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        /* --- Hero Section (Aligned with Index) --- */
-        .schedule-hero {
-            padding: calc(var(--header-height) + 40px) 20px 80px;
-            /* Added padding for height */
-            text-align: center;
-            position: relative;
-            z-index: 1;
-            background: linear-gradient(to bottom, rgba(5, 2, 8, 0.8), var(--bg-main)), url('../assets/images/gallery/gallery_6.webp?v=2') !important;
-            background-size: cover !important;
-            background-position: center !important;
-        }
-
-        .hero-subtitle-modern {
-            font-size: 1.25rem;
-            color: var(--text-muted);
-            max-width: 600px;
-            margin: 0 auto 1.5rem;
-            /* Reduced margin */
-            line-height: 1.6;
-            font-weight: 300;
-        }
-
-        /* Override for compact layout */
-        .schedule-section {
-            padding-top: 2rem !important;
-        }
-
-
-
-        /* --- Journey Level Guide --- */
-        .journey-section {
-            padding: calc(var(--header-height) + 40px) 20px;
-            position: relative;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .section-title-journey {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-
-        /* Timeline */
-        .timeline {
-            position: relative;
-            padding: 20px 0;
-        }
-
-        /* The Line */
-        .timeline::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 50%;
-            width: 2px;
-            background: linear-gradient(to bottom,
-                    transparent,
-                    var(--accent-start),
-                    var(--accent-end),
-                    transparent);
-            transform: translateX(-50%);
-        }
-
-        .timeline-item {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 30px;
-            position: relative;
-        }
-
-        .timeline-content {
-            width: 45%;
-            background: rgba(20, 20, 20, 0.6);
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--card-border);
-            padding: 1.5rem;
-            border-radius: 16px;
-            position: relative;
-            transition: transform 0.3s ease;
-        }
-
-        .timeline-content:hover {
-            transform: translateY(-5px);
-            border-color: rgba(255, 255, 255, 0.2);
-        }
-
-        /* Alternating Layout */
-        .timeline-item:nth-child(odd) {
-            justify-content: flex-start;
-        }
-
-        .timeline-item:nth-child(even) {
-            justify-content: flex-end;
-        }
-
-        /* Connectors */
-        .timeline-dot {
-            position: absolute;
-            left: 50%;
-            width: 16px;
-            height: 16px;
-            background: #fff;
-            border-radius: 50%;
-            transform: translateX(-50%);
-            box-shadow: 0 0 15px #fff;
-            z-index: 2;
-        }
-
-        .timeline-item:nth-child(odd) .timeline-content {
-            margin-right: 50px;
-            /* Push away from center */
-            text-align: right;
-        }
-
-        .timeline-item:nth-child(even) .timeline-content {
-            margin-left: 50px;
-            /* Push away from center */
-            text-align: left;
-        }
-
-        .journey-title {
-            font-size: 1.5rem;
-            color: #fff;
-            margin-bottom: 0.5rem;
-            font-weight: 700;
-        }
-
-        .journey-tag {
-            display: inline-block;
-            font-size: 0.8rem;
-            padding: 4px 12px;
-            border-radius: 20px;
-            background: rgba(255, 255, 255, 0.1);
-            margin-bottom: 1rem;
-            color: var(--accent-end);
-        }
-
-        .journey-desc {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-
-        /* Role Split Layout */
-        .role-split {
-            display: flex;
-            gap: 1.5rem;
-            margin-top: 1rem;
-            text-align: left;
-            /* Ensure text aligns left inside columns */
-        }
-
-        .role-col {
-            flex: 1;
-            background: rgba(255, 255, 255, 0.05);
-            padding: 1rem;
-            border-radius: 8px;
-        }
-
-        .role-title {
-            font-size: 0.9rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 0.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .role-title.leader {
-            color: #a0c4ff;
-        }
-
-        /* Soft Blue for Leader */
-        .role-title.follow {
-            color: #ffadad;
-        }
-
-        /* Soft Red for Follow */
-
-        .role-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            font-size: 0.9rem;
-            color: var(--text-muted);
-        }
-
-        .role-list li {
-            margin-bottom: 0.25rem;
-            padding-left: 1rem;
-            position: relative;
-        }
-
-        .role-list li::before {
-            content: '•';
-            position: absolute;
-            left: 0;
-            color: var(--accent-start);
-        }
-
-        /* Mobile Timeline */
-        @media (max-width: 768px) {
-            .timeline::before {
-                left: 20px;
-            }
-
-            .timeline-item {
-                justify-content: flex-start !important;
-                padding-left: 50px;
-            }
-
-            .timeline-dot {
-                left: 20px;
-            }
-
-            .timeline-content {
-                width: 100%;
-                text-align: left !important;
-                margin: 0 !important;
-            }
-
-            .role-split {
-                flex-direction: column;
-                gap: 1rem;
-            }
-        }
-
-        /* Timeline Scanner Point */
-        .timeline-scanner {
-            position: sticky;
-            top: 50vh;
-            left: 50%;
-            width: 16px;
-            height: 16px;
-            background: linear-gradient(135deg, var(--accent-start), var(--accent-end));
-            border-radius: 50%;
-            transform: translateX(-50%);
-            box-shadow: 0 0 15px var(--accent-start);
-            z-index: 5;
-            margin-bottom: -16px;
-            /* Counteract space taken by element */
-            pointer-events: none;
-        }
-
-        @media (max-width: 768px) {
-            .timeline-scanner {
-                left: 0;
-                margin-left: 12px;
-                /* 20px center - 8px half-width = 12px left edge */
-                transform: none;
-            }
-        }
-    </style>
 
     <!-- Cookie Consent -->
 
@@ -348,19 +73,18 @@
       "programPrerequisites": "Variiert nach Niveau",
       "offers": {
         "@type": "Offer",
-        "price": "200.00",
+        "price": "220.00",
         "priceCurrency": "CHF",
         "category": "Educational Program"
       },
       "hasCourse": [
-        { "@id": "https://axcentdance.com/course/bachata-beginner-0#course" },
-        { "@id": "https://axcentdance.com/course/bachata-beginner-1#course" },
-        { "@id": "https://axcentdance.com/course/bachata-beginner-2#course" },
-        { "@id": "https://axcentdance.com/course/bachata-sensual-foundation#course" },
-        { "@id": "https://axcentdance.com/course/bachata-sensual-improver#course" },
-        { "@id": "https://axcentdance.com/course/bachata-sensual-intermediate#course" },
-        { "@id": "https://axcentdance.com/course/bachata-sensual-inter-adv#course" },
-        { "@id": "https://axcentdance.com/course/lady-styling#course" }
+        { "@id": "https://axcentdance.com/de/schedule#course-bachata-beginner-0" },
+        { "@id": "https://axcentdance.com/de/bachata-beginner-2#course" },
+        { "@id": "https://axcentdance.com/de/bachata-sensual-foundation#course" },
+        { "@id": "https://axcentdance.com/de/bachata-sensual-improver#course" },
+        { "@id": "https://axcentdance.com/de/schedule#course-bachata-sensual-intermediate" },
+        { "@id": "https://axcentdance.com/de/bachata-sensual-inter-adv#course" },
+        { "@id": "https://axcentdance.com/de/lady-styling#course" }
       ]
     },
     {
@@ -370,7 +94,7 @@
       "itemListElement": [
         {
           "@type": "Course",
-          "@id": "https://axcentdance.com/course/bachata-beginner-0#course",
+          "@id": "https://axcentdance.com/de/schedule#course-bachata-beginner-0",
           "position": 1,
           "name": "Bachata Beginner 0",
           "description": "Starte Bachata von null in Zürich Altstetten mit Grundlagen für absolute Anfänger.",
@@ -384,21 +108,21 @@
             {
               "@type": "Offer",
               "name": "Regulärer Pass",
-              "price": "200.00",
+              "price": "220.00",
               "priceCurrency": "CHF",
               "description": "8-Wochen-Kurspass"
             },
             {
               "@type": "Offer",
               "name": "Studentenpass",
-              "price": "170.00",
+              "price": "185.00",
               "priceCurrency": "CHF",
               "description": "8-Wochen-Kurspass für Studenten"
             }
           ],
           "hasCourseInstance": {
             "@type": "CourseInstance",
-            "courseMode": "Physical",
+            "courseMode": "Onsite",
             "location": {
               "@id": "https://axcentdance.com/#organization"
             },
@@ -410,44 +134,15 @@
               "@type": "Schedule",
               "repeatFrequency": "Weekly",
               "byDay": "https://schema.org/Monday",
-              "startTime": "18:30",
-              "endTime": "19:30"
+              "startTime": "19:30",
+              "endTime": "20:30"
             }
           }
         },
         {
           "@type": "Course",
-          "@id": "https://axcentdance.com/course/bachata-beginner-1#course",
+          "@id": "https://axcentdance.com/de/bachata-beginner-2#course",
           "position": 2,
-          "name": "Bachata Beginner 1",
-          "description": "Baue deine Bachata-Grundlagen in diesem Beginner 1 Kurs für Tänzer mit 2/4 Monaten Erfahrung auf.",
-          "educationalLevel": "2/4 Monate Erfahrung",
-          "timeRequired": "P8W",
-          "provider": {
-            "@id": "https://axcentdance.com/#organization"
-          },
-          "url": "https://axcentdance.com/de/schedule",
-          "offers": [
-            {
-              "@type": "Offer",
-              "name": "Regulärer Pass",
-              "price": "200.00",
-              "priceCurrency": "CHF",
-              "description": "8-Wochen-Kurspass"
-            },
-            {
-              "@type": "Offer",
-              "name": "Studentenpass",
-              "price": "170.00",
-              "priceCurrency": "CHF",
-              "description": "8-Wochen-Kurspass für Studenten"
-            }
-          ]
-        },
-        {
-          "@type": "Course",
-          "@id": "https://axcentdance.com/course/bachata-beginner-2#course",
-          "position": 3,
           "name": "Bachata Beginner 2",
           "description": "Lerne Slides, Cambres, Footwork, Hüftbewegungen und die Vorbereitung auf Sensual Foundation für Tänzer mit ca. 4-8 Monaten Erfahrung.",
           "educationalLevel": "Anfänger, ~ 4-8 Monate",
@@ -455,19 +150,19 @@
           "provider": {
             "@id": "https://axcentdance.com/#organization"
           },
-          "url": "https://axcentdance.com/de/schedule",
+          "url": "https://axcentdance.com/de/bachata-beginner-2",
           "offers": [
             {
               "@type": "Offer",
               "name": "Regulärer Pass",
-              "price": "200.00",
+              "price": "220.00",
               "priceCurrency": "CHF",
               "description": "8-Wochen-Kurspass"
             },
             {
               "@type": "Offer",
               "name": "Studentenpass",
-              "price": "170.00",
+              "price": "185.00",
               "priceCurrency": "CHF",
               "description": "8-Wochen-Kurspass für Studenten"
             }
@@ -475,7 +170,7 @@
           "hasCourseInstance": [
             {
               "@type": "CourseInstance",
-              "courseMode": "Physical",
+              "courseMode": "Onsite",
               "location": {
                 "@id": "https://axcentdance.com/#organization"
               },
@@ -490,58 +185,40 @@
                 "startTime": "19:30",
                 "endTime": "20:30"
               }
-            },
-            {
-              "@type": "CourseInstance",
-              "courseMode": "Physical",
-              "location": {
-                "@id": "https://axcentdance.com/#organization"
-              },
-              "instructor": {
-                "@type": "Person",
-                "name": "Ale"
-              },
-              "courseSchedule": {
-                "@type": "Schedule",
-                "repeatFrequency": "Weekly",
-                "byDay": "https://schema.org/Wednesday",
-                "startTime": "18:30",
-                "endTime": "19:30"
-              }
             }
           ]
         },
         {
           "@type": "Course",
-          "@id": "https://axcentdance.com/course/bachata-sensual-foundation#course",
-          "position": 4,
-          "name": "Bachata Sensual Grundlagen",
+          "@id": "https://axcentdance.com/de/bachata-sensual-foundation#course",
+          "position": 3,
+          "name": "Bachata Sensual Foundation",
           "description": "Lerne die Technik und Körperbewegung des Bachata Sensual Stils für Tänzer mit ca. 1-1,5 Jahren Erfahrung.",
           "educationalLevel": "Anfänger/Mittelstufe, ~ 1-1,5 Jahre",
           "timeRequired": "P8W",
           "provider": {
             "@id": "https://axcentdance.com/#organization"
           },
-          "url": "https://axcentdance.com/de/schedule",
+          "url": "https://axcentdance.com/de/bachata-sensual-foundation",
           "offers": [
             {
               "@type": "Offer",
               "name": "Regulärer Pass",
-              "price": "200.00",
+              "price": "220.00",
               "priceCurrency": "CHF",
               "description": "8-Wochen-Kurspass"
             },
             {
               "@type": "Offer",
               "name": "Studentenpass",
-              "price": "170.00",
+              "price": "185.00",
               "priceCurrency": "CHF",
               "description": "8-Wochen-Kurspass für Studenten"
             }
           ],
           "hasCourseInstance": {
             "@type": "CourseInstance",
-            "courseMode": "Physical",
+            "courseMode": "Onsite",
             "location": {
               "@id": "https://axcentdance.com/#organization"
             },
@@ -560,8 +237,8 @@
         },
         {
           "@type": "Course",
-          "@id": "https://axcentdance.com/course/bachata-sensual-improver#course",
-          "position": 5,
+          "@id": "https://axcentdance.com/de/bachata-sensual-improver#course",
+          "position": 4,
           "name": "Bachata Sensual Improver",
           "description": "Verfeinere deine Fähigkeiten mit komplexen Bewegungen und Musikalität für Tänzer mit ca. 2 Jahren Erfahrung.",
           "educationalLevel": "Mittelstufe, ~ 2 Jahre",
@@ -569,26 +246,26 @@
           "provider": {
             "@id": "https://axcentdance.com/#organization"
           },
-          "url": "https://axcentdance.com/de/schedule",
+          "url": "https://axcentdance.com/de/bachata-sensual-improver",
           "offers": [
             {
               "@type": "Offer",
               "name": "Regulärer Pass",
-              "price": "200.00",
+              "price": "220.00",
               "priceCurrency": "CHF",
               "description": "8-Wochen-Kurspass"
             },
             {
               "@type": "Offer",
               "name": "Studentenpass",
-              "price": "170.00",
+              "price": "185.00",
               "priceCurrency": "CHF",
               "description": "8-Wochen-Kurspass für Studenten"
             }
           ],
           "hasCourseInstance": {
             "@type": "CourseInstance",
-            "courseMode": "Physical",
+            "courseMode": "Onsite",
             "location": {
               "@id": "https://axcentdance.com/#organization"
             },
@@ -607,8 +284,8 @@
         },
         {
           "@type": "Course",
-          "@id": "https://axcentdance.com/course/bachata-sensual-intermediate#course",
-          "position": 6,
+          "@id": "https://axcentdance.com/de/schedule#course-bachata-sensual-intermediate",
+          "position": 5,
           "name": "Bachata Sensual Mittelstufe",
           "description": "Verfeinere komplexe Sensual-Bachata-Technik für Tänzer mit ca. 2 Jahren Erfahrung.",
           "educationalLevel": "Mittelstufe, ~ 2 Jahre",
@@ -621,21 +298,21 @@
             {
               "@type": "Offer",
               "name": "Regulärer Pass",
-              "price": "200.00",
+              "price": "220.00",
               "priceCurrency": "CHF",
               "description": "8-Wochen-Kurspass"
             },
             {
               "@type": "Offer",
               "name": "Studentenpass",
-              "price": "170.00",
+              "price": "185.00",
               "priceCurrency": "CHF",
               "description": "8-Wochen-Kurspass für Studenten"
             }
           ],
           "hasCourseInstance": {
             "@type": "CourseInstance",
-            "courseMode": "Physical",
+            "courseMode": "Onsite",
             "location": {
               "@id": "https://axcentdance.com/#organization"
             },
@@ -654,8 +331,8 @@
         },
         {
           "@type": "Course",
-          "@id": "https://axcentdance.com/course/bachata-sensual-inter-adv#course",
-          "position": 7,
+          "@id": "https://axcentdance.com/de/bachata-sensual-inter-adv#course",
+          "position": 6,
           "name": "Bachata Sensual Mittelstufe/Fortgeschritten",
           "description": "Komplexe Figuren und fortgeschrittene Technik für Tänzer mit 2+ Jahren und Improver Erfahrung.",
           "educationalLevel": "Fortgeschritten, 2+ Jahre + Improver",
@@ -663,26 +340,26 @@
           "provider": {
             "@id": "https://axcentdance.com/#organization"
           },
-          "url": "https://axcentdance.com/de/schedule",
+          "url": "https://axcentdance.com/de/bachata-sensual-inter-adv",
           "offers": [
             {
               "@type": "Offer",
               "name": "Regulärer Pass",
-              "price": "200.00",
+              "price": "220.00",
               "priceCurrency": "CHF",
               "description": "8-Wochen-Kurspass"
             },
             {
               "@type": "Offer",
               "name": "Studentenpass",
-              "price": "170.00",
+              "price": "185.00",
               "priceCurrency": "CHF",
               "description": "8-Wochen-Kurspass für Studenten"
             }
           ],
           "hasCourseInstance": {
             "@type": "CourseInstance",
-            "courseMode": "Physical",
+            "courseMode": "Onsite",
             "location": {
               "@id": "https://axcentdance.com/#organization"
             },
@@ -701,8 +378,8 @@
         },
         {
           "@type": "Course",
-          "@id": "https://axcentdance.com/course/lady-styling#course",
-          "position": 8,
+          "@id": "https://axcentdance.com/de/lady-styling#course",
+          "position": 7,
           "name": "Bachata Lady Styling",
           "description": "Arm-Styling, Körperbewegung und Footwork für Follower mit ca. 1 Jahr Tanzerfahrung.",
           "educationalLevel": "Open Level, ~ 1 Jahr",
@@ -710,26 +387,26 @@
           "provider": {
             "@id": "https://axcentdance.com/#organization"
           },
-          "url": "https://axcentdance.com/de/schedule",
+          "url": "https://axcentdance.com/de/lady-styling",
           "offers": [
             {
               "@type": "Offer",
               "name": "Regulärer Pass",
-              "price": "200.00",
+              "price": "220.00",
               "priceCurrency": "CHF",
               "description": "8-Wochen-Kurspass"
             },
             {
               "@type": "Offer",
               "name": "Studentenpass",
-              "price": "170.00",
+              "price": "185.00",
               "priceCurrency": "CHF",
               "description": "8-Wochen-Kurspass für Studenten"
             }
           ],
           "hasCourseInstance": {
             "@type": "CourseInstance",
-            "courseMode": "Physical",
+            "courseMode": "Onsite",
             "location": {
               "@id": "https://axcentdance.com/#organization"
             },
@@ -768,7 +445,7 @@
           "name": "Was, wenn ich keinen Partner habe?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Gar kein Problem! Wir wechseln im Kurs regelmäßig die Partner, sodass jeder mit jedem tanzt. Das ist der beste Weg zu lernen!"
+            "text": "Gar kein Problem! Wir wechseln im Kurs regelmäßig die Partner, sodass jeder mit jedem tanzt. Das ist der beste Weg zu lernen! Wenn du lieber nur mit deinem Partner tanzen möchtest, sag uns einfach Bescheid."
           }
         },
         {
@@ -784,7 +461,7 @@
           "name": "Was passiert, wenn ich eine Stunde verpasse?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Wir verstehen, dass das Leben manchmal dazwischenfunkt! Wenn du eine Stunde verpasst, ist das kein Problem – du verlierst den Anschluss nicht. Wir ermöglichen es dir, die verpasste Stunde nachzuholen, indem du innerhalb desselben Kurszeitraums eine Klasse auf ähnlichem Niveau an einem anderen Tag besuchst. Wenn du deine Abwesenheiten (z.B. Urlaub) bereits im Voraus bei der Anmeldung angibst, berechnen wir dir zudem nur die besuchten Stunden pro rata."
+            "text": "Wir wissen, dass sich Pläne ändern können. Deshalb ist Flexibilität in deinem Pass eingeplant. Trage bekannte Abwesenheiten bereits bei der Anmeldung ein. Falls später unerwartet eine eintägige Abwesenheit dazukommt, gib uns bitte am betreffenden Tag vor 12:00 Uhr Bescheid. So hast du genügend Spielraum, während dein Lernrhythmus und unsere Kursplanung verlässlich bleiben."
           }
         },
         {
@@ -792,7 +469,7 @@
           "name": "Müssen wir die Partner wechseln, wenn wir als Paar kommen?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Obwohl wir den Partnerwechsel generell empfehlen, da man so am schnellsten lernt, ist dies absolut freiwillig! Wenn ihr lieber die ganze Zeit als Paar zusammen tanzen möchtet, ist das natürlich vollkommen in Ordnung. Es ist schließlich euer gemeinsamer Abend."
+            "text": "Obwohl wir den Partnerwechsel generell empfehlen, da man so am schnellsten lernt, ist dies absolut freiwillig! Wenn du lieber die ganze Zeit als Paar zusammen tanzen möchtest, ist das natürlich vollkommen in Ordnung. Es ist schliesslich dein gemeinsamer Abend."
           }
         }
       ]
@@ -838,7 +515,7 @@
       "url": "https://axcentdance.com/",
       "logo": "https://axcentdance.com/assets/images/logo.webp",
       "image": "https://axcentdance.com/assets/images/hero_new.webp",
-      "description": "AXcent Dance is a Bachata dance school in Zurich Altstetten offering Bachata Sensual, Dominican Bachata, Salsa, and Latin dance classes for all levels.",
+      "description": "AXcent Dance ist eine Bachata-Tanzschule in Zürich Altstetten mit Kursen in Bachata Sensual, Dominican Bachata, Salsa und Latin Dance für alle Niveaus.",
       "telephone": "+41799668481",
       "email": "info@axcentdance.com",
       "hasMap": "https://www.google.com/maps?cid=15680757943659417558",
@@ -917,13 +594,7 @@
   <!-- End Meta Pixel Code -->
   </head>
 
-<body>
-
-    <!-- Background Blobs (Standard) -->
-    <div class="blob blob-1"></div>
-    <div class="blob blob-2"></div>
-    <div class="blob blob-3"></div>
-
+<body class="tropic schedule-page nav-declutter">
     <!-- Navigation -->
     <header class="main-header">
         <div class="container navbar">
@@ -939,11 +610,13 @@
                 </svg>
             </button>
             <nav class="nav-links">
-        <a href="../">Home</a>
+        <a href="./" class="nav-home">Home</a>
         <a href="about">Über uns</a>
                 <a href="schedule">Unsere Kurse</a>
+                <a href="registration">Preise &amp; Anmeldung</a>
                 <a href="events">Events</a>
-                <a href="contact">Kontakt</a>
+                <a href="contact" class="nav-contact-item">Kontakt</a>
+                <a href="portal" class="nav-portal-item">Login</a>
 
                 <div class="dropdown">
                     <button class="dropbtn">Mehr ▾</button>
@@ -958,7 +631,7 @@
                         <a href="blog"><span>Blog</span></a>
                         <a href="faq"><span>FAQ</span></a>
                         <a href="etiquette"><span>Tanzetikette</span></a>
-                        <a href="portal"><span>Login</span></a>
+                        <a href="contact" class="nav-contact-dropdown"><span>Kontakt</span></a>
                     </div>
                 </div>
         <a href="/de/#trial-form" class="btn-header-cta">Probelektion buchen</a>
@@ -968,9 +641,19 @@
           <span class="divider">|</span>
           <span class="active">DE</span>
         </div>
+      <div class="header-login">
+        <a href="portal" class="header-login__link header-login__link--icon" aria-label="Login" title="Login">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 21a8 8 0 0 0-16 0"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+        </a>
+      </div>
       
         </div>
     </header>
+
+    <main>
 
     <!-- Hero Section (Modern Split) -->
     <section class="schedule-hero-modern">
@@ -986,12 +669,17 @@
                         <div class="hero-badge-text">WÖCHENTLICHE KURSE</div>
                     </div>
                     <h1 class="page-title" style="margin-bottom: 1rem;">
-                        BACHATA KURSE STUNDENPLAN
+                        Bachata Kurse Stundenplan
                     </h1>
                     <p class="hero-desc-border" style="border: none; padding: 0; margin: 0; max-width: 500px;">
                         Finde deinen Rhythmus mit unseren wöchentlichen Bachata Kursen in Zürich Altstetten. Von
-                        blutigen Anfängern bis zu fortgeschrittenen Tänzern haben wir einen Platz für dich.
+                        absoluten Anfängern bis zu fortgeschrittenen Tänzern haben wir einen Platz für dich.
                     </p>
+                    <ul class="schedule-fact-chips">
+                        <li>Unterricht auf Englisch</li>
+                        <li>Zürich Altstetten</li>
+                        <li>Jede Woche einsteigen</li>
+                    </ul>
                     <div class="hero-buttons-group" style="margin-top: 2rem; justify-content: center;">
                         <a href="/de/#trial-form" class="btn-hero btn-hero-primary">
                             <span class="btn-hero-content">
@@ -1003,6 +691,9 @@
                                 </svg>
                             </span>
                         </a>
+                        <a href="registration" class="btn-hero btn-hero-secondary">
+                            <span class="btn-hero-content">PREISE ANSEHEN</span>
+                        </a>
                     </div>
                 </div>
 
@@ -1013,15 +704,14 @@
                             <img src="../assets/images/gallery/gallery_6.webp"
                                 srcset="../assets/images/gallery/gallery_6_480w.webp 480w, ../assets/images/gallery/gallery_6_800w.webp 800w, ../assets/images/gallery/gallery_6_1200w.webp 1200w"
                                 sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px"
-                                alt="Bachata Dance Class Atmosphere" width="1024" height="682">
+                                alt="Bachata Dance Class Atmosphere" width="1024" height="682"
+                                loading="eager" fetchpriority="high">
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
-    <main>
 
         <!-- Grid Schedule (Reverted) -->
         <section id="schedule" class="schedule-section">
@@ -1046,25 +736,17 @@
                     <div class="schedule-row">
                         <div class="time-slot">18:30</div>
 
-                        <!-- Mon Class -->
-                        <a href="beginner-guide" class="class-card">
-                            <h3 class="class-name">Bachata Beginner 0</h3>
-                            <p class="class-experience">Absolute Anfänger</p>
-                        </a>
+                        <!-- Mon Class (Empty) -->
+                        <div>&nbsp;</div>
 
                         <!-- Tue Class (Empty) -->
                         <div>&nbsp;</div>
 
-                        <!-- Wed Class -->
-                        <a href="bachata-beginner-2" class="class-card">
-                            <span class="badge-full">Ausgebucht</span>
-                            <h3 class="class-name">Bachata Beginner 2</h3>
-                            <p class="class-experience">~ 4-8 Monate Erfahrung</p>
-                        </a>
+                        <!-- Wed Class (Empty) -->
+                        <div>&nbsp;</div>
 
                         <!-- Thu Class -->
                         <a href="lady-styling" class="class-card">
-                            <span class="level-tag tag-styling">Styling</span>
                             <h3 class="class-name">Bachata Lady Style</h3>
                             <p class="class-experience">~ 1 Jahr Erfahrung</p>
                         </a>
@@ -1074,8 +756,12 @@
                     <div class="schedule-row">
                         <div class="time-slot">19:30</div>
 
-                        <!-- Mon Class (Empty) -->
-                        <div>&nbsp;</div>
+                        <!-- Mon Class -->
+                        <a href="beginner-guide" class="class-card class-card--recommended">
+                            <span class="level-tag tag-recommended">Hier starten</span>
+                            <h3 class="class-name">Bachata Beginner 0</h3>
+                            <p class="class-experience">Absolute Anfänger</p>
+                        </a>
 
                         <!-- Tue Class -->
                         <a href="bachata-beginner-2" class="class-card">
@@ -1085,7 +771,7 @@
 
                         <!-- Wed Class -->
                         <a href="bachata-sensual-foundation" class="class-card">
-                            <h3 class="class-name">Bachata Sensual Grundlagen</h3>
+                            <h3 class="class-name">Bachata Sensual Foundation</h3>
                             <p class="class-experience">~ 1-1,5 Jahre Erfahrung</p>
                         </a>
 
@@ -1108,7 +794,7 @@
 
                         <!-- Wed Class -->
                         <a href="bachata-sensual-improver" class="class-card">
-                            <h3 class="class-name">Bachata Sensual Mittelstufe</h3>
+                            <h3 class="class-name">Bachata Sensual Improver</h3>
                             <p class="class-experience">~ 2 Jahre Erfahrung</p>
                         </a>
 
@@ -1118,7 +804,7 @@
                             <p class="class-experience">~ 2 Jahre + Improver</p>
                             <p class="class-note"
                                 style="font-size: 0.75rem; color: var(--accent-start); margin-top: 0.25rem;">*
-                                Instructor approval required</p>
+                                Nur mit Bestätigung der Lehrer</p>
                         </a>
                     </div>
                 </div>
@@ -1128,8 +814,9 @@
                     <div class="mobile-schedule-day">
                         <h3 class="mobile-day-title">Montag</h3>
                         <div class="schedule-row">
-                            <a href="beginner-guide" class="class-card">
-                                <div class="mobile-time">18:30</div>
+                            <a href="beginner-guide" class="class-card class-card--recommended">
+                                <div class="mobile-time">19:30</div>
+                                <span class="level-tag tag-recommended">Hier starten</span>
                                 <h3 class="class-name">Bachata Beginner 0</h3>
                                 <p class="class-experience">Absolute Anfänger</p>
                             </a>
@@ -1149,12 +836,6 @@
                         <h3 class="mobile-day-title">Mittwoch</h3>
                         <div class="schedule-row">
 
-                            <a href="bachata-beginner-2" class="class-card">
-                                <div class="mobile-time">18:30</div>
-                                <span class="badge-full">Ausgebucht</span>
-                                <h3 class="class-name">Bachata Beginner 2</h3>
-                                <p class="class-experience">~ 4-8 Monate Erfahrung</p>
-                            </a>
                             <a href="bachata-sensual-foundation" class="class-card">
                                 <div class="mobile-time">19:30</div>
                                 <h3 class="class-name">Bachata Sensual Foundation</h3>
@@ -1183,16 +864,65 @@
                             </a>
                             <a href="bachata-sensual-inter-adv" class="class-card">
                                 <div class="mobile-time">20:30</div>
-                                <h3 class="class-name">Bachata Sensual Intermediate/Advanced</h3>
+                                <h3 class="class-name">Bachata Sensual Mittelstufe/Fortgeschritten</h3>
                                 <p class="class-experience">~ 2 Jahre + Improver</p>
                                 <p class="class-note"
                                     style="font-size: 0.75rem; color: var(--accent-start); margin-top: 0.25rem;">*
-                                    Instructor approval required</p>
+                                    Nur mit Bestätigung der Lehrer</p>
                             </a>
                         </div>
                     </div>
                 </div>
 
+                <div class="schedule-offramp">
+                    <p class="schedule-offramp__copy">Nicht sicher, welches Niveau passt? Buche eine kostenlose Probelektion, und wir teilen dich ein.</p>
+                    <a href="/de/?class=unsure#trial-form" class="schedule-offramp__cta">Probelektion buchen</a>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Private Classes Section -->
+        <section class="private-classes-section reveal">
+            <div class="container">
+                <div class="hero-grid private-classes-grid">
+                    <div class="hero-content-left">
+                        <div class="hero-badge">
+                            <div class="hero-badge-line"></div>
+                            <div class="hero-badge-text">1-ZU-1 COACHING</div>
+                        </div>
+                        <h2 class="section-title-modern section-title-left">Privat<em class="title-accent">stunden</em>
+                        </h2>
+                        <p class="hero-desc-border" style="border: none; padding: 0; margin: 0; max-width: 480px;">
+                            Willst du mehr Flexibilität? Bereit, dich wirklich auf dein Lernen zu konzentrieren?
+                            Privatstunden bieten die perfekte Umgebung, um dein Wachstum zu beschleunigen.
+                        </p>
+                        <ul class="schedule-fact-chips">
+                            <li>Flexible Termine</li>
+                            <li>1-zu-1 Feedback</li>
+                        </ul>
+                        <div class="hero-buttons-group" style="justify-content: flex-start; margin-top: 1.25rem;">
+                            <a href="private-lessons" class="btn-hero btn-hero-primary">
+                                <span class="btn-hero-content">
+                                    PRIVATSTUNDEN ENTDECKEN
+                                    <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                                    </svg>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="hero-content-right">
+                        <div class="private-classes-photo">
+                            <img src="../assets/images/private_lesson_hero.webp"
+                                srcset="../assets/images/private_lesson_hero_480w.webp 480w, ../assets/images/private_lesson_hero_800w.webp 800w, ../assets/images/private_lesson_hero_1200w.webp 1200w"
+                                sizes="(max-width: 900px) 80vw, 40vw" alt="Private Bachata-Stunde bei AXcent Dance"
+                                width="1024" height="1024" loading="lazy" decoding="async">
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -1217,6 +947,7 @@
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
 
+                        <span class="journey-num">01</span>
                         <h3 class="journey-title">Der Start</h3>
                         <p class="journey-desc">
                             Deine freundliche Einführung in Bachata.
@@ -1225,7 +956,8 @@
                             <div class="role-col">
                                 <div class="role-title">Alle</div>
                                 <ul class="role-list">
-                                    <li>Bachata Anfänger 0</li>
+                                    <li>Bachata Beginner 0</li>
+                                    <li><a href="bachata-beginner-1">Bachata Beginner 1</a></li>
                                     <li>Bachata Beginner 2</li>
                                     <li>Vorbereitung auf Sensual Foundation</li>
                                 </ul>
@@ -1239,19 +971,20 @@
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
 
-                        <h3 class="journey-title">Building the Style Foundation</h3>
+                        <span class="journey-num">02</span>
+                        <h3 class="journey-title">Deine Stilgrundlage aufbauen</h3>
                         <div class="role-split">
                             <div class="role-col">
-                                <div class="role-title leader">🕺 Leader</div>
+                                <div class="role-title leader">Leader</div>
                                 <ul class="role-list">
-                                    <li><strong>Core:</strong> Sensual Foundation</li>
+                                    <li><strong>Kern:</strong> Sensual Foundation</li>
                                 </ul>
                             </div>
                             <div class="role-col">
-                                <div class="role-title follow">💃 Follow</div>
+                                <div class="role-title follow">Follow</div>
                                 <ul class="role-list">
-                                    <li><strong>Core:</strong> Sensual Foundation</li>
-                                    <li><em>Complimentary:</em> Lady Styling</li>
+                                    <li><strong>Kern:</strong> Sensual Foundation</li>
+                                    <li><em>Ergänzend:</em> Lady Styling</li>
                                 </ul>
                             </div>
                         </div>
@@ -1263,21 +996,22 @@
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
 
-                        <h3 class="journey-title">Expanding Your Flow</h3>
+                        <span class="journey-num">03</span>
+                        <h3 class="journey-title">Deinen Flow erweitern</h3>
                         <div class="role-split">
                             <div class="role-col">
-                                <div class="role-title leader">🕺 Leader</div>
+                                <div class="role-title leader">Leader</div>
                                 <ul class="role-list">
-                                    <li><strong>Core:</strong> Sensual Foundation</li>
-                                    <li><strong>Core:</strong> Improver</li>
+                                    <li><strong>Kern:</strong> Sensual Foundation</li>
+                                    <li><strong>Kern:</strong> Improver</li>
                                 </ul>
                             </div>
                             <div class="role-col">
-                                <div class="role-title follow">💃 Follow</div>
+                                <div class="role-title follow">Follow</div>
                                 <ul class="role-list">
-                                    <li><strong>Core:</strong> Improver</li>
-                                    <li><strong>Core:</strong> Lady Styling</li>
-                                    <li><em>Complimentary:</em> Sensual Foundation</li>
+                                    <li><strong>Kern:</strong> Improver</li>
+                                    <li><strong>Kern:</strong> Lady Styling</li>
+                                    <li><em>Ergänzend:</em> Sensual Foundation</li>
                                 </ul>
                             </div>
                         </div>
@@ -1289,20 +1023,21 @@
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
 
-                        <h3 class="journey-title">Refining the Connection</h3>
+                        <span class="journey-num">04</span>
+                        <h3 class="journey-title">Die Verbindung verfeinern</h3>
                         <div class="role-split">
                             <div class="role-col">
-                                <div class="role-title leader">🕺 Leader</div>
+                                <div class="role-title leader">Leader</div>
                                 <ul class="role-list">
-                                    <li><strong>Core:</strong> Sensual Intermediate</li>
-                                    <li><strong>Core:</strong> Improver</li>
+                                    <li><strong>Kern:</strong> Sensual Mittelstufe</li>
+                                    <li><strong>Kern:</strong> Improver</li>
                                 </ul>
                             </div>
                             <div class="role-col">
-                                <div class="role-title follow">💃 Follow</div>
+                                <div class="role-title follow">Follow</div>
                                 <ul class="role-list">
-                                    <li><strong>Core:</strong> Sensual Intermediate</li>
-                                    <li><strong>Core:</strong> Lady Styling</li>
+                                    <li><strong>Kern:</strong> Sensual Mittelstufe</li>
+                                    <li><strong>Kern:</strong> Lady Styling</li>
                                 </ul>
                             </div>
                         </div>
@@ -1311,20 +1046,20 @@
 
                 <!-- Stage 5: Advanced (Mastering the Art) -->
                 <div class="timeline-item">
-                    <div class="timeline-dot"
-                        style="background: var(--accent-start); box-shadow: 0 0 15px var(--accent-start);"></div>
-                    <div class="timeline-content" style="border-color: rgba(255, 59, 48, 0.3);">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
 
-                        <h3 class="journey-title">Mastering the Art</h3>
+                        <span class="journey-num">05</span>
+                        <h3 class="journey-title">Die Kunst meistern</h3>
                         <div class="role-split">
                             <div class="role-col">
-                                <div class="role-title leader">🕺 Leader</div>
+                                <div class="role-title leader">Leader</div>
                                 <ul class="role-list">
                                     <li>Sensual Advanced</li>
                                 </ul>
                             </div>
                             <div class="role-col">
-                                <div class="role-title follow">💃 Follow</div>
+                                <div class="role-title follow">Follow</div>
                                 <ul class="role-list">
                                     <li>Sensual Advanced</li>
                                     <li>Lady Styling</li>
@@ -1337,101 +1072,102 @@
             </div>
         </section>
 
-        <!-- Private Classes Section -->
-        <section class="private-classes-section" style="padding: 80px 20px; background: rgba(255, 255, 255, 0.02);">
-            <div class="container" style="max-width: 900px; text-align: center;">
-                <h2 class="section-title-modern">Privatstunden</h2>
-                <div class="private-content" style="margin-top: 2rem;">
-                    <p class="hero-desc-border" style="border: none; padding: 0; max-width: 700px; margin: 0 auto;">
-                        Willst du mehr <strong>Flexibilität</strong>? Bereit, dich wirklich <strong>auf dein Lernen zu
-                            konzentrieren</strong>?
-                        <br>
-                        Privatstunden bieten die perfekte Umgebung, um dein Wachstum zu beschleunigen.
-                    </p>
-                    <div style="margin-top: 3rem;">
-                        <a href="private-lessons" class="btn-hero btn-hero-secondary" style="display: inline-flex;">
-                            <span class="btn-hero-content">EXPLORE PRIVATE LESSONS</span>
-                        </a>
+        <!-- Beginner Reviews (compact) -->
+        <section class="mini-reviews-section" aria-label="Was Anfänger über den Einstieg bei AXcent Dance sagen">
+            <div class="container">
+                <div class="reviews-proof" aria-label="AXcent Dance Google-Bewertung und Gründe der Schüler">
+                    <div class="reviews-proof__rating-figure" aria-label="Mit 5 von 5 Sternen aus 40 Google-Bewertungen bewertet">
+                        <strong class="reviews-proof__score">5/5</strong>
+                        <span class="reviews-proof__starfield" aria-hidden="true">
+                            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                        </span>
+                        <a class="reviews-proof__source-line" href="https://www.google.com/maps?cid=15680757943659417558"
+                            target="_blank" rel="noopener noreferrer">aus 40 Google-Bewertungen</a>
                     </div>
+                    <p class="reviews-proof__copy">Geliebt von Schülern, die bei null angefangen haben</p>
+                </div>
+                <div class="mini-reviews__quotes">
+                    <blockquote class="mini-review glass-panel">
+                        <p>"I started at AXcent Dance as a complete beginner and after just a few weeks I can already
+                            social dance."</p>
+                        <cite>Laura M, Google-Rezension</cite>
+                    </blockquote>
+                    <blockquote class="mini-review glass-panel">
+                        <p>"Ale and Xidan bachata classes in Zurich are amazing for beginners. The steps are explained
+                            clearly, and the atmosphere is super welcoming."</p>
+                        <cite>Federico M, Google-Rezension</cite>
+                    </blockquote>
                 </div>
             </div>
         </section>
 
 
 
+
         <!-- FAQ Section -->
-        <section class="container" style="max-width: 800px; margin-bottom: 6rem; margin-top: 4rem;">
+        <section class="container schedule-faq-section" style="max-width: 800px; margin-bottom: 6rem; margin-top: 4rem;">
             <h2 class="section-title-modern" style="text-align: center; margin-bottom: 3rem;">Häufig gestellte Fragen
             </h2>
             <div class="faq-list" style="display: flex; flex-direction: column; gap: 1rem;">
-                <!-- FAQ Item 1 -->
-                <details class="glass-panel" style="border-radius: 12px; overflow: hidden;">
-                    <summary
-                        style="padding: 1.5rem; cursor: pointer; color: white; font-weight: 600; font-size: 1.1rem; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                <details class="glass-panel sched-faq">
+                    <summary class="sched-faq__summary">
                         Muss ich am Anfang des Monats beginnen?
-                        <span style="color: var(--accent-start); font-size: 1.5rem;">+</span>
+                        <span class="sched-faq__icon" aria-hidden="true">+</span>
                     </summary>
-                    <div style="padding: 0 1.5rem 1.5rem; color: var(--text-muted); line-height: 1.6;">
-                        Nein! Unsere Kurse laufen <strong>fortlaufend</strong>, daher ist der Einstieg mit Vorerfahrung
-                        jederzeit möglich. Anfängern empfehlen wir den Start zum Zyklusbeginn oder eine private
-                        Einführungsstunde.
+                    <div class="sched-faq__body">
+                        Nein! Unsere Kurse laufen fortlaufend, daher ist der Einstieg mit Vorerfahrung jederzeit
+                        möglich. Neuen Anfängern empfehlen wir, zu Beginn eines Zyklus zu starten oder eine private
+                        Einführungsstunde zu buchen.
                     </div>
                 </details>
 
-                <!-- FAQ Item 2 -->
-                <details class="glass-panel" style="border-radius: 12px; overflow: hidden;">
-                    <summary
-                        style="padding: 1.5rem; cursor: pointer; color: white; font-weight: 600; font-size: 1.1rem; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                <details class="glass-panel sched-faq">
+                    <summary class="sched-faq__summary">
                         Was, wenn ich keinen Partner habe?
-                        <span style="color: var(--accent-start); font-size: 1.5rem;">+</span>
+                        <span class="sched-faq__icon" aria-hidden="true">+</span>
                     </summary>
-                    <div style="padding: 0 1.5rem 1.5rem; color: var(--text-muted); line-height: 1.6;">
-                        Gar kein Problem! Wir wechseln im Kurs regelmäßig die Partner (Rotationssystem), sodass jeder
-                        mit jedem tanzt. Das ist der beste Weg, um Führen und Folgen zu lernen! Wenn du lieber nur mit
-                        deinem Partner tanzen möchtest, sag uns einfach Bescheid.
+                    <div class="sched-faq__body">
+                        Gar kein Problem! Wir wechseln im Kurs die Partner, sodass jeder mit jedem tanzt. Das ist der
+                        beste Weg zu lernen! Wenn du lieber mit deinem eigenen Partner bleiben möchtest, sag es
+                        einfach dem Lehrer.
                     </div>
                 </details>
 
-                <!-- FAQ Item 3 -->
-                <details class="glass-panel" style="border-radius: 12px; overflow: hidden;">
-                    <summary
-                        style="padding: 1.5rem; cursor: pointer; color: white; font-weight: 600; font-size: 1.1rem; list-style: none; display: flex; justify-content: space-between; align-items: center;">
-                        Wie kenne ich mein Niveau?
-                        <span style="color: var(--accent-start); font-size: 1.5rem;">+</span>
+                <details class="glass-panel sched-faq">
+                    <summary class="sched-faq__summary">
+                        Woher weiss ich, welches mein Niveau ist?
+                        <span class="sched-faq__icon" aria-hidden="true">+</span>
                     </summary>
-                    <div style="padding: 0 1.5rem 1.5rem; color: var(--text-muted); line-height: 1.6;">
-                        Schau in unseren <a href="beginner-guide" style="color: var(--accent-start);">Anfänger
-                            Guide</a> oder frag unsere Lehrer bei einer Probestunde. Wir helfen dir gerne, den richtigen
-                        Kurs zu finden.
+                    <div class="sched-faq__body">
+                        Schau dir unseren <a href="beginner-guide">Anfänger Guide</a>
+                        an oder frag unsere Lehrer während einer Probelektion. Wir schätzen dein Niveau gerne ein und
+                        empfehlen dir den passenden Kurs.
                     </div>
                 </details>
 
-                <!-- FAQ Item 4 -->
-                <details class="glass-panel" style="border-radius: 12px; overflow: hidden;">
-                    <summary
-                        style="padding: 1.5rem; cursor: pointer; color: white; font-weight: 600; font-size: 1.1rem; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                <details class="glass-panel sched-faq">
+                    <summary class="sched-faq__summary">
                         Was passiert, wenn ich eine Stunde verpasse?
-                        <span style="color: var(--accent-start); font-size: 1.5rem;">+</span>
+                        <span class="sched-faq__icon" aria-hidden="true">+</span>
                     </summary>
-                    <div style="padding: 0 1.5rem 1.5rem; color: var(--text-muted); line-height: 1.6;">
-                        Wir verstehen, dass das Leben manchmal dazwischenkommt! Wenn du eine Stunde verpasst, ist das
-                        kein Problem – du wirst nicht den Anschluss verlieren. Du hast die Möglichkeit, die verpasste
-                        Lektion an einem anderen Tag in einem Kurs auf ähnlichem Niveau nachzuholen (innerhalb derselben
-                        Kursperiode). Zudem kannst du uns bereits bei der Anmeldung mitteilen, wenn du an bestimmten
-                        Daten verhindert bist, und wir passen den Preis entsprechend an. Unser Ziel ist es, dir maximale
-                        Flexibilität zu bieten, damit du deinen Tanzfortschritt unbeschwert genießen kannst.
+                    <div class="sched-faq__body">
+                        Wir wissen, dass sich Pläne ändern können. Deshalb ist Flexibilität in deinem Pass eingeplant.
+                        Trage bekannte Abwesenheiten bereits bei der Anmeldung ein. Falls später unerwartet eine
+                        eintägige Abwesenheit dazukommt, gib uns bitte am betreffenden Tag vor 12:00 Uhr Bescheid. So
+                        hast du genügend Spielraum, während dein Lernrhythmus und unsere Kursplanung verlässlich
+                        bleiben.
                     </div>
                 </details>
 
-                <!-- FAQ Item 5 -->
-                <details class="glass-panel" style="border-radius: 12px; overflow: hidden;">
-                    <summary
-                        style="padding: 1.5rem; cursor: pointer; color: white; font-weight: 600; font-size: 1.1rem; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                <details class="glass-panel sched-faq">
+                    <summary class="sched-faq__summary">
                         Müssen wir die Partner wechseln, wenn wir als Paar kommen?
-                        <span style="color: var(--accent-start); font-size: 1.5rem;">+</span>
+                        <span class="sched-faq__icon" aria-hidden="true">+</span>
                     </summary>
-                    <div style="padding: 0 1.5rem 1.5rem; color: var(--text-muted); line-height: 1.6;">
-                        Wir empfehlen zwar in der Regel den Partnerwechsel, da so alle schneller lernen, aber er ist völlig optional! Wenn Sie den ganzen Kurs über bei Ihrem Partner bleiben möchten, sind Sie dazu herzlich eingeladen. Schliesslich ist es Ihre Date-Night.
+                    <div class="sched-faq__body">
+                        Wir empfehlen zwar in der Regel den Partnerwechsel, da so alle schneller lernen, aber er ist
+                        völlig optional! Wenn du lieber die ganze Zeit mit deinem Partner tanzen möchtest, bist du
+                        herzlich dazu eingeladen. Schliesslich ist es dein gemeinsamer Abend.
                     </div>
                 </details>
             </div>
@@ -1447,6 +1183,9 @@
                 <p class="footer-address">
                     Hermetschloostrasse 73,<br>
                     8048 Zurich Altstetten<br> 2 Minuten zu Fuss von Tram 2 und Bus 31 Haltestelle
+                </p>
+                <p class="footer-contact">
+                    <a href="https://wa.me/41799668481" target="_blank" rel="noopener noreferrer">WhatsApp: +41 79 966 84 81</a>
                 </p>
                 <div class="footer-socials">
                     <a href="https://www.instagram.com/axcent_dance/" target="_blank" aria-label="Instagram">
@@ -1468,10 +1207,12 @@
             <div class="footer-col">
                 <h2 class="footer-heading">Schnellzugriff</h2>
                 <ul class="footer-links">
+                    <li><a href="/de/#trial-form">Kostenlose Probelektion buchen</a></li>
                     <li><a href="guide-bachata">Was ist Bachata</a></li>
                     <li><a href="blog/roots-of-bachata">Wurzeln des Bachatas</a></li>
                     <li><a href="schedule">Stundenplan</a></li>
                     <li><a href="blog">Unser Blog</a></li>
+                    <li><a href="https://www.google.com/maps?cid=15680757943659417558" target="_blank" rel="noopener noreferrer">Lies unsere Google-Bewertungen</a></li>
 
                 </ul>
             </div>
@@ -1486,18 +1227,23 @@
             </div>
         </div>
 
-        <div class="container footer-map-full" style="margin-bottom: 2rem;">
-            <h2 class="footer-heading" style="margin-bottom: 1rem;">Finde uns</h2>
-            <div class="footer-map-wrapper-large"
-                style="border-radius: 12px; overflow: hidden; border: 1px solid var(--glass-border);">
-                <iframe title="Google Maps Standort von AXcent Dance"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2701.365!2d8.472010!3d47.394204!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47900b995a7d8e03%3A0xd99d3e4500b44fd6!2sAXcent%20Dance%20%7C%20Bachata%20Classes!5e0!3m2!1sen!2sch!4v1710680000000!5m2!1sde!2sch&hl=de"
-                    width="100%" height="250" style="border:0; width: 100%; display: block;" allowfullscreen=""
-                    loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
+        <div class="container footer-map-full">
+            <h2 class="footer-heading footer-map-full__heading">Finde uns</h2>
+            <a class="footer-map-card" href="https://www.google.com/maps?cid=15680757943659417558" target="_blank"
+                rel="noopener noreferrer" aria-label="AXcent Dance Studio-Standort in Google Maps öffnen">
+                <span class="footer-map-card__pin" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                        <circle cx="12" cy="10" r="3" />
+                    </svg>
+                </span>
+                <span class="footer-map-card__address">Hermetschloostrasse 73, 8048 Zurich Altstetten</span>
+                <span class="footer-map-card__hint">2 Minuten von Tram 2 und Bus 31 · In Google Maps öffnen</span>
+            </a>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2025 AXcent Dance. Alle Rechte vorbehalten.</p>
+            <p>&copy; 2026 AXcent Dance. Alle Rechte vorbehalten.</p>
         </div>
     </footer>
 

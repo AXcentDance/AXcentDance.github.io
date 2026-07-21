@@ -9,6 +9,7 @@ IGNORE_FILES = {
     "404.html",
     "admin.html",
     "_admin.html",
+    "_attendance.html",
     "_login.html",
     "_signup.html",
     "portal.html",

@@ -2,10 +2,11 @@
 import os
 import re
 import datetime
+import subprocess
 from urllib.parse import quote, urljoin
 from bs4 import BeautifulSoup
 
-ROOT_DIR = '/Users/slamitza/AXcentWebsiteGitHub'
+ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DOMAIN = 'https://axcentdance.com'
 
 def is_noindex(filepath):
@@ -36,10 +37,76 @@ def get_offset(dt):
     else:
         return "+01:00"
 
+def _git(args):
+    """Runs git in ROOT_DIR, returns stdout or None if git is unavailable."""
+    try:
+        result = subprocess.run(
+            ['git', '-c', 'core.quotePath=false'] + args,
+            cwd=ROOT_DIR, capture_output=True, text=True, check=True)
+        return result.stdout
+    except (OSError, subprocess.CalledProcessError):
+        return None
+
+
+def build_lastmod_sources():
+    """
+    Returns (git_dates, dirty_paths):
+      git_dates: repo-relative path -> 'YYYY-MM-DD' of the last commit that
+                 touched it (None when git history is unavailable)
+      dirty_paths: paths with uncommitted changes; they get today's date
+    Google only trusts <lastmod> when dates change per page as pages actually
+    change, so blanket timestamps (the old mtime behavior) must never return.
+    """
+    log = _git(['log', '--format=%x00%cs', '--name-only'])
+    if log is None:
+        print("WARNING: git history unavailable; <lastmod> falls back to file mtime.")
+        return None, set()
+    if (_git(['rev-parse', '--is-shallow-repository']) or '').strip() == 'true':
+        print("WARNING: shallow clone; <lastmod> dates collapse to the fetch "
+              "boundary. Check out with full history (fetch-depth: 0 in CI).")
+
+    git_dates = {}
+    current_date = None
+    for line in log.splitlines():
+        if line.startswith('\x00'):
+            current_date = line[1:]
+        elif line and current_date:
+            # First occurrence wins: log is newest-first, so this is the
+            # most recent commit touching the file.
+            git_dates.setdefault(line, current_date)
+
+    dirty_paths = set()
+    for line in (_git(['status', '--porcelain']) or '').splitlines():
+        path = line[3:]
+        if ' -> ' in path:
+            path = path.split(' -> ', 1)[1]
+        dirty_paths.add(path.strip('"'))
+
+    return git_dates, dirty_paths
+
+
+_LASTMOD_SOURCES = None
+
+
 def get_lastmod(filepath):
-    """Returns file modification time in ISO 8601 format with Zurich offset."""
-    timestamp = os.path.getmtime(filepath)
-    dt = datetime.datetime.fromtimestamp(timestamp)
+    """
+    Returns the file's last real change date (ISO 8601, noon Zurich):
+    last git commit touching it, today if it has uncommitted changes,
+    file mtime only when git is unavailable.
+    """
+    global _LASTMOD_SOURCES
+    if _LASTMOD_SOURCES is None:
+        _LASTMOD_SOURCES = build_lastmod_sources()
+    git_dates, dirty_paths = _LASTMOD_SOURCES
+
+    rel_path = os.path.relpath(filepath, ROOT_DIR).replace(os.sep, '/')
+    if git_dates is None:
+        dt = datetime.datetime.fromtimestamp(os.path.getmtime(filepath))
+    elif rel_path in dirty_paths or rel_path not in git_dates:
+        dt = datetime.datetime.now()
+    else:
+        dt = datetime.datetime.strptime(git_dates[rel_path], '%Y-%m-%d')
+
     date_str = dt.strftime('%Y-%m-%d')
     offset = get_offset(dt)
     return f"{date_str}T12:00:00{offset}"
@@ -63,7 +130,10 @@ def get_url_path(filepath):
         return '/'
     if rel_path == 'de/index':
         return '/de/'
-    
+    if rel_path.endswith('/index'):
+        # Directory index pages (e.g. blog/index.html) canonicalize to the directory URL
+        rel_path = rel_path[:-len('/index')]
+
     return '/' + rel_path
 
 def get_page_images(filepath):
@@ -131,9 +201,8 @@ def generate_sitemap():
     # 1. Walk and collect all indexable HTML files
     all_files = []
     for root, dirs, files in os.walk(ROOT_DIR):
-        if 'scripts' in dirs: dirs.remove('scripts')
-        if '.git' in dirs: dirs.remove('.git')
-        if 'assets' in dirs: dirs.remove('assets')
+        for excluded in ('scripts', '.git', 'assets', '.claude', '.agent', 'System', 'tests', '.github', 'node_modules'):
+            if excluded in dirs: dirs.remove(excluded)
         
         for file in files:
             if file.endswith('.html'):

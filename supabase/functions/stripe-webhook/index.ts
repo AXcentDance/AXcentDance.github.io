@@ -34,10 +34,12 @@ serve(async (req) => {
 
   if (event.type === 'checkout.session.completed') {
     const session = event.data.object
-    // registration.html appends both prefilled_email and client_reference_id
-    // to the Payment Link, so client_reference_id is the reliable fallback if
-    // the buyer changes the email on Stripe's checkout page.
-    const customerEmail = session.customer_details?.email || session.client_reference_id
+    // The buyer's email as entered on Stripe's checkout page. If they paid
+    // with a different address than their registration, the pending row is
+    // not found and the payment surfaces in the logs / Stripe dashboard for
+    // manual matching. (client_reference_id is not used: Stripe silently
+    // drops non-alphanumeric values such as emails on Payment Links.)
+    const customerEmail = session.customer_details?.email
 
     if (customerEmail) {
       const supabaseAdmin = createClient(
@@ -46,10 +48,11 @@ serve(async (req) => {
       )
 
       // Paid portal requests (private class / bootcamp) are recognised by
-      // their amount, which does not overlap with any class-pass price.
-      const paidRequestType = requestTypeForAmount(session.amount_total)
-      if (paidRequestType) {
-        await confirmPaidRequest(supabaseAdmin, paidRequestType, customerEmail, session)
+      // the Payment Link that created the session — stable across price
+      // changes, renames, and promotion codes.
+      const paidRequest = session.payment_link ? REQUEST_LINKS[session.payment_link] : null
+      if (paidRequest) {
+        await confirmPaidRequest(supabaseAdmin, paidRequest.type, customerEmail, session)
         return new Response("Received", { status: 200 })
       }
 
@@ -86,21 +89,19 @@ serve(async (req) => {
   return new Response("Received", { status: 200 })
 })
 
-// Amounts are in cents. Private packages: 150 / 360 / 550 CHF; bootcamp
-// full pass: 115 CHF. None of these collide with a class-pass price
-// (185-450 CHF regular/student tiers, 255/300 CHF flexible).
-const PRIVATE_AMOUNTS: Record<number, string> = {
-  15000: '1 hour — 150 CHF',
-  36000: '3 hours — 360 CHF',
-  55000: '5 hours — 550 CHF',
-}
-const BOOTCAMP_AMOUNT = 11500
-
-function requestTypeForAmount(amountTotal: number | null): 'private_class' | 'bootcamp' | null {
-  if (!amountTotal) return null
-  if (PRIVATE_AMOUNTS[amountTotal]) return 'private_class'
-  if (amountTotal === BOOTCAMP_AMOUNT) return 'bootcamp'
-  return null
+// Payment Links for paid portal requests, keyed by plink id (present in
+// every checkout.session.completed event as session.payment_link). Link ids
+// survive price changes, product renames, and promotion codes; any session
+// from an unlisted link falls through to the class-pass registration path.
+//   private 1h  https://buy.stripe.com/cNi00l7QX6XT5O760qfnO0g
+//   private 3h  https://buy.stripe.com/00w4gB9Z54PLa4nfB0fnO0h
+//   private 5h  https://buy.stripe.com/4gMcN77QX4PLdgz2OefnO0i
+//   bootcamp    https://buy.stripe.com/8x214p2wDgyt2BV9cCfnO0a
+const REQUEST_LINKS: Record<string, { type: 'private_class' | 'bootcamp'; label: string }> = {
+  'plink_1TuxBNPKWMZ26vxtKGFAVrhm': { type: 'private_class', label: 'Private Class 1h' },
+  'plink_1TuxCDPKWMZ26vxtxTXtuzWP': { type: 'private_class', label: 'Private Class 3h' },
+  'plink_1TuxDKPKWMZ26vxt46nfEPS9': { type: 'private_class', label: 'Private Class 5h' },
+  'plink_1SH2gaPKWMZ26vxtbt3E4m3E': { type: 'bootcamp', label: 'Dominican Bootcamp' },
 }
 
 const OWNER_NOTIFY_EMAIL = 'info@axcentdance.com'
@@ -219,8 +220,11 @@ async function sendWelcomeEmail(email: string, name: string) {
               <strong>Next Steps:</strong>
               <ul>
                 <li>Check the <a href="https://axcentdance.com/schedule">Schedule</a> for your class times.</li>
-                <li>Create your account on the <a href="https://axcentdance.com/portal.html">Student Portal</a> to see your pass and declare absence days.</li>
+                <li><a href="https://axcentdance.com/_signup?email=${encodeURIComponent(email)}">Create your Student Portal account</a> — your pass, your weekly plan, sick-day declarations, and practice-room bookings, all in one place. Portal members are also the first to hear about member offers on future passes, workshops, and special events.</li>
               </ul>
+              <p style="margin: 10px 0 0; font-size: 0.9em; color: #555;">
+                Please create your account with this exact email address (${email}) — it is how the portal recognises your pass.
+              </p>
             </div>
 
             <p>If you have any questions, just reply to this email.</p>

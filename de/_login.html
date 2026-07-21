@@ -11,115 +11,304 @@
     <link rel="alternate" hreflang="x-default" href="https://axcentdance.com/_login">
     <title>Anmelden - AXcent Dance</title>
     <meta name="description" content="Melde dich bei deinem AXcent Dance Konto an, um deinen aktuellen Pass zu sehen und Abwesenheitstage anzugeben.">
+    <meta property="og:description" content="Melde dich bei deinem AXcent Dance Konto an, um deinen aktuellen Pass zu sehen und Abwesenheitstage anzugeben.">
     <meta http-equiv="Content-Security-Policy"
         content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://jwravnvytkmsvqoqkmwb.supabase.co; object-src 'none'; base-uri 'self';">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@200..900&family=Outfit:wght@500;600;700;800&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@200..900&family=Outfit:wght@500;600;700;800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap">
     <link rel="stylesheet" href="../style.css?v=4.2">
-    <link rel="stylesheet" href="../tropic-noir.css?v=5.0">
+    <link rel="stylesheet" href="../tropic-noir.css?v=5.2">
     <link rel="apple-touch-icon" href="/apple-touch-icon-v2.png">
     <link rel="icon" href="/favicon-axcent-192.png" type="image/png" sizes="192x192">
     <link rel="icon" href="/favicon-axcent-transparent.svg" type="image/svg+xml">
     <style>
-        .auth-container {
-            min-height: 80vh;
+        /* Auth pages follow the Tropic Noir language via body.tropic:
+           solid surfaces (no glass), planted rectangles, brass hairlines,
+           tier-1 sunset CTA with ink text. Component tokens only. */
+        body.tropic {
+            --auth-input-bg: var(--accent-navy);
+            --auth-input-border: rgba(157, 180, 171, 0.28);
+            --auth-hairline: var(--glass-border);
+        }
+
+        .auth-shell {
+            display: block;
+            min-height: calc(100vh - 80px);
+        }
+
+        /* Brand panel: community photo under a petrol duotone with an
+           editorial serif line — compact band on mobile, half screen on desktop */
+        .auth-visual {
+            position: relative;
+            height: 230px;
+            overflow: hidden;
+        }
+
+        .auth-visual__img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 30%;
+        }
+
+        .auth-visual::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(to top, rgba(4, 19, 16, 0.94) 0%, rgba(4, 19, 16, 0.35) 45%, rgba(6, 26, 23, 0.25) 100%),
+                linear-gradient(160deg, rgba(6, 26, 23, 0.55), rgba(12, 42, 36, 0.35));
+        }
+
+        .auth-visual__content {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 1;
+            padding: 1.6rem 1.4rem;
+        }
+
+        .auth-visual__rule {
+            width: 44px;
+            height: 2px;
+            background: var(--accent-gold);
+            margin-bottom: 0.8rem;
+        }
+
+        .auth-visual__kicker {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.16em;
+            color: var(--accent-gold);
+            margin: 0 0 0.5rem;
+        }
+
+        .auth-visual__line {
+            font-family: var(--font-heading, 'Playfair Display', serif);
+            font-size: clamp(1.7rem, 3.2vw, 2.5rem);
+            font-weight: 500;
+            line-height: 1.2;
+            color: var(--title-cream);
+            margin: 0;
+        }
+
+        .auth-visual__line em {
+            font-style: italic;
+            color: var(--accent-bronze-soft);
+        }
+
+        .auth-visual__sub {
+            display: none;
+            font-size: 0.95rem;
+            line-height: 1.55;
+            color: var(--text-main);
+            opacity: 0.78;
+            margin: 0.7rem 0 0;
+            max-width: 34ch;
+        }
+
+        /* Form panel */
+        .auth-panel {
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 20px;
+            padding: 2.2rem 1rem 3rem;
         }
 
         .auth-card {
-            background: rgba(20, 20, 20, 0.8);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 24px;
-            padding: 40px;
             width: 100%;
-            max-width: 400px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-            text-align: center;
+            max-width: 440px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--auth-hairline);
+            border-radius: 20px;
+            padding: 2.2rem 1.5rem;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .auth-eyebrow {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.16em;
+            color: var(--accent-gold);
+            margin: 0 0 0.6rem;
         }
 
         .auth-title {
-            font-size: 2rem;
-            margin-bottom: 2rem;
-            color: white;
+            font-family: var(--font-heading, 'Playfair Display', serif);
+            font-size: clamp(2rem, 3vw, 2.4rem);
+            font-weight: 600;
+            color: var(--title-cream);
+            margin: 0 0 0.6rem;
+        }
+
+        .auth-sub {
+            font-size: 0.95rem;
+            line-height: 1.55;
+            color: var(--text-muted);
+            margin: 0 0 1.8rem;
         }
 
         .auth-card .form-group {
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.3rem;
             text-align: left;
         }
 
         .auth-card .form-group label {
             display: block;
             margin-bottom: 0.5rem;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
             color: var(--text-muted);
         }
 
         .auth-card .form-group input {
             width: 100%;
-            padding: 12px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            color: white;
+            padding: 13px 14px;
+            background: var(--auth-input-bg);
+            border: 1px solid var(--auth-input-border);
+            border-radius: 10px;
+            color: var(--text-main);
             font-size: 1rem;
+            transition: border-color 0.25s ease, outline-color 0.25s ease;
         }
 
+        .auth-card .form-group input::placeholder {
+            color: var(--text-muted);
+            opacity: 0.65;
+        }
+
+        .auth-card .form-group input:focus {
+            border-color: var(--accent-gold);
+            outline: 2px solid var(--accent-bronze-glow);
+            outline-offset: 1px;
+        }
+
+        /* Tier-1 sunset CTA: gradient fill, ink text, weighted base edge
+           that presses deeper on hover; brass ring on keyboard focus only */
         .btn-auth {
             width: 100%;
+            min-height: 3.4rem;
             padding: 12px;
-            background: rgba(255, 59, 48, 0.15);
-            border: 1px solid var(--accent-start);
-            border-radius: 30px;
-            color: white;
-            font-weight: bold;
-            font-size: 1.1rem;
+            margin-top: 0.4rem;
+            background: var(--cta-grad);
+            border: none;
+            border-radius: var(--cta-radius, 14px);
+            color: var(--cta-ink);
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            font-size: 1.02rem;
+            letter-spacing: 0.02em;
             cursor: pointer;
-            margin-top: 1rem;
-            transition: opacity 0.2s;
+            box-shadow: inset 0 -3px 0 var(--cta-base-rest);
+            outline: 1px solid transparent;
+            outline-offset: 3px;
+            transition: box-shadow 0.25s ease, outline-color 0.25s ease;
         }
 
         .btn-auth:hover {
-            opacity: 0.9;
+            box-shadow: inset 0 -3px 0 var(--cta-base-hover);
+        }
+
+        .btn-auth:focus-visible {
+            outline-color: var(--accent-gold);
+        }
+
+        .auth-links {
+            margin-top: 1.6rem;
+            padding-top: 1.4rem;
+            border-top: 1px solid var(--auth-hairline);
+            text-align: center;
         }
 
         .auth-link {
             display: block;
-            margin-top: 1.5rem;
             color: var(--text-muted);
             font-size: 0.9rem;
+            margin: 0 0 0.9rem;
+        }
+
+        .auth-link:last-child {
+            margin-bottom: 0;
         }
 
         .auth-link a {
             color: var(--accent-gold);
             text-decoration: none;
+            transition: color 0.25s ease;
+        }
+
+        .auth-link a:hover,
+        .auth-link a:focus-visible {
+            color: var(--title-cream);
+            text-decoration: underline;
+        }
+
+        .auth-link--quiet a {
+            color: var(--text-muted);
         }
 
         #feedback {
             margin-top: 1rem;
-            padding: 10px;
-            border-radius: 12px;
+            padding: 10px 12px;
+            border-radius: 10px;
             font-size: 0.9rem;
             display: none;
         }
 
         .error {
-            color: #ff6b6b;
-            background: rgba(255, 107, 107, 0.1);
+            color: #FFB4A6;
+            background: rgba(255, 107, 107, 0.12);
             display: block !important;
         }
 
         .success {
-            color: #51cf66;
+            color: #8FD9A0;
             background: rgba(81, 207, 102, 0.1);
             display: block !important;
+        }
+
+        @media (min-width: 900px) {
+            .auth-shell {
+                display: flex;
+                align-items: stretch;
+            }
+
+            .auth-visual {
+                flex: 1 1 52%;
+                height: auto;
+                min-height: calc(100vh - 80px);
+            }
+
+            .auth-visual__content {
+                padding: 3rem 3.2rem;
+            }
+
+            .auth-visual__sub {
+                display: block;
+            }
+
+            .auth-panel {
+                flex: 1 1 48%;
+                padding: 3rem 2rem;
+            }
+
+            .auth-card {
+                padding: 2.6rem 2.4rem;
+            }
         }
     </style>
 </head>
 
-<body style="padding-top: 80px;">
+<body class="tropic" style="padding-top: 80px;">
 
     <header class="main-header">
         <div class="container navbar">
@@ -133,43 +322,58 @@
         </div>
     </header>
 
-    <div class="auth-container">
-        <div class="auth-card">
-            <h1 class="auth-title">Willkommen zurück</h1>
+    <main class="auth-shell">
+        <section class="auth-visual" aria-label="AXcent Dance Community">
+            <img class="auth-visual__img" src="../assets/images/hero_new_800w.webp" width="800" height="600"
+                alt="Die AXcent Dance Community lächelt gemeinsam nach einem Bachata-Kurs in Zürich" loading="eager"
+                fetchpriority="high" decoding="async">
+            <div class="auth-visual__content">
+                <div class="auth-visual__rule"></div>
+                <p class="auth-visual__kicker">AXcent Dance · Mitgliederbereich</p>
+                <p class="auth-visual__line">Die Tanzfläche <em>wartet</em> auf dich.</p>
+                <p class="auth-visual__sub">Dein Pass, deine Kurse und dein Plan — alles an einem Ort.</p>
+            </div>
+        </section>
 
-            <form id="loginForm">
-                <div class="form-group">
-                    <label for="email">E-Mail</label>
-                    <input type="email" id="email" required autocomplete="email" placeholder="du@beispiel.ch">
+        <section class="auth-panel">
+            <div class="auth-card">
+                <p class="auth-eyebrow">Mitgliederbereich</p>
+                <h1 class="auth-title">Willkommen zurück</h1>
+                <p class="auth-sub">Melde dich an, um deinen Pass zu sehen, Abwesenheiten zu melden und deine Kurse zu verlängern.</p>
+
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="email">E-Mail</label>
+                        <input type="email" id="email" required autocomplete="email" placeholder="du@beispiel.ch">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Passwort</label>
+                        <input type="password" id="password" required autocomplete="current-password" placeholder="••••••••">
+                    </div>
+                    <button type="submit" class="btn-auth">Anmelden</button>
+                </form>
+
+                <!-- Wird anstelle des Login-Formulars angezeigt, wenn der Nutzer aus einer Passwort-Wiederherstellungs-E-Mail kommt -->
+                <form id="recoveryForm" style="display: none;">
+                    <div class="form-group">
+                        <label for="newPassword">Neues Passwort</label>
+                        <input type="password" id="newPassword" required minlength="8" autocomplete="new-password"
+                            placeholder="Mindestens 8 Zeichen">
+                    </div>
+                    <button type="submit" class="btn-auth">Neues Passwort speichern</button>
+                </form>
+
+                <div id="feedback"></div>
+
+                <div class="auth-links">
+                    <p class="auth-link"><a href="#" id="magicLink">Login-Link per E-Mail senden</a></p>
+                    <p class="auth-link"><a href="#" id="forgotLink">Passwort vergessen?</a></p>
+                    <p class="auth-link">Noch kein Konto? <a href="_signup">Registrieren</a></p>
+                    <p class="auth-link auth-link--quiet"><a href="/de/">← Zurück zur Website</a></p>
                 </div>
-                <div class="form-group">
-                    <label for="password">Passwort</label>
-                    <input type="password" id="password" required autocomplete="current-password" placeholder="••••••••">
-                </div>
-                <button type="submit" class="btn-auth">Anmelden</button>
-            </form>
-
-            <!-- Wird anstelle des Login-Formulars angezeigt, wenn der Nutzer aus einer Passwort-Wiederherstellungs-E-Mail kommt -->
-            <form id="recoveryForm" style="display: none;">
-                <div class="form-group">
-                    <label for="newPassword">Neues Passwort</label>
-                    <input type="password" id="newPassword" required minlength="8" autocomplete="new-password"
-                        placeholder="Mindestens 8 Zeichen">
-                </div>
-                <button type="submit" class="btn-auth">Neues Passwort speichern</button>
-            </form>
-
-            <div id="feedback"></div>
-
-            <p class="auth-link">
-                <a href="#" id="forgotLink">Passwort vergessen?</a>
-                <br><br>
-                Noch kein Konto? <a href="_signup">Registrieren</a>
-                <br><br>
-                <a href="/de/" style="opacity: 0.6;">← Zurück zur Website</a>
-            </p>
-        </div>
-    </div>
+            </div>
+        </section>
+    </main>
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script type="module">
@@ -204,10 +408,55 @@
             });
 
             if (error) {
-                showFeedback(error.message, 'error');
+                // Unbestätigte Konten bekommen einen Ausweg statt einer Sackgasse.
+                if ((error.message || '').toLowerCase().includes('not confirmed')) {
+                    feedback.innerHTML = 'Deine E-Mail-Adresse ist noch nicht bestätigt. ' +
+                        '<a href="#" id="resendConfirm" style="color: var(--accent-gold);">Bestätigungs-E-Mail erneut senden</a>';
+                    feedback.className = 'error';
+                    feedback.style.display = 'block';
+                    document.getElementById('resendConfirm').addEventListener('click', async (ev) => {
+                        ev.preventDefault();
+                        const { error: resendError } = await supabase.auth.resend({
+                            type: 'signup',
+                            email: document.getElementById('email').value
+                        });
+                        showFeedback(resendError ? resendError.message :
+                            'Bestätigungs-E-Mail gesendet — bitte prüfe auch deinen Spam-Ordner.',
+                            resendError ? 'error' : 'success');
+                    });
+                } else {
+                    showFeedback(error.message, 'error');
+                }
             } else {
                 showFeedback('Erfolgreich! Weiterleitung...', 'success');
-                setTimeout(() => { window.location.href = 'portal.html'; }, 800);
+                // Der Studio-Inhaber landet im Anfragen-Postfach, nicht auf der Pass-Seite.
+                const dest = document.getElementById('email').value.trim().toLowerCase() === 'info@axcentdance.com'
+                    ? '/_admin.html' : 'portal.html';
+                setTimeout(() => { window.location.href = dest; }, 800);
+            }
+        });
+
+        // Passwortloser Ausweg: ein einmaliger Login-Link per E-Mail.
+        document.getElementById('magicLink').addEventListener('click', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            if (!email) {
+                showFeedback('Gib zuerst oben deine E-Mail ein und klicke dann erneut auf den Link.', 'error');
+                return;
+            }
+            const { error } = await supabase.auth.signInWithOtp({
+                email: email,
+                options: {
+                    shouldCreateUser: false,
+                    emailRedirectTo: window.location.origin + '/de/portal.html'
+                }
+            });
+            if (error) {
+                showFeedback((error.message || '').toLowerCase().includes('signups not allowed')
+                    ? 'Für diese E-Mail existiert noch kein Konto — bitte registriere dich zuerst.'
+                    : error.message, 'error');
+            } else {
+                showFeedback('Login-Link gesendet! Öffne den Link aus deinem Posteingang auf diesem Gerät.', 'success');
             }
         });
 

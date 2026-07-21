@@ -15,7 +15,7 @@
         content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://jwravnvytkmsvqoqkmwb.supabase.co; object-src 'none'; base-uri 'self';">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@200..900&family=Outfit:wght@500;600;700;800&display=swap">
     <link rel="stylesheet" href="style.css?v=4.2">
-    <link rel="stylesheet" href="tropic-noir.css?v=5.0">
+    <link rel="stylesheet" href="tropic-noir.css?v=5.2">
     <link rel="apple-touch-icon" href="/apple-touch-icon-v2.png">
     <link rel="icon" href="/favicon-axcent-192.png" type="image/png" sizes="192x192">
     <link rel="icon" href="/favicon-axcent-transparent.svg" type="image/svg+xml">
@@ -161,6 +161,10 @@
 
             <div id="feedback"></div>
 
+            <p class="auth-link" id="resendWrap" style="display: none;">
+                Did not receive the email? <a href="#" id="resendLink">Resend confirmation</a>
+            </p>
+
             <p class="auth-link">
                 Already have an account? <a href="_login">Log In</a>
                 <br><br>
@@ -175,6 +179,33 @@
 
         const form = document.getElementById('signupForm');
         const feedback = document.getElementById('feedback');
+        const emailInput = document.getElementById('email');
+
+        // Welcome emails link here with the purchase email prefilled, so the
+        // account always matches the email the pass is registered under.
+        const prefill = new URLSearchParams(window.location.search).get('email');
+        if (prefill) emailInput.value = prefill;
+
+        // "Resend confirmation" escape hatch: without it, a confirmation
+        // email lost to spam leaves the account stuck in limbo.
+        let lastSignupEmail = null;
+        const resendWrap = document.getElementById('resendWrap');
+        document.getElementById('resendLink').addEventListener('click', async (e) => {
+            e.preventDefault();
+            if (!lastSignupEmail) return;
+            const { error } = await supabase.auth.resend({ type: 'signup', email: lastSignupEmail });
+            if (error) {
+                feedback.textContent = error.message;
+                feedback.className = 'error';
+            } else {
+                feedback.textContent = 'Confirmation email sent again — please also check your spam folder.';
+                feedback.className = 'success';
+            }
+        });
+
+        const NO_PASS_MESSAGE = 'No pass is registered under this email. Please use the exact email from your ' +
+            'pass purchase — if you just paid, wait a minute and try again. ' +
+            'New to AXcent? <a href="registration" style="color: var(--accent-start, #E8B04B);">Register for a class</a> first.';
 
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
@@ -182,13 +213,29 @@
             feedback.className = '';
             feedback.style.display = 'block';
 
+            // Friendly pre-check: accounts exist only for emails with a real
+            // pass (a database trigger enforces this regardless).
+            const { data: hasPass, error: checkError } = await supabase
+                .rpc('email_has_profile', { check_email: emailInput.value });
+            if (!checkError && hasPass === false) {
+                feedback.innerHTML = NO_PASS_MESSAGE;
+                feedback.className = 'error';
+                return;
+            }
+
             const { data, error } = await supabase.auth.signUp({
-                email: document.getElementById('email').value,
+                email: emailInput.value,
                 password: document.getElementById('password').value,
             });
 
             if (error) {
-                feedback.textContent = error.message;
+                // The trigger rejection surfaces as a generic database error.
+                if ((error.message || '').toLowerCase().includes('database error') ||
+                    (error.message || '').includes('registered pass')) {
+                    feedback.innerHTML = NO_PASS_MESSAGE;
+                } else {
+                    feedback.textContent = error.message;
+                }
                 feedback.className = 'error';
             } else if (data.session) {
                 // Email confirmation disabled: signed in immediately.
@@ -198,6 +245,8 @@
             } else {
                 feedback.textContent = 'Account created! Please check your email to confirm your address, then log in.';
                 feedback.className = 'success';
+                lastSignupEmail = emailInput.value;
+                resendWrap.style.display = 'block';
             }
         });
     </script>

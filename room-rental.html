@@ -23,13 +23,13 @@
     <meta name="twitter:description" content="Looking for Dance Studio Rental in Zurich? Rent our 138qm mirror hall in Altstetten for classes, workshops, or rehearsals.">
     <meta name="twitter:image" content="https://axcentdance.com/assets/images/hero_new.jpg">
     <meta http-equiv="Content-Security-Policy"
-        content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://cdn.jsdelivr.net https://connect.facebook.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com https://placehold.co https://*.googleapis.com https://*.gstatic.com https://www.facebook.com https://connect.facebook.net; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://script.google.com https://formsubmit.co https://www.facebook.com https://connect.facebook.net; frame-src 'self' https://www.google.com; object-src 'none'; base-uri 'self'; media-src 'self' blob:; worker-src 'self' blob:;">
+        content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://cdn.jsdelivr.net https://connect.facebook.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com https://placehold.co https://*.googleapis.com https://*.gstatic.com https://www.facebook.com https://connect.facebook.net; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://script.google.com https://formsubmit.co https://www.facebook.com https://connect.facebook.net https://jwravnvytkmsvqoqkmwb.supabase.co; frame-src 'self' https://www.google.com; object-src 'none'; base-uri 'self'; media-src 'self' blob:; worker-src 'self' blob:;">
 
 
     <!-- Styles -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@200..900&family=Outfit:wght@500;600;700;800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Teko:wght@300..700&display=swap">
     <link rel="stylesheet" href="style.css?v=2.3">
-    <link rel="stylesheet" href="tropic-noir.css?v=5.0">
+    <link rel="stylesheet" href="tropic-noir.css?v=5.14">
     <link rel="apple-touch-icon" href="/apple-touch-icon-v2.png">
     <link rel="icon" href="/favicon-axcent-transparent.svg" type="image/svg+xml">
 
@@ -91,6 +91,14 @@
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "Yes, there is street parking available on the same street as the school. Public transport (Tram 2, Bus 31) is just 2 minutes walking distance."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is your cancellation policy?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Cancel at least 1 week before your booking for a full refund. Cancel between 1 week and 48 hours before and 50% of the rate applies. Cancellations within 48 hours of the booking are non-refundable."
           }
         }
       ]
@@ -215,7 +223,7 @@
   <!-- End Meta Pixel Code -->
   </head>
 
-<body class="tropic service-page rental-page">
+<body class="tropic service-page rental-page nav-declutter">
     <!-- Navigation Bar -->
     <header class="main-header">
         <div class="container navbar">
@@ -231,11 +239,13 @@
                 </svg>
             </button>
             <nav class="nav-links">
-        <a href="./">Home</a>
+        <a href="./" class="nav-home">Home</a>
         <a href="about">About us</a>
                 <a href="schedule">Our classes</a>
+                <a href="registration">Prices &amp; Registration</a>
                 <a href="events">Events</a>
-                <a href="contact">Contact</a>
+                <a href="contact" class="nav-contact-item">Contact</a>
+                <a href="portal" class="nav-portal-item">Login</a>
 
                 <div class="dropdown">
                     <button class="dropbtn">More ▾</button>
@@ -250,7 +260,7 @@
                         <a href="blog"><span>Blog</span></a>
                         <a href="faq"><span>FAQ</span></a>
                         <a href="etiquette"><span>Dance Etiquette</span></a>
-                        <a href="portal"><span>Login</span></a>
+                        <a href="contact" class="nav-contact-dropdown"><span>Contact</span></a>
                     </div>
                 </div>
         <a href="/#trial-form" class="btn-header-cta">Book Free Trial</a>
@@ -260,28 +270,47 @@
           <span class="divider">|</span>
           <a href="de/room-rental">DE</a>
         </div>
+      <div class="header-login">
+        <a href="portal" class="header-login__link header-login__link--icon" aria-label="Login" title="Login">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 21a8 8 0 0 0-16 0"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+        </a>
+      </div>
       
         </div>
     </header>
 
     <main>
 
-        <!-- Compact Room Rental Section -->
-        <section class="rental-section-compact" style="padding-top: calc(var(--header-height) + 3rem); padding-bottom: 4rem;">
-            <div class="container">
-                <div class="hero-content reveal" style="text-align: center; margin-bottom: 3rem;">
-                    <div class="hero-badge" style="justify-content: center;">
-                        <span class="hero-badge-line"></span>
-                        <span class="hero-badge-text">SPACE FOR YOU</span>
-                        <span class="hero-badge-line"></span>
-                    </div>
-                    <h1 class="hero-title-large service-hero__title" style="margin-bottom: 0.5rem;">Room <em class="title-accent">Rental</em></h1>
-                    <p class="hero-desc-border" style="border: none; padding: 0; max-width: 700px; margin: 0 auto;">
+        <!-- Masthead -->
+        <section class="split-masthead">
+            <div class="container split-masthead__split">
+                <span class="split-masthead__ghost" aria-hidden="true">Studio</span>
+                <div class="split-masthead__copy">
+                    <p class="split-masthead__kicker">Space for You</p>
+                    <h1 class="page-title split-masthead__title">
+                        Room <em class="title-accent">Rental</em>
+                    </h1>
+                    <p class="split-masthead__dek">
                         Create your own magic.
                         <strong>Rent our beautiful studio room (~140m²) for your events, workshops, or rehearsals.</strong>
                     </p>
                 </div>
+                <figure class="split-masthead__media">
+                    <img src="assets/images/empty_studio_mirrors_1200w.webp"
+                        srcset="assets/images/empty_studio_mirrors_480w.webp 480w, assets/images/empty_studio_mirrors_800w.webp 800w, assets/images/empty_studio_mirrors_1200w.webp 1200w"
+                        sizes="(max-width: 899px) 100vw, 40vw"
+                        alt="Empty mirrored dance studio ready for rent at AXcent Dance in Zurich Altstetten"
+                        width="1200" height="1200" loading="eager" fetchpriority="high">
+                </figure>
+            </div>
+        </section>
 
+        <!-- Compact Room Rental Section -->
+        <section class="rental-section-compact" style="padding-top: 2.5rem; padding-bottom: 4rem;">
+            <div class="container">
                 <div class="rental-main-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start;">
                     
                     <!-- Left: Gallery Pictures -->
@@ -295,6 +324,7 @@
                                              assets/images/studio/studio_room_view_1_1200w.webp 1200w"
                                     sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 600px"
                                     alt="Spacious dance studio with purple ceiling and mirrors" width="1200" height="800"
+                                    loading="lazy"
                                     style="width: 100%; height: auto; object-fit: cover; transition: transform 0.5s ease; display: block; transform: scale(1.15); transform-origin: 85% center;">
                             </div>
 
@@ -316,12 +346,17 @@
                     <div class="rental-form-col reveal">
                         <div class="rental-inquiry-box" style="margin-top: 0;">
                             <h2 class="section-title-modern" style="font-size: 2rem; text-align: center; margin-bottom: 1.5rem;">Rental Inquiry</h2>
-                            <p style="color: white; margin-bottom: 2rem;">
+                            <p style="color: white; margin-bottom: 1rem;">
                                 <strong>Please specify the purpose of your rental and whether it is a one-time or recurring booking.</strong>
                                 For general questions before sending the form, <a href="contact" style="color: var(--accent-start);">contact us</a>.
                             </p>
+                            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 2rem;">
+                                <strong style="color: white;">How it works:</strong> send your request with your
+                                preferred day and time, we confirm availability by email, and you will then
+                                receive a secure payment link to complete your booking.
+                            </p>
 
-                            <form action="https://formsubmit.co/info@axcentdance.com" method="POST">
+                            <form id="rentalInquiryForm" action="https://formsubmit.co/info@axcentdance.com" method="POST">
                                 <input type="hidden" name="_cc" value="slamitza@gmail.com">
                                 <input type="hidden" name="_webhook"
                                     value="https://script.google.com/macros/s/AKfycbytxnGMTaV1WfB9_DV7R1euJWhtqjBt10lHK-8bUnoQ76j2xypd5J7rIBJzW6S_cBPk/exec">
@@ -359,8 +394,7 @@
                                 <div class="form-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2rem;">
                                     <div class="form-group floating-label">
                                         <select id="rental_purpose" name="rental_purpose" class="form-input-modern" required style="padding-top: 1.25rem;">
-                                            <option value="" disabled selected hidden></option>
-                                            <option value="Event">Event (Workshop/Party)</option>
+                                            <option value="Event" selected>Workshop / Party</option>
                                             <option value="Regular Class">Regular Class</option>
                                             <option value="Training">Training / Practice</option>
                                             <option value="Private Lesson">Private Lesson</option>
@@ -371,8 +405,7 @@
                                     </div>
                                     <div class="form-group floating-label">
                                         <select id="frequency" name="frequency" class="form-input-modern" required style="padding-top: 1.25rem;">
-                                            <option value="" disabled selected hidden></option>
-                                            <option value="One-time">One-time</option>
+                                            <option value="One-time" selected>One-time</option>
                                             <option value="Recurring">Recurring</option>
                                         </select>
                                         <label for="frequency">Frequency</label>
@@ -538,6 +571,21 @@
                         Bus 31) is just 2 minutes walking distance.
                     </div>
                 </details>
+
+                <!-- FAQ Item 4 -->
+                <details class="glass-panel sched-faq">
+                    <summary class="sched-faq__summary">
+                        What is your cancellation policy?
+                        <span class="sched-faq__icon" aria-hidden="true">+</span>
+                    </summary>
+                    <div class="sched-faq__body">
+                        Plans change, and that is okay. Cancel at least <strong>1 week</strong> before your booking
+                        and you will receive a full refund. Cancel between <strong>1 week and 48 hours</strong>
+                        before, and <strong>50%</strong> of the rate applies. Cancellations within the
+                        <strong>last 48 hours</strong> are unfortunately non-refundable, as the room can no longer
+                        be offered to another booking at such short notice.
+                    </div>
+                </details>
             </div>
         </section>
 
@@ -580,6 +628,7 @@
           <li><a href="blog/roots-of-bachata">Roots of Bachata</a></li>
           <li><a href="schedule">Schedule</a></li>
           <li><a href="blog">Our Blog</a></li>
+          <li><a href="https://www.google.com/maps?cid=15680757943659417558" target="_blank" rel="noopener noreferrer">Read our reviews on Google</a></li>
 
         </ul>
       </div>
@@ -615,6 +664,52 @@
   </footer>
 
     <script src="script.js?v=5.8"></script>
+
+    <!-- Mirrors the Rental Inquiry into the owner's admin dashboard ("Outside
+         Room Requests"). The existing FormSubmit + Google Sheets webhook
+         (hidden _webhook/_cc/_next fields above) is untouched and still runs
+         exactly as before via the form's native submission. -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script type="module">
+        import { supabase } from './assets/js/supabase-client.js';
+
+        const form = document.getElementById('rentalInquiryForm');
+        if (form) {
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+
+                const fd = new FormData(form);
+                const details = [
+                    'Purpose: ' + (fd.get('rental_purpose') || ''),
+                    'Frequency: ' + (fd.get('frequency') || ''),
+                    'Timing: ' + (fd.get('timing') || ''),
+                    fd.get('businessname') ? 'Business: ' + fd.get('businessname') : null,
+                    fd.get('message') ? 'Message: ' + fd.get('message') : null
+                ].filter(Boolean).join(' | ');
+
+                try {
+                    await Promise.race([
+                        supabase.from('requests').insert({
+                            type: 'room_rental',
+                            status: 'new',
+                            email: fd.get('email'),
+                            name: ((fd.get('firstname') || '') + ' ' + (fd.get('lastname') || '')).trim(),
+                            phone: fd.get('phone'),
+                            details: details
+                        }),
+                        new Promise((resolve) => setTimeout(resolve, 3000))
+                    ]);
+                } catch (err) {
+                    console.error('Outside room request logging failed:', err);
+                }
+
+                // form.submit() bypasses the submit event (no re-entry risk)
+                // and continues exactly as before: FormSubmit email, the
+                // Google Sheets webhook, and the redirect to the thank-you page.
+                form.submit();
+            });
+        }
+    </script>
 
 
 

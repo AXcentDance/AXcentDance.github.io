@@ -18,3 +18,7 @@ For SEO/content/schema changes, also read relevant skills in:
 - .agent/skills/global_informational_schema/SKILL.md
 - .agent/skills/image_schema/SKILL.md
 - .agent/skills/sync_indexes/SKILL.md
+
+## Site Health Gate (run before every push)
+
+`python3 scripts/site_health.py` must print PASS. It is the single repo-wide gate (also enforced in CI via `.github/workflows/quality-checks.yml`) and checks: orphan pages (every indexable page needs an inbound internal link), sitemap.xml drift in both directions, JSON-LD validity and `@id` integrity (no ids anchored to nonexistent URLs), canonical correctness, courseMode/date formats, blog index card completeness and category-filter mapping, llms-full.txt internal-content leaks, duplicate titles/descriptions, plus the existing header/footer, heading, broken-link, hreflang, and breadcrumb checkers. Title/description length violations are warnings (backlog), not failures.

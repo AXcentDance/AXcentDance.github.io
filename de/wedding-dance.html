@@ -20,8 +20,7 @@
     <meta name="twitter:title" content="Hochzeitstanz Zürich | Individuelle Choreografie &amp; Kurse">
     <meta name="twitter:description" content="Der perfekte Hochzeitstanz in Zürich. Individuelle Choreografie für Ihren Eröffnungstanz. Bachata, Salsa oder Walzer – buchen Sie jetzt.">
     <meta name="twitter:image" content="https://axcentdance.com/assets/images/hero_new.jpg">
-    <meta property="og:description"
-        content="Der perfekte Hochzeitstanz in Zürich. Individuelle Choreografie für Ihren Eröffnungstanz. Bachata, Salsa oder Walzer – buchen Sie jetzt.">
+    <meta property="og:description" content="Der perfekte Hochzeitstanz in Zürich. Individuelle Choreografie für Ihren Eröffnungstanz. Bachata, Salsa oder Walzer – buchen Sie jetzt.">
     <meta property="og:locale" content="de_CH">
     <meta http-equiv="Content-Security-Policy"
         content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://cdn.jsdelivr.net https://connect.facebook.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com https://placehold.co https://*.googleapis.com https://*.gstatic.com https://www.facebook.com https://connect.facebook.net; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://script.google.com https://formsubmit.co https://www.facebook.com https://connect.facebook.net; frame-src 'self' https://www.google.com; object-src 'none'; base-uri 'self'; media-src 'self' blob:; worker-src 'self' blob:;">
@@ -30,6 +29,7 @@
     <!-- Styles -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@200..900&family=Outfit:wght@500;600;700;800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Teko:wght@300..700&display=swap">
     <link rel="stylesheet" href="../style.css?v=2.3">
+    <link rel="stylesheet" href="../tropic-noir.css?v=5.2">
     <link rel="apple-touch-icon" href="/apple-touch-icon-v2.png">
     <link rel="icon" href="/favicon-axcent-transparent.svg" type="image/svg+xml">
 
@@ -46,8 +46,8 @@
 
         gtag('config', 'G-E2SYCF7R7X');
     </script>
-    
-    
+
+
     <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -60,10 +60,26 @@
       "isPartOf": {
         "@id": "https://axcentdance.com/#website"
       },
+      "inLanguage": "de",
       "about": {
         "@id": "https://axcentdance.com/#organization"
       },
       "description": "Der perfekte Hochzeitstanz in Zürich. Individuelle Choreografie für Ihren Eröffnungstanz. Bachata, Salsa oder Walzer – buchen Sie jetzt."
+    },
+    {
+      "@type": "Service",
+      "@id": "https://axcentdance.com/de/wedding-dance#service",
+      "name": "Hochzeitstanz-Komplettpaket",
+      "serviceType": "Choreografie und Unterricht für den Hochzeitstanz",
+      "description": "Individuelle Choreografie für den ersten Tanz, private Einzelstunden, Unterstützung bei der Songauswahl und beim Musikschnitt, gefilmte Schritte zum Üben zu Hause sowie eine Generalprobe.",
+      "provider": { "@id": "https://axcentdance.com/#organization" },
+      "areaServed": { "@type": "AdministrativeArea", "name": "Zurich" },
+      "offers": {
+        "@type": "Offer",
+        "price": "800.00",
+        "priceCurrency": "CHF",
+        "description": "Komplettes Hochzeitstanz-Paket"
+      }
     },
     {
       "@type": "BreadcrumbList",
@@ -112,7 +128,7 @@
       "url": "https://axcentdance.com/",
       "logo": "https://axcentdance.com/assets/images/logo.webp",
       "image": "https://axcentdance.com/assets/images/hero_new.webp",
-      "description": "AXcent Dance is a Bachata dance school in Zurich Altstetten offering Bachata Sensual, Dominican Bachata, Salsa, and Latin dance classes for all levels.",
+      "description": "AXcent Dance ist eine Bachata-Tanzschule in Zürich Altstetten mit Kursen in Bachata Sensual, Dominican Bachata, Salsa und Latin Dance für alle Niveaus.",
       "telephone": "+41799668481",
       "email": "info@axcentdance.com",
       "hasMap": "https://www.google.com/maps?cid=15680757943659417558",
@@ -191,13 +207,7 @@
   <!-- End Meta Pixel Code -->
   </head>
 
-<body>
-
-    <!-- Background Elements -->
-    <div class="blob blob-1"></div>
-    <div class="blob blob-2"></div>
-    <div class="blob blob-3"></div>
-
+<body class="tropic service-page wedding-page nav-declutter">
     <!-- Navigation Bar -->
     <header class="main-header">
         <div class="container navbar">
@@ -213,11 +223,13 @@
                 </svg>
             </button>
             <nav class="nav-links">
-        <a href="../">Home</a>
+        <a href="./" class="nav-home">Home</a>
         <a href="about">Über uns</a>
                 <a href="schedule">Unsere Kurse</a>
+                <a href="registration">Preise &amp; Anmeldung</a>
                 <a href="events">Events</a>
-                <a href="contact">Kontakt</a>
+                <a href="contact" class="nav-contact-item">Kontakt</a>
+                <a href="portal" class="nav-portal-item">Login</a>
 
                 <div class="dropdown">
                     <button class="dropbtn">Mehr ▾</button>
@@ -232,7 +244,7 @@
                         <a href="blog"><span>Blog</span></a>
                         <a href="faq"><span>FAQ</span></a>
                         <a href="etiquette"><span>Tanzetikette</span></a>
-                        <a href="portal"><span>Login</span></a>
+                        <a href="contact" class="nav-contact-dropdown"><span>Kontakt</span></a>
                     </div>
                 </div>
         <a href="/de/#trial-form" class="btn-header-cta">Probelektion buchen</a>
@@ -242,7 +254,15 @@
           <span class="divider">|</span>
           <span class="active">DE</span>
         </div>
-      
+      <div class="header-login">
+        <a href="portal" class="header-login__link header-login__link--icon" aria-label="Login" title="Login">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 21a8 8 0 0 0-16 0"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+        </a>
+      </div>
+
         </div>
     </header>
 
@@ -250,10 +270,11 @@
 
         <!-- Hero Section -->
         <section class="hero" style="min-height: 80vh; align-items: center;">
-            <div class="hero-video"
-                style="background: linear-gradient(to bottom, rgba(5, 2, 8, 0.6), var(--bg-main)), url('../assets/images/wedding_dance_hero.webp') no-repeat center center/cover !important;">
-            </div>
-            <div class="hero-overlay" style="background: rgba(0,0,0,0.4);"></div>
+            <img src="../assets/images/wedding_dance_hero.webp"
+                srcset="../assets/images/wedding_dance_hero_480w.webp 480w, ../assets/images/wedding_dance_hero_800w.webp 800w, ../assets/images/wedding_dance_hero_1200w.webp 1200w"
+                sizes="100vw" alt="Ein Paar probt seinen Hochzeits-Eröffnungstanz" width="1024" height="1024"
+                loading="eager" fetchpriority="high" decoding="async" class="hero-bg-img">
+            <div class="hero-overlay"></div>
 
             <div class="container hero-content-center">
 
@@ -263,15 +284,11 @@
                     <span class="hero-badge-line"></span>
                 </div>
 
-                <h1 class="hero-title-large" style="font-size: 5rem; margin-bottom: 1rem;">
-                    EUER ERSTER TANZ,<br>
-                    <span class="text-gradient">PERFEKTIONIERT</span>
-                </h1>
+                <h1 class="hero-title-large service-hero__title">Euer erster Tanz,<br><em class="title-accent">perfektioniert</em></h1>
 
                 <p class="hero-desc-border">
-                    Eine Choreografie, die Eure Liebesgeschichte erzählt. Vom eleganten Walzer bis zum sinnlichen
-                    Bachata
-                    kreieren wir einen Tanz, der sich einzigartig nach <strong>Euch</strong> anfühlt.
+                    Eine Choreografie, die eure Liebesgeschichte erzählt. Vom eleganten Walzer bis zum sinnlichen
+                    Bachata kreieren wir einen Tanz, der sich einzigartig nach <strong>euch</strong> anfühlt.
                 </p>
 
                 <div class="hero-buttons-group">
@@ -290,19 +307,18 @@
                 <div class="values-col">
                     <h2 class="section-title-modern section-title-left">Warum AXcent?</h2>
                     <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.6; margin-bottom: 2rem;">
-                        Euer Hochzeitstanz sollte kein Stress sein. Es sollte ein Moment der Verbindung und Freude sein.
-                        Egal ob ihr "zwei linke Füße" habt oder erfahrene Tänzer seid, wir begleiten euch bei jedem
-                        Schritt.
+                        Euer Hochzeitstanz sollte kein Stress sein. Es sollte ein Moment der Verbindung und Freude
+                        sein. Egal ob ihr "zwei linke Füsse" habt oder erfahrene Tänzer seid, wir begleiten euch bei
+                        jedem Schritt.
                     </p>
                     <ul style="list-style: none; padding: 0;">
                         <li style="margin-bottom: 1.5rem; display: flex; align-items: flex-start; gap: 1rem;">
                             <span style="color: var(--accent-start); font-size: 1.5rem;">♥</span>
                             <div>
-                                <strong
-                                    style="color: white; display: block; margin-bottom: 0.25rem;">Massgeschneidert</strong>
+                                <strong style="color: white; display: block; margin-bottom: 0.25rem;">Auf euch
+                                    zugeschnitten</strong>
                                 <span style="color: var(--text-muted);">Wir choreografieren zu eurem Wunschsong und
-                                    passen
-                                    die Bewegungen an euer Können und das Kleid an.</span>
+                                    passen die Bewegungen an euer Können und das Kleid an.</span>
                             </div>
                         </li>
                         <li style="margin-bottom: 1.5rem; display: flex; align-items: flex-start; gap: 1rem;">
@@ -310,9 +326,9 @@
                             <div>
                                 <strong style="color: white; display: block; margin-bottom: 0.25rem;">Jeder
                                     Stil</strong>
-                                <span style="color: var(--text-muted);">Träumt ihr von einem romantischen Bachata? Einem
-                                    feurigen Salsa?
-                                    Oder einem klassischen langsamen Tanz? Wir machen alles möglich.</span>
+                                <span style="color: var(--text-muted);">Träumt ihr von einem romantischen Bachata?
+                                    Einem feurigen Salsa? Oder einem klassischen langsamen Tanz? Wir machen alles
+                                    möglich.</span>
                             </div>
                         </li>
                         <li style="margin-bottom: 1.5rem; display: flex; align-items: flex-start; gap: 1rem;">
@@ -321,8 +337,7 @@
                                 <strong style="color: white; display: block; margin-bottom: 0.25rem;">Stressfreies
                                     Lernen</strong>
                                 <span style="color: var(--text-muted);">Privatstunden in entspannter Atmosphäre. Wir
-                                    sorgen dafür,
-                                    dass ihr euch am großen Tag sicher fühlt.</span>
+                                    sorgen dafür, dass ihr euch am grossen Tag sicher fühlt.</span>
                             </div>
                         </li>
                     </ul>
@@ -332,7 +347,7 @@
                         <img src="../assets/images/wedding_dance_hero.webp"
                             srcset="../assets/images/wedding_dance_hero_480w.webp 480w, ../assets/images/wedding_dance_hero_800w.webp 800w, ../assets/images/wedding_dance_hero_1200w.webp 1200w"
                             sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px" alt="Hochzeitstanz Paar"
-                            width="1024" height="1024" style="filter: brightness(0.8);">
+                            width="1024" height="1024" loading="lazy" decoding="async">
                     </div>
                 </div>
             </div>
@@ -348,13 +363,12 @@
                         <div class="value-number">01</div>
                         <div class="value-content">
                             <div class="value-header">
-                                <h2 class="value-title">Beratung</h2>
+                                <h3 class="value-title">Beratung</h3>
                             </div>
                             <div class="value-details" style="display: block;">
                                 <p class="value-desc">
                                     Wir treffen uns (online oder persönlich), um eure Vision zu besprechen, euren Song
-                                    anzuhören und
-                                    die Größe der Tanzfläche sowie Details zum Kleid zu klären.
+                                    anzuhören und die Grösse der Tanzfläche sowie Details zum Kleid zu klären.
                                 </p>
                             </div>
                         </div>
@@ -364,13 +378,12 @@
                         <div class="value-number">02</div>
                         <div class="value-content">
                             <div class="value-header">
-                                <h2 class="value-title">Kreation</h2>
+                                <h3 class="value-title">Kreation</h3>
                             </div>
                             <div class="value-details" style="display: block;">
                                 <p class="value-desc">
                                     Unsere Lehrer erstellen eine individuelle Choreografie, die eure Stärken hervorhebt
-                                    und
-                                    perfekt zur Musik passt.
+                                    und perfekt zur Musik passt.
                                 </p>
                             </div>
                         </div>
@@ -380,13 +393,13 @@
                         <div class="value-number">03</div>
                         <div class="value-content">
                             <div class="value-header">
-                                <h2 class="value-title">Probe</h2>
+                                <h3 class="value-title">Probe</h3>
                             </div>
                             <div class="value-details" style="display: block;">
                                 <p class="value-desc">
                                     Schritt-für-Schritt-Privatstunden persönlich in unserem Studio. Wir filmen die
-                                    Schritte, damit ihr
-                                    zu Hause üben könnt. Wir konzentrieren uns auf Verbindung und natürliches Aussehen.
+                                    Schritte, damit ihr zu Hause üben könnt. Wir konzentrieren uns auf Verbindung und
+                                    natürliches Aussehen.
                                 </p>
                             </div>
                         </div>
@@ -395,12 +408,78 @@
             </div>
         </section>
 
-        <!-- Cross-link to Couples Activities -->
-        <section class="reveal" style="padding: 4rem 0; background: var(--bg-main); text-align: center;">
+
+        <!-- First-dance package -->
+        <section class="wedding-package">
             <div class="container">
-                <p style="color: var(--text-muted); font-size: 1.1rem; max-width: 600px; margin: 0 auto;">
-                    Noch nicht bereit für einen Hochzeitstanz? Versuchen Sie es zuerst mit <a href="blog/couples-activities-zurich" style="color: var(--accent-start); text-decoration: underline; font-weight: 500;">Bachata als entspannte Paaraktivität</a>.
-                </p>
+                <h2 class="section-title-modern">Ein Paket, alles <em class="title-accent">inklusive</em></h2>
+                <div class="service-price-card">
+                    <span class="service-price-card__price">CHF 800</span>
+                    <span class="service-price-card__label">Hochzeitstanz-Paket</span>
+                    <ul class="service-price-card__list">
+                        <li>Choreografie für euren Song vorbereitet</li>
+                        <li>Individuelle Privatstunden im Studio</li>
+                        <li>Unterstützung bei Songauswahl und Musikschnitt</li>
+                        <li>Gefilmte Schritte zum Üben zu Hause</li>
+                        <li>Generalprobe vor dem grossen Tag</li>
+                    </ul>
+                    <p class="service-price-card__note">Wir legen den gesamten Plan gemeinsam bei der Beratung fest,
+                        damit er zu eurem Song, eurem Zeitplan und eurem Wohlfühltempo passt.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mini FAQ -->
+        <section class="section-padding service-faq">
+            <div class="container" style="max-width: 800px;">
+                <h2 class="section-title-modern" style="text-align: center; margin-bottom: 3rem;">Gute
+                    <em class="title-accent">Fragen</em></h2>
+                <div class="faq-list" style="display: flex; flex-direction: column; gap: 1rem;">
+                    <details class="glass-panel sched-faq">
+                        <summary class="sched-faq__summary">
+                            Wie viele Stunden brauchen wir?
+                            <span class="sched-faq__icon" aria-hidden="true">+</span>
+                        </summary>
+                        <div class="sched-faq__body">
+                            Die meisten Paare brauchen rund acht Unterrichtsstunden oder üben so lange, bis sie sich
+                            für den grossen Tag sicher und wohl fühlen. Der Endpreis kann je nach Stundenumfang und
+                            gewählter Choreografie variieren.
+                        </div>
+                    </details>
+                    <details class="glass-panel sched-faq">
+                        <summary class="sched-faq__summary">
+                            Wann sollten wir anfangen?
+                            <span class="sched-faq__icon" aria-hidden="true">+</span>
+                        </summary>
+                        <div class="sched-faq__body">
+                            Idealerweise zwei bis drei Monate vor der Hochzeit, damit ihr ohne Stress proben könnt.
+                            Ein späterer Start ist möglich &mdash; wir passen den Plan an die Zeit an, die euch zur
+                            Verfügung steht.
+                        </div>
+                    </details>
+                    <details class="glass-panel sched-faq">
+                        <summary class="sched-faq__summary">
+                            Warum Bachata als Hochzeitstanz?
+                            <span class="sched-faq__icon" aria-hidden="true">+</span>
+                        </summary>
+                        <div class="sched-faq__body">
+                            Bachata ist von Natur aus romantisch und intim. Warme Rhythmen und oft sinnliche Liedtexte
+                            erzählen von Liebe, Vertrauen und Verbundenheit. Die enge Paararbeit und fliessenden
+                            Bewegungen machen den Tanz zu einer wunderschönen Möglichkeit, eure gemeinsame Geschichte
+                            zu erzählen und euch auf der Tanzfläche trotzdem natürlich und persönlich zu fühlen.
+                        </div>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <!-- Inquiry band -->
+        <section class="service-inquiry">
+            <div class="container">
+                <h2 class="service-inquiry__title">Bereit für euren ersten Tanz?</h2>
+                <p class="service-inquiry__copy">Bucht eine Beratung &mdash; wir hören uns euren Song an, nehmen eure
+                    Vision auf und erstellen gemeinsam den Plan.</p>
+                <a href="contact" class="service-inquiry__cta">Beratung buchen</a>
             </div>
         </section>
 
@@ -414,6 +493,9 @@
                 <p class="footer-address">
                     Hermetschloostrasse 73,<br>
                     8048 Zurich Altstetten<br> 2 Minuten zu Fuss von Tram 2 und Bus 31 Haltestelle
+                </p>
+                <p class="footer-contact">
+                    <a href="https://wa.me/41799668481" target="_blank" rel="noopener noreferrer">WhatsApp: +41 79 966 84 81</a>
                 </p>
                 <div class="footer-socials">
                     <a href="https://www.instagram.com/axcent_dance/" target="_blank" aria-label="Instagram">
@@ -435,10 +517,12 @@
             <div class="footer-col">
                 <h2 class="footer-heading">Schnellzugriff</h2>
                 <ul class="footer-links">
+                    <li><a href="/de/#trial-form">Kostenlose Probelektion buchen</a></li>
                     <li><a href="guide-bachata">Was ist Bachata</a></li>
                     <li><a href="blog/roots-of-bachata">Wurzeln des Bachatas</a></li>
                     <li><a href="schedule">Stundenplan</a></li>
                     <li><a href="blog">Unser Blog</a></li>
+                    <li><a href="https://www.google.com/maps?cid=15680757943659417558" target="_blank" rel="noopener noreferrer">Lies unsere Google-Bewertungen</a></li>
 
                 </ul>
             </div>
@@ -453,37 +537,27 @@
             </div>
         </div>
 
-        <div class="container footer-map-full" style="margin-bottom: 2rem;">
-            <h2 class="footer-heading" style="margin-bottom: 1rem;">Finde uns</h2>
-            <div class="footer-map-wrapper-large"
-                style="border-radius: 12px; overflow: hidden; border: 1px solid var(--glass-border);">
-                <iframe title="Google Maps Standort von AXcent Dance"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2701.365!2d8.472010!3d47.394204!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47900b995a7d8e03%3A0xd99d3e4500b44fd6!2sAXcent%20Dance%20%7C%20Bachata%20Classes!5e0!3m2!1sen!2sch!4v1710680000000!5m2!1sde!2sch&hl=de"
-                    width="100%" height="250" style="border:0; width: 100%; display: block;" allowfullscreen=""
-                    loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
+        <div class="container footer-map-full">
+            <h2 class="footer-heading footer-map-full__heading">Finde uns</h2>
+            <a class="footer-map-card" href="https://www.google.com/maps?cid=15680757943659417558" target="_blank"
+                rel="noopener noreferrer" aria-label="AXcent Dance Studio-Standort in Google Maps öffnen">
+                <span class="footer-map-card__pin" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                        <circle cx="12" cy="10" r="3" />
+                    </svg>
+                </span>
+                <span class="footer-map-card__address">Hermetschloostrasse 73, 8048 Zurich Altstetten</span>
+                <span class="footer-map-card__hint">2 Minuten von Tram 2 und Bus 31 · In Google Maps öffnen</span>
+            </a>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2025 AXcent Dance. Alle Rechte vorbehalten.</p>
+            <p>&copy; 2026 AXcent Dance. Alle Rechte vorbehalten.</p>
         </div>
     </footer>
 
     <script src="../script.js?v=5.8"></script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

@@ -20,8 +20,7 @@
     <meta name="twitter:title" content="Teambuilding Tanzen Zürich | Firmenevents &amp; Workshops">
     <meta name="twitter:description" content="Planen Sie Teambuilding Tanzen in Zürich. Wir bieten Tanzworkshops, Show-Acts und Unterhaltung für Firmenevents und Team-Anlässe.">
     <meta name="twitter:image" content="https://axcentdance.com/assets/images/hero_new.jpg">
-    <meta property="og:description"
-        content="Planen Sie Teambuilding Tanzen in Zürich. Wir bieten Tanzworkshops, Show-Acts und Unterhaltung für Firmenevents und Team-Anlässe.">
+    <meta property="og:description" content="Planen Sie Teambuilding Tanzen in Zürich. Wir bieten Tanzworkshops, Show-Acts und Unterhaltung für Firmenevents und Team-Anlässe.">
     <meta property="og:locale" content="de_CH">
     <meta http-equiv="Content-Security-Policy"
         content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://cdn.jsdelivr.net https://connect.facebook.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com https://placehold.co https://*.googleapis.com https://*.gstatic.com https://www.facebook.com https://connect.facebook.net; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://script.google.com https://formsubmit.co https://www.facebook.com https://connect.facebook.net; frame-src 'self' https://www.google.com; object-src 'none'; base-uri 'self'; media-src 'self' blob:; worker-src 'self' blob:;">
@@ -30,191 +29,11 @@
     <!-- Styles -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@200..900&family=Outfit:wght@500;600;700;800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Teko:wght@300..700&display=swap">
     <link rel="stylesheet" href="../style.css?v=2.3">
+    <link rel="stylesheet" href="../tropic-noir.css?v=5.14">
     <link rel="apple-touch-icon" href="/apple-touch-icon-v2.png">
     <link rel="icon" href="/favicon-axcent-transparent.svg" type="image/svg+xml">
 
 
-    <style>
-        .corporate-hero {
-            padding: calc(var(--header-height) + 40px) 20px 80px;
-            text-align: center;
-            background: linear-gradient(to bottom, rgba(5, 2, 8, 0.8), var(--bg-main)), url('../assets/images/hero_new.webp') !important;
-            background-size: cover;
-            background-position: center;
-        }
-
-        .section-container {
-            max-width: 1200px;
-            /* Expanded for Bento */
-            margin: 0 auto;
-            padding: 4rem 20px;
-        }
-
-        /* BENTO GRID SYSTEM */
-        .bento-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
-            margin-bottom: 4rem;
-        }
-
-        @media (min-width: 900px) {
-            .bento-grid {
-                grid-template-columns: repeat(3, 1fr);
-                grid-auto-rows: minmax(300px, auto);
-                /* Consistent height */
-            }
-
-            .bento-span-2 {
-                grid-column: span 2;
-            }
-
-            .bento-row-span-2 {
-                grid-row: span 2;
-            }
-        }
-
-        .bento-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            padding: 2.5rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .bento-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(255, 59, 48, 0.3);
-            background: rgba(255, 255, 255, 0.05);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        }
-
-        .bento-card h3 {
-            font-size: 1.75rem;
-            color: white;
-            margin-bottom: 1rem;
-            font-family: var(--font-heading);
-        }
-
-        .bento-card p {
-            color: var(--text-muted);
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
-        }
-
-        .bento-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-            display: inline-block;
-            padding: 10px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 12px;
-        }
-
-        /* Feature Image in Bento */
-        .bento-card-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            position: absolute;
-            top: 0;
-            left: 0;
-            opacity: 0.4;
-            transition: transform 0.5s ease;
-            z-index: 0;
-        }
-
-        .bento-card:hover .bento-card-image {
-            transform: scale(1.05);
-            opacity: 0.5;
-        }
-
-        .bento-content {
-            position: relative;
-            z-index: 2;
-        }
-
-        /* CTA as Bento Card */
-        .bento-cta {
-            background: linear-gradient(135deg, rgba(20, 10, 30, 0.8), rgba(255, 59, 48, 0.1));
-            border: 1px solid rgba(255, 59, 48, 0.3);
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-        }
-
-        .bento-cta:hover {
-            box-shadow: 0 0 30px rgba(255, 59, 48, 0.15);
-            border-color: var(--accent-start);
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-bottom: 4rem;
-        }
-
-        .service-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            padding: 2rem;
-            text-align: center;
-            transition: transform 0.3s ease;
-        }
-
-        .service-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent-start);
-        }
-
-        .service-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            display: block;
-        }
-
-        .service-card h3 {
-            font-size: 1.5rem;
-            color: white;
-            margin-bottom: 1rem;
-            font-family: var(--font-heading);
-        }
-
-        .service-card p {
-            color: var(--text-muted);
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
-        }
-
-        .cta-box {
-            background: linear-gradient(45deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
-            border-radius: 20px;
-            padding: 3rem;
-            text-align: center;
-            margin-top: 4rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cta-box::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at top right, rgba(255, 59, 48, 0.1), transparent 60%);
-            pointer-events: none;
-        }
-    </style>
 
     <!-- Cookie Consent -->
 
@@ -227,8 +46,8 @@
 
         gtag('config', 'G-E2SYCF7R7X');
     </script>
-    
-    
+
+
     <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -241,6 +60,7 @@
       "isPartOf": {
         "@id": "https://axcentdance.com/#website"
       },
+      "inLanguage": "de",
       "about": {
         "@id": "https://axcentdance.com/#organization"
       },
@@ -287,7 +107,7 @@
       "url": "https://axcentdance.com/",
       "logo": "https://axcentdance.com/assets/images/logo.webp",
       "image": "https://axcentdance.com/assets/images/hero_new.webp",
-      "description": "AXcent Dance is a Bachata dance school in Zurich Altstetten offering Bachata Sensual, Dominican Bachata, Salsa, and Latin dance classes for all levels.",
+      "description": "AXcent Dance ist eine Bachata-Tanzschule in Zürich Altstetten mit Kursen in Bachata Sensual, Dominican Bachata, Salsa und Latin Dance für alle Niveaus.",
       "telephone": "+41799668481",
       "email": "info@axcentdance.com",
       "hasMap": "https://www.google.com/maps?cid=15680757943659417558",
@@ -366,15 +186,15 @@
   <!-- End Meta Pixel Code -->
   </head>
 
-<body>
+<body class="tropic service-page corporate-page nav-declutter">
 
     <!-- Navigation Bar -->
     <header class="main-header">
-    <div class="container navbar">
-      <a href="./" class="logo">
-        <span class="logo-title">AXcent</span><span class="logo-subtitle text-gradient">DANCE</span>
-      </a>
-      <button class="mobile-menu-btn" aria-label="Toggle menu">
+        <div class="container navbar">
+            <a href="./" class="logo">
+                <span class="logo-title">AXcent</span><span class="logo-subtitle text-gradient">DANCE</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Toggle menu">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"
                     stroke-linecap="round" stroke-linejoin="round">
                     <line x1="3" y1="12" x2="21" y2="12" class="line-middle"></line>
@@ -382,29 +202,31 @@
                     <line x1="3" y1="18" x2="21" y2="18" class="line-bottom"></line>
                 </svg>
             </button>
-      <nav class="nav-links">
-        <a href="./">Home</a>
+            <nav class="nav-links">
+        <a href="./" class="nav-home">Home</a>
         <a href="about">Über uns</a>
-        <a href="schedule">Unsere Kurse</a>
-        <a href="events">Events</a>
-        <a href="contact">Kontakt</a>
+                <a href="schedule">Unsere Kurse</a>
+                <a href="registration">Preise &amp; Anmeldung</a>
+                <a href="events">Events</a>
+                <a href="contact" class="nav-contact-item">Kontakt</a>
+                <a href="portal" class="nav-portal-item">Login</a>
 
-        <div class="dropdown">
-          <button class="dropbtn">Mehr ▾</button>
-          <div class="dropdown-content">
-            <a href="room-rental"><span>Raumvermietung</span></a>
-            <a href="corporate-events"><span>Firmenevents</span></a>
-            <a href="wedding-dance"><span>Hochzeitstanz</span></a>
-            <a href="private-lessons"><span>Privatstunden</span></a>
-            <a href="gallery"><span>Galerie</span></a>
-            <a href="education"><span>Ausbildung</span></a>
-            <a href="beginner-guide"><span>Anfänger Guide</span></a>
-            <a href="blog"><span>Blog</span></a>
-            <a href="faq"><span>FAQ</span></a>
-            <a href="etiquette"><span>Tanzetikette</span></a>
-            <a href="portal"><span>Login</span></a>
-          </div>
-        </div>
+                <div class="dropdown">
+                    <button class="dropbtn">Mehr ▾</button>
+                    <div class="dropdown-content">
+                        <a href="room-rental"><span>Raumvermietung</span></a>
+                        <a href="corporate-events"><span>Firmenevents</span></a>
+                        <a href="wedding-dance"><span>Hochzeitstanz</span></a>
+                        <a href="private-lessons"><span>Privatstunden</span></a>
+                        <a href="gallery"><span>Galerie</span></a>
+                        <a href="education"><span>Ausbildung</span></a>
+                        <a href="beginner-guide"><span>Anfänger Guide</span></a>
+                        <a href="blog"><span>Blog</span></a>
+                        <a href="faq"><span>FAQ</span></a>
+                        <a href="etiquette"><span>Tanzetikette</span></a>
+                        <a href="contact" class="nav-contact-dropdown"><span>Kontakt</span></a>
+                    </div>
+                </div>
         <a href="/de/#trial-form" class="btn-header-cta">Probelektion buchen</a>
       </nav>
       <div class="lang-switch">
@@ -412,25 +234,39 @@
           <span class="divider">|</span>
           <span class="active">DE</span>
         </div>
-      
-    </div>
-  </header>
+      <div class="header-login">
+        <a href="portal" class="header-login__link header-login__link--icon" aria-label="Login" title="Login">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 21a8 8 0 0 0-16 0"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+        </a>
+      </div>
+
+        </div>
+    </header>
 
     <main>
 
-        <!-- Hero Section -->
-        <section class="corporate-hero">
-            <div class="container">
-
-                <div class="hero-badge">
-                    <span class="hero-badge-line"></span>
-                    <span class="hero-badge-text">FIRMEN & PRIVAT</span>
-                    <span class="hero-badge-line"></span>
+        <!-- Kopfbereich -->
+        <section class="split-masthead">
+            <div class="container split-masthead__split">
+                <span class="split-masthead__ghost" aria-hidden="true">Team</span>
+                <div class="split-masthead__copy">
+                    <p class="split-masthead__kicker">Firmen &amp; Privat</p>
+                    <h1 class="page-title split-masthead__title">Firmenevents &amp; Teambuilding Zürich</h1>
+                    <p class="split-masthead__dek">
+                        Ihr Partner für einzigartige Firmenausflüge, Personalfeiern und professionelles
+                        Unternehmens-Entertainment.
+                    </p>
                 </div>
-                <h1 class="page-title">Firmenevents & Teambuilding Zürich</h1>
-                <p class="hero-desc-border" style="border: none; padding: 0;">
-                    Ihr Partner für einzigartige Firmenausflüge, Personalfeiern und professionelles Entertainment.
-                </p>
+                <figure class="split-masthead__media">
+                    <img src="../assets/images/corporate_party_natural_1200w.webp"
+                        srcset="../assets/images/corporate_party_natural_480w.webp 480w, ../assets/images/corporate_party_natural_800w.webp 800w, ../assets/images/corporate_party_natural_1200w.webp 1200w"
+                        sizes="(max-width: 899px) 100vw, 40vw"
+                        alt="Mitarbeitende tanzen gemeinsam bei einer Firmenfeier von AXcent Dance"
+                        width="1200" height="1200" loading="eager" fetchpriority="high">
+                </figure>
             </div>
         </section>
 
@@ -441,18 +277,18 @@
                 <!-- 1. Teambuilding (1x1) -->
                 <div class="bento-card">
                     <div class="bento-content">
-                        <span class="bento-icon">🤝</span>
+                        <span class="service-num">01</span>
                         <h2>Teambuilding-Workshops</h2>
                         <p>
-                            Stärken Sie das Engagement Ihrer Mitarbeiter mit unseren interaktiven Tanzworkshops. Perfekt
-                            als
-                            Eisbrecher, für die mentale Gesundheit und zur Steigerung der Teammoral.
+                            Stärken Sie das Engagement Ihrer Mitarbeitenden mit unseren interaktiven Tanzworkshops.
+                            Perfekt als Eisbrecher, für Tage der mentalen Gesundheit und zur Steigerung der
+                            Teammoral.
                         </p>
                         <ul
                             style="text-align: left; color: var(--text-muted); margin-bottom: 0; list-style-type: none; font-size: 0.9em;">
                             <li>✓ Kommunikation verbessern</li>
                             <li>✓ Teamgeist stärken</li>
-                            <li>✓ Spaß & Verbindung</li>
+                            <li>✓ Pure Freude & Verbindung</li>
                         </ul>
                     </div>
                 </div>
@@ -462,13 +298,14 @@
                     <img src="../assets/images/corporate_party_natural.webp"
                         srcset="../assets/images/corporate_party_natural_480w.webp 480w, ../assets/images/corporate_party_natural_800w.webp 800w, ../assets/images/corporate_party_natural_1200w.webp 1200w"
                         sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px" alt="Company Party Dancing"
-                        width="1024" height="1024" class="bento-card-image">
+                        width="1024" height="1024" class="bento-card-image" loading="lazy">
                     <div class="bento-content">
+                        <span class="service-num">02</span>
                         <h2>Firmenfeiern & Entertainment</h2>
                         <p style="max-width: 60%; text-shadow: 0 2px 4px rgba(0,0,0,0.8);">
                             Suchen Sie <strong>Ideen für die Weihnachtsfeier</strong> oder <strong>Show-Acts</strong>?
-                            Wir bieten
-                            professionelle Tänzer, Animation und DJ-Service für einen unvergesslichen Abend.
+                            Wir stellen professionelle Tänzerinnen und Tänzer, Publikumsanimation und DJ-Service für
+                            einen unvergesslichen Abend bereit.
                         </p>
                         <ul
                             style="text-align: left; color: rgba(255,255,255,0.9); margin-bottom: 0; list-style-type: none; font-size: 0.9em; text-shadow: 0 2px 4px rgba(0,0,0,0.8);">
@@ -479,27 +316,22 @@
                     </div>
                 </div>
 
-                <!-- 3. Plan Your Event (Full Width) -->
-                <div class="bento-card bento-cta" style="grid-column: 1 / -1;">
-                    <div class="bento-content">
-                        <h2 style="font-size: 2rem; margin-bottom: 0.5rem; color: white;">Eventlocation & Planung
-                        </h2>
-                        <p
-                            style="color: var(--text-muted); margin-bottom: 1.5rem; max-width: 800px; margin-left: auto; margin-right: auto;">
-                            Suchen Sie eine <strong>Eventlocation in Zürich</strong>? Erzählen Sie uns von Ihrem Event
-                            (Teambuilding,
-                            Firmenfeier oder Privatparty), Datum und Größe. Wenn Sie den Raum selbst benötigen, bietet
-                            unsere <a href="room-rental" style="color: var(--accent-start);">Raumvermietung</a> ein flexibles Studio-Umfeld. Wir schaffen die perfekte Atmosphäre.
-                        </p>
-                        <a href="mailto:info@axcentdance.com?subject=Corporate%20Event%20Inquiry"
-                            class="btn-hero btn-hero-primary"
-                            style="background: rgba(255, 59, 48, 0.15); border: 1px solid var(--accent-start); padding: 1rem 2rem;">
-                            Offerte anfragen
-                        </a>
-                    </div>
-                </div>
             </div>
         </section>
+
+        <!-- Inquiry band -->
+        <section class="service-inquiry">
+            <div class="container">
+                <h2 class="service-inquiry__title">Planen Sie Ihr Event mit uns</h2>
+                <p class="service-inquiry__copy">Erzählen Sie uns von Ihrem Event &mdash; Teambuilding, Firmenfeier
+                    oder eine private Feier &mdash; mit Datum und Gruppengrösse, und wir senden Ihnen eine Offerte.
+                    Benötigen Sie lediglich den Raum, bietet Ihnen unsere <a href="room-rental">Raumvermietung</a>
+                    ein flexibles Studio-Umfeld.</p>
+                <a href="mailto:info@axcentdance.com?subject=Corporate%20Event%20Inquiry"
+                    class="service-inquiry__cta">Offerte anfragen</a>
+            </div>
+        </section>
+
 
     </main>
 
@@ -511,6 +343,9 @@
                 <p class="footer-address">
                     Hermetschloostrasse 73,<br>
                     8048 Zurich Altstetten<br> 2 Minuten zu Fuss von Tram 2 und Bus 31 Haltestelle
+                </p>
+                <p class="footer-contact">
+                    <a href="https://wa.me/41799668481" target="_blank" rel="noopener noreferrer">WhatsApp: +41 79 966 84 81</a>
                 </p>
                 <div class="footer-socials">
                     <a href="https://www.instagram.com/axcent_dance/" target="_blank" aria-label="Instagram">
@@ -532,10 +367,12 @@
             <div class="footer-col">
                 <h2 class="footer-heading">Schnellzugriff</h2>
                 <ul class="footer-links">
+                    <li><a href="/de/#trial-form">Kostenlose Probelektion buchen</a></li>
                     <li><a href="guide-bachata">Was ist Bachata</a></li>
                     <li><a href="blog/roots-of-bachata">Wurzeln des Bachatas</a></li>
                     <li><a href="schedule">Stundenplan</a></li>
                     <li><a href="blog">Unser Blog</a></li>
+                    <li><a href="https://www.google.com/maps?cid=15680757943659417558" target="_blank" rel="noopener noreferrer">Lies unsere Google-Bewertungen</a></li>
 
                 </ul>
             </div>
@@ -550,37 +387,27 @@
             </div>
         </div>
 
-        <div class="container footer-map-full" style="margin-bottom: 2rem;">
-            <h2 class="footer-heading" style="margin-bottom: 1rem;">Finde uns</h2>
-            <div class="footer-map-wrapper-large"
-                style="border-radius: 12px; overflow: hidden; border: 1px solid var(--glass-border);">
-                <iframe title="Google Maps Standort von AXcent Dance"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2701.365!2d8.472010!3d47.394204!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47900b995a7d8e03%3A0xd99d3e4500b44fd6!2sAXcent%20Dance%20%7C%20Bachata%20Classes!5e0!3m2!1sen!2sch!4v1710680000000!5m2!1sde!2sch&hl=de"
-                    width="100%" height="250" style="border:0; width: 100%; display: block;" allowfullscreen=""
-                    loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
+        <div class="container footer-map-full">
+            <h2 class="footer-heading footer-map-full__heading">Finde uns</h2>
+            <a class="footer-map-card" href="https://www.google.com/maps?cid=15680757943659417558" target="_blank"
+                rel="noopener noreferrer" aria-label="AXcent Dance Studio-Standort in Google Maps öffnen">
+                <span class="footer-map-card__pin" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                        <circle cx="12" cy="10" r="3" />
+                    </svg>
+                </span>
+                <span class="footer-map-card__address">Hermetschloostrasse 73, 8048 Zurich Altstetten</span>
+                <span class="footer-map-card__hint">2 Minuten von Tram 2 und Bus 31 · In Google Maps öffnen</span>
+            </a>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2025 AXcent Dance. Alle Rechte vorbehalten.</p>
+            <p>&copy; 2026 AXcent Dance. Alle Rechte vorbehalten.</p>
         </div>
     </footer>
 
     <script src="../script.js?v=5.8"></script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

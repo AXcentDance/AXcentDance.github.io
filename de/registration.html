@@ -939,15 +939,20 @@
                             </div>
                         </div>
 
-                        <div class="form-group" style="margin-top: 2rem;">
-                            <label for="dates_unavailable"
-                                style="line-height: 1.4; display: block; margin-bottom: 0.5rem;">
+                        <div class="form-group" style="margin-top: 2rem;" id="absenceDaysGroup">
+                            <label style="line-height: 1.4; display: block; margin-bottom: 0.5rem;">
                                 Dein Pass ist 8 Wochen lang gültig. Wenn du schon Tage kennst, an denen du nicht
-                                teilnehmen kannst (z.B. Ferien), schreibe sie hier, damit wir deinen Pass mit dir
-                                planen können. (Gilt nicht für den 10er Pass)
+                                teilnehmen kannst (z.B. Ferien), füge sie hier hinzu, damit wir deinen Pass mit dir
+                                planen können. <strong>Geplante Abwesenheiten können nach der Anmeldung nicht mehr
+                                hinzugefügt werden</strong> — später bietet dein Portal Krankheitstage am selben Tag
+                                und Pass-Pausen für längere Auszeiten.
                             </label>
-                            <textarea id="dates_unavailable" name="dates_unavailable" rows="2"
-                                placeholder="z.B. 25. Dez, 1. Jan..."></textarea>
+                            <div id="absenceDaysList"></div>
+                            <button type="button" id="addAbsenceDay"
+                                style="background: transparent; border: 1px dashed rgba(157, 180, 171, 0.45); border-radius: 10px; color: var(--text-muted); padding: 10px 18px; font-size: 0.9rem; cursor: pointer;">
+                                + Tag hinzufügen
+                            </button>
+                            <input type="hidden" id="dates_unavailable" name="dates_unavailable">
                         </div>
                     </div>
 
@@ -1305,6 +1310,63 @@
     <script>
 
         document.addEventListener('DOMContentLoaded', () => {
+            // Geplante Abwesenheitstage: bis zu zwei Datumseinträge, auf
+            // Wunsch eingeblendet. Das versteckte dates_unavailable-Feld hält
+            // die bestehende Übermittlung (Supabase + Sheets) unverändert.
+            (function () {
+                const group = document.getElementById('absenceDaysGroup');
+                const list = document.getElementById('absenceDaysList');
+                const addBtn = document.getElementById('addAbsenceDay');
+                const hidden = document.getElementById('dates_unavailable');
+                if (!group || !list || !addBtn || !hidden) return;
+                const MAX_DAYS = 2;
+
+                const sync = () => {
+                    const values = [...list.querySelectorAll('input[type="date"]')]
+                        .map(i => i.value).filter(Boolean);
+                    hidden.value = values.join(', ');
+                    addBtn.style.display = list.children.length >= MAX_DAYS ? 'none' : '';
+                };
+
+                addBtn.addEventListener('click', () => {
+                    if (list.children.length >= MAX_DAYS) return;
+                    const row = document.createElement('div');
+                    row.style.cssText = 'display: flex; align-items: center; gap: 10px; margin-bottom: 8px;';
+
+                    const input = document.createElement('input');
+                    input.type = 'date';
+                    input.style.cssText = 'max-width: 230px;';
+                    const now = new Date();
+                    input.min = now.getFullYear() + '-' +
+                        String(now.getMonth() + 1).padStart(2, '0') + '-' +
+                        String(now.getDate()).padStart(2, '0');
+                    if (window.axcentPassEndISO) input.max = window.axcentPassEndISO;
+                    input.addEventListener('change', sync);
+
+                    const rm = document.createElement('button');
+                    rm.type = 'button';
+                    rm.textContent = '×';
+                    rm.setAttribute('aria-label', 'Tag entfernen');
+                    rm.style.cssText = 'background: transparent; border: 1px solid rgba(157, 180, 171, 0.35); border-radius: 8px; color: var(--text-muted); width: 34px; height: 34px; font-size: 1.1rem; line-height: 1; cursor: pointer; flex-shrink: 0;';
+                    rm.addEventListener('click', () => { row.remove(); sync(); });
+
+                    row.append(input, rm);
+                    list.append(row);
+                    sync();
+                });
+
+                // Geplante Abwesenheiten gelten nicht für das flexible Abo.
+                const toggleForPackage = () => {
+                    const flex = [...document.querySelectorAll('input[name="package"]')]
+                        .some(r => r.checked && r.value === '10-Class Flexible Package');
+                    group.style.display = flex ? 'none' : '';
+                    if (flex) { list.innerHTML = ''; sync(); }
+                };
+                document.querySelectorAll('input[name="package"]').forEach(r =>
+                    r.addEventListener('change', toggleForPackage));
+                toggleForPackage();
+            })();
+
             // Role Selection Logic - MOVED TO SCRIPT.JS
 
             // Form Validation & Submission
@@ -1364,7 +1426,7 @@
                             // Pre-fill email to ensure webhook matching
                             const userEmail = formData.get('email');
                             if (userEmail) {
-                                stripeLink += '?prefilled_email=' + encodeURIComponent(userEmail) + '&client_reference_id=' + encodeURIComponent(userEmail);
+                                stripeLink += '?prefilled_email=' + encodeURIComponent(userEmail);
                             }
                         } else {
                             alert("Invalid package selection.");

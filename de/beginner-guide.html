@@ -20,439 +20,25 @@
     <meta name="twitter:title" content="Bachata Anfänger Guide Zürich — Deine erste Tanzstunde | AXcent Dance">
     <meta name="twitter:description" content="Noch nie getanzt? Unser Anfänger Guide erklärt alles für deine erste Bachata Stunde in Zürich: Kleidung, Schuhe, Etikette. Kein Partner nötig.">
     <meta name="twitter:image" content="https://axcentdance.com/assets/images/bachata_class_zurich_1200w.jpg">
-    <meta property="og:description"
-        content="Noch nie getanzt? Unser Anfänger Guide erklärt alles für deine erste Bachata Stunde in Zürich: Kleidung, Schuhe, Etikette. Kein Partner nötig.">
+    <meta property="og:description" content="Noch nie getanzt? Unser Anfänger Guide erklärt alles für deine erste Bachata Stunde in Zürich: Kleidung, Schuhe, Etikette. Kein Partner nötig.">
     <meta property="og:locale" content="de_CH">
     <meta http-equiv="Content-Security-Policy"
         content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://cdn.jsdelivr.net https://connect.facebook.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com https://placehold.co https://*.googleapis.com https://*.gstatic.com https://www.facebook.com https://connect.facebook.net; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://script.google.com https://formsubmit.co https://www.facebook.com https://connect.facebook.net; frame-src 'self' https://www.google.com; object-src 'none'; base-uri 'self'; media-src 'self' blob:; worker-src 'self' blob:;">
 
 
     <!-- Styles -->
-    <link rel="stylesheet" href="../style.css?v=2.3">
+    <link rel="stylesheet" href="../style.css?v=9.2">
+    <link rel="stylesheet" href="../tropic-noir.css?v=5.3">
+    <link rel="preload" as="image" href="../assets/images/bachata_class_zurich_800w.webp"
+        imagesrcset="../assets/images/bachata_class_zurich_480w.webp 480w, ../assets/images/bachata_class_zurich_800w.webp 800w, ../assets/images/bachata_class_zurich_1200w.webp 1200w"
+        imagesizes="(max-width: 900px) 92vw, 42vw" fetchpriority="high">
     <link rel="apple-touch-icon" href="/apple-touch-icon-v2.png">
     <link rel="icon" href="/favicon-axcent-transparent.svg" type="image/svg+xml">
     <!-- Import Outfit font for modern headings -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@200..900&family=Outfit:wght@500;600;700;800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Teko:wght@300..700&display=swap">
 
 
-    <style>
-        /* Modern Variables */
-        :root {
-            --font-display-modern: 'Outfit', sans-serif;
-            --glass-card-bg: rgba(255, 255, 255, 0.03);
-            --glass-card-border: rgba(255, 255, 255, 0.08);
-            --glass-card-hover: rgba(255, 255, 255, 0.06);
-            --accent-glow: rgba(224, 93, 68, 0.3);
-        }
-
-        /* 1. Immersive Hero */
-        .guide-modern-hero {
-            position: relative;
-            min-height: 60vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            overflow: hidden;
-            background: #050208;
-            padding-top: 80px;
-            /* Header clearance */
-        }
-
-        .hero-bg-image {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0.4;
-            filter: grayscale(30%) contrast(1.1);
-            z-index: 0;
-        }
-
-        .hero-gradient-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom,
-                    rgba(5, 2, 8, 0.7) 0%,
-                    rgba(5, 2, 8, 0.4) 50%,
-                    #050208 100%);
-            z-index: 1;
-        }
-
-        .hero-content-modern {
-            position: relative;
-            z-index: 2;
-            max-width: 800px;
-            padding: 2rem;
-        }
-
-        .modern-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 0.5rem 1.2rem;
-            border-radius: 100px;
-            margin-bottom: 2rem;
-            animation: fadeInDown 0.8s ease-out;
-        }
-
-        .modern-badge-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: var(--accent-start);
-            box-shadow: 0 0 10px var(--accent-start);
-            animation: pulse 2s infinite;
-        }
-
-        .modern-badge-text {
-            color: #fff;
-            font-family: var(--font-display-modern);
-            font-weight: 600;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-        }
-
-        .hero-title-modern {
-            font-family: var(--font-display-modern);
-            font-weight: 800;
-            font-size: clamp(3rem, 8vw, 6rem);
-            line-height: 1;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, #fff 0%, #ccc 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            animation: fadeInUp 1s ease-out 0.2s backwards;
-        }
-
-        .hero-subtitle-modern {
-            font-size: 1.25rem;
-            color: rgba(255, 255, 255, 0.8);
-            max-width: 600px;
-            margin: 0 auto;
-            line-height: 1.6;
-            font-weight: 300;
-            animation: fadeInUp 1s ease-out 0.4s backwards;
-        }
-
-        /* 2. Layout & Sticky Nav */
-        .modern-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 4rem 2rem;
-            display: grid;
-            grid-template-columns: 250px 1fr;
-            /* Fixed Sidebar + Content */
-            gap: 4rem;
-            position: relative;
-        }
-
-        @media (max-width: 1024px) {
-            .modern-container {
-                display: block;
-                padding: 2rem 1rem;
-            }
-        }
-
-        /* Sticky Sidebar */
-        .sidebar-nav {
-            position: sticky;
-            top: 120px;
-            height: auto;
-            max-height: 70vh;
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-        }
-
-        @media (max-width: 1024px) {
-            .sidebar-nav {
-                display: none;
-                /* Can augment with horizontal scroll if needed, simpler to hide on mobile for now */
-            }
-        }
-
-        .nav-link-modern {
-            padding: 0.75rem 1rem;
-            color: rgba(255, 255, 255, 0.5);
-            text-decoration: none;
-            font-family: var(--font-display-modern);
-            font-size: 1rem;
-            border-left: 2px solid transparent;
-            transition: all 0.3s ease;
-        }
-
-        .nav-link-modern:hover,
-        .nav-link-modern.active {
-            color: #fff;
-            border-left-color: var(--accent-start);
-            background: linear-gradient(90deg, rgba(255, 255, 255, 0.03), transparent);
-        }
-
-        /* Content Sections */
-        .guide-article-section {
-            margin-bottom: 6rem;
-            scroll-margin-top: 120px;
-        }
-
-        .section-header-modern {
-            margin-bottom: 2rem;
-            border-left: 4px solid var(--accent-start);
-            padding-left: 1.5rem;
-        }
-
-        .section-header-modern h2 {
-            font-family: var(--font-display-modern);
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: #fff;
-            margin: 0;
-        }
-
-        .section-desc {
-            font-size: 1.1rem;
-            color: var(--text-muted);
-            margin-top: 0.5rem;
-            line-height: 1.7;
-        }
-
-        /* 3. Premium Cards */
-        .modern-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .premium-card {
-            background: var(--glass-card-bg);
-            border: 1px solid var(--glass-card-border);
-            border-radius: 20px;
-            padding: 2rem;
-            transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .premium-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at top right, var(--accent-glow), transparent 40%);
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-
-        .premium-card:hover {
-            transform: translateY(-5px);
-            background: var(--glass-card-hover);
-            border-color: rgba(255, 255, 255, 0.2);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-        }
-
-        .premium-card:hover::before {
-            opacity: 1;
-        }
-
-        .card-icon-wrapper {
-            width: 56px;
-            height: 56px;
-            border-radius: 16px;
-            background: rgba(255, 255, 255, 0.05);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--accent-start);
-            position: relative;
-            z-index: 1;
-        }
-
-        .card-icon-wrapper svg {
-            width: 28px;
-            height: 28px;
-            stroke-width: 1.5;
-        }
-
-        .card-content {
-            position: relative;
-            z-index: 1;
-        }
-
-        .card-title {
-            font-family: var(--font-display-modern);
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: #fff;
-            margin-bottom: 0.75rem;
-        }
-
-        .card-text {
-            color: rgba(255, 255, 255, 0.7);
-            line-height: 1.6;
-            font-size: 0.95rem;
-            margin-bottom: 0;
-        }
-
-        .card-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            margin-top: 1rem;
-            color: #fff;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
-            opacity: 0.8;
-            transition: opacity 0.2s;
-        }
-
-        .card-link:hover {
-            opacity: 1;
-            color: var(--accent-start);
-        }
-
-        /* Shoe Specifics */
-        .shoe-comparison-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-
-        .shoe-card {
-            background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.05));
-            border-radius: 20px;
-            padding: 2rem;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            text-align: left;
-        }
-
-        .shoe-status {
-            font-size: 0.8rem;
-            font-weight: 800;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            margin-bottom: 1rem;
-            display: inline-block;
-            padding: 0.25rem 0.75rem;
-            border-radius: 100px;
-        }
-
-        .status-yes {
-            background: rgba(16, 185, 129, 0.2);
-            color: #34d399;
-        }
-
-        .status-no {
-            background: rgba(239, 68, 68, 0.2);
-            color: #f87171;
-        }
-
-        .status-warn {
-            background: rgba(245, 158, 11, 0.2);
-            color: #fbbf24;
-        }
-
-        .shoe-name {
-            font-family: var(--font-display-modern);
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #fff;
-            margin-bottom: 0.5rem;
-        }
-
-        /* Roles Visual */
-        .roles-wrapper {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
-        }
-
-        .role-box {
-            flex: 1;
-            min-width: 250px;
-            background: rgba(255, 255, 255, 0.03);
-            padding: 2rem;
-            border-radius: 20px;
-            border-left: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .role-header {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
-
-        .role-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        /* Animations */
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-                box-shadow: 0 0 0 0 rgba(224, 93, 68, 0.7);
-            }
-
-            70% {
-                transform: scale(1);
-                box-shadow: 0 0 0 10px rgba(224, 93, 68, 0);
-            }
-
-            100% {
-                transform: scale(1);
-                box-shadow: 0 0 0 0 rgba(224, 93, 68, 0);
-            }
-        }
-    </style>
-
-    <!-- Schema Markup -->
+        <!-- Schema Markup -->
     <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -480,7 +66,7 @@
       "@id": "https://axcentdance.com/de/beginner-guide#article",
       "headline": "Anfänger Guide: Deine erste Bachata Stunde",
       "datePublished": "2025-10-01T12:00:00+02:00",
-      "dateModified": "2026-07-06T12:00:00+02:00",
+      "dateModified": "2026-07-15T12:00:00+02:00",
       "author": [
         {
           "@id": "https://axcentdance.com/#person1"
@@ -548,7 +134,7 @@
       "url": "https://axcentdance.com/",
       "logo": "https://axcentdance.com/assets/images/logo.webp",
       "image": "https://axcentdance.com/assets/images/hero_new.webp",
-      "description": "AXcent Dance is a Bachata dance school in Zurich Altstetten offering Bachata Sensual, Dominican Bachata, Salsa, and Latin dance classes for all levels.",
+      "description": "AXcent Dance ist eine Bachata-Tanzschule in Zürich Altstetten mit Kursen in Bachata Sensual, Dominican Bachata, Salsa und Latin Dance für alle Niveaus.",
       "telephone": "+41799668481",
       "email": "info@axcentdance.com",
       "hasMap": "https://www.google.com/maps?cid=15680757943659417558",
@@ -625,13 +211,10 @@
   <noscript><img height="1" width="1" style="display:none" alt=""
       src="https://www.facebook.com/tr?id=2846140112392262&ev=PageView&noscript=1" /></noscript>
   <!-- End Meta Pixel Code -->
-  </head>
+</head>
 
-<body>
+<body class="guide-page nav-declutter">
 
-    <!-- Background Elements for smooth vibe -->
-    <div class="blob blob-1" style="opacity: 0.4;"></div>
-    <div class="blob blob-2" style="opacity: 0.4;"></div>
 
     <!-- Navigation Bar -->
     <header class="main-header">
@@ -648,11 +231,13 @@
                 </svg>
             </button>
             <nav class="nav-links">
-        <a href="../">Home</a>
-        <a href="about">Über uns</a>
+                <a href="./" class="nav-home">Home</a>
+                <a href="about">Über uns</a>
                 <a href="schedule">Unsere Kurse</a>
+                <a href="registration">Preise &amp; Anmeldung</a>
                 <a href="events">Events</a>
-                <a href="contact">Kontakt</a>
+                <a href="contact" class="nav-contact-item">Kontakt</a>
+                <a href="portal" class="nav-portal-item">Login</a>
 
                 <div class="dropdown">
                     <button class="dropbtn">Mehr ▾</button>
@@ -667,238 +252,255 @@
                         <a href="blog"><span>Blog</span></a>
                         <a href="faq"><span>FAQ</span></a>
                         <a href="etiquette"><span>Tanzetikette</span></a>
-                        <a href="portal"><span>Login</span></a>
+                        <a href="contact" class="nav-contact-dropdown"><span>Kontakt</span></a>
                     </div>
                 </div>
-        <a href="/de/#trial-form" class="btn-header-cta">Probelektion buchen</a>
-      </nav>
-      <div class="lang-switch">
-          <a href="../beginner-guide">EN</a>
-          <span class="divider">|</span>
-          <span class="active">DE</span>
-        </div>
-      
+                <a href="/de/#trial-form" class="btn-header-cta">Probelektion buchen</a>
+            </nav>
+            <div class="lang-switch">
+                <a href="../beginner-guide">EN</a>
+                <span class="divider">|</span>
+                <span class="active">DE</span>
+            </div>
+      <div class="header-login">
+        <a href="portal" class="header-login__link header-login__link--icon" aria-label="Login" title="Login">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 21a8 8 0 0 0-16 0"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+        </a>
+      </div>
+
         </div>
     </header>
 
     <main>
 
-        <!-- 1. Hero Section -->
-        <section class="guide-modern-hero">
-            <!-- Background Image (SEO) -->
-            <img src="../assets/images/bachata_class_zurich.webp"
-                srcset="../assets/images/bachata_class_zurich_480w.webp 480w, ../assets/images/bachata_class_zurich_800w.webp 800w, ../assets/images/bachata_class_zurich_1200w.webp 1200w"
-                sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px" alt="Bachata Classes in Zurich"
-                width="1024" height="1024" class="hero-bg-image">
-            <div class="hero-gradient-overlay"></div>
-
-            <div class="hero-content-modern">
-
-                <div class="modern-badge">
-                    <div class="modern-badge-dot"></div>
-                    <span class="modern-badge-text">Anfänger Ressourcen</span>
+        <!-- 1. Editorial masthead: lesson copy left, class photo right -->
+        <section class="guide-masthead" aria-label="Einführung in den Anfänger Guide">
+            <div class="container guide-masthead__grid">
+                <div class="guide-masthead__copy">
+                    <span class="guide-masthead__ghost" aria-hidden="true">Lektion Eins</span>
+                    <p class="guide-masthead__kicker" data-guide-kicker>Anfänger-Ressourcen</p>
+                    <h1 class="guide-masthead__title" data-guide-title>Deine Erste <em class="title-accent">Bachata</em>-Stunde</h1>
+                    <p class="guide-masthead__dek" data-guide-dek>
+                        Ein neues Hobby zu beginnen kann aufregend sein. Hier findest du alles, was du wissen musst,
+                        um dich sicher zu fühlen, neue Menschen kennenzulernen und auf der Tanzfläche fit zu werden.
+                    </p>
+                    <ul class="guide-masthead__assurance" data-guide-assurance aria-label="Worüber du dir keine Sorgen machen musst">
+                        <li>Kein Partner nötig</li>
+                        <li>Keine Erfahrung nötig</li>
+                        <li>Unterricht auf Englisch</li>
+                    </ul>
                 </div>
-                <h1 class="hero-title-modern">DEINE ERSTE<br>BACHATA STUNDE</h1>
-                <p class="hero-subtitle-modern">
-                    Ein neues Hobby zu starten ist aufregend. Hier ist alles, was du wissen musst, um dich wohlzufühlen,
-                    neue Leute zu treffen und fit zu werden.
-                </p>
-
+                <figure class="guide-masthead__figure" data-guide-figure>
+                    <div class="guide-masthead__media">
+                        <img src="../assets/images/bachata_class_zurich.webp"
+                            srcset="../assets/images/bachata_class_zurich_480w.webp 480w, ../assets/images/bachata_class_zurich_800w.webp 800w, ../assets/images/bachata_class_zurich_1200w.webp 1200w"
+                            sizes="(max-width: 900px) 92vw, 42vw" alt="Bachata-Kurse in Zürich"
+                            width="1024" height="1024" loading="eager" fetchpriority="high">
+                    </div>
+                </figure>
             </div>
         </section>
 
-        <!-- 2. Main Content Grid -->
-        <div class="modern-container">
+        <!-- 2. Count-in rail + chapters -->
+        <div class="guide-shell">
 
-            <!-- Sidebar Navigation -->
-            <aside>
-                <nav class="sidebar-nav">
-                    <a href="#what-to-expect" class="nav-link-modern active">Was dich erwartet</a>
-                    <a href="#shoes" class="nav-link-modern">Tanzschuhe</a>
-                    <a href="#roles" class="nav-link-modern">Rollen</a>
-                    <a href="#hygiene" class="nav-link-modern">Etikette</a>
-      </nav>
-            </aside>
+            <!-- Chapter rail -->
+            <nav class="guide-rail" data-guide-rail aria-label="Guide-Kapitel">
+                <a href="#what-to-expect" class="guide-rail__link is-active">
+                    <span class="guide-rail__num" aria-hidden="true">01</span>
+                    <span class="guide-rail__label">Was dich erwartet</span>
+                </a>
+                <a href="#shoes" class="guide-rail__link">
+                    <span class="guide-rail__num" aria-hidden="true">02</span>
+                    <span class="guide-rail__label">Tanzschuhe</span>
+                </a>
+                <a href="#roles" class="guide-rail__link">
+                    <span class="guide-rail__num" aria-hidden="true">03</span>
+                    <span class="guide-rail__label">Rollen</span>
+                </a>
+                <a href="#hygiene" class="guide-rail__link">
+                    <span class="guide-rail__num" aria-hidden="true">04</span>
+                    <span class="guide-rail__label">Etikette</span>
+                </a>
+            </nav>
 
-            <!-- Content Area -->
-            <article class="content-area">
+            <!-- Chapters -->
+            <article class="guide-chapters">
 
-                <!-- Section: What to Expect -->
-                <section id="what-to-expect" class="guide-article-section">
-                    <div class="section-header-modern">
-                        <h2>Was dich erwartet</h2>
-                        <p class="section-desc">Das erste Mal in ein Tanzstudio zu gehen kann einschüchternd sein, aber
-                            eine neue Leidenschaft zu finden sollte einfach sein. Tanzen ist der beste Weg, um aktiv zu
-                            bleiben und Leute ausserhalb deines gewohnten Kreises zu treffen. Wenn du bereit bist,
-                            schaue in den <a href="schedule">Bachata-Stundenplan</a>.</p>
-                    </div>
+                <!-- Chapter 01: What to Expect -->
+                <section id="what-to-expect" class="guide-chapter guide-chapter--expect">
+                    <header class="guide-chapter__header">
+                        <span class="guide-chapter__num" aria-hidden="true">01</span>
+                        <h2 class="guide-chapter__title">Was dich erwartet</h2>
+                        <p class="guide-chapter__lede">Zum ersten Mal ein Tanzstudio zu betreten, kann einschüchternd wirken,
+                            eine neue Leidenschaft zu finden sollte es jedoch nicht sein. Tanzen ist eine fantastische
+                            Möglichkeit, aktiv zu bleiben und Menschen ausserhalb deines gewohnten Umfelds
+                            kennenzulernen. Sobald du bereit bist, wirf einen Blick in den <a href="schedule">wöchentlichen Bachata-Stundenplan</a>.</p>
+                    </header>
 
-                    <div class="modern-grid">
-                        <!-- Card 1 -->
-                        <div class="premium-card">
-                            <div class="card-icon-wrapper">
-                                <!-- Shirt Icon -->
-                                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z" />
-                                </svg>
-                            </div>
-                            <div class="card-content">
-                                <h3 class="card-title">Kleidung</h3>
-                                <p class="card-text">Komfort ist wichtig! Trage Kleidung, in der du dich frei bewegen
-                                    kannst.
-                                    Sportkleidung, Leggings oder Freizeitkleidung wie Jeans sind in Ordnung. Vermeide
-                                    alles
-                                    zu Enge.</p>
-                                <a href="blog/what-to-wear-bachata" class="card-link">Ganzen Guide lesen →</a>
-                            </div>
+                    <div class="guide-duo">
+                        <div class="guide-card">
+                            <h3 class="guide-card__title">Kleidung</h3>
+                            <p class="guide-card__text">Komfort ist entscheidend! Trage Kleidung, in der du dich frei
+                                bewegen kannst. Sportkleidung, Leggings oder Freizeitkleidung wie Jeans sind in
+                                Ordnung. Vermeide alles, was zu eng sitzt.</p>
+                            <a href="blog/what-to-wear-bachata" class="guide-card__link">Ganzen Guide lesen →</a>
                         </div>
 
-                        <div class="premium-card">
-                            <div class="card-icon-wrapper">
-                                <!-- Sparkles Icon -->
-                                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z" />
-                                </svg>
-                            </div>
-                            <div class="card-content">
-                                <h3 class="card-title">Hygiene ist der Schlüssel</h3>
-                                <p class="card-text">Wir tanzen mit einer anderen Person. Bitte benutze Deo, bring ein
-                                    Minzbonbon mit und
-                                    vielleicht ein zweites Shirt.</p>
-                            </div>
-                        </div>
-
-                        <div class="premium-card">
-                            <div class="card-icon-wrapper">
-                                <!-- Smile Icon -->
-                                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M15.182 15.182a4.5 4.5 0 01-6.364 0M21 12a9 9 0 11-18 0 9 9 0 0118 0zM9.75 9.75c0 .414-.168.75-.375.75S9 10.164 9 9.75 9.168 9 9.375 9s.375.336.375.75zm-.375 0h.008v.015h-.008V9.75zm5.625 0c0 .414-.168.75-.375.75s-.375-.336-.375-.75.168-.75.375-.75.375.336.375.75zm-.375 0h.008v.015h-.008V9.75z" />
-                                </svg>
-                            </div>
-                            <div class="card-content">
-                                <h3 class="card-title">Sei freundlich</h3>
-                                <p class="card-text">Lächle! Wir sind hier, um Spaß zu haben. Wenn Fehler passieren (und
-                                    das werden sie),
-                                    lach einfach darüber und mach weiter.</p>
-                            </div>
+                        <div class="guide-card">
+                            <h3 class="guide-card__title">Partnerwechsel</h3>
+                            <p class="guide-card__text">In unseren Kursen <strong>empfehlen wir ausdrücklich, die
+                                    Partner zu wechseln</strong>. Das hilft dir, schneller zu lernen und neue Menschen
+                                kennenzulernen. Wenn du lieber mit deinem eigenen Partner bleiben möchtest,
+                                respektieren wir diese Entscheidung.</p>
                         </div>
                     </div>
                 </section>
 
-                <!-- Section: Shoes -->
-                <section id="shoes" class="guide-article-section">
-                    <div class="section-header-modern">
-                        <h2>Schuh-Guide</h2>
-                        <p class="section-desc">Das richtige Werkzeug macht einen großen Unterschied. Schütze deine Knie
-                            und
-                            drehe dich geschmeidig.</p>
-                    </div>
+                <!-- Chapter 02: Shoe Guide (ranked podium) -->
+                <section id="shoes" class="guide-chapter guide-chapter--shoes">
+                    <header class="guide-chapter__header">
+                        <span class="guide-chapter__num" aria-hidden="true">02</span>
+                        <h2 class="guide-chapter__title">Schuh-Guide</h2>
+                        <p class="guide-chapter__lede">Die richtige Ausrüstung macht einen riesigen Unterschied. Schütze
+                            deine Knie und drehe dich geschmeidig.</p>
+                    </header>
 
-                    <div class="shoe-comparison-grid">
+                    <div class="guide-podium">
 
-                        <!-- Street Shoes -->
-                        <div class="shoe-card">
-                            <div class="shoe-status status-no">Nicht Empfohlen</div>
-                            <h3 class="shoe-name">Strassenschuhe</h3>
-                            <p class="card-text">
-                                Schmutzige Sohlen beschädigen den Studioboden. Bitte bring immer ein separates Paar
-                                <strong>saubere Hallenschuhe</strong> mit.
-                            </p>
-                        </div>
-
-                        <!-- Sneakers -->
-                        <div class="shoe-card">
-                            <div class="shoe-status status-yes">Guter Start</div>
-                            <h3 class="shoe-name">Bequeme Sneakers</h3>
-                            <p class="card-text">
-                                Perfekt für deine erste Stunde! Jeder bequeme Hallenschuh funktioniert.
-                            </p>
-                        </div>
-
-                        <!-- Dance Sneakers -->
-                        <div class="shoe-card">
-                            <div class="shoe-status status-yes">Profi Wahl</div>
-                            <h3 class="shoe-name">Tanz-Sneakers</h3>
-                            <p class="card-text">
-                                Es gibt Marken, die auf Tanz-Sneaker spezialisiert sind. Diese sind für Leader und
+                        <div class="guide-step guide-step--pro">
+                            <span class="guide-step__status">Profi-Wahl</span>
+                            <h3 class="guide-step__title">Tanz-Sneakers</h3>
+                            <p class="guide-step__text">
+                                Es gibt Marken, die auf Tanz-Sneakers spezialisiert sind. Diese sind für Leader und
                                 Follower sehr zu empfehlen.
                                 <strong>Frag uns nach einem Promo-Code.</strong>
                             </p>
+                            <span class="guide-step__rank" aria-hidden="true">1</span>
                         </div>
 
-
-                    </div>
-                </section>
-
-                <!-- Section: Roles -->
-                <section id="roles" class="guide-article-section">
-                    <div class="section-header-modern">
-                        <h2>Rollen</h2>
-                        <p class="section-desc">Bachata ist eine Unterhaltung zwischen zwei Personen. Heutzutage kann
-                            jeder jede Rolle wählen.</p>
-                    </div>
-
-                    <div class="roles-wrapper">
-                        <!-- Lead -->
-                        <div class="role-box">
-                            <div class="role-header">
-                                <div class="role-icon">
-                                    <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                                    </svg>
-                                </div>
-                                <h3 class="shoe-name" style="margin:0">Leader</h3>
-                            </div>
-                            <p class="card-text">Führt den Tanz und schlägt Figuren vor. Er ist verantwortlich für
-                                Navigation und Sicherheit.</p>
-                        </div>
-
-                        <!-- Follow -->
-                        <div class="role-box">
-                            <div class="role-header">
-                                <div class="role-icon">
-                                    <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z">
-                                        </path>
-                                    </svg>
-                                </div>
-                                <h3 class="shoe-name" style="margin:0">Follower</h3>
-                            </div>
-                            <p class="card-text">Interpretiert die Signale und fügt den eigenen Stil hinzu.</p>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Section: Hygiene -->
-                <section id="hygiene" class="guide-article-section">
-                    <div class="section-header-modern">
-                        <h2>Etikette & Hygiene</h2>
-                    </div>
-                    <div class="premium-card">
-                        <div class="card-icon-wrapper">
-                            <!-- Sparkles Icon -->
-                            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z" />
-                            </svg>
-                        </div>
-                        <div class="card-content">
-                            <p class="card-text" style="font-size: 1.1rem;">
-                                Tanzen ist eine Aktivität mit engem Kontakt. Bitte achte auf deine Hygiene. Frischer
-                                Atem
-                                (Minzbonbons sind super!), Deo und ein frisches Shirt bewirken viel.
-                                <br><br>
-                                <strong>Bitte kein Kaugummi aus Sicherheitsgründen und aus Respekt gegenüber den Lehrern
-                                    und
-                                    anderen Teilnehmern.</strong>
+                        <div class="guide-step guide-step--yes">
+                            <span class="guide-step__status">Guter Start</span>
+                            <h3 class="guide-step__title">Bequeme Sneakers</h3>
+                            <p class="guide-step__text">
+                                Perfekt für deine erste Stunde! Jeder bequeme Hallenschuh funktioniert.
                             </p>
+                            <span class="guide-step__rank" aria-hidden="true">2</span>
+                        </div>
+
+                        <div class="guide-step guide-step--no">
+                            <span class="guide-step__status">Nicht empfohlen</span>
+                            <h3 class="guide-step__title">Strassenschuhe</h3>
+                            <p class="guide-step__text">
+                                Schmutzige Sohlen beschädigen den Studioboden. Bitte bring immer ein separates Paar
+                                <strong>saubere Hallenschuhe</strong> mit.
+                            </p>
+                            <span class="guide-step__rank" aria-hidden="true">3</span>
+                        </div>
+
+                    </div>
+                </section>
+
+                <!-- Chapter 03: Roles (mirrored panel) -->
+                <section id="roles" class="guide-chapter guide-chapter--roles">
+                    <header class="guide-chapter__header">
+                        <span class="guide-chapter__num" aria-hidden="true">03</span>
+                        <h2 class="guide-chapter__title">Rollen</h2>
+                        <p class="guide-chapter__lede">Bachata ist ein Gespräch zwischen zwei Menschen. Heutzutage darf
+                            jede Person die Rolle wählen, die sie tanzen möchte.</p>
+                    </header>
+
+                    <div class="guide-mirror">
+                        <div class="guide-mirror__half">
+                            <span class="guide-mirror__icon" aria-hidden="true">
+                                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                                </svg>
+                            </span>
+                            <h3 class="guide-mirror__role">Leader</h3>
+                            <p class="guide-mirror__text">Führt den Tanz und schlägt Figuren vor. Verantwortlich für
+                                Orientierung und Sicherheit.</p>
+                        </div>
+
+                        <div class="guide-mirror__half">
+                            <span class="guide-mirror__icon" aria-hidden="true">
+                                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z">
+                                    </path>
+                                </svg>
+                            </span>
+                            <h3 class="guide-mirror__role">Follower</h3>
+                            <p class="guide-mirror__text">Interpretiert die Signale und bringt den eigenen Stil ein.</p>
                         </div>
                     </div>
+                </section>
+
+                <!-- Chapter 04: Etiquette & Hygiene (studio rules checklist) -->
+                <section id="hygiene" class="guide-chapter guide-chapter--etiquette">
+                    <header class="guide-chapter__header">
+                        <span class="guide-chapter__num" aria-hidden="true">04</span>
+                        <h2 class="guide-chapter__title">Etikette &amp; Hygiene</h2>
+                    </header>
+                    <div class="guide-rules">
+                        <p class="guide-rules__lede">
+                            Tanzen ist eine Aktivität mit engem Körperkontakt. Bitte achte auf deine Hygiene.
+                        </p>
+                        <ul class="guide-rules__list">
+                            <li>Frischer Atem — Minzbonbons sind ideal.</li>
+                            <li>Deo und ein frisches Shirt bewirken viel.</li>
+                            <li>Bitte lass dein Handy während des Unterrichts weg, damit alle präsent und konzentriert
+                                bleiben können.</li>
+                            <li class="guide-rules__rule--key"><strong>Bitte kein Kaugummi, aus Sicherheitsgründen
+                                    und aus Respekt gegenüber Lehrenden und anderen Teilnehmenden.</strong></li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Beginner Reviews -->
+                <section class="guide-chapter guide-chapter--reviews" aria-label="Was Anfänger über den Start bei AXcent Dance sagen">
+                    <header class="guide-chapter__header">
+                        <h2 class="guide-chapter__title">Das sagen Anfänger</h2>
+                    </header>
+                    <div class="reviews-proof" aria-label="AXcent Dance Google-Bewertung und Gründe der Schüler">
+                        <div class="reviews-proof__rating-figure" aria-label="Mit 5 von 5 Sternen aus 40 Google-Bewertungen bewertet">
+                            <strong class="reviews-proof__score">5/5</strong>
+                            <span class="reviews-proof__starfield" aria-hidden="true">
+                                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                            </span>
+                            <a class="reviews-proof__source-line" href="https://www.google.com/maps?cid=15680757943659417558"
+                                target="_blank" rel="noopener noreferrer">aus 40 Google-Bewertungen</a>
+                        </div>
+                    </div>
+                    <div class="mini-reviews__quotes">
+                        <blockquote class="mini-review glass-panel">
+                            <p>"I started at AXcent Dance as a complete beginner and after just a few weeks I can
+                                already social dance. Ale and Xidan are fantastic teachers who make learning fun and
+                                clear."</p>
+                            <cite>Laura M, Google-Rezension</cite>
+                        </blockquote>
+                        <blockquote class="mini-review glass-panel">
+                            <p>"Ale and Xidan bachata classes in Zurich are amazing for beginners. The steps are
+                                explained clearly, and the atmosphere is super welcoming."</p>
+                            <cite>Federico M, Google-Rezension</cite>
+                        </blockquote>
+                        <blockquote class="mini-review glass-panel">
+                            <p>"I started dancing bachata about one year ago and it added so much flavour to my life.
+                                The teachers combine high technical skills with a warm and welcoming environment."</p>
+                            <cite>Giulia P, Google-Rezension</cite>
+                        </blockquote>
+                    </div>
+                </section>
+
+                <!-- Offramp -->
+                <section class="guide-offramp" data-guide-offramp aria-label="Buche deine erste Stunde">
+                    <p class="guide-offramp__copy">Das ist alles, was du für Lektion eins brauchst. Der Rest passiert auf der Tanzfläche.</p>
+                    <a href="/de/#trial-form" class="guide-offramp__cta">Probelektion buchen</a>
+                    <a href="schedule" class="guide-offramp__link">Zum wöchentlichen Stundenplan</a>
                 </section>
 
             </article>
@@ -913,6 +515,9 @@
                 <p class="footer-address">
                     Hermetschloostrasse 73,<br>
                     8048 Zurich Altstetten<br> 2 Minuten zu Fuss von Tram 2 und Bus 31 Haltestelle
+                </p>
+                <p class="footer-contact">
+                    <a href="https://wa.me/41799668481" target="_blank" rel="noopener noreferrer">WhatsApp: +41 79 966 84 81</a>
                 </p>
                 <div class="footer-socials">
                     <a href="https://www.instagram.com/axcent_dance/" target="_blank" aria-label="Instagram">
@@ -934,10 +539,12 @@
             <div class="footer-col">
                 <h2 class="footer-heading">Schnellzugriff</h2>
                 <ul class="footer-links">
+                    <li><a href="/de/#trial-form">Kostenlose Probelektion buchen</a></li>
                     <li><a href="guide-bachata">Was ist Bachata</a></li>
                     <li><a href="blog/roots-of-bachata">Wurzeln des Bachatas</a></li>
                     <li><a href="schedule">Stundenplan</a></li>
                     <li><a href="blog">Unser Blog</a></li>
+                    <li><a href="https://www.google.com/maps?cid=15680757943659417558" target="_blank" rel="noopener noreferrer">Lies unsere Google-Bewertungen</a></li>
 
                 </ul>
             </div>
@@ -952,64 +559,31 @@
             </div>
         </div>
 
-        <div class="container footer-map-full" style="margin-bottom: 2rem;">
-            <h2 class="footer-heading" style="margin-bottom: 1rem;">Finde uns</h2>
-            <div class="footer-map-wrapper-large"
-                style="border-radius: 12px; overflow: hidden; border: 1px solid var(--glass-border);">
-                <iframe title="Google Maps Standort von AXcent Dance"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2701.365!2d8.472010!3d47.394204!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47900b995a7d8e03%3A0xd99d3e4500b44fd6!2sAXcent%20Dance%20%7C%20Bachata%20Classes!5e0!3m2!1sen!2sch!4v1710680000000!5m2!1sde!2sch&hl=de"
-                    width="100%" height="250" style="border:0; width: 100%; display: block;" allowfullscreen=""
-                    loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
+        <div class="container footer-map-full">
+            <h2 class="footer-heading footer-map-full__heading">Finde uns</h2>
+            <a class="footer-map-card" href="https://www.google.com/maps?cid=15680757943659417558" target="_blank"
+                rel="noopener noreferrer" aria-label="AXcent Dance Studio-Standort in Google Maps öffnen">
+                <span class="footer-map-card__pin" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                        <circle cx="12" cy="10" r="3" />
+                    </svg>
+                </span>
+                <span class="footer-map-card__address">Hermetschloostrasse 73, 8048 Zurich Altstetten</span>
+                <span class="footer-map-card__hint">2 Minuten von Tram 2 und Bus 31 · In Google Maps öffnen</span>
+            </a>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2025 AXcent Dance. Alle Rechte vorbehalten.</p>
+            <p>&copy; 2026 AXcent Dance. Alle Rechte vorbehalten.</p>
         </div>
     </footer>
 
-    <script src="../script.js?v=5.8"></script>
-    <!-- Include the mobile drawer HTML if needed, or rely on script.min.js if it injects it. 
-         Based on previous files, it seems hardcoded in every page. 
-         I will re-add the standard mobile drawer block here for consistency. 
-    -->
-    
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="../script.js?v=6.1"></script>
 
 
-    <!-- Active Scroll Spy Script -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const sections = document.querySelectorAll('.guide-article-section');
-            const navLinks = document.querySelectorAll('.nav-link-modern');
 
-            // Options to trigger when section is in the middle of viewport
-            const observerOptions = {
-                root: null,
-                // Trigger when section top is 150px from top, or when it covers 40% of screen
-                rootMargin: '-100px 0px -60% 0px',
-                threshold: 0
-            };
-
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        // Remove active class from all
-                        navLinks.forEach(link => link.classList.remove('active'));
-
-                        // Add active class to current
-                        const id = entry.target.getAttribute('id');
-                        const activeLink = document.querySelector(`.nav-link-modern[href="#${id}"]`);
-                        if (activeLink) {
-                            activeLink.classList.add('active');
-                        }
-                    }
-                });
-            }, observerOptions);
-
-            sections.forEach(section => {
-                observer.observe(section);
-            });
-        });
-    </script>
 </body>
 
 </html>

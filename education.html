@@ -29,7 +29,7 @@
     <!-- Styles -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@200..900&family=Outfit:wght@500;600;700;800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Teko:wght@300..700&display=swap">
     <link rel="stylesheet" href="style.css?v=2.3">
-    <link rel="stylesheet" href="tropic-noir.css?v=5.0">
+    <link rel="stylesheet" href="tropic-noir.css?v=5.3">
     <link rel="apple-touch-icon" href="/apple-touch-icon-v2.png">
     <link rel="icon" href="/favicon-axcent-transparent.svg" type="image/svg+xml">
 
@@ -58,7 +58,7 @@
             "@id": "https://axcentdance.com/education#article",
             "headline": "Bachata Education: History, Styles & Musicality",
             "datePublished": "2025-10-01T12:00:00+02:00",
-            "dateModified": "2026-03-31T12:00:00+02:00",
+            "dateModified": "2026-07-19T12:00:00+02:00",
             "author": [
                 {
                     "@id": "https://axcentdance.com/#person1"
@@ -229,7 +229,7 @@
   <!-- End Meta Pixel Code -->
   </head>
 
-<body class="tropic info-page education-page">
+<body class="tropic info-page education-page nav-declutter">
 
     <!-- Navigation Bar -->
     <header class="main-header">
@@ -246,11 +246,13 @@
                 </svg>
             </button>
             <nav class="nav-links">
-                <a href="./">Home</a>
+                <a href="./" class="nav-home">Home</a>
                 <a href="about">About us</a>
                 <a href="schedule">Our classes</a>
+                <a href="registration">Prices &amp; Registration</a>
                 <a href="events">Events</a>
-                <a href="contact">Contact</a>
+                <a href="contact" class="nav-contact-item">Contact</a>
+                <a href="portal" class="nav-portal-item">Login</a>
 
                 <div class="dropdown">
                     <button class="dropbtn">More ▾</button>
@@ -265,7 +267,7 @@
                         <a href="blog"><span>Blog</span></a>
                         <a href="faq"><span>FAQ</span></a>
                         <a href="etiquette"><span>Dance Etiquette</span></a>
-                        <a href="portal"><span>Login</span></a>
+                        <a href="contact" class="nav-contact-dropdown"><span>Contact</span></a>
                     </div>
                 </div>
                 <a href="/#trial-form" class="btn-header-cta">Book Free Trial</a>
@@ -275,205 +277,397 @@
                 <span class="divider">|</span>
                 <a href="de/education">DE</a>
             </div>
+      <div class="header-login">
+        <a href="portal" class="header-login__link header-login__link--icon" aria-label="Login" title="Login">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 21a8 8 0 0 0-16 0"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+        </a>
+      </div>
 
         </div>
     </header>
 
     <main>
 
-        <!-- Hero Section -->
-        <!-- Hero Section -->
+        <!-- Hero: static photo is the SEO/no-JS base; the canvas carries the ambient string scene -->
         <section class="education-hero relative-container">
-            <!-- Hero Image (SEO) -->
             <img src="assets/images/bachata_education_book.webp"
                 srcset="assets/images/bachata_education_book_480w.webp 480w, assets/images/bachata_education_book_800w.webp 800w, assets/images/bachata_education_book_1200w.webp 1200w"
                 sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px"
-                alt="Bachata Dance Education Book and Instruments" width="1024" height="1024" class="hero-bg-img"
-                style="opacity: 0.5;">
+                alt="Bachata Dance Education Book and Instruments" width="1024" height="1024" class="hero-bg-img">
             <div class="hero-overlay"></div>
+            <canvas class="edu-hero__canvas" aria-hidden="true"></canvas>
 
-            <div class="container hero-content-z">
-
-                <span class="hero-badge-text"
-                    style="color: var(--accent-start); letter-spacing: 0.2em; font-size: 0.9rem; font-weight: 700; display: block; margin-bottom: 1rem;">KNOWLEDGE
-                    BASE</span>
+            <div class="container hero-content-z edu-hero__content">
+                <div class="hero-badge">
+                    <span class="hero-badge-line"></span>
+                    <span class="hero-badge-text">Knowledge Base</span>
+                    <span class="hero-badge-line"></span>
+                </div>
                 <h1 class="page-title">Dance Education</h1>
-                <p class="hero-desc-border" style="border: none; padding: 0;">
+                <p class="edu-hero__desc">
                     Understanding the history, music, and language of Bachata.
+                </p>
+                <p class="edu-hero__counts" aria-hidden="true">
+                    <span class="edu-hero__count">1</span>
+                    <span class="edu-hero__count">2</span>
+                    <span class="edu-hero__count">3</span>
+                    <span class="edu-hero__count edu-hero__count--tap">4</span>
                 </p>
             </div>
         </section>
 
-        <!-- Page Nav -->
-        <div class="edu-nav-container">
-            <div class="container">
-                <nav class="edu-nav">
-                    <a href="#history">History</a>
-                    <a href="#styles">Styles Explained</a>
-                    <a href="#musicality">Musicality</a>
-                    <a href="#glossary">Glossary</a>
-                </nav>
+        <!-- Section nav: sticky under the header -->
+        <nav class="edu-nav" aria-label="Page sections">
+            <div class="container edu-nav__inner">
+                <a href="#history" class="edu-nav__link"><span class="edu-nav__count">01</span>History</a>
+                <a href="#styles" class="edu-nav__link"><span class="edu-nav__count">02</span>Styles</a>
+                <a href="#musicality" class="edu-nav__link"><span class="edu-nav__count">03</span>Musicality</a>
+                <a href="#glossary" class="edu-nav__link"><span class="edu-nav__count">04</span>Glossary</a>
             </div>
-        </div>
+        </nav>
+
+        <!-- Count rail: the four counts as fixed side navigation (desktop) -->
+        <nav class="edu-rail" aria-label="The four counts">
+            <a href="#history" class="edu-rail__step" data-edu-rail="history">
+                <span class="edu-rail__num">1</span>
+                <span class="edu-rail__label">History</span>
+            </a>
+            <a href="#styles" class="edu-rail__step" data-edu-rail="styles">
+                <span class="edu-rail__num">2</span>
+                <span class="edu-rail__label">Styles</span>
+            </a>
+            <a href="#musicality" class="edu-rail__step" data-edu-rail="musicality">
+                <span class="edu-rail__num">3</span>
+                <span class="edu-rail__label">Musicality</span>
+            </a>
+            <a href="#glossary" class="edu-rail__step edu-rail__step--tap" data-edu-rail="glossary">
+                <span class="edu-rail__num">4</span>
+                <span class="edu-rail__label">Glossary</span>
+            </a>
+        </nav>
 
         <div class="container edu-content">
 
-            <section id="history" class="edu-section">
-                <h2><span class="edu-num">01</span>History of Bachata</h2>
-                <p>
-                    Bachata originated in the rural neighborhoods of the <strong>Dominican Republic</strong> in the
-                    early 1960s. Initially, it was known as "amargue" (bitterness) music, reflecting themes of
-                    heartbreak, loss, and longing.
-                </p>
-                <div class="edu-callout">
-                    <p style="margin-bottom: 0.5rem; color: white; font-weight: 700;">Deep Dive into the Roots</p>
-                    <p style="margin-bottom: 1rem; font-size: 0.95rem;">Want to know why Bachata was prohibited and how
-                        it became a global sensation? Start with our <a href="guide-bachata"
-                            style="color: var(--accent-start); text-decoration: underline;">complete guide to Bachata music and dance</a>.</p>
-                    <a href="blog/roots-of-bachata" class="btn-text"
-                        style="color: var(--accent-start); font-weight: 700; text-decoration: none;">READ THE FULL STORY
-                        →</a>
+            <!-- 01. History: era ledger -->
+            <section id="history" class="edu-section edu-section--history">
+                <header class="edu-section__head">
+                    <span class="edu-section__num" aria-hidden="true">01</span>
+                    <h2 class="edu-section__title">History of Bachata</h2>
+                </header>
+
+                <div class="edu-timeline">
+                    <article class="edu-era">
+                        <span class="edu-era__year">1960s</span>
+                        <div class="edu-era__body">
+                            <h3 class="edu-era__label">Amargue roots</h3>
+                            <p>
+                                Bachata originated in the rural neighborhoods of the <strong>Dominican
+                                    Republic</strong> in the early 1960s. Initially, it was known as "amargue"
+                                (bitterness) music, reflecting themes of heartbreak, loss, and longing.
+                            </p>
+                        </div>
+                    </article>
+                    <article class="edu-era">
+                        <span class="edu-era__year">1990s</span>
+                        <div class="edu-era__body">
+                            <h3 class="edu-era__label">International breakthrough</h3>
+                            <p>
+                                It was not until the 1990s, with artists like <strong>Juan Luis Guerra</strong>, that
+                                Bachata gained international recognition.
+                            </p>
+                        </div>
+                    </article>
+                    <article class="edu-era">
+                        <span class="edu-era__year">2000s</span>
+                        <div class="edu-era__body">
+                            <h3 class="edu-era__label">The pop evolution</h3>
+                            <p>
+                                In the early 2000s, the group <strong>Aventura</strong> revolutionized the genre by
+                                infusing it with R&B and Pop elements.
+                            </p>
+                        </div>
+                    </article>
                 </div>
-                <p>
-                    It was not until the 1990s, with artists like <strong>Juan Luis Guerra</strong>, that Bachata gained
-                    international recognition. In the early 2000s, the group <strong>Aventura</strong> revolutionized
-                    the genre by infusing it with R&B and Pop elements.
-                </p>
+
+                <aside class="edu-callout">
+                    <p class="edu-callout__title">Deep Dive into the Roots</p>
+                    <p class="edu-callout__text">Want to know why Bachata was prohibited and how it became a global
+                        sensation? Start with our <a href="guide-bachata">complete guide to Bachata music and
+                            dance</a>.</p>
+                    <a href="blog/roots-of-bachata" class="edu-callout__cta">Read the full story <span
+                            aria-hidden="true">&rarr;</span></a>
+                </aside>
             </section>
 
-            <!-- 2. Styles Explained -->
-            <section id="styles" class="edu-section">
-                <h2><span class="edu-num">02</span>Bachata Styles Explained</h2>
-                <p>As Bachata spread across the globe, it evolved into distinct styles. Understanding these differences
-                    helps you respect the roots while enjoying modern interpretations. <strong>Mastering each style is
-                        essential to becoming a complete dancer, as different songs and energies call for different ways
-                        of moving.</strong></p>
+            <!-- 02. Styles: roots-to-evolution grid -->
+            <section id="styles" class="edu-section edu-section--styles">
+                <header class="edu-section__head">
+                    <span class="edu-section__num" aria-hidden="true">02</span>
+                    <h2 class="edu-section__title">Bachata Styles Explained</h2>
+                </header>
 
-                <div class="style-grid">
-                    <div class="style-card">
-                        <h3>Dominican (Traditional)</h3>
-                        <p><strong>The Roots.</strong> This is the original style danced in the DR. It focuses heavily
-                            on footwork (steps) rather than turns.</p>
-                        <ul style="color: var(--text-muted); padding-left: 1.2rem; margin-top: 1rem;">
-                            <li><strong>Music:</strong> Faster tempo, guitar-dominated, raw acoustic sound.</li>
-                            <li><strong>Movement:</strong> Focus on footwork (steps), playful syncopations, and hip
-                                movement.</li>
-                            <li><strong>Connection:</strong> Typically open or close position, focusing on rhythmic
-                                partnership.</li>
-                        </ul>
-                    </div>
+                <p class="edu-section__lead">As Bachata spread across the globe, it evolved into distinct styles.
+                    Understanding these differences helps you respect the roots while enjoying modern interpretations.
+                    <strong>Mastering each style is essential to becoming a complete dancer, as different songs and
+                        energies call for different ways of moving.</strong></p>
 
-                    <div class="style-card">
-                        <h3>Bachata Sensual</h3>
-                        <p><strong>The Evolution.</strong> Created in Cádiz, Spain, by Korke & Judith. It interprets the
-                            music through body isolations and waves.</p>
-                        <ul style="color: var(--text-muted); padding-left: 1.2rem; margin-top: 1rem;">
-                            <li><strong>Music:</strong> Modern, melodic remixes or pop, with less heavy guitar.</li>
-                            <li><strong>Movement:</strong> Flowy body isolations, waves, and circular movements.</li>
-                            <li><strong>Connection:</strong> Close contact position, leading through frame and body
-                                points.</li>
-                        </ul>
+                <div class="edu-axis" aria-hidden="true">
+                    <span class="edu-axis__end">Roots</span>
+                    <span class="edu-axis__line"></span>
+                    <span class="edu-axis__end">Evolution</span>
+                </div>
+
+                <div class="edu-styles">
+                    <article class="edu-style-card">
+                        <h3 class="edu-style-card__title">Dominican (Traditional)</h3>
+                        <p class="edu-style-card__lede"><strong>The Roots.</strong> This is the original style danced
+                            in the DR. It focuses heavily on footwork (steps) rather than turns.</p>
+                        <dl class="edu-style-card__specs">
+                            <div class="edu-style-card__spec">
+                                <dt>Music</dt>
+                                <dd>Faster tempo, guitar-dominated, raw acoustic sound.</dd>
+                            </div>
+                            <div class="edu-style-card__spec">
+                                <dt>Movement</dt>
+                                <dd>Focus on footwork (steps), playful syncopations, and hip movement.</dd>
+                            </div>
+                            <div class="edu-style-card__spec">
+                                <dt>Connection</dt>
+                                <dd>Typically open or close position, focusing on rhythmic partnership.</dd>
+                            </div>
+                        </dl>
+                    </article>
+
+                    <article class="edu-style-card">
+                        <h3 class="edu-style-card__title">Bachata Fusion</h3>
+                        <p class="edu-style-card__lede"><strong>The Fusion.</strong> A bridge between the two. It
+                            incorporates the turn patterns of Salsa and the basic steps of Traditional.</p>
+                        <dl class="edu-style-card__specs">
+                            <div class="edu-style-card__spec">
+                                <dt>Music</dt>
+                                <dd>Urban fusion, incorporating R&B, Pop, and Hip-Hop elements.</dd>
+                            </div>
+                            <div class="edu-style-card__spec">
+                                <dt>Movement</dt>
+                                <dd>Turn patterns, cross-body leads, and intricate arm work.</dd>
+                            </div>
+                            <div class="edu-style-card__spec">
+                                <dt>Connection</dt>
+                                <dd>Dynamic interplay, frequently switching between open and closed holds.</dd>
+                            </div>
+                        </dl>
+                    </article>
+
+                    <article class="edu-style-card">
+                        <h3 class="edu-style-card__title">Bachata Sensual</h3>
+                        <p class="edu-style-card__lede"><strong>The Evolution.</strong> Created in Cádiz, Spain, by
+                            Korke & Judith. It interprets the music through body isolations and waves.</p>
+                        <dl class="edu-style-card__specs">
+                            <div class="edu-style-card__spec">
+                                <dt>Music</dt>
+                                <dd>Modern, melodic remixes or pop, with less heavy guitar.</dd>
+                            </div>
+                            <div class="edu-style-card__spec">
+                                <dt>Movement</dt>
+                                <dd>Flowy body isolations, waves, and circular movements.</dd>
+                            </div>
+                            <div class="edu-style-card__spec">
+                                <dt>Connection</dt>
+                                <dd>Close contact position, leading through frame and body points.</dd>
+                            </div>
+                        </dl>
                         <p class="edu-crosslink">Curious? Read our <a href="guide-bachata-sensual">Bachata Sensual
                                 guide</a> or start with the <a href="bachata-sensual-foundation">Foundation
                                 course</a>.</p>
-                    </div>
-
-                    <div class="style-card">
-                        <h3>Bachata Fusion</h3>
-                        <p><strong>The Fusion.</strong> A bridge between the two. It incorporates the turn patterns of
-                            Salsa and the basic steps of Traditional.</p>
-                        <ul style="color: var(--text-muted); padding-left: 1.2rem; margin-top: 1rem;">
-                            <li><strong>Music:</strong> Urban fusion, incorporating R&B, Pop, and Hip-Hop elements.</li>
-                            <li><strong>Movement:</strong> Turn patterns, cross-body leads, and intricate arm work.</li>
-                            <li><strong>Connection:</strong> Dynamic interplay, frequently switching between open and
-                                closed holds.</li>
-                        </ul>
-                    </div>
+                    </article>
                 </div>
                 <p class="edu-crosslink">Terms covered &mdash; now learn the manners: our
                     <a href="etiquette">dance etiquette guide</a>.</p>
             </section>
 
-            <!-- 3. Musicality Guide -->
-            <section id="musicality" class="edu-section">
-                <h2><span class="edu-num">03</span>Musicality Guide</h2>
-                <p>Bachata music is driven by a specific set of instruments. Learning to listen to them allows you to
-                    predict the music and dance "in the pocket."</p>
+            <!-- 03. Musicality: the rhythm map -->
+            <section id="musicality" class="edu-section edu-section--musicality">
+                <header class="edu-section__head">
+                    <span class="edu-section__num" aria-hidden="true">03</span>
+                    <h2 class="edu-section__title">Musicality Guide</h2>
+                </header>
 
-                <ul class="instrument-list">
-                    <li class="instrument-item">
-                        <span class="instrument-name">Requinto (Lead Guitar)</span>
-                        The melodic leader. It plays the intro, the solos, and sets the mood. Dancers often follow the
-                        Requinto with their footwork.
-                    </li>
-                    <li class="instrument-item">
-                        <span class="instrument-name">Segunda (Rhythm Guitar)</span>
-                        Adds syncopation and harmony. It supports the Requinto and fills the rhythmic space.
-                    </li>
-                    <li class="instrument-item">
-                        <span class="instrument-name">Bass (Bajo)</span>
-                        The heartbeat. It usually plays on beats 1, 3, and 4 (often holding the 4). It drives the energy
-                        and signals section changes.
-                    </li>
-                    <li class="instrument-item">
-                        <span class="instrument-name">Bongo</span>
-                        The rhythmic engine. The heavy hit on the 4th beat (the "Macho" drum) is what gives Bachata its
-                        drive.
-                    </li>
-                    <li class="instrument-item">
-                        <span class="instrument-name">Güira</span>
-                        The metal scraper. It keeps the timing and adds the high-frequency texture that makes the music
-                        danceable.
-                    </li>
-                </ul>
+                <p class="edu-section__lead">Bachata music is driven by a specific set of instruments. Learning to
+                    listen to them allows you to predict the music and dance "in the pocket."</p>
 
-                <h3 style="margin-top: 3rem;">Song Structure</h3>
+                <div class="edu-rhythm">
+                    <div class="edu-rhythm__head" aria-hidden="true">
+                        <span class="edu-rhythm__corner">Count</span>
+                        <ol class="edu-rhythm__counts">
+                            <li class="edu-rhythm__count">1</li>
+                            <li class="edu-rhythm__count">2</li>
+                            <li class="edu-rhythm__count">3</li>
+                            <li class="edu-rhythm__count edu-rhythm__count--tap">4</li>
+                            <li class="edu-rhythm__count">5</li>
+                            <li class="edu-rhythm__count">6</li>
+                            <li class="edu-rhythm__count">7</li>
+                            <li class="edu-rhythm__count edu-rhythm__count--tap">8</li>
+                        </ol>
+                    </div>
+
+                    <div class="edu-rhythm__row">
+                        <div class="edu-rhythm__instrument">
+                            <h3 class="edu-rhythm__name">Requinto (Lead Guitar)</h3>
+                            <p class="edu-rhythm__desc">The melodic leader. It plays the intro, the solos, and sets
+                                the mood. Dancers often follow the Requinto with their footwork.</p>
+                        </div>
+                        <ol class="edu-rhythm__cells" aria-hidden="true">
+                            <li class="edu-rhythm__cell edu-rhythm__cell--hit"></li>
+                            <li class="edu-rhythm__cell"></li>
+                            <li class="edu-rhythm__cell edu-rhythm__cell--hit"></li>
+                            <li class="edu-rhythm__cell"></li>
+                            <li class="edu-rhythm__cell edu-rhythm__cell--hit"></li>
+                            <li class="edu-rhythm__cell"></li>
+                            <li class="edu-rhythm__cell edu-rhythm__cell--hit"></li>
+                            <li class="edu-rhythm__cell"></li>
+                        </ol>
+                    </div>
+
+                    <div class="edu-rhythm__row">
+                        <div class="edu-rhythm__instrument">
+                            <h3 class="edu-rhythm__name">Segunda (Rhythm Guitar)</h3>
+                            <p class="edu-rhythm__desc">Adds syncopation and harmony. It supports the Requinto and
+                                fills the rhythmic space.</p>
+                        </div>
+                        <ol class="edu-rhythm__cells" aria-hidden="true">
+                            <li class="edu-rhythm__cell"></li>
+                            <li class="edu-rhythm__cell edu-rhythm__cell--hit"></li>
+                            <li class="edu-rhythm__cell"></li>
+                            <li class="edu-rhythm__cell edu-rhythm__cell--hit"></li>
+                            <li class="edu-rhythm__cell"></li>
+                            <li class="edu-rhythm__cell edu-rhythm__cell--hit"></li>
+                            <li class="edu-rhythm__cell"></li>
+                            <li class="edu-rhythm__cell edu-rhythm__cell--hit"></li>
+                        </ol>
+                    </div>
+
+                    <div class="edu-rhythm__row">
+                        <div class="edu-rhythm__instrument">
+                            <h3 class="edu-rhythm__name">Bass (Bajo)</h3>
+                            <p class="edu-rhythm__desc">The heartbeat. It usually plays on beats 1, 3, and 4 (often
+                                holding the 4). It drives the energy and signals section changes.</p>
+                        </div>
+                        <ol class="edu-rhythm__cells" aria-hidden="true">
+                            <li class="edu-rhythm__cell edu-rhythm__cell--hit"></li>
+                            <li class="edu-rhythm__cell"></li>
+                            <li class="edu-rhythm__cell edu-rhythm__cell--hit"></li>
+                            <li class="edu-rhythm__cell edu-rhythm__cell--accent"></li>
+                            <li class="edu-rhythm__cell edu-rhythm__cell--hit"></li>
+                            <li class="edu-rhythm__cell"></li>
+                            <li class="edu-rhythm__cell edu-rhythm__cell--hit"></li>
+                            <li class="edu-rhythm__cell edu-rhythm__cell--accent"></li>
+                        </ol>
+                    </div>
+
+                    <div class="edu-rhythm__row">
+                        <div class="edu-rhythm__instrument">
+                            <h3 class="edu-rhythm__name">Bongo</h3>
+                            <p class="edu-rhythm__desc">The rhythmic engine. The heavy hit on the 4th beat (the
+                                "Macho" drum) is what gives Bachata its drive.</p>
+                        </div>
+                        <ol class="edu-rhythm__cells" aria-hidden="true">
+                            <li class="edu-rhythm__cell edu-rhythm__cell--hit"></li>
+                            <li class="edu-rhythm__cell edu-rhythm__cell--hit"></li>
+                            <li class="edu-rhythm__cell edu-rhythm__cell--hit"></li>
+                            <li class="edu-rhythm__cell edu-rhythm__cell--accent"></li>
+                            <li class="edu-rhythm__cell edu-rhythm__cell--hit"></li>
+                            <li class="edu-rhythm__cell edu-rhythm__cell--hit"></li>
+                            <li class="edu-rhythm__cell edu-rhythm__cell--hit"></li>
+                            <li class="edu-rhythm__cell edu-rhythm__cell--accent"></li>
+                        </ol>
+                    </div>
+
+                    <div class="edu-rhythm__row">
+                        <div class="edu-rhythm__instrument">
+                            <h3 class="edu-rhythm__name">Güira</h3>
+                            <p class="edu-rhythm__desc">The metal scraper. It keeps the timing and adds the
+                                high-frequency texture that makes the music danceable.</p>
+                        </div>
+                        <ol class="edu-rhythm__cells" aria-hidden="true">
+                            <li class="edu-rhythm__cell edu-rhythm__cell--hit"></li>
+                            <li class="edu-rhythm__cell edu-rhythm__cell--hit"></li>
+                            <li class="edu-rhythm__cell edu-rhythm__cell--hit"></li>
+                            <li class="edu-rhythm__cell edu-rhythm__cell--hit"></li>
+                            <li class="edu-rhythm__cell edu-rhythm__cell--hit"></li>
+                            <li class="edu-rhythm__cell edu-rhythm__cell--hit"></li>
+                            <li class="edu-rhythm__cell edu-rhythm__cell--hit"></li>
+                            <li class="edu-rhythm__cell edu-rhythm__cell--hit"></li>
+                        </ol>
+                    </div>
+
+                    <div class="edu-rhythm__playhead" aria-hidden="true"></div>
+                </div>
+                <p class="edu-rhythm__caption">Simplified eight-count phrase. Counts <strong>4</strong> and
+                    <strong>8</strong> are the tap &mdash; the accent that gives Bachata its drive.</p>
+
+                <h3 class="edu-section__subtitle">Song Structure</h3>
                 <p>
                     Bachata songs are typically divided into four main sections: <strong>Intro</strong>,
                     <strong>Derecho</strong> (Verse - steady beat), <strong>Majao</strong> (Chorus - upbeat rhythm with
                     bongo rolls), and <strong>Mambo</strong> (High energy, instrumental section). Good dancers
                     anticipate these changes to adjust their energy and movement style accordingly.
                 </p>
+                <ol class="edu-songmap" aria-hidden="true">
+                    <li class="edu-songmap__part">Intro</li>
+                    <li class="edu-songmap__part">Derecho</li>
+                    <li class="edu-songmap__part">Majao</li>
+                    <li class="edu-songmap__part">Mambo</li>
+                </ol>
                 <p class="edu-crosslink">Go deeper: <a href="blog/finding-the-one-bachata-musicality">Finding the
                         &ldquo;One&rdquo; in Bachata music</a>.</p>
             </section>
 
-            <!-- 4. Glossary -->
-            <section id="glossary" class="edu-section">
-                <h2><span class="edu-num">04</span>Dance Glossary</h2>
-                <div class="glossary-grid">
-                    <div class="term-item">
-                        <span class="term-name">Basic Step</span>
-                        Three steps to the side followed by a tap (or hip movement) on the 4th beat.
-                    </div>
-                    <div class="term-item">
-                        <span class="term-name">Tap</span>
-                        Touching the floor with the toe without transferring weight. Marks the end of a 4-count phrase.
-                    </div>
-                    <div class="term-item">
-                        <span class="term-name">Isolation</span>
-                        Moving one part of the body (e.g., chest, hips) while keeping the rest still. Key for Sensual
-                        style.
-                    </div>
-                    <div class="term-item">
-                        <span class="term-name">Frame</span>
-                        The structure of the arms and upper body that allows the lead and follow to communicate
-                        connection.
-                    </div>
+            <!-- 04. Glossary: term grid -->
+            <section id="glossary" class="edu-section edu-section--glossary">
+                <header class="edu-section__head">
+                    <span class="edu-section__num" aria-hidden="true">04</span>
+                    <h2 class="edu-section__title">Dance Glossary</h2>
+                </header>
 
-                    <div class="term-item">
-                        <span class="term-name">Prep</span>
-                        A preparatory movement for a step or body movement.
+                <dl class="edu-glossary">
+                    <div class="edu-term">
+                        <dt class="edu-term__name">Basic Step</dt>
+                        <dd class="edu-term__def">Three steps to the side followed by a tap (or hip movement) on the
+                            4th beat.</dd>
                     </div>
-                    <div class="term-item">
-                        <span class="term-name">Social</span>
-                        A party or event focused on social dancing rather than classes or performances.
+                    <div class="edu-term">
+                        <dt class="edu-term__name">Tap</dt>
+                        <dd class="edu-term__def">Touching the floor with the toe without transferring weight. Marks
+                            the end of a 4-count phrase.</dd>
                     </div>
-                    <div class="term-item">
-                        <span class="term-name">Musicality</span>
-                        The ability to interpret the music through dance, matching movement to rhythm and melody.
+                    <div class="edu-term">
+                        <dt class="edu-term__name">Isolation</dt>
+                        <dd class="edu-term__def">Moving one part of the body (e.g., chest, hips) while keeping the
+                            rest still. Key for Sensual style.</dd>
                     </div>
-                </div>
+                    <div class="edu-term">
+                        <dt class="edu-term__name">Frame</dt>
+                        <dd class="edu-term__def">The structure of the arms and upper body that allows the lead and
+                            follow to communicate connection.</dd>
+                    </div>
+                    <div class="edu-term">
+                        <dt class="edu-term__name">Prep</dt>
+                        <dd class="edu-term__def">A preparatory movement for a step or body movement.</dd>
+                    </div>
+                    <div class="edu-term">
+                        <dt class="edu-term__name">Social</dt>
+                        <dd class="edu-term__def">A party or event focused on social dancing rather than classes or
+                            performances.</dd>
+                    </div>
+                    <div class="edu-term">
+                        <dt class="edu-term__name">Musicality</dt>
+                        <dd class="edu-term__def">The ability to interpret the music through dance, matching movement
+                            to rhythm and melody.</dd>
+                    </div>
+                </dl>
             </section>
 
         </div>
@@ -516,6 +710,7 @@
           <li><a href="blog/roots-of-bachata">Roots of Bachata</a></li>
           <li><a href="schedule">Schedule</a></li>
           <li><a href="blog">Our Blog</a></li>
+          <li><a href="https://www.google.com/maps?cid=15680757943659417558" target="_blank" rel="noopener noreferrer">Read our reviews on Google</a></li>
 
         </ul>
       </div>
@@ -550,7 +745,8 @@
     </div>
   </footer>
 
-    <script src="script.js?v=5.8"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="script.js?v=5.9"></script>
 
 
 

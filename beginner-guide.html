@@ -28,7 +28,7 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="style.css?v=9.2">
-    <link rel="stylesheet" href="tropic-noir.css?v=5.0">
+    <link rel="stylesheet" href="tropic-noir.css?v=5.3">
     <link rel="preload" as="image" href="assets/images/bachata_class_zurich_800w.webp"
         imagesrcset="assets/images/bachata_class_zurich_480w.webp 480w, assets/images/bachata_class_zurich_800w.webp 800w, assets/images/bachata_class_zurich_1200w.webp 1200w"
         imagesizes="(max-width: 900px) 92vw, 42vw" fetchpriority="high">
@@ -210,7 +210,7 @@
   <!-- End Meta Pixel Code -->
 </head>
 
-<body class="guide-page">
+<body class="guide-page nav-declutter">
 
 
     <!-- Navigation Bar -->
@@ -228,11 +228,13 @@
                 </svg>
             </button>
             <nav class="nav-links">
-                <a href="./">Home</a>
+                <a href="./" class="nav-home">Home</a>
                 <a href="about">About us</a>
                 <a href="schedule">Our classes</a>
+                <a href="registration">Prices &amp; Registration</a>
                 <a href="events">Events</a>
-                <a href="contact">Contact</a>
+                <a href="contact" class="nav-contact-item">Contact</a>
+                <a href="portal" class="nav-portal-item">Login</a>
 
                 <div class="dropdown">
                     <button class="dropbtn">More ▾</button>
@@ -247,7 +249,7 @@
                         <a href="blog"><span>Blog</span></a>
                         <a href="faq"><span>FAQ</span></a>
                         <a href="etiquette"><span>Dance Etiquette</span></a>
-                        <a href="portal"><span>Login</span></a>
+                        <a href="contact" class="nav-contact-dropdown"><span>Contact</span></a>
                     </div>
                 </div>
                 <a href="/#trial-form" class="btn-header-cta">Book Free Trial</a>
@@ -257,6 +259,14 @@
                 <span class="divider">|</span>
                 <a href="de/beginner-guide">DE</a>
             </div>
+      <div class="header-login">
+        <a href="portal" class="header-login__link header-login__link--icon" aria-label="Login" title="Login">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 21a8 8 0 0 0-16 0"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+        </a>
+      </div>
 
         </div>
     </header>
@@ -356,14 +366,15 @@
 
                     <div class="guide-podium">
 
-                        <div class="guide-step guide-step--no">
-                            <span class="guide-step__status">Not Recommended</span>
-                            <h3 class="guide-step__title">Street Shoes</h3>
+                        <div class="guide-step guide-step--pro">
+                            <span class="guide-step__status">Pro Choice</span>
+                            <h3 class="guide-step__title">Dance Sneakers</h3>
                             <p class="guide-step__text">
-                                Dirty soles damage the studio floor. Please always bring a separate pair of
-                                <strong>clean indoor shoes</strong>.
+                                There are brands specialized in sneaker dancing shoes. These are highly recommended for
+                                leaders and followers.
+                                <strong>Ask us for a promo code.</strong>
                             </p>
-                            <span class="guide-step__rank" aria-hidden="true">3</span>
+                            <span class="guide-step__rank" aria-hidden="true">1</span>
                         </div>
 
                         <div class="guide-step guide-step--yes">
@@ -375,15 +386,14 @@
                             <span class="guide-step__rank" aria-hidden="true">2</span>
                         </div>
 
-                        <div class="guide-step guide-step--pro">
-                            <span class="guide-step__status">Pro Choice</span>
-                            <h3 class="guide-step__title">Dance Sneakers</h3>
+                        <div class="guide-step guide-step--no">
+                            <span class="guide-step__status">Not Recommended</span>
+                            <h3 class="guide-step__title">Street Shoes</h3>
                             <p class="guide-step__text">
-                                There are brands specialized in sneaker dancing shoes. These are highly recommended for
-                                leaders and followers.
-                                <strong>Ask us for a promo code.</strong>
+                                Dirty soles damage the studio floor. Please always bring a separate pair of
+                                <strong>clean indoor shoes</strong>.
                             </p>
-                            <span class="guide-step__rank" aria-hidden="true">1</span>
+                            <span class="guide-step__rank" aria-hidden="true">3</span>
                         </div>
 
                     </div>
@@ -438,9 +448,45 @@
                         <ul class="guide-rules__list">
                             <li>Fresh breath — mints are great.</li>
                             <li>Deodorant and a fresh shirt go a long way.</li>
+                            <li>Please keep phones away during class so everyone can stay present and focused.</li>
                             <li class="guide-rules__rule--key"><strong>Please no chewing gum for safety and respect
                                     for teachers and other attendants.</strong></li>
                         </ul>
+                    </div>
+                </section>
+
+                <!-- Beginner Reviews -->
+                <section class="guide-chapter guide-chapter--reviews" aria-label="What beginners say about starting at AXcent Dance">
+                    <header class="guide-chapter__header">
+                        <h2 class="guide-chapter__title">What Beginners Say</h2>
+                    </header>
+                    <div class="reviews-proof" aria-label="AXcent Dance Google rating and student reasons">
+                        <div class="reviews-proof__rating-figure" aria-label="Rated 5 out of 5 stars from 40 Google reviews">
+                            <strong class="reviews-proof__score">5/5</strong>
+                            <span class="reviews-proof__starfield" aria-hidden="true">
+                                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                            </span>
+                            <a class="reviews-proof__source-line" href="https://www.google.com/maps?cid=15680757943659417558"
+                                target="_blank" rel="noopener noreferrer">from 40 Google reviews</a>
+                        </div>
+                    </div>
+                    <div class="mini-reviews__quotes">
+                        <blockquote class="mini-review glass-panel">
+                            <p>"I started at AXcent Dance as a complete beginner and after just a few weeks I can
+                                already social dance. Ale and Xidan are fantastic teachers who make learning fun and
+                                clear."</p>
+                            <cite>Laura M, Google Review</cite>
+                        </blockquote>
+                        <blockquote class="mini-review glass-panel">
+                            <p>"Ale and Xidan bachata classes in Zurich are amazing for beginners. The steps are
+                                explained clearly, and the atmosphere is super welcoming."</p>
+                            <cite>Federico M, Google Review</cite>
+                        </blockquote>
+                        <blockquote class="mini-review glass-panel">
+                            <p>"I started dancing bachata about one year ago and it added so much flavour to my life.
+                                The teachers combine high technical skills with a warm and welcoming environment."</p>
+                            <cite>Giulia P, Google Review</cite>
+                        </blockquote>
                     </div>
                 </section>
 
@@ -492,6 +538,7 @@
                     <li><a href="blog/roots-of-bachata">Roots of Bachata</a></li>
                     <li><a href="schedule">Schedule</a></li>
                     <li><a href="blog">Our Blog</a></li>
+                    <li><a href="https://www.google.com/maps?cid=15680757943659417558" target="_blank" rel="noopener noreferrer">Read our reviews on Google</a></li>
 
                 </ul>
             </div>

@@ -176,7 +176,7 @@ Blog Post Internal Links: Every blog post MUST include 2-4 contextual internal l
 1.  **Canonical**: Every page MUST declare exactly one self-referencing canonical using the clean URL (no `.html` extension), e.g., `https://axcentdance.com/de/about`.
 2.  **Hreflang**: Every page MUST include reciprocal hreflang tags for `en`, `de`, and `x-default` (x-default points to the EN version). EN and DE pairs must reference each other symmetrically.
 3.  **Open Graph / Twitter Cards**: OG and Twitter tags MUST stay in sync with the page title, meta description, and hero image. When metadata changes, update them together (see `scripts/sync_og_meta.py`).
-4.  **Sitemap & llms.txt**: After adding, removing, or renaming any page, regenerate `sitemap.xml` (`scripts/generate_sitemap_final.py`) and refresh `llms.txt` / `llms-full.txt` (`scripts/generate_llms_txt.py`).
+4.  **Sitemap & llms.txt**: After adding, removing, or renaming any page, regenerate `sitemap.xml` (`scripts/generate_sitemap_final.py`) and refresh `llms.txt` / `llms-full.txt` (`scripts/generate_llms_txt.py`). Sitemap `<lastmod>` dates come from git commit history (never hand-edit them, and never blanket-stamp all pages with one date — Google ignores untrustworthy lastmod). CI (`.github/workflows/update-sitemap.yml`) regenerates and commits `sitemap.xml` on every push to `main`, which is what prompts Google to recrawl changed pages. The same workflow pings IndexNow (`scripts/indexnow_ping.py`) with the changed URLs for Bing/DuckDuckGo/Yandex (Google does not participate); the hex-named `.txt` file at the site root is its public verification key — never delete or rename it, and never submit unchanged URLs (engines throttle keys that spam).
 
 5.4. Forbidden Schema Types (Do NOT Implement)
 
@@ -193,7 +193,7 @@ MANDATORY: All code produced must be able to pass the 5-Step Python Audit Suite.
 
 Check: Verifies Title (50-60 chars) and Meta Description (120-156 chars). Checks for duplicates.
 
-6.2. Broken Internal Links (broken_link_checker.py)
+6.2. Broken Internal Links (check_broken_links.py)
 
 Check: Scans all href. No dead links allowed.
 
@@ -219,7 +219,7 @@ Core QA suite (Section 6):
 
 ```bash
 python3 scripts/seo_audit.py                  # 1. Titles & meta descriptions
-python3 scripts/broken_link_checker.py        # 2. Broken internal links
+python3 scripts/check_broken_links.py        # 2. Broken internal links
 python3 scripts/image_seo_checker.py          # 3. Alt tags & non-WebP formats
 python3 scripts/heading_structure_checker.py  # 4. H1-H6 hierarchy
 python3 scripts/advanced_image_checker.py     # 5. Image count, dimensions, LCP lazy-loading
@@ -236,7 +236,7 @@ python3 scripts/sync_audit.py                 # Every EN page has a DE counterpa
 ## 8. Pre-Delivery Checklist
 Before marking any task as complete, you MUST verify:
 1.  **Heading Hierarchy**: Run `heading_structure_checker.py`. Ensure NO skipped levels (e.g., H1 -> H3 is forbidden).
-2.  **Broken Links**: Run `broken_link_checker.py`. Ensure 0 errors.
+2.  **Broken Links**: Run `check_broken_links.py`. Ensure 0 errors.
 3.  **Image Quality**: Run `advanced_image_checker.py`. Ensure no LCP lazy-loading or missing dimensions.
 4.  **Mobile View**: Mentally verify that no hover interactions are critical for navigation (since hover doesn't exist on touch).
 5.  **Project Rules**: Review this file to ensure compliance with design and code standards.

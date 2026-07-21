@@ -28,7 +28,7 @@
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@200..900&family=Outfit:wght@500;600;700;800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Teko:wght@300..700&display=swap">
     <link rel="stylesheet" href="style.css?v=9.2">
-    <link rel="stylesheet" href="tropic-noir.css?v=5.0">
+    <link rel="stylesheet" href="tropic-noir.css?v=5.12">
     <link rel="apple-touch-icon" href="/apple-touch-icon-v2.png">
     <link rel="icon" href="/favicon-axcent-192.png" type="image/png" sizes="192x192">
     <link rel="icon" href="/favicon-axcent-transparent.svg" type="image/svg+xml">
@@ -44,6 +44,7 @@
             "name": "Bachata Events & Congresses",
             "description": "Intensive Bachata bootcamps in Zurich and a group trip to the Milano Sensual Congress, organized or attended by AXcent Dance.",
             "url": "https://axcentdance.com/events",
+            "inLanguage": "en",
             "dateModified": "2026-07-05",
             "isPartOf": {
                 "@id": "https://axcentdance.com/#website"
@@ -303,7 +304,7 @@
   <!-- End Meta Pixel Code -->
   </head>
 
-<body class="events-page">
+<body class="events-page nav-declutter">
 
     <header class="main-header">
         <div class="container navbar">
@@ -319,11 +320,13 @@
                 </svg>
             </button>
             <nav class="nav-links">
-                <a href="./">Home</a>
+                <a href="./" class="nav-home">Home</a>
                 <a href="about">About us</a>
                 <a href="schedule">Our classes</a>
+                <a href="registration">Prices &amp; Registration</a>
                 <a href="events">Events</a>
-                <a href="contact">Contact</a>
+                <a href="contact" class="nav-contact-item">Contact</a>
+                <a href="portal" class="nav-portal-item">Login</a>
 
                 <div class="dropdown">
                     <button class="dropbtn">More ▾</button>
@@ -338,7 +341,7 @@
                         <a href="blog"><span>Blog</span></a>
                         <a href="faq"><span>FAQ</span></a>
                         <a href="etiquette"><span>Dance Etiquette</span></a>
-                        <a href="portal"><span>Login</span></a>
+                        <a href="contact" class="nav-contact-dropdown"><span>Contact</span></a>
                     </div>
                 </div>
                 <a href="/#trial-form" class="btn-header-cta">Book Free Trial</a>
@@ -348,6 +351,14 @@
                 <span class="divider">|</span>
                 <a href="de/events">DE</a>
             </div>
+      <div class="header-login">
+        <a href="portal" class="header-login__link header-login__link--icon" aria-label="Login" title="Login">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 21a8 8 0 0 0-16 0"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+        </a>
+      </div>
 
         </div>
     </header>
@@ -366,24 +377,36 @@
     <main>
 
         <!-- 1. Hero: the Compás stage -->
-        <section class="events-hero-stage" aria-label="AXcent Dance events introduction" data-events-hero>
-            <div class="events-hero-stage__inner">
-                <span class="events-hero-stage__kicker">Bootcamps · Congresses · Group Trips</span>
-                <h1 class="events-hero-stage__title">Bachata events worth <em class="title-accent">traveling</em> for</h1>
-                <p class="events-hero-stage__lede">
-                    Weekly classes teach you the steps. Our events are where the steps become stories:
-                    intensive weekends with international artists in Zurich, and one congress in Milan
-                    that we travel to together.
-                </p>
-                <div class="events-hero-stage__actions">
-                    <a href="#bootcamp" class="btn-hero btn-hero-primary">
-                        <span class="btn-hero-content">See the Next Event</span>
-                    </a>
-                    <a href="https://wa.me/41799668481?text=Hello%20AXcent%2C%20I%20have%20a%20question%20about%20your%20events."
-                        class="btn-hero btn-hero-secondary" target="_blank" rel="noopener noreferrer">
-                        <span class="btn-hero-content">Ask Us on WhatsApp</span>
-                    </a>
+        <section class="split-masthead">
+            <div class="container split-masthead__split">
+                <span class="split-masthead__ghost" aria-hidden="true">Events</span>
+                <div class="split-masthead__copy">
+                    <p class="split-masthead__kicker">Bootcamps · Congresses · Group Trips</p>
+                    <h1 class="page-title split-masthead__title">
+                        Bachata events worth <em class="title-accent">traveling</em> for
+                    </h1>
+                    <p class="split-masthead__dek">
+                        Weekly classes teach you the steps. Our events are where the steps become stories:
+                        intensive weekends with international artists in Zurich, and one congress in Milan
+                        that we travel to together.
+                    </p>
+                    <div class="split-masthead__actions">
+                        <a href="#bootcamp" class="btn-hero btn-hero-primary">
+                            <span class="btn-hero-content">See the Next Event</span>
+                        </a>
+                        <a href="https://wa.me/41799668481?text=Hello%20AXcent%2C%20I%20have%20a%20question%20about%20your%20events."
+                            class="btn-hero btn-hero-secondary" target="_blank" rel="noopener noreferrer">
+                            <span class="btn-hero-content">Ask Us on WhatsApp</span>
+                        </a>
+                    </div>
                 </div>
+                <figure class="split-masthead__media">
+                    <img src="assets/images/gallery/gallery_15_1200w.webp"
+                        srcset="assets/images/gallery/gallery_15_480w.webp 480w, assets/images/gallery/gallery_15_800w.webp 800w, assets/images/gallery/gallery_15_1200w.webp 1200w"
+                        sizes="(max-width: 899px) 100vw, 40vw"
+                        alt="Expressive dance pose at a Bachata festival event" width="1200" height="900"
+                        loading="eager" fetchpriority="high">
+                </figure>
             </div>
         </section>
 
@@ -397,7 +420,7 @@
                             srcset="assets/images/dominican_bootcamp_480w.webp 480w, assets/images/dominican_bootcamp_800w.webp 800w, assets/images/dominican_bootcamp_1200w.webp 1200w"
                             sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px"
                             alt="Dominican Bachata Bootcamp flyer with Aitor Gomez and Sarah La Morena" width="1080"
-                            height="1350" loading="eager" fetchpriority="high" decoding="async">
+                            height="1350" loading="lazy" decoding="async">
                     </figure>
                     <div class="event-act__content">
                         <span class="event-act__kicker">Act I — Zurich, our studio</span>
@@ -405,9 +428,9 @@
                         <h2 class="section-title-modern">Dominican Bachata <em class="title-accent">Bootcamp</em></h2>
                         <p class="event-act__copy">
                             For one weekend in October, the studio in Altstetten runs on Dominican time.
-                            Seven hours of intensive training with <strong>Aitor Gomez</strong> and
-                            <strong>Sarah La Morena</strong> — footwork, musicality, and the flavor that
-                            no video tutorial can give you.
+                            Seven hours of partnerwork-focused training with <strong>Aitor Gomez</strong>
+                            and <strong>Sarah La Morena</strong> — leading, following, and the connection
+                            that no video tutorial can give you.
                         </p>
                         <p class="event-act__copy">
                             Come alone or bring your crew. By Sunday evening you will have danced with
@@ -468,11 +491,11 @@
                             width="800" height="600" loading="lazy" decoding="async">
                     </figure>
                     <figure class="event-nights__photo">
-                        <img src="assets/images/gallery/gallery_12_800w.webp"
-                            srcset="assets/images/gallery/gallery_12_480w.webp 480w, assets/images/gallery/gallery_12_800w.webp 800w, assets/images/gallery/gallery_12_1200w.webp 1200w"
+                        <img src="assets/images/gallery/gallery_1_800w.webp"
+                            srcset="assets/images/gallery/gallery_1_480w.webp 480w, assets/images/gallery/gallery_1_800w.webp 800w, assets/images/gallery/gallery_1_1200w.webp 1200w"
                             sizes="(max-width: 700px) 46vw, 33vw"
-                            alt="Fun moment during a couples Bachata class at AXcent Dance"
-                            width="800" height="600" loading="lazy" decoding="async">
+                            alt="AXcent dancers together at the Sensual Bachata Festival congress in Bucharest"
+                            width="800" height="450" loading="lazy" decoding="async">
                     </figure>
                 </div>
             </div>
@@ -588,6 +611,7 @@
                     <li><a href="blog/roots-of-bachata">Roots of Bachata</a></li>
                     <li><a href="schedule">Schedule</a></li>
                     <li><a href="blog">Our Blog</a></li>
+                    <li><a href="https://www.google.com/maps?cid=15680757943659417558" target="_blank" rel="noopener noreferrer">Read our reviews on Google</a></li>
 
                 </ul>
             </div>

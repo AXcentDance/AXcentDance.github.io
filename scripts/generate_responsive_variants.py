@@ -2,7 +2,7 @@ import os
 import subprocess
 import shutil
 
-ROOT_DIR = "/Users/slamitza/AXcentWebsiteGitHub"
+ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ASSETS_DIR = os.path.join(ROOT_DIR, "assets", "images")
 
 # Target widths
