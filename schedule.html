@@ -11,16 +11,16 @@
     <link rel="alternate" hreflang="x-default" href="https://axcentdance.com/schedule" />
     <link rel="alternate" hreflang="de" href="https://axcentdance.com/de/schedule" />
     <meta name="description"
-        content="Check Bachata class times in Zurich Altstetten with experience guidance for each level: Beginner 2, Sensual Foundation, Improver, Lady Style, and Int/Adv.">
+        content="See weekly Bachata class times in Zurich Altstetten, from Beginner 0 to advanced levels. New Beginner 0 course starts Monday, September 7.">
     <meta property="og:locale" content="en_US">
     <meta property="og:title" content="Bachata Schedule Zurich | Weekly Dance Class Times | AXcent">
-    <meta property="og:description" content="Check Bachata class times in Zurich Altstetten with experience guidance for each level: Beginner 2, Sensual Foundation, Improver, Lady Style, and Int/Adv.">
+    <meta property="og:description" content="See weekly Bachata class times in Zurich Altstetten, from Beginner 0 to advanced levels. New Beginner 0 course starts Monday, September 7.">
     <meta property="og:url" content="https://axcentdance.com/schedule">
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://axcentdance.com/assets/images/hero_new.webp">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Bachata Schedule Zurich | Weekly Dance Class Times | AXcent">
-    <meta name="twitter:description" content="Check Bachata class times in Zurich Altstetten with experience guidance for each level: Beginner 2, Sensual Foundation, Improver, Lady Style, and Int/Adv.">
+    <meta name="twitter:description" content="See weekly Bachata class times in Zurich Altstetten, from Beginner 0 to advanced levels. New Beginner 0 course starts Monday, September 7.">
     <meta name="twitter:image" content="https://axcentdance.com/assets/images/hero_new.webp">
     <meta http-equiv="Content-Security-Policy"
         content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://cdn.jsdelivr.net https://connect.facebook.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com https://placehold.co https://*.googleapis.com https://*.gstatic.com https://www.facebook.com https://connect.facebook.net; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://script.google.com https://formsubmit.co https://www.facebook.com https://connect.facebook.net; frame-src 'self' https://www.google.com; object-src 'none'; base-uri 'self'; media-src 'self' blob:; worker-src 'self' blob:;">
@@ -43,7 +43,8 @@
       "@id": "https://axcentdance.com/schedule#webpage",
       "url": "https://axcentdance.com/schedule",
       "name": "Bachata Schedule Zurich | Weekly Dance Class Times",
-      "description": "Check Bachata class times in Zurich Altstetten with experience guidance for each level: Beginner 2, Sensual Foundation, Improver, Lady Style, and Int/Adv.",
+      "description": "See weekly Bachata class times in Zurich Altstetten, from Beginner 0 to advanced levels. New Beginner 0 course starts Monday, September 7.",
+      "dateModified": "2026-07-24T12:00:00+02:00",
       "isPartOf": { "@id": "https://axcentdance.com/#website" },
       "mainEntity": {
         "@id": "https://axcentdance.com/schedule#itemlist"
@@ -66,6 +67,7 @@
         "category": "Educational Program"
       },
       "hasCourse": [
+        { "@id": "https://axcentdance.com/course/bachata-beginner-0#course" },
         { "@id": "https://axcentdance.com/course/bachata-beginner-1#course" },
         { "@id": "https://axcentdance.com/course/bachata-beginner-2#course" },
         { "@id": "https://axcentdance.com/course/bachata-sensual-foundation#course" },
@@ -81,8 +83,53 @@
       "itemListElement": [
         {
           "@type": "Course",
-          "@id": "https://axcentdance.com/course/bachata-beginner-1#course",
+          "@id": "https://axcentdance.com/course/bachata-beginner-0#course",
           "position": 1,
+          "name": "Bachata Beginner 0",
+          "description": "An 8-week Bachata course for absolute beginners with no dance experience, starting Monday, September 7, 2026.",
+          "educationalLevel": "Absolute beginner",
+          "timeRequired": "P8W",
+          "provider": {
+            "@id": "https://axcentdance.com/#organization"
+          },
+          "url": "https://axcentdance.com/registration#class-selection",
+          "offers": [
+            {
+              "@type": "Offer",
+              "name": "Regular Pass",
+              "price": "200.00",
+              "priceCurrency": "CHF",
+              "description": "8-week course pass"
+            },
+            {
+              "@type": "Offer",
+              "name": "Student Pass",
+              "price": "170.00",
+              "priceCurrency": "CHF",
+              "description": "8-week course pass for students"
+            }
+          ],
+          "hasCourseInstance": {
+            "@type": "CourseInstance",
+            "courseMode": "Physical",
+            "startDate": "2026-09-07T19:30:00+02:00",
+            "location": {
+              "@id": "https://axcentdance.com/#organization"
+            },
+            "courseSchedule": {
+              "@type": "Schedule",
+              "repeatFrequency": "Weekly",
+              "byDay": "https://schema.org/Monday",
+              "startDate": "2026-09-07",
+              "startTime": "19:30",
+              "endTime": "20:30"
+            }
+          }
+        },
+        {
+          "@type": "Course",
+          "@id": "https://axcentdance.com/course/bachata-beginner-1#course",
+          "position": 2,
           "name": "Bachata Beginner 1",
           "description": "Build your Bachata foundations in this Beginner 1 course for dancers with 2/4 months of experience.",
           "educationalLevel": "2/4 months of experience",
@@ -129,7 +176,7 @@
         {
           "@type": "Course",
           "@id": "https://axcentdance.com/course/bachata-beginner-2#course",
-          "position": 2,
+          "position": 3,
           "name": "Bachata Beginner 2",
           "description": "Build slides, cambres, footwork, hip movement, and preparation for Sensual Foundation for dancers with around 4-8 months of experience.",
           "educationalLevel": "Beginner, ~ 4-8 months",
@@ -176,7 +223,7 @@
         {
           "@type": "Course",
           "@id": "https://axcentdance.com/course/bachata-sensual-foundation#course",
-          "position": 3,
+          "position": 4,
           "name": "Bachata Sensual Foundation",
           "description": "Learn the technique and body movement of the Bachata Sensual style for dancers with around 1-1.5 years of experience.",
           "educationalLevel": "Beginner/Intermediate, ~ 1-1.5 years",
@@ -223,7 +270,7 @@
         {
           "@type": "Course",
           "@id": "https://axcentdance.com/course/bachata-sensual-improver#course",
-          "position": 4,
+          "position": 5,
           "name": "Bachata Sensual Improver",
           "description": "Refine your skills with complex movements and musicality for dancers with around 2 years of experience.",
           "educationalLevel": "Intermediate, ~ 2 years",
@@ -270,7 +317,7 @@
         {
           "@type": "Course",
           "@id": "https://axcentdance.com/course/bachata-sensual-inter-adv#course",
-          "position": 5,
+          "position": 6,
           "name": "Bachata Sensual Intermediate/Advanced",
           "description": "Complex figures and advanced technique for dancers with 2+ years and Improver experience.",
           "educationalLevel": "Advanced, 2+ years + Improver",
@@ -317,7 +364,7 @@
         {
           "@type": "Course",
           "@id": "https://axcentdance.com/course/lady-styling#course",
-          "position": 6,
+          "position": 7,
           "name": "Bachata Lady Styling",
           "description": "Arm styling, body movement, and footwork for followers with around 1 year of dance experience.",
           "educationalLevel": "Open Level, ~ 1 year",
@@ -937,6 +984,7 @@
                 <!-- Desktop Grid Header -->
                 <div class="schedule-grid-header">
                     <div class="col-header time">Start</div>
+                    <div class="col-header day">Monday</div>
                     <div class="col-header day">Tuesday</div>
                     <div class="col-header day">Wednesday</div>
                     <div class="col-header day">Thursday</div>
@@ -947,6 +995,9 @@
                     <!-- Slot 1 -->
                     <div class="schedule-row">
                         <div class="time-slot">18:30</div>
+
+                        <!-- Mon Class (Empty) -->
+                        <div>&nbsp;</div>
 
                         <!-- Tue Class -->
                         <a href="bachata-beginner-1" class="class-card">
@@ -966,6 +1017,15 @@
                     <!-- Slot 2 -->
                     <div class="schedule-row">
                         <div class="time-slot">19:30</div>
+
+                        <!-- Mon Class -->
+                        <a href="registration#class-selection" class="class-card">
+                            <span class="level-tag tag-beginner">Bachata</span>
+                            <h3 class="class-name">Bachata Beginner 0</h3>
+                            <p class="class-experience">No experience needed</p>
+                            <span class="class-start-date">Starting Monday Sept 7</span>
+                            <span class="class-booking-link">Book a spot here</span>
+                        </a>
 
                         <!-- Tue Class -->
                         <a href="bachata-beginner-2" class="class-card">
@@ -993,6 +1053,9 @@
                     <div class="schedule-row">
                         <div class="time-slot">20:30</div>
 
+                        <!-- Mon Class (Empty) -->
+                        <div>&nbsp;</div>
+
                         <!-- Tue Class (Empty) -->
                         <div>&nbsp;</div>
 
@@ -1017,6 +1080,18 @@
 
                 <!-- Mobile Schedule Fallback -->
                 <div class="hidden-desktop">
+                    <div class="mobile-schedule-day">
+                        <h3 class="mobile-day-title">Monday</h3>
+                        <div class="schedule-row">
+                            <a href="registration#class-selection" class="class-card">
+                                <div class="mobile-time">19:30</div>
+                                <h3 class="class-name">Bachata Beginner 0</h3>
+                                <p class="class-experience">No experience needed</p>
+                                <span class="class-start-date">Starting Monday Sept 7</span>
+                                <span class="class-booking-link">Book a spot here</span>
+                            </a>
+                        </div>
+                    </div>
                     <div class="mobile-schedule-day">
                         <h3 class="mobile-day-title">Tuesday</h3>
                         <div class="schedule-row">

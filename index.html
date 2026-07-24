@@ -80,7 +80,7 @@
         "@id": "https://axcentdance.com/#organization"
       },
       "description": "Discover Bachata classes in Zurich at AXcent Dance. We offer Bachata Sensual, Dominican Bachata, and Salsa classes for all levels at Hermetschloostrasse 73.",
-      "dateModified": "2026-05-10T12:00:00+02:00"
+      "dateModified": "2026-07-24T12:00:00+02:00"
     },
     {
       "@type": "VideoObject",
@@ -562,6 +562,7 @@
         <!-- Desktop Grid Header -->
         <div class="schedule-grid-header">
           <div class="col-header time">Start</div>
+          <div class="col-header day">Monday</div>
           <div class="col-header day">Tuesday</div>
           <div class="col-header day">Wednesday</div>
           <div class="col-header day">Thursday</div>
@@ -572,6 +573,9 @@
           <!-- Slot 1 -->
           <div class="schedule-row">
             <div class="time-slot">18:30</div>
+
+            <!-- Mon Class (Empty) -->
+            <div>&nbsp;</div>
 
             <!-- Tue Class -->
             <a href="bachata-beginner-1" class="class-card">
@@ -591,6 +595,15 @@
           <!-- Slot 2 -->
           <div class="schedule-row">
             <div class="time-slot">19:30</div>
+
+            <!-- Mon Class -->
+            <a href="registration#class-selection" class="class-card">
+              <span class="level-tag tag-beginner">Bachata</span>
+              <h3 class="class-name">Bachata Beginner 0</h3>
+              <p class="class-experience">No experience needed</p>
+              <span class="class-start-date">Starting Monday Sept 7</span>
+              <span class="class-booking-link">Book a spot here</span>
+            </a>
 
             <!-- Tue Class -->
             <a href="bachata-beginner-2" class="class-card">
@@ -618,6 +631,9 @@
           <div class="schedule-row">
             <div class="time-slot">20:30</div>
 
+            <!-- Mon Class (Empty) -->
+            <div>&nbsp;</div>
+
             <!-- Tue Class (Empty) -->
             <div>&nbsp;</div>
 
@@ -639,6 +655,18 @@
 
         <!-- Mobile Schedule Fallback -->
         <div class="hidden-desktop">
+          <div class="mobile-schedule-day">
+            <h3 class="mobile-day-title">Monday</h3>
+            <div class="schedule-row">
+              <a href="registration#class-selection" class="class-card">
+                <div class="mobile-time">19:30</div>
+                <h3 class="class-name">Bachata Beginner 0</h3>
+                <p class="class-experience">No experience needed</p>
+                <span class="class-start-date">Starting Monday Sept 7</span>
+                <span class="class-booking-link">Book a spot here</span>
+              </a>
+            </div>
+          </div>
           <div class="mobile-schedule-day">
             <h3 class="mobile-day-title">Tuesday</h3>
             <div class="schedule-row">
@@ -1190,6 +1218,20 @@
               <label style="text-align: center; display: block; margin-bottom: 1rem; font-size: 1.2rem;">Select a Class
                 to Try</label>
               <div class="class-selection-grid">
+                <!-- Monday Column -->
+                <div class="day-column">
+                  <h3 class="day-title">Monday</h3>
+                  <div class="compact-class-list">
+                    <label class="compact-option">
+                      <input type="radio" name="class-select" value="Monday 19:30 - Beginner 0" required>
+                      <div class="compact-card">
+                        <span class="compact-time">19:30</span>
+                        <span class="compact-name">Bachata<br>Beginner 0</span>
+                      </div>
+                    </label>
+                  </div>
+                </div>
+
                 <!-- Tuesday Column -->
                 <div class="day-column">
                   <h3 class="day-title">Tuesday</h3>

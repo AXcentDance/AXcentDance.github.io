@@ -2424,6 +2424,14 @@ textarea {
     }
 }
 
+@media (min-width: 1000px) {
+    .trial-form .class-selection-grid,
+    .reg-form-container .timetable-selection-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 1rem;
+    }
+}
+
 .timetable-col {
     display: flex;
     flex-direction: column;
@@ -2964,6 +2972,14 @@ textarea {
 }
 
 @media (max-width: 899px) {
+    .schedule-section .hidden-mobile {
+        display: none;
+    }
+
+    .schedule-section .hidden-desktop {
+        display: block;
+    }
+
     .schedule-row {
         gap: 0.6rem;
         margin-bottom: 1rem;
@@ -2974,7 +2990,9 @@ textarea {
         grid-template-columns: 65px 1fr !important;
         grid-template-areas:
             "time name"
-            "time experience" !important;
+            "time experience"
+            "time start"
+            "time booking" !important;
         align-items: center !important;
         padding: 0.7rem 0.9rem !important;
         min-height: auto !important;
@@ -3011,6 +3029,14 @@ textarea {
         margin: 0 !important;
         text-align: left;
         align-self: start;
+    }
+
+    .class-start-date {
+        grid-area: start;
+    }
+
+    .class-booking-link {
+        grid-area: booking;
     }
 
     .mobile-instructor {
@@ -4590,8 +4616,8 @@ textarea {
 @media (min-width: 900px) {
     .schedule-grid-header {
         display: grid;
-        grid-template-columns: 100px 1fr 1fr 1fr;
-        gap: 2rem;
+        grid-template-columns: 100px repeat(4, minmax(0, 1fr));
+        gap: 1.25rem;
         margin-bottom: 2rem;
         padding: 0 1rem;
     }
@@ -4611,8 +4637,8 @@ textarea {
     }
 
     .schedule-row {
-        grid-template-columns: 100px 1fr 1fr 1fr;
-        gap: 2rem;
+        grid-template-columns: 100px repeat(4, minmax(0, 1fr));
+        gap: 1.25rem;
         align-items: stretch;
         /* Equal height cards */
         margin-bottom: 1rem;
@@ -4631,6 +4657,25 @@ textarea {
         margin-bottom: 0;
         border-radius: 0;
     }
+}
+
+.class-start-date,
+.class-booking-link {
+    display: block;
+    margin-top: 0.45rem;
+    font-size: 0.8rem;
+    line-height: 1.35;
+}
+
+.class-start-date {
+    color: var(--text-muted);
+}
+
+.class-booking-link {
+    color: var(--accent-start);
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
 }
 
 /* CLASS CARD MODERNIZATION */

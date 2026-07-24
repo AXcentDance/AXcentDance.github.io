@@ -66,7 +66,7 @@
         "@id": "https://axcentdance.com/#organization"
       },
       "description": "Entdecke Bachata Kurse in Zürich bei AXcent Dance. Wir bieten Bachata Sensual, Dominican Bachata und Salsa-Kurse für alle Niveaus an der Hermetschloostrasse 73.",
-      "dateModified": "2026-05-10T12:00:00+02:00"
+      "dateModified": "2026-07-24T12:00:00+02:00"
     },
     {
       "@type": "VideoObject",
@@ -559,6 +559,7 @@
         <!-- Desktop Grid Header -->
         <div class="schedule-grid-header">
           <div class="col-header time">Start</div>
+          <div class="col-header day">Montag</div>
           <div class="col-header day">Dienstag</div>
           <div class="col-header day">Mittwoch</div>
           <div class="col-header day">Donnerstag</div>
@@ -569,6 +570,9 @@
           <!-- Slot 1 -->
           <div class="schedule-row">
             <div class="time-slot">18:30</div>
+
+            <!-- Mo Kurs (Leer) -->
+            <div>&nbsp;</div>
 
             <!-- Tue Class -->
             <a href="bachata-beginner-1" class="class-card">
@@ -588,6 +592,15 @@
           <!-- Slot 2 -->
           <div class="schedule-row">
             <div class="time-slot">19:30</div>
+
+            <!-- Mo Kurs -->
+            <a href="registration#class-selection" class="class-card">
+              <span class="level-tag tag-beginner">Bachata</span>
+              <h3 class="class-name">Bachata Anfänger 0</h3>
+              <p class="class-experience">Keine Vorkenntnisse nötig</p>
+              <span class="class-start-date">Startet am Montag, 7. September</span>
+              <span class="class-booking-link">Hier Platz buchen</span>
+            </a>
 
             <!-- Tue Class -->
             <a href="bachata-beginner-2" class="class-card">
@@ -615,6 +628,9 @@
           <div class="schedule-row">
             <div class="time-slot">20:30</div>
 
+            <!-- Mo Kurs (Leer) -->
+            <div>&nbsp;</div>
+
             <!-- Tue Class (Empty) -->
             <div>&nbsp;</div>
 
@@ -636,6 +652,18 @@
 
         <!-- Mobile Schedule Fallback -->
         <div class="hidden-desktop">
+          <div class="mobile-schedule-day">
+            <h3 class="mobile-day-title">Montag</h3>
+            <div class="schedule-row">
+              <a href="registration#class-selection" class="class-card">
+                <div class="mobile-time">19:30</div>
+                <h3 class="class-name">Bachata Anfänger 0</h3>
+                <p class="class-experience">Keine Vorkenntnisse nötig</p>
+                <span class="class-start-date">Startet am Montag, 7. September</span>
+                <span class="class-booking-link">Hier Platz buchen</span>
+              </a>
+            </div>
+          </div>
           <div class="mobile-schedule-day">
             <h3 class="mobile-day-title">Dienstag</h3>
             <div class="schedule-row">
@@ -1186,6 +1214,20 @@
               <label style="text-align: center; display: block; margin-bottom: 1rem; font-size: 1.2rem;">Wähle einen
                 Kurs</label>
               <div class="class-selection-grid">
+                <!-- Montag Column -->
+                <div class="day-column">
+                  <h3 class="day-title">Montag</h3>
+                  <div class="compact-class-list">
+                    <label class="compact-option">
+                      <input type="radio" name="class-select" value="Monday 19:30 - Beginner 0" required>
+                      <div class="compact-card">
+                        <span class="compact-time">19:30</span>
+                        <span class="compact-name">Bachata<br>Anfänger 0</span>
+                      </div>
+                    </label>
+                  </div>
+                </div>
+
                 <!-- Dienstag Column -->
                 <div class="day-column">
                   <h3 class="day-title">Dienstag</h3>
