@@ -2034,6 +2034,47 @@ body.home-page .location-strip__link:focus-visible {
 
 /* Stat band under the hero: four verifiable facts, brass numerals.
    The "200+" claim finally moves from the meta description onto the page. */
+body.home-page .home-assurance-strip {
+    padding: 0.78rem 0;
+    background: linear-gradient(90deg, #061A17 0%, #0B2A24 50%, #061A17 100%);
+    border-top: 1px solid rgba(232, 176, 75, 0.12);
+    border-bottom: 1px solid rgba(232, 176, 75, 0.14);
+}
+
+body.home-page .home-assurance-strip__list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+body.home-page .home-assurance-strip__list li {
+    display: inline-flex;
+    align-items: center;
+    color: #F2E7CF;
+    font-size: clamp(0.76rem, 0.9vw, 0.88rem);
+    font-weight: 600;
+    line-height: 1.3;
+    white-space: nowrap;
+}
+
+body.home-page .home-assurance-strip__list li::before {
+    content: '\2713';
+    margin-right: 0.42rem;
+    color: #E8B04B;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 800;
+}
+
+body.home-page .home-assurance-strip__list li + li {
+    margin-left: 1.15rem;
+    padding-left: 1.15rem;
+    border-left: 1px solid rgba(232, 176, 75, 0.28);
+}
+
 body.home-page .stat-band {
     padding: clamp(1.1rem, 2vw, 1.6rem) 0;
     background: #0C2A24;
@@ -2089,12 +2130,25 @@ body.home-page .stat-band__label a:focus-visible {
 }
 
 @media (max-width: 900px) {
+    body.home-page .home-assurance-strip__list {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.55rem 1rem;
+    }
+
+    body.home-page .home-assurance-strip__list li + li {
+        margin-left: 0;
+        padding-left: 0;
+        border-left: 0;
+    }
+
     body.home-page .stat-band__inner {
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 0.9rem 0;
     }
 
     body.home-page .stat-band__item {
+        align-items: center;
         justify-content: flex-start;
         padding-left: 1rem;
     }
@@ -2652,16 +2706,19 @@ body.home-page .home-hero__launch-note {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 0.18rem 0.45rem;
-    max-width: 48rem;
-    margin: 0 0 0.1rem;
-    padding: 0.48rem 0.65rem;
-    border-left: 2px solid var(--accent-gold);
+    gap: 0.2rem 0.55rem;
+    max-width: 50rem;
+    margin: 0 0 0.18rem;
+    padding: 0.62rem 0.78rem;
+    border-left: 3px solid var(--accent-gold);
     border-radius: 0 var(--cta-radius-sm) var(--cta-radius-sm) 0;
-    background: color-mix(in srgb, var(--bg-dark) 82%, transparent);
-    color: var(--text-main);
-    font-size: clamp(0.7rem, 0.9vw, 0.82rem);
-    line-height: 1.35;
+    background: linear-gradient(90deg, rgba(4, 19, 16, 0.96), rgba(4, 19, 16, 0.82));
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
+    color: rgba(244, 239, 230, 0.94);
+    font-size: clamp(0.82rem, 1vw, 0.94rem);
+    line-height: 1.3;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
 }
 
 body.home-page .home-hero__launch-note strong {
@@ -2669,14 +2726,21 @@ body.home-page .home-hero__launch-note strong {
     font-weight: 800;
 }
 
+body.home-page .home-hero__launch-separator {
+    color: rgba(232, 176, 75, 0.72);
+    font-weight: 800;
+}
+
 body.home-page .home-hero__launch-note code {
-    padding: 0.08rem 0.32rem;
-    border-radius: 4px;
+    padding: 0.1rem 0.38rem;
+    border: 1px solid rgba(255, 248, 240, 0.22);
+    border-radius: 5px;
     background: var(--accent-gold);
     color: var(--text-dark);
-    font-family: 'Outfit', sans-serif;
-    font-size: 0.92em;
-    font-weight: 800;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.94em;
+    font-weight: 700;
+    letter-spacing: 0.01em;
 }
 
 @media (max-width: 899px) {
@@ -2711,10 +2775,10 @@ body.home-page .home-hero__launch-note code {
     }
 
     body.home-page .home-hero__launch-note {
-        gap: 0.08rem 0.32rem;
-        padding: 0.38rem 0.5rem;
-        font-size: 0.64rem;
-        line-height: 1.28;
+        gap: 0.08rem 0.36rem;
+        padding: 0.48rem 0.58rem;
+        font-size: 0.68rem;
+        line-height: 1.25;
     }
 }
 
@@ -3352,11 +3416,20 @@ body.contact-page .contact-form__privacy a:focus-visible {
         color: #E8B04B !important;
     }
 
-    :is(body.home-page, body.contact-page, body.events-page, body.tropic) .mobile-menu-btn {
+    :is(body.home-page, body.contact-page, body.events-page, body.blog-page, body.guide-page, body.tropic) .mobile-menu-btn {
         color: #F2E7CF !important;
         background: rgba(12, 42, 36, 0.85) !important;
         border: 1px solid rgba(232, 176, 75, 0.3) !important;
+        border-radius: 14px;
         box-shadow: none;
+        transition: border-color 0.35s ease, background-color 0.35s ease;
+    }
+
+    /* While the menu is open the frame warms from brass to the coral of the
+       X inside it. */
+    :is(body.home-page, body.contact-page, body.events-page, body.blog-page, body.guide-page, body.tropic) .mobile-menu-btn.active {
+        border-color: rgba(255, 90, 60, 0.55) !important;
+        background: rgba(20, 30, 26, 0.9) !important;
     }
 
     :is(body.home-page, body.contact-page, body.events-page, body.tropic) .lang-switch,
@@ -3369,27 +3442,79 @@ body.contact-page .contact-form__privacy a:focus-visible {
         color: rgba(244, 239, 230, 0.3) !important;
     }
 
-    :is(body.home-page, body.contact-page, body.events-page, body.tropic) .nav-links.active {
+    :is(body.home-page, body.contact-page, body.events-page, body.blog-page, body.guide-page, body.tropic) .nav-links.active {
         background: linear-gradient(180deg, rgba(6, 26, 23, 0.99), rgba(12, 42, 36, 0.99));
         border-top: 1px solid rgba(232, 176, 75, 0.16);
     }
 
-    :is(body.home-page, body.contact-page, body.events-page, body.tropic) .nav-links.active > a,
-    :is(body.home-page, body.contact-page, body.events-page, body.tropic) .nav-links.active .dropbtn,
-    :is(body.home-page, body.contact-page, body.events-page, body.tropic) .nav-links.active .dropdown-content a {
+    :is(body.home-page, body.contact-page, body.events-page, body.blog-page, body.guide-page, body.tropic) .nav-links.active > a,
+    :is(body.home-page, body.contact-page, body.events-page, body.blog-page, body.guide-page, body.tropic) .nav-links.active .dropbtn,
+    :is(body.home-page, body.contact-page, body.events-page, body.blog-page, body.guide-page, body.tropic) .nav-links.active .dropdown-content a {
         color: #F4EFE6 !important;
     }
 
-    :is(body.home-page, body.contact-page, body.events-page, body.tropic) .nav-links.active .btn-header-cta {
+    :is(body.home-page, body.contact-page, body.events-page, body.blog-page, body.guide-page, body.tropic) .nav-links.active .btn-header-cta {
         color: var(--text-inverse) !important;
     }
 
-    :is(body.home-page, body.contact-page, body.events-page, body.tropic) .nav-links.active .btn-header-cta:hover,
-    :is(body.home-page, body.contact-page, body.events-page, body.tropic) .nav-links.active .btn-header-cta:focus-visible {
+    :is(body.home-page, body.contact-page, body.events-page, body.blog-page, body.guide-page, body.tropic) .nav-links.active .btn-header-cta:hover,
+    :is(body.home-page, body.contact-page, body.events-page, body.blog-page, body.guide-page, body.tropic) .nav-links.active .btn-header-cta:focus-visible {
         color: var(--cta-ink) !important;
     }
 
-    :is(body.home-page, body.contact-page, body.events-page, body.tropic) .nav-links.active .dropdown-content {
+    /* The portal is an important destination, not another content page.
+       Give it a distinct mobile treatment and a short clarifying label while
+       leaving the compact desktop login icon unchanged. */
+    :is(body.home-page, body.contact-page, body.events-page, body.blog-page, body.guide-page, body.tropic) .nav-links.active > a.nav-portal-item {
+        display: inline-flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: min(15rem, calc(100vw - 4rem));
+        min-height: 3.45rem;
+        margin: 0.35rem 0 0.45rem;
+        padding: 0.55rem 1.25rem 0.48rem;
+        border: 1px solid var(--accent-gold);
+        border-radius: 999px;
+        background: var(--bg-elevated);
+        color: var(--accent-gold) !important;
+        box-shadow: inset 0 0 0 1px var(--glass-border);
+        font-weight: 800;
+        letter-spacing: 0.12em;
+        line-height: 1.05;
+    }
+
+    :is(body.home-page, body.contact-page, body.events-page, body.blog-page, body.guide-page, body.tropic) .nav-links.active > a.nav-portal-item::after {
+        content: 'Student portal';
+        position: static;
+        width: auto;
+        height: auto;
+        margin-top: 0.2rem;
+        transform: none;
+        background: none;
+        color: var(--text-muted);
+        font-family: 'Inter', sans-serif;
+        font-size: 0.62rem;
+        font-weight: 600;
+        letter-spacing: 0.09em;
+        line-height: 1;
+        box-shadow: none;
+        text-transform: uppercase;
+    }
+
+    html[lang='de'] :is(body.home-page, body.contact-page, body.events-page, body.blog-page, body.guide-page, body.tropic) .nav-links.active > a.nav-portal-item::after {
+        content: 'Schülerportal';
+    }
+
+    :is(body.home-page, body.contact-page, body.events-page, body.blog-page, body.guide-page, body.tropic) .nav-links.active > a.nav-portal-item:hover,
+    :is(body.home-page, body.contact-page, body.events-page, body.blog-page, body.guide-page, body.tropic) .nav-links.active > a.nav-portal-item:focus-visible {
+        border-color: var(--accent-start);
+        background: var(--glass-bg);
+        color: var(--accent-start) !important;
+        box-shadow: inset 0 0 0 1px var(--glass-border), var(--shadow-soft);
+    }
+
+    :is(body.home-page, body.contact-page, body.events-page, body.blog-page, body.guide-page, body.tropic) .nav-links.active .dropdown-content {
         background: rgba(12, 42, 36, 0.9);
         box-shadow: none;
     }
@@ -7119,6 +7244,38 @@ body.schedule-page .hero-grid {
     gap: clamp(1.6rem, 3.5vw, 3rem);
 }
 
+body.schedule-page .schedule-hero-modern .hero-grid {
+    position: relative;
+}
+
+body.schedule-page .schedule-hero__ghost {
+    position: absolute;
+    top: -0.38em;
+    left: -0.04em;
+    z-index: 0;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: clamp(5rem, 11vw, 8.5rem);
+    line-height: 1;
+    color: var(--title-cream);
+    opacity: 0.06;
+    pointer-events: none;
+    user-select: none;
+    white-space: nowrap;
+}
+
+body.schedule-page .schedule-hero-modern .hero-content-left,
+body.schedule-page .schedule-hero-modern .hero-content-right {
+    position: relative;
+    z-index: 1;
+}
+
+@media (max-width: 899px) {
+    body.schedule-page .schedule-hero__ghost {
+        display: none;
+    }
+}
+
 @media (min-width: 900px) {
     body.schedule-page .hero-grid {
         grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
@@ -7151,7 +7308,7 @@ body.schedule-page .schedule-fact-chips {
     display: flex;
     flex-wrap: wrap;
     gap: 0.55rem;
-    margin: 1.2rem 0 0;
+    margin: 1.2rem 0 1.75rem;
     padding: 0;
     list-style: none;
 }
@@ -7223,6 +7380,92 @@ body.schedule-page .framed-hero-inner img {
 body.schedule-page .framed-hero-inner:hover img,
 body.schedule-page .framed-hero-inner:focus-within img {
     filter: saturate(1.18) contrast(1.09) brightness(1.02) sepia(0.16);
+}
+
+/* Keep the full timetable readable while reducing the amount of vertical
+   space it occupies on the dedicated schedule page. */
+body.schedule-page .schedule-section {
+    padding: clamp(4.25rem, 8vw, 6rem) 0 1.75rem;
+}
+
+body.schedule-page .schedule-header {
+    margin-bottom: 2.75rem;
+}
+
+body.schedule-page .schedule-header .section-title-modern {
+    font-size: clamp(2.35rem, 4.3vw, 3rem);
+}
+
+body.schedule-page .schedule-meta {
+    font-size: 0.8rem;
+}
+
+body.schedule-page .schedule-offramp {
+    margin-top: 2rem;
+    padding: 1rem 1.4rem;
+}
+
+body.schedule-page .schedule-offramp__copy {
+    font-size: 0.95rem;
+}
+
+body.schedule-page .schedule-offramp__cta {
+    padding: 0.7rem 1.3rem;
+}
+
+/* Keep every desktop timetable slot on the same baseline. The final Thursday
+   class carries an extra approval note; without a shared row height it makes
+   the neighbouring Improver card look disproportionately tall. */
+@media (min-width: 900px) {
+    body.schedule-page .schedule-grid-header {
+        gap: 1rem;
+        margin-bottom: 1.25rem;
+        padding: 0 0.75rem;
+    }
+
+    body.schedule-page .schedule-grid-header .col-header {
+        font-size: 1.05rem;
+    }
+
+    body.schedule-page .schedule-section .hidden-mobile .schedule-row {
+        grid-auto-rows: 8.25rem;
+        gap: 1rem;
+        margin-bottom: 0.625rem;
+        align-items: stretch;
+    }
+
+    body.schedule-page .schedule-section .hidden-mobile .class-card {
+        height: 100%;
+        min-height: 0;
+        padding: 0.7rem 2.5rem 0.7rem 0.9rem;
+    }
+
+    body.schedule-page .schedule-section .hidden-mobile .class-name {
+        font-size: 1.125rem;
+        overflow-wrap: normal;
+        word-break: normal;
+    }
+
+    body.schedule-page .schedule-section .hidden-mobile .class-experience {
+        font-size: 0.75rem;
+    }
+
+    body.schedule-page .schedule-section .hidden-mobile .class-card--approval .class-name {
+        font-size: 1rem;
+        line-height: 1.1;
+    }
+
+    body.schedule-page .schedule-section .hidden-mobile .class-card--approval .class-experience {
+        font-size: 0.75rem;
+        line-height: 1.25;
+    }
+
+    body.schedule-page .schedule-section .hidden-mobile .class-card--approval .class-note {
+        margin: 0.18rem 0 0;
+        color: var(--accent-start);
+        font-size: 0.68rem;
+        line-height: 1.2;
+    }
 }
 
 /* ---- Dance Journey timeline (structure ported, palette re-inked) ---- */
@@ -7456,6 +7699,15 @@ body.schedule-page .private-classes-section {
 
 body.schedule-page .private-classes-grid {
     gap: 1.5rem;
+}
+
+/* Italic display glyphs can overhang their inline paint box. Give the
+   gradient accent a small transparent end allowance so the final letter is
+   fully painted without changing the title's visual spacing. */
+body.schedule-page .private-classes-grid .section-title-modern .title-accent {
+    display: inline-block;
+    padding-inline-end: 0.14em;
+    margin-inline-end: -0.14em;
 }
 
 @media (min-width: 900px) {
@@ -8856,9 +9108,8 @@ body.cart-page .loading-spinner {
    service pages under body.service-page: room-rental.html,
    corporate-events.html, private-lessons.html (+ DE counterparts). Same
    recipe as body.registration-page .reg-masthead, renamed since it now
-   spans two page-type ancestor classes. schedule.html deliberately does
-   NOT use this component (owner: no ghost word there) — see its own
-   lighter retune inside the SCHEDULE PAGE section instead.
+   spans two page-type ancestor classes. schedule.html keeps its own
+   lighter retune inside the SCHEDULE PAGE section.
    Static component: no GSAP entrance choreography, no data-* JS hooks —
    renders fully visible immediately, matching the shipped reg-masthead.
    -------------------------------------------------------------------------- */
@@ -9042,6 +9293,249 @@ body.service-page .hero-desc {
     color: var(--text-muted);
 }
 
+/* ---- Private coaching advantage: one connected editorial journey ---- */
+
+body.private-page .private-advantage {
+    position: relative;
+    overflow: clip;
+    padding: clamp(4rem, 8vw, 7rem) 20px;
+    border-top: 1px solid var(--glass-border);
+    border-bottom: 1px solid var(--glass-border);
+    background: var(--bg-secondary);
+}
+
+body.private-page .private-advantage__layout {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    gap: clamp(3rem, 7vw, 5.5rem);
+    max-width: 1120px;
+}
+
+body.private-page .private-advantage__intro {
+    max-width: 34rem;
+}
+
+body.private-page .private-advantage__kicker,
+body.private-page .private-advantage__outcome {
+    margin: 0;
+    color: var(--accent-bronze);
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    line-height: 1.4;
+    text-transform: uppercase;
+}
+
+body.private-page .private-advantage__kicker {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 1rem;
+}
+
+body.private-page .private-advantage__kicker::before {
+    content: '';
+    width: 2.8rem;
+    height: 1px;
+    flex: 0 0 auto;
+    background: var(--accent-gold);
+}
+
+body.private-page .private-advantage__title {
+    margin: 0;
+    color: var(--title-cream);
+    font-family: var(--font-heading);
+    font-size: clamp(2.65rem, 7vw, 5.3rem);
+    font-weight: 600;
+    line-height: 0.95;
+    letter-spacing: -0.035em;
+}
+
+body.private-page .private-advantage__title em {
+    display: inline-block;
+    padding-right: 0.08em;
+    color: var(--accent-start);
+    font-weight: 600;
+}
+
+body.private-page .private-advantage__lead {
+    max-width: 31rem;
+    margin: 1.5rem 0 0;
+    color: var(--text-muted);
+    font-size: clamp(1rem, 2vw, 1.16rem);
+    line-height: 1.7;
+}
+
+body.private-page .private-advantage__rhythm {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem 1.3rem;
+    margin: 2rem 0 0;
+    padding: 1.05rem 0 0;
+    border-top: 1px solid var(--glass-border);
+    color: var(--accent-bronze-soft);
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.76rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+body.private-page .private-advantage__rhythm span {
+    display: inline-flex;
+    align-items: center;
+    gap: 1.3rem;
+}
+
+body.private-page .private-advantage__rhythm span:not(:last-child)::after {
+    content: '→';
+    color: var(--accent-start);
+}
+
+body.private-page .private-advantage__journey {
+    position: relative;
+    display: grid;
+    gap: 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+body.private-page .private-advantage__journey::before {
+    content: '';
+    position: absolute;
+    top: 1.9rem;
+    bottom: 1.9rem;
+    left: 1.9rem;
+    width: 1px;
+    background: var(--glass-border);
+}
+
+body.private-page .private-advantage__step {
+    position: relative;
+    display: grid;
+    grid-template-columns: 3.8rem minmax(0, 1fr);
+    gap: clamp(1.15rem, 4vw, 2.2rem);
+    padding: 0 0 clamp(2.4rem, 7vw, 3.8rem);
+}
+
+body.private-page .private-advantage__step:last-child {
+    padding-bottom: 0;
+}
+
+body.private-page .private-advantage__number {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    place-items: center;
+    align-self: start;
+    width: 3.8rem;
+    aspect-ratio: 1;
+    border: 1px solid var(--accent-bronze-muted);
+    border-radius: 50%;
+    background: var(--bg-secondary);
+    color: var(--accent-bronze-soft);
+    font-family: 'Teko', sans-serif;
+    font-size: 1.65rem;
+    line-height: 1;
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+body.private-page .private-advantage__content {
+    padding: 0.15rem 0 clamp(2rem, 5vw, 3rem);
+    border-bottom: 1px solid var(--glass-border);
+}
+
+body.private-page .private-advantage__step:last-child .private-advantage__content {
+    padding-bottom: 0;
+    border-bottom: 0;
+}
+
+body.private-page .private-advantage__content h3 {
+    margin: 0.4rem 0 0.8rem;
+    color: var(--title-cream);
+    font-family: var(--font-heading);
+    font-size: clamp(1.75rem, 4vw, 2.45rem);
+    font-weight: 600;
+    line-height: 1.05;
+}
+
+body.private-page .private-advantage__content > p:last-child {
+    max-width: 42rem;
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 1rem;
+    line-height: 1.68;
+}
+
+body.private-page .private-advantage__content a {
+    color: var(--accent-start);
+    font-weight: 600;
+    text-decoration-color: var(--accent-bronze-muted);
+    text-underline-offset: 0.18em;
+    transition: color 0.25s ease, text-decoration-color 0.25s ease;
+}
+
+body.private-page .private-advantage__content a:hover,
+body.private-page .private-advantage__content a:focus-visible {
+    color: var(--accent-bronze-soft);
+    text-decoration-color: var(--accent-start);
+}
+
+body.private-page .private-advantage__content a:focus-visible {
+    outline: 2px solid var(--accent-gold);
+    outline-offset: 4px;
+}
+
+body.private-page .private-advantage__step:hover .private-advantage__number,
+body.private-page .private-advantage__step:focus-within .private-advantage__number {
+    border-color: var(--accent-start);
+    background: var(--bg-elevated);
+    color: var(--accent-start);
+}
+
+@media (min-width: 960px) {
+    body.private-page .private-advantage__layout {
+        grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+        align-items: start;
+    }
+
+    body.private-page .private-advantage__intro {
+        position: sticky;
+        top: calc(var(--header-height) + 2rem);
+    }
+
+    body.private-page .private-advantage__step {
+        grid-template-columns: 4.5rem minmax(0, 1fr);
+    }
+
+    body.private-page .private-advantage__journey::before {
+        left: 2.25rem;
+    }
+
+    body.private-page .private-advantage__number {
+        width: 4.5rem;
+        font-size: 1.9rem;
+    }
+}
+
+@media (max-width: 430px) {
+    body.private-page .private-advantage__rhythm {
+        display: grid;
+        gap: 0.55rem;
+    }
+
+    body.private-page .private-advantage__rhythm span {
+        justify-content: space-between;
+    }
+
+    body.private-page .private-advantage__rhythm span:last-child {
+        justify-content: flex-start;
+    }
+}
+
 /* ---- Benefit / format cards ---- */
 
 body.service-page .service-card {
@@ -9115,6 +9609,41 @@ body.service-page .service-steps {
 body.service-page .service-steps .section-title-modern {
     text-align: center;
     margin-bottom: 2.2rem;
+    overflow: visible;
+}
+
+body.service-page .service-steps .section-title-modern .title-accent {
+    display: inline-block;
+    padding-right: 0.14em;
+    vertical-align: bottom;
+}
+
+body.service-page .service-steps__student-note {
+    max-width: 52rem;
+    margin: -0.7rem auto 1.7rem;
+    color: var(--text-muted);
+    font-size: 0.96rem;
+    line-height: 1.6;
+    text-align: center;
+}
+
+body.service-page .service-steps__student-note a {
+    color: var(--accent-bronze-soft);
+    font-weight: 700;
+    text-decoration-color: var(--accent-start);
+    text-underline-offset: 0.2em;
+    transition: color 0.25s ease, text-decoration-color 0.25s ease;
+}
+
+body.service-page .service-steps__student-note a:hover,
+body.service-page .service-steps__student-note a:focus-visible {
+    color: var(--accent-start);
+    text-decoration-color: var(--accent-bronze-soft);
+}
+
+body.service-page .service-steps__student-note a:focus-visible {
+    outline: 2px solid var(--accent-gold);
+    outline-offset: 3px;
 }
 
 body.service-page .service-steps__list {
@@ -9159,6 +9688,25 @@ body.service-page .service-steps__item p {
     font-size: 0.95rem;
     line-height: 1.55;
     margin: 0;
+}
+
+body.service-page .service-steps__item p a {
+    color: var(--accent-start);
+    font-weight: 600;
+    text-decoration-color: var(--accent-bronze-muted);
+    text-underline-offset: 0.18em;
+    transition: color 0.25s ease, text-decoration-color 0.25s ease;
+}
+
+body.service-page .service-steps__item p a:hover,
+body.service-page .service-steps__item p a:focus-visible {
+    color: var(--accent-bronze-soft);
+    text-decoration-color: var(--accent-start);
+}
+
+body.service-page .service-steps__item p a:focus-visible {
+    outline: 2px solid var(--accent-gold);
+    outline-offset: 3px;
 }
 
 /* ---- Student quote ---- */

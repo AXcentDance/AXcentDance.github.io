@@ -714,7 +714,7 @@ textarea {
 .dropdown-content a:hover {
     background-color: rgba(255, 255, 255, 0.05);
     color: var(--text-main);
-    padding-left: 20px;
+    transform: translateX(4px);
 }
 
 /* Dropdown Underline on Text Only */
@@ -933,33 +933,50 @@ textarea {
 
 .mobile-menu-btn svg {
     display: block;
-    transition: transform 0.3s ease;
+    transition: transform 0.45s cubic-bezier(0.34, 1.4, 0.64, 1), scale 0.2s ease;
 }
 
-.mobile-menu-btn.active svg {
-    transform: rotate(90deg);
-    /* Simple rotation for now, or X transform below */
+.mobile-menu-btn:active svg {
+    scale: 0.85;
 }
 
-/* Optional: Transform lines to X if desired, but rotation is clean */
-/* Expressive X Animation for Mobile Button */
-.mobile-menu-btn.active .line-top {
-    transform: translateY(6px) rotate(45deg);
+.mobile-menu-btn .line-top,
+.mobile-menu-btn .line-middle,
+.mobile-menu-btn .line-bottom {
+    /* Without fill-box, "center" resolves to the shared SVG viewport center
+       (12,12) for all three lines instead of each bar's own midpoint — top
+       and bottom then rotate around a pivot that is not their own center,
+       sweeping them off-axis into a lopsided X. fill-box scopes the origin
+       to each line's own bounding box so every bar spins in place. */
+    transform-box: fill-box;
     transform-origin: center;
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.2s ease, stroke 0.35s ease;
+}
+
+/* Open: one choreographed move — the middle bar slips out sideways first,
+   then the whole glyph spins a half turn while the outer bars overshoot
+   into a gradient X. */
+.mobile-menu-btn.active svg {
+    transform: rotate(180deg);
+}
+
+/* The X stays compact: the bars shorten as they fold (scaleX), so the mark
+   floats slim and centered inside the frame instead of filling it. */
+.mobile-menu-btn.active .line-top {
+    transform: translateY(6px) rotate(45deg) scaleX(0.66);
     stroke: var(--accent-start);
-    /* Fade to brand red */
+    transition-delay: 0.06s, 0s, 0s;
 }
 
 .mobile-menu-btn.active .line-middle {
     opacity: 0;
-    transform: scaleX(0);
+    transform: translateX(10px) scaleX(0.3);
 }
 
 .mobile-menu-btn.active .line-bottom {
-    transform: translateY(-6px) rotate(-45deg);
-    transform-origin: center;
+    transform: translateY(-6px) rotate(-45deg) scaleX(0.66);
     stroke: var(--accent-end);
-    /* Fade to brand orange */
+    transition-delay: 0.06s, 0s, 0s;
 }
 
 .nav-links.active {
@@ -984,15 +1001,72 @@ textarea {
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
     overflow-y: auto;
-    animation: fadeIn 0.5s ease forwards;
-    /* Cleaner fade-in for full screen */
+    animation: navCurtain 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    /* Curtain reveal from the header down */
     align-items: center;
     /* Center horizontally */
     text-align: center;
     /* Center text */
-    gap: 0.25rem;
-    /* Tiny gaps between items */
+    gap: 0.55rem;
+    /* Breathing room between items */
     z-index: 10000;
+}
+
+/* Menu entries cascade in one beat after the curtain, top to bottom. */
+.nav-links.active>* {
+    opacity: 0;
+    animation: navItemIn 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.nav-links.active>*:nth-child(1) { animation-delay: 0.07s; }
+.nav-links.active>*:nth-child(2) { animation-delay: 0.115s; }
+.nav-links.active>*:nth-child(3) { animation-delay: 0.16s; }
+.nav-links.active>*:nth-child(4) { animation-delay: 0.205s; }
+.nav-links.active>*:nth-child(5) { animation-delay: 0.25s; }
+.nav-links.active>*:nth-child(6) { animation-delay: 0.295s; }
+.nav-links.active>*:nth-child(7) { animation-delay: 0.34s; }
+.nav-links.active>*:nth-child(8) { animation-delay: 0.385s; }
+.nav-links.active>*:nth-child(9) { animation-delay: 0.43s; }
+.nav-links.active>*:nth-child(n + 10) { animation-delay: 0.475s; }
+
+@keyframes navCurtain {
+    from {
+        clip-path: inset(0 0 100% 0);
+    }
+
+    to {
+        clip-path: inset(0 0 0 0);
+    }
+}
+
+@keyframes navItemIn {
+    from {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .nav-links.active {
+        animation: none;
+    }
+
+    .nav-links.active>* {
+        animation: none;
+        opacity: 1;
+    }
+
+    .mobile-menu-btn svg,
+    .mobile-menu-btn .line-top,
+    .mobile-menu-btn .line-middle,
+    .mobile-menu-btn .line-bottom {
+        transition: none;
+    }
 }
 
 .nav-links.active>a {

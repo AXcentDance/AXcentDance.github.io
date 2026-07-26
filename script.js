@@ -4256,13 +4256,12 @@ document.addEventListener('DOMContentLoaded', () => {
             const firstName = String(rawFormData.get('firstname') || '').trim();
             const contact = String(rawFormData.get('contact') || '').trim();
             const selectedClass = String(rawFormData.get('class-select') || '').trim();
-            const contactLooksLikeEmail = contact.includes('@');
             const data = {
                 firstname: firstName,
                 lastname: '',
                 contact,
-                phone: contactLooksLikeEmail ? '' : contact,
-                email: contactLooksLikeEmail ? contact : '',
+                phone: contact,
+                email: '',
                 selected_class: selectedClass // Users script expects 'selected_class'
             };
 
@@ -4305,7 +4304,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 contactInput?.classList.add('input-error');
                 addInlineError(
                     contactInput?.closest('.form-group'),
-                    isGermanPage ? 'Bitte gib deine WhatsApp Nummer ein.' : 'Please add your WhatsApp number or email.'
+                    isGermanPage ? 'Bitte gib deine WhatsApp-Nummer ein.' : 'Please add your WhatsApp number.'
+                );
+                invalidTargets.push(contactInput);
+            } else if (data.contact.replace(/[^0-9]/g, '').length < 8 || data.contact.includes('@')) {
+                const contactInput = trialForm.querySelector('#contact');
+                contactInput?.classList.add('input-error');
+                addInlineError(
+                    contactInput?.closest('.form-group'),
+                    isGermanPage
+                        ? 'Bitte gib eine gültige WhatsApp-Nummer ein.'
+                        : 'Please add a valid WhatsApp number.'
                 );
                 invalidTargets.push(contactInput);
             }
@@ -4328,11 +4337,15 @@ document.addEventListener('DOMContentLoaded', () => {
             submitBtn.style.opacity = '0.7';
             submitBtn.style.cursor = 'not-allowed';
 
-            // 3. Send to Google Script AND FormSubmit (Parallel)
+            // 3. Send to the existing lead channels and the owner inbox in parallel.
             // IMPORTANT: PASTE YOUR WEB APP URL BELOW
             const scriptURL = 'https://script.google.com/macros/s/AKfycbwPqLutAq-xa9OkSiT-rLm72DJCdQ2Xw10Yp4DvHexTq42HxCKJyJr8mJmZ0RuZSc7A5A/exec';
             const formSubmitEmail = 'info@axcentdance.com'; // Using FormSubmit for reliable emails
             const formSubmitURL = `https://formsubmit.co/ajax/${formSubmitEmail}`;
+            const supabaseURL = 'https://jwravnvytkmsvqoqkmwb.supabase.co';
+            // This is a public browser key. Supabase RLS and the scoped RPC
+            // enforce access; no private service credential is exposed here.
+            const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imp3cmF2bnZ5dGttc3Zxb3FrbXdiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM3NjU1MTIsImV4cCI6MjA5OTM0MTUxMn0.t4waGFmjD2hDQkGOhYg8rPt1rtf4iyRyTIC6T5KsFag';
 
             if (scriptURL === 'REPLACE_ME_WITH_YOUR_WEB_APP_URL') {
                 alert('Configuration missing: Please paste your Google Web App URL in script.js (Line ~206)');
@@ -4410,10 +4423,33 @@ info@axcentdance.com`;
                 timeout(3000, 'FormSubmit email submission')
             ]);
 
-            Promise.allSettled([googleSheetsPromise, formSubmitPromise])
+            const trialInboxPromise = Promise.race([
+                fetch(`${supabaseURL}/rest/v1/rpc/submit_trial_request`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json',
+                        'apikey': supabaseAnonKey,
+                        'Authorization': `Bearer ${supabaseAnonKey}`
+                    },
+                    body: JSON.stringify({
+                        p_name: data.firstname,
+                        p_phone: data.phone,
+                        p_selected_class: data.selected_class,
+                        p_locale: isGermanPage ? 'de' : 'en'
+                    })
+                }).then((response) => {
+                    if (!response.ok) throw new Error(`Trial inbox returned ${response.status}`);
+                    return response;
+                }),
+                timeout(5000, 'Trial inbox submission')
+            ]);
+
+            Promise.allSettled([googleSheetsPromise, formSubmitPromise, trialInboxPromise])
                 .then((results) => {
                     const googleSheetsResult = results[0];
                     const formSubmitResult = results[1];
+                    const trialInboxResult = results[2];
 
                     if (googleSheetsResult.status === 'fulfilled') {
                         console.log('Trial Google Sheets submission completed or accepted as background request.');
@@ -4428,6 +4464,14 @@ info@axcentdance.com`;
                         }
                     } else {
                         console.error('Trial FormSubmit submission issue:', formSubmitResult.reason);
+                    }
+
+                    if (trialInboxResult.status === 'fulfilled') {
+                        console.log('Trial request added to the owner inbox.');
+                    } else {
+                        // Google Sheets and email remain independent fallbacks,
+                        // so a temporary inbox error does not lose the lead.
+                        console.error('Trial owner inbox submission issue:', trialInboxResult.reason);
                     }
 
                     try {

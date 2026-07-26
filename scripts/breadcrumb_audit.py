@@ -9,6 +9,8 @@ SKIPPED_FILES = {
     # Private account pages (noindex): no breadcrumb schema by design.
     "portal.html", "_login.html", "_signup.html",
     "de/portal.html", "de/_login.html", "de/_signup.html",
+    # Owner-only admin tools (noindex): no breadcrumb schema by design.
+    "_admin.html", "_attendance.html",
     # Internal design references, never published as public pages.
     "System/palette-proposals.html",
     "palette-preview.html",

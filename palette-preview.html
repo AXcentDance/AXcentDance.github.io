@@ -47,6 +47,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@200..900&family=Outfit:wght@500;600;700;800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Teko:wght@300..700&display=swap">
   <link rel="stylesheet" href="style.css?v=9.2">
   <link rel="stylesheet" href="tropic-noir.css?v=5.2" id="palette-css">
+  <link rel="stylesheet" href="palette-preview-enhancements.css">
 
   <link rel="apple-touch-icon" href="/apple-touch-icon-v2.png">
   <link rel="icon" href="/favicon-axcent-transparent.svg" type="image/svg+xml">
@@ -331,7 +332,7 @@
   <!-- End Meta Pixel Code -->
 </head>
 
-<body class="home-page nav-declutter">
+<body class="home-page nav-declutter palette-preview-page">
 
   <div class="page-loader" aria-hidden="true">
     <div class="page-loader__mark">
@@ -361,8 +362,6 @@
         <a href="registration">Prices &amp; Registration</a>
         <a href="events">Events</a>
         <a href="contact" class="nav-contact-item">Contact</a>
-        <a href="portal" class="nav-portal-item">Login</a>
-
         <div class="dropdown">
           <button class="dropbtn">More ▾</button>
           <div class="dropdown-content">
@@ -379,6 +378,8 @@
             <a href="contact" class="nav-contact-dropdown"><span>Contact</span></a>
           </div>
         </div>
+
+        <a href="portal" class="nav-portal-item">Login</a>
         <a href="/#trial-form" class="btn-header-cta">Book Free Trial</a>
       </nav>
       <div class="lang-switch">
@@ -506,7 +507,7 @@
         <p class="stat-band__item">
           <strong class="stat-band__value">5/5</strong>
           <span class="stat-band__label"><a href="https://www.google.com/maps?cid=15680757943659417558"
-              target="_blank" rel="noopener noreferrer">from 40 Google reviews</a></span>
+              target="_blank" rel="noopener noreferrer">from 41 Google reviews</a></span>
         </p>
         <p class="stat-band__item">
           <strong class="stat-band__value">12</strong>
@@ -846,7 +847,7 @@
       <div class="container">
         <h2 class="section-title-modern">Student <em class="title-accent">Stories</em></h2>
         <div class="reviews-proof" aria-label="AXcent Dance Google rating and student reasons">
-          <div class="reviews-proof__rating-figure" aria-label="Rated 5 out of 5 stars from 40 Google reviews">
+          <div class="reviews-proof__rating-figure" aria-label="Rated 5 out of 5 stars from 41 Google reviews">
             <strong class="reviews-proof__score">5/5</strong>
             <span class="reviews-proof__starfield" aria-hidden="true">
               <span>★</span>
@@ -856,7 +857,7 @@
               <span>★</span>
             </span>
             <a class="reviews-proof__source-line" href="https://www.google.com/maps?cid=15680757943659417558"
-              target="_blank" rel="noopener noreferrer">from 40 Google reviews</a>
+              target="_blank" rel="noopener noreferrer">from 41 Google reviews</a>
           </div>
           <p class="section-subtitle reviews-proof__copy">
             Why people choose AXcent Dance.
@@ -1323,7 +1324,7 @@
             <p class="trial-submit-proof">
               <span class="trial-submit-proof__stars" aria-hidden="true">★★★★★</span>
               <a href="https://www.google.com/maps?cid=15680757943659417558" target="_blank"
-                rel="noopener noreferrer">5/5 from 40 Google reviews</a>
+                rel="noopener noreferrer">5/5 from 41 Google reviews</a>
             </p>
           </form>
         </div>
@@ -1599,38 +1600,39 @@
   </a>
 
 
-<div id="palette-switcher" style="position:fixed;bottom:16px;right:16px;z-index:99999;background:#111;color:#eee;padding:12px 14px;border-radius:12px;font:13px/1.4 -apple-system,sans-serif;box-shadow:0 8px 30px rgba(0,0,0,.5);width:min(240px,calc(100vw - 32px));max-height:calc(100vh - 32px);overflow-y:auto;">
+<div id="palette-switcher" style="position:fixed;bottom:16px;right:16px;z-index:99999;background:#111;color:#eee;padding:12px 14px;border-radius:12px;font:13px/1.4 -apple-system,sans-serif;box-shadow:0 8px 30px rgba(0,0,0,.5);width:min(300px,calc(100vw - 32px));max-height:calc(100vh - 32px);overflow-y:auto;">
   <div style="font-weight:700;margin-bottom:8px;">Palette preview</div>
   <div id="palette-buttons" style="display:flex;flex-direction:column;gap:5px;"></div>
+  <div id="palette-note" aria-live="polite" style="margin-top:9px;padding-top:9px;border-top:1px solid #333;color:#cfcfcf;font-size:12px;">Reference only: the current green direction.</div>
 </div>
 <script>
 (function(){
   var palettes = [
-    ["Tropic Noir (current)", "tropic-noir.css?v=5.2", ["#0C2A24","#F2E7CF","#FF5A3C"]],
-    ["Porcelain Coral · NEW", "tropic-noir--porcelain-coral.css", ["#F0DFC7","#E7CFB0","#F0785F"]],
-    ["Ultramarine Atelier · NEW", "tropic-noir--ultramarine-atelier.css", ["#111634","#8196E8","#FF7A3C"]],
-    ["Aubergine Gallery · NEW", "tropic-noir--aubergine-gallery.css", ["#190E20","#B892C4","#C4211F"]],
-    ["Dusty Fig · NEW", "tropic-noir--dusty-fig.css", ["#1F171A","#C99BA5","#FF7A3C"]],
-    ["Rosewood & Oat · NEW", "tropic-noir--rosewood-oat.css", ["#261A17","#D0A08F","#FF7A3C"]],
-    ["Cocoa Blush · NEW", "tropic-noir--cocoa-blush.css", ["#211C1B","#C7A19B","#FF7A3C"]],
-    ["Titanium Violet · NEW", "tropic-noir--titanium-violet.css", ["#11131A","#9186E8","#FF7A3C"]],
-    ["Midnight & Ivory \u2b50", "tropic-noir--midnight-ivory.css", ["#101B2D","#F6EFE3","#FF5A3C"]],
-    ["Noir & Brass \u2b50", "tropic-noir--noir-brass.css", ["#141210","#9C7A3C","#D9243B"]],
-    ["Night & Mist \u2b50", "tropic-noir--night-mist.css", ["#0B1626","#DCE4EC","#D02460"]],
-    ["Opera Night", "tropic-noir--opera-night.css", ["#0F2440","#EFE0C5","#F04A34"]],
-    ["Gilded Night", "tropic-noir--gilded-night.css", ["#0B1830","#C89B3C","#D42A3A"]],
-    ["Ember Bloom", "tropic-noir--ember-bloom.css", ["#210D1B","#F472B6","#E8302A"]],
-    ["Graphite Ember", "tropic-noir--graphite-ember.css", ["#0E1012","#FF7A3C","#C4211F"]],
-    ["Espresso Ember", "tropic-noir--espresso-ember.css", ["#140F0C","#FF7A3C","#C4211F"]],
-    ["Clay Ember", "tropic-noir--clay-ember.css", ["#251C14","#FF7A3C","#C4211F"]]
+    ["Tropic Noir (current)", "tropic-noir.css?v=5.2", ["#0C2A24", "#F2E7CF", "#FF5A3C"], "Reference only: the current green direction."],
+    ["Cordovan Ember · FULL", "tropic-noir--cordovan-ember.css", ["#2B1718", "#4D302B", "#FF7A3C"], "Deepest and most immersive: cordovan fields feel substantial and premium, while copper and ember accents preserve warmth and movement.", "rich"],
+    ["Cordovan Glow · NEW", "tropic-noir--cordovan-glow.css", ["#4A2529", "#70413B", "#FF8247"], "More welcoming than Cordovan Ember: a lifted wine-red field feels full and engaging without becoming black or overly heavy.", "rich"],
+    ["Cordovan Suede · NEW", "tropic-noir--cordovan-suede.css", ["#45272C", "#5A353C", "#75565D", "#FF8247"], "The most tactile direction: deep cordovan, lifted rose-suede surfaces and toasted detail create strong tonal contrast without introducing a cold hue.", "rich"],
+    ["Cordovan Coral Stone · NEW", "tropic-noir--cordovan-coral-stone.css", ["#44262C", "#6D3E46", "#815D65", "#FF8247"], "The most social direction: muted coral stone separates the surfaces from the wine foundation while remaining warm, mature and energetic.", "rich"],
+    ["Mulberry Ember · NEW", "tropic-noir--mulberry-ember.css", ["#3F2333", "#674052", "#FF8045"], "Most creative of the rich directions: mulberry adds cultured depth, balanced by warm copper and a decisive orange-red CTA.", "rich"],
+    ["Aubergine Gallery · RETURNED", "tropic-noir--aubergine-gallery.css", ["#190E20", "#B892C4", "#FF7A3C"], "Editorial and expressive: deep aubergine creates an immersive gallery atmosphere, with mineral lilac and orange supplying contrast.", "rich"],
+    ["Dusty Fig Gallery · NEW", "tropic-noir--dusty-fig-gallery.css", ["#46353D", "#BFA3A7", "#FF7A3C"], "The closest pastel relative: a lifted dusty-fig foundation replaces saturated purple, while muted clay-rose keeps the atmosphere soft and cultivated.", "rich"],
+    ["Rosewood Gallery · NEW", "tropic-noir--rosewood-gallery.css", ["#4B3438", "#C3A090", "#FF7A3C"], "The warmest and least purple variation: softened rosewood and warm suede feel welcoming, mature and premium without becoming brown-dominant.", "rich"],
+    ["Mineral Wine Gallery · NEW", "tropic-noir--mineral-wine-gallery.css", ["#453940", "#B8AAA4", "#FF7A3C"], "The most neutral variation: mineral wine and warm stone reduce both purple and pink, creating a calm gallery-like background with restrained energy.", "rich"],
+    ["Titanium Violet · RETURNED", "tropic-noir--titanium-violet.css", ["#11131A", "#9186E8", "#FF7A3C"], "Coolest and most technological: titanium fields communicate precision and confidence, while violet and orange add distinctive energy.", "rich"],
+    ["Velvet Rose · RETURNED", "tropic-noir--velvet-rose.css", ["#0D080D", "#C08573", "#FF6E44"], "Most intimate and dramatic: near-black velvet gives copper and ember exceptional richness without using a pink-dominant field.", "rich"],
+    ["Terracotta Welcome", "tropic-noir--terracotta-welcome.css", ["#F0DDC8", "#873B34", "#EF7D4F"], "Warmest and most immediately approachable: cream plaster, grounded terracotta and friendly orange energy."]
   ];
   var box = document.getElementById("palette-buttons");
+  var note = document.getElementById("palette-note");
+
   palettes.forEach(function(p, i){
     var b = document.createElement("button");
     b.style.cssText = "display:flex;align-items:center;gap:8px;background:#222;border:1px solid #333;color:#eee;padding:6px 9px;border-radius:8px;cursor:pointer;text-align:left;font:inherit;";
     b.type = "button";
     b.setAttribute("aria-pressed", i === 0 ? "true" : "false");
-    var dots = p[2].map(function(c){return '<i style="display:inline-block;width:11px;height:11px;border-radius:50%;background:'+c+';border:1px solid rgba(255,255,255,.25);"></i>';}).join("");
+    var dots = p[2].map(function(color){
+      return '<i style="display:inline-block;width:11px;height:11px;border-radius:50%;background:'+color+';border:1px solid rgba(255,255,255,.25);"></i>';
+    }).join("");
     b.innerHTML = '<span style="display:flex;gap:3px;">'+dots+'</span><span>'+p[0]+'</span>';
     b.onclick = function(){
       document.getElementById("palette-css").href = p[1] + (p[1].indexOf("?") === -1 ? "?" : "&") + "cb=" + Date.now();
@@ -1640,10 +1642,23 @@
       });
       b.style.outline = "2px solid #fff";
       b.setAttribute("aria-pressed", "true");
+      note.textContent = p[3];
+      var isRichPalette = p[4] === "rich";
+      document.body.classList.toggle("palette-experimental", i > 0 && !isRichPalette);
+      document.body.classList.toggle("palette-rich", isRichPalette);
     };
     if (i === 0) b.style.outline = "2px solid #fff";
     box.appendChild(b);
   });
+
+  var requestedPalette = parseInt(new URLSearchParams(window.location.search).get("palette"), 10);
+  if (requestedPalette > 0 && requestedPalette < palettes.length) {
+    box.children[requestedPalette].click();
+    document.body.classList.add("page-loaded");
+    var schedule = document.getElementById("schedule");
+    schedule.classList.add("active");
+    window.setTimeout(function(){ schedule.scrollIntoView(); }, 1200);
+  }
 })();
 </script>
 
