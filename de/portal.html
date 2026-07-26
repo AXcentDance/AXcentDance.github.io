@@ -969,6 +969,11 @@
         const { data: registrations, error: regError } = await supabase
             .from('registrations')
             .select('*')
+            // Scope to the signed-in customer explicitly. RLS alone is not
+            // enough here: staff accounts may read every registration, so
+            // without this filter a teacher opening the student portal would
+            // be shown somebody else's pass as their own.
+            .ilike('email', userEmail)
             .order('created_at', { ascending: false });
 
         hide('loadingCard');

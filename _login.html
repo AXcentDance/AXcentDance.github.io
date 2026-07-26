@@ -428,9 +428,17 @@
                 }
             } else {
                 showFeedback('Success! Redirecting...', 'success');
-                // The studio owner lands on the requests inbox, not the pass page.
-                const dest = document.getElementById('email').value.trim().toLowerCase() === 'info@axcentdance.com'
-                    ? '_admin.html' : 'portal.html';
+                // Route by role: the owner gets the requests inbox, teachers get
+                // the presences page, everyone else the student pass page.
+                const who = document.getElementById('email').value.trim().toLowerCase();
+                let dest = 'portal.html';
+                if (who === 'info@axcentdance.com') {
+                    dest = '_admin.html';
+                } else {
+                    const { data: t } = await supabase.from('teachers')
+                        .select('active').ilike('email', who).maybeSingle();
+                    if (t && t.active) dest = '_attendance.html';
+                }
                 setTimeout(() => { window.location.href = dest; }, 800);
             }
         });

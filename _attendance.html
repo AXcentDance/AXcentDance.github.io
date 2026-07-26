@@ -295,11 +295,21 @@
                 <p class="att-eyebrow">AXcent Dance</p>
                 <h1>Sign Presences</h1>
             </div>
-            <a class="att-link" href="_admin">Dashboard</a>
+            <a class="att-link" href="_admin" id="dashboardLink" style="display: none;">Dashboard</a>
         </div>
 
         <div class="att-card" id="gateCard">
             <p class="muted-note" id="gateMessage">Checking access...</p>
+        </div>
+
+        <div class="att-card" id="hoursCard" style="display: none;">
+            <h2 class="att-section" id="hoursName"></h2>
+            <p style="margin: 0; font-family: 'Outfit', sans-serif;">
+                <span id="hoursValue"
+                    style="font-size: 2rem; font-weight: 800; color: var(--accent-gold);"></span>
+                <span id="hoursUnit" style="color: var(--text-muted); margin-left: 6px;"></span>
+            </p>
+            <p class="muted-note" id="hoursBreakdown" style="margin: 8px 0 0; font-size: 0.85rem;"></p>
         </div>
 
         <div class="att-card" id="pickCard" style="display: none;">
@@ -314,6 +324,8 @@
 
         <div class="att-card" id="markCard" style="display: none;">
             <h2 class="att-section" id="markTitle"></h2>
+            <p id="signState" style="margin: 0 0 8px; font-size: 0.9rem; color: var(--text-main);"></p>
+            <button type="button" id="signBtn" class="btn-all" style="display: none;"></button>
             <p class="att-summary" id="markSummary"></p>
             <button type="button" class="btn-all" id="allPresentBtn">Mark all present</button>
             <div id="markList"></div>
@@ -359,16 +371,54 @@
             window.location.href = '_login.html';
             throw new Error('Not authenticated');
         }
-        if (session.user.email.toLowerCase() !== OWNER_EMAIL) {
+        // Open to the owner and to any active teacher — teachers log their own
+        // classes here, which is what the 24h reminder email links to.
+        const isOwner = session.user.email.toLowerCase() === OWNER_EMAIL;
+        const { data: meTeacher } = await supabase.from('teachers')
+            .select('*').ilike('email', session.user.email).maybeSingle();
+        const isTeacher = !!(meTeacher && meTeacher.active);
+        if (!isOwner && !isTeacher) {
             el('gateMessage').innerHTML = 'This page is reserved for studio staff.';
-            throw new Error('Not the owner');
+            throw new Error('Not staff');
         }
+        // The dashboard is owner-only; showing it to teachers is a dead end.
+        if (isOwner) el('dashboardLink').style.display = '';
 
         // ----- Data ---------------------------------------------------------
-        const [regRes, attRes] = await Promise.all([
+        const [regRes, attRes, teachersRes, ctRes, sessRes, hoursRes] = await Promise.all([
             supabase.from('registrations').select('*').neq('status', 'pending_payment'),
-            supabase.from('attendance').select('*')
+            supabase.from('attendance').select('*'),
+            supabase.from('teachers').select('*').order('first_name', { ascending: true }),
+            supabase.from('class_teachers').select('*'),
+            supabase.from('class_sessions').select('*'),
+            supabase.rpc('teaching_hours')
         ]);
+        const teachers = teachersRes.data || [];
+        const classTeachers = ctRes.data || [];
+        let classSessions = sessRes.data || [];
+        const teachingHours = hoursRes.data || [];
+        const teacherName = (t) => ((t.first_name || '') + ' ' + (t.last_name || '')).trim() || t.email;
+
+        // A teacher sees their own running total; the owner sees everyone's.
+        if (isTeacher) {
+            // my_teaching_hours() returns only the caller's own total, so a
+            // teacher never sees a colleague's hours.
+            const { data: myHrs } = await supabase.rpc('my_teaching_hours');
+            const hrs = Number(myHrs || 0);
+            el('hoursValue').textContent = hrs;
+            el('hoursUnit').textContent = hrs === 1 ? 'hour taught' : 'hours taught';
+            el('hoursName').textContent = 'Hi ' + (meTeacher.first_name || 'there');
+            show('hoursCard');
+        } else if (teachingHours.length) {
+            el('hoursName').textContent = 'Teaching hours';
+            el('hoursValue').textContent = teachingHours.reduce((s, h) => s + Number(h.sessions), 0);
+            el('hoursUnit').textContent = 'hours logged in total';
+            el('hoursBreakdown').innerHTML = teachingHours.map(h =>
+                esc(((h.first_name || '') + ' ' + (h.last_name || '')).trim() || h.email) +
+                ': <strong>' + Number(h.sessions) + '</strong>').join(' · ');
+            show('hoursCard');
+        }
+
         if (regRes.error || attRes.error) {
             el('gateMessage').textContent = 'Could not load data: ' +
                 (regRes.error || attRes.error).message;
@@ -382,7 +432,13 @@
             const m = c.value.match(/^(Mon|Tue|Wed|Thu|Fri|Sat|Sun) (\d{1,2}:\d{2}) /);
             return m ? { value: c.value, day: m[1], time: m[2], name: c.en } : null;
         }).filter(Boolean);
-        const classDays = [...new Set(classDefs.map(c => c.day))]
+        // A teacher only ever works with the classes they are assigned to.
+        const myClassValues = isOwner ? null : new Set(
+            classTeachers.filter(ct => ct.teacher_id === meTeacher.id).map(ct => ct.class_value));
+        const visibleClasses = isOwner
+            ? classDefs
+            : classDefs.filter(c => myClassValues.has(c.value));
+        const classDays = [...new Set(visibleClasses.map(c => c.day))]
             .sort((a, b) => WEEK_ORDER.indexOf(a) - WEEK_ORDER.indexOf(b));
 
         // ----- State --------------------------------------------------------
@@ -429,7 +485,7 @@
                 '" data-day="' + d + '">' + d + ' ' + shortDate(dateForDay(d)) + '</button>'
             ).join('');
 
-            const dayClasses = classDefs.filter(c => c.day === selDay);
+            const dayClasses = visibleClasses.filter(c => c.day === selDay);
             if (!dayClasses.some(c => c.value === selClass)) selClass = dayClasses[0]?.value || null;
             el('classChips').innerHTML = dayClasses.map(c =>
                 '<button type="button" class="chip' + (c.value === selClass ? ' chip--active' : '') +
@@ -438,8 +494,28 @@
             show('pickCard');
         }
 
-        function rosterForSelection() {
+        // Normalised roster row: { id, name, role, status, isFlex, flexUsed, dropin }
+        // Teachers get theirs from the class_roster function, which returns
+        // names only and refuses classes they are not assigned to; the owner
+        // builds it locally from the full records they are allowed to read.
+        async function rosterForSelection() {
             const dateStr = dateForDay(selDay);
+            if (!isOwner) {
+                const { data, error } = await supabase.rpc('class_roster',
+                    { cv: selClass, cd: dateStr });
+                if (error) { console.error(error); return []; }
+                return (data || []).map(r => ({
+                    id: r.registration_id,
+                    name: ((r.first_name || '') + ' ' + (r.last_name || '')).trim() || 'Unknown',
+                    role: r.role, status: r.status, isFlex: false, dropin: false
+                }));
+            }
+            const roleFor = (r) => {
+                const entry = (r.selected_classes || '').split(', ').map(s => s.trim())
+                    .find(s => s.replace(/ \((Leader|Follower)\)$/, '') === selClass);
+                const m = entry && entry.match(/\((Leader|Follower)\)$/);
+                return m ? m[1] : null;
+            };
             const enrolled = registrations.filter(r =>
                 (r.status === 'active' || r.status === 'expired') &&
                 (!r.pass_start_date || r.pass_start_date <= dateStr) &&
@@ -447,24 +523,21 @@
                 (r.selected_classes || '').split(', ').some(entry =>
                     entry.trim().replace(/ \((Leader|Follower)\)$/, '') === selClass)
             );
-            // Marked people outside the roster (drop-ins, flex passes).
             const extraIds = attendance
                 .filter(a => a.class_value === selClass && a.class_date === dateStr)
                 .map(a => a.registration_id)
                 .filter(id => !enrolled.some(r => r.id === id));
             const extras = registrations.filter(r => extraIds.includes(r.id));
-            return { enrolled, extras };
+            const toRow = (r, dropin) => ({
+                id: r.id,
+                name: ((r.first_name || '') + ' ' + (r.last_name || '')).trim() || r.email,
+                role: roleFor(r), status: markFor(r.id)?.status ?? null,
+                isFlex: r.pass_type === FLEX_PASS, flexUsed: flexUsed(r.id), dropin
+            });
+            return enrolled.map(r => toRow(r, false)).concat(extras.map(r => toRow(r, true)));
         }
 
-        const roleFor = (r) => {
-            const entry = (r.selected_classes || '').split(', ')
-                .map(s => s.trim())
-                .find(s => s.replace(/ \((Leader|Follower)\)$/, '') === selClass);
-            const m = entry && entry.match(/\((Leader|Follower)\)$/);
-            return m ? m[1] : null;
-        };
-
-        function renderMarks() {
+        async function renderMarks() {
             if (!selClass) { hide('markCard'); return; }
             const def = classDefs.find(c => c.value === selClass);
             const dateStr = dateForDay(selDay);
@@ -473,75 +546,105 @@
                     weekday: 'long', month: 'long', day: 'numeric'
                 });
 
-            const { enrolled, extras } = rosterForSelection();
+            const roster = await rosterForSelection();
 
-            const row = (r, isDropin) => {
-                const mark = markFor(r.id);
-                const state = mark ? mark.status : null;
-                const role = roleFor(r);
-                const isFlex = r.pass_type === FLEX_PASS;
-                return '<button type="button" class="att-row' +
-                    (state === 'present' ? ' att-row--present' : '') +
-                    (state === 'absent' ? ' att-row--absent' : '') +
-                    (isDropin ? ' att-row--dropin' : '') +
-                    '" data-reg="' + r.id + '" data-email="' + esc(r.email) + '">' +
-                    '<span class="att-row__name">' + esc(((r.first_name || '') + ' ' + (r.last_name || '')).trim() || r.email) + '</span>' +
-                    (isFlex ? '<span class="att-row__flex">' + flexUsed(r.id) + ' of 10</span>' : '') +
-                    (role ? '<span class="att-row__role">' + role.slice(0, 1) + '</span>' : '') +
-                    '<span class="att-row__state">' + (state ? state : 'tap') + '</span>' +
-                    '</button>';
-            };
+            el('markList').innerHTML = roster.length
+                ? roster.map(r =>
+                    '<button type="button" class="att-row' +
+                    (r.status === 'present' ? ' att-row--present' : '') +
+                    (r.status === 'absent' ? ' att-row--absent' : '') +
+                    (r.dropin ? ' att-row--dropin' : '') +
+                    '" data-reg="' + r.id + '">' +
+                    '<span class="att-row__name">' + esc(r.name) + '</span>' +
+                    (r.isFlex ? '<span class="att-row__flex">' + r.flexUsed + ' of 10</span>' : '') +
+                    (r.role ? '<span class="att-row__role">' + r.role.slice(0, 1) + '</span>' : '') +
+                    '<span class="att-row__state">' + (r.status ? r.status : 'tap') + '</span>' +
+                    '</button>').join('')
+                : '<p class="muted-note">Nobody enrolled for this class on this date.</p>';
 
-            el('markList').innerHTML =
-                enrolled.map(r => row(r, false)).join('') +
-                extras.map(r => row(r, true)).join('') ||
-                '<p class="muted-note">Nobody enrolled for this class on this date.</p>';
-
-            const all = enrolled.concat(extras);
-            const present = all.filter(r => markFor(r.id)?.status === 'present').length;
-            const absent = all.filter(r => markFor(r.id)?.status === 'absent').length;
+            const present = roster.filter(r => r.status === 'present').length;
+            const absent = roster.filter(r => r.status === 'absent').length;
             el('markSummary').innerHTML = '<strong>' + present + ' present</strong> · ' +
-                absent + ' absent · ' + (all.length - present - absent) + ' unmarked';
+                absent + ' absent · ' + (roster.length - present - absent) + ' unmarked';
 
-            // Flexible-pass holders are never on a fixed roster; the drop
-            // list marks them present for this class with one pick.
-            const listedIds = all.map(r => r.id);
-            const flexHolders = registrations.filter(r =>
-                r.status === 'active' && r.pass_type === FLEX_PASS && !listedIds.includes(r.id));
-            if (flexHolders.length) {
-                el('flexSelect').innerHTML =
-                    '<option value="">Mark a 10-class pass holder present...</option>' +
-                    flexHolders.map(r =>
-                        '<option value="' + r.id + '">' +
-                        esc(((r.first_name || '') + ' ' + (r.last_name || '')).trim() || r.email) +
-                        ' — ' + flexUsed(r.id) + ' of 10 used</option>'
-                    ).join('');
-                show('flexSection');
-            } else {
-                hide('flexSection');
+            if (isOwner) {
+                // Flexible-pass holders sit on no fixed roster; the owner can
+                // drop one into any class. Teachers do not get this list —
+                // it would expose students outside their own class.
+                const listedIds = roster.map(r => r.id);
+                const flexHolders = registrations.filter(r =>
+                    r.status === 'active' && r.pass_type === FLEX_PASS && !listedIds.includes(r.id));
+                if (flexHolders.length) {
+                    el('flexSelect').innerHTML =
+                        '<option value="">Mark a 10-class pass holder present...</option>' +
+                        flexHolders.map(r =>
+                            '<option value="' + r.id + '">' +
+                            esc(((r.first_name || '') + ' ' + (r.last_name || '')).trim() || r.email) +
+                            ' — ' + flexUsed(r.id) + ' of 10 used</option>').join('');
+                    show('flexSection');
+                } else {
+                    hide('flexSection');
+                }
             }
+
+            // Teaching hour: the teacher signs their own; the owner only sees
+            // who signed, and cannot sign on anybody's behalf.
+            const signed = classSessions.find(s =>
+                s.class_value === selClass && s.class_date === dateStr);
+            const signedBy = signed && signed.teacher_id
+                ? teachers.find(t => t.id === signed.teacher_id) : null;
+            if (isOwner) {
+                el('signState').innerHTML = signedBy
+                    ? 'Signed by <strong>' + esc(teacherName(signedBy)) + '</strong>'
+                    : '<span class="muted-note">Not signed by a teacher yet</span>';
+                hide('signBtn');
+            } else {
+                const mineSigned = signedBy && signedBy.id === meTeacher.id;
+                el('signState').innerHTML = mineSigned
+                    ? '<strong style="color: #8FD9A0;">You signed this teaching hour</strong>'
+                    : (signedBy
+                        ? 'Signed by <strong>' + esc(teacherName(signedBy)) + '</strong>'
+                        : '<span class="muted-note">Not signed yet</span>');
+                el('signBtn').textContent = mineSigned
+                    ? 'Undo my signature' : 'I taught this class';
+                el('signBtn').dataset.signed = mineSigned ? 'yes' : 'no';
+                show('signBtn');
+            }
+
             show('markCard');
         }
 
         // ----- Writes -------------------------------------------------------
-        async function setMark(regId, email, status) {
+        async function setMark(regId, status) {
             const dateStr = dateForDay(selDay);
-            if (status === null) {
-                const { error } = await supabase.from('attendance').delete()
-                    .eq('registration_id', regId).eq('class_value', selClass).eq('class_date', dateStr);
-                if (error) { alert(error.message); return; }
-                attendance = attendance.filter(a => !(a.registration_id === regId &&
-                    a.class_value === selClass && a.class_date === dateStr));
-            } else {
-                const { data, error } = await supabase.from('attendance').upsert({
-                    class_value: selClass, class_date: dateStr,
-                    registration_id: regId, email: email, status: status
-                }, { onConflict: 'class_date,class_value,registration_id' }).select();
-                if (error) { alert(error.message); return; }
-                attendance = attendance.filter(a => !(a.registration_id === regId &&
-                    a.class_value === selClass && a.class_date === dateStr)).concat(data);
+            const { error } = await supabase.rpc('mark_attendance',
+                { cv: selClass, cd: dateStr, reg: regId, st: status });
+            if (error) { alert(error.message); return; }
+
+            // Keep the owner's local cache in step; teachers re-read the
+            // roster from the server, which already carries the status.
+            attendance = attendance.filter(a => !(a.registration_id === regId &&
+                a.class_value === selClass && a.class_date === dateStr));
+            if (status) {
+                attendance.push({ registration_id: regId, class_value: selClass,
+                    class_date: dateStr, status: status });
             }
-            renderMarks();
+            await renderMarks();
+        }
+
+        async function toggleSignature() {
+            const dateStr = dateForDay(selDay);
+            const taught = el('signBtn').dataset.signed !== 'yes';
+            const { error } = await supabase.rpc('sign_teaching',
+                { cv: selClass, cd: dateStr, taught: taught });
+            if (error) { alert(error.message); return; }
+            const { data } = await supabase.from('class_sessions').select('*');
+            classSessions = data || [];
+            const { data: newHrs } = await supabase.rpc('my_teaching_hours');
+            const n = Number(newHrs || 0);
+            el('hoursValue').textContent = n;
+            el('hoursUnit').textContent = n === 1 ? 'hour taught' : 'hours taught';
+            await renderMarks();
         }
 
         // ----- Events -------------------------------------------------------
@@ -563,19 +666,19 @@
         });
 
         // Tap cycles: unmarked -> present -> absent -> unmarked
-        el('markList').addEventListener('click', (e) => {
+        el('markList').addEventListener('click', async (e) => {
             const rowBtn = e.target.closest('.att-row');
             if (!rowBtn) return;
-            const mark = markFor(rowBtn.dataset.reg);
-            const next = !mark ? 'present' : mark.status === 'present' ? 'absent' : null;
-            setMark(rowBtn.dataset.reg, rowBtn.dataset.email, next);
+            const current = rowBtn.querySelector('.att-row__state').textContent;
+            const next = current === 'tap' ? 'present' : current === 'present' ? 'absent' : null;
+            await setMark(rowBtn.dataset.reg, next);
         });
 
         el('allPresentBtn').addEventListener('click', async () => {
-            const { enrolled } = rosterForSelection();
-            for (const r of enrolled) {
-                if (!markFor(r.id)) await setMark(r.id, r.email, 'present');
-            }
+            const unmarked = [...document.querySelectorAll('#markList .att-row')]
+                .filter(b => b.querySelector('.att-row__state').textContent === 'tap')
+                .map(b => b.dataset.reg);
+            for (const id of unmarked) await setMark(id, 'present');
         });
 
         el('dropinSearch').addEventListener('input', () => {
@@ -600,17 +703,27 @@
         el('dropinResults').addEventListener('click', async (e) => {
             const hit = e.target.closest('.dropin-result');
             if (!hit) return;
-            await setMark(hit.dataset.reg, hit.dataset.email, 'present');
+            await setMark(hit.dataset.reg, 'present');
             el('dropinSearch').value = '';
             el('dropinResults').innerHTML = '';
         });
+
+        el('signBtn').addEventListener('click', toggleSignature);
 
         el('flexSelect').addEventListener('change', async () => {
             const regId = el('flexSelect').value;
             if (!regId) return;
             const reg = registrations.find(r => r.id === regId);
-            if (reg) await setMark(reg.id, reg.email, 'present');
+            if (reg) await setMark(reg.id, 'present');
         });
+
+        // Drop-in search scans every active student, so it stays owner-only.
+        if (!isOwner) {
+            const dropinHeading = [...document.querySelectorAll('h2.att-section')]
+                .find(h => h.textContent.trim() === 'Drop-in');
+            if (dropinHeading) dropinHeading.style.display = 'none';
+            el('dropinSearch').style.display = 'none';
+        }
 
         renderPicker();
         renderMarks();

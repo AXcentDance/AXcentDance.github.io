@@ -429,9 +429,17 @@
                 }
             } else {
                 showFeedback('Erfolgreich! Weiterleitung...', 'success');
-                // Der Studio-Inhaber landet im Anfragen-Postfach, nicht auf der Pass-Seite.
-                const dest = document.getElementById('email').value.trim().toLowerCase() === 'info@axcentdance.com'
-                    ? '/_admin.html' : 'portal.html';
+                // Rollenabhängig: Inhaber -> Postfach, Lehrer -> Anwesenheiten,
+                // alle anderen -> Pass-Seite.
+                const who = document.getElementById('email').value.trim().toLowerCase();
+                let dest = 'portal.html';
+                if (who === 'info@axcentdance.com') {
+                    dest = '/_admin.html';
+                } else {
+                    const { data: t } = await supabase.from('teachers')
+                        .select('active').ilike('email', who).maybeSingle();
+                    if (t && t.active) dest = '/_attendance.html';
+                }
                 setTimeout(() => { window.location.href = dest; }, 800);
             }
         });

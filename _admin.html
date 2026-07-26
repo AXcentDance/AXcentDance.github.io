@@ -505,6 +505,176 @@
             color: #FFB4A6;
         }
 
+        /* Quick section navigation under the page header */
+        .admin-nav {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin: -0.4rem 0 1.2rem;
+        }
+
+        .admin-nav a {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            border: 1px solid rgba(157, 180, 171, 0.25);
+            border-radius: 999px;
+            padding: 6px 13px;
+            text-decoration: none;
+        }
+
+        .admin-nav a:hover {
+            color: var(--title-cream);
+            border-color: var(--accent-gold);
+        }
+
+        /* Classes section: day/class chips + tap-to-mark rows */
+        .chip-row {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 10px;
+        }
+
+        .chip {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            background: transparent;
+            border: 1px solid rgba(157, 180, 171, 0.28);
+            border-radius: 999px;
+            padding: 8px 14px;
+            cursor: pointer;
+        }
+
+        .chip--active {
+            color: #10231F;
+            background: var(--accent-gold);
+            border-color: var(--accent-gold);
+        }
+
+        .capacity-line {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.92rem;
+            color: var(--text-main);
+            background: rgba(232, 176, 75, 0.08);
+            border: 1px solid rgba(232, 176, 75, 0.25);
+            border-radius: 10px;
+            padding: 9px 13px;
+            margin-bottom: 12px;
+        }
+
+        .capacity-line strong {
+            color: var(--title-cream);
+        }
+
+        /* Needs to out-specify `.capacity-line strong`, otherwise the
+           over-capacity warning silently renders in the normal cream. */
+        .capacity-line strong.capacity-full,
+        .capacity-line .capacity-full {
+            color: #FF8A70;
+            font-weight: 700;
+        }
+
+        .att-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
+            text-align: left;
+            background: #10322B;
+            border: 1px solid rgba(157, 180, 171, 0.2);
+            border-radius: 12px;
+            padding: 11px 13px;
+            margin-bottom: 7px;
+            cursor: pointer;
+            color: var(--text-main);
+            font-size: 0.95rem;
+        }
+
+        .att-row__name {
+            font-weight: 600;
+            flex: 1;
+        }
+
+        .att-row__role {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.66rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            border: 1px solid rgba(157, 180, 171, 0.3);
+            border-radius: 6px;
+            padding: 2px 7px;
+        }
+
+        .att-row__flex {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.68rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+            white-space: nowrap;
+        }
+
+        .att-row__state {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 0.72rem;
+            min-width: 70px;
+            text-align: center;
+            border-radius: 8px;
+            padding: 5px 0;
+            border: 1px solid rgba(157, 180, 171, 0.3);
+            color: var(--text-muted);
+        }
+
+        .att-row--present {
+            border-color: rgba(81, 207, 102, 0.5);
+        }
+
+        .att-row--present .att-row__state {
+            background: rgba(81, 207, 102, 0.15);
+            border-color: rgba(81, 207, 102, 0.5);
+            color: #8FD9A0;
+        }
+
+        .att-row--absent {
+            border-color: rgba(255, 107, 107, 0.45);
+            opacity: 0.75;
+        }
+
+        .att-row--absent .att-row__state {
+            background: rgba(255, 107, 107, 0.12);
+            border-color: rgba(255, 107, 107, 0.45);
+            color: #FFB4A6;
+        }
+
+        .att-row--dropin {
+            border-style: dashed;
+        }
+
+        /* Students directory */
+        .student-block {
+            border: 1px solid var(--portal-divider);
+            border-radius: 14px;
+            padding: 14px 16px;
+            margin-bottom: 10px;
+        }
+
+        .student-block__detail {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 4px;
+            line-height: 1.5;
+        }
+
+        .student-block__detail strong {
+            color: var(--text-main);
+            font-weight: 600;
+        }
+
         .req__who {
             color: var(--title-cream);
             font-weight: 600;
@@ -588,6 +758,48 @@
             opacity: 0.65;
         }
 
+        .trial-request__message {
+            width: 100%;
+            min-height: 180px;
+            resize: vertical;
+            background: var(--accent-navy, var(--bg-main));
+            border: 1px solid var(--portal-divider);
+            border-radius: 10px;
+            color: var(--text-main);
+            padding: 11px 12px;
+            margin: 8px 0 10px;
+            font: inherit;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .trial-request__message:focus {
+            outline: 2px solid var(--accent-gold);
+            outline-offset: 2px;
+        }
+
+        .trial-request__class {
+            color: var(--text-main);
+            font-size: 0.9rem;
+            margin-bottom: 4px;
+        }
+
+        .trial-request__phone {
+            color: var(--accent-gold);
+            text-decoration: none;
+        }
+
+        .trial-request__history {
+            margin-top: 1rem;
+            color: var(--text-muted);
+        }
+
+        .trial-request__history summary {
+            cursor: pointer;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+        }
+
         .muted-note {
             color: var(--text-muted);
             font-size: 0.95rem;
@@ -636,6 +848,19 @@
             </div>
         </div>
 
+        <nav class="admin-nav" id="adminNav" style="display: none;">
+            <a href="#classesCard">Classes</a>
+            <a href="#studentsCard">Students</a>
+            <a href="#teachersCard">Teachers</a>
+            <a href="#trialRequestsCard">Trial Requests</a>
+            <a href="#openCard">Requests</a>
+            <a href="#privateCard">Privates</a>
+            <a href="#passCard">Pass Management</a>
+            <a href="#expiringCard">Ending Soon</a>
+            <a href="#rosterCard">Rosters</a>
+            <a href="#lookupCard">Lookup</a>
+        </nav>
+
         <div class="admin-card" id="gateCard">
             <p class="muted-note" id="gateMessage">Checking access...</p>
         </div>
@@ -643,6 +868,73 @@
         <div class="admin-card" id="statsCard" style="display: none;">
             <h2>Overview</h2>
             <div class="stat-row" id="statRow"></div>
+        </div>
+
+        <div class="admin-card" id="trialRequestsCard" style="display: none;">
+            <h2>Trial Requests</h2>
+            <p class="muted-note" style="margin-bottom: 0.9rem;">
+                Edit the confirmation if needed, open it in WhatsApp, then press Send in WhatsApp.
+                Mark it as sent here afterwards so the pending list stays accurate.
+            </p>
+            <div id="trialRequestsList"></div>
+            <details class="trial-request__history" id="trialRequestsHistory" style="display: none;">
+                <summary>Recently handled trial requests</summary>
+                <div id="trialRequestsHandledList" style="margin-top: 0.8rem;"></div>
+            </details>
+        </div>
+
+        <div class="admin-card" id="classesCard" style="display: none;">
+            <h2>Classes</h2>
+            <p class="muted-note" style="margin-bottom: 0.9rem;">
+                Pick a day and class to mark presences and see spots — the studio
+                holds a maximum of 12 couples (12 leaders, 12 followers) per class.
+            </p>
+            <div class="week-bar">
+                <button type="button" id="clsPrevWeek" aria-label="Previous week">&larr;</button>
+                <span class="week-bar__label" id="clsWeekLabel"></span>
+                <button type="button" id="clsNextWeek" aria-label="Next week">&rarr;</button>
+            </div>
+            <div class="chip-row" id="clsDayChips"></div>
+            <div class="chip-row" id="clsClassChips"></div>
+            <div id="clsPanel" style="display: none;">
+                <div class="capacity-line" id="clsCapacity"></div>
+                <p class="lookup-label" style="margin-bottom: 12px;" id="clsSignedBy"></p>
+                <p class="att-summary muted-note" id="clsSummary" style="margin: 0 0 10px;"></p>
+                <div id="clsMarkList"></div>
+                <label class="lookup-label" for="clsFlexSelect" style="margin-top: 1rem;">10-Class Pass holders</label>
+                <select id="clsFlexSelect" class="lookup-input" style="max-width: 420px;"></select>
+            </div>
+        </div>
+
+        <div class="admin-card" id="studentsCard" style="display: none;">
+            <h2>Students</h2>
+            <input type="search" id="studentSearch" class="lookup-input"
+                placeholder="Filter by name or email..." style="max-width: 420px; margin-bottom: 1rem;">
+            <div id="studentsList"></div>
+        </div>
+
+        <div class="admin-card" id="teachersCard" style="display: none;">
+            <h2>Teachers</h2>
+            <p class="muted-note" style="margin-bottom: 0.9rem;">
+                Assign teachers to classes. Hours are counted per class session once
+                its presences are logged. If a class is still unlogged 24&nbsp;hours
+                after it ran, its teacher gets an email reminder automatically.
+            </p>
+
+            <div id="teacherAlerts"></div>
+            <div id="teachersList"></div>
+
+            <h3 style="font-family: 'Outfit', sans-serif; font-weight: 600; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-muted); margin: 1.4rem 0 0.6rem;">
+                Add a teacher</h3>
+            <form id="teacherAddForm" style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
+                <input type="text" id="teacherFirst" class="lookup-input" placeholder="First name"
+                    style="max-width: 150px;" required>
+                <input type="text" id="teacherLast" class="lookup-input" placeholder="Last name"
+                    style="max-width: 150px;">
+                <input type="email" id="teacherEmail" class="lookup-input" placeholder="teacher@example.com"
+                    style="max-width: 240px;" required>
+                <button type="submit" class="req__btn req__btn--confirm">Add Teacher</button>
+            </form>
         </div>
 
         <div class="admin-card" id="openCard" style="display: none;">
@@ -827,6 +1119,13 @@
 
         let registrations = [];
         let attendance = [];
+        let absencesAll = [];
+        let requestsAll = [];
+        let teachers = [];
+        let classTeachers = [];
+        let teachingHours = [];
+        let classSessions = [];
+        let trialRequests = [];
 
         function activeRegByEmail(email) {
             return registrations.find(r =>
@@ -929,20 +1228,118 @@
         }
         // -------------------------------------------------------------------
 
+        // ----- Trial-class WhatsApp confirmations -------------------------
+        function trialConfirmationMessage(request) {
+            const firstName = String(request.name || '').trim().split(/\s+/)[0] ||
+                (request.locale === 'de' ? 'dort' : 'there');
+            const classMatch = String(request.selected_class || '')
+                .match(/^(.+?)\s+(\d{1,2}:\d{2})\s+-/);
+
+            if (request.locale === 'de') {
+                if (!classMatch) {
+                    return `Hallo ${firstName},\n\nhier ist AXcent Dance. Wir haben deine Anfrage für eine Probelektion erhalten. Wir schreiben dir hier in Kürze mit dem passenden Tag und der passenden Uhrzeit für dein Niveau.\n\nWenn du Fragen hast, schreibe uns einfach hier. 😊\n\nAXcent`;
+                }
+                return `Hallo ${firstName},\n\nhier ist AXcent Dance. Wir haben deine Anfrage für eine Probelektion erhalten und freuen uns, dich diesen ${classMatch[1]} um ${classMatch[2]} Uhr im Kurs zu begrüssen.\n\nWenn du Fragen hast, schreibe uns einfach hier. 😊\n\nAXcent`;
+            }
+
+            if (!classMatch) {
+                return `Hello ${firstName},\n\nThis is AXcent Dance. We have received your trial class request. We will write to you here shortly with the best day and time for your level.\n\nIf you have any questions, just write to us here. 😊\n\nAXcent`;
+            }
+            return `Hello ${firstName},\n\nThis is AXcent Dance. We have received your trial class request and look forward to welcoming you this ${classMatch[1]} at ${classMatch[2]}.\n\nIf you have any questions, just write to us here. 😊\n\nAXcent`;
+        }
+
+        function formatRequestTime(iso) {
+            if (!iso) return '';
+            return new Date(iso).toLocaleString('en-CH', {
+                weekday: 'short', day: 'numeric', month: 'short',
+                hour: '2-digit', minute: '2-digit'
+            });
+        }
+
+        function trialRequestCard(request, handled = false) {
+            const waDigits = phoneToWaDigits(request.phone);
+            const statusLabel = request.status === 'sent' ? 'Sent' : 'Dismissed';
+            return '<div class="req' + (handled ? ' req--handled' : '') + '">' +
+                '<div class="req__top">' +
+                '<span class="req__type req__type--private_class">Trial Class</span>' +
+                '<span class="req__who">' + esc(request.name) +
+                ' <a class="trial-request__phone" href="tel:' + esc(request.phone) + '">' +
+                esc(request.phone) + '</a></span>' +
+                '<span class="req__meta">' + formatRequestTime(request.created_at) + '</span>' +
+                '</div>' +
+                '<div class="trial-request__class"><strong>Requested:</strong> ' +
+                esc(request.selected_class) + '</div>' +
+                (handled
+                    ? '<div class="req__actions"><span class="req__status">' + statusLabel + '</span>' +
+                      '<button type="button" class="req__btn" data-trial-reopen="' + request.id + '">Reopen</button></div>'
+                    : '<label class="lookup-label" for="trial-message-' + request.id + '">WhatsApp confirmation</label>' +
+                      '<textarea class="trial-request__message" id="trial-message-' + request.id +
+                      '" data-trial-message="' + request.id + '">' +
+                      esc(trialConfirmationMessage(request)) + '</textarea>' +
+                      '<div class="req__actions">' +
+                      (waDigits
+                          ? '<button type="button" class="req__btn req__btn--confirm" data-trial-wa="' +
+                            request.id + '">Open in WhatsApp</button>'
+                          : '<span class="muted-note">The phone number needs a country code before WhatsApp can open.</span>') +
+                      '<button type="button" class="req__btn" data-trial-sent="' + request.id + '">Mark as sent</button>' +
+                      '<button type="button" class="req__btn req__btn--decline" data-trial-dismiss="' +
+                      request.id + '">Dismiss</button></div>') +
+                '</div>';
+        }
+
+        function renderTrialRequests() {
+            const pending = trialRequests.filter(request => request.status === 'new');
+            const handled = trialRequests.filter(request => request.status !== 'new').slice(0, 30);
+
+            el('trialRequestsList').innerHTML = pending.length
+                ? pending.map(request => trialRequestCard(request)).join('')
+                : '<p class="muted-note">No trial confirmations are waiting.</p>';
+
+            if (handled.length) {
+                el('trialRequestsHandledList').innerHTML = handled
+                    .map(request => trialRequestCard(request, true)).join('');
+                show('trialRequestsHistory');
+            } else {
+                hide('trialRequestsHistory');
+            }
+        }
+        // -------------------------------------------------------------------
+
         async function loadRequests() {
             // RLS: only the owner account gets rows other than its own.
-            const [reqRes, regRes, attRes] = await Promise.all([
+            const [reqRes, regRes, attRes, absRes, trialRes] = await Promise.all([
                 supabase.from('requests').select('*').order('created_at', { ascending: false }),
                 supabase.from('registrations').select('*')
                     .neq('status', 'pending_payment')
                     .order('pass_end_date', { ascending: true }),
                 supabase.from('attendance').select('*')
-                    .order('class_date', { ascending: false })
+                    .order('class_date', { ascending: false }),
+                supabase.from('absences').select('*')
+                    .order('absence_date', { ascending: true }),
+                supabase.from('trial_requests').select('*')
+                    .order('created_at', { ascending: false })
             ]);
             const requests = reqRes.data;
-            const error = reqRes.error || regRes.error || attRes.error;
+            const error = reqRes.error || regRes.error || attRes.error || absRes.error;
             registrations = regRes.data || [];
             attendance = attRes.data || [];
+            absencesAll = absRes.data || [];
+            requestsAll = requests || [];
+            trialRequests = trialRes.data || [];
+
+            // Teachers are a separate concern from the request inbox: a failure
+            // here should not blank the whole dashboard.
+            const [teachRes, ctRes, hoursRes, sessRes] = await Promise.all([
+                supabase.from('teachers').select('*').order('first_name', { ascending: true }),
+                supabase.from('class_teachers').select('*'),
+                supabase.rpc('teaching_hours'),
+                supabase.from('class_sessions').select('*'),
+            ]);
+            teachers = teachRes.data || [];
+            classTeachers = ctRes.data || [];
+            teachingHours = hoursRes.data || [];
+            classSessions = sessRes.data || [];
+            if (teachRes.error) console.error('Teachers unavailable:', teachRes.error);
 
             if (error) {
                 el('gateMessage').textContent = 'Could not load requests: ' + error.message;
@@ -951,6 +1348,15 @@
             }
 
             hide('gateCard');
+
+            if (trialRes.error) {
+                el('trialRequestsList').innerHTML = '<p class="muted-note">Trial requests are unavailable: ' +
+                    esc(trialRes.error.message) + '</p>';
+                hide('trialRequestsHistory');
+            } else {
+                renderTrialRequests();
+            }
+            show('trialRequestsCard');
 
             // Paid private classes need no accept/decline decision — they are
             // already booked; the owner ticks off delivered hours instead.
@@ -968,6 +1374,8 @@
             const counts = { freeze: 0, room_booking: 0, private_class: privates.length, bootcamp: 0, room_rental: roomRentalOpen.length };
             open.forEach(r => { counts[r.type] = (counts[r.type] || 0) + 1; });
             el('statRow').innerHTML =
+                '<span class="stat-chip">Trial requests: <strong>' +
+                    trialRequests.filter(r => r.status === 'new').length + '</strong></span>' +
                 '<span class="stat-chip"><strong>' + open.length + '</strong> open</span>' +
                 Object.entries(TYPE_LABELS).map(([t, label]) =>
                     '<span class="stat-chip">' + esc(label) + ': <strong>' + (counts[t] || 0) + '</strong></span>'
@@ -1142,6 +1550,14 @@
 
             setupLookup();
             show('lookupCard');
+
+            renderClasses();
+            show('classesCard');
+            renderStudents();
+            show('studentsCard');
+            renderTeachers();
+            show('teachersCard');
+            el('adminNav').style.display = 'flex';
         }
 
         // ----- Expiring passes ---------------------------------------------
@@ -1169,7 +1585,12 @@
         function phoneToWaDigits(phone) {
             if (!phone) return null;
             const digits = phone.replace(/[^\d]/g, '');
-            return digits.length >= 8 ? digits : null;
+            if (digits.length < 8) return null;
+            if (String(phone).trim().startsWith('+')) return digits;
+            if (digits.startsWith('00')) return digits.slice(2);
+            if (digits.startsWith('0')) return '41' + digits.slice(1);
+            if (digits.length === 9 && digits.startsWith('7')) return '41' + digits;
+            return digits;
         }
 
         function renderExpiring() {
@@ -1233,6 +1654,423 @@
                 .replace(/\{\{name\}\}/g, reg.first_name || 'there')
                 .replace(/\{\{date\}\}/g, formatDate(reg.pass_end_date));
             window.open('https://wa.me/' + waDigits + '?text=' + encodeURIComponent(message), '_blank');
+        });
+        // -------------------------------------------------------------------
+
+        // ----- Classes: weekly view, capacity, and presence marking --------
+        const CLASS_DEFS = window.AXCENT_PASSES.classes.map(c => {
+            const m = c.value.match(/^(Mon|Tue|Wed|Thu|Fri|Sat|Sun) (\d{1,2}:\d{2}) /);
+            return m ? { value: c.value, day: m[1], time: m[2], name: c.en } : null;
+        }).filter(Boolean);
+        const CLASS_DAYS = [...new Set(CLASS_DEFS.map(c => c.day))]
+            .sort((a, b) => WEEK_ORDER.indexOf(a) - WEEK_ORDER.indexOf(b));
+        const COUPLES_MAX = 12;
+        const FLEX_PASS_TYPE = '10-Class Flexible Package';
+
+        let clsWeekOffset = 0;   // 0 = current week, so the default view is "now"
+        let clsDay = null;
+        let clsClass = null;
+
+        function clsMondayDate() {
+            const d = new Date();
+            d.setHours(0, 0, 0, 0);
+            d.setDate(d.getDate() - ((d.getDay() + 6) % 7) + clsWeekOffset * 7);
+            return d;
+        }
+
+        function clsDateFor(day) {
+            const d = clsMondayDate();
+            d.setDate(d.getDate() + ((DAY_NUMBERS[day] + 6) % 7));
+            return isoDate(d);
+        }
+
+        // undefined = not enrolled; null = enrolled without a role.
+        function classEntryRole(r, classValue) {
+            const entry = (r.selected_classes || '').split(', ').map(s => s.trim())
+                .find(s => s.replace(/ \((Leader|Follower)\)$/, '') === classValue);
+            if (!entry) return undefined;
+            const m = entry.match(/\((Leader|Follower)\)$/);
+            return m ? m[1] : null;
+        }
+
+        function classRosterFor(classValue, dateStr) {
+            const enrolled = registrations.filter(r =>
+                (r.status === 'active' || r.status === 'expired') &&
+                (!r.pass_start_date || r.pass_start_date <= dateStr) &&
+                (!r.pass_end_date || r.pass_end_date >= dateStr) &&
+                classEntryRole(r, classValue) !== undefined);
+            const extraIds = attendance
+                .filter(a => a.class_value === classValue && a.class_date === dateStr)
+                .map(a => a.registration_id)
+                .filter(id => !enrolled.some(r => r.id === id));
+            const extras = registrations.filter(r => extraIds.includes(r.id));
+            return { enrolled, extras };
+        }
+
+        const clsMarkFor = (regId) => attendance.find(a =>
+            a.registration_id === regId && a.class_value === clsClass &&
+            a.class_date === clsDateFor(clsDay));
+
+        const flexUsedCount = (regId) => attendance.filter(a =>
+            a.registration_id === regId && a.status === 'present').length;
+
+        function renderClasses() {
+            const mon = clsMondayDate();
+            const sun = new Date(mon);
+            sun.setDate(sun.getDate() + 6);
+            el('clsWeekLabel').textContent = formatDate(isoDate(mon)) + ' – ' + formatDate(isoDate(sun)) +
+                (clsWeekOffset === 0 ? ' (this week)' : '');
+
+            if (!clsDay || !CLASS_DAYS.includes(clsDay)) {
+                const todayAbbr = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'][new Date().getDay()];
+                clsDay = (clsWeekOffset === 0 && CLASS_DAYS.includes(todayAbbr)) ? todayAbbr : CLASS_DAYS[0];
+            }
+
+            el('clsDayChips').innerHTML = CLASS_DAYS.map(d => {
+                const label = new Date(clsDateFor(d) + 'T00:00:00')
+                    .toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
+                return '<button type="button" class="chip' + (d === clsDay ? ' chip--active' : '') +
+                    '" data-clsday="' + d + '">' + label + '</button>';
+            }).join('');
+
+            const dayClasses = CLASS_DEFS.filter(c => c.day === clsDay);
+            if (!dayClasses.some(c => c.value === clsClass)) clsClass = dayClasses[0]?.value || null;
+            const dateStr = clsDateFor(clsDay);
+            el('clsClassChips').innerHTML = dayClasses.map(c => {
+                const { enrolled } = classRosterFor(c.value, dateStr);
+                const L = enrolled.filter(r => classEntryRole(r, c.value) === 'Leader').length;
+                const F = enrolled.filter(r => classEntryRole(r, c.value) === 'Follower').length;
+                return '<button type="button" class="chip' + (c.value === clsClass ? ' chip--active' : '') +
+                    '" data-cls="' + esc(c.value) + '">' + esc(c.time + ' ' + c.name) +
+                    ' · ' + L + 'L/' + F + 'F</button>';
+            }).join('');
+
+            renderClsPanel();
+        }
+
+        function renderClsPanel() {
+            if (!clsClass) { hide('clsPanel'); return; }
+            const dateStr = clsDateFor(clsDay);
+            const { enrolled, extras } = classRosterFor(clsClass, dateStr);
+
+            const leaders = enrolled.filter(r => classEntryRole(r, clsClass) === 'Leader').length;
+            const followers = enrolled.filter(r => classEntryRole(r, clsClass) === 'Follower').length;
+            const assignedNames = classTeachers
+                .filter(ct => ct.class_value === clsClass)
+                .map(ct => teachers.find(t => t.id === ct.teacher_id))
+                .filter(Boolean)
+                .map(t => ((t.first_name || '') + ' ' + (t.last_name || '')).trim() || t.email);
+            el('clsSummary').dataset.teachers = assignedNames.join(', ');
+
+            const bothFull = leaders >= COUPLES_MAX && followers >= COUPLES_MAX;
+            el('clsCapacity').innerHTML =
+                (assignedNames.length
+                    ? 'Teacher: <strong>' + esc(assignedNames.join(', ')) + '</strong><br>'
+                    : '<span class="muted-note">No teacher assigned</span><br>') +
+                'Leaders <strong' + (leaders >= COUPLES_MAX ? ' class="capacity-full"' : '') + '>' +
+                leaders + ' / ' + COUPLES_MAX + '</strong> · ' +
+                'Followers <strong' + (followers >= COUPLES_MAX ? ' class="capacity-full"' : '') + '>' +
+                followers + ' / ' + COUPLES_MAX + '</strong> &mdash; ' +
+                Math.max(0, COUPLES_MAX - leaders) + ' leader / ' +
+                Math.max(0, COUPLES_MAX - followers) + ' follower spots left' +
+                (bothFull ? ' · <span class="capacity-full">CLASS FULL</span>' : '');
+
+            const row = (r, isDropin) => {
+                const mark = clsMarkFor(r.id);
+                const state = mark ? mark.status : null;
+                const role = classEntryRole(r, clsClass);
+                const isFlex = r.pass_type === FLEX_PASS_TYPE;
+                return '<button type="button" class="att-row' +
+                    (state === 'present' ? ' att-row--present' : '') +
+                    (state === 'absent' ? ' att-row--absent' : '') +
+                    (isDropin ? ' att-row--dropin' : '') +
+                    '" data-reg="' + r.id + '" data-email="' + esc(r.email) + '">' +
+                    '<span class="att-row__name">' + esc(((r.first_name || '') + ' ' + (r.last_name || '')).trim() || r.email) + '</span>' +
+                    (isFlex ? '<span class="att-row__flex">' + flexUsedCount(r.id) + ' of 10</span>' : '') +
+                    (role ? '<span class="att-row__role">' + role.slice(0, 1) + '</span>' : '') +
+                    '<span class="att-row__state">' + (state ? state : 'tap') + '</span>' +
+                    '</button>';
+            };
+
+            el('clsMarkList').innerHTML =
+                enrolled.map(r => row(r, false)).join('') +
+                extras.map(r => row(r, true)).join('') ||
+                '<p class="muted-note">Nobody enrolled for this class on this date.</p>';
+
+            const all = enrolled.concat(extras);
+            const present = all.filter(r => clsMarkFor(r.id)?.status === 'present').length;
+            const absent = all.filter(r => clsMarkFor(r.id)?.status === 'absent').length;
+            el('clsSummary').innerHTML = '<strong>' + present + ' present</strong> · ' +
+                absent + ' absent · ' + (all.length - present - absent) + ' unmarked';
+
+            // Teaching hours are signed by the teacher themselves in the
+            // presences page; the owner sees the signature but does not assign it.
+            const signed = classSessions.find(s =>
+                s.class_value === clsClass && s.class_date === dateStr);
+            const signedBy = signed && signed.teacher_id
+                ? teachers.find(t => t.id === signed.teacher_id) : null;
+            el('clsSignedBy').innerHTML = signedBy
+                ? 'Teaching hour signed by <strong style="color: var(--title-cream);">' +
+                  esc(teacherName(signedBy)) + '</strong>'
+                : 'Teaching hour not signed yet';
+
+            const listedIds = all.map(r => r.id);
+            const flexHolders = registrations.filter(r =>
+                r.status === 'active' && r.pass_type === FLEX_PASS_TYPE && !listedIds.includes(r.id));
+            el('clsFlexSelect').innerHTML = flexHolders.length
+                ? '<option value="">Mark a 10-class pass holder present...</option>' +
+                  flexHolders.map(r =>
+                      '<option value="' + r.id + '">' +
+                      esc(((r.first_name || '') + ' ' + (r.last_name || '')).trim() || r.email) +
+                      ' — ' + flexUsedCount(r.id) + ' of 10 used</option>').join('')
+                : '<option value="">No active 10-class passes</option>';
+
+            show('clsPanel');
+        }
+
+        async function setClsMark(regId, email, status) {
+            const dateStr = clsDateFor(clsDay);
+            if (status === null) {
+                const { error } = await supabase.from('attendance').delete()
+                    .eq('registration_id', regId).eq('class_value', clsClass).eq('class_date', dateStr);
+                if (error) { failFeedback('Attendance update failed: ' + error.message); return; }
+                attendance = attendance.filter(a => !(a.registration_id === regId &&
+                    a.class_value === clsClass && a.class_date === dateStr));
+            } else {
+                const { data, error } = await supabase.from('attendance').upsert({
+                    class_value: clsClass, class_date: dateStr,
+                    registration_id: regId, email: email, status: status,
+                    marked_by_email: session.user.email
+                }, { onConflict: 'class_date,class_value,registration_id' }).select();
+                if (error) { failFeedback('Attendance update failed: ' + error.message); return; }
+                attendance = attendance.filter(a => !(a.registration_id === regId &&
+                    a.class_value === clsClass && a.class_date === dateStr)).concat(data);
+            }
+            renderClasses();
+        }
+
+        el('clsPrevWeek').addEventListener('click', () => { clsWeekOffset--; renderClasses(); });
+        el('clsNextWeek').addEventListener('click', () => { clsWeekOffset++; renderClasses(); });
+        el('clsDayChips').addEventListener('click', (e) => {
+            const chip = e.target.closest('[data-clsday]');
+            if (!chip) return;
+            clsDay = chip.dataset.clsday;
+            renderClasses();
+        });
+        el('clsClassChips').addEventListener('click', (e) => {
+            const chip = e.target.closest('[data-cls]');
+            if (!chip) return;
+            clsClass = chip.dataset.cls;
+            renderClasses();
+        });
+        el('clsMarkList').addEventListener('click', (e) => {
+            const rowBtn = e.target.closest('.att-row');
+            if (!rowBtn) return;
+            const mark = clsMarkFor(rowBtn.dataset.reg);
+            const next = !mark ? 'present' : mark.status === 'present' ? 'absent' : null;
+            setClsMark(rowBtn.dataset.reg, rowBtn.dataset.email, next);
+        });
+        el('clsFlexSelect').addEventListener('change', () => {
+            const regId = el('clsFlexSelect').value;
+            if (!regId) return;
+            const reg = registrations.find(r => r.id === regId);
+            if (reg) setClsMark(reg.id, reg.email, 'present');
+        });
+        // -------------------------------------------------------------------
+
+        // ----- Students directory ------------------------------------------
+        function renderStudents() {
+            const q = (el('studentSearch').value || '').trim().toLowerCase();
+
+            const byEmail = new Map();
+            registrations.forEach(r => {
+                const k = r.email.toLowerCase();
+                if (!byEmail.has(k)) byEmail.set(k, []);
+                byEmail.get(k).push(r);
+            });
+
+            const students = [...byEmail.entries()].map(([emailKey, regs]) => {
+                const named = regs.find(r => r.first_name) || regs[0];
+                const name = ((named.first_name || '') + ' ' + (named.last_name || '')).trim();
+                return { emailKey, email: regs[0].email, name, regs };
+            }).filter(s => !q || s.name.toLowerCase().includes(q) || s.emailKey.includes(q))
+              .sort((a, b) => (a.name || a.emailKey).localeCompare(b.name || b.emailKey));
+
+            el('studentsList').innerHTML = students.length
+                ? students.map(s => {
+                    const regIds = s.regs.map(r => r.id);
+                    const sick = absencesAll.filter(a => a.type === 'sick' && regIds.includes(a.registration_id));
+                    const excused = absencesAll.filter(a => a.type === 'excused' && regIds.includes(a.registration_id));
+                    const planned = s.regs.map(r => r.dates_unavailable).filter(Boolean);
+                    const privates = requestsAll.filter(r => r.type === 'private_class' &&
+                        ['new', 'confirmed', 'done'].includes(r.status) &&
+                        r.email.toLowerCase() === s.emailKey);
+                    const current = s.regs.find(r => r.status === 'active');
+
+                    const passLines = s.regs.slice().sort((a, b) =>
+                        (b.pass_start_date || '').localeCompare(a.pass_start_date || ''))
+                        .map(r => esc(r.pass_type || 'Class Pass') + ' · ' + formatDate(r.pass_start_date) +
+                            ' &rarr; ' + formatDate(r.pass_end_date) + ' · ' + esc(r.status));
+
+                    const privateLines = privates.map(p => {
+                        const total = p.sessions_total ||
+                            (parseInt((p.details || '').match(/(\d+)\s*(hour|Stunde)/i)?.[1], 10) || null);
+                        return esc(p.details || 'package') + ' · ' + (p.sessions_done || 0) +
+                            ' of ' + (total !== null ? total : '?') + ' used';
+                    });
+
+                    return '<div class="student-block">' +
+                        '<div class="pass-row__top">' +
+                        '<span class="pass-row__who">' + esc(s.name || 'Unknown') +
+                        ' <a href="mailto:' + esc(s.email) + '">' + esc(s.email) + '</a></span>' +
+                        '<span class="pass-row__pass">' + s.regs.length +
+                        (s.regs.length === 1 ? ' pass' : ' passes') +
+                        (current && current.pass_end_date
+                            ? ' · current ends ' + formatDate(current.pass_end_date)
+                            : ' · no active pass') + '</span>' +
+                        '</div>' +
+                        '<div class="student-block__detail"><strong>Passes:</strong><br>' + passLines.join('<br>') + '</div>' +
+                        '<div class="student-block__detail"><strong>Sick days:</strong> ' +
+                        (sick.length ? sick.map(a => formatDate(a.absence_date)).join(', ') : 'none') + '</div>' +
+                        '<div class="student-block__detail"><strong>Planned absences:</strong> ' +
+                        ((planned.length || excused.length)
+                            ? planned.map(esc).concat(excused.map(a => formatDate(a.absence_date))).join(' | ')
+                            : 'none') + '</div>' +
+                        '<div class="student-block__detail"><strong>Private classes:</strong> ' +
+                        (privateLines.length ? privateLines.join('<br>') : 'none') + '</div>' +
+                        '</div>';
+                }).join('')
+                : '<p class="muted-note">No students match.</p>';
+        }
+
+        el('studentSearch').addEventListener('input', renderStudents);
+        // -------------------------------------------------------------------
+
+        // ----- Teachers: assignments, hours, and unlogged-class alerts ------
+        const teacherName = (t) =>
+            ((t.first_name || '') + ' ' + (t.last_name || '')).trim() || t.email;
+
+        // Class occurrences in the recent past whose presences were never
+        // logged — the same condition the daily reminder email uses.
+        function unloggedSessions(daysBack = 14) {
+            const logged = new Set(attendance.map(a => a.class_value + '|' + a.class_date));
+            const now = new Date();
+            const out = [];
+            CLASS_DEFS.forEach(def => {
+                for (let back = 1; back <= daysBack; back++) {
+                    const d = new Date(now);
+                    d.setDate(d.getDate() - back);
+                    if (d.getDay() !== DAY_NUMBERS[def.day]) continue;
+                    const dateStr = isoDate(d);
+                    if (logged.has(def.value + '|' + dateStr)) continue;
+                    const [hh, mm] = def.time.split(':').map(Number);
+                    const start = new Date(d);
+                    start.setHours(hh, mm, 0, 0);
+                    if ((now - start) < 24 * 3600 * 1000) continue;   // still inside the grace window
+                    out.push({ classValue: def.value, name: def.name, date: dateStr });
+                }
+            });
+            return out.sort((a, b) => b.date.localeCompare(a.date));
+        }
+
+        function renderTeachers() {
+            const pending = unloggedSessions();
+            el('teacherAlerts').innerHTML = pending.length
+                ? '<div class="req__proposal"><strong>' + pending.length +
+                  (pending.length === 1 ? ' class is' : ' classes are') +
+                  '</strong> more than 24h old with no presences logged: ' +
+                  pending.slice(0, 6).map(p => esc(p.name) + ' (' + formatDate(p.date) + ')').join(', ') +
+                  (pending.length > 6 ? ' …' : '') +
+                  ' — the assigned teacher is reminded by email once per class.</div>'
+                : '';
+
+            const hoursFor = (id) => {
+                const row = teachingHours.find(h => h.teacher_id === id);
+                return row ? Number(row.sessions) : 0;
+            };
+
+            el('teachersList').innerHTML = teachers.length
+                ? teachers.map(t => {
+                    const mine = classTeachers.filter(ct => ct.teacher_id === t.id);
+                    const assignedValues = mine.map(ct => ct.class_value);
+                    const free = CLASS_DEFS.filter(c => !assignedValues.includes(c.value));
+                    const hrs = hoursFor(t.id);
+                    return '<div class="req' + (t.active ? '' : ' req--handled') + '">' +
+                        '<div class="req__top">' +
+                        '<span class="req__who">' + esc(teacherName(t)) +
+                        ' <a href="mailto:' + esc(t.email) + '">' + esc(t.email) + '</a></span>' +
+                        '<span class="req__meta"><strong style="color: var(--title-cream);">' + hrs +
+                        '</strong> ' + (hrs === 1 ? 'hour' : 'hours') + ' taught</span>' +
+                        '</div>' +
+                        '<div class="req__details">' +
+                        (mine.length
+                            ? mine.map(ct => {
+                                const def = CLASS_DEFS.find(c => c.value === ct.class_value);
+                                return '<button class="req__btn" data-unassign="' + ct.id + '" ' +
+                                    'title="Remove this assignment" style="margin: 0 6px 6px 0;">' +
+                                    esc(def ? def.day + ' ' + def.time + ' ' + def.name : ct.class_value) +
+                                    ' &times;</button>';
+                            }).join('')
+                            : '<span class="muted-note">No classes assigned yet.</span>') +
+                        '</div>' +
+                        '<div class="req__actions">' +
+                        (free.length
+                            ? '<select class="lookup-input" data-assign-teacher="' + t.id + '" style="max-width: 300px;">' +
+                              '<option value="">Assign a class...</option>' +
+                              free.map(c => '<option value="' + esc(c.value) + '">' +
+                                  esc(c.day + ' ' + c.time + ' ' + c.name) + '</option>').join('') +
+                              '</select>'
+                            : '<span class="muted-note">All classes assigned.</span>') +
+                        '<button class="req__btn' + (t.active ? ' req__btn--decline' : ' req__btn--confirm') +
+                        '" data-teacher-toggle="' + t.id + '" data-active="' + t.active + '">' +
+                        (t.active ? 'Deactivate' : 'Reactivate') + '</button>' +
+                        '</div>' +
+                        '</div>';
+                }).join('')
+                : '<p class="muted-note">No teachers yet — add one below.</p>';
+        }
+
+        el('teacherAddForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = el('teacherEmail').value.trim();
+            const { error } = await supabase.from('teachers').insert({
+                email: email,
+                first_name: el('teacherFirst').value.trim() || null,
+                last_name: el('teacherLast').value.trim() || null,
+            });
+            if (error) { failFeedback('Could not add teacher: ' + error.message); return; }
+            el('teacherAddForm').reset();
+            await loadRequests();
+        });
+
+        el('teachersList').addEventListener('change', async (e) => {
+            const sel = e.target.closest('[data-assign-teacher]');
+            if (!sel || !sel.value) return;
+            const { error } = await supabase.from('class_teachers').insert({
+                teacher_id: sel.dataset.assignTeacher, class_value: sel.value,
+            });
+            if (error) { failFeedback('Could not assign class: ' + error.message); return; }
+            await loadRequests();
+        });
+
+        el('teachersList').addEventListener('click', async (e) => {
+            const un = e.target.closest('[data-unassign]');
+            if (un) {
+                un.disabled = true;
+                const { error } = await supabase.from('class_teachers').delete().eq('id', un.dataset.unassign);
+                if (error) { failFeedback('Could not remove assignment: ' + error.message, un); return; }
+                await loadRequests();
+                return;
+            }
+            const tog = e.target.closest('[data-teacher-toggle]');
+            if (tog) {
+                tog.disabled = true;
+                const { error } = await supabase.from('teachers')
+                    .update({ active: tog.dataset.active !== 'true' })
+                    .eq('id', tog.dataset.teacherToggle);
+                if (error) { failFeedback('Could not update teacher: ' + error.message, tog); return; }
+                await loadRequests();
+            }
         });
         // -------------------------------------------------------------------
 
@@ -1338,6 +2176,53 @@
         document.addEventListener('click', async (e) => {
             const btn = e.target.closest('.req__btn');
             if (!btn) return;
+
+            const trialId = btn.dataset.trialWa || btn.dataset.trialSent ||
+                btn.dataset.trialDismiss || btn.dataset.trialReopen;
+            if (trialId) {
+                const request = trialRequests.find(row => row.id === trialId);
+                if (!request) return;
+
+                if (btn.dataset.trialWa) {
+                    const waDigits = phoneToWaDigits(request.phone);
+                    const messageField = document.querySelector('[data-trial-message="' + trialId + '"]');
+                    if (!waDigits || !messageField) return;
+
+                    // Open the chat before awaiting the database update so the
+                    // browser treats it as a direct click and does not block it.
+                    window.open('https://wa.me/' + waDigits + '?text=' +
+                        encodeURIComponent(messageField.value), '_blank', 'noopener,noreferrer');
+
+                    const { error: openedError } = await supabase
+                        .from('trial_requests')
+                        .update({ whatsapp_opened_at: new Date().toISOString() })
+                        .eq('id', trialId);
+                    if (openedError) failFeedback('WhatsApp opened, but the request could not be updated: ' +
+                        openedError.message, btn);
+                    return;
+                }
+
+                btn.disabled = true;
+                let update;
+                if (btn.dataset.trialSent) {
+                    update = { status: 'sent', sent_at: new Date().toISOString() };
+                } else if (btn.dataset.trialDismiss) {
+                    update = { status: 'dismissed', sent_at: null };
+                } else {
+                    update = { status: 'new', sent_at: null };
+                }
+
+                const { error: trialError } = await supabase
+                    .from('trial_requests')
+                    .update(update)
+                    .eq('id', trialId);
+                if (trialError) {
+                    failFeedback('Trial request update failed: ' + trialError.message, btn);
+                    return;
+                }
+                await loadRequests();
+                return;
+            }
 
             // Tick delivered private hours up or down.
             if (btn.dataset.privId) {
