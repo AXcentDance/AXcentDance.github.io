@@ -6223,7 +6223,7 @@ body.guide-page .guide-offramp__link:focus-visible {
 /* ---- Responsive ---- */
 @media (max-width: 1080px) {
     body.guide-page .guide-shell {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
         gap: 1.6rem;
     }
 
@@ -10025,14 +10025,14 @@ body.corporate-page .service-inquiry__copy a {
 
 body.rental-page .rental-main-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 3rem;
     align-items: start;
 }
 
 @media (max-width: 900px) {
     body.rental-page .rental-main-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
         gap: 2rem;
     }
 
@@ -11778,7 +11778,7 @@ body.registration-page .reg-masthead__media img {
 
 @media (max-width: 899px) {
     body.registration-page .reg-masthead__split {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
     }
 
     body.registration-page .reg-masthead__ghost {
