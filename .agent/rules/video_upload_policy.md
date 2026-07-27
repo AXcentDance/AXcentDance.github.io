@@ -19,6 +19,12 @@ python3 scripts/generate_hls.py <path-to-master> <name>
 # Demo/performance video where sound matters:
 python3 scripts/generate_hls.py <path-to-master> <name> --keep-audio
 
+# AUDIO RULE (owner directive 2026-07-27): EVERY video is published WITHOUT
+# audio by default — never pass --keep-audio unless the owner explicitly says
+# a specific video should keep its sound. Do not infer it from context ("it is
+# a demo", "music matters here"): the owner says it, or the audio is stripped.
+# Existing owner-sanctioned exception: assets/videos/hls/aitor-demo/.
+
 # Portrait or small-display video (renders <=720px wide on the page):
 # add --mobile-only to skip the desktop rendition — for long portrait clips
 # the 1080p rendition can add 50+ MB for quality nobody sees.
@@ -56,7 +62,13 @@ cwebp -resize 1200 0 -q 90 -m 6 poster-frame.png -o assets/images/<name>-poster.
 Two browser families must be handled:
 
 - **Safari (macOS/iOS)** plays HLS natively: assign the `.m3u8` directly to `video.src`.
-- **Chrome, Firefox, Edge** need the hls.js library (~15 KB gzipped), loaded lazily.
+- **Chrome, Firefox, Edge** need the hls.js library, loaded lazily.
+
+hls.js is VENDORED in-repo at `assets/vendor/hls-<version>.mjs` (policy since
+2026-07-27, matching the self-hosted-fonts direction: no third-party runtime
+dependencies). Never import it from a CDN. To upgrade: download the new pinned
+`dist/hls.mjs` into `assets/vendor/`, update the constant in `hls-video.js`,
+bump the `hls-video.js?v=` param on referencing pages, and delete the old file.
 
 HTML:
 
@@ -77,7 +89,7 @@ JavaScript (add to the page's module script; adjust the selector):
     if (video.canPlayType('application/vnd.apple.mpegurl')) {
       video.src = src;                      // Safari: native HLS
     } else {
-      const { default: Hls } = await import('https://cdn.jsdelivr.net/npm/hls.js@1.5.13/dist/hls.mjs');
+      const { default: Hls } = await import('/assets/vendor/hls-1.5.13.mjs');
       if (!Hls.isSupported()) return;       // very old browsers: poster only
       const hls = new Hls({ maxBufferLength: 10 });  // buffer at most ~10s ahead
       hls.loadSource(src);
@@ -126,4 +138,4 @@ Verification caveat for agents: in headless browser previews, IntersectionObserv
 
 ## Current repository state (context for future agents)
 
-The policy is live. `hls-video.js` (repo root, loaded as `<script type="module">`) implements Step 4 for the whole site: it auto-upgrades every `<video data-hls="…/playlist.m3u8">` and exposes `window.AXHls.attach/detach` for the homepage hero switcher in `script.js`. Current streams: `assets/videos/hls/hero-home/` (homepage hero, no audio) and `assets/videos/hls/aitor-demo/` (Aitor demo with audio; used by the hero choice on `index.html`/`de/index.html` and the players on `dominican-bootcamp.html` and `blog-posts/dominican-bachata-bootcamp-aitor-sara.html`, EN and DE). The progressive `HeroVideo_mobile.mp4` / `AitorGomezDemo.mp4` / `.webm` files remain committed solely as no-JavaScript fallbacks — pages keep them in `src`/`<source>` and `hls-video.js` strips them at runtime when HLS attaches. To add a new video, follow Steps 1-6; the page integration is usually just `data-hls` plus the `hls-video.js` script tag.
+The policy is live. `hls-video.js` (repo root, loaded as `<script type="module">`) implements Step 4 for the whole site: it auto-upgrades every `<video data-hls="…/playlist.m3u8">` and exposes `window.AXHls.attach/detach` for the homepage hero switcher in `script.js`. Current streams: `assets/videos/hls/hero-home/` (homepage hero, no audio), `assets/videos/hls/aitor-demo/` (Aitor demo with audio; used by the hero choice on `index.html`/`de/index.html` and the players on `dominican-bootcamp.html` and `blog-posts/dominican-bachata-bootcamp-aitor-sara.html`, EN and DE), and `assets/videos/hls/dominican-trailer/` (homepage hero choice, no audio; regenerated 2026-07-27 (evening) from the NEW 21-second 4K master `~/Desktop/AXcent/AitorIntensive2025/Dominican_Bachata_Website_Trailer_Aitor_21s_4K.mp4` — superseding the morning 18s cut — with `--segment-seconds 2.5 --crf-desktop 21`, owner-approved: CRF 21 rides the 6000k maxrate cap for maximum crispness on this short showcase clip; 9 segments per rendition, ~18 MB total, streamed chunk-by-chunk). `generate_hls.py` accepts `--segment-seconds` (default 3) and `--crf-desktop` (default 24) for such cases; 3-second segments remain the default policy. For "crisper" requests prefer lowering desktop CRF (bounded by the 6000k cap) over adding a 1440p rendition — at hero render sizes bitrate, not resolution, is what reads as crisp, and the cap protects load statistics. NOTE: the compact no-JS fallback `assets/videos/DominicanBachataTrailer.mp4` (720p CRF 27, regenerated from the 21s master) is gitignored and currently UNTRACKED — it must be `git add -f`ed at commit time or no-JS visitors get a dead source. The progressive `HeroVideo_mobile.mp4` / `AitorGomezDemo.mp4` / `.webm` files remain committed solely as no-JavaScript fallbacks — pages keep them in `src`/`<source>` and `hls-video.js` strips them at runtime when HLS attaches. To add a new video, follow Steps 1-6; the page integration is usually just `data-hls` plus the `hls-video.js` script tag.

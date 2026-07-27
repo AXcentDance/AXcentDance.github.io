@@ -19,7 +19,7 @@
     <meta name="twitter:description" content="Werde Teil von 100+ Tänzern in Bachata Kursen in Zürich. Erfahrene Lehrer, alle Levels, kein Partner nötig. Jetzt gratis Probelektion buchen!">
   <meta property="og:locale" content="de_CH">
   <meta http-equiv="Content-Security-Policy"
-    content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://cdn.jsdelivr.net https://connect.facebook.net; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com https://placehold.co https://*.googleapis.com https://*.gstatic.com https://www.facebook.com https://connect.facebook.net; font-src 'self'; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://script.google.com https://script.googleusercontent.com https://formsubmit.co https://jwravnvytkmsvqoqkmwb.supabase.co https://www.facebook.com https://connect.facebook.net; frame-src 'self' https://www.google.com; object-src 'none'; base-uri 'self'; media-src 'self' blob:; worker-src 'self' blob:;">
+    content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://connect.facebook.net; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com https://placehold.co https://*.googleapis.com https://*.gstatic.com https://www.facebook.com https://connect.facebook.net; font-src 'self'; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://script.google.com https://script.googleusercontent.com https://formsubmit.co https://jwravnvytkmsvqoqkmwb.supabase.co https://www.facebook.com https://connect.facebook.net; frame-src 'self' https://www.google.com; object-src 'none'; base-uri 'self'; media-src 'self' blob:; worker-src 'self' blob:;">
 
 
   <!-- Mobile & Social Meta Tags -->
@@ -38,7 +38,7 @@
   <!-- Styles -->
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/inter-200-900-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/outfit-500-800-latin.woff2" crossorigin>
-  <link rel="stylesheet" href="../style.css?v=10.1">
+  <link rel="stylesheet" href="../style.css?v=10.3">
   <link rel="stylesheet" href="../tropic-noir.css?v=6.1">
 
   <link rel="apple-touch-icon" href="/apple-touch-icon-v2.png">
@@ -329,6 +329,13 @@
         ]
       },
       "eagerness": "moderate"
+    }],
+    "prerender": [{
+      "where": {
+        "href_matches": ["/", "/about", "/schedule", "/registration", "/events",
+                         "/de/", "/de/about", "/de/schedule", "/de/registration", "/de/events"]
+      },
+      "eagerness": "moderate"
     }]
   }
   </script>
@@ -582,7 +589,7 @@
               <p class="starter-fork__when">Mittwoch 19:30</p>
               <p class="starter-fork__promise">
                 Du kennst bereits etwas Bachata und willst jetzt den Bachata Sensual Stil lernen —
-                dieser Kurs ist für dich. Voraussetzung: 1 Jahr Bachata.
+                dieser Kurs ist für dich. Voraussetzung: <strong>1 Jahr Bachata</strong>.
               </p>
               <div class="starter-fork__actions">
                 <a href="?class=foundation#trial-form" class="starter-fork__trial">Kostenlos testen</a>
@@ -647,7 +654,7 @@
             <!-- Tue Class -->
             <a href="bachata-beginner-2" class="class-card">
               <h3 class="class-name">Bachata Beginner 2</h3>
-              <p class="class-experience">~ 4-8 Monate Erfahrung</p>
+              <p class="class-experience">~ 8 Monate Erfahrung</p>
             </a>
 
             <!-- Wed Class -->
@@ -706,7 +713,7 @@
               <a href="bachata-beginner-2" class="class-card">
                 <div class="mobile-time">19:30</div>
                 <h3 class="class-name">Bachata Beginner 2</h3>
-                <p class="class-experience">~ 4-8 Monate Erfahrung</p>
+                <p class="class-experience">~ 8 Monate Erfahrung</p>
               </a>
             </div>
           </div>
@@ -1748,9 +1755,9 @@
     </div>
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-  <script type="module" src="../hls-video.js?v=1.0"></script>
-  <script src="../script.js?v=6.4"></script>
+  <script src="/assets/vendor/gsap-3.12.5.min.js"></script>
+  <script type="module" src="../hls-video.js?v=1.1"></script>
+  <script src="../script.js?v=7.0"></script>
 
   <!-- Mobile Sticky Trial Bar -->
   <div class="mobile-cta-bar" data-mobile-cta-bar>

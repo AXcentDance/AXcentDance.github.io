@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#061A17">
     <meta name="robots" content="max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <title>Salsa vs Bachata: Key Differences Every Dancer Should Know</title>
     <meta name="description"
@@ -31,7 +32,7 @@
     <!-- Styles -->
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/inter-200-900-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/outfit-500-800-latin.woff2" crossorigin>
-    <link rel="stylesheet" href="../style.css?v=10.1">
+    <link rel="stylesheet" href="../style.css?v=10.3">
     <link rel="stylesheet" href="../tropic-noir.css?v=6.1">
     <link rel="stylesheet" href="../blog-post.css?v=3.0">
 
@@ -40,7 +41,7 @@
     <link rel="icon" href="/favicon-axcent-transparent.svg" type="image/svg+xml">
 
     <meta http-equiv="Content-Security-Policy"
-        content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://cdn.jsdelivr.net https://connect.facebook.net; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com https://placehold.co https://*.googleapis.com https://*.gstatic.com https://www.facebook.com https://connect.facebook.net; font-src 'self'; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://script.google.com https://formsubmit.co https://www.facebook.com https://connect.facebook.net; frame-src 'self' https://www.google.com; object-src 'none'; base-uri 'self'; media-src 'self' blob:; worker-src 'self' blob:;">
+        content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://connect.facebook.net; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com https://placehold.co https://*.googleapis.com https://*.gstatic.com https://www.facebook.com https://connect.facebook.net; font-src 'self'; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://script.google.com https://formsubmit.co https://www.facebook.com https://connect.facebook.net; frame-src 'self' https://www.google.com; object-src 'none'; base-uri 'self'; media-src 'self' blob:; worker-src 'self' blob:;">
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-E2SYCF7R7X"></script>
@@ -288,6 +289,13 @@
           { "href_matches": "/*" },
           { "not": { "href_matches": "/assets/*" } }
         ]
+      },
+      "eagerness": "moderate"
+    }],
+    "prerender": [{
+      "where": {
+        "href_matches": ["/", "/about", "/schedule", "/registration", "/events",
+                         "/de/", "/de/about", "/de/schedule", "/de/registration", "/de/events"]
       },
       "eagerness": "moderate"
     }]
@@ -698,7 +706,7 @@
     </div>
   </footer>
 
-    <script src="../script.js?v=5.8"></script>
+    <script src="../script.js?v=7.0"></script>
 </body>
 
 </html>

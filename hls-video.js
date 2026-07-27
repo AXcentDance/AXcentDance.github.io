@@ -7,7 +7,7 @@
    Without JavaScript the element keeps its progressive src/<source> fallback.
 */
 
-const HLS_CDN = 'https://cdn.jsdelivr.net/npm/hls.js@1.5.13/dist/hls.mjs';
+const HLS_CDN = '/assets/vendor/hls-1.5.13.mjs';
 
 let hlsModulePromise = null;
 const instances = new WeakMap();

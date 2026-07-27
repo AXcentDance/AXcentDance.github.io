@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#061A17">
     <meta name="robots" content="noindex, nofollow">
     <link rel="canonical" href="https://axcentdance.com/portal">
     <link rel="alternate" hreflang="en" href="https://axcentdance.com/portal">
@@ -15,7 +16,7 @@
         content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://jwravnvytkmsvqoqkmwb.supabase.co https://formsubmit.co https://script.google.com https://script.googleusercontent.com; object-src 'none'; base-uri 'self';">
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/inter-200-900-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/outfit-500-800-latin.woff2" crossorigin>
-    <link rel="stylesheet" href="style.css?v=10.1">
+    <link rel="stylesheet" href="style.css?v=10.3">
     <link rel="stylesheet" href="tropic-noir.css?v=6.1">
     <link rel="apple-touch-icon" href="/apple-touch-icon-v2.png">
     <link rel="icon" href="/favicon-axcent-192.png" type="image/png" sizes="192x192">
@@ -598,6 +599,13 @@
           { "href_matches": "/*" },
           { "not": { "href_matches": "/assets/*" } }
         ]
+      },
+      "eagerness": "moderate"
+    }],
+    "prerender": [{
+      "where": {
+        "href_matches": ["/", "/about", "/schedule", "/registration", "/events",
+                         "/de/", "/de/about", "/de/schedule", "/de/registration", "/de/events"]
       },
       "eagerness": "moderate"
     }]

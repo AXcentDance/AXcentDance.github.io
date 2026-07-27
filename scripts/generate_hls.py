@@ -6,12 +6,13 @@ import sys
 
 ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 HLS_ROOT = os.path.join(ROOT_DIR, "assets", "videos", "hls")
-SEGMENT_SECONDS = 3
+DEFAULT_SEGMENT_SECONDS = 3.0
+DEFAULT_DESKTOP_CRF = 24
 
 
 def probe_fps(input_video):
     """Read the source frame rate so the keyframe interval can be locked to
-    exactly SEGMENT_SECONDS. HLS can only cut segments on keyframes."""
+    exactly the segment length. HLS can only cut segments on keyframes."""
     out = subprocess.run(
         ["ffprobe", "-v", "quiet", "-select_streams", "v:0",
          "-show_entries", "stream=r_frame_rate",
@@ -22,14 +23,15 @@ def probe_fps(input_video):
     return float(num) / float(den or 1)
 
 
-def generate_hls(input_video, name, keep_audio=False, mobile_only=False):
+def generate_hls(input_video, name, keep_audio=False, mobile_only=False,
+                 segment_seconds=DEFAULT_SEGMENT_SECONDS, desktop_crf=DEFAULT_DESKTOP_CRF):
     output_dir = os.path.join(HLS_ROOT, name)
     if os.path.exists(output_dir):
         shutil.rmtree(output_dir)
     os.makedirs(output_dir)
 
     fps = probe_fps(input_video)
-    gop = round(fps * SEGMENT_SECONDS)  # one keyframe per segment boundary
+    gop = round(fps * segment_seconds)  # one keyframe per segment boundary
 
     # Two renditions:
     # 1. 720p for mobile/tablet (low bitrate ceiling)
@@ -50,7 +52,7 @@ def generate_hls(input_video, name, keep_audio=False, mobile_only=False):
         cmd += [
             # Stream 1: 1080p (Desktop optimized)
             "-filter:v:1", "scale=w='min(1920,iw)':h=-2",
-            "-c:v:1", "libx264", "-crf:v:1", "24", "-preset:v:1", "slow",
+            "-c:v:1", "libx264", "-crf:v:1", str(desktop_crf), "-preset:v:1", "slow",
             "-b:v:1", "4500k", "-maxrate:v:1", "6000k", "-bufsize:v:1", "9000k",
             "-g:v:1", str(gop), "-keyint_min:v:1", str(gop), "-sc_threshold:v:1", "0",
         ]
@@ -71,7 +73,7 @@ def generate_hls(input_video, name, keep_audio=False, mobile_only=False):
         "-var_stream_map", var_stream_map,
         "-master_pl_name", "playlist.m3u8",
         "-f", "hls",
-        "-hls_time", str(SEGMENT_SECONDS),
+        "-hls_time", "%g" % segment_seconds,
         "-hls_playlist_type", "vod",
         "-hls_segment_filename", os.path.join(output_dir, "%v_segment_%03d.ts"),
         os.path.join(output_dir, "stream_%v.m3u8"),
@@ -94,7 +96,16 @@ if __name__ == "__main__":
     parser.add_argument("--mobile-only", action="store_true",
                         help="Generate only the 720p rendition (for portrait or small-display videos "
                              "where a desktop rendition wastes tens of MB)")
+    parser.add_argument("--segment-seconds", type=float, default=DEFAULT_SEGMENT_SECONDS,
+                        help="Target segment length in seconds (default: %g). Shorter segments "
+                             "(e.g. 2.5) waste less bandwidth on early abandons, leaving budget "
+                             "for a higher-quality encode of short showcase clips."
+                             % DEFAULT_SEGMENT_SECONDS)
+    parser.add_argument("--crf-desktop", type=int, default=DEFAULT_DESKTOP_CRF,
+                        help="CRF for the 1080p desktop rendition (default: %d; lower = higher "
+                             "quality/bitrate, still capped by maxrate 6000k)" % DEFAULT_DESKTOP_CRF)
     args = parser.parse_args()
     if not os.path.isfile(args.input):
         sys.exit("Input file not found: %s" % args.input)
-    generate_hls(args.input, args.name, keep_audio=args.keep_audio, mobile_only=args.mobile_only)
+    generate_hls(args.input, args.name, keep_audio=args.keep_audio, mobile_only=args.mobile_only,
+                 segment_seconds=args.segment_seconds, desktop_crf=args.crf_desktop)

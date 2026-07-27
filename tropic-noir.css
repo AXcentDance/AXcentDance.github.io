@@ -11648,26 +11648,45 @@ body.education-page .edu-songmap__part {
     border-radius: 6px;
 }
 
-body.education-page .edu-songmap__part:nth-child(1) {
-    flex: 0 0 14%;
+body.education-page .edu-songmap__part--intro,
+body.education-page .edu-songmap__part--outro {
+    flex: 0 0 9%;
     background: rgba(232, 176, 75, 0.1);
+}
+
+body.education-page .edu-songmap__part--intro {
     border-radius: 10px 6px 6px 10px;
 }
 
-body.education-page .edu-songmap__part:nth-child(2) {
-    flex: 1 1 34%;
+body.education-page .edu-songmap__part--outro {
+    border-radius: 6px 10px 10px 6px;
+}
+
+body.education-page .edu-songmap__part--derecho {
+    flex: 1 1 22%;
     background: rgba(232, 176, 75, 0.18);
 }
 
-body.education-page .edu-songmap__part:nth-child(3) {
-    flex: 1 1 28%;
+body.education-page .edu-songmap__part--majao {
+    flex: 1 1 16%;
     background: rgba(232, 176, 75, 0.28);
 }
 
-body.education-page .edu-songmap__part:nth-child(4) {
-    flex: 0 0 20%;
+body.education-page .edu-songmap__part--mambo {
+    flex: 0 0 14%;
     background: rgba(255, 90, 60, 0.3);
-    border-radius: 6px 10px 10px 6px;
+}
+
+@media (max-width: 640px) {
+    body.education-page .edu-songmap {
+        flex-wrap: wrap;
+    }
+
+    body.education-page .edu-songmap__part {
+        flex: 1 1 30%;
+        min-width: 88px;
+        border-radius: 6px;
+    }
 }
 
 /* --- 04 Glossary: term grid ------------------------------------------------ */

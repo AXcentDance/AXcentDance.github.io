@@ -3682,55 +3682,6 @@ textarea {
 /* Rental Card Options */
 
 
-/* VIEW TRANSITIONS API */
-@keyframes fade-in {
-    from {
-        opacity: 0;
-    }
-}
-
-@keyframes fade-out {
-    to {
-        opacity: 0;
-    }
-}
-
-@keyframes slide-from-right {
-    from {
-        transform: translateX(30px);
-    }
-}
-
-@keyframes slide-to-left {
-    to {
-        transform: translateX(-30px);
-    }
-}
-
-::view-transition-old(root) {
-    animation: 90ms cubic-bezier(0.4, 0, 1, 1) both fade-out,
-        300ms cubic-bezier(0.4, 0, 0.2, 1) both slide-to-left;
-}
-
-::view-transition-new(root) {
-    animation: 210ms cubic-bezier(0, 0, 0.2, 1) 90ms both fade-in,
-        300ms cubic-bezier(0.4, 0, 0.2, 1) both slide-from-right;
-}
-
-/* Morphing Elements - Assign unique names to key elements */
-/* Note: For true morphing between different pages, elements need the same view-transition-name */
-
-/* Example: Hero Title Morph */
-.hero-title-large,
-.page-title {
-    view-transition-name: page-title;
-}
-
-/* Example: Hero Image Morph */
-.course-hero {
-  view-transition-name: hero-visual;
-}
-
 /* MODERN BLOG STYLES */
 
 /* Featured Section */
@@ -4819,7 +4770,7 @@ body.page-loaded .page-loader {
 }
 
 .home-hero__video.is-switching {
-    opacity: 0.18;
+    opacity: 0;
 }
 
 .home-hero__poster-frame {

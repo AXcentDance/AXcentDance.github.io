@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#061A17">
     <meta name="robots" content="max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <title>Meet the Team | AXcent Dance Team & Philosophy Zurich</title>
     <link rel="canonical" href="https://axcentdance.com/about">
@@ -23,7 +24,7 @@
     <meta name="twitter:description" content="Meet the AXcent Dance teachers in Zurich. Learn about our philosophy, our instructors, and our shared passion for Latin dance and community.">
     <meta name="twitter:image" content="https://axcentdance.com/assets/images/ale-xidan-about.jpg">
     <meta http-equiv="Content-Security-Policy"
-        content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://cdn.jsdelivr.net https://unpkg.com https://connect.facebook.net; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com https://placehold.co https://*.googleapis.com https://*.gstatic.com https://www.facebook.com https://connect.facebook.net; font-src 'self'; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://script.google.com https://formsubmit.co https://unpkg.com https://www.facebook.com https://connect.facebook.net; frame-src 'self' https://www.google.com; object-src 'none'; base-uri 'self'; media-src 'self' blob:; worker-src 'self' blob:;">
+        content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://connect.facebook.net; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com https://placehold.co https://*.googleapis.com https://*.gstatic.com https://www.facebook.com https://connect.facebook.net; font-src 'self'; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://script.google.com https://formsubmit.co https://www.facebook.com https://connect.facebook.net; frame-src 'self' https://www.google.com; object-src 'none'; base-uri 'self'; media-src 'self' blob:; worker-src 'self' blob:;">
 
 
 
@@ -183,7 +184,7 @@
     <!-- Styles -->
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/inter-200-900-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/outfit-500-800-latin.woff2" crossorigin>
-    <link rel="stylesheet" href="style.css?v=10.1">
+    <link rel="stylesheet" href="style.css?v=10.3">
     <link rel="stylesheet" href="tropic-noir.css?v=6.1">
     <link rel="apple-touch-icon" href="/apple-touch-icon-v2.png">
     <link rel="icon" href="/favicon-axcent-transparent.svg" type="image/svg+xml">
@@ -217,10 +218,28 @@
         ]
       },
       "eagerness": "moderate"
+    }],
+    "prerender": [{
+      "where": {
+        "href_matches": ["/", "/about", "/schedule", "/registration", "/events",
+                         "/de/", "/de/about", "/de/schedule", "/de/registration", "/de/events"]
+      },
+      "eagerness": "moderate"
     }]
   }
   </script>
-  </head>
+    <style>
+    /* VIEW-TRANSITION TRIAL v2 (clean cross-fade): active only between index and
+       about. No custom animation, no element morphing - the browser default
+       0.25s cross-fade. On approval: move the at-rule into style.css. */
+    @view-transition { navigation: auto; }
+    @media (prefers-reduced-motion: reduce) {
+      ::view-transition-group(*),
+      ::view-transition-old(*),
+      ::view-transition-new(*) { animation: none !important; }
+    }
+  </style>
+</head>
 
 <body class="tropic about-page nav-declutter">
 
@@ -557,8 +576,8 @@
     </div>
   </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-    <script src="script.js?v=5.8"></script>
+    <script src="/assets/vendor/gsap-3.12.5.min.js"></script>
+    <script src="script.js?v=7.0"></script>
     <script>
         // Lazy Load Map Strategy
         document.addEventListener('DOMContentLoaded', () => {

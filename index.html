@@ -24,7 +24,7 @@
     <meta name="twitter:title" content="Bachata Classes in Zurich Altstetten | AXcent Dance">
     <meta name="twitter:description" content="Join 100+ dancers in our Bachata classes in Zurich Altstetten. All levels, international instructors, no partner needed. Book your free trial class today!">
   <meta http-equiv="Content-Security-Policy"
-    content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://cdn.jsdelivr.net https://connect.facebook.net; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com https://placehold.co https://*.googleapis.com https://*.gstatic.com https://www.facebook.com https://connect.facebook.net; font-src 'self'; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://script.google.com https://script.googleusercontent.com https://formsubmit.co https://jwravnvytkmsvqoqkmwb.supabase.co https://www.facebook.com https://connect.facebook.net; frame-src 'self' https://www.google.com; object-src 'none'; base-uri 'self'; media-src 'self' blob:; worker-src 'self' blob:;">
+    content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://connect.facebook.net; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com https://placehold.co https://*.googleapis.com https://*.gstatic.com https://www.facebook.com https://connect.facebook.net; font-src 'self'; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://script.google.com https://script.googleusercontent.com https://formsubmit.co https://jwravnvytkmsvqoqkmwb.supabase.co https://www.facebook.com https://connect.facebook.net; frame-src 'self' https://www.google.com; object-src 'none'; base-uri 'self'; media-src 'self' blob:; worker-src 'self' blob:;">
 
 
   <!-- Mobile & Social Meta Tags -->
@@ -44,7 +44,7 @@
   <!-- Styles -->
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/inter-200-900-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/outfit-500-800-latin.woff2" crossorigin>
-  <link rel="stylesheet" href="style.css?v=10.1">
+  <link rel="stylesheet" href="style.css?v=10.3">
   <link rel="stylesheet" href="tropic-noir.css?v=6.1">
 
   <link rel="apple-touch-icon" href="/apple-touch-icon-v2.png">
@@ -338,9 +338,27 @@
         ]
       },
       "eagerness": "moderate"
+    }],
+    "prerender": [{
+      "where": {
+        "href_matches": ["/", "/about", "/schedule", "/registration", "/events",
+                         "/de/", "/de/about", "/de/schedule", "/de/registration", "/de/events"]
+      },
+      "eagerness": "moderate"
     }]
   }
   </script>
+  <style>
+    /* VIEW-TRANSITION TRIAL v2 (clean cross-fade): active only between index and
+       about. No custom animation, no element morphing - the browser default
+       0.25s cross-fade. On approval: move the at-rule into style.css. */
+    @view-transition { navigation: auto; }
+    @media (prefers-reduced-motion: reduce) {
+      ::view-transition-group(*),
+      ::view-transition-old(*),
+      ::view-transition-new(*) { animation: none !important; }
+    }
+  </style>
 </head>
 
 <body class="home-page nav-declutter">
@@ -612,7 +630,7 @@
               <p class="starter-fork__when">Wednesday 19:30</p>
               <p class="starter-fork__promise">
                 You know some Bachata and now you want to learn the Bachata Sensual style —
-                this course is for you. Experience required: 1 year of Bachata.
+                this course is for you. Experience required: <strong>1 year of Bachata</strong>.
               </p>
               <div class="starter-fork__actions">
                 <a href="?class=foundation#trial-form" class="starter-fork__trial">Try it free</a>
@@ -677,7 +695,7 @@
             <!-- Tue Class -->
             <a href="bachata-beginner-2" class="class-card">
               <h3 class="class-name">Bachata Beginner 2</h3>
-              <p class="class-experience">~ 4-8 months of experience</p>
+              <p class="class-experience">~ 8 months of experience</p>
             </a>
 
             <!-- Wed Class -->
@@ -736,7 +754,7 @@
               <a href="bachata-beginner-2" class="class-card">
                 <div class="mobile-time">19:30</div>
                 <h3 class="class-name">Bachata Beginner 2</h3>
-                <p class="class-experience">~ 4-8 months of experience</p>
+                <p class="class-experience">~ 8 months of experience</p>
               </a>
             </div>
           </div>
@@ -1766,9 +1784,9 @@
     </div>
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-  <script type="module" src="hls-video.js?v=1.0"></script>
-  <script src="script.js?v=6.4"></script>
+  <script src="/assets/vendor/gsap-3.12.5.min.js"></script>
+  <script type="module" src="hls-video.js?v=1.1"></script>
+  <script src="script.js?v=7.0"></script>
 
 
 

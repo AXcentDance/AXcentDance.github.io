@@ -209,17 +209,36 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         };
 
-        const seekHeroVideo = (startTime) => {
-            if (!Number.isFinite(startTime) || startTime <= 0) {
-                playHeroVideo();
-                return;
-            }
+        const seekHeroVideo = (startTime, onFrameReady) => {
+            let notified = false;
+            const notifyFrameReady = () => {
+                if (notified) return;
+                notified = true;
+                if (typeof onFrameReady === 'function') onFrameReady();
+            };
+
+            // The stage stays faded out until a frame at the target time is
+            // actually painted (seeked/loadeddata) — loadedmetadata alone can
+            // still paint frame 0 or the poster. The timeout keeps the hero
+            // from sticking dark if the browser never fires the media event.
+            const armFrameGuard = (eventName) => {
+                heroShowcaseVideo.addEventListener(eventName, notifyFrameReady, { once: true });
+                window.setTimeout(notifyFrameReady, 900);
+            };
 
             const seekWhenReady = () => {
-                try {
-                    heroShowcaseVideo.currentTime = startTime;
-                } catch (error) {
-                    // Some browsers block seeking until more metadata is ready.
+                if (Number.isFinite(startTime) && startTime > 0) {
+                    armFrameGuard('seeked');
+                    try {
+                        heroShowcaseVideo.currentTime = startTime;
+                    } catch (error) {
+                        // Some browsers block seeking until more metadata is ready.
+                        notifyFrameReady();
+                    }
+                } else if (heroShowcaseVideo.readyState >= 2) {
+                    notifyFrameReady();
+                } else {
+                    armFrameGuard('loadeddata');
                 }
                 playHeroVideo();
             };
@@ -310,8 +329,22 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         };
 
+        // The poster is only for the initial paint before autoplay begins.
+        // Once footage has played, a lingering poster attribute repaints
+        // during every source swap (the browser resets its show-poster flag
+        // on load()), flashing an unrelated image between videos.
+        heroShowcaseVideo.addEventListener('playing', () => {
+            heroShowcaseVideo.removeAttribute('poster');
+        }, { once: true });
+
+        // Rapid back-and-forth clicks leave stale once-listeners
+        // (loadedmetadata/seeked) from the previous switch; the token lets
+        // late callbacks detect they lost and skip revealing the stage.
+        let heroSwitchToken = 0;
+
         heroVideoChoices.forEach((choice) => {
             choice.addEventListener('click', () => {
+                const switchToken = ++heroSwitchToken;
                 heroVideoChoices.forEach((button) => {
                     if (gsap) {
                         gsap.killTweensOf(button);
@@ -356,17 +389,20 @@ document.addEventListener('DOMContentLoaded', () => {
                     : (webmSource && heroShowcaseVideo.canPlayType('video/webm') ? webmSource : mp4Source);
                 const startTime = Number(choice.dataset.heroStart || 0);
 
+                // Fade fully out: at any visible opacity the swap artifacts
+                // (poster repaint, pre-seek frame 0) would show through.
                 heroShowcaseVideo.classList.add('is-switching');
                 if (gsap && !prefersReducedMotion) {
+                    gsap.killTweensOf(heroShowcaseVideo);
                     gsap.to(heroShowcaseVideo, {
-                        opacity: 0.2,
+                        opacity: 0,
                         duration: 0.16,
                         ease: 'power1.out'
                     });
                 }
 
-                const finishSwitch = () => {
-                    seekHeroVideo(startTime);
+                const revealStage = () => {
+                    if (switchToken !== heroSwitchToken) return;
                     if (gsap && !prefersReducedMotion) {
                         gsap.to(heroShowcaseVideo, {
                             opacity: 1,
@@ -378,10 +414,13 @@ document.addEventListener('DOMContentLoaded', () => {
                             }
                         });
                     } else {
-                        window.setTimeout(() => {
-                            heroShowcaseVideo.classList.remove('is-switching');
-                        }, 180);
+                        heroShowcaseVideo.classList.remove('is-switching');
                     }
+                };
+
+                const finishSwitch = () => {
+                    if (switchToken !== heroSwitchToken) return;
+                    seekHeroVideo(startTime, revealStage);
                 };
 
                 if (heroShowcaseVideo.dataset.currentSource !== nextSource) {
@@ -651,7 +690,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let threeModulePromise = null;
         const loadThreeModule = () => {
             if (!threeModulePromise) {
-                threeModulePromise = import('https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js')
+                threeModulePromise = import('/assets/vendor/three-0.160.0.module.js')
                     .catch(() => null);
             }
             return threeModulePromise;
@@ -1713,7 +1752,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let threeModulePromise = null;
         const loadThreeModule = () => {
             if (!threeModulePromise) {
-                threeModulePromise = import('https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js')
+                threeModulePromise = import('/assets/vendor/three-0.160.0.module.js')
                     .catch(() => null);
             }
             return threeModulePromise;
@@ -2194,7 +2233,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let contactThreePromise = null;
         const loadContactThree = () => {
             if (!contactThreePromise) {
-                contactThreePromise = import('https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js')
+                contactThreePromise = import('/assets/vendor/three-0.160.0.module.js')
                     .catch(() => null);
             }
             return contactThreePromise;
@@ -3947,7 +3986,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const loadTrialProcessThree = () => {
                 if (trialProcessThreePromise) return trialProcessThreePromise;
 
-                trialProcessThreePromise = import('https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js')
+                trialProcessThreePromise = import('/assets/vendor/three-0.160.0.module.js')
                     .catch(() => null);
 
                 return trialProcessThreePromise;
@@ -4194,7 +4233,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const loadClassChoiceThree = () => {
                 if (classChoiceThreePromise) return classChoiceThreePromise;
 
-                classChoiceThreePromise = import('https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js')
+                classChoiceThreePromise = import('/assets/vendor/three-0.160.0.module.js')
                     .catch(() => null);
 
                 return classChoiceThreePromise;
@@ -5232,7 +5271,7 @@ info@axcentdance.com`,
         let threePromise = null;
         const loadThree = () => {
             if (!threePromise) {
-                threePromise = import('https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js')
+                threePromise = import('/assets/vendor/three-0.160.0.module.js')
                     .catch(() => null);
             }
             return threePromise;
