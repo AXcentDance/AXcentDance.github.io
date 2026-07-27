@@ -129,6 +129,77 @@ document.addEventListener('DOMContentLoaded', () => {
     const heroVideoChoices = document.querySelectorAll('.home-hero__choice[data-hero-video], .home-hero__choice[data-hero-poster]');
 
     if (heroShowcaseVideo && heroVideoChoices.length) {
+        // Stage overlay (launch-note ribbon + CTA pair). Event entries in the
+        // selector carry data-hero-note-* / data-hero-cta-* overrides so the
+        // overlay copy always matches the footage being shown; class entries
+        // fall back to the default promo captured here at load time.
+        const heroStageActions = document.querySelector('.home-hero__stage .home-hero__actions');
+        const heroNoteLabel = heroStageActions ? heroStageActions.querySelector('[data-hero-note-label]') : null;
+        const heroNoteText = heroStageActions ? heroStageActions.querySelector('[data-hero-note-text]') : null;
+        const heroCtaPrimary = heroStageActions ? heroStageActions.querySelector('.btn-hero-primary') : null;
+        const heroCtaSecondary = heroStageActions ? heroStageActions.querySelector('.btn-hero-secondary') : null;
+        const heroCtaSecondaryLabel = heroCtaSecondary ? heroCtaSecondary.querySelector('.btn-hero-content') : null;
+        const heroOverlayReady = Boolean(heroNoteLabel && heroNoteText && heroCtaPrimary && heroCtaSecondaryLabel);
+        const heroOverlayDefaults = heroOverlayReady ? {
+            noteLabel: heroNoteLabel.textContent,
+            noteText: heroNoteText.innerHTML, // innerHTML keeps the <code>AXcent15</code> chip
+            ctaLabel: heroCtaSecondaryLabel.textContent,
+            ctaHref: heroCtaSecondary.getAttribute('href')
+        } : null;
+        if (heroOverlayReady) {
+            heroStageActions.dataset.overlayKey = 'default';
+        }
+
+        const applyHeroOverlay = (choice) => {
+            if (!heroOverlayReady) return;
+
+            const noteLabel = choice.dataset.heroNoteLabel;
+            const noteText = choice.dataset.heroNoteText;
+            const ctaLabel = choice.dataset.heroCtaLabel;
+            const ctaHref = choice.dataset.heroCtaHref;
+            const isEventOverlay = Boolean(ctaLabel && ctaHref);
+            const overlayKey = isEventOverlay ? ctaHref : 'default';
+            if (heroStageActions.dataset.overlayKey === overlayKey) return;
+            heroStageActions.dataset.overlayKey = overlayKey;
+
+            const swapOverlayCopy = () => {
+                if (isEventOverlay) {
+                    heroNoteLabel.textContent = noteLabel || '';
+                    heroNoteText.textContent = noteText || '';
+                    // The event CTA reuses the ghost (secondary) pill so the
+                    // orange gradient stays reserved for the trial conversion;
+                    // hiding the primary leaves one focused action in event mode.
+                    heroCtaSecondaryLabel.textContent = ctaLabel;
+                    heroCtaSecondary.setAttribute('href', ctaHref);
+                    heroCtaPrimary.hidden = true;
+                } else {
+                    heroNoteLabel.textContent = heroOverlayDefaults.noteLabel;
+                    heroNoteText.innerHTML = heroOverlayDefaults.noteText;
+                    heroCtaSecondaryLabel.textContent = heroOverlayDefaults.ctaLabel;
+                    heroCtaSecondary.setAttribute('href', heroOverlayDefaults.ctaHref);
+                    heroCtaPrimary.hidden = false;
+                }
+            };
+
+            // Swap synchronously — correct copy must never wait on a ticker
+            // (throttled rAF in background tabs would stall an onComplete).
+            // The tween only decorates the already-updated overlay.
+            swapOverlayCopy();
+            if (gsap && !prefersReducedMotion) {
+                gsap.killTweensOf(heroStageActions);
+                gsap.fromTo(heroStageActions, {
+                    autoAlpha: 0.35,
+                    y: 6
+                }, {
+                    autoAlpha: 1,
+                    y: 0,
+                    duration: 0.34,
+                    ease: 'power2.out',
+                    clearProps: 'opacity,visibility,transform'
+                });
+            }
+        };
+
         const playHeroVideo = () => {
             heroShowcaseVideo.muted = true;
             heroShowcaseVideo.playsInline = true;
@@ -254,6 +325,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (gsap && !prefersReducedMotion) {
                     animateHeroChoiceSelection(choice);
                 }
+
+                applyHeroOverlay(choice);
 
                 // Poster-only choices (no matching footage yet, e.g. an event
                 // without a dedicated clip) show a static image instead of
@@ -1253,6 +1326,52 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!document.querySelector('link[href*="tropic-noir"]')) return;
 
         const heroSection = document.querySelector('[data-events-hero]');
+
+        // --- Bootcamp countdown (content, not motion: runs without GSAP and
+        // under prefers-reduced-motion). Values are recomputed from the
+        // absolute event start (Zurich time), so every visitor time zone
+        // counts down to the same instant. ---
+        const countdown = document.querySelector('[data-bootcamp-countdown]');
+        if (countdown) {
+            const startTime = Date.parse(countdown.dataset.countdownStart || '');
+            const endTime = Date.parse(countdown.dataset.countdownEnd || '');
+            const countdownLabel = countdown.querySelector('[data-countdown-label]');
+            const countdownUnits = countdown.querySelector('[data-countdown-units]');
+            const countdownDays = countdown.querySelector('[data-countdown-days]');
+            const countdownHours = countdown.querySelector('[data-countdown-hours]');
+            const countdownMinutes = countdown.querySelector('[data-countdown-minutes]');
+            const countdownLiveLabel = countdown.dataset.countdownLiveLabel;
+
+            if (Number.isFinite(startTime) && countdownDays && countdownHours && countdownMinutes) {
+                const renderCountdown = () => {
+                    const now = Date.now();
+                    if (Number.isFinite(endTime) && now >= endTime) {
+                        // Event over: retire the block entirely.
+                        countdown.hidden = true;
+                        return false;
+                    }
+                    if (now >= startTime) {
+                        // Live window: the numbers stop mattering, the fact
+                        // that it is happening does.
+                        if (countdownLiveLabel && countdownLabel) {
+                            countdownLabel.textContent = countdownLiveLabel;
+                        }
+                        if (countdownUnits) countdownUnits.hidden = true;
+                        countdown.hidden = false;
+                        return true;
+                    }
+                    const totalMinutes = Math.floor((startTime - now) / 60000);
+                    countdownDays.textContent = String(Math.floor(totalMinutes / 1440));
+                    countdownHours.textContent = String(Math.floor((totalMinutes % 1440) / 60));
+                    countdownMinutes.textContent = String(totalMinutes % 60);
+                    countdown.hidden = false;
+                    return true;
+                };
+                if (renderCountdown()) {
+                    window.setInterval(renderCountdown, 30000);
+                }
+            }
+        }
 
         const observeOnce = (target, onEnter, options) => {
             if (!('IntersectionObserver' in window)) {
@@ -3624,49 +3743,6 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.style.paddingBottom = '';
     }
 
-    // Review Slider Scroll Logic
-    // Review Slider Scroll Logic
-    const scrollLeftBtn = document.getElementById('scrollLeftBtn');
-    const scrollRightBtn = document.getElementById('scrollRightBtn');
-    const reviewsGrid = document.querySelector('.reviews-grid');
-
-    if (reviewsGrid) {
-        // Right Scroll
-        if (scrollRightBtn) {
-            scrollRightBtn.addEventListener('click', () => {
-                reviewsGrid.scrollBy({
-                    left: 300,
-                    behavior: 'smooth'
-                });
-            });
-        }
-
-        // Left Scroll
-        if (scrollLeftBtn) {
-            scrollLeftBtn.addEventListener('click', () => {
-                reviewsGrid.scrollBy({
-                    left: -300,
-                    behavior: 'smooth'
-                });
-            });
-        }
-
-        // Visibility Logic (Show left arrow only when scrolled)
-        const updateArrows = () => {
-            if (scrollLeftBtn) {
-                if (reviewsGrid.scrollLeft > 10) { // Threshold to avoid flickering
-                    scrollLeftBtn.style.display = 'flex';
-                } else {
-                    scrollLeftBtn.style.display = 'none';
-                }
-            }
-        };
-
-        reviewsGrid.addEventListener('scroll', updateArrows);
-        // Initial check
-        updateArrows();
-    }
-
     // Reviews marquee: duplicate each rail's cards once so the slow
     // horizontal drift can loop seamlessly. Clones are decorative (hidden
     // from assistive tech, and display:none outside the marquee viewport).
@@ -3679,6 +3755,69 @@ document.addEventListener('DOMContentLoaded', () => {
             track.appendChild(clone);
         });
         track.dataset.marqueeCloned = 'true';
+    });
+
+    // Mobile swipe progress: slim gold bar under the reviews row. Injected
+    // here (progressive enhancement — no JS, no bar); CSS displays it only
+    // in the <=700px layout where .reviews-grid actually scrolls.
+    document.querySelectorAll('.reviews-showcase').forEach((wrapper) => {
+        const grid = wrapper.querySelector('.reviews-grid');
+        if (!grid || wrapper.querySelector('.reviews-progress')) return;
+
+        const bar = document.createElement('div');
+        bar.className = 'reviews-progress';
+        bar.setAttribute('aria-hidden', 'true');
+        const thumb = document.createElement('span');
+        thumb.className = 'reviews-progress__thumb';
+        bar.appendChild(thumb);
+        wrapper.appendChild(bar);
+
+        let ticking = false;
+        const update = () => {
+            ticking = false;
+            const maxScroll = grid.scrollWidth - grid.clientWidth;
+            if (maxScroll <= 0) { bar.classList.remove('is-active'); return; }
+            bar.classList.add('is-active');
+            thumb.style.width = (grid.clientWidth / grid.scrollWidth * 100) + '%';
+            const p = Math.min(1, Math.max(0, grid.scrollLeft / maxScroll));
+            thumb.style.transform =
+                'translateX(' + (p * (bar.clientWidth - thumb.offsetWidth)) + 'px)';
+        };
+        const queue = () => {
+            if (!ticking) { ticking = true; requestAnimationFrame(update); }
+        };
+        grid.addEventListener('scroll', queue, { passive: true });
+        window.addEventListener('resize', queue);
+        update();
+    });
+});
+
+/* Cycle-start countdown: fills the hidden .starter-countdown strip under
+   the "New to dancing?" subtitle and reveals it; hides itself once the
+   start date has passed. */
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.starter-countdown[data-countdown]').forEach((el) => {
+        const target = Date.parse(el.dataset.countdown);
+        const cells = {
+            days: el.querySelector('[data-count="days"]'),
+            hours: el.querySelector('[data-count="hours"]'),
+            mins: el.querySelector('[data-count="mins"]')
+        };
+        if (Number.isNaN(target) || !cells.days || !cells.hours || !cells.mins) return;
+        const render = () => {
+            const totalMins = Math.floor((target - Date.now()) / 60000);
+            if (totalMins <= 0) {
+                el.hidden = true;
+                clearInterval(timer);
+                return;
+            }
+            cells.days.textContent = String(Math.floor(totalMins / 1440));
+            cells.hours.textContent = String(Math.floor((totalMins % 1440) / 60));
+            cells.mins.textContent = String(totalMins % 60);
+            el.hidden = false;
+        };
+        const timer = setInterval(render, 30000);
+        render();
     });
 });
 

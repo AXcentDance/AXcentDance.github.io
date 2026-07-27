@@ -7,7 +7,6 @@
   <meta name="robots" content="max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <meta name="google-site-verification" content="AHoH_kweLuSdJSp8f415oFNtiMOj0aP1VUQ4tougR_Y" />
   <title>Bachata Tanzkurse in Zürich Altstetten | AXcent Dance</title>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="image" href="../assets/images/hero-poster.webp" fetchpriority="high">
   <link rel="dns-prefetch" href="https://connect.facebook.net">
   <link rel="canonical" href="https://axcentdance.com/de/">
@@ -20,7 +19,7 @@
     <meta name="twitter:description" content="Werde Teil von 100+ Tänzern in Bachata Kursen in Zürich. Erfahrene Lehrer, alle Levels, kein Partner nötig. Jetzt gratis Probelektion buchen!">
   <meta property="og:locale" content="de_CH">
   <meta http-equiv="Content-Security-Policy"
-    content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://cdn.jsdelivr.net https://connect.facebook.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com https://placehold.co https://*.googleapis.com https://*.gstatic.com https://www.facebook.com https://connect.facebook.net; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://script.google.com https://script.googleusercontent.com https://formsubmit.co https://jwravnvytkmsvqoqkmwb.supabase.co https://www.facebook.com https://connect.facebook.net; frame-src 'self' https://www.google.com; object-src 'none'; base-uri 'self'; media-src 'self' blob:; worker-src 'self' blob:;">
+    content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://cdn.jsdelivr.net https://connect.facebook.net; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com https://placehold.co https://*.googleapis.com https://*.gstatic.com https://www.facebook.com https://connect.facebook.net; font-src 'self'; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://script.google.com https://script.googleusercontent.com https://formsubmit.co https://jwravnvytkmsvqoqkmwb.supabase.co https://www.facebook.com https://connect.facebook.net; frame-src 'self' https://www.google.com; object-src 'none'; base-uri 'self'; media-src 'self' blob:; worker-src 'self' blob:;">
 
 
   <!-- Mobile & Social Meta Tags -->
@@ -37,9 +36,10 @@
   <meta name="twitter:image" content="https://axcentdance.com/assets/images/og-home-1200x630.jpg">
 
   <!-- Styles -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@200..900&family=Outfit:wght@500;600;700;800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Teko:wght@300..700&display=swap">
-  <link rel="stylesheet" href="../style.css?v=9.3">
-  <link rel="stylesheet" href="../tropic-noir.css?v=5.5">
+  <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/inter-200-900-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/outfit-500-800-latin.woff2" crossorigin>
+  <link rel="stylesheet" href="../style.css?v=10.1">
+  <link rel="stylesheet" href="../tropic-noir.css?v=6.1">
 
   <link rel="apple-touch-icon" href="/apple-touch-icon-v2.png">
   <link rel="icon" href="/favicon-axcent-transparent.svg" type="image/svg+xml">
@@ -319,6 +319,19 @@
   <noscript><img height="1" width="1" style="display:none" alt=""
       src="https://www.facebook.com/tr?id=2846140112392262&ev=PageView&noscript=1" /></noscript>
   <!-- End Meta Pixel Code -->
+  <script type="speculationrules">
+  {
+    "prefetch": [{
+      "where": {
+        "and": [
+          { "href_matches": "/*" },
+          { "not": { "href_matches": "/assets/*" } }
+        ]
+      },
+      "eagerness": "moderate"
+    }]
+  }
+  </script>
 </head>
 
 <body class="home-page nav-declutter">
@@ -401,10 +414,10 @@
             loading="lazy" decoding="async" alt="Milano Sensual Congress 2026" aria-hidden="true">
           <div class="home-hero__shade" aria-hidden="true"></div>
           <div class="home-hero__actions">
-            <p class="home-hero__launch-note">
-              <strong>Woche ab 8. September</strong>
+            <p class="home-hero__launch-note" aria-live="polite">
+              <strong data-hero-note-label>Woche ab 8. September</strong>
               <span class="home-hero__launch-separator" aria-hidden="true">·</span>
-              <span>Spare 15 % auf deinen ersten Pass mit Code <code>AXcent15</code></span>
+              <span data-hero-note-text>Spare 15 % auf deinen ersten Pass mit Code <code>AXcent15</code></span>
             </p>
             <a href="#trial-form" class="btn-hero btn-hero-primary">
               <span class="btn-hero-content">Probelektion buchen</span>
@@ -434,15 +447,15 @@
             <button class="home-hero__choice" type="button" data-hero-poster="../assets/images/gallery/gallery_12_1200w.webp"
               aria-pressed="false">
               <span class="home-hero__choice-copy">
-                <span class="home-hero__choice-title">Deine erste Klasse</span>
-                <span class="home-hero__choice-note">So sieht sie wirklich aus</span>
+                <span class="home-hero__choice-title">Deine erste Bachata Klasse</span>
+                <span class="home-hero__choice-note">Anfänger-Grundlagen</span>
               </span>
             </button>
             <button class="home-hero__choice is-active" type="button" data-hero-video="../assets/videos/HeroVideo_mobile.mp4" data-hero-hls="../assets/videos/hls/hero-home/playlist.m3u8"
               data-hero-start="0" aria-pressed="true">
               <span class="home-hero__choice-copy">
-                <span class="home-hero__choice-title">Bachata</span>
-                <span class="home-hero__choice-note">Partnerarbeit</span>
+                <span class="home-hero__choice-title">Bachata Sensual</span>
+                <span class="home-hero__choice-note">Verbindung und Körperbewegung</span>
               </span>
             </button>
             <button class="home-hero__choice" type="button" data-hero-video="../assets/videos/HeroVideo_mobile.mp4" data-hero-hls="../assets/videos/hls/hero-home/playlist.m3u8"
@@ -452,16 +465,22 @@
                 <span class="home-hero__choice-note">Solo Ausdruck</span>
               </span>
             </button>
-            <span class="home-hero__selector-divider">Events</span>
-            <button class="home-hero__choice" type="button" data-hero-video="../assets/videos/AitorGomezDemo.mp4" data-hero-hls="../assets/videos/hls/aitor-demo/playlist.m3u8"
-              data-hero-webm="../assets/videos/AitorGomezDemo.webm" data-hero-start="0" aria-pressed="false">
+            <span class="home-hero__selector-divider">Unsere Events</span>
+            <button class="home-hero__choice" type="button" data-hero-video="../assets/videos/DominicanBachataTrailer.mp4" data-hero-hls="../assets/videos/hls/dominican-trailer/playlist.m3u8"
+              data-hero-start="0" aria-pressed="false"
+              data-hero-note-label="16. – 18. Oktober · Zürich"
+              data-hero-note-text="7 Stunden Dominican Bachata mit Aitor Gomez und Sarah La Morena"
+              data-hero-cta-label="Bootcamp-Details" data-hero-cta-href="dominican-bootcamp">
               <span class="home-hero__choice-copy">
                 <span class="home-hero__choice-title">Dominican Bachata</span>
                 <span class="home-hero__choice-note">Intensivtraining</span>
               </span>
             </button>
             <button class="home-hero__choice" type="button" data-hero-poster="../assets/images/MilanoSensualCongress2026_1200w.webp"
-              aria-pressed="false">
+              aria-pressed="false"
+              data-hero-note-label="20. – 22. November · Mailand"
+              data-hero-note-text="Ein ganzes Wochenende mit Workshops, Shows und Social Dancing"
+              data-hero-cta-label="Kongress-Details" data-hero-cta-href="Milano-Sensual-Congress-2026">
               <span class="home-hero__choice-copy">
                 <span class="home-hero__choice-title">Milano Sensual Congress</span>
                 <span class="home-hero__choice-note">Unser internationaler Kongress</span>
@@ -520,6 +539,11 @@
             <p class="section-subtitle">
               Beide beginnen in der Woche vom 8. September — komm alleine und wähle die Linie, die zu dir passt.
             </p>
+            <p class="starter-countdown" data-countdown="2026-09-08T00:00:00+02:00" hidden>
+              <span class="starter-countdown__cell"><strong data-count="days">&ndash;</strong><small>Tage</small></span>
+              <span class="starter-countdown__cell"><strong data-count="hours">&ndash;</strong><small>Std</small></span>
+              <span class="starter-countdown__cell"><strong data-count="mins">&ndash;</strong><small>Min</small></span>
+            </p>
           </div>
         </div>
 
@@ -555,10 +579,10 @@
             <p class="starter-fork__voice">&ldquo;Ich kenne meine Grundschritte bereits.&rdquo;</p>
             <div class="starter-fork__body">
               <h3 class="starter-fork__course">Bachata Sensual Foundation</h3>
-              <p class="starter-fork__when">Mittwoch 19:30 &middot; Neuer Kurs</p>
+              <p class="starter-fork__when">Mittwoch 19:30</p>
               <p class="starter-fork__promise">
-                Du kennst die Bachata-Grundschritte bereits — bereit, Bachata Sensual zu lernen? Körperbewegung,
-                Isolation und Verbindung.
+                Du kennst bereits etwas Bachata und willst jetzt den Bachata Sensual Stil lernen —
+                dieser Kurs ist für dich. Voraussetzung: 1 Jahr Bachata.
               </p>
               <div class="starter-fork__actions">
                 <a href="?class=foundation#trial-form" class="starter-fork__trial">Kostenlos testen</a>
@@ -928,7 +952,7 @@
             </div>
 
             <!-- Review 5: Miroslav -->
-            <div class="review-card glass-card">
+            <div class="review-card glass-card review-card--desktop-only">
               <div class="review-header">
                 <span class="review-avatar" aria-hidden="true">M</span>
                 <div class="reviewer-info">
@@ -1041,7 +1065,7 @@
             </div>
 
             <!-- Review 10: Alex E -->
-            <div class="review-card glass-card">
+            <div class="review-card glass-card review-card--desktop-only">
               <div class="review-header">
                 <span class="review-avatar" aria-hidden="true">AE</span>
                 <div class="reviewer-info">
@@ -1063,7 +1087,7 @@
             </div>
 
             <!-- Review 11: Denis B -->
-            <div class="review-card glass-card">
+            <div class="review-card glass-card review-card--desktop-only">
               <div class="review-header">
                 <span class="review-avatar" aria-hidden="true">DB</span>
                 <div class="reviewer-info">
@@ -1084,7 +1108,7 @@
             </div>
 
             <!-- Review 12: Daiva M -->
-            <div class="review-card glass-card">
+            <div class="review-card glass-card review-card--desktop-only">
               <div class="review-header">
                 <span class="review-avatar" aria-hidden="true">DM</span>
                 <div class="reviewer-info">
@@ -1105,7 +1129,7 @@
             </div>
 
             <!-- Review 13: Marco F -->
-            <div class="review-card glass-card">
+            <div class="review-card glass-card review-card--desktop-only">
               <div class="review-header">
                 <span class="review-avatar" aria-hidden="true">MF</span>
                 <div class="reviewer-info">
@@ -1126,7 +1150,7 @@
             </div>
 
             <!-- Review 14: Florian R -->
-            <div class="review-card glass-card">
+            <div class="review-card glass-card review-card--desktop-only">
               <div class="review-header">
                 <span class="review-avatar" aria-hidden="true">FR</span>
                 <div class="reviewer-info">
@@ -1147,7 +1171,7 @@
             </div>
 
             <!-- Review 15: Lenag M -->
-            <div class="review-card glass-card">
+            <div class="review-card glass-card review-card--desktop-only">
               <div class="review-header">
                 <span class="review-avatar" aria-hidden="true">LM</span>
                 <div class="reviewer-info">
@@ -1169,6 +1193,17 @@
 
               </div>
             </div>
+            <!-- Mobile-only closer card: gives the swipe row a destination.
+                 Hidden at >=701px; sits outside the rails so the marquee
+                 clone pass and translateX(-50%) loop never see it. -->
+            <a class="review-card glass-card review-card--cta"
+               href="https://www.google.com/maps?cid=15680757943659417558"
+               target="_blank" rel="noopener noreferrer">
+              <span class="review-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+              <strong class="review-cta__score">5/5</strong>
+              <span class="review-cta__label">Alle 41 Google-Bewertungen lesen</span>
+              <span class="review-cta__hint" aria-hidden="true">&rarr;</span>
+            </a>
           </div>
         </div>
       </div>
@@ -1192,7 +1227,7 @@
               alt="Dominican Bachata Bootcamp in Zürich mit Aitor Gomez und Sarah La Morena" width="480" height="600"
               loading="lazy" decoding="async">
             <div class="events-strip__copy">
-              <span class="events-strip__date">17. – 19. Oktober 2026 · Zürich</span>
+              <span class="events-strip__date">16. – 18. Oktober 2026 · Zürich</span>
               <h3 class="events-strip__title">Dominican Bachata Bootcamp</h3>
               <p class="events-strip__note">
                 Das grösste Dominican-Bachata-Bootcamp in Zürich: sieben Stunden intensives Footwork, Technik und
@@ -1204,7 +1239,7 @@
           </article>
 
           <article class="events-strip__card events-strip__card--flagship glass-card">
-            <img class="events-strip__image" src="../assets/images/MilanoSensualCongress2026_480w.webp"
+            <img class="events-strip__image events-strip__image--top" src="../assets/images/MilanoSensualCongress2026_480w.webp"
               alt="Milano Sensual Congress 2026 internationales Künstler-Line-up" width="480" height="405"
               loading="lazy" decoding="async">
             <div class="events-strip__copy">
@@ -1715,7 +1750,7 @@
 
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   <script type="module" src="../hls-video.js?v=1.0"></script>
-  <script src="../script.js?v=5.9"></script>
+  <script src="../script.js?v=6.4"></script>
 
   <!-- Mobile Sticky Trial Bar -->
   <div class="mobile-cta-bar" data-mobile-cta-bar>

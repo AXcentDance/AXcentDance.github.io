@@ -7,9 +7,7 @@
    ========================================================================== */
 
 /* --- Breadcrumbs stay visual-only (schema carries them) --- */
-body.post-page .breadcrumb-nav {
-    display: none !important;
-}
+
 
 /* ==========================================================================
    1. Post masthead — family A (.post-hero: image hero with overlay title)
@@ -264,27 +262,10 @@ body.post-page .post-content a:not([class]):focus-visible {
     border-bottom-color: var(--accent-start);
 }
 
-body.post-page .post-content ul:not([class]) li::marker,
-body.post-page .post-content ol:not([class]) li::marker {
-    color: var(--accent-bronze);
+body.post-page .post-content ul:not([class]) li::marker {
+  color: var(--accent-bronze);
 }
 
-body.post-page .post-content hr {
-    border: 0;
-    height: 1px;
-    background: rgba(232, 176, 75, 0.25);
-    margin: 2.5rem 0;
-}
-
-body.post-page .post-content blockquote {
-    margin: 2rem 0;
-    padding: 0.3rem 0 0.3rem 1.2rem;
-    border-left: 2px solid var(--accent-bronze);
-    font-family: var(--font-heading);
-    font-style: italic;
-    font-size: 1.25rem;
-    color: var(--title-cream);
-}
 
 /* Inline article images (tips, figures) */
 body.post-page .post-content img:not(.collage-img),
@@ -474,16 +455,14 @@ body.post-page .cta-section::before {
     content: none !important;
 }
 
-body.post-page .cta-box h2,
-body.post-page .cta-box h3,
-body.post-page .cta-section h2 {
-    font-family: var(--font-heading) !important;
-    font-weight: 500;
-    font-size: 1.9rem !important;
-    color: var(--title-cream) !important;
-    -webkit-text-fill-color: currentcolor !important;
-    background: none !important;
-    margin-bottom: 1rem !important;
+body.post-page .cta-box h2, body.post-page .cta-section h2 {
+  font-family: var(--font-heading) !important;
+  font-weight: 500;
+  font-size: 1.9rem !important;
+  color: var(--title-cream) !important;
+  -webkit-text-fill-color: currentcolor !important;
+  background: none !important;
+  margin-bottom: 1rem !important;
 }
 
 body.post-page .cta-box p,
@@ -659,9 +638,7 @@ body.post-page .post-recirc__back:focus-visible {
    ========================================================================== */
 
 /* Old decorative blobs (two posts still carry the divs) */
-body.post-page .blob {
-    display: none !important;
-}
+
 
 /* Old purple radials that per-post <style> blocks paint on sections */
 body.post-page .post-header,

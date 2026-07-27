@@ -23,7 +23,7 @@ def check_broken_links(root_dir):
     ]
     
     for root, dirs, files in os.walk(root_dir):
-        if 'node_modules' in root or '.git' in root or '_site' in root:
+        if 'node_modules' in root or '.git' in root or '_site' in root or '.claude' in root:
             continue
             
         for file in files:

@@ -215,6 +215,25 @@ def check_llms(pages):
             fail('llms', f"llms-full.txt leaks internal content: {leak}")
 
 
+def check_speculation_rules(pages):
+    """Every page must carry exactly one valid speculationrules prefetch block (hover prefetch)."""
+    for page in sorted(pages):
+        blocks = re.findall(r'<script type="speculationrules">(.*?)</script>', pages[page], re.S)
+        if not blocks:
+            fail('speculation', f"{page} is missing the speculationrules prefetch block")
+            continue
+        if len(blocks) > 1:
+            fail('speculation', f"{page} has {len(blocks)} speculationrules blocks (expected 1)")
+        for block in blocks:
+            try:
+                rules = json.loads(block)
+            except ValueError as e:
+                fail('speculation', f"{page}: invalid speculationrules JSON ({e})")
+                continue
+            if 'prefetch' not in rules:
+                fail('speculation', f"{page}: speculationrules block has no prefetch rule")
+
+
 def check_titles_descriptions(pages, indexable):
     titles = {}
     descs = {}
@@ -281,6 +300,7 @@ def main():
     check_canonicals(pages, indexable)
     check_blog_indexes(pages, indexable)
     check_llms(pages)
+    check_speculation_rules(pages)
     check_titles_descriptions(pages, indexable)
     run_external_checks()
 

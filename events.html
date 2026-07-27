@@ -24,11 +24,12 @@
     <meta name="twitter:description" content="Intensive Bachata bootcamps in Zurich and a group trip to the Milano Sensual Congress. Train with international artists and travel with us.">
     <meta name="twitter:image" content="https://axcentdance.com/assets/images/dominican_bootcamp_1200w.jpg">
     <meta http-equiv="Content-Security-Policy"
-        content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://cdn.jsdelivr.net https://connect.facebook.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com https://placehold.co https://*.googleapis.com https://*.gstatic.com https://www.facebook.com https://connect.facebook.net; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://script.google.com https://script.googleusercontent.com https://formsubmit.co https://www.facebook.com https://connect.facebook.net; frame-src 'self' https://www.google.com; object-src 'none'; base-uri 'self'; media-src 'self' blob:; worker-src 'self' blob:;">
+        content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://cdn.jsdelivr.net https://connect.facebook.net; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com https://placehold.co https://*.googleapis.com https://*.gstatic.com https://www.facebook.com https://connect.facebook.net; font-src 'self'; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://script.google.com https://script.googleusercontent.com https://formsubmit.co https://www.facebook.com https://connect.facebook.net; frame-src 'self' https://www.google.com; object-src 'none'; base-uri 'self'; media-src 'self' blob:; worker-src 'self' blob:;">
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@200..900&family=Outfit:wght@500;600;700;800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Teko:wght@300..700&display=swap">
-    <link rel="stylesheet" href="style.css?v=9.2">
-    <link rel="stylesheet" href="tropic-noir.css?v=5.12">
+  <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/inter-200-900-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/outfit-500-800-latin.woff2" crossorigin>
+    <link rel="stylesheet" href="style.css?v=10.1">
+    <link rel="stylesheet" href="tropic-noir.css?v=6.1">
     <link rel="apple-touch-icon" href="/apple-touch-icon-v2.png">
     <link rel="icon" href="/favicon-axcent-192.png" type="image/png" sizes="192x192">
     <link rel="icon" href="/favicon-axcent-transparent.svg" type="image/svg+xml">
@@ -62,8 +63,8 @@
             "@type": "DanceEvent",
             "@id": "https://axcentdance.com/dominican-bootcamp#event",
             "name": "Dominican Bachata Bootcamp Zurich",
-            "startDate": "2026-10-17T10:00:00+02:00",
-            "endDate": "2026-10-19T18:00:00+02:00",
+            "startDate": "2026-10-16T10:00:00+02:00",
+            "endDate": "2026-10-18T18:00:00+02:00",
             "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
             "eventStatus": "https://schema.org/EventScheduled",
             "location": {
@@ -88,7 +89,7 @@
             "image": [
                 "https://axcentdance.com/assets/images/dominican_bootcamp_1200w.webp"
             ],
-            "description": "Dominican Bachata Bootcamp at AXcent Dance Studio in Zurich from 17 to 19 October 2026. Includes 7 hours intensive training: 4 hours with Aitor Gomez and 3 hours with Sarah La Morena. Price: 115 CHF.",
+            "description": "Dominican Bachata Bootcamp at AXcent Dance Studio in Zurich from 16 to 18 October 2026. Includes 7 hours intensive training: 4 hours with Aitor Gomez and 3 hours with Sarah La Morena. Price: 115 CHF.",
             "organizer": {
                 "@id": "https://axcentdance.com/#organization"
             },
@@ -302,6 +303,19 @@
   <noscript><img height="1" width="1" style="display:none" alt=""
       src="https://www.facebook.com/tr?id=2846140112392262&ev=PageView&noscript=1" /></noscript>
   <!-- End Meta Pixel Code -->
+  <script type="speculationrules">
+  {
+    "prefetch": [{
+      "where": {
+        "and": [
+          { "href_matches": "/*" },
+          { "not": { "href_matches": "/assets/*" } }
+        ]
+      },
+      "eagerness": "moderate"
+    }]
+  }
+  </script>
   </head>
 
 <body class="events-page nav-declutter">
@@ -365,7 +379,7 @@
 
     <nav class="events-subheader" aria-label="Jump to an event" data-events-subheader>
         <a href="#bootcamp" class="events-subheader__item">
-            <span class="events-subheader__dates">17–19 OCT</span>
+            <span class="events-subheader__dates">16–18 OCT</span>
             <span class="events-subheader__name">Dominican Bachata Bootcamp</span>
         </a>
         <a href="#milano" class="events-subheader__item">
@@ -424,7 +438,7 @@
                     </figure>
                     <div class="event-act__content">
                         <span class="event-act__kicker">Act I — Zurich, our studio</span>
-                        <span class="event-act__date">17 – 19 October 2026</span>
+                        <span class="event-act__date">16 – 18 October 2026</span>
                         <h2 class="section-title-modern">Dominican Bachata <em class="title-accent">Bootcamp</em></h2>
                         <p class="event-act__copy">
                             For one weekend in October, the studio in Altstetten runs on Dominican time.

@@ -25,51 +25,52 @@
    1. TOKEN REMAP
    -------------------------------------------------------------------------- */
 :is(body.home-page, body.contact-page, body.events-page, body.blog-page, body.guide-page, body.tropic) {
-    --bg-main: #061A17;
-    --bg-secondary: #0C2A24;
-    --bg-elevated: #061A17;
-    --bg-dark: #041310;
-    --text-main: #F4EFE6;
-    --text-muted: #9DB4AB;
-    --text-dark: #10231F;
-    --text-inverse: #F2E7CF; /* used as light-on-dark text across home rules */
+  --bg-main: #061A17;
+  --bg-secondary: #0C2A24;
+  --bg-elevated: #061A17;
+  --bg-dark: #041310;
+  --text-main: #F4EFE6;
+  --text-muted: #9DB4AB;
+  --text-dark: #10231F;
+  --text-inverse: #F2E7CF;
+  /* used as light-on-dark text across home rules */
     --accent-start: #FF5A3C;
-    --accent-end: #F58042;
-    --accent-gold: #E8B04B;
-    --accent-purple: #0C2A24;
-    --accent-navy: #10322B;
-    --accent-navy-soft: #10322B;
-    --accent-navy-deep: #041310;
-    --accent-bronze: #E8B04B;
-    --accent-bronze-soft: #E5CD9F; /* light role: soft brass text on dark */
+  --accent-end: #F58042;
+  --accent-gold: #E8B04B;
+  --accent-purple: #0C2A24;
+  --accent-navy: #10322B;
+  --accent-navy-soft: #10322B;
+  --accent-navy-deep: #041310;
+  --accent-bronze: #E8B04B;
+  --accent-bronze-soft: #E5CD9F;
+  /* light role: soft brass text on dark */
     --accent-bronze-muted: #CBA45C;
-    --accent-bronze-glow: rgba(232, 176, 75, 0.28);
-    --title-cream: #F2E7CF;
-    --title-cream-soft: #F7EEDC;
-    --grad: linear-gradient(90deg, #FF5A3C, #F58042);
-    --brand-grad: linear-gradient(135deg, #F2E7CF 0%, #FF5A3C 55%, #E8B04B 100%);
-    --glass-bg: #10322B;
-    --glass-border: rgba(232, 176, 75, 0.2);
-    --glass-highlight: rgba(255, 255, 255, 0.05);
-    --shadow-soft: 0 14px 35px rgba(2, 10, 8, 0.45);
-    --shadow-warm: 0 18px 40px rgba(255, 90, 60, 0.1);
-    --cta-grad: linear-gradient(118deg, #FF6A4A 0%, #FF8A5C 55%, #F2A05C 100%);
-    --cta-ink: #10231F;
-    --cta-radius: 14px;
-    --cta-radius-sm: 12px;
-    --cta-base-rest: rgba(16, 35, 31, 0.22);
-    --cta-base-hover: rgba(16, 35, 31, 0.42);
-    --cta-base-soft: rgba(232, 176, 75, 0.32);
-    --cta-soft-bg: rgba(255, 106, 74, 0.13);
-    --cta-soft-border: rgba(255, 138, 92, 0.5);
-    --cta-soft-text: #F4EFE6;
-    --cta-submit-bg: #10231F;
-    --cta-submit-bg-hover: #1A342C;
-    --cta-submit-text: #F2E7CF;
-    --cta-form-accent: #D8552F;
-    --font-heading: 'Playfair Display', serif;
-    color: var(--text-main);
-    background: var(--bg-main);
+  --accent-bronze-glow: rgba(232, 176, 75, 0.28);
+  --title-cream: #F2E7CF;
+  --grad: linear-gradient(90deg, #FF5A3C, #F58042);
+  --brand-grad: linear-gradient(135deg, #F2E7CF 0%, #FF5A3C 55%, #E8B04B 100%);
+  --glass-bg: #10322B;
+  --glass-border: rgba(232, 176, 75, 0.2);
+  --glass-highlight: rgba(255, 255, 255, 0.05);
+  --shadow-soft: 0 14px 35px rgba(2, 10, 8, 0.45);
+  --shadow-warm: 0 18px 40px rgba(255, 90, 60, 0.1);
+  --cta-grad: linear-gradient(118deg, #FF6A4A 0%, #FF8A5C 55%, #F2A05C 100%);
+  --cta-ink: #10231F;
+  --cta-radius: 14px;
+  --cta-radius-sm: 12px;
+  --cta-base-rest: rgba(16, 35, 31, 0.22);
+  --cta-base-hover: rgba(16, 35, 31, 0.42);
+  --cta-base-soft: rgba(232, 176, 75, 0.32);
+  --cta-soft-bg: rgba(255, 106, 74, 0.13);
+  --cta-soft-border: rgba(255, 138, 92, 0.5);
+  --cta-soft-text: #F4EFE6;
+  --cta-submit-bg: #10231F;
+  --cta-submit-bg-hover: #1A342C;
+  --cta-submit-text: #F2E7CF;
+  --cta-form-accent: #D8552F;
+  --font-heading: 'Playfair Display', serif;
+  color: var(--text-main);
+  background: var(--bg-main);
 }
 
 :is(body.home-page, body.contact-page, body.events-page, body.blog-page, body.guide-page, body.tropic)::selection,
@@ -413,14 +414,11 @@ body.home-page .home-hero__intro {
 /* H1 value proposition: roman lead line, italic reassurance line
    (the roman/italic pairing device from the title system) */
 body.home-page .home-hero__headline {
-    margin: 0 0 0.62rem;
-    color: #F2E7CF;
-    font-family: var(--font-heading);
-    font-weight: 600;
-    font-size: clamp(1.2rem, 1.6vw, 1.52rem);
-    line-height: 1.28;
-    letter-spacing: 0.004em;
-    text-transform: none;
+  color: #F2E7CF;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  letter-spacing: 0.004em;
+  text-transform: none;
 }
 
 body.home-page .home-hero__headline-lead,
@@ -477,10 +475,6 @@ body.home-page .home-hero__actions .home-hero__assurance li + li::before {
     background: rgba(232, 176, 75, 0.55);
 }
 
-body.home-page .home-hero__actions .home-hero__assurance li.home-hero__assurance-offer {
-    color: var(--accent-gold, #E8B04B);
-    font-weight: 700;
-}
 
 body.home-page .home-hero__choice {
     background: #10322B;
@@ -591,41 +585,7 @@ body.home-page .home-faq-section {
 /* --------------------------------------------------------------------------
    7. BEGINNER GATEWAY
    -------------------------------------------------------------------------- */
-body.home-page .guides-first-step {
-    background: #10322B;
-    border: 1px solid rgba(232, 176, 75, 0.18);
-    box-shadow: var(--shadow-soft);
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-}
 
-body.home-page .guides-first-step:hover,
-body.home-page .guides-first-step:focus-within {
-    border-color: rgba(232, 176, 75, 0.4);
-    box-shadow: var(--shadow-soft);
-}
-
-body.home-page .guides-first-step__eyebrow {
-    color: #E8B04B;
-}
-
-body.home-page .guides-first-step h3 {
-    color: #F2E7CF;
-}
-
-body.home-page .guides-first-step p {
-    color: #9DB4AB;
-}
-
-body.home-page .guides-first-step__meta span {
-    background: rgba(232, 176, 75, 0.1);
-    border: 1px solid rgba(232, 176, 75, 0.28);
-    color: #F4EFE6;
-}
-
-body.home-page .guides-first-step__link {
-    color: #FF5A3C;
-}
 
 body.home-page .guides-confidence {
     background: #0C2A24;
@@ -786,14 +746,11 @@ body.home-page .atelier-gallery-link__text {
    10. REVIEWS
    -------------------------------------------------------------------------- */
 :is(body.home-page, body.schedule-page) .review-card {
-    position: relative;
-    padding: 1.35rem 1.4rem 1.25rem;
-    border-radius: 16px;
-    background: linear-gradient(155deg, #13392F 0%, #0D2B24 100%);
-    border: 1px solid rgba(232, 176, 75, 0.22);
-    box-shadow: 0 16px 32px rgba(2, 10, 8, 0.35);
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
+  position: relative;
+  padding: 1.35rem 1.4rem 1.25rem;
+  border-radius: 16px;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
 }
 
 /* Floor-tape corner ticks: brass at rest, coral when the card is engaged */
@@ -821,12 +778,6 @@ body.home-page .atelier-gallery-link__text {
     border-bottom: 2px solid rgba(232, 176, 75, 0.55);
 }
 
-:is(body.home-page, body.schedule-page) .review-card:hover,
-:is(body.home-page, body.schedule-page) .review-card:focus-within {
-    background: linear-gradient(155deg, #17453A 0%, #10322B 100%);
-    border-color: rgba(255, 90, 60, 0.55);
-    box-shadow: 0 20px 40px rgba(2, 10, 8, 0.45);
-}
 
 :is(body.home-page, body.schedule-page) .review-card:hover::before,
 :is(body.home-page, body.schedule-page) .review-card:hover::after,
@@ -879,26 +830,9 @@ body.home-page .atelier-gallery-link__text {
 /* Booking process rides on the dark canvas: solid petrol pills, brass
    step numerals, readable champagne labels */
 body.home-page .trial-process__item {
-    color: #F2E7CF;
-    background: rgba(16, 50, 43, 0.9);
-    border: 1px solid rgba(232, 176, 75, 0.38);
+  color: #F2E7CF;
 }
 
-body.home-page .trial-process__item strong {
-    color: #F2E7CF;
-}
-
-body.home-page .trial-process__step {
-    background: rgba(4, 19, 16, 0.65);
-    border: 1px solid rgba(232, 176, 75, 0.55);
-    color: #E8B04B;
-    box-shadow: none;
-}
-
-body.home-page .trial-process__item + .trial-process__item::before {
-    background: #E8B04B;
-    box-shadow: 0 0 0 0.38rem rgba(6, 26, 23, 0.9);
-}
 
 body.home-page .trial-process__track {
     background: rgba(232, 176, 75, 0.16);
@@ -1589,6 +1523,53 @@ body.home-page .guides-section--starter .section-subtitle {
     text-align: center;
 }
 
+/* Sept 8 start countdown: revealed by script.js under the starter
+   subtitle. :not([hidden]) keeps the [hidden] attribute authoritative —
+   a bare display: flex would override the UA's [hidden] rule. */
+body.home-page .starter-countdown:not([hidden]) {
+    display: flex;
+    justify-content: center;
+    width: fit-content;
+    margin: 0.9rem auto 0;
+}
+
+body.home-page .starter-countdown__cell {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 1.1rem;
+}
+
+body.home-page .starter-countdown__cell + .starter-countdown__cell {
+    border-left: 1px solid rgba(232, 176, 75, 0.28);
+}
+
+body.home-page .starter-countdown strong {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    font-size: 1.4rem;
+    line-height: 1.1;
+    color: #E8B04B;
+    font-variant-numeric: tabular-nums;
+}
+
+body.home-page .starter-countdown small {
+    font-size: 0.62rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(244, 239, 230, 0.72);
+}
+
+@media (max-width: 700px) {
+    body.home-page .starter-countdown strong {
+        font-size: 1.25rem;
+    }
+
+    body.home-page .starter-countdown__cell {
+        padding: 0 0.85rem;
+    }
+}
+
 /* Inline form errors on the champagne island */
 body.home-page .trial-form .form-error {
     margin: 0.5rem 0 0;
@@ -1821,6 +1802,12 @@ body.home-page .events-strip__image {
     border: 1px solid rgba(232, 176, 75, 0.25);
 }
 
+/* The Milano poster carries its title along the top edge; bias the cover
+   crop upward so "Milano Sensual Congress" stays visible. */
+body.home-page .events-strip__image--top {
+    object-position: 50% 35%;
+}
+
 body.home-page .events-strip__copy {
     display: flex;
     flex-direction: column;
@@ -2028,6 +2015,32 @@ body.home-page .location-strip__link:focus-visible {
     box-shadow: 0 20px 40px rgba(2, 10, 8, 0.45);
 }
 
+/* Phone swipe progress + closer card, in the brand metals */
+:is(body.home-page, body.schedule-page) .reviews-progress__thumb {
+    background: linear-gradient(90deg, #E8B04B, #FF5A3C);
+}
+
+:is(body.home-page, body.schedule-page) .review-card--cta {
+    border-color: rgba(232, 176, 75, 0.45);
+}
+
+:is(body.home-page, body.schedule-page) .review-cta__score {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    font-size: 1.6rem;
+    color: #E8B04B;
+}
+
+:is(body.home-page, body.schedule-page) .review-cta__label {
+    color: rgba(242, 231, 207, 0.88);
+    font-size: 0.9rem;
+}
+
+:is(body.home-page, body.schedule-page) .review-cta__hint {
+    color: #FF5A3C;
+    font-size: 1.1rem;
+}
+
 /* --------------------------------------------------------------------------
    18. PROOF & PERSISTENCE — stat band, hero hierarchy, mobile trial bar
    -------------------------------------------------------------------------- */
@@ -2142,15 +2155,31 @@ body.home-page .stat-band__label a:focus-visible {
         border-left: 0;
     }
 
+    /* Phone: a tight 2x2 ribbon — smaller numerals, hairline row gap, so the
+       band reads in one glance instead of eating half a screen. */
+    body.home-page .stat-band {
+        padding: 0.7rem 0;
+    }
+
     body.home-page .stat-band__inner {
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 0.9rem 0;
+        gap: 0.45rem 0;
     }
 
     body.home-page .stat-band__item {
         align-items: center;
         justify-content: flex-start;
-        padding-left: 1rem;
+        gap: 0.45rem;
+        padding-left: 0.7rem;
+    }
+
+    body.home-page .stat-band__value {
+        font-size: 1.3rem;
+    }
+
+    body.home-page .stat-band__label {
+        font-size: 0.76rem;
+        line-height: 1.2;
     }
 
     body.home-page .stat-band__item + .stat-band__item {
@@ -2345,18 +2374,7 @@ body.home-page .home-hero__choice-copy::before {
    "Organized by AXcent" chip, a warmer ring, and permanent tape ticks
    (brass at rest, coral when engaged — same grammar as everywhere else).
    -------------------------------------------------------------------------- */
-body.home-page .events-strip__flag {
-    width: fit-content;
-    padding: 0.2rem 0.6rem;
-    border-radius: 999px;
-    background: #E8B04B;
-    color: #10231F;
-    font-family: 'Outfit', sans-serif;
-    font-size: 0.66rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-}
+
 
 body.home-page .events-strip__card--flagship {
     position: relative;
@@ -3164,9 +3182,8 @@ body.contact-page .contact-question-flow::before {
         linear-gradient(135deg, transparent 0%, rgba(255, 90, 60, 0.05) 58%, transparent 82%);
 }
 
-body.contact-page .contact-hero::after,
 body.contact-page .contact-quick-actions::after {
-    background: linear-gradient(90deg, transparent, rgba(232, 176, 75, 0.65), rgba(255, 90, 60, 0.45), transparent);
+  background: linear-gradient(90deg, transparent, rgba(232, 176, 75, 0.65), rgba(255, 90, 60, 0.45), transparent);
 }
 
 body.contact-page .contact-question-flow__title {
@@ -3399,9 +3416,10 @@ body.contact-page .contact-form__privacy a:focus-visible {
     color: #E8B04B;
 }
 
-/* Mobile header: style.css forces the cream header with !important below
-   900px, so the petrol counterparts must carry !important too */
-@media (max-width: 899px) {
+/* Burger-band header: on nav-declutter pages the burger menu runs up to
+   1023px (desktop row starts at 1024), so this whole mobile skin must too —
+   at 899px the 900-1023 window fell back to the legacy violet overlay. */
+@media (max-width: 1023px) {
     :is(body.contact-page, body.events-page, body.tropic) .main-header {
         background: rgba(6, 26, 23, 0.96) !important;
         border-bottom-color: rgba(232, 176, 75, 0.16);
@@ -3601,6 +3619,64 @@ body.events-page .events-hero-stage__actions {
     margin-top: 1.7rem;
 }
 
+/* Countdown to the event start — content is filled by script.js; the block
+   ships hidden so no-JS visitors never see frozen zeros. */
+body.events-page .events-hero-stage__countdown {
+    margin-top: 1.5rem;
+}
+
+body.events-page .events-hero-stage__countdown-label {
+    display: block;
+    margin-bottom: 0.7rem;
+    color: #E8B04B;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+}
+
+body.events-page .events-hero-stage__countdown-units {
+    display: flex;
+    justify-content: center;
+    gap: 1.9rem;
+}
+
+body.events-page .events-hero-stage__countdown-unit {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 3.4rem;
+}
+
+body.events-page .events-hero-stage__countdown-unit + .events-hero-stage__countdown-unit::before {
+    content: '·';
+    position: absolute;
+    left: -1.15rem;
+    top: 0.35rem;
+    color: rgba(232, 176, 75, 0.55);
+    font-weight: 800;
+}
+
+body.events-page .events-hero-stage__countdown-value {
+    color: #F2E7CF;
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(1.6rem, 3vw, 2.1rem);
+    font-weight: 700;
+    line-height: 1.1;
+    font-variant-numeric: tabular-nums;
+}
+
+body.events-page .events-hero-stage__countdown-cap {
+    margin-top: 0.15rem;
+    color: #9DB4AB;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
 /* Event acts: editorial split — poster in a taped frame, copy beside it */
 body.events-page .event-act {
     padding: 5.5rem 0;
@@ -3710,9 +3786,8 @@ body.events-page .event-act__date {
 }
 
 body.events-page .event-act .section-title-modern {
-    margin-bottom: 1.3rem;
-    font-size: clamp(2rem, 3.6vw, 2.9rem);
-    text-align: left;
+  margin-bottom: 1.3rem;
+  text-align: left;
 }
 
 body.events-page .event-act__copy {
@@ -7195,18 +7270,6 @@ body.course-page .course-masthead__haze {
     pointer-events: none;
 }
 
-body.course-page .course-masthead__video {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: 2;
-}
-
-body.course-page .course-masthead__media--video {
-    aspect-ratio: 16 / 9;
-}
 
 /* ---- Connector rails: drawable by JS, fully drawn without it ---- */
 body.course-page .course-night__step + .course-night__step::before,
@@ -8706,9 +8769,6 @@ body.about-page .mission-text {
     line-height: 1.7;
 }
 
-body.about-page .city-list {
-    display: none;
-}
 
 body.about-page .stats-grid {
     display: grid;
@@ -8785,15 +8845,6 @@ body.about-page #globe-viz:active {
     cursor: grabbing;
 }
 
-body.about-page .scene-tooltip {
-    color: var(--text-main) !important;
-    background: rgba(4, 19, 16, 0.92) !important;
-    padding: 8px 12px !important;
-    border-radius: 8px !important;
-    font-weight: 600 !important;
-    box-shadow: var(--shadow-soft) !important;
-    border: 1px solid rgba(232, 176, 75, 0.3) !important;
-}
 
 @media (max-width: 640px) {
     body.about-page .stats-grid {
@@ -9096,11 +9147,6 @@ body.cart-page .cart-back-link:focus-visible {
     color: var(--title-cream);
 }
 
-body.cart-page .loading-spinner {
-    display: none;
-    margin-bottom: 1rem;
-    color: var(--text-muted);
-}
 
 /* --------------------------------------------------------------------------
    SPLIT MASTHEAD — shared compact hero component (reg-masthead family).
@@ -9289,9 +9335,6 @@ body.service-page .service-hero__title .title-accent {
     color: #FF5A3C;
 }
 
-body.service-page .hero-desc {
-    color: var(--text-muted);
-}
 
 /* ---- Private coaching advantage: one connected editorial journey ---- */
 
@@ -9470,24 +9513,6 @@ body.private-page .private-advantage__content > p:last-child {
     line-height: 1.68;
 }
 
-body.private-page .private-advantage__content a {
-    color: var(--accent-start);
-    font-weight: 600;
-    text-decoration-color: var(--accent-bronze-muted);
-    text-underline-offset: 0.18em;
-    transition: color 0.25s ease, text-decoration-color 0.25s ease;
-}
-
-body.private-page .private-advantage__content a:hover,
-body.private-page .private-advantage__content a:focus-visible {
-    color: var(--accent-bronze-soft);
-    text-decoration-color: var(--accent-start);
-}
-
-body.private-page .private-advantage__content a:focus-visible {
-    outline: 2px solid var(--accent-gold);
-    outline-offset: 4px;
-}
 
 body.private-page .private-advantage__step:hover .private-advantage__number,
 body.private-page .private-advantage__step:focus-within .private-advantage__number {
@@ -9538,41 +9563,6 @@ body.private-page .private-advantage__step:focus-within .private-advantage__numb
 
 /* ---- Benefit / format cards ---- */
 
-body.service-page .service-card {
-    position: relative;
-    padding: 2.2rem;
-    border-radius: 16px;
-    text-align: left;
-}
-
-body.service-page .service-card::before,
-body.service-page .service-card::after {
-    content: '';
-    position: absolute;
-    width: 1.05rem;
-    height: 1.05rem;
-    pointer-events: none;
-    z-index: 3;
-}
-
-body.service-page .service-card::before {
-    top: 0.55rem;
-    left: 0.55rem;
-    border-top: 2px solid rgba(232, 176, 75, 0.55);
-    border-left: 2px solid rgba(232, 176, 75, 0.55);
-}
-
-body.service-page .service-card::after {
-    right: 0.55rem;
-    bottom: 0.55rem;
-    border-right: 2px solid rgba(232, 176, 75, 0.55);
-    border-bottom: 2px solid rgba(232, 176, 75, 0.55);
-}
-
-body.service-page .service-card:hover::before,
-body.service-page .service-card:hover::after {
-    border-color: var(--accent-start);
-}
 
 body.service-page .service-num {
     display: block;
@@ -9583,18 +9573,6 @@ body.service-page .service-num {
     margin-bottom: 1rem;
 }
 
-body.service-page .service-card__title {
-    font-family: var(--font-heading);
-    font-size: 1.45rem;
-    font-weight: 500;
-    margin-bottom: 1rem;
-    color: var(--title-cream);
-}
-
-body.service-page .service-card__desc {
-    color: var(--text-muted);
-    line-height: 1.6;
-}
 
 body.service-page .section-subtitle {
     color: var(--text-muted);
@@ -10058,9 +10036,7 @@ body.rental-page .rental-main-grid {
         gap: 2rem;
     }
 
-    body.rental-page .hero-title-large {
-        font-size: 3rem !important;
-    }
+    
 
     body.rental-page .studio-details-grid {
         grid-template-columns: 1fr !important;
@@ -10474,13 +10450,6 @@ body.legal-page .legal-content h2 {
     margin: 2.2rem 0 0.7rem;
 }
 
-body.legal-page .legal-content h3 {
-    font-family: var(--font-heading);
-    font-weight: 500;
-    font-size: 1.15rem;
-    color: var(--text-main);
-    margin: 1.6rem 0 0.5rem;
-}
 
 body.legal-page .legal-content p,
 body.legal-page .legal-content li {

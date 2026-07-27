@@ -23,13 +23,14 @@
     <meta name="twitter:description" content="Check weekly Bachata class times in Zurich Altstetten, from Beginner 0 and Lady Style to Sensual Intermediate and Int/Adv levels.">
     <meta name="twitter:image" content="https://axcentdance.com/assets/images/gallery/gallery_6-og-1200x630.jpg">
     <meta http-equiv="Content-Security-Policy"
-        content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://cdn.jsdelivr.net https://connect.facebook.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com https://placehold.co https://*.googleapis.com https://*.gstatic.com https://www.facebook.com https://connect.facebook.net; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://script.google.com https://formsubmit.co https://www.facebook.com https://connect.facebook.net; frame-src 'self' https://www.google.com; object-src 'none'; base-uri 'self'; media-src 'self' blob:; worker-src 'self' blob:;">
+        content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://cdn.jsdelivr.net https://connect.facebook.net; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com https://placehold.co https://*.googleapis.com https://*.gstatic.com https://www.facebook.com https://connect.facebook.net; font-src 'self'; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://script.google.com https://formsubmit.co https://www.facebook.com https://connect.facebook.net; frame-src 'self' https://www.google.com; object-src 'none'; base-uri 'self'; media-src 'self' blob:; worker-src 'self' blob:;">
 
 
     <!-- Styles -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@200..900&family=Outfit:wght@500;600;700;800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Teko:wght@300..700&display=swap">
-    <link rel="stylesheet" href="style.css?v=4.2">
-    <link rel="stylesheet" href="tropic-noir.css?v=5.15">
+  <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/inter-200-900-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/outfit-500-800-latin.woff2" crossorigin>
+    <link rel="stylesheet" href="style.css?v=10.1">
+    <link rel="stylesheet" href="tropic-noir.css?v=6.1">
     <link rel="apple-touch-icon" href="/apple-touch-icon-v2.png">
     <link rel="icon" href="/favicon-axcent-transparent.svg" type="image/svg+xml">
 
@@ -595,6 +596,19 @@
   <noscript><img height="1" width="1" style="display:none" alt=""
       src="https://www.facebook.com/tr?id=2846140112392262&ev=PageView&noscript=1" /></noscript>
   <!-- End Meta Pixel Code -->
+  <script type="speculationrules">
+  {
+    "prefetch": [{
+      "where": {
+        "and": [
+          { "href_matches": "/*" },
+          { "not": { "href_matches": "/assets/*" } }
+        ]
+      },
+      "eagerness": "moderate"
+    }]
+  }
+  </script>
   </head>
 
 <body class="tropic schedule-page nav-declutter">
@@ -1215,7 +1229,7 @@
                 </div>
     
                 <!-- Review: Alex E -->
-                <div class="review-card glass-card">
+                <div class="review-card glass-card review-card--desktop-only">
                   <div class="review-header">
                     <span class="review-avatar" aria-hidden="true">AE</span>
                     <div class="reviewer-info">
@@ -1237,7 +1251,7 @@
                 </div>
     
                 <!-- Review: Denis B -->
-                <div class="review-card glass-card">
+                <div class="review-card glass-card review-card--desktop-only">
                   <div class="review-header">
                     <span class="review-avatar" aria-hidden="true">DB</span>
                     <div class="reviewer-info">
@@ -1307,7 +1321,7 @@
                 </div>
     
                 <!-- Review: Miroslav -->
-                <div class="review-card glass-card">
+                <div class="review-card glass-card review-card--desktop-only">
                   <div class="review-header">
                     <span class="review-avatar" aria-hidden="true">M</span>
                     <div class="reviewer-info">
@@ -1328,7 +1342,7 @@
                 </div>
     
                 <!-- Review 15: Lenag M -->
-                <div class="review-card glass-card">
+                <div class="review-card glass-card review-card--desktop-only">
                   <div class="review-header">
                     <span class="review-avatar" aria-hidden="true">LM</span>
                     <div class="reviewer-info">
@@ -1349,7 +1363,7 @@
                 </div>
     
                 <!-- Review: Daiva M -->
-                <div class="review-card glass-card">
+                <div class="review-card glass-card review-card--desktop-only">
                   <div class="review-header">
                     <span class="review-avatar" aria-hidden="true">DM</span>
                     <div class="reviewer-info">
@@ -1370,7 +1384,7 @@
                 </div>
     
                 <!-- Review: Marco F -->
-                <div class="review-card glass-card">
+                <div class="review-card glass-card review-card--desktop-only">
                   <div class="review-header">
                     <span class="review-avatar" aria-hidden="true">MF</span>
                     <div class="reviewer-info">
@@ -1391,7 +1405,7 @@
                 </div>
     
                 <!-- Review: Florian R -->
-                <div class="review-card glass-card">
+                <div class="review-card glass-card review-card--desktop-only">
                   <div class="review-header">
                     <span class="review-avatar" aria-hidden="true">FR</span>
                     <div class="reviewer-info">
@@ -1413,6 +1427,17 @@
     
                   </div>
                 </div>
+            <!-- Mobile-only closer card: gives the swipe row a destination.
+                 Hidden at >=701px; sits outside the rails so the marquee
+                 clone pass and translateX(-50%) loop never see it. -->
+            <a class="review-card glass-card review-card--cta"
+               href="https://www.google.com/maps?cid=15680757943659417558"
+               target="_blank" rel="noopener noreferrer">
+              <span class="review-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+              <strong class="review-cta__score">5/5</strong>
+              <span class="review-cta__label">Read all 41 Google reviews</span>
+              <span class="review-cta__hint" aria-hidden="true">&rarr;</span>
+            </a>
               </div>
             </div>
           </div>
@@ -1559,7 +1584,7 @@
     </div>
   </footer>
 
-    <script src="script.js?v=5.8"></script>
+    <script src="script.js?v=5.9"></script>
 
 
 
