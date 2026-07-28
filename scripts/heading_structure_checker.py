@@ -10,7 +10,7 @@ def check_headings():
     files_with_issues = 0
     
     for root, dirs, files in os.walk(ROOT_DIR):
-        if ".git" in root or "node_modules" in root or "scripts" in root:
+        if ".git" in root or "node_modules" in root or "scripts" in root or ".claude" in root or "System" in root:
             continue
             
         for file in files:

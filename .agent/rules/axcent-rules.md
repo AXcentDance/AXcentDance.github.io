@@ -21,16 +21,16 @@ Voice: Professional, welcoming, encouraging, and clear.
 Conversion and Ethical Persuasion: Only use persuasion signals that are true, specific, verifiable, and helpful. Do not use fake scarcity, fake testimonials, manipulative urgency, guilt-based or shame-based messaging, hidden fees, or unverifiable claims. (`.agent/rules/ethical-persuasion-strategy.md` remains available as optional reference material; reading it is not required.)
 
 2. Design System
-2.1. Color Palette (Deliberately Undecided)
+2.1. Design Locked; Palette Values Still Open
 
-STATUS: The final brand palette is NOT fixed yet. The owner is still exploring color directions. The homepage currently prototypes one candidate direction ("Tropic Noir") via `tropic-noir.css`, scoped to the homepage only — see `System/homepage-revamp-strategy.md`. Do not treat it, or any hex values in the existing codebase, as final brand law.
+STATUS (owner decision 2026-07-28): The Tropic Noir DESIGN is final — the structure, typography roles, component shapes, textures, motion, and photo treatment shipped site-wide via `tropic-noir.css` are the site's design and will not be replaced ("I will only change the color, not the style itself"). What remains open are the PALETTE VALUES only: the specific hues (currently petrol/coral/brass/champagne) may still be swapped. Do not treat any hex value as final brand law; do treat the design system itself as settled — never propose replacing the skin, and consolidation work (e.g. flattening tropic-noir.css into style.css) may proceed without waiting for the color decision.
 
-Until a final palette is decided:
+Until the final palette values are decided:
 
-- Never hardcode colors inside components. All colors must flow through semantic CSS variables (e.g., --bg-main, --bg-secondary, --bg-elevated, --text-main, --text-muted, --text-inverse, --accent-primary, --accent-secondary) so the palette can be swapped centrally at any time.
-- Do not roll any experimental palette out beyond the homepage without explicit owner approval.
+- Never hardcode colors inside components. All colors must flow through semantic CSS variables (e.g., --bg-main, --bg-secondary, --bg-elevated, --text-main, --text-muted, --text-inverse, --accent-primary, --accent-secondary) so the palette can be swapped centrally at any time. Any flattening/refactor work must preserve or improve this: the end state is one `:root` token block that repaints the whole site.
 - Whatever the palette, maintain WCAG AA contrast for text and interactive elements. CTA label text must reach at least 4.5:1 contrast against its button fill.
 - When a task touches colors, ask the owner which direction applies, or propose options — do not silently invent a new palette.
+- AT PALETTE LOCK-IN, also surface to the owner: the serif consolidation decision (Cormorant vs Playfair — two display serifs currently coexist) and the §2.2 typography re-sync (Playfair and Teko are live site-wide but undocumented there).
 
 2.2. Typography
 

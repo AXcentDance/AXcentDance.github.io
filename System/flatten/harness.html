@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"><title>flatten harness</title></head>
+<body>
+<iframe id="fr" style="width:1280px;height:800px;border:0"></iframe>
+<script>
+// Cascade resolver: raw-declaration replay with :is()-aware specificity.
+// Used by the tropic->style flattening workstream (see System/flatten/README.md).
+function resolveIn(doc, el, statePseudo) {
+  const specOf = sel => {
+    let s = sel.replace(/:is\([^)]*\)/g, 'body._x');
+    const a = (s.match(/#[-\w]+/g) || []).length;
+    const b = (s.match(/\.[-\w]+/g) || []).length + (s.match(/\[[^\]]*\]/g) || []).length
+            + (s.match(/(?<!:):(?!:)[a-z-]+/g) || []).length;
+    const c = (s.match(/(^|[\s>+~(,])[a-z][a-z0-9-]*/gi) || []).length + (s.match(/::[a-z-]+/g) || []).length;
+    return a * 1000000 + b * 1000 + c;
+  };
+  const win = doc.defaultView;
+  const matched = [];
+  let order = 0;
+  for (const sheet of doc.styleSheets) {
+    const file = (sheet.href || 'inline').split('/').pop().split('?')[0];
+    let rules; try { rules = sheet.cssRules; } catch (e) { continue; }
+    const walk = (list, ctxOk) => {
+      for (const r of list) {
+        order++;
+        if (r.media) { walk(r.cssRules, ctxOk && win.matchMedia(r.media.mediaText).matches); continue; }
+        if (!r.selectorText || !ctxOk || !r.style) continue;
+        for (const sel of r.selectorText.split(/,(?![^(]*\))/)) {
+          const s = sel.trim();
+          if (/::(before|after|marker|placeholder)/.test(s)) continue;
+          const hasState = /:(hover|focus-visible|focus|active)\b/.test(s);
+          if (statePseudo ? !s.includes(':' + statePseudo) : hasState) continue;
+          const test = s.replace(/:(hover|focus-visible|focus|active)\b/g, '') || '*';
+          let m = false; try { m = el.matches(test); } catch (e) {}
+          if (!m) continue;
+          const decls = [];
+          for (const seg of r.style.cssText.split(/;(?![^(]*\))/)) {
+            const i = seg.indexOf(':');
+            if (i < 0) continue;
+            const prop = seg.slice(0, i).trim();
+            let val = seg.slice(i + 1).trim();
+            const imp = /!\s*important$/.test(val);
+            val = val.replace(/!\s*important$/, '').trim();
+            if (prop) decls.push([prop, val, imp]);
+          }
+          matched.push({file, sel: s, spec: specOf(s), order, decls});
+          break;
+        }
+      }
+    };
+    walk(rules, true);
+  }
+  matched.sort((x, y) => x.spec - y.spec || x.order - y.order);
+  const FAM = {background: /^background/, border: /^border(?!-radius)/, margin: /^margin/, padding: /^padding/,
+               transition: /^transition/, animation: /^animation/, font: /^font/, outline: /^outline/};
+  const eff = new Map(), effImp = new Map(), src = new Map();
+  for (const m of matched) {
+    for (const [prop, val, imp] of m.decls) {
+      if (effImp.get(prop) && !imp) continue;
+      if (FAM[prop]) { for (const k of [...eff.keys()]) if (FAM[prop].test(k) && k !== prop) { eff.delete(k); effImp.delete(k); src.delete(k); } }
+      eff.set(prop, val);
+      src.set(prop, m.file + ' | ' + m.sel);
+      if (imp) effImp.set(prop, true);
+    }
+  }
+  return {rules: matched.map(m => m.file + ' | ' + m.sel + ' | spec ' + m.spec),
+          effective: Object.fromEntries([...eff].map(([p, v]) => [p, {value: v, from: src.get(p)}]))};
+}
+
+function loadPage(page, width) {
+  return new Promise(resolve => {
+    const fr = document.getElementById('fr');
+    fr.style.width = width + 'px';
+    fr.onload = () => setTimeout(() => resolve(fr.contentDocument), 2200);
+    fr.src = page + '?_fl=' + Date.now();
+  });
+}
+
+// Extract all variants on a page at a width: selectors -> {rest, hover, focusVisible}
+window.extract = async function(page, width, selectors) {
+  const doc = await loadPage(page, width);
+  const out = {};
+  for (const sel of selectors) {
+    const el = doc.querySelector(sel);
+    if (!el) { out[sel] = 'NOT FOUND'; continue; }
+    out[sel] = {
+      rest: resolveIn(doc, el, null),
+      hover: resolveIn(doc, el, 'hover'),
+      focusVisible: resolveIn(doc, el, 'focus-visible')
+    };
+  }
+  return out;
+};
+
+// MATCH-SET EXPORT (the authoritative output — see README caveat on CSSOM
+// declaration loss). Returns, per selector and state, the ordered list of
+// matching rules as {file, sel, nthOfSelInFile} for Python-side join against
+// the byte-faithful source parse, which supplies the authored declarations.
+window.matchSets = async function(page, width, selectors) {
+  const doc = await loadPage(page, width);
+  const win = doc.defaultView;
+  const seen = {};   // file -> selectorText -> count (occurrence disambiguation)
+  const collect = (el, statePseudo) => {
+    const rules = [];
+    for (const sheet of doc.styleSheets) {
+      const file = (sheet.href || 'inline').split('/').pop().split('?')[0];
+      let list; try { list = sheet.cssRules; } catch (e) { continue; }
+      const walk = (rs, ctxOk, mediaTxt) => {
+        for (const r of rs) {
+          if (r.media) { walk(r.cssRules, ctxOk && win.matchMedia(r.media.mediaText).matches, r.media.mediaText); continue; }
+          if (!r.selectorText || !r.style) continue;
+          const occKey = file + '||' + r.selectorText;
+          if (!(occKey in (seen[statePseudo || 'rest'] = seen[statePseudo || 'rest'] || {}))) {}
+          for (const sel of r.selectorText.split(/,(?![^(]*\))/)) {
+            const s = sel.trim();
+            if (/::(before|after|marker|placeholder)/.test(s)) continue;
+            const hasState = /:(hover|focus-visible|focus|active)\b/.test(s);
+            if (statePseudo ? !s.includes(':' + statePseudo) : hasState) continue;
+            const test = s.replace(/:(hover|focus-visible|focus|active)\b/g, '') || '*';
+            let m = false; try { m = el.matches(test); } catch (e) {}
+            if (!m) continue;
+            if (!ctxOk) { rules.push({file, sel: s, media: mediaTxt, inactive: true}); break; }
+            rules.push({file, sel: s, media: mediaTxt || null});
+            break;
+          }
+        }
+      };
+      walk(list, true, null);
+    }
+    return rules;
+  };
+  const out = {};
+  for (const sel of selectors) {
+    const el = doc.querySelector(sel);
+    if (!el) { out[sel] = 'NOT FOUND'; continue; }
+    out[sel] = {rest: collect(el, null), hover: collect(el, 'hover'), focusVisible: collect(el, 'focus-visible')};
+  }
+  return out;
+};
+</script>
+</body>
+</html>

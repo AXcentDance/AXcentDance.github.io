@@ -26,7 +26,7 @@ def audit_breadcrumbs(root_dir):
     total_files = 0
 
     for subdir, dirs, files in os.walk(root_dir):
-        dirs[:] = [name for name in dirs if name not in {".git", ".claude", "node_modules"}]
+        dirs[:] = [name for name in dirs if name not in {".git", ".claude", "node_modules", "System"}]
         for file in files:
             if not file.endswith(".html"):
                 continue
