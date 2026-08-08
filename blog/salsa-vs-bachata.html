@@ -32,8 +32,8 @@
     <!-- Styles -->
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/inter-200-900-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/outfit-500-800-latin.woff2" crossorigin>
-    <link rel="stylesheet" href="../style.css?v=10.4">
-    <link rel="stylesheet" href="../tropic-noir.css?v=6.2">
+    <link rel="stylesheet" href="../style.css?v=10.14">
+    <link rel="stylesheet" href="../tropic-noir.css?v=9.0">
     <link rel="stylesheet" href="../blog-post.css?v=3.0">
 
     <!-- Favicon -->
@@ -304,6 +304,7 @@
 </head>
 
 <body class="tropic post-page nav-declutter">
+    <a class="skip-link" href="#main-content">Skip to main content</a>
 
     <!-- Navigation Bar -->
     <header class="main-header">
@@ -363,7 +364,7 @@
         </div>
     </header>
 
-    <main>
+    <main id="main-content">
 
         <article class="blog-post">
             <!-- Module A: Hero Header -->
@@ -393,12 +394,15 @@
 
                 <!-- Hero Image -->
                 <figure style="margin: 2rem 0;">
-                    <img src="../assets/images/blog/salsa_vs_bachata_hero.webp"
+                    <picture>
+                      <source type="image/avif" srcset="../assets/images/blog/salsa_vs_bachata_hero_480w.avif 480w, ../assets/images/blog/salsa_vs_bachata_hero_800w.avif 800w, ../assets/images/blog/salsa_vs_bachata_hero_1200w.avif 1200w" sizes="(max-width: 900px) 92vw, 700px">
+                      <img src="../assets/images/blog/salsa_vs_bachata_hero.webp"
                         srcset="../assets/images/blog/salsa_vs_bachata_hero_480w.webp 480w, ../assets/images/blog/salsa_vs_bachata_hero_800w.webp 800w, ../assets/images/blog/salsa_vs_bachata_hero_1200w.webp 1200w"
-                        sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px"
+                        sizes="(max-width: 900px) 92vw, 700px"
                         alt="Professional photo of Salsa and Bachata instruments on a wooden floor — congas, trumpet, guitar, and bongos"
                         width="1024" height="1024" loading="eager" fetchpriority="high"
                         style="width: 100%; height: auto; border-radius: 16px; border: 1px solid var(--glass-border);">
+                    </picture>
                     <figcaption
                         style="text-align: center; color: var(--text-muted); font-size: 0.85rem; margin-top: 0.5rem;">
                         The heart of the difference lies in the music: Salsa's brass and percussion vs Bachata's
@@ -494,12 +498,15 @@
 
                 <!-- Music Image -->
                 <figure style="margin: 3rem 0;">
-                    <img src="../assets/images/blog/salsa_bachata_music.webp"
+                    <picture>
+                      <source type="image/avif" srcset="../assets/images/blog/salsa_bachata_music_480w.avif 480w, ../assets/images/blog/salsa_bachata_music_800w.avif 800w, ../assets/images/blog/salsa_bachata_music_1200w.avif 1200w" sizes="(max-width: 900px) 92vw, 700px">
+                      <img src="../assets/images/blog/salsa_bachata_music.webp"
                         srcset="../assets/images/blog/salsa_bachata_music_480w.webp 480w, ../assets/images/blog/salsa_bachata_music_800w.webp 800w, ../assets/images/blog/salsa_bachata_music_1200w.webp 1200w"
-                        sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px"
+                        sizes="(max-width: 900px) 92vw, 700px"
                         alt="Comparison of Salsa and Bachata instruments — congas and trumpet vs guitar and bongos"
                         width="1024" height="1024" loading="lazy" decoding="async"
                         style="width: 100%; height: auto; border-radius: 16px; border: 1px solid var(--glass-border);">
+                    </picture>
                     <figcaption
                         style="text-align: center; color: var(--text-muted); font-size: 0.85rem; margin-top: 0.5rem;">
                         Different instruments, different energy: Salsa is percussion-driven, Bachata is guitar-driven.
@@ -666,7 +673,6 @@
       <div class="footer-col">
         <h2 class="footer-heading">Quick Links</h2>
         <ul class="footer-links">
-          <li><a href="/#trial-form">Book Free Trial</a></li>
           <li><a href="../guide-bachata">What is Bachata</a></li>
           <li><a href="roots-of-bachata">Roots of Bachata</a></li>
           <li><a href="../schedule">Schedule</a></li>
@@ -706,7 +712,7 @@
     </div>
   </footer>
 
-    <script src="../script.js?v=7.0"></script>
+    <script src="../script.js?v=7.3"></script>
 </body>
 
 </html>

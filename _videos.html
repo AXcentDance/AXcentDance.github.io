@@ -1,0 +1,1304 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#061A17">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Video Library - AXcent Dance</title>
+    <meta name="description" content="AXcent Dance owner video library.">
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://i.ytimg.com; font-src 'self'; connect-src 'self' https://jwravnvytkmsvqoqkmwb.supabase.co; frame-src https://www.youtube-nocookie.com; object-src 'none'; base-uri 'self';">
+  <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/inter-200-900-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/outfit-500-800-latin.woff2" crossorigin>
+    <link rel="stylesheet" href="style.css?v=10.14">
+    <link rel="stylesheet" href="tropic-noir.css?v=9.0">
+    <link rel="apple-touch-icon" href="/apple-touch-icon-v2.png">
+    <link rel="icon" href="/favicon-axcent-192.png" type="image/png" sizes="192x192">
+    <link rel="icon" href="/favicon-axcent-transparent.svg" type="image/svg+xml">
+    <style>
+        body.tropic {
+            --portal-hairline: var(--glass-border);
+            --portal-divider: rgba(157, 180, 171, 0.16);
+        }
+
+        .admin-container {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 20px 16px 60px;
+        }
+
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin: 2rem 0 1.6rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .admin-eyebrow {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.16em;
+            color: var(--accent-gold);
+            margin: 0 0 0.4rem;
+        }
+
+        .admin-header h1 {
+            font-family: var(--font-heading, 'Playfair Display', serif);
+            font-size: clamp(2rem, 4vw, 2.6rem);
+            font-weight: 600;
+            color: var(--title-cream);
+            margin: 0;
+        }
+
+        .btn-logout {
+            background: transparent;
+            border: 1px solid rgba(157, 180, 171, 0.28);
+            border-radius: 10px;
+            color: var(--text-muted);
+            padding: 9px 18px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+        }
+
+        .btn-logout:hover {
+            color: var(--text-main);
+            border-color: var(--accent-gold);
+        }
+
+        .admin-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--portal-hairline);
+            border-radius: 20px;
+            padding: 26px 24px;
+            margin-bottom: 1.6rem;
+        }
+
+        .admin-card h2 {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            font-size: 1.15rem;
+            color: var(--title-cream);
+            margin: 0 0 1.1rem;
+        }
+
+        .lib-card-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 1.1rem;
+        }
+
+        .lib-card-head h2 {
+            margin: 0;
+        }
+
+        .lib-view-toggle {
+            display: inline-flex;
+            gap: 8px;
+        }
+
+        .view-btn.active {
+            border-color: var(--accent-gold);
+            color: var(--accent-gold);
+        }
+
+        .lib-field {
+            margin-bottom: 1rem;
+        }
+
+        .lib-field label {
+            display: block;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-muted);
+            margin-bottom: 0.4rem;
+        }
+
+        .lib-field input[type="text"],
+        .lib-field input[type="date"],
+        .lib-field select,
+        .lib-field textarea {
+            width: 100%;
+            background: var(--bg-main);
+            border: 1px solid var(--portal-hairline);
+            border-radius: 10px;
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            padding: 10px 12px;
+        }
+
+        .lib-field textarea {
+            min-height: 70px;
+            resize: vertical;
+        }
+
+        .lib-form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 0 1.2rem;
+        }
+
+        .lib-thumb-preview {
+            display: none;
+            margin: 0.4rem 0 0.8rem;
+        }
+
+        .lib-thumb-preview img {
+            width: 200px;
+            max-width: 100%;
+            border-radius: 10px;
+            border: 1px solid var(--portal-hairline);
+        }
+
+        .lib-techniques {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 0.4rem;
+        }
+
+        .lib-tech-check {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--bg-main);
+            border: 1px solid var(--portal-hairline);
+            border-radius: 999px;
+            padding: 6px 14px 6px 10px;
+            font-size: 0.88rem;
+            color: var(--text-main);
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .lib-tech-check:has(input:checked) {
+            border-color: var(--accent-gold);
+            color: var(--accent-gold);
+        }
+
+        .lib-tech-check input {
+            accent-color: var(--accent-gold);
+        }
+
+        .lib-inline-add {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 0.6rem;
+        }
+
+        .lib-inline-add input {
+            flex: 1 1 200px;
+            background: var(--bg-main);
+            border: 1px solid var(--portal-hairline);
+            border-radius: 10px;
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            padding: 8px 12px;
+        }
+
+        .btn-gold {
+            background: var(--accent-gold);
+            border: none;
+            border-radius: 10px;
+            color: var(--bg-main);
+            padding: 11px 22px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+
+        .btn-gold:hover {
+            filter: brightness(1.08);
+        }
+
+        .btn-quiet {
+            background: transparent;
+            border: 1px solid var(--portal-hairline);
+            border-radius: 10px;
+            color: var(--text-muted);
+            padding: 8px 14px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 0.82rem;
+            cursor: pointer;
+        }
+
+        .btn-quiet:hover {
+            color: var(--text-main);
+            border-color: var(--accent-gold);
+        }
+
+        details.lib-manage {
+            margin-top: 0.4rem;
+        }
+
+        details.lib-manage summary {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            cursor: pointer;
+        }
+
+        .lib-new-course {
+            display: none;
+            grid-column: 1 / -1;
+        }
+
+        .lib-new-course.open {
+            display: block;
+        }
+
+        .lib-new-course .lib-form-grid {
+            border-left: 2px solid var(--portal-divider);
+            padding-left: 1rem;
+        }
+
+        /* Coverage matrix */
+        .coverage-scroll {
+            overflow-x: auto;
+        }
+
+        table.coverage {
+            border-collapse: collapse;
+            width: 100%;
+            font-size: 0.88rem;
+        }
+
+        table.coverage th,
+        table.coverage td {
+            border-bottom: 1px solid var(--portal-divider);
+            padding: 9px 12px;
+            text-align: left;
+            white-space: nowrap;
+        }
+
+        table.coverage th {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-muted);
+        }
+
+        table.coverage td.cov-tech {
+            color: var(--text-main);
+            font-weight: 500;
+        }
+
+        .cov-cell {
+            border-radius: 8px;
+            padding: 3px 10px;
+            display: inline-block;
+            font-size: 0.82rem;
+        }
+
+        .cov-fresh { background: rgba(96, 190, 137, 0.16); color: #8FE0B2; }
+        .cov-aging { background: rgba(228, 190, 98, 0.16); color: #EBCF8E; }
+        .cov-stale { background: rgba(228, 112, 87, 0.18); color: #FFB4A6; }
+        .cov-never { background: rgba(157, 180, 171, 0.12); color: var(--text-muted); }
+
+        .cov-legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 0.9rem;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* Library list */
+        .lib-filters {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+            gap: 10px;
+            margin-bottom: 0.8rem;
+        }
+
+        .lib-filters select,
+        .lib-filters input {
+            width: 100%;
+            background: var(--bg-main);
+            border: 1px solid var(--portal-hairline);
+            border-radius: 10px;
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.88rem;
+            padding: 9px 11px;
+        }
+
+        .lib-group-toggle {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.84rem;
+            color: var(--text-muted);
+            margin-bottom: 0.8rem;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .lib-group-toggle input {
+            accent-color: var(--accent-gold);
+        }
+
+        .lib-level-heading {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--accent-gold);
+            margin: 1.2rem 0 0.2rem;
+        }
+
+        .clip-row {
+            display: flex;
+            gap: 16px;
+            padding: 14px 0;
+            border-bottom: 1px solid var(--portal-divider);
+            flex-wrap: wrap;
+        }
+
+        .clip-row:last-child {
+            border-bottom: none;
+        }
+
+        .clip-thumb {
+            flex: 0 0 168px;
+            cursor: pointer;
+            position: relative;
+            align-self: flex-start;
+        }
+
+        .clip-thumb img {
+            width: 168px;
+            border-radius: 10px;
+            border: 1px solid var(--portal-hairline);
+            display: block;
+        }
+
+        .clip-row--timeline .clip-thumb {
+            flex: 0 0 112px;
+        }
+
+        .clip-row--timeline .clip-thumb img {
+            width: 112px;
+        }
+
+        .clip-thumb .clip-play {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.7rem;
+            color: rgba(255, 255, 255, 0.92);
+            text-shadow: 0 1px 8px rgba(0, 0, 0, 0.6);
+        }
+
+        .clip-main {
+            flex: 1 1 260px;
+            min-width: 0;
+        }
+
+        .clip-title {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--text-main);
+            margin: 0 0 0.25rem;
+        }
+
+        .clip-meta {
+            font-size: 0.84rem;
+            color: var(--text-muted);
+            margin: 0 0 0.5rem;
+        }
+
+        .timeline-when {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 0.86rem;
+            color: var(--accent-gold);
+            margin: 0 0 0.2rem;
+        }
+
+        .clip-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .clip-chip {
+            background: var(--bg-main);
+            border: 1px solid var(--portal-hairline);
+            border-radius: 999px;
+            padding: 3px 11px;
+            font-size: 0.76rem;
+            color: var(--text-muted);
+        }
+
+        .clip-notes {
+            font-size: 0.84rem;
+            color: var(--text-muted);
+            margin: 0.5rem 0 0;
+            white-space: pre-wrap;
+        }
+
+        .teach-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 0.55rem;
+            align-items: center;
+        }
+
+        .teach-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .teach-chip {
+            background: var(--bg-main);
+            border: 1px solid var(--portal-hairline);
+            border-radius: 999px;
+            padding: 3px 6px 3px 11px;
+            font-size: 0.76rem;
+            color: var(--text-muted);
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .teach-del {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            font-size: 0.9rem;
+            line-height: 1;
+            padding: 0 3px;
+        }
+
+        .teach-del:hover {
+            color: #FFB4A6;
+        }
+
+        .teach-again {
+            padding: 4px 10px;
+            font-size: 0.76rem;
+        }
+
+        .teach-again-form {
+            display: none;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 0.6rem;
+            align-items: center;
+        }
+
+        .teach-again-form.open {
+            display: flex;
+        }
+
+        .teach-again-form input,
+        .teach-again-form select {
+            background: var(--bg-main);
+            border: 1px solid var(--portal-hairline);
+            border-radius: 8px;
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.84rem;
+            padding: 6px 9px;
+        }
+
+        .clip-actions {
+            flex: 0 0 auto;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .clip-embed {
+            flex-basis: 100%;
+            display: none;
+        }
+
+        .clip-embed iframe {
+            width: 100%;
+            max-width: 720px;
+            aspect-ratio: 16 / 9;
+            border: none;
+            border-radius: 12px;
+            margin-top: 10px;
+        }
+
+        #libFeedback {
+            display: none;
+            margin-top: 1rem;
+            padding: 12px 16px;
+            border-radius: 12px;
+            font-size: 0.9rem;
+        }
+
+        #libFeedback.success {
+            display: block;
+            background: rgba(96, 190, 137, 0.14);
+            color: #8FE0B2;
+        }
+
+        #libFeedback.error {
+            display: block;
+            background: rgba(228, 112, 87, 0.14);
+            color: #FFB4A6;
+        }
+
+        .lib-empty {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+    </style>
+  <script type="speculationrules">
+  {
+    "prefetch": [{
+      "where": {
+        "and": [
+          { "href_matches": "/*" },
+          { "not": { "href_matches": "/assets/*" } }
+        ]
+      },
+      "eagerness": "moderate"
+    }],
+    "prerender": [{
+      "where": {
+        "href_matches": ["/", "/about", "/schedule", "/registration", "/events",
+                         "/de/", "/de/about", "/de/schedule", "/de/registration", "/de/events"]
+      },
+      "eagerness": "moderate"
+    }]
+  }
+  </script>
+</head>
+
+<body class="tropic">
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo-area" aria-label="AXcent Dance home">
+                <span class="logo-main">AXCENT</span>
+                <span class="logo-sub">DANCE</span>
+            </a>
+            <nav class="nav-links">
+                <a href="/">Home</a>
+            </nav>
+        </div>
+    </header>
+
+    <div id="main-content" class="admin-container">
+        <div class="admin-header">
+            <div>
+                <p class="admin-eyebrow">Owner Dashboard</p>
+                <h1>Video Library</h1>
+            </div>
+            <div style="display: flex; gap: 8px;">
+                <a class="btn-logout" href="_admin.html" style="text-decoration: none; display: inline-block;">Back to Admin</a>
+                <button class="btn-logout" id="logoutBtn" style="display: none;">Log Out</button>
+            </div>
+        </div>
+
+        <div class="admin-card" id="gateCard" style="display: none;">
+            <p id="gateMessage" style="margin: 0; color: var(--text-muted);"></p>
+        </div>
+
+        <div id="app" style="display: none;">
+
+            <div class="admin-card">
+                <h2>Add a clip</h2>
+                <div class="lib-field">
+                    <label for="clipUrl">YouTube link (unlisted upload)</label>
+                    <input type="text" id="clipUrl" placeholder="https://youtu.be/... or full watch URL" autocomplete="off">
+                    <div class="lib-thumb-preview" id="thumbPreview">
+                        <img id="thumbImg" alt="Video thumbnail preview">
+                    </div>
+                </div>
+                <div class="lib-form-grid">
+                    <div class="lib-field">
+                        <label for="clipTitle">Title</label>
+                        <input type="text" id="clipTitle" maxlength="200" placeholder="e.g. Wave into shadow position" autocomplete="off">
+                    </div>
+                    <div class="lib-field">
+                        <label for="clipLevel">Fit for level</label>
+                        <select id="clipLevel">
+                            <option value="">Select a level...</option>
+                            <option>Beginner</option>
+                            <option>High Beginner</option>
+                            <option>Foundation</option>
+                            <option>Improver</option>
+                            <option>Intermediate</option>
+                            <option>Advanced</option>
+                        </select>
+                    </div>
+                    <div class="lib-field">
+                        <label for="clipDate">First taught on</label>
+                        <input type="date" id="clipDate">
+                    </div>
+                    <div class="lib-field">
+                        <label for="clipCourse">Class taught in</label>
+                        <select id="clipCourse"></select>
+                    </div>
+                </div>
+                <div class="lib-new-course" id="newCourseBox">
+                    <div class="lib-form-grid">
+                        <div class="lib-field">
+                            <label for="newCourseName">New class name</label>
+                            <input type="text" id="newCourseName" maxlength="120" placeholder="e.g. Improver Tue 19:30 autumn 2026">
+                        </div>
+                    </div>
+                </div>
+                <div class="lib-field">
+                    <label>Technique tags in this clip</label>
+                    <div class="lib-techniques" id="techniqueChecks"></div>
+                    <details class="lib-manage">
+                        <summary>Manage technique tags</summary>
+                        <div class="lib-inline-add">
+                            <input type="text" id="newTechniqueName" maxlength="80" placeholder="Technique name, e.g. Pinza">
+                            <button class="btn-quiet" id="addTechniqueBtn" type="button">Add technique</button>
+                        </div>
+                    </details>
+                </div>
+                <div class="lib-field">
+                    <label for="clipNotes">Notes (optional)</label>
+                    <textarea id="clipNotes" maxlength="2000" placeholder="Variations, musicality focus, common mistakes to review..."></textarea>
+                </div>
+                <button class="btn-gold" id="saveClipBtn" type="button">Save clip</button>
+                <div id="libFeedback"></div>
+            </div>
+
+            <div class="admin-card">
+                <h2>Coverage &mdash; days since each technique was last taught</h2>
+                <div class="coverage-scroll">
+                    <table class="coverage" id="coverageTable"></table>
+                </div>
+                <div class="cov-legend">
+                    <span><span class="cov-cell cov-fresh">&le; 3 weeks</span></span>
+                    <span><span class="cov-cell cov-aging">3&ndash;6 weeks</span></span>
+                    <span><span class="cov-cell cov-stale">&gt; 6 weeks</span></span>
+                    <span><span class="cov-cell cov-never">never taught</span></span>
+                </div>
+            </div>
+
+            <div class="admin-card">
+                <div class="lib-card-head">
+                    <h2>Library</h2>
+                    <div class="lib-view-toggle">
+                        <button class="btn-quiet view-btn active" data-view="clips" type="button">Clips</button>
+                        <button class="btn-quiet view-btn" data-view="timeline" type="button">Timeline</button>
+                    </div>
+                </div>
+                <div class="lib-filters">
+                    <select id="filterCourse"></select>
+                    <select id="filterLevel"></select>
+                    <select id="filterTechnique"></select>
+                    <input type="text" id="filterSearch" placeholder="Search title and notes" autocomplete="off">
+                </div>
+                <label class="lib-group-toggle" id="groupToggleWrap">
+                    <input type="checkbox" id="groupByLevel"> Group by level
+                </label>
+                <div id="clipList"></div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script type="module">
+        import { supabase } from './assets/js/supabase-client.js';
+
+        const OWNER_EMAIL = 'info@axcentdance.com';
+
+        const el = (id) => document.getElementById(id);
+        const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({
+            '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+        }[c]));
+
+        const formatDate = (iso) => {
+            if (!iso) return '?';
+            return new Date(iso.slice(0, 10) + 'T00:00:00').toLocaleDateString('en-US', {
+                weekday: 'short', month: 'short', day: 'numeric', year: 'numeric'
+            });
+        };
+
+        const formatShort = (iso) => new Date(iso.slice(0, 10) + 'T00:00:00')
+            .toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+
+        const daysAgo = (iso) => {
+            const then = new Date(iso.slice(0, 10) + 'T00:00:00');
+            const now = new Date();
+            now.setHours(0, 0, 0, 0);
+            return Math.round((now - then) / 86400000);
+        };
+
+        const localToday = () => {
+            const d = new Date();
+            return d.getFullYear() + '-' +
+                String(d.getMonth() + 1).padStart(2, '0') + '-' +
+                String(d.getDate()).padStart(2, '0');
+        };
+
+        // Canonical level ladder (owner-defined 2026-08-05). Unknown values
+        // from older data sort after these, alphabetically.
+        const LEVEL_ORDER = ['Beginner', 'High Beginner', 'Foundation',
+            'Improver', 'Intermediate', 'Advanced'];
+        const levelRank = (l) => {
+            const i = LEVEL_ORDER.indexOf(l);
+            return i === -1 ? LEVEL_ORDER.length : i;
+        };
+        const sortLevels = (levels) => [...levels].sort((a, b) =>
+            levelRank(a) - levelRank(b) || a.localeCompare(b));
+        const allLevels = () => sortLevels(
+            new Set([...LEVEL_ORDER, ...videos.map(v => v.level)]));
+
+        // Accepts watch URLs, youtu.be, shorts, live, embed URLs, or a bare id.
+        function parseYouTubeId(input) {
+            const s = String(input || '').trim();
+            if (/^[A-Za-z0-9_-]{5,20}$/.test(s) && !/^https?/i.test(s)) return s;
+            const m = s.match(/(?:youtube\.com\/(?:watch\?(?:.*&)?v=|shorts\/|live\/|embed\/)|youtu\.be\/)([A-Za-z0-9_-]{5,20})/);
+            return m ? m[1] : null;
+        }
+
+        function feedback(msg, kind) {
+            const box = el('libFeedback');
+            box.textContent = msg;
+            box.className = kind;
+            if (kind === 'success') setTimeout(() => { box.className = ''; }, 5000);
+        }
+
+        // ----- Auth gate (same pattern as _admin) --------------------------
+        const { data: { session } } = await supabase.auth.getSession();
+        if (!session) {
+            window.location.href = '_login.html';
+            throw new Error('Not authenticated');
+        }
+
+        el('logoutBtn').style.display = 'inline-block';
+        el('logoutBtn').addEventListener('click', async () => {
+            await supabase.auth.signOut();
+            window.location.href = '_login.html';
+        });
+
+        if (session.user.email.toLowerCase() !== OWNER_EMAIL) {
+            el('gateCard').style.display = 'block';
+            el('gateMessage').innerHTML = 'This page is reserved for the studio owner. ' +
+                'Looking for your pass? Head to the <a href="portal" style="color: var(--accent-gold);">Student Portal</a>.';
+            throw new Error('Not the owner');
+        }
+
+        // ----- State -------------------------------------------------------
+        let techniques = [];
+        let courses = [];
+        let videos = [];
+        let videoTechniques = [];
+        let teachings = [];
+        let viewMode = 'clips';
+
+        const courseById = (id) => courses.find(c => c.id === id);
+        const videoById = (id) => videos.find(v => v.id === id);
+        const techniquesOfVideo = (videoId) => videoTechniques
+            .filter(vt => vt.video_id === videoId)
+            .map(vt => techniques.find(t => t.id === vt.technique_id))
+            .filter(Boolean);
+        const teachingsOfVideo = (videoId) => teachings
+            .filter(tg => tg.video_id === videoId)
+            .sort((a, b) => b.taught_on.localeCompare(a.taught_on));
+        const lastTaughtOf = (videoId) => {
+            const ts = teachingsOfVideo(videoId);
+            return ts.length ? ts[0].taught_on : null;
+        };
+
+        async function loadAll() {
+            const [t, c, v, vt, tg] = await Promise.all([
+                supabase.from('library_techniques').select('*')
+                    .order('sort_order').order('name'),
+                supabase.from('library_courses').select('*')
+                    .order('id'),
+                supabase.from('library_videos').select('*')
+                    .order('id', { ascending: false }),
+                supabase.from('library_video_techniques').select('*'),
+                supabase.from('library_teachings').select('*')
+            ]);
+            const failed = [t, c, v, vt, tg].find(r => r.error);
+            if (failed) {
+                feedback('Could not load the library: ' + failed.error.message, 'error');
+                return false;
+            }
+            techniques = t.data;
+            courses = c.data;
+            videos = v.data;
+            videoTechniques = vt.data;
+            teachings = tg.data;
+            return true;
+        }
+
+        async function createCourse(name) {
+            const { data, error } = await supabase.from('library_courses')
+                .insert({ name }).select().single();
+            if (error) {
+                feedback('Could not create the class: ' + error.message, 'error');
+                return null;
+            }
+            return data.id;
+        }
+
+        // ----- Add-clip form -----------------------------------------------
+        el('clipDate').value = localToday();
+
+        el('clipUrl').addEventListener('input', () => {
+            const id = parseYouTubeId(el('clipUrl').value);
+            if (id) {
+                el('thumbImg').src = 'https://i.ytimg.com/vi/' + id + '/mqdefault.jpg';
+                el('thumbPreview').style.display = 'block';
+            } else {
+                el('thumbPreview').style.display = 'none';
+            }
+        });
+
+        function courseOptions(selectedId) {
+            return '<option value="">Class...</option>' +
+                courses.map(c => `<option value="${c.id}"${String(c.id) === String(selectedId) ? ' selected' : ''}>${esc(c.name)}</option>`).join('') +
+                '<option value="__new">+ New class...</option>';
+        }
+
+        function renderCourseSelect() {
+            const sel = el('clipCourse');
+            const prev = sel.value;
+            sel.innerHTML = '<option value="">Select a class...</option>' +
+                courses.map(c => `<option value="${c.id}">${esc(c.name)}</option>`).join('') +
+                '<option value="__new">+ New class...</option>';
+            if (prev && [...sel.options].some(o => o.value === prev)) sel.value = prev;
+        }
+
+        el('clipCourse').addEventListener('change', () => {
+            el('newCourseBox').classList.toggle('open', el('clipCourse').value === '__new');
+        });
+
+        function renderTechniqueChecks() {
+            const box = el('techniqueChecks');
+            const checked = new Set([...box.querySelectorAll('input:checked')].map(i => i.value));
+            if (techniques.length === 0) {
+                box.innerHTML = '<p class="lib-empty">No technique tags yet. Open ' +
+                    '&ldquo;Manage technique tags&rdquo; below and create the first ones.</p>';
+                return;
+            }
+            box.innerHTML = techniques.map(t =>
+                `<label class="lib-tech-check"><input type="checkbox" value="${t.id}"` +
+                `${checked.has(String(t.id)) ? ' checked' : ''}> ${esc(t.name)}</label>`
+            ).join('');
+        }
+
+        el('addTechniqueBtn').addEventListener('click', async () => {
+            const name = el('newTechniqueName').value.trim();
+            if (!name) return;
+            const nextOrder = techniques.length
+                ? Math.max(...techniques.map(t => t.sort_order)) + 1 : 1;
+            const { error } = await supabase.from('library_techniques')
+                .insert({ name, sort_order: nextOrder });
+            if (error) { feedback('Could not add the technique: ' + error.message, 'error'); return; }
+            el('newTechniqueName').value = '';
+            await refresh();
+            feedback('Technique "' + name + '" added.', 'success');
+        });
+
+        el('saveClipBtn').addEventListener('click', async () => {
+            const ytid = parseYouTubeId(el('clipUrl').value);
+            if (!ytid) { feedback('Paste a valid YouTube link first.', 'error'); return; }
+            const existing = videos.find(v => v.youtube_id === ytid);
+            if (existing) {
+                feedback('"' + existing.title + '" is already in the library. ' +
+                    'Use its "Taught again" button to log a new date.', 'error');
+                return;
+            }
+            const title = el('clipTitle').value.trim();
+            if (!title) { feedback('Give the clip a short title.', 'error'); return; }
+            const level = el('clipLevel').value.trim();
+            if (!level) { feedback('Set the level this move is fit for.', 'error'); return; }
+            const taughtOn = el('clipDate').value;
+            if (!taughtOn) { feedback('Set the date the clip was taught.', 'error'); return; }
+
+            let courseId = el('clipCourse').value;
+            if (!courseId) { feedback('Select the class this clip was taught in.', 'error'); return; }
+            if (courseId === '__new') {
+                const name = el('newCourseName').value.trim();
+                if (!name) { feedback('Fill in the new class name.', 'error'); return; }
+                courseId = await createCourse(name);
+                if (!courseId) return;
+            }
+
+            const techIds = [...el('techniqueChecks').querySelectorAll('input:checked')]
+                .map(i => Number(i.value));
+            if (techIds.length === 0) {
+                feedback('Tick at least one technique tag — the coverage queries depend on it.', 'error');
+                return;
+            }
+
+            const { data: video, error } = await supabase.from('library_videos')
+                .insert({
+                    youtube_id: ytid,
+                    title,
+                    level,
+                    notes: el('clipNotes').value.trim() || null
+                }).select().single();
+            if (error) {
+                const msg = error.code === '23505'
+                    ? 'This video is already in the library.'
+                    : 'Could not save the clip: ' + error.message;
+                feedback(msg, 'error');
+                return;
+            }
+
+            const { error: vtError } = await supabase.from('library_video_techniques')
+                .insert(techIds.map(tid => ({ video_id: video.id, technique_id: tid })));
+            if (vtError) {
+                feedback('Clip saved, but tagging failed: ' + vtError.message, 'error');
+                return;
+            }
+
+            const { error: tgError } = await supabase.from('library_teachings')
+                .insert({ video_id: video.id, course_id: Number(courseId), taught_on: taughtOn });
+            if (tgError) {
+                feedback('Clip saved, but logging the teaching failed: ' + tgError.message, 'error');
+                return;
+            }
+
+            el('clipUrl').value = '';
+            el('clipTitle').value = '';
+            el('clipNotes').value = '';
+            el('clipDate').value = localToday();
+            el('thumbPreview').style.display = 'none';
+            el('newCourseBox').classList.remove('open');
+            el('newCourseName').value = '';
+            await refresh();
+            feedback('Clip saved and tagged.', 'success');
+        });
+
+        // ----- Coverage matrix ---------------------------------------------
+        function coverageClass(days) {
+            if (days === null) return 'cov-never';
+            if (days <= 21) return 'cov-fresh';
+            if (days <= 42) return 'cov-aging';
+            return 'cov-stale';
+        }
+
+        function renderCoverage() {
+            const table = el('coverageTable');
+            if (techniques.length === 0) {
+                table.innerHTML = '<tr><td class="lib-empty">Add technique tags first.</td></tr>';
+                return;
+            }
+            const levels = allLevels();
+            let html = '<tr><th>Technique</th><th>Any level</th>' +
+                levels.map(l => `<th>${esc(l)}</th>`).join('') + '</tr>';
+
+            for (const t of techniques) {
+                const clips = videoTechniques
+                    .filter(vt => vt.technique_id === t.id)
+                    .map(vt => videoById(vt.video_id))
+                    .filter(Boolean);
+
+                const cell = (subset) => {
+                    const dates = subset.flatMap(v =>
+                        teachingsOfVideo(v.id).map(tg => tg.taught_on));
+                    if (dates.length === 0) {
+                        return '<span class="cov-cell cov-never">never</span>';
+                    }
+                    const last = dates.sort().at(-1);
+                    const d = daysAgo(last);
+                    const label = d === 0 ? 'today' : d + 'd ago';
+                    return `<span class="cov-cell ${coverageClass(d)}" title="Last: ${esc(formatDate(last))}">` +
+                        `${label} &middot; ${subset.length} clip${subset.length === 1 ? '' : 's'}</span>`;
+                };
+
+                html += `<tr><td class="cov-tech">${esc(t.name)}</td><td>${cell(clips)}</td>` +
+                    levels.map(l => `<td>${cell(clips.filter(v => v.level === l))}</td>`).join('') +
+                    '</tr>';
+            }
+            table.innerHTML = html;
+        }
+
+        // ----- Library -----------------------------------------------------
+        function renderFilters() {
+            const keep = (sel, render) => {
+                const prev = el(sel).value;
+                el(sel).innerHTML = render;
+                if (prev && [...el(sel).options].some(o => o.value === prev)) el(sel).value = prev;
+            };
+            keep('filterCourse', '<option value="">All classes</option>' +
+                courses.map(c => `<option value="${c.id}">${esc(c.name)}</option>`).join(''));
+            keep('filterLevel', '<option value="">All levels</option>' +
+                allLevels()
+                    .map(l => `<option value="${esc(l)}">${esc(l)}</option>`).join(''));
+            keep('filterTechnique', '<option value="">All techniques</option>' +
+                techniques.map(t => `<option value="${t.id}">${esc(t.name)}</option>`).join(''));
+        }
+
+        function videoMatchesFilters(v) {
+            const courseF = el('filterCourse').value;
+            const levelF = el('filterLevel').value;
+            const techF = el('filterTechnique').value;
+            const q = el('filterSearch').value.trim().toLowerCase();
+
+            if (courseF && !teachingsOfVideo(v.id).some(tg => String(tg.course_id) === courseF)) return false;
+            if (levelF && v.level !== levelF) return false;
+            if (techF && !videoTechniques.some(vt =>
+                vt.video_id === v.id && String(vt.technique_id) === techF)) return false;
+            if (q && !(v.title.toLowerCase().includes(q) ||
+                (v.notes || '').toLowerCase().includes(q))) return false;
+            return true;
+        }
+
+        function clipRowHtml(v) {
+            const chips = techniquesOfVideo(v.id)
+                .map(t => `<span class="clip-chip">${esc(t.name)}</span>`).join('');
+            const teachChips = teachingsOfVideo(v.id).map(tg =>
+                `<span class="teach-chip">${esc(formatShort(tg.taught_on))} &middot; ` +
+                `${esc(courseById(tg.course_id)?.name ?? '?')}` +
+                `<button class="teach-del" data-teaching="${tg.id}" title="Remove this teaching date">&times;</button></span>`
+            ).join('');
+            return `<div class="clip-row" data-video="${v.id}" data-ytid="${esc(v.youtube_id)}">
+                <div class="clip-thumb" role="button" tabindex="0" aria-label="Play ${esc(v.title)}">
+                    <img src="https://i.ytimg.com/vi/${esc(v.youtube_id)}/mqdefault.jpg" alt="" loading="lazy" decoding="async">
+                    <span class="clip-play">&#9654;</span>
+                </div>
+                <div class="clip-main">
+                    <p class="clip-title">${esc(v.title)}</p>
+                    <p class="clip-meta">Fit for ${esc(v.level)}</p>
+                    <div class="clip-chips">${chips}</div>
+                    ${v.notes ? `<p class="clip-notes">${esc(v.notes)}</p>` : ''}
+                    <div class="teach-chips">
+                        <span class="teach-label">Taught:</span>
+                        ${teachChips || '<span class="clip-chip">never</span>'}
+                        <button class="btn-quiet teach-again" type="button">+ Taught again</button>
+                    </div>
+                    <div class="teach-again-form">
+                        <input type="date" class="teach-date" value="${localToday()}">
+                        <select class="teach-course-select">${courseOptions()}</select>
+                        <input type="text" class="teach-new-name" placeholder="New class name" style="display: none;" maxlength="120">
+                        <button class="btn-quiet teach-save" type="button">Log</button>
+                    </div>
+                </div>
+                <div class="clip-actions">
+                    <button class="btn-quiet clip-delete" data-video="${v.id}">Delete</button>
+                </div>
+                <div class="clip-embed"></div>
+            </div>`;
+        }
+
+        function timelineRowHtml(tg) {
+            const v = videoById(tg.video_id);
+            if (!v) return '';
+            const chips = techniquesOfVideo(v.id)
+                .map(t => `<span class="clip-chip">${esc(t.name)}</span>`).join('');
+            return `<div class="clip-row clip-row--timeline" data-ytid="${esc(v.youtube_id)}">
+                <div class="clip-thumb" role="button" tabindex="0" aria-label="Play ${esc(v.title)}">
+                    <img src="https://i.ytimg.com/vi/${esc(v.youtube_id)}/mqdefault.jpg" alt="" loading="lazy" decoding="async">
+                    <span class="clip-play">&#9654;</span>
+                </div>
+                <div class="clip-main">
+                    <p class="timeline-when">${esc(formatDate(tg.taught_on))} &middot; ${esc(courseById(tg.course_id)?.name ?? '?')}</p>
+                    <p class="clip-title">${esc(v.title)}</p>
+                    <div class="clip-chips"><span class="clip-chip">fit for ${esc(v.level)}</span>${chips}</div>
+                </div>
+                <div class="clip-embed"></div>
+            </div>`;
+        }
+
+        function renderClips() {
+            el('groupToggleWrap').style.display = viewMode === 'clips' ? 'inline-flex' : 'none';
+
+            if (viewMode === 'timeline') {
+                const courseF = el('filterCourse').value;
+                const rows = teachings
+                    .filter(tg => {
+                        if (courseF && String(tg.course_id) !== courseF) return false;
+                        const v = videoById(tg.video_id);
+                        if (!v) return false;
+                        // Reuse the video filters except the class filter,
+                        // which applies to the teaching itself here.
+                        const saved = el('filterCourse').value;
+                        el('filterCourse').value = '';
+                        const ok = videoMatchesFilters(v);
+                        el('filterCourse').value = saved;
+                        return ok;
+                    })
+                    .sort((a, b) => b.taught_on.localeCompare(a.taught_on) || b.id - a.id);
+                el('clipList').innerHTML = rows.length
+                    ? rows.map(timelineRowHtml).join('')
+                    : '<p class="lib-empty">No teachings match. ' +
+                      (teachings.length === 0 ? 'Add your first clip above.' : 'Loosen the filters.') + '</p>';
+                return;
+            }
+
+            const rows = videos.filter(videoMatchesFilters)
+                .sort((a, b) => (lastTaughtOf(b.id) || '').localeCompare(lastTaughtOf(a.id) || ''));
+
+            if (rows.length === 0) {
+                el('clipList').innerHTML = '<p class="lib-empty">No clips match. ' +
+                    (videos.length === 0 ? 'Add your first clip above.' : 'Loosen the filters.') + '</p>';
+                return;
+            }
+
+            if (el('groupByLevel').checked) {
+                const byLevel = new Map();
+                for (const v of rows) {
+                    if (!byLevel.has(v.level)) byLevel.set(v.level, []);
+                    byLevel.get(v.level).push(v);
+                }
+                el('clipList').innerHTML = sortLevels(byLevel.keys()).map(l =>
+                    `<p class="lib-level-heading">${esc(l)}</p>` +
+                    byLevel.get(l).map(clipRowHtml).join('')
+                ).join('');
+            } else {
+                el('clipList').innerHTML = rows.map(clipRowHtml).join('');
+            }
+        }
+
+        // ----- Library interactions ----------------------------------------
+        el('clipList').addEventListener('click', async (e) => {
+            const thumb = e.target.closest('.clip-thumb');
+            if (thumb) {
+                const row = thumb.closest('.clip-row');
+                const embed = row.querySelector('.clip-embed');
+                if (embed.style.display === 'block') {
+                    embed.style.display = 'none';
+                    embed.innerHTML = '';
+                    return;
+                }
+                // youtube_id is constrained to [A-Za-z0-9_-] by the database,
+                // so interpolating it into the embed URL is safe.
+                const ytid = row.dataset.ytid;
+                embed.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${ytid}?rel=0"
+                    title="Video player" loading="lazy" allowfullscreen
+                    allow="autoplay; encrypted-media; picture-in-picture"></iframe>`;
+                embed.style.display = 'block';
+                return;
+            }
+
+            const againBtn = e.target.closest('.teach-again');
+            if (againBtn) {
+                againBtn.closest('.clip-main').querySelector('.teach-again-form')
+                    .classList.toggle('open');
+                return;
+            }
+
+            const teachSave = e.target.closest('.teach-save');
+            if (teachSave) {
+                const row = teachSave.closest('.clip-row');
+                const form = row.querySelector('.teach-again-form');
+                const date = form.querySelector('.teach-date').value;
+                if (!date) { feedback('Set the date this move was taught.', 'error'); return; }
+                let courseId = form.querySelector('.teach-course-select').value;
+                if (!courseId) { feedback('Select the class.', 'error'); return; }
+                if (courseId === '__new') {
+                    const name = form.querySelector('.teach-new-name').value.trim();
+                    if (!name) { feedback('Fill in the new class name.', 'error'); return; }
+                    courseId = await createCourse(name);
+                    if (!courseId) return;
+                }
+                const { error } = await supabase.from('library_teachings').insert({
+                    video_id: Number(row.dataset.video),
+                    course_id: Number(courseId),
+                    taught_on: date
+                });
+                if (error) { feedback('Could not log the teaching: ' + error.message, 'error'); return; }
+                await refresh();
+                feedback('Teaching logged.', 'success');
+                return;
+            }
+
+            const teachDel = e.target.closest('.teach-del');
+            if (teachDel) {
+                const id = Number(teachDel.dataset.teaching);
+                if (!confirm('Remove this teaching date?')) return;
+                const { error } = await supabase.from('library_teachings').delete().eq('id', id);
+                if (error) { feedback('Could not remove the teaching: ' + error.message, 'error'); return; }
+                await refresh();
+                feedback('Teaching date removed.', 'success');
+                return;
+            }
+
+            const delBtn = e.target.closest('.clip-delete');
+            if (delBtn) {
+                const id = Number(delBtn.dataset.video);
+                const video = videoById(id);
+                if (!video) return;
+                if (!confirm('Remove "' + video.title + '" and its whole teaching history ' +
+                    'from the library? The video itself stays on YouTube.')) return;
+                const { error } = await supabase.from('library_videos').delete().eq('id', id);
+                if (error) { feedback('Could not delete the clip: ' + error.message, 'error'); return; }
+                await refresh();
+                feedback('Clip removed from the library.', 'success');
+            }
+        });
+
+        el('clipList').addEventListener('change', (e) => {
+            const sel = e.target.closest('.teach-course-select');
+            if (sel) {
+                sel.closest('.teach-again-form').querySelector('.teach-new-name')
+                    .style.display = sel.value === '__new' ? 'inline-block' : 'none';
+            }
+        });
+
+        el('clipList').addEventListener('keydown', (e) => {
+            if ((e.key === 'Enter' || e.key === ' ') && e.target.closest('.clip-thumb')) {
+                e.preventDefault();
+                e.target.closest('.clip-thumb').click();
+            }
+        });
+
+        for (const btn of document.querySelectorAll('.view-btn')) {
+            btn.addEventListener('click', () => {
+                viewMode = btn.dataset.view;
+                for (const b of document.querySelectorAll('.view-btn')) {
+                    b.classList.toggle('active', b === btn);
+                }
+                renderClips();
+            });
+        }
+
+        for (const id of ['filterCourse', 'filterLevel', 'filterTechnique']) {
+            el(id).addEventListener('change', renderClips);
+        }
+        el('filterSearch').addEventListener('input', renderClips);
+        el('groupByLevel').addEventListener('change', renderClips);
+
+        // ----- Boot --------------------------------------------------------
+        async function refresh() {
+            if (!await loadAll()) return;
+            renderCourseSelect();
+            renderTechniqueChecks();
+            renderCoverage();
+            renderFilters();
+            renderClips();
+        }
+
+        await refresh();
+        el('app').style.display = 'block';
+    </script>
+</body>
+
+</html>

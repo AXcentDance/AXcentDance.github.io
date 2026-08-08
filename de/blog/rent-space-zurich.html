@@ -30,11 +30,13 @@
         content="Suchen Sie einen Raum in Zürich? Entdecken Sie 5 kreative Wege, unser 138qm Studio zu nutzen – von Yoga und Pilates bis zu Fotoshootings.">
     <meta name="twitter:image" content="https://axcentdance.com/assets/images/blog/discover/rent-space-zurich-1200x675.jpg">
 
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://connect.facebook.net; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com https://placehold.co https://*.googleapis.com https://*.gstatic.com https://www.facebook.com https://connect.facebook.net; font-src 'self'; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://script.google.com https://formsubmit.co https://www.facebook.com https://connect.facebook.net; frame-src 'self' https://www.google.com; object-src 'none'; base-uri 'self'; media-src 'self' blob:; worker-src 'self' blob:;">
     <!-- Styles -->
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/inter-200-900-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/outfit-500-800-latin.woff2" crossorigin>
-    <link rel="stylesheet" href="../../style.css?v=10.4">
-    <link rel="stylesheet" href="../../tropic-noir.css?v=6.2">
+    <link rel="stylesheet" href="../../style.css?v=10.14">
+    <link rel="stylesheet" href="../../tropic-noir.css?v=9.0">
     <link rel="stylesheet" href="../../blog-post.css?v=3.0">
     <link rel="apple-touch-icon" href="/apple-touch-icon-v2.png">
     <link rel="icon" href="/favicon-axcent-transparent.svg" type="image/svg+xml">
@@ -374,6 +376,7 @@
 </head>
 
 <body class="tropic post-page nav-declutter">
+    <a class="skip-link" href="#main-content">Zum Hauptinhalt springen</a>
 
     <!-- Navigation Bar -->
     <header class="main-header">
@@ -433,14 +436,17 @@
     </div>
   </header>
 
-    <main>
+    <main id="main-content">
 
         <!-- Hero Section -->
         <section class="post-hero relative-container" style="background: none;">
-            <img src="../../assets/images/studio/studio_room_view_1.webp"
+            <picture>
+              <source type="image/avif" srcset="../../assets/images/studio/studio_room_view_1_480w.avif 480w, ../../assets/images/studio/studio_room_view_1_800w.avif 800w, ../../assets/images/studio/studio_room_view_1_1200w.avif 1200w" sizes="100vw">
+              <img src="../../assets/images/studio/studio_room_view_1.webp"
                 srcset="../../assets/images/studio/studio_room_view_1_480w.webp 480w, ../../assets/images/studio/studio_room_view_1_800w.webp 800w, ../../assets/images/studio/studio_room_view_1_1200w.webp 1200w"
-                sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px" alt="AXcent Dance Studio Room"
+                sizes="100vw" alt="AXcent Dance Studio Room"
                 width="1200" height="800" class="hero-bg-img">
+            </picture>
             <div class="hero-overlay"></div>
             <div class="container hero-content-z">
                 <span class="post-meta">Wellness / Lifestyle • 31. Jan 2026</span>
@@ -719,7 +725,6 @@
       <div class="footer-col">
         <h2 class="footer-heading">Schnellzugriff</h2>
         <ul class="footer-links">
-          <li><a href="/de/#trial-form">Kostenlose Probelektion buchen</a></li>
           <li><a href="../guide-bachata">Was ist Bachata</a></li>
           <li><a href="roots-of-bachata">Wurzeln des Bachatas</a></li>
           <li><a href="../schedule">Stundenplan</a></li>

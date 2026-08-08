@@ -28,7 +28,7 @@ window.AXCENT_PASSES = {
     // durationDays: added to the start date for the pass end date
     // (8 weeks minus 1 day = 55; the flexible pass is valid 1 year).
     packages: [
-        { value: "1 Course (8 Weeks)", en: "1 Course", de: "1 Kurs", regular: "220 CHF", student: "185 CHF", durationDays: 55 },
+        { value: "1 Course (8 Weeks)", en: "1 Course", de: "1 Kurs", regular: "210 CHF", student: "180 CHF", durationDays: 55 },
         { value: "2 Classes/Week (8 Weeks)", en: "2 Classes/Week", de: "2 Kurse/Woche", regular: "320 CHF", student: "270 CHF", durationDays: 55 },
         { value: "3 Classes/Week (8 Weeks)", en: "3 Classes/Week", de: "3 Kurse/Woche", regular: "390 CHF", student: "330 CHF", durationDays: 55 },
         { value: "4 Classes/Week (8 Weeks)", en: "All You Can Dance", de: "All You Can Dance", regular: "450 CHF", student: "380 CHF", durationDays: 55 },
@@ -37,7 +37,7 @@ window.AXCENT_PASSES = {
 
     classes: [
         { value: "Mon 19:30 Beginner 0", en: "Bachata Beginner 0", de: "Bachata Beginner 0" },
-        { value: "Tue 19:30 Beginner 2", en: "Bachata Beginner 2", de: "Bachata Beginner 2" },
+        { value: "Tue 19:30 Beginner 2", en: "Bachata Beginner 3", de: "Bachata Beginner 3" },
         { value: "Wed 19:30 Sensual Foundation", en: "Bachata Sensual Foundation", de: "Bachata Sensual Foundation" },
         { value: "Wed 20:30 Sensual Improver", en: "Bachata Sensual Improver", de: "Bachata Sensual Improver" },
         { value: "Thu 18:30 Bachata Lady Style", en: "Bachata Lady Style", de: "Bachata Lady Style" },

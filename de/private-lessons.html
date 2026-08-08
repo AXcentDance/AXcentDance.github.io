@@ -30,8 +30,8 @@
     <!-- Styles -->
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/inter-200-900-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/outfit-500-800-latin.woff2" crossorigin>
-    <link rel="stylesheet" href="../style.css?v=10.4">
-    <link rel="stylesheet" href="../tropic-noir.css?v=6.2">
+    <link rel="stylesheet" href="../style.css?v=10.14">
+    <link rel="stylesheet" href="../tropic-noir.css?v=9.0">
     <link rel="apple-touch-icon" href="/apple-touch-icon-v2.png">
     <link rel="icon" href="/favicon-axcent-transparent.svg" type="image/svg+xml">
 
@@ -268,6 +268,7 @@
   </head>
 
 <body class="tropic service-page private-page nav-declutter">
+    <a class="skip-link" href="#main-content">Zum Hauptinhalt springen</a>
     <!-- Navigation Bar -->
     <header class="main-header">
         <div class="container navbar">
@@ -326,7 +327,7 @@
         </div>
     </header>
 
-    <main>
+    <main id="main-content">
 
         <!-- Kopfbereich -->
         <section class="split-masthead">
@@ -349,11 +350,14 @@
                     </div>
                 </div>
                 <figure class="split-masthead__media">
-                    <img src="../assets/images/private_lesson_hero_1200w.webp"
+                    <picture>
+                      <source type="image/avif" srcset="../assets/images/private_lesson_hero_480w.avif 480w, ../assets/images/private_lesson_hero_800w.avif 800w, ../assets/images/private_lesson_hero_1200w.avif 1200w" sizes="(max-width: 899px) 100vw, (max-width: 1280px) 38vw, 460px">
+                      <img src="../assets/images/private_lesson_hero_1200w.webp"
                         srcset="../assets/images/private_lesson_hero_480w.webp 480w, ../assets/images/private_lesson_hero_800w.webp 800w, ../assets/images/private_lesson_hero_1200w.webp 1200w"
-                        sizes="(max-width: 899px) 100vw, 40vw"
+                        sizes="(max-width: 899px) 100vw, (max-width: 1280px) 38vw, 460px"
                         alt="Private Bachata-Coachingstunde in Zürich" width="1200" height="1200"
                         loading="eager" fetchpriority="high">
+                    </picture>
                 </figure>
             </div>
         </section>
@@ -422,27 +426,48 @@
                 </p>
                 <ol class="service-steps__list">
                     <li class="service-steps__item">
-                        <span class="service-num">01</span>
-                        <strong>Sag uns dein Ziel</strong>
-                        <p>
-                            Grundlagen, Styling, eine Performance oder diese eine Figur, die du einfach nicht
-                            hinbekommst. Teile dein Ziel per <a href="https://wa.me/41799668481">WhatsApp</a> oder über
-                            unser <a href="contact">Kontaktformular</a>. Wir antworten innerhalb weniger Stunden.
-                        </p>
+                        <div class="service-steps__marker">
+                            <span class="service-num">01</span>
+                            <span class="service-steps__link" aria-hidden="true">
+                                <i class="service-steps__line"></i>
+                                <i class="service-steps__arrow"></i>
+                            </span>
+                        </div>
+                        <div class="service-steps__body">
+                            <strong>Sag uns dein Ziel</strong>
+                            <p>
+                                Grundlagen, Styling, eine Performance oder diese eine Figur, die du einfach nicht
+                                hinbekommst. Teile dein Ziel per <a href="https://wa.me/41799668481">WhatsApp</a> oder
+                                über unser <a href="contact">Kontaktformular</a>. Wir antworten innerhalb weniger
+                                Stunden.
+                            </p>
+                        </div>
                     </li>
                     <li class="service-steps__item">
-                        <span class="service-num">02</span>
-                        <strong>Wir schlagen einen Plan vor</strong>
-                        <p>Anzahl der Stunden, Schwerpunkte und die Lehrkraft, die zu deinem Ziel passt.</p>
+                        <div class="service-steps__marker">
+                            <span class="service-num">02</span>
+                            <span class="service-steps__link" aria-hidden="true">
+                                <i class="service-steps__line"></i>
+                                <i class="service-steps__arrow"></i>
+                            </span>
+                        </div>
+                        <div class="service-steps__body">
+                            <strong>Wir schlagen einen Plan vor</strong>
+                            <p>Anzahl der Stunden, Schwerpunkte und die Lehrkraft, die zu deinem Ziel passt.</p>
+                        </div>
                     </li>
                     <li class="service-steps__item">
-                        <span class="service-num">03</span>
-                        <strong>Trainiere 1-zu-1 oder mit zwei Lehrkräften</strong>
-                        <p>
-                            Du erhältst volle Aufmerksamkeit, ehrliches Feedback und sichtbaren Fortschritt in jeder
-                            Stunde. Du kannst auch eine Tanzpartnerin oder einen Tanzpartner mitbringen; der Preis
-                            bleibt gleich.
-                        </p>
+                        <div class="service-steps__marker">
+                            <span class="service-num">03</span>
+                        </div>
+                        <div class="service-steps__body">
+                            <strong>Trainiere 1-zu-1 oder mit zwei Lehrkräften</strong>
+                            <p>
+                                Du erhältst volle Aufmerksamkeit, ehrliches Feedback und sichtbaren Fortschritt in
+                                jeder Stunde. Du kannst auch eine Tanzpartnerin oder einen Tanzpartner mitbringen; der
+                                Preis bleibt gleich.
+                            </p>
+                        </div>
                     </li>
                 </ol>
             </div>
@@ -452,7 +477,7 @@
         <section class="service-quote">
             <div class="container">
                 <blockquote class="service-quote__text">
-                    &ldquo;Die Lehrer Ale und Xidan verbinden hohe fachliche Kompetenz mit einer warmen und
+                    &ldquo;Die Lehrer verbinden hohe fachliche Kompetenz mit einer warmen und
                     einladenden Atmosphäre.&rdquo;
                 </blockquote>
                 <p class="service-quote__attribution">&mdash; Giulia P, Google-Rezension</p>
@@ -580,7 +605,6 @@
             <div class="footer-col">
                 <h2 class="footer-heading">Schnellzugriff</h2>
                 <ul class="footer-links">
-                    <li><a href="/de/#trial-form">Kostenlose Probelektion buchen</a></li>
                     <li><a href="guide-bachata">Was ist Bachata</a></li>
                     <li><a href="blog/roots-of-bachata">Wurzeln des Bachatas</a></li>
                     <li><a href="schedule">Stundenplan</a></li>
@@ -620,7 +644,7 @@
         </div>
     </footer>
 
-    <script src="../script.js?v=7.0"></script>
+    <script src="../script.js?v=7.3"></script>
 
 
 

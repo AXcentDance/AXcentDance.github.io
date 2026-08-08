@@ -30,11 +30,11 @@
     <!-- Styles -->
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/inter-200-900-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/outfit-500-800-latin.woff2" crossorigin>
-    <link rel="stylesheet" href="../style.css?v=10.4">
-    <link rel="stylesheet" href="../tropic-noir.css?v=6.2">
-    <link rel="preload" as="image" href="../assets/images/blog/dance-tips-1-title_800w.webp"
-        imagesrcset="../assets/images/blog/dance-tips-1-title_480w.webp 480w, ../assets/images/blog/dance-tips-1-title_800w.webp 800w, ../assets/images/blog/dance-tips-1-title_1200w.webp 1200w"
-        imagesizes="(max-width: 900px) 92vw, 40vw" fetchpriority="high">
+    <link rel="stylesheet" href="../style.css?v=10.14">
+    <link rel="stylesheet" href="../tropic-noir.css?v=9.0">
+    <link type="image/avif" rel="preload" as="image" href="../assets/images/blog/dance-tips-1-title_800w.avif"
+        imagesrcset="../assets/images/blog/dance-tips-1-title_480w.avif 480w, ../assets/images/blog/dance-tips-1-title_800w.avif 800w, ../assets/images/blog/dance-tips-1-title_1200w.avif 1200w"
+        imagesizes="(max-width: 900px) 92vw, (max-width: 1280px) 38vw, 455px" fetchpriority="high">
     <link rel="apple-touch-icon" href="/apple-touch-icon-v2.png">
     <link rel="icon" href="/favicon-axcent-transparent.svg" type="image/svg+xml">
 
@@ -207,6 +207,7 @@
   </head>
 
 <body class="blog-page nav-declutter">
+    <a class="skip-link" href="#main-content">Skip to main content</a>
 
     <!-- Navigation Bar -->
     <header class="main-header">
@@ -266,7 +267,7 @@
     </div>
   </header>
 
-    <main>
+    <main id="main-content">
 
         <!-- Editorial masthead: journal copy on the left, featured story on the right -->
         <section class="blog-masthead" data-blog-masthead>
@@ -284,11 +285,14 @@
                 <!-- Featured Article -->
                 <article class="blog-masthead__feature" data-category="education" data-blog-feature>
                     <div class="blog-masthead__feature-media" data-blog-feature-media>
-                        <img src="../assets/images/blog/dance-tips-1-title.webp"
+                        <picture>
+                          <source type="image/avif" srcset="../assets/images/blog/dance-tips-1-title_480w.avif 480w, ../assets/images/blog/dance-tips-1-title_800w.avif 800w, ../assets/images/blog/dance-tips-1-title_1200w.avif 1200w" sizes="(max-width: 900px) 92vw, (max-width: 1280px) 38vw, 455px">
+                          <img src="../assets/images/blog/dance-tips-1-title.webp"
                             srcset="../assets/images/blog/dance-tips-1-title_480w.webp 480w, ../assets/images/blog/dance-tips-1-title_800w.webp 800w, ../assets/images/blog/dance-tips-1-title_1200w.webp 1200w"
-                            sizes="(max-width: 900px) 92vw, 40vw" alt="Frame Technique"
+                            sizes="(max-width: 900px) 92vw, (max-width: 1280px) 38vw, 455px" alt="Frame Technique"
                             width="819" height="1024" loading="eager" fetchpriority="high"
                             class="blog-masthead__feature-image">
+                        </picture>
                     </div>
                     <div class="blog-masthead__feature-body">
                         <span class="blog-masthead__feature-eyebrow">Education · Featured</span>
@@ -328,7 +332,7 @@
                         <span class="card-category">Education</span>
                         <img src="../assets/images/home/gallery_4_1200w.webp"
                             srcset="../assets/images/home/gallery_4_480w.webp 480w, ../assets/images/home/gallery_4_800w.webp 800w, ../assets/images/home/gallery_4_1200w.webp 1200w"
-                            sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px"
+                            sizes="(max-width: 600px) 112px, (max-width: 900px) 46vw, 431px"
                             alt="AXcent Dance instructors teaching a Bachata workshop in Zurich" width="1200" height="829" loading="lazy"
                             class="card-image" decoding="async">
                     </div>
@@ -348,9 +352,12 @@
                 <article class="modern-card reveal" data-category="wellness">
                     <div class="card-image-wrap">
                         <span class="card-category">Studio</span>
-                        <img src="../assets/images/blog/discover/rent-space-zurich-1200x675.webp"
+                        <picture>
+                          <source type="image/avif" srcset="../assets/images/blog/discover/rent-space-zurich-1200x675.avif">
+                          <img src="../assets/images/blog/discover/rent-space-zurich-1200x675.webp"
                             alt="AXcent Dance studio space for yoga, Pilates, fitness, Reggaeton and Afro teachers in Zurich" width="1200" height="675"
                             loading="lazy" class="card-image" decoding="async">
+                        </picture>
                     </div>
                     <div class="card-body">
                         <div class="card-date">May 10, 2026</div>
@@ -388,11 +395,14 @@
                 <article class="modern-card reveal" data-category="events">
                     <div class="card-image-wrap">
                         <span class="card-category">Events</span>
-                        <img src="../assets/images/blog/salsa_bachata_music.webp"
+                        <picture>
+                          <source type="image/avif" srcset="../assets/images/blog/salsa_bachata_music_480w.avif 480w, ../assets/images/blog/salsa_bachata_music_800w.avif 800w, ../assets/images/blog/salsa_bachata_music_1200w.avif 1200w" sizes="(max-width: 600px) 112px, (max-width: 900px) 46vw, 400px">
+                          <img src="../assets/images/blog/salsa_bachata_music.webp"
                             srcset="../assets/images/blog/salsa_bachata_music_480w.webp 480w, ../assets/images/blog/salsa_bachata_music_800w.webp 800w, ../assets/images/blog/salsa_bachata_music_1200w.webp 1200w"
-                            sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px"
+                            sizes="(max-width: 600px) 112px, (max-width: 900px) 46vw, 400px"
                             alt="Salsa and Bachata music representing the Swiss Championship dance floor" width="1024" height="1024"
                             loading="lazy" class="card-image" decoding="async">
+                        </picture>
                     </div>
                     <div class="card-body">
                         <div class="card-date">May 5, 2026</div>
@@ -411,9 +421,12 @@
                 <article class="modern-card reveal" data-category="wellness">
                     <div class="card-image-wrap">
                         <span class="card-category">Wellness</span>
-                        <img src="../assets/images/private_lesson_hero.webp"
+                        <picture>
+                          <source type="image/avif" srcset="../assets/images/private_lesson_hero.avif">
+                          <img src="../assets/images/private_lesson_hero.webp"
                             alt="Authentic Bachata dance at AXcent Dance Zurich" width="1200" height="1200"
                             loading="lazy" class="card-image" decoding="async">
+                        </picture>
                     </div>
                     <div class="card-body">
                         <div class="card-date">Apr 5, 2026</div>
@@ -430,9 +443,12 @@
                 <article class="modern-card reveal" data-category="music">
                     <div class="card-image-wrap">
                         <span class="card-category">Music</span>
-                        <img src="../assets/images/blog/roots-of-bachata-hero.webp"
+                        <picture>
+                          <source type="image/avif" srcset="../assets/images/blog/roots-of-bachata-hero.avif">
+                          <img src="../assets/images/blog/roots-of-bachata-hero.webp"
                             alt="Finding the one in Bachata Music" width="1200" height="675"
                             loading="lazy" class="card-image" decoding="async">
+                        </picture>
                     </div>
                     <div class="card-body">
                         <div class="card-date">Mar 28, 2026</div>
@@ -548,11 +564,14 @@
                 <article class="modern-card reveal" data-category="education">
                     <div class="card-image-wrap">
                         <span class="card-category">Education</span>
-                        <img src="../assets/images/blog/salsa_vs_bachata_hero.webp"
+                        <picture>
+                          <source type="image/avif" srcset="../assets/images/blog/salsa_vs_bachata_hero_480w.avif 480w, ../assets/images/blog/salsa_vs_bachata_hero_800w.avif 800w, ../assets/images/blog/salsa_vs_bachata_hero_1200w.avif 1200w" sizes="(max-width: 600px) 112px, (max-width: 900px) 46vw, 400px">
+                          <img src="../assets/images/blog/salsa_vs_bachata_hero.webp"
                             srcset="../assets/images/blog/salsa_vs_bachata_hero_480w.webp 480w, ../assets/images/blog/salsa_vs_bachata_hero_800w.webp 800w, ../assets/images/blog/salsa_vs_bachata_hero_1200w.webp 1200w"
-                            sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px"
+                            sizes="(max-width: 600px) 112px, (max-width: 900px) 46vw, 400px"
                             alt="Salsa vs Bachata comparison" width="1024" height="1024" loading="lazy"
                             class="card-image" decoding="async">
+                        </picture>
                     </div>
                     <div class="card-body">
                         <div class="card-date">Feb 14, 2026</div>
@@ -572,7 +591,7 @@
                         <span class="card-category">Events</span>
                         <img src="../assets/images/dominican_bootcamp.webp"
                             srcset="../assets/images/dominican_bootcamp_480w.webp 480w, ../assets/images/dominican_bootcamp_800w.webp 800w, ../assets/images/dominican_bootcamp_1200w.webp 1200w"
-                            sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px"
+                            sizes="(max-width: 600px) 112px, (max-width: 900px) 46vw, 431px"
                             alt="Dominican Bachata Bootcamp flyer with Aitor Gomez and Sarah La Morena" width="1080" height="1350" loading="lazy"
                             class="card-image" style="object-position: top;" decoding="async">
                     </div>
@@ -594,7 +613,7 @@
                         <span class="card-category">Events</span>
                         <img src="../assets/images/blog/sensation-body2.webp"
                             srcset="../assets/images/blog/sensation-body2_480w.webp 480w, ../assets/images/blog/sensation-body2_800w.webp 800w, ../assets/images/blog/sensation-body2_1200w.webp 1200w"
-                            sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px"
+                            sizes="118px"
                             alt="Sensation Night Congress 2026 Lineup" width="800" height="800" loading="lazy"
                             class="card-image" decoding="async">
                     </div>
@@ -614,11 +633,14 @@
                 <article class="modern-card reveal" data-category="wellness">
                     <div class="card-image-wrap">
                         <span class="card-category">Wellness</span>
-                        <img src="../assets/images/studio/studio_room_view_1.webp"
+                        <picture>
+                          <source type="image/avif" srcset="../assets/images/studio/studio_room_view_1_480w.avif 480w, ../assets/images/studio/studio_room_view_1_800w.avif 800w, ../assets/images/studio/studio_room_view_1_1200w.avif 1200w" sizes="118px">
+                          <img src="../assets/images/studio/studio_room_view_1.webp"
                             srcset="../assets/images/studio/studio_room_view_1_480w.webp 480w, ../assets/images/studio/studio_room_view_1_800w.webp 800w, ../assets/images/studio/studio_room_view_1_1200w.webp 1200w"
-                            sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px"
+                            sizes="118px"
                             alt="AXcent Dance Studio Room Rental" width="1200" height="800" loading="lazy"
                             class="card-image" decoding="async">
+                        </picture>
                     </div>
                     <div class="card-body">
                         <div class="card-date">Jan 31, 2026</div>
@@ -636,11 +658,14 @@
                 <article class="modern-card reveal" data-category="education">
                     <div class="card-image-wrap">
                         <span class="card-category">Education</span>
-                        <img src="../assets/images/blog/latin_salsa.webp"
+                        <picture>
+                          <source type="image/avif" srcset="../assets/images/blog/latin_salsa_480w.avif 480w, ../assets/images/blog/latin_salsa_800w.avif 800w, ../assets/images/blog/latin_salsa.avif 1024w" sizes="(max-width: 600px) 112px, (max-width: 900px) 46vw, 400px">
+                          <img src="../assets/images/blog/latin_salsa.webp"
                             srcset="../assets/images/blog/latin_salsa_480w.webp 480w, ../assets/images/blog/latin_salsa_800w.webp 800w, ../assets/images/blog/latin_salsa.webp 1024w"
-                            sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px"
+                            sizes="(max-width: 600px) 112px, (max-width: 900px) 46vw, 400px"
                             alt="Latin Dance School Zurich" width="1024" height="1024" loading="lazy"
                             class="card-image" decoding="async">
+                        </picture>
                     </div>
                     <div class="card-body">
                         <div class="card-date">Jan 25, 2026</div>
@@ -661,7 +686,7 @@
                         <span class="card-category">Community</span>
                         <img src="../assets/images/blog/first-week-new-studio.webp"
                             srcset="../assets/images/blog/first-week-new-studio_480w.webp 480w, ../assets/images/blog/first-week-new-studio_800w.webp 800w, ../assets/images/blog/first-week-new-studio_1200w.webp 1200w"
-                            sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px"
+                            sizes="(max-width: 600px) 112px, (max-width: 900px) 46vw, 400px"
                             alt="First Week at AXcent Dance New Studio" width="1024" height="768" loading="lazy"
                             class="card-image" decoding="async">
                     </div>
@@ -687,7 +712,7 @@
                         <span class="card-category">News</span>
                         <img src="../assets/images/empty_studio_mirrors.webp"
                             srcset="../assets/images/empty_studio_mirrors_480w.webp 480w, ../assets/images/empty_studio_mirrors_800w.webp 800w, ../assets/images/empty_studio_mirrors_1200w.webp 1200w"
-                            sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px" alt="New Location Zurich"
+                            sizes="(max-width: 600px) 112px, (max-width: 900px) 46vw, 400px" alt="New Location Zurich"
                             width="1024" height="1024" loading="lazy" class="card-image" decoding="async">
                     </div>
                     <div class="card-body">
@@ -708,7 +733,7 @@
                         <span class="card-category">Music</span>
                         <img src="../assets/images/blog/romeo-prince-tour-2026.webp"
                             srcset="../assets/images/blog/romeo-prince-tour-2026_480w.webp 480w, ../assets/images/blog/romeo-prince-tour-2026_800w.webp 800w, ../assets/images/blog/romeo-prince-tour-2026_1200w.webp 1200w"
-                            sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px"
+                            sizes="(max-width: 600px) 112px, (max-width: 900px) 46vw, 400px"
                             alt="Romeo Santos Tour 2026" width="838" height="1024" loading="lazy" class="card-image" decoding="async">
                     </div>
                     <div class="card-body">
@@ -728,10 +753,13 @@
                 <article class="modern-card reveal" data-category="wellness">
                     <div class="card-image-wrap">
                         <span class="card-category">Wellness</span>
-                        <img src="../assets/images/blog/science-of-dance-mental-health.webp"
+                        <picture>
+                          <source type="image/avif" srcset="../assets/images/blog/science-of-dance-mental-health_480w.avif 480w, ../assets/images/blog/science-of-dance-mental-health_800w.avif 800w, ../assets/images/blog/science-of-dance-mental-health_1200w.avif 1200w" sizes="118px">
+                          <img src="../assets/images/blog/science-of-dance-mental-health.webp"
                             srcset="../assets/images/blog/science-of-dance-mental-health_480w.webp 480w, ../assets/images/blog/science-of-dance-mental-health_800w.webp 800w, ../assets/images/blog/science-of-dance-mental-health_1200w.webp 1200w"
-                            sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px"
+                            sizes="118px"
                             alt="Stress Less, Dance More" width="1024" height="1024" loading="lazy" class="card-image" decoding="async">
+                        </picture>
                     </div>
                     <div class="card-body">
                         <div class="card-date">Jan 4, 2026</div>
@@ -753,7 +781,7 @@
                         <span class="card-category">News</span>
                         <img src="../assets/images/christmas_break_2025.webp"
                             srcset="../assets/images/christmas_break_2025_480w.webp 480w, ../assets/images/christmas_break_2025_800w.webp 800w, ../assets/images/christmas_break_2025_1200w.webp 1200w"
-                            sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px" alt="Christmas Break"
+                            sizes="118px" alt="Christmas Break"
                             width="1024" height="1024" loading="lazy" class="card-image" decoding="async">
                     </div>
                     <div class="card-body">
@@ -774,7 +802,7 @@
                         <span class="card-category">Music</span>
                         <img src="../assets/images/romeo_santos.webp"
                             srcset="../assets/images/romeo_santos_480w.webp 480w, ../assets/images/romeo_santos_800w.webp 800w, ../assets/images/romeo_santos_1200w.webp 1200w"
-                            sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px"
+                            sizes="(max-width: 600px) 112px, (max-width: 900px) 46vw, 400px"
                             alt="Romeo Santos and Prince Royce" width="1024" height="1024" loading="lazy"
                             class="card-image" decoding="async">
                     </div>
@@ -796,7 +824,7 @@
                         <span class="card-category">Dance Tips</span>
                         <img src="../assets/images/bachata_essentials_flatlay.webp"
                             srcset="../assets/images/bachata_essentials_flatlay_480w.webp 480w, ../assets/images/bachata_essentials_flatlay_800w.webp 800w, ../assets/images/bachata_essentials_flatlay_1200w.webp 1200w"
-                            sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px"
+                            sizes="(max-width: 600px) 112px, (max-width: 900px) 46vw, 400px"
                             alt="Dance Essentials Flatlay" width="1024" height="1024" loading="lazy" class="card-image" decoding="async">
                     </div>
                     <div class="card-body">
@@ -819,7 +847,7 @@
                         <span class="card-category">Dance Tips</span>
                         <img src="../assets/images/blog/connection-101.webp"
                             srcset="../assets/images/blog/connection-101_480w.webp 480w, ../assets/images/blog/connection-101_800w.webp 800w, ../assets/images/blog/connection-101_1200w.webp 1200w"
-                            sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px" alt="Connection 101"
+                            sizes="(max-width: 600px) 112px, (max-width: 900px) 46vw, 400px" alt="Connection 101"
                             width="1024" height="1024" loading="lazy" class="card-image" decoding="async">
                     </div>
                     <div class="card-body">
@@ -840,7 +868,7 @@
                         <span class="card-category">Education</span>
                         <img src="../assets/images/blog/roots-of-bachata-hero.webp"
                             srcset="../assets/images/blog/roots-of-bachata_480w.webp 480w, ../assets/images/blog/roots-of-bachata_800w.webp 800w, ../assets/images/blog/roots-of-bachata_1200w.webp 1200w"
-                            sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px" alt="Bachata Roots"
+                            sizes="(max-width: 600px) 112px, (max-width: 900px) 46vw, 431px" alt="Bachata Roots"
                             width="1024" height="1024" loading="lazy" class="card-image" decoding="async">
                     </div>
                     <div class="card-body">
@@ -893,7 +921,6 @@
             <div class="footer-col">
                 <h2 class="footer-heading">Quick Links</h2>
                 <ul class="footer-links">
-                    <li><a href="/#trial-form">Book Free Trial</a></li>
                     <li><a href="../guide-bachata">What is Bachata</a></li>
                     <li><a href="/blog/roots-of-bachata">Roots of Bachata</a></li>
                     <li><a href="../schedule">Schedule</a></li>
@@ -934,7 +961,7 @@
     </footer>
 
     <script src="/assets/vendor/gsap-3.12.5.min.js"></script>
-    <script src="../script.js?v=7.0"></script>
+    <script src="../script.js?v=7.3"></script>
 
 
 

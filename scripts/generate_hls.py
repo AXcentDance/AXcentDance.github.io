@@ -8,6 +8,17 @@ ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 HLS_ROOT = os.path.join(ROOT_DIR, "assets", "videos", "hls")
 DEFAULT_SEGMENT_SECONDS = 3.0
 DEFAULT_DESKTOP_CRF = 24
+DEFAULT_DESKTOP_MAXRATE = 6000  # kbps ceiling for the 1080p rendition
+
+
+def probe_duration(input_video):
+    """Source duration in seconds (needed to place a fade-out when no --duration trim is given)."""
+    out = subprocess.run(
+        ["ffprobe", "-v", "quiet", "-show_entries", "format=duration",
+         "-of", "default=noprint_wrappers=1:nokey=1", input_video],
+        check=True, capture_output=True, text=True,
+    ).stdout.strip()
+    return float(out)
 
 
 def probe_fps(input_video):
@@ -24,7 +35,8 @@ def probe_fps(input_video):
 
 
 def generate_hls(input_video, name, keep_audio=False, mobile_only=False,
-                 segment_seconds=DEFAULT_SEGMENT_SECONDS, desktop_crf=DEFAULT_DESKTOP_CRF):
+                 segment_seconds=DEFAULT_SEGMENT_SECONDS, desktop_crf=DEFAULT_DESKTOP_CRF,
+                 desktop_maxrate=DEFAULT_DESKTOP_MAXRATE, duration=None, fade=None):
     output_dir = os.path.join(HLS_ROOT, name)
     if os.path.exists(output_dir):
         shutil.rmtree(output_dir)
@@ -32,6 +44,14 @@ def generate_hls(input_video, name, keep_audio=False, mobile_only=False,
 
     fps = probe_fps(input_video)
     gop = round(fps * segment_seconds)  # one keyframe per segment boundary
+
+    # Fade in from black / out to black at the clip edges, so a looping hero
+    # video passes through black instead of jump-cutting mid-move.
+    fade_prefix = ""
+    if fade:
+        clip_end = duration or probe_duration(input_video)
+        fade_prefix = "fade=t=in:st=0:d=%g,fade=t=out:st=%g:d=%g," % (
+            fade, clip_end - fade, fade)
 
     # Two renditions:
     # 1. 720p for mobile/tablet (low bitrate ceiling)
@@ -42,7 +62,10 @@ def generate_hls(input_video, name, keep_audio=False, mobile_only=False,
 
         # Stream 0: 720p (Mobile/Tablet optimized). min(...) prevents upscaling
         # when the source is smaller than the rendition target.
-        "-filter:v:0", "scale=w='min(720,iw)':h=-2",
+        # format=yuv420p forces 8-bit output: a 10-bit master would otherwise
+        # produce High10-profile H.264, which iPhone/Safari hardware decoders
+        # reject — the hero would silently show only its poster on iOS.
+        "-filter:v:0", fade_prefix + "scale=w='min(720,iw)':h=-2,format=yuv420p",
         "-c:v:0", "libx264", "-crf:v:0", "28", "-preset:v:0", "slow",
         "-b:v:0", "800k", "-maxrate:v:0", "1000k", "-bufsize:v:0", "1500k",
         "-g:v:0", str(gop), "-keyint_min:v:0", str(gop), "-sc_threshold:v:0", "0",
@@ -51,9 +74,11 @@ def generate_hls(input_video, name, keep_audio=False, mobile_only=False,
     if not mobile_only:
         cmd += [
             # Stream 1: 1080p (Desktop optimized)
-            "-filter:v:1", "scale=w='min(1920,iw)':h=-2",
+            "-filter:v:1", fade_prefix + "scale=w='min(1920,iw)':h=-2,format=yuv420p",
             "-c:v:1", "libx264", "-crf:v:1", str(desktop_crf), "-preset:v:1", "slow",
-            "-b:v:1", "4500k", "-maxrate:v:1", "6000k", "-bufsize:v:1", "9000k",
+            "-b:v:1", "%dk" % round(desktop_maxrate * 0.75),
+            "-maxrate:v:1", "%dk" % desktop_maxrate,
+            "-bufsize:v:1", "%dk" % round(desktop_maxrate * 1.5),
             "-g:v:1", str(gop), "-keyint_min:v:1", str(gop), "-sc_threshold:v:1", "0",
         ]
 
@@ -68,6 +93,10 @@ def generate_hls(input_video, name, keep_audio=False, mobile_only=False,
         cmd += ["-an"]
         var_stream_map = "v:0,name:mobile" if mobile_only \
             else "v:0,name:mobile v:1,name:desktop"
+
+    if duration:
+        # Output-side trim: frame-accurate because the streams are re-encoded.
+        cmd += ["-t", "%g" % duration]
 
     cmd += [
         "-var_stream_map", var_stream_map,
@@ -103,9 +132,22 @@ if __name__ == "__main__":
                              % DEFAULT_SEGMENT_SECONDS)
     parser.add_argument("--crf-desktop", type=int, default=DEFAULT_DESKTOP_CRF,
                         help="CRF for the 1080p desktop rendition (default: %d; lower = higher "
-                             "quality/bitrate, still capped by maxrate 6000k)" % DEFAULT_DESKTOP_CRF)
+                             "quality/bitrate, still capped by --maxrate-desktop)" % DEFAULT_DESKTOP_CRF)
+    parser.add_argument("--maxrate-desktop", type=int, default=DEFAULT_DESKTOP_MAXRATE,
+                        help="Bitrate ceiling in kbps for the 1080p desktop rendition "
+                             "(default: %d). A low CRF alone cannot exceed this ceiling, so raise "
+                             "it deliberately for short showcase clips only — it is what protects "
+                             "the page weight statistics." % DEFAULT_DESKTOP_MAXRATE)
+    parser.add_argument("--duration", type=float, default=None,
+                        help="Publish only the first N seconds of the source (frame-accurate "
+                             "trim; default: full length). The master file is never modified.")
+    parser.add_argument("--fade", type=float, default=None,
+                        help="Fade in from black at the start and out to black at the end of the "
+                             "published clip, N seconds each (e.g. 0.4). Recommended for looping "
+                             "hero videos so the loop passes through black instead of jump-cutting.")
     args = parser.parse_args()
     if not os.path.isfile(args.input):
         sys.exit("Input file not found: %s" % args.input)
     generate_hls(args.input, args.name, keep_audio=args.keep_audio, mobile_only=args.mobile_only,
-                 segment_seconds=args.segment_seconds, desktop_crf=args.crf_desktop)
+                 segment_seconds=args.segment_seconds, desktop_crf=args.crf_desktop,
+                 desktop_maxrate=args.maxrate_desktop, duration=args.duration, fade=args.fade)

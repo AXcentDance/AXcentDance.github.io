@@ -30,8 +30,8 @@
     <!-- Styles -->
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/inter-200-900-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/outfit-500-800-latin.woff2" crossorigin>
-    <link rel="stylesheet" href="style.css?v=10.4">
-    <link rel="stylesheet" href="tropic-noir.css?v=6.2">
+    <link rel="stylesheet" href="style.css?v=10.14">
+    <link rel="stylesheet" href="tropic-noir.css?v=9.0">
     <link rel="apple-touch-icon" href="/apple-touch-icon-v2.png">
     <link rel="icon" href="/favicon-axcent-transparent.svg" type="image/svg+xml">
 
@@ -77,14 +77,6 @@
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "Yes, our studio is perfect for birthdays, workshops, and private events. Contact us for rates."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What equipment is included?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "The rental includes the sound system, mirrors, and basic lighting. Additional equipment can be requested."
           }
         },
         {
@@ -246,6 +238,7 @@
   </head>
 
 <body class="tropic service-page rental-page nav-declutter">
+    <a class="skip-link" href="#main-content">Skip to main content</a>
     <!-- Navigation Bar -->
     <header class="main-header">
         <div class="container navbar">
@@ -304,7 +297,7 @@
         </div>
     </header>
 
-    <main>
+    <main id="main-content">
 
         <!-- Masthead -->
         <section class="split-masthead">
@@ -317,15 +310,18 @@
                     </h1>
                     <p class="split-masthead__dek">
                         Create your own magic.
-                        <strong>Rent our beautiful studio room (~140m²) for your events, workshops, or rehearsals.</strong>
+                        <strong>Rent our beautiful space (~140m²) for your events, workshops, or rehearsals.</strong>
                     </p>
                 </div>
                 <figure class="split-masthead__media">
-                    <img src="assets/images/studio/studio_room_view_1_1200w.webp"
+                    <picture>
+                      <source type="image/avif" srcset="assets/images/studio/studio_room_view_1_480w.avif 480w, assets/images/studio/studio_room_view_1_800w.avif 800w, assets/images/studio/studio_room_view_1_1200w.avif 1200w" sizes="(max-width: 899px) 100vw, (max-width: 1280px) 38vw, 460px">
+                      <img src="assets/images/studio/studio_room_view_1_1200w.webp"
                         srcset="assets/images/studio/studio_room_view_1_480w.webp 480w, assets/images/studio/studio_room_view_1_800w.webp 800w, assets/images/studio/studio_room_view_1_1200w.webp 1200w"
-                        sizes="(max-width: 899px) 100vw, 40vw"
+                        sizes="(max-width: 899px) 100vw, (max-width: 1280px) 38vw, 460px"
                         alt="Spacious dance studio with purple ceiling and mirrors"
                         width="1200" height="800" loading="eager" fetchpriority="high">
+                    </picture>
                 </figure>
             </div>
         </section>
@@ -344,7 +340,7 @@
                                 <img src="assets/images/studio/studio_room_view_3.webp" srcset="assets/images/studio/studio_room_view_3_480w.webp 480w,
                                              assets/images/studio/studio_room_view_3_800w.webp 800w,
                                              assets/images/studio/studio_room_view_3_1200w.webp 1200w"
-                                    sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 600px"
+                                    sizes="(max-width: 600px) 92vw, (max-width: 900px) 800px, 600px"
                                     alt="Lounge area of the studio with sofas, armchairs and purple walls" loading="lazy" width="1200"
                                     height="900"
                                     style="width: 100%; height: auto; object-fit: cover; transition: transform 0.5s ease; display: block;" decoding="async">
@@ -356,7 +352,7 @@
                                 <img src="assets/images/studio/studio_room_view_2.webp" srcset="assets/images/studio/studio_room_view_2_480w.webp 480w,
                                              assets/images/studio/studio_room_view_2_800w.webp 800w,
                                              assets/images/studio/studio_room_view_2_1200w.webp 1200w"
-                                    sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 600px"
+                                    sizes="(max-width: 600px) 92vw, (max-width: 900px) 800px, 600px"
                                     alt="Wide angle view of the AXcent Dance studio hall" width="1200" height="800"
                                     loading="lazy"
                                     style="width: 100%; height: auto; object-fit: cover; transition: transform 0.5s ease; display: block; transform: scale(1.15); transform-origin: 85% center;">
@@ -371,9 +367,11 @@
                             <p style="color: white; margin-bottom: 1rem;">
                                 <strong>Please specify the purpose of your rental and whether it is a one-time or recurring booking.</strong>
                                 For general questions before sending the form, <a href="contact" style="color: var(--accent-start);">contact us</a>.
+                                If you are an active student, you can book the room from your
+                                <a href="portal">Student Portal</a> for special discounts.
                             </p>
                             <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 2rem;">
-                                <strong style="color: white;">How it works:</strong> send your request with your
+                                <strong>How it works:</strong> send your request with your
                                 preferred day and time, we confirm availability by email, and you will then
                                 receive a secure payment link to complete your booking.
                             </p>
@@ -454,78 +452,87 @@
             </div>
         </section>
 
-        <!-- Studio Specifications & Purposes -->
-        <section class="reveal" style="padding-bottom: 4rem;">
+        <!-- Studio specifications: numbered spec sheet -->
+        <section class="reveal rental-specsheet-section">
             <div class="container">
-                <div class="studio-details-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start;">
-                    
-                    <!-- Left: Technical Specs -->
-                    <div class="specs-column">
-                        <h2 class="section-title-modern" style="font-size: 2rem; margin-bottom: 2rem;">Studio Specifications</h2>
-                        <div class="specs-list" style="display: flex; flex-direction: column; gap: 1.5rem;">
-                            
-                            <div class="spec-item-mini" style="display: flex; align-items: center; gap: 1rem;">
-                                <div>
-                                    <strong style="color: white; display: block;">140m² Total Space</strong>
-                                    <span style="color: var(--text-muted); font-size: 0.9rem;">Approx. 100m² of professional dance floor area.</span>
-                                </div>
-                            </div>
-
-                            <div class="spec-item-mini" style="display: flex; align-items: center; gap: 1rem;">
-                                <div>
-                                    <strong style="color: white; display: block;">Professional Lighting</strong>
-                                    <span style="color: var(--text-muted); font-size: 0.9rem;">Advanced system with multiple intensities and customizable colors.</span>
-                                </div>
-                            </div>
-
-                            <div class="spec-item-mini" style="display: flex; align-items: center; gap: 1rem;">
-                                <div>
-                                    <strong style="color: white; display: block;">High-Fidelity Sound</strong>
-                                    <span style="color: var(--text-muted); font-size: 0.9rem;">Professional audio system with Bluetooth and AUX connectivity.</span>
-                                </div>
-                            </div>
-
-                            <div class="spec-item-mini" style="display: flex; align-items: center; gap: 1rem;">
-                                <div>
-                                    <strong style="color: white; display: block;">Acoustic Excellence</strong>
-                                    <span style="color: var(--text-muted); font-size: 0.9rem;">Integrated soundproof panels for optimal acoustics.</span>
-                                </div>
-                            </div>
-
-                            <div class="spec-item-mini" style="display: flex; align-items: center; gap: 1rem;">
-                                <div>
-                                    <strong style="color: white; display: block;">Detached Lounge Area</strong>
-                                    <span style="color: var(--text-muted); font-size: 0.9rem;">Dedicated entrance lounge for personal belongings.</span>
-                                </div>
-                            </div>
-
-                        </div>
+                <h2 class="section-title-modern">Studio <em class="title-accent">specifications</em></h2>
+                <dl class="rental-specsheet">
+                    <div class="rental-specsheet__row">
+                        <span class="rental-specsheet__no" aria-hidden="true">01</span>
+                        <dt>140 m&sup2; total space</dt>
+                        <dd>Approx. 100 m&sup2; of professional dance floor.</dd>
                     </div>
-
-                    <!-- Right: Purposes/Ideal For -->
-                    <div class="purposes-column">
-                        <h2 class="section-title-modern" style="font-size: 2rem; margin-bottom: 2rem;">Ideal For</h2>
-                        <div class="purpose-tags" style="display: flex; flex-wrap: wrap; gap: 0.8rem;">
-                            <span class="purpose-tag">Dance Practice</span>
-                            <span class="purpose-tag">Rehearsals</span>
-                            <span class="purpose-tag">Workshops</span>
-                            <span class="purpose-tag">Photoshoots</span>
-                            <span class="purpose-tag">Video Productions</span>
-                            <span class="purpose-tag">Yoga Classes</span>
-                            <span class="purpose-tag">Pilates Sessions</span>
-                            <span class="purpose-tag">Seminars</span>
-                            <span class="purpose-tag">Private Lessons</span>
-                            <span class="purpose-tag">Casting Calls</span>
-                            <span class="purpose-tag">Fitness Training</span>
-                            <span class="purpose-tag">Team Building</span>
-                        </div>
-                        <p style="color: var(--text-muted); margin-top: 1.5rem; line-height: 1.6;">
-                            Our versatile space adapts to your creative and professional needs. Whether it is a high-energy workshop, a focused production, or
-                            <a href="corporate-events" style="color: var(--accent-start);">corporate event planning</a>, AXcent Dance provides the premium environment you require.
-                        </p>
+                    <div class="rental-specsheet__row">
+                        <span class="rental-specsheet__no" aria-hidden="true">02</span>
+                        <dt>Professional lighting</dt>
+                        <dd>Multiple intensities and customizable colors.</dd>
                     </div>
+                    <div class="rental-specsheet__row">
+                        <span class="rental-specsheet__no" aria-hidden="true">03</span>
+                        <dt>High-fidelity sound</dt>
+                        <dd>Professional audio with Bluetooth connectivity.</dd>
+                    </div>
+                    <div class="rental-specsheet__row">
+                        <span class="rental-specsheet__no" aria-hidden="true">04</span>
+                        <dt>Acoustic excellence</dt>
+                        <dd>Integrated soundproof panels for optimal acoustics.</dd>
+                    </div>
+                    <div class="rental-specsheet__row">
+                        <span class="rental-specsheet__no" aria-hidden="true">05</span>
+                        <dt>Detached lounge area</dt>
+                        <dd>Dedicated entrance lounge for guests and belongings.</dd>
+                    </div>
+                </dl>
+            </div>
+        </section>
 
+        <!-- What the room hosts: three scenarios instead of a tag cloud -->
+        <section class="reveal rental-stages-section">
+            <div class="container">
+                <h2 class="section-title-modern">One space, <em class="title-accent">many stages</em></h2>
+                <div class="rental-stages">
+                    <article class="rental-stage">
+                        <span class="rental-stage__overline">Move</span>
+                        <h3 class="rental-stage__title">Train &amp; rehearse</h3>
+                        <p class="rental-stage__copy">Mirrors, a professional floor, and sound built for repetition
+                            &mdash; from private drills to full show run-throughs.</p>
+                        <ul class="rental-stage__list">
+                            <li>Dance practice</li>
+                            <li>Rehearsals</li>
+                            <li>Private lessons</li>
+                            <li>Fitness training</li>
+                            <li>Yoga</li>
+                            <li>Pilates</li>
+                        </ul>
+                    </article>
+                    <article class="rental-stage">
+                        <span class="rental-stage__overline">Create</span>
+                        <h3 class="rental-stage__title">Shoot &amp; produce</h3>
+                        <p class="rental-stage__copy">Customizable lighting and a clean, camera-ready room for stills
+                            and motion.</p>
+                        <ul class="rental-stage__list">
+                            <li>Photoshoots</li>
+                            <li>Video productions</li>
+                            <li>Casting calls</li>
+                        </ul>
+                    </article>
+                    <article class="rental-stage">
+                        <span class="rental-stage__overline">Gather</span>
+                        <h3 class="rental-stage__title">Meet &amp; learn</h3>
+                        <p class="rental-stage__copy">A welcoming room with its own lounge &mdash; space to think,
+                            talk, and move together. Chairs and tables are available on request.</p>
+                        <ul class="rental-stage__list">
+                            <li>Workshops</li>
+                            <li>Seminars</li>
+                            <li>Team building</li>
+                        </ul>
+                    </article>
                 </div>
+                <p class="rental-stages__coda">
+                    Our versatile space adapts to your creative and professional needs. Whether it is a high-energy
+                    workshop, a focused production, or <a href="corporate-events">corporate event planning</a>,
+                    AXcent Dance provides the premium environment you require.
+                </p>
             </div>
         </section>
 
@@ -540,15 +547,8 @@
                 <div class="service-price-card">
                     <span class="service-price-card__price">CHF 50</span>
                     <span class="service-price-card__label">One-time booking for business purposes</span>
-                    <ul class="service-price-card__list">
-                        <li>Full access to the ~140m&sup2; studio room</li>
-                        <li>Sound system, mirrors, and lighting included</li>
-                        <li>Entrance lounge for your guests and belongings</li>
-                    </ul>
                     <p class="service-price-card__note">Planning a multi-week or multi-hour booking? Rates get lower
                         &mdash; <a href="contact">get in touch</a> and we will find the right arrangement.</p>
-                    <span class="service-badge-callout">For active students: Book the room from your portal for special
-                        discounts.</span>
                 </div>
             </div>
         </section>
@@ -572,18 +572,6 @@
                 <!-- FAQ Item 2 -->
                 <details class="glass-panel sched-faq">
                     <summary class="sched-faq__summary">
-                        What equipment is included?
-                        <span class="sched-faq__icon" aria-hidden="true">+</span>
-                    </summary>
-                    <div class="sched-faq__body">
-                        The rental includes the high-quality sound system (Bluetooth/Aux), mirrors, and basic lighting.
-                        Additional equipment like chairs or tables can be arranged upon request.
-                    </div>
-                </details>
-
-                <!-- FAQ Item 3 -->
-                <details class="glass-panel sched-faq">
-                    <summary class="sched-faq__summary">
                         Is there parking available?
                         <span class="sched-faq__icon" aria-hidden="true">+</span>
                     </summary>
@@ -594,7 +582,7 @@
                     </div>
                 </details>
 
-                <!-- FAQ Item 4 -->
+                <!-- FAQ Item 3 -->
                 <details class="glass-panel sched-faq">
                     <summary class="sched-faq__summary">
                         What is your cancellation policy?
@@ -645,7 +633,6 @@
       <div class="footer-col">
         <h2 class="footer-heading">Quick Links</h2>
         <ul class="footer-links">
-          <li><a href="/#trial-form">Book Free Trial</a></li>
           <li><a href="guide-bachata">What is Bachata</a></li>
           <li><a href="blog/roots-of-bachata">Roots of Bachata</a></li>
           <li><a href="schedule">Schedule</a></li>
@@ -685,7 +672,7 @@
     </div>
   </footer>
 
-    <script src="script.js?v=7.0"></script>
+    <script src="script.js?v=7.3"></script>
 
     <!-- Mirrors the Rental Inquiry into the owner's admin dashboard ("Outside
          Room Requests"). The existing FormSubmit + Google Sheets webhook

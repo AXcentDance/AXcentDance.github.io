@@ -31,8 +31,8 @@
     <!-- Styles -->
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/inter-200-900-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/outfit-500-800-latin.woff2" crossorigin>
-    <link rel="stylesheet" href="../style.css?v=10.4">
-    <link rel="stylesheet" href="../tropic-noir.css?v=6.2">
+    <link rel="stylesheet" href="../style.css?v=10.14">
+    <link rel="stylesheet" href="../tropic-noir.css?v=9.0">
     <link rel="apple-touch-icon" href="/apple-touch-icon-v2.png">
     <link rel="icon" href="/favicon-axcent-transparent.svg" type="image/svg+xml">
 
@@ -978,6 +978,7 @@
   </head>
 
 <body class="tropic guide-bachata-page nav-declutter">
+    <a class="skip-link" href="#main-content">Zum Hauptinhalt springen</a>
 
     <!-- Background Elements -->
     <div class="blob blob-1"></div>
@@ -1042,7 +1043,7 @@
         </div>
     </header>
 
-    <main>
+    <main id="main-content">
         <section class="bachata-machine" data-step="0" aria-labelledby="bachata-machine-title">
             <div class="machine-intro">
                 <span class="machine-kicker">Was ist Bachata?</span>
@@ -1057,33 +1058,48 @@
                 <div class="lineup-frame">
                     <div class="instrument-lineup">
                         <a class="lineup-instrument guira-img is-active" data-lineup-item="0" href="#guira-section">
-                            <img src="../assets/images/bachata_guira_clear.webp"
+                            <picture>
+                              <source type="image/avif" srcset="../assets/images/bachata_guira_clear_480w.avif 480w, ../assets/images/bachata_guira_clear_800w.avif 800w" sizes="(max-width: 860px) 38px, 66px">
+                              <img src="../assets/images/bachata_guira_clear.webp"
                                 srcset="../assets/images/bachata_guira_clear_480w.webp 480w, ../assets/images/bachata_guira_clear_800w.webp 800w"
                                 sizes="(max-width: 860px) 38px, 66px" alt="Bachata Güira" width="1024" height="1024">
+                            </picture>
                             <span>Güira</span>
                         </a>
                         <a class="lineup-instrument bongos-img" data-lineup-item="1" href="#bongos-section">
-                            <img src="../assets/images/bachata_bongos_clear.webp"
+                            <picture>
+                              <source type="image/avif" srcset="../assets/images/bachata_bongos_clear_480w.avif 480w, ../assets/images/bachata_bongos_clear_800w.avif 800w" sizes="(max-width: 860px) 44px, 78px">
+                              <img src="../assets/images/bachata_bongos_clear.webp"
                                 srcset="../assets/images/bachata_bongos_clear_480w.webp 480w, ../assets/images/bachata_bongos_clear_800w.webp 800w"
                                 sizes="(max-width: 860px) 44px, 78px" alt="Bachata Bongos" width="1024" height="1024" loading="lazy" decoding="async">
+                            </picture>
                             <span>Bongos</span>
                         </a>
                         <a class="lineup-instrument segunda-img" data-lineup-item="2" href="#segunda-section">
-                            <img src="../assets/images/bachata_segunda_clear.webp"
+                            <picture>
+                              <source type="image/avif" srcset="../assets/images/bachata_segunda_clear_480w.avif 480w, ../assets/images/bachata_segunda_clear_800w.avif 800w" sizes="(max-width: 860px) 58px, 106px">
+                              <img src="../assets/images/bachata_segunda_clear.webp"
                                 srcset="../assets/images/bachata_segunda_clear_480w.webp 480w, ../assets/images/bachata_segunda_clear_800w.webp 800w"
                                 sizes="(max-width: 860px) 58px, 106px" alt="Bachata Segunda Gitarre" width="1024" height="1024" loading="lazy" decoding="async">
+                            </picture>
                             <span>Segunda</span>
                         </a>
                         <a class="lineup-instrument bass-img" data-lineup-item="3" href="#bass-section">
-                            <img src="../assets/images/bachata_bass_clear.webp"
+                            <picture>
+                              <source type="image/avif" srcset="../assets/images/bachata_bass_clear_480w.avif 480w, ../assets/images/bachata_bass_clear_800w.avif 800w" sizes="(max-width: 860px) 68px, 126px">
+                              <img src="../assets/images/bachata_bass_clear.webp"
                                 srcset="../assets/images/bachata_bass_clear_480w.webp 480w, ../assets/images/bachata_bass_clear_800w.webp 800w"
                                 sizes="(max-width: 860px) 68px, 126px" alt="Bachata Bassgitarre" width="1024" height="1024" loading="lazy" decoding="async">
+                            </picture>
                             <span>Bass</span>
                         </a>
                         <a class="lineup-instrument requinto-img" data-lineup-item="4" href="#requinto-section">
-                            <img src="../assets/images/bachata_requinto_clear.webp"
+                            <picture>
+                              <source type="image/avif" srcset="../assets/images/bachata_requinto_clear_480w.avif 480w, ../assets/images/bachata_requinto_clear_800w.avif 800w" sizes="(max-width: 860px) 62px, 112px">
+                              <img src="../assets/images/bachata_requinto_clear.webp"
                                 srcset="../assets/images/bachata_requinto_clear_480w.webp 480w, ../assets/images/bachata_requinto_clear_800w.webp 800w"
                                 sizes="(max-width: 860px) 62px, 112px" alt="Bachata Requinto Lead-Gitarre" width="1024" height="1024" loading="lazy" decoding="async">
+                            </picture>
                             <span>Requinto</span>
                         </a>
                     </div>
@@ -1106,10 +1122,13 @@
                         </p>
                     </div>
                     <figure class="falling-instrument guira-img" aria-hidden="true">
-                        <img src="../assets/images/bachata_guira_clear.webp"
+                        <picture>
+                          <source type="image/avif" srcset="../assets/images/bachata_guira_clear_480w.avif 480w, ../assets/images/bachata_guira_clear_800w.avif 800w" sizes="(max-width: 860px) 150px, 230px">
+                          <img src="../assets/images/bachata_guira_clear.webp"
                             srcset="../assets/images/bachata_guira_clear_480w.webp 480w, ../assets/images/bachata_guira_clear_800w.webp 800w"
                             sizes="(max-width: 860px) 150px, 230px" alt="Bachata Güira Metallschaber mit Stick"
                             width="1024" height="1024" loading="lazy" decoding="async">
+                        </picture>
                     </figure>
                 </article>
 
@@ -1129,10 +1148,13 @@
                         </p>
                     </div>
                     <figure class="falling-instrument bongos-img" aria-hidden="true">
-                        <img src="../assets/images/bachata_bongos_clear.webp"
+                        <picture>
+                          <source type="image/avif" srcset="../assets/images/bachata_bongos_clear_480w.avif 480w, ../assets/images/bachata_bongos_clear_800w.avif 800w" sizes="(max-width: 860px) 190px, 290px">
+                          <img src="../assets/images/bachata_bongos_clear.webp"
                             srcset="../assets/images/bachata_bongos_clear_480w.webp 480w, ../assets/images/bachata_bongos_clear_800w.webp 800w"
                             sizes="(max-width: 860px) 190px, 290px" alt="Bachata Bongos für den Martillo-Rhythmus"
                             width="1024" height="1024" loading="lazy" decoding="async">
+                        </picture>
                     </figure>
                 </article>
 
@@ -1152,10 +1174,13 @@
                         </p>
                     </div>
                     <figure class="falling-instrument segunda-img" aria-hidden="true">
-                        <img src="../assets/images/bachata_segunda_clear.webp"
+                        <picture>
+                          <source type="image/avif" srcset="../assets/images/bachata_segunda_clear_480w.avif 480w, ../assets/images/bachata_segunda_clear_800w.avif 800w" sizes="(max-width: 860px) 250px, 390px">
+                          <img src="../assets/images/bachata_segunda_clear.webp"
                             srcset="../assets/images/bachata_segunda_clear_480w.webp 480w, ../assets/images/bachata_segunda_clear_800w.webp 800w"
                             sizes="(max-width: 860px) 250px, 390px" alt="Bachata Segunda Rhythmusgitarre"
                             width="1024" height="1024" loading="lazy" decoding="async">
+                        </picture>
                     </figure>
                 </article>
 
@@ -1175,10 +1200,13 @@
                         </p>
                     </div>
                     <figure class="falling-instrument bass-img" aria-hidden="true">
-                        <img src="../assets/images/bachata_bass_clear.webp"
+                        <picture>
+                          <source type="image/avif" srcset="../assets/images/bachata_bass_clear_480w.avif 480w, ../assets/images/bachata_bass_clear_800w.avif 800w" sizes="(max-width: 860px) 290px, 460px">
+                          <img src="../assets/images/bachata_bass_clear.webp"
                             srcset="../assets/images/bachata_bass_clear_480w.webp 480w, ../assets/images/bachata_bass_clear_800w.webp 800w"
                             sizes="(max-width: 860px) 290px, 460px" alt="Bachata Bassgitarre"
                             width="1024" height="1024" loading="lazy" decoding="async">
+                        </picture>
                     </figure>
                 </article>
 
@@ -1197,10 +1225,13 @@
                         </p>
                     </div>
                     <figure class="falling-instrument requinto-img" aria-hidden="true">
-                        <img src="../assets/images/bachata_requinto_clear.webp"
+                        <picture>
+                          <source type="image/avif" srcset="../assets/images/bachata_requinto_clear_480w.avif 480w, ../assets/images/bachata_requinto_clear_800w.avif 800w" sizes="(max-width: 860px) 270px, 430px">
+                          <img src="../assets/images/bachata_requinto_clear.webp"
                             srcset="../assets/images/bachata_requinto_clear_480w.webp 480w, ../assets/images/bachata_requinto_clear_800w.webp 800w"
                             sizes="(max-width: 860px) 270px, 430px" alt="Bachata Requinto Lead-Gitarre"
                             width="1024" height="1024" loading="lazy" decoding="async">
+                        </picture>
                     </figure>
                 </article>
             </div>
@@ -1287,7 +1318,6 @@
             <div class="footer-col">
                 <h2 class="footer-heading">Schnellzugriff</h2>
                 <ul class="footer-links">
-                    <li><a href="/de/#trial-form">Kostenlose Probelektion buchen</a></li>
                     <li><a href="guide-bachata">Was ist Bachata</a></li>
                     <li><a href="blog/roots-of-bachata">Wurzeln des Bachatas</a></li>
                     <li><a href="schedule">Stundenplan</a></li>
@@ -1327,7 +1357,7 @@
         </div>
     </footer>
 
-    <script src="../script.js?v=7.0"></script>
+    <script src="../script.js?v=7.3"></script>
 
     <script>
         (() => {

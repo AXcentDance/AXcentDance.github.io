@@ -28,10 +28,10 @@
 
 
     <!-- Styles -->
-    <link rel="stylesheet" href="style.css?v=10.4">
-    <link rel="stylesheet" href="tropic-noir.css?v=6.2">
-    <link rel="preload" as="image" href="assets/images/bachata_class_zurich_800w.webp"
-        imagesrcset="assets/images/bachata_class_zurich_480w.webp 480w, assets/images/bachata_class_zurich_800w.webp 800w, assets/images/bachata_class_zurich_1200w.webp 1200w"
+    <link rel="stylesheet" href="style.css?v=10.14">
+    <link rel="stylesheet" href="tropic-noir.css?v=9.0">
+    <link type="image/avif" rel="preload" as="image" href="assets/images/bachata_class_zurich_800w.avif"
+        imagesrcset="assets/images/bachata_class_zurich_480w.avif 480w, assets/images/bachata_class_zurich_800w.avif 800w, assets/images/bachata_class_zurich_1200w.avif 1200w"
         imagesizes="(max-width: 900px) 92vw, 42vw" fetchpriority="high">
     <link rel="apple-touch-icon" href="/apple-touch-icon-v2.png">
     <link rel="icon" href="/favicon-axcent-transparent.svg" type="image/svg+xml">
@@ -233,6 +233,7 @@
 </head>
 
 <body class="guide-page nav-declutter">
+    <a class="skip-link" href="#main-content">Skip to main content</a>
 
 
     <!-- Navigation Bar -->
@@ -293,7 +294,7 @@
         </div>
     </header>
 
-    <main>
+    <main id="main-content">
 
         <!-- 1. Editorial masthead: lesson copy left, class photo right -->
         <section class="guide-masthead" aria-label="Beginner guide introduction">
@@ -314,10 +315,13 @@
                 </div>
                 <figure class="guide-masthead__figure" data-guide-figure>
                     <div class="guide-masthead__media">
-                        <img src="assets/images/bachata_class_zurich.webp"
+                        <picture>
+                          <source type="image/avif" srcset="assets/images/bachata_class_zurich_480w.avif 480w, assets/images/bachata_class_zurich_800w.avif 800w, assets/images/bachata_class_zurich_1200w.avif 1200w" sizes="(max-width: 900px) 92vw, 42vw">
+                          <img src="assets/images/bachata_class_zurich.webp"
                             srcset="assets/images/bachata_class_zurich_480w.webp 480w, assets/images/bachata_class_zurich_800w.webp 800w, assets/images/bachata_class_zurich_1200w.webp 1200w"
                             sizes="(max-width: 900px) 92vw, 42vw" alt="Bachata Classes in Zurich"
                             width="1024" height="1024" loading="eager" fetchpriority="high">
+                        </picture>
                     </div>
                 </figure>
             </div>
@@ -483,13 +487,13 @@
                         <h2 class="guide-chapter__title">What Beginners Say</h2>
                     </header>
                     <div class="reviews-proof" aria-label="AXcent Dance Google rating and student reasons">
-                        <div class="reviews-proof__rating-figure" aria-label="Rated 5 out of 5 stars from 41 Google reviews">
+                        <div class="reviews-proof__rating-figure" aria-label="Rated 5 out of 5 stars from 43 Google reviews">
                             <strong class="reviews-proof__score">5/5</strong>
                             <span class="reviews-proof__starfield" aria-hidden="true">
                                 <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
                             </span>
                             <a class="reviews-proof__source-line" href="https://www.google.com/maps?cid=15680757943659417558"
-                                target="_blank" rel="noopener noreferrer">from 41 Google reviews</a>
+                                target="_blank" rel="noopener noreferrer">from 43 Google reviews</a>
                         </div>
                     </div>
                     <div class="mini-reviews__quotes">
@@ -555,7 +559,6 @@
             <div class="footer-col">
                 <h2 class="footer-heading">Quick Links</h2>
                 <ul class="footer-links">
-                    <li><a href="/#trial-form">Book Free Trial</a></li>
                     <li><a href="guide-bachata">What is Bachata</a></li>
                     <li><a href="blog/roots-of-bachata">Roots of Bachata</a></li>
                     <li><a href="schedule">Schedule</a></li>
@@ -596,7 +599,7 @@
     </footer>
 
     <script src="/assets/vendor/gsap-3.12.5.min.js"></script>
-    <script src="script.js?v=7.0"></script>
+    <script src="script.js?v=7.3"></script>
 
 
 

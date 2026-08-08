@@ -30,8 +30,8 @@
     <!-- Styles -->
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/inter-200-900-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/outfit-500-800-latin.woff2" crossorigin>
-    <link rel="stylesheet" href="style.css?v=10.4">
-    <link rel="stylesheet" href="tropic-noir.css?v=6.2">
+    <link rel="stylesheet" href="style.css?v=10.14">
+    <link rel="stylesheet" href="tropic-noir.css?v=9.0">
     <link rel="apple-touch-icon" href="/apple-touch-icon-v2.png">
     <link rel="icon" href="/favicon-axcent-transparent.svg" type="image/svg+xml">
 
@@ -72,7 +72,7 @@
       "@id": "https://axcentdance.com/wedding-dance#service",
       "name": "Wedding First-Dance Package",
       "serviceType": "Wedding dance choreography and lessons",
-      "description": "Custom first-dance choreography, individual private lessons, song selection and editing support, filmed steps for home practice, and a final rehearsal.",
+      "description": "Custom first-dance choreography, 8 hours of private preparation with our instructors, song selection and editing support, filmed steps for home practice, and a final rehearsal.",
       "provider": { "@id": "https://axcentdance.com/#organization" },
       "areaServed": { "@type": "AdministrativeArea", "name": "Zurich" },
       "offers": {
@@ -229,6 +229,7 @@
   </head>
 
 <body class="tropic service-page wedding-page nav-declutter">
+    <a class="skip-link" href="#main-content">Skip to main content</a>
     <!-- Navigation Bar -->
     <header class="main-header">
         <div class="container navbar">
@@ -287,7 +288,7 @@
         </div>
     </header>
 
-    <main>
+    <main id="main-content">
 
         <!-- Hero Section -->
         <section class="hero" style="min-height: 80vh; align-items: center;">
@@ -364,7 +365,7 @@
                     <div class="gallery-item" style="transform: rotate(2deg); border-color: var(--accent-start);">
                         <img src="assets/images/wedding_dance_hero.webp"
                             srcset="assets/images/wedding_dance_hero_480w.webp 480w, assets/images/wedding_dance_hero_800w.webp 800w, assets/images/wedding_dance_hero_1200w.webp 1200w"
-                            sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px"
+                            sizes="(max-width: 899px) 92vw, 325px"
                             alt="Wedding Dance Couple" width="1024" height="1024" loading="lazy" decoding="async">
                     </div>
                 </div>
@@ -385,8 +386,9 @@
                             </div>
                             <div class="value-details" style="display: block;">
                                 <p class="value-desc">
-                                    We meet (online or in person) to discuss your vision, listen to your song, and
-                                    understand your dance floor size and dress constraints.
+                                    We meet (online or in person) to discuss your vision: your song, the style,
+                                    and the feeling you want your dance to carry. We also map out your dance floor
+                                    size and any dress constraints.
                                 </p>
                             </div>
                         </div>
@@ -435,7 +437,7 @@
                     <span class="service-price-card__label">First-dance package</span>
                     <ul class="service-price-card__list">
                         <li>Choreography prepared for your song</li>
-                        <li>Individual private lessons at the studio</li>
+                        <li>8 hours of private preparation with our instructors</li>
                         <li>Song selection and editing support</li>
                         <li>Filmed steps so you can practice at home</li>
                         <li>Final rehearsal before the big day</li>
@@ -469,7 +471,7 @@
                             <span class="sched-faq__icon" aria-hidden="true">+</span>
                         </summary>
                         <div class="sched-faq__body">
-                            Ideally two to three months before the wedding, so you can rehearse without stress. A later
+                            Ideally three to four months before the wedding, so you can rehearse without stress. A later
                             start is possible &mdash; we adapt the plan to the time you have.
                         </div>
                     </details>
@@ -533,7 +535,6 @@
       <div class="footer-col">
         <h2 class="footer-heading">Quick Links</h2>
         <ul class="footer-links">
-          <li><a href="/#trial-form">Book Free Trial</a></li>
           <li><a href="guide-bachata">What is Bachata</a></li>
           <li><a href="blog/roots-of-bachata">Roots of Bachata</a></li>
           <li><a href="schedule">Schedule</a></li>
@@ -573,7 +574,7 @@
     </div>
   </footer>
 
-    <script src="script.js?v=7.0"></script>
+    <script src="script.js?v=7.3"></script>
 
 
 

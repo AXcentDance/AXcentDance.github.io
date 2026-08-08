@@ -29,11 +29,13 @@
         content="AXcent Dance is more than just Bachata. Discover a complete Latin Dance School in Zurich teaching Salsa, Merengue, ChaCha, and Styling to create versatile dancers.">
     <meta property="og:image" content="https://axcentdance.com/assets/images/blog/discover/latin-dance-school-zurich-1200x675.jpg">
 
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://connect.facebook.net; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com https://placehold.co https://*.googleapis.com https://*.gstatic.com https://www.facebook.com https://connect.facebook.net; font-src 'self'; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://script.google.com https://formsubmit.co https://www.facebook.com https://connect.facebook.net; frame-src 'self' https://www.google.com; object-src 'none'; base-uri 'self'; media-src 'self' blob:; worker-src 'self' blob:;">
     <!-- Styles -->
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/inter-200-900-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/outfit-500-800-latin.woff2" crossorigin>
-    <link rel="stylesheet" href="../style.css?v=10.4">
-    <link rel="stylesheet" href="../tropic-noir.css?v=6.2">
+    <link rel="stylesheet" href="../style.css?v=10.14">
+    <link rel="stylesheet" href="../tropic-noir.css?v=9.0">
     <link rel="stylesheet" href="../blog-post.css?v=3.0">
 
     <!-- Favicon -->
@@ -282,6 +284,7 @@
 </head>
 
 <body class="tropic post-page nav-declutter">
+    <a class="skip-link" href="#main-content">Skip to main content</a>
 
     <!-- Navigation Bar -->
     <header class="main-header">
@@ -341,7 +344,7 @@
         </div>
     </header>
 
-    <main>
+    <main id="main-content">
 
         <!-- Module A: Hero Header -->
         <article class="blog-post">
@@ -431,14 +434,17 @@
                         </p>
                     </div>
                     <!-- Placeholders for collage images -->
-                    <img src="../assets/images/blog/latin_salsa.webp"
+                    <picture>
+                      <source type="image/avif" srcset="../assets/images/blog/latin_salsa_480w.avif 480w, ../assets/images/blog/latin_salsa_800w.avif 800w, ../assets/images/blog/latin_salsa.avif 1024w" sizes="(max-width: 900px) 46vw, 376px">
+                      <img src="../assets/images/blog/latin_salsa.webp"
                         srcset="../assets/images/blog/latin_salsa_480w.webp 480w, ../assets/images/blog/latin_salsa_800w.webp 800w, ../assets/images/blog/latin_salsa.webp 1024w"
-                        sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1024px" alt="Salsa dance practice"
+                        sizes="(max-width: 900px) 46vw, 376px" alt="Salsa dance practice"
                         width="1024" height="1024" class="collage-img"
                         style="width: 100%; height: auto; border-radius: 12px; border: 1px solid var(--glass-border);">
+                    </picture>
                     <img src="../assets/images/blog/latin_styling.webp"
                         srcset="../assets/images/blog/latin_styling_480w.webp 480w, ../assets/images/blog/latin_styling_800w.webp 800w, ../assets/images/blog/latin_styling.webp 1024w"
-                        sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1024px" alt="Lady styling class"
+                        sizes="(max-width: 900px) 46vw, 376px" alt="Lady styling class"
                         width="1024" height="1024" class="collage-img"
                         style="width: 100%; height: auto; border-radius: 12px; border: 1px solid var(--glass-border);" loading="lazy" decoding="async">
                 </div>
@@ -514,7 +520,6 @@
       <div class="footer-col">
         <h2 class="footer-heading">Quick Links</h2>
         <ul class="footer-links">
-          <li><a href="/#trial-form">Book Free Trial</a></li>
           <li><a href="../guide-bachata">What is Bachata</a></li>
           <li><a href="roots-of-bachata">Roots of Bachata</a></li>
           <li><a href="../schedule">Schedule</a></li>
@@ -554,7 +559,7 @@
     </div>
   </footer>
 
-    <script src="../script.js?v=7.0"></script>
+    <script src="../script.js?v=7.3"></script>
 </body>
 
 </html>

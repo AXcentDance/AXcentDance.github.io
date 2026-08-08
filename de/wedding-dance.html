@@ -30,8 +30,8 @@
     <!-- Styles -->
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/inter-200-900-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/outfit-500-800-latin.woff2" crossorigin>
-    <link rel="stylesheet" href="../style.css?v=10.4">
-    <link rel="stylesheet" href="../tropic-noir.css?v=6.2">
+    <link rel="stylesheet" href="../style.css?v=10.14">
+    <link rel="stylesheet" href="../tropic-noir.css?v=9.0">
     <link rel="apple-touch-icon" href="/apple-touch-icon-v2.png">
     <link rel="icon" href="/favicon-axcent-transparent.svg" type="image/svg+xml">
 
@@ -73,7 +73,7 @@
       "@id": "https://axcentdance.com/de/wedding-dance#service",
       "name": "Hochzeitstanz-Komplettpaket",
       "serviceType": "Choreografie und Unterricht für den Hochzeitstanz",
-      "description": "Individuelle Choreografie für den ersten Tanz, private Einzelstunden, Unterstützung bei der Songauswahl und beim Musikschnitt, gefilmte Schritte zum Üben zu Hause sowie eine Generalprobe.",
+      "description": "Individuelle Choreografie für den ersten Tanz, 8 Stunden private Vorbereitung mit unseren Instruktoren, Unterstützung bei der Songauswahl und beim Musikschnitt, gefilmte Schritte zum Üben zu Hause sowie eine Generalprobe.",
       "provider": { "@id": "https://axcentdance.com/#organization" },
       "areaServed": { "@type": "AdministrativeArea", "name": "Zurich" },
       "offers": {
@@ -230,6 +230,7 @@
   </head>
 
 <body class="tropic service-page wedding-page nav-declutter">
+    <a class="skip-link" href="#main-content">Zum Hauptinhalt springen</a>
     <!-- Navigation Bar -->
     <header class="main-header">
         <div class="container navbar">
@@ -288,7 +289,7 @@
         </div>
     </header>
 
-    <main>
+    <main id="main-content">
 
         <!-- Hero Section -->
         <section class="hero" style="min-height: 80vh; align-items: center;">
@@ -368,7 +369,7 @@
                     <div class="gallery-item" style="transform: rotate(2deg); border-color: var(--accent-start);">
                         <img src="../assets/images/wedding_dance_hero.webp"
                             srcset="../assets/images/wedding_dance_hero_480w.webp 480w, ../assets/images/wedding_dance_hero_800w.webp 800w, ../assets/images/wedding_dance_hero_1200w.webp 1200w"
-                            sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px" alt="Hochzeitstanz Paar"
+                            sizes="(max-width: 899px) 92vw, 325px" alt="Hochzeitstanz Paar"
                             width="1024" height="1024" loading="lazy" decoding="async">
                     </div>
                 </div>
@@ -389,8 +390,9 @@
                             </div>
                             <div class="value-details" style="display: block;">
                                 <p class="value-desc">
-                                    Wir treffen uns (online oder persönlich), um eure Vision zu besprechen, euren Song
-                                    anzuhören und die Grösse der Tanzfläche sowie Details zum Kleid zu klären.
+                                    Wir treffen uns (online oder persönlich), um eure Vision zu besprechen: euren
+                                    Song, den Stil und das Gefühl, das euer Tanz vermitteln soll. Ausserdem klären wir
+                                    die Grösse der Tanzfläche und Details zum Kleid.
                                 </p>
                             </div>
                         </div>
@@ -440,7 +442,7 @@
                     <span class="service-price-card__label">Hochzeitstanz-Paket</span>
                     <ul class="service-price-card__list">
                         <li>Choreografie für euren Song vorbereitet</li>
-                        <li>Individuelle Privatstunden im Studio</li>
+                        <li>8 Stunden private Vorbereitung mit unseren Instruktoren</li>
                         <li>Unterstützung bei Songauswahl und Musikschnitt</li>
                         <li>Gefilmte Schritte zum Üben zu Hause</li>
                         <li>Generalprobe vor dem grossen Tag</li>
@@ -474,7 +476,7 @@
                             <span class="sched-faq__icon" aria-hidden="true">+</span>
                         </summary>
                         <div class="sched-faq__body">
-                            Idealerweise zwei bis drei Monate vor der Hochzeit, damit ihr ohne Stress proben könnt.
+                            Idealerweise drei bis vier Monate vor der Hochzeit, damit ihr ohne Stress proben könnt.
                             Ein späterer Start ist möglich &mdash; wir passen den Plan an die Zeit an, die euch zur
                             Verfügung steht.
                         </div>
@@ -539,7 +541,6 @@
             <div class="footer-col">
                 <h2 class="footer-heading">Schnellzugriff</h2>
                 <ul class="footer-links">
-                    <li><a href="/de/#trial-form">Kostenlose Probelektion buchen</a></li>
                     <li><a href="guide-bachata">Was ist Bachata</a></li>
                     <li><a href="blog/roots-of-bachata">Wurzeln des Bachatas</a></li>
                     <li><a href="schedule">Stundenplan</a></li>
@@ -579,7 +580,7 @@
         </div>
     </footer>
 
-    <script src="../script.js?v=7.0"></script>
+    <script src="../script.js?v=7.3"></script>
 
 
 

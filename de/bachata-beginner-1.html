@@ -201,8 +201,8 @@
   <!-- Styles -->
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/inter-200-900-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/outfit-500-800-latin.woff2" crossorigin>
-  <link rel="stylesheet" href="../style.css?v=10.4">
-  <link rel="stylesheet" href="../tropic-noir.css?v=6.2">
+  <link rel="stylesheet" href="../style.css?v=10.14">
+  <link rel="stylesheet" href="../tropic-noir.css?v=9.0">
   <link rel="apple-touch-icon" href="/apple-touch-icon-v2.png">
   <link rel="icon" href="/favicon-axcent-transparent.svg" type="image/svg+xml">
 
@@ -243,6 +243,7 @@
 </head>
 
 <body class="tropic course-page nav-declutter">
+  <a class="skip-link" href="#main-content">Zum Hauptinhalt springen</a>
 
   <!-- Navigation Bar -->
   <header class="main-header">
@@ -302,7 +303,7 @@
     </div>
   </header>
 
-  <main>
+  <main id="main-content">
 
     <!-- Course masthead: the call sheet -->
     <section class="course-masthead">
@@ -335,7 +336,7 @@
             </div>
             <div class="course-callsheet__item">
               <dt>Block</dt>
-              <dd>8 Wochen &middot; 220 CHF (Studierende 185 CHF)</dd>
+              <dd>8 Wochen &middot; 210 CHF (Studierende 180 CHF)</dd>
             </div>
             <div class="course-callsheet__item">
               <dt>Einstieg</dt>
@@ -368,7 +369,7 @@
             <canvas class="course-masthead__haze" data-course-haze aria-hidden="true"></canvas>
             <img src="../assets/images/home/gallery_3_800w.webp"
               srcset="../assets/images/home/gallery_3_480w.webp 480w, ../assets/images/home/gallery_3_800w.webp 800w, ../assets/images/home/gallery_3_1200w.webp 1200w"
-              sizes="(max-width: 900px) 92vw, 40vw"
+              sizes="(max-width: 450px) 92vw, (max-width: 900px) 415px, (max-width: 1280px) 38vw, 460px"
               alt="Lächelnde Bachata-Schüler zusammen im AXcent Studio in Zürich"
               width="1200" height="900" loading="eager" fetchpriority="high" decoding="async">
           </div>
@@ -444,8 +445,8 @@
             <p class="course-fork__voice">&ldquo;Ich habe in meinem Leben noch keinen Tanzschritt gemacht.&rdquo;</p>
             <p class="course-fork__answer">
               Du bist trotzdem willkommen &mdash; jeder Schritt wird von null unterrichtet. Wenn du lieber in
-              einem Raum voller Erstanfänger startest, beginne mit <strong>Bachata Beginner 0</strong>, montags
-              18:30. <a href="beginner-guide">Lies den Anfänger Guide</a>.
+              einem Raum voller Erstanfänger startest, beginne mit <strong><a href="bachata-beginner-0">Bachata Beginner 0</a></strong>, montags
+              19:30. <a href="beginner-guide">Lies den Anfänger Guide</a>.
             </p>
           </div>
         </div>
@@ -500,8 +501,11 @@
       <div class="container">
         <h2 class="section-title-modern">Lerne deine <em class="title-accent">Lehrer</em> kennen</h2>
         <div class="founders-strip course-founders">
-          <img class="founders-strip__photo" src="../assets/images/ale-xidan-about_480w.webp"
+          <picture>
+            <source type="image/avif" srcset="../assets/images/ale-xidan-about_480w.avif">
+            <img class="founders-strip__photo" src="../assets/images/ale-xidan-about_480w.webp"
             alt="Ale und Xidan, Gründer von AXcent Dance" width="480" height="768" loading="lazy" decoding="async">
+          </picture>
           <div class="founders-strip__copy">
             <strong class="founders-strip__names">Ale &amp; Xidan</strong>
             <span class="founders-strip__role">Gründer, internationale Bachata-Künstler und offizielle
@@ -517,12 +521,16 @@
       <div class="container">
         <h2 class="section-title-modern">Wohin dieser Kurs <em class="title-accent">führt</em></h2>
         <ol class="course-path__ladder">
+          <li class="course-path__rung">
+            <a class="course-path__name" href="bachata-beginner-0">Beginner 0</a>
+            <span class="course-path__when">Montags 19:30</span>
+          </li>
           <li class="course-path__rung course-path__rung--current" aria-current="page">
             <span class="course-path__name">Beginner 1</span>
             <span class="course-path__when">Montags 19:30 &middot; du bist hier</span>
           </li>
           <li class="course-path__rung">
-            <a class="course-path__name" href="bachata-beginner-2">Beginner 2</a>
+            <a class="course-path__name" href="bachata-beginner-2">Beginner 3</a>
             <span class="course-path__when">Dienstags 19:30</span>
           </li>
           <li class="course-path__rung">
@@ -555,7 +563,7 @@
             <a href="registration" class="course-register__submit">Für den Kurs anmelden</a>
           </div>
           <p class="course-register__pricing">
-            8-Wochen-Block &middot; 220 CHF (27.50 pro Klasse) &middot; 15% Rabatt auf deine erste
+            8-Wochen-Block &middot; 210 CHF (26.25 pro Klasse) &middot; 15% Rabatt auf deine erste
             Anmeldung &middot; Studierendenrabatt &middot; Kein Abo
           </p>
           <p class="course-register__trust">Eine echte Person bestätigt deinen Platz per WhatsApp.</p>
@@ -608,8 +616,9 @@
             <summary class="course-faq__summary">Was, wenn ich eine Woche verpasse?<span class="course-faq__icon"
                 aria-hidden="true">+</span></summary>
             <div class="course-faq__body">
-              <p>Bist du krank, kannst du eine verpasste Klasse pro Semester in einem anderen passenden Kurs
-                nachholen. Die vollständige Richtlinie findest du in unseren <a href="terms">AGB</a>.</p>
+              <p>Bei der Anmeldung kannst du bis zu zwei geplante Abwesenheiten angeben und einen Krankheitstag
+                pro Pass, und wir verlängern deinen Pass um diesen Kurstag. Die vollständige Regelung steht in unseren
+                <a href="terms">AGB</a>.</p>
             </div>
           </details>
         </div>
@@ -650,7 +659,6 @@
             <div class="footer-col">
                 <h2 class="footer-heading">Schnellzugriff</h2>
                 <ul class="footer-links">
-                    <li><a href="/de/#trial-form">Kostenlose Probelektion buchen</a></li>
                     <li><a href="guide-bachata">Was ist Bachata</a></li>
                     <li><a href="blog/roots-of-bachata">Wurzeln des Bachatas</a></li>
                     <li><a href="schedule">Stundenplan</a></li>
@@ -698,7 +706,7 @@
 
     <script src="/assets/vendor/gsap-3.12.5.min.js"></script>
     <script type="module" src="../hls-video.js?v=1.1"></script>
-    <script src="../script.js?v=7.0"></script>
+    <script src="../script.js?v=7.3"></script>
 </body>
 
 </html>

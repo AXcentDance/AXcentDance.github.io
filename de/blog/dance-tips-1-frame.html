@@ -36,8 +36,8 @@
     <!-- Styles -->
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/inter-200-900-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/outfit-500-800-latin.woff2" crossorigin>
-    <link rel="stylesheet" href="../../style.css?v=10.4">
-    <link rel="stylesheet" href="../../tropic-noir.css?v=6.2">
+    <link rel="stylesheet" href="../../style.css?v=10.14">
+    <link rel="stylesheet" href="../../tropic-noir.css?v=9.0">
     <link rel="stylesheet" href="../../blog-post.css?v=3.0">
     <link rel="apple-touch-icon" href="/apple-touch-icon-v2.png">
     <link rel="icon" href="/favicon-axcent-transparent.svg" type="image/svg+xml">
@@ -383,6 +383,7 @@
 </head>
 
 <body class="tropic post-page nav-declutter">
+    <a class="skip-link" href="#main-content">Zum Hauptinhalt springen</a>
 
     <!-- Navigation Bar -->
     <header class="main-header">
@@ -441,13 +442,13 @@
         </div>
     </header>
 
-    <main>
+    <main id="main-content">
 
         <!-- Hero Section -->
         <section class="post-hero relative-container" style="background: none;">
             <img src="../../assets/images/hero_new.webp"
                 srcset="../../assets/images/hero_new_480w.webp 480w, ../../assets/images/hero_new_800w.webp 800w, ../../assets/images/hero_new_1200w.webp 1200w"
-                sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px"
+                sizes="100vw"
                 alt="Frame Technique in Bachata: Dance Tips Episode 1" width="1024" height="768" class="hero-bg-img">
             <div class="hero-overlay"></div>
             <div class="container hero-content-z">
@@ -462,7 +463,7 @@
 
             <img src="../../assets/images/blog/dance-tips-1-intro.webp"
                 srcset="../../assets/images/blog/dance-tips-1-intro_480w.webp 480w, ../../assets/images/blog/dance-tips-1-intro_800w.webp 800w, ../../assets/images/blog/dance-tips-1-intro_1200w.webp 1200w"
-                sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px"
+                sizes="(max-width: 900px) 92vw, 600px"
                 alt="Little things make a big difference" width="819" height="1024" loading="lazy" class="tip-image" decoding="async">
 
             <p style="text-align: center; font-size: 1.25rem;">
@@ -470,10 +471,13 @@
             </p>
 
             <h2>Die Bedeutung des Rahmens</h2>
-            <img src="../../assets/images/blog/dance-tips-1-title.webp"
+            <picture>
+              <source type="image/avif" srcset="../../assets/images/blog/dance-tips-1-title_480w.avif 480w, ../../assets/images/blog/dance-tips-1-title_800w.avif 800w, ../../assets/images/blog/dance-tips-1-title_1200w.avif 1200w" sizes="(max-width: 900px) 92vw, 600px">
+              <img src="../../assets/images/blog/dance-tips-1-title.webp"
                 srcset="../../assets/images/blog/dance-tips-1-title_480w.webp 480w, ../../assets/images/blog/dance-tips-1-title_800w.webp 800w, ../../assets/images/blog/dance-tips-1-title_1200w.webp 1200w"
-                sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px" alt="Frame Technique in Bachata"
+                sizes="(max-width: 900px) 92vw, 600px" alt="Frame Technique in Bachata"
                 width="819" height="1024" loading="lazy" class="tip-image" decoding="async">
+            </picture>
             <p>
                 Dein "Rahmen" ist die Struktur deiner Arme und deines Oberkörpers. Er ist die Brücke zwischen dir und
                 deinem Partner.
@@ -485,7 +489,7 @@
             <h2>So erschaffst du einen guten Rahmen</h2>
             <img src="../../assets/images/blog/dance-tips-1-good-frame.webp"
                 srcset="../../assets/images/blog/dance-tips-1-good-frame_480w.webp 480w, ../../assets/images/blog/dance-tips-1-good-frame_800w.webp 800w, ../../assets/images/blog/dance-tips-1-good-frame_1200w.webp 1200w"
-                sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px" alt="Correct Frame Technique"
+                sizes="(max-width: 900px) 92vw, 600px" alt="Correct Frame Technique"
                 width="819" height="1024" loading="lazy" class="tip-image" decoding="async">
 
             <p>Ein guter Rahmen ist aktiv, aber entspannt. Hier sind die wichtigsten Punkte, auf die du achten solltest:</p>
@@ -502,7 +506,7 @@
             <h2>Häufige Fehler vermeiden</h2>
             <img src="../../assets/images/blog/dance-tips-1-bad-frame.webp"
                 srcset="../../assets/images/blog/dance-tips-1-bad-frame_480w.webp 480w, ../../assets/images/blog/dance-tips-1-bad-frame_800w.webp 800w, ../../assets/images/blog/dance-tips-1-bad-frame_1200w.webp 1200w"
-                sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px" alt="Incorrect Frame Technique"
+                sizes="(max-width: 900px) 92vw, 600px" alt="Incorrect Frame Technique"
                 width="819" height="1024" loading="lazy" class="tip-image" decoding="async">
 
             <ul>
@@ -574,7 +578,6 @@
       <div class="footer-col">
         <h2 class="footer-heading">Schnellzugriff</h2>
         <ul class="footer-links">
-          <li><a href="/de/#trial-form">Kostenlose Probelektion buchen</a></li>
           <li><a href="../guide-bachata">Was ist Bachata</a></li>
           <li><a href="roots-of-bachata">Wurzeln des Bachatas</a></li>
           <li><a href="../schedule">Stundenplan</a></li>

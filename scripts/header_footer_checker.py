@@ -12,6 +12,7 @@ IGNORE_FILES = {
     "_attendance.html",
     "_login.html",
     "_signup.html",
+    "_videos.html",
     "portal.html",
     "thank-you.html",
     "thank-you-contact.html",

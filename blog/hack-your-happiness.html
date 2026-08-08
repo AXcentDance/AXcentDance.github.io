@@ -29,11 +29,13 @@
         content="Unleash your energy this Zurich spring. Discover how Bachata acts as a catalyst for happiness, connecting you with movement and joy. No partner needed. Start today!">
     <meta property="og:image" content="https://axcentdance.com/assets/images/blog/discover/hack-your-happiness-1200x675.jpg">
 
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://connect.facebook.net; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com https://placehold.co https://*.googleapis.com https://*.gstatic.com https://www.facebook.com https://connect.facebook.net; font-src 'self'; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://script.google.com https://formsubmit.co https://www.facebook.com https://connect.facebook.net; frame-src 'self' https://www.google.com; object-src 'none'; base-uri 'self'; media-src 'self' blob:; worker-src 'self' blob:;">
     <!-- Styles -->
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/inter-200-900-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/outfit-500-800-latin.woff2" crossorigin>
-    <link rel="stylesheet" href="../style.css?v=10.4">
-    <link rel="stylesheet" href="../tropic-noir.css?v=6.2">
+    <link rel="stylesheet" href="../style.css?v=10.14">
+    <link rel="stylesheet" href="../tropic-noir.css?v=9.0">
     <link rel="stylesheet" href="../blog-post.css?v=3.0">
 
     <!-- Favicon -->
@@ -156,6 +158,8 @@
 </head>
 
 <body class="tropic post-page nav-declutter">
+
+    <a class="skip-link" href="#main-content">Skip to main content</a>
     <!-- Background Elements -->
 
     <header class="main-header">
@@ -213,7 +217,7 @@
         </div>
     </header>
 
-    <main>
+    <main id="main-content">
         <article class="blog-post">
             <header class="post-header">
                 <div class="container mobile-padding">
@@ -238,9 +242,12 @@
                 </p>
 
                 <figure class="post-hero-image">
-                    <img src="../assets/images/private_lesson_hero.webp" 
+                    <picture>
+                      <source type="image/avif" srcset="../assets/images/private_lesson_hero.avif">
+                      <img src="../assets/images/private_lesson_hero.webp" 
                          alt="Authentic Bachata dance class at AXcent Dance Zurich" 
                          width="1200" height="1200" loading="eager" fetchpriority="high">
+                    </picture>
                     <figcaption>Real connection and movement at AXcent Dance Zurich.</figcaption>
                 </figure>
 
@@ -361,7 +368,6 @@
       <div class="footer-col">
         <h2 class="footer-heading">Quick Links</h2>
         <ul class="footer-links">
-          <li><a href="/#trial-form">Book Free Trial</a></li>
           <li><a href="../guide-bachata">What is Bachata</a></li>
           <li><a href="roots-of-bachata">Roots of Bachata</a></li>
           <li><a href="../schedule">Schedule</a></li>
@@ -400,7 +406,7 @@
       <p>&copy; 2026 AXcent Dance. All rights reserved.</p>
     </div>
   </footer>
-    <script src="../script.js?v=7.0"></script>
+    <script src="../script.js?v=7.3"></script>
 </body>
 
 </html>

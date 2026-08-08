@@ -18,8 +18,33 @@ ORPHAN_EXEMPT = {'index.html', 'de/index.html'}
 
 BLOG_FILTERS = {'all', 'music', 'tips', 'community', 'education', 'wellness', 'events'}
 
+# Blessed by scripts/sizes_truth_checker.py --bless after an in-browser rendered-truth run
+MANIFEST_PATH = os.path.join(ROOT_DIR, 'scripts', 'data', 'sizes_manifest.json')
+
+IMG_TAG_RE = re.compile(r'<img\b[^>]*?>', re.S)
+
 failures = []
 warnings = []
+
+
+def _attr(tag, name):
+    """Double-quoted attribute value from a tag, whitespace-normalized, or None."""
+    m = re.search(r'\b%s\s*=\s*"([^"]*)"' % name, tag, re.S)
+    return re.sub(r'\s+', ' ', m.group(1)).strip() if m else None
+
+
+def iter_size_imgs(content):
+    """(src, sizes, srcset) for every img with a w-descriptor srcset AND a sizes attr."""
+    out = []
+    for tag in IMG_TAG_RE.findall(content):
+        srcset = _attr(tag, 'srcset')
+        if not srcset or not re.search(r'\s\d+w\b', srcset):
+            continue
+        sizes = _attr(tag, 'sizes')
+        if sizes is None:
+            continue
+        out.append((_attr(tag, 'src') or '', sizes, srcset))
+    return out
 
 
 def fail(section, msg):
@@ -234,6 +259,23 @@ def check_speculation_rules(pages):
                 fail('speculation', f"{page}: speculationrules block has no prefetch rule")
 
 
+def check_page_baseline(pages):
+    """Every page ships exactly one CSP meta; every page with a header carries the
+    skip link and its #main-content target (keyboard accessibility)."""
+    for page in sorted(pages):
+        content = pages[page]
+        csp = re.findall(r'<meta\s+http-equiv=["\']Content-Security-Policy["\']', content, re.I)
+        if not csp:
+            fail('baseline', f"{page} is missing the Content-Security-Policy meta tag")
+        elif len(csp) > 1:
+            fail('baseline', f"{page} has {len(csp)} CSP meta tags (expected 1)")
+        if re.search(r'<header\b', content, re.I):
+            if 'class="skip-link"' not in content:
+                fail('baseline', f"{page} has a header but no skip link (copy it from index.html)")
+            elif 'id="main-content"' not in content:
+                fail('baseline', f"{page} has a skip link but no id=\"main-content\" target")
+
+
 def check_titles_descriptions(pages, indexable):
     titles = {}
     descs = {}
@@ -261,6 +303,84 @@ def check_titles_descriptions(pages, indexable):
     for desc, ps in descs.items():
         if len(ps) > 1:
             fail('meta', f"duplicate description on {ps}")
+
+
+def _srcset_shape(srcset):
+    """Order-preserving (basename, descriptor) tuple — path-form agnostic."""
+    shape = []
+    for cand in srcset.split(','):
+        parts = cand.strip().split()
+        if not parts:
+            continue
+        shape.append((parts[0].split('/')[-1], ' '.join(parts[1:])))
+    return tuple(shape)
+
+
+def check_image_sizes(pages):
+    """Responsive images must carry honest `sizes` values.
+
+    Static tripwire for the in-browser gate (scripts/sizes_truth_checker.py): every
+    img[srcset] needs a sizes attribute, imagesizes preload hints must mirror the img
+    they preload (else the preload double-downloads), and each instance's sizes string
+    must match the manifest blessed by the checker's rendered-truth run. Any new or
+    edited attribute fails here until the checker re-verifies and re-blesses.
+    """
+    try:
+        with open(MANIFEST_PATH, encoding='utf-8') as f:
+            manifest = json.load(f)
+    except FileNotFoundError:
+        manifest = None
+        warn('img-sizes', 'sizes manifest missing - run: python3 scripts/sizes_truth_checker.py --bless')
+    except ValueError as e:
+        manifest = None
+        fail('img-sizes', f'sizes manifest unreadable ({e})')
+
+    current = {}
+    for page in sorted(pages):
+        content = pages[page]
+        size_imgs = iter_size_imgs(content)
+
+        for tag in IMG_TAG_RE.findall(content):
+            srcset = _attr(tag, 'srcset')
+            if srcset and re.search(r'\s\d+w\b', srcset) and _attr(tag, 'sizes') is None:
+                name = (_attr(tag, 'src') or '?').split('/')[-1]
+                fail('img-sizes', f'{page}: img "{name}" has a w-descriptor srcset but no sizes attribute')
+
+        for link in re.findall(r'<link\b[^>]*?>', content, re.S):
+            if _attr(link, 'rel') != 'preload' or _attr(link, 'as') != 'image':
+                continue
+            isizes = _attr(link, 'imagesizes')
+            isrcset = _attr(link, 'imagesrcset')
+            if not isizes or not isrcset:
+                continue
+            # preload hints may reference the AVIF twins of a webp img srcset
+            twins = [s for _, s, ss in size_imgs
+                     if _srcset_shape(ss) == _srcset_shape(isrcset.replace('.avif', '.webp'))]
+            if not twins:
+                warn('img-sizes', f'{page}: imagesizes preload matches no img srcset on the page')
+            elif isizes not in twins:
+                fail('img-sizes', f'{page}: imagesizes preload "{isizes}" does not match its '
+                                  f'img sizes "{twins[0]}" (double-download risk)')
+
+        seen = {}
+        for src, sizes, _ in size_imgs:
+            base = src.split('/')[-1]
+            n = seen.get(base, 0)
+            seen[base] = n + 1
+            current[f'{page}::{base}::{n}'] = sizes
+
+    if manifest is not None:
+        for key in sorted(current):
+            page, base, _ = key.split('::')
+            blessed = manifest.get(key)
+            if blessed is None:
+                fail('img-sizes', f'{page}: responsive img "{base}" is not in the blessed manifest - '
+                                  f'verify rendered truth: python3 scripts/sizes_truth_checker.py --bless')
+            elif blessed != current[key]:
+                fail('img-sizes', f'{page}: sizes for "{base}" changed (blessed "{blessed}", now '
+                                  f'"{current[key]}") - re-verify: python3 scripts/sizes_truth_checker.py --bless')
+        for key in sorted(set(manifest) - set(current)):
+            warn('img-sizes', f'stale manifest entry (img gone): {key} - re-bless to prune')
 
 
 def run_external_checks():
@@ -301,7 +421,9 @@ def main():
     check_blog_indexes(pages, indexable)
     check_llms(pages)
     check_speculation_rules(pages)
+    check_page_baseline(pages)
     check_titles_descriptions(pages, indexable)
+    check_image_sizes(pages)
     run_external_checks()
 
     for w in warnings:

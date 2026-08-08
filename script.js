@@ -136,6 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const heroStageActions = document.querySelector('.home-hero__stage .home-hero__actions');
         const heroNoteLabel = heroStageActions ? heroStageActions.querySelector('[data-hero-note-label]') : null;
         const heroNoteText = heroStageActions ? heroStageActions.querySelector('[data-hero-note-text]') : null;
+        const heroNoteText2 = heroStageActions ? heroStageActions.querySelector('[data-hero-note-text2]') : null;
         const heroCtaPrimary = heroStageActions ? heroStageActions.querySelector('.btn-hero-primary') : null;
         const heroCtaSecondary = heroStageActions ? heroStageActions.querySelector('.btn-hero-secondary') : null;
         const heroCtaSecondaryLabel = heroCtaSecondary ? heroCtaSecondary.querySelector('.btn-hero-content') : null;
@@ -166,6 +167,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (isEventOverlay) {
                     heroNoteLabel.textContent = noteLabel || '';
                     heroNoteText.textContent = noteText || '';
+                    // Optional second ribbon line — only event entries that
+                    // declare data-hero-note-text2 reveal it.
+                    if (heroNoteText2) {
+                        const noteText2 = choice.dataset.heroNoteText2 || '';
+                        heroNoteText2.textContent = noteText2;
+                        heroNoteText2.hidden = !noteText2;
+                    }
                     // The event CTA reuses the ghost (secondary) pill so the
                     // orange gradient stays reserved for the trial conversion;
                     // hiding the primary leaves one focused action in event mode.
@@ -175,6 +183,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 } else {
                     heroNoteLabel.textContent = heroOverlayDefaults.noteLabel;
                     heroNoteText.innerHTML = heroOverlayDefaults.noteText;
+                    if (heroNoteText2) {
+                        heroNoteText2.textContent = '';
+                        heroNoteText2.hidden = true;
+                    }
                     heroCtaSecondaryLabel.textContent = heroOverlayDefaults.ctaLabel;
                     heroCtaSecondary.setAttribute('href', heroOverlayDefaults.ctaHref);
                     heroCtaPrimary.hidden = false;
@@ -2244,16 +2256,12 @@ document.addEventListener('DOMContentLoaded', () => {
             if (window.gsap) return Promise.resolve(window.gsap);
             if (contactGsapPromise) return contactGsapPromise;
 
-            const loadGsapModule = () => import('https://cdn.jsdelivr.net/npm/gsap@3.12.5/+esm')
-                .then((module) => module.gsap || module.default || window.gsap || null)
-                .catch(() => null);
-
             contactGsapPromise = new Promise((resolve) => {
                 let hasResolved = false;
                 const finish = (value) => {
                     if (hasResolved) return;
                     hasResolved = true;
-                    resolve(value || loadGsapModule());
+                    resolve(value || window.gsap || null);
                 };
 
                 const existingScript = document.querySelector('script[src*="gsap"]') || document.querySelector('script[data-contact-question-gsap]');
@@ -2265,7 +2273,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
 
                 const script = document.createElement('script');
-                script.src = 'https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js';
+                script.src = '/assets/vendor/gsap-3.12.5.min.js';
                 script.async = true;
                 script.dataset.contactQuestionGsap = 'true';
                 script.onload = () => finish(window.gsap || null);
@@ -2972,7 +2980,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
 
                 const script = document.createElement('script');
-                script.src = 'https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js';
+                script.src = '/assets/vendor/gsap-3.12.5.min.js';
                 script.async = true;
                 script.dataset.footerGsap = 'true';
                 script.onload = () => resolve(window.gsap || null);
@@ -3908,9 +3916,24 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (window.gsap) return Promise.resolve(window.gsap);
                 if (trialProcessGsapPromise) return trialProcessGsapPromise;
 
-                trialProcessGsapPromise = import('https://cdn.jsdelivr.net/npm/gsap@3.12.5/+esm')
-                    .then((module) => module.gsap || module.default || window.gsap || null)
-                    .catch(() => null);
+                trialProcessGsapPromise = new Promise((resolve) => {
+                    const settle = () => resolve(window.gsap || null);
+                    const existing = document.querySelector('script[src*="gsap-3.12.5"]');
+
+                    if (existing) {
+                        existing.addEventListener('load', settle, { once: true });
+                        existing.addEventListener('error', () => resolve(null), { once: true });
+                    } else {
+                        const script = document.createElement('script');
+                        script.src = '/assets/vendor/gsap-3.12.5.min.js';
+                        script.async = true;
+                        script.onload = settle;
+                        script.onerror = () => resolve(null);
+                        document.head.appendChild(script);
+                    }
+
+                    window.setTimeout(settle, 1500);
+                });
 
                 return trialProcessGsapPromise;
             };
@@ -4217,7 +4240,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
 
                     const script = document.createElement('script');
-                    script.src = 'https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js';
+                    script.src = '/assets/vendor/gsap-3.12.5.min.js';
                     script.async = true;
                     script.dataset.classChoiceGsap = 'true';
                     script.onload = () => finish(window.gsap || null);
@@ -5105,7 +5128,7 @@ info@axcentdance.com`,
         });
     };
 
-    // --- 2. Scroll-spy for the sticky nav and the count rail ------------
+    // --- 2. Scroll-spy for the sticky nav -------------------------------
     const enhanceScrollSpy = () => {
         if (!('IntersectionObserver' in window)) return;
 
@@ -5117,9 +5140,6 @@ info@axcentdance.com`,
         const setActive = (id) => {
             document.querySelectorAll('.edu-nav__link').forEach((link) => {
                 link.classList.toggle('edu-nav__link--active', link.getAttribute('href') === `#${id}`);
-            });
-            document.querySelectorAll('.edu-rail__step').forEach((step) => {
-                step.classList.toggle('edu-rail__step--active', step.dataset.eduRail === id);
             });
         };
 
@@ -5619,4 +5639,124 @@ info@axcentdance.com`,
             open(index, link);
         });
     });
+})();
+
+/* ============================================================
+   SERVICE STEPS — the lead-and-follow rail
+   The rail is drawn marker to marker as the section arrives, so the
+   eye is handed forward the way a lead hands a follow into the next
+   move. Content leads, the rail follows.
+
+   Discipline: transform and opacity only, zero layout shift. The
+   resting state is fully visible without JavaScript, the section is
+   only armed while it is still below the fold (so nothing that has
+   already been read can blink out), and GSAP is fetched from the
+   vendored bundle on approach rather than shipped with the page.
+   ============================================================ */
+(() => {
+    const flow = document.querySelector('.service-steps__list');
+    if (!flow || !('IntersectionObserver' in window)) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const steps = Array.from(flow.querySelectorAll('.service-steps__item'));
+    if (!steps.length) return;
+
+    const markers = steps.map((step) => step.querySelector('.service-steps__marker'));
+    const bodies = steps.map((step) => step.querySelector('.service-steps__body'));
+    const lines = steps.map((step) => step.querySelector('.service-steps__line'));
+    const arrows = steps.map((step) => step.querySelector('.service-steps__arrow'));
+
+    let gsapPromise = null;
+    const loadGsap = () => {
+        if (window.gsap) return Promise.resolve(window.gsap);
+        if (gsapPromise) return gsapPromise;
+
+        gsapPromise = new Promise((resolve) => {
+            const settle = () => resolve(window.gsap || null);
+            const existing = document.querySelector('script[src*="gsap-3.12.5"]');
+
+            if (existing) {
+                existing.addEventListener('load', settle, { once: true });
+                existing.addEventListener('error', () => resolve(null), { once: true });
+            } else {
+                const script = document.createElement('script');
+                script.src = '/assets/vendor/gsap-3.12.5.min.js';
+                script.async = true;
+                script.onload = settle;
+                script.onerror = () => resolve(null);
+                document.head.appendChild(script);
+            }
+
+            window.setTimeout(settle, 1500);
+        });
+
+        return gsapPromise;
+    };
+
+    let armed = false;
+
+    const disarm = () => {
+        armed = false;
+        flow.removeAttribute('data-flow-armed');
+    };
+
+    const run = (gsap) => {
+        const stacked = window.matchMedia('(max-width: 768px)').matches;
+        const axis = stacked ? 'scaleY' : 'scaleX';
+        const origin = stacked ? 'top center' : 'left center';
+        const rising = markers.concat(bodies).filter(Boolean);
+        const rails = lines.filter(Boolean);
+        const heads = arrows.filter(Boolean);
+
+        // Mirror the armed CSS so handing control to GSAP does not jump.
+        gsap.set(rising, { opacity: 0, y: 14 });
+        gsap.set(rails, { [axis]: 0, transformOrigin: origin });
+        gsap.set(heads, { opacity: 0 });
+
+        const timeline = gsap.timeline({
+            defaults: { ease: 'power3.out' },
+            onComplete: () => {
+                gsap.set(rising.concat(rails), { clearProps: 'opacity,transform,transformOrigin' });
+                gsap.set(heads, { clearProps: 'opacity' });
+                disarm();
+            }
+        });
+
+        steps.forEach((step, index) => {
+            const beat = index * 0.4;
+            if (markers[index]) timeline.to(markers[index], { opacity: 1, y: 0, duration: 0.5 }, beat);
+            if (bodies[index]) timeline.to(bodies[index], { opacity: 1, y: 0, duration: 0.55 }, beat + 0.08);
+            if (lines[index]) timeline.to(lines[index], { [axis]: 1, duration: 0.46, ease: 'power2.inOut' }, beat + 0.2);
+            if (arrows[index]) timeline.to(arrows[index], { opacity: 1, duration: 0.28 }, beat + 0.58);
+        });
+    };
+
+    // Approach: fetch the library and hide the steps, but only while they
+    // are still safely below the fold.
+    const approach = new IntersectionObserver((entries) => {
+        if (!entries.some((entry) => entry.isIntersecting)) return;
+        approach.disconnect();
+
+        if (flow.getBoundingClientRect().top > window.innerHeight) {
+            armed = true;
+            flow.setAttribute('data-flow-armed', '');
+        }
+
+        loadGsap().then((gsap) => {
+            if (!gsap && armed) disarm();
+        });
+    }, { rootMargin: '0px 0px 600px 0px' });
+
+    // Arrival: play, or restore instantly if the library is not there yet.
+    const arrival = new IntersectionObserver((entries) => {
+        if (!entries.some((entry) => entry.isIntersecting)) return;
+        arrival.disconnect();
+
+        if (!armed) return;
+        if (window.gsap) run(window.gsap);
+        else disarm();
+    }, { threshold: 0.15 });
+
+    approach.observe(flow);
+    arrival.observe(flow);
 })();

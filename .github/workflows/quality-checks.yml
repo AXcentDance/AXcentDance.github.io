@@ -32,5 +32,11 @@ jobs:
       - name: Run site health gate
         run: python3 scripts/site_health.py
 
+      # Rendered-truth gate: measures every responsive image in headless Chrome
+      # (preinstalled on ubuntu runners) and fails if any `sizes` slot would make
+      # the browser fetch a different srcset file than the rendered width needs.
+      - name: Run image sizes rendered-truth gate
+        run: python3 scripts/sizes_truth_checker.py
+
       - name: Check whitespace errors
         run: git diff --check

@@ -11,7 +11,7 @@ def check_advanced_image_quality():
     total_files_checked = 0
     
     for root, dirs, files in os.walk(ROOT_DIR):
-        if ".git" in root or "node_modules" in root or "scripts" in root or "System" in root:
+        if ".git" in root or "node_modules" in root or "scripts" in root or "System" in root or ".claude" in root:
             continue
         # blog-posts/ and de/blog-posts/ hold noindex redirect stubs only
         if "blog-posts" in root:

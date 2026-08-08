@@ -37,8 +37,8 @@
     <!-- Styles -->
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/inter-200-900-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/outfit-500-800-latin.woff2" crossorigin>
-    <link rel="stylesheet" href="../style.css?v=10.4">
-    <link rel="stylesheet" href="../tropic-noir.css?v=6.2">
+    <link rel="stylesheet" href="../style.css?v=10.14">
+    <link rel="stylesheet" href="../tropic-noir.css?v=9.0">
     <link rel="stylesheet" href="../blog-post.css?v=3.0">
     <link rel="apple-touch-icon" href="/apple-touch-icon-v2.png">
     <link rel="icon" href="/favicon-axcent-transparent.svg" type="image/svg+xml">
@@ -295,6 +295,7 @@
 </head>
 
 <body class="tropic post-page nav-declutter">
+    <a class="skip-link" href="#main-content">Skip to main content</a>
 
     <!-- Navigation Bar -->
     <header class="main-header">
@@ -353,7 +354,7 @@
         </div>
     </header>
 
-    <main>
+    <main id="main-content">
 
         <!-- Hero Section -->
         <section class="post-hero relative-container"
@@ -413,9 +414,12 @@
 
             <!-- Visual Breakpoint 1 -->
             <figure class="post-hero-image" style="margin: 3rem auto; max-width: 80%;">
-                <img src="../assets/images/blog/sensation-body1.webp"
+                <picture>
+                  <source type="image/avif" srcset="../assets/images/blog/sensation-body1.avif">
+                  <img src="../assets/images/blog/sensation-body1.webp"
                     alt="Ale and Xidan performing at Sensation Night Congress poster" width="800" height="1000"
                     loading="lazy">
+                </picture>
                 <figcaption>Ale & Xidan - Ready to represent Zurich!</figcaption>
             </figure>
 
@@ -483,7 +487,6 @@
       <div class="footer-col">
         <h2 class="footer-heading">Quick Links</h2>
         <ul class="footer-links">
-          <li><a href="/#trial-form">Book Free Trial</a></li>
           <li><a href="../guide-bachata">What is Bachata</a></li>
           <li><a href="roots-of-bachata">Roots of Bachata</a></li>
           <li><a href="../schedule">Schedule</a></li>

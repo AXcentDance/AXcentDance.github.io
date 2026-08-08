@@ -12,8 +12,8 @@
         content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://jwravnvytkmsvqoqkmwb.supabase.co; object-src 'none'; base-uri 'self';">
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/inter-200-900-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/outfit-500-800-latin.woff2" crossorigin>
-    <link rel="stylesheet" href="style.css?v=10.4">
-    <link rel="stylesheet" href="tropic-noir.css?v=6.2">
+    <link rel="stylesheet" href="style.css?v=10.14">
+    <link rel="stylesheet" href="tropic-noir.css?v=9.0">
     <link rel="apple-touch-icon" href="/apple-touch-icon-v2.png">
     <link rel="icon" href="/favicon-axcent-192.png" type="image/png" sizes="192x192">
     <link rel="icon" href="/favicon-axcent-transparent.svg" type="image/svg+xml">
@@ -846,6 +846,7 @@
 </head>
 
 <body class="tropic">
+    <a class="skip-link" href="#main-content">Skip to main content</a>
     <header class="site-header">
         <div class="container header-inner">
             <a href="/" class="logo-area" aria-label="AXcent Dance home">
@@ -858,13 +859,14 @@
         </div>
     </header>
 
-    <div class="admin-container">
+    <div id="main-content" class="admin-container">
         <div class="admin-header">
             <div>
                 <p class="admin-eyebrow">Owner Dashboard</p>
                 <h1>Requests Inbox</h1>
             </div>
             <div style="display: flex; gap: 8px;">
+                <a class="btn-logout" href="_videos.html" style="text-decoration: none; display: inline-block;">Video Library</a>
                 <a class="btn-logout" href="_attendance" style="text-decoration: none; display: inline-block;">Sign Presences</a>
                 <button class="btn-logout" id="logoutBtn" style="display: none;">Log Out</button>
             </div>

@@ -37,8 +37,8 @@
     <!-- Styles -->
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/inter-200-900-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/outfit-500-800-latin.woff2" crossorigin>
-    <link rel="stylesheet" href="../style.css?v=10.4">
-    <link rel="stylesheet" href="../tropic-noir.css?v=6.2">
+    <link rel="stylesheet" href="../style.css?v=10.14">
+    <link rel="stylesheet" href="../tropic-noir.css?v=9.0">
     <link rel="stylesheet" href="../blog-post.css?v=3.0">
     <link rel="apple-touch-icon" href="/apple-touch-icon-v2.png">
     <link rel="icon" href="/favicon-axcent-transparent.svg" type="image/svg+xml">
@@ -379,6 +379,7 @@
 </head>
 
 <body class="tropic post-page nav-declutter">
+    <a class="skip-link" href="#main-content">Skip to main content</a>
 
     <!-- Navigation Bar -->
     <header class="main-header">
@@ -437,14 +438,17 @@
         </div>
     </header>
 
-    <main>
+    <main id="main-content">
 
         <!-- Hero Section -->
         <section class="post-hero relative-container" style="background: none;">
-            <img src="../assets/images/studio/studio_room_view_1.webp"
+            <picture>
+              <source type="image/avif" srcset="../assets/images/studio/studio_room_view_1_480w.avif 480w, ../assets/images/studio/studio_room_view_1_800w.avif 800w, ../assets/images/studio/studio_room_view_1_1200w.avif 1200w" sizes="100vw">
+              <img src="../assets/images/studio/studio_room_view_1.webp"
                 srcset="../assets/images/studio/studio_room_view_1_480w.webp 480w, ../assets/images/studio/studio_room_view_1_800w.webp 800w, ../assets/images/studio/studio_room_view_1_1200w.webp 1200w"
-                sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px" alt="AXcent Dance Studio Room"
+                sizes="100vw" alt="AXcent Dance Studio Room"
                 width="1200" height="800" class="hero-bg-img">
+            </picture>
             <div class="hero-overlay"></div>
             <div class="container hero-content-z">
                 <span class="post-meta">Teacher Collaborations • May 10, 2026</span>
@@ -728,7 +732,6 @@
       <div class="footer-col">
         <h2 class="footer-heading">Quick Links</h2>
         <ul class="footer-links">
-          <li><a href="/#trial-form">Book Free Trial</a></li>
           <li><a href="../guide-bachata">What is Bachata</a></li>
           <li><a href="roots-of-bachata">Roots of Bachata</a></li>
           <li><a href="../schedule">Schedule</a></li>

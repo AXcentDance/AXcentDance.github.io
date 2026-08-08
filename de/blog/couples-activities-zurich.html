@@ -28,11 +28,13 @@
     <meta property="og:description" content="Auf der Suche nach einzigartigen Paaraktivitäten in Zürich? Entdecken Sie, warum Bachata die perfekte Date-Night ist, um gemeinsam Neues zu erleben und Spass zu haben.">
     <meta property="og:image" content="https://axcentdance.com/assets/images/blog/discover/couples-activities-zurich-1200x675.jpg">
 
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://connect.facebook.net; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com https://placehold.co https://*.googleapis.com https://*.gstatic.com https://www.facebook.com https://connect.facebook.net; font-src 'self'; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://script.google.com https://formsubmit.co https://www.facebook.com https://connect.facebook.net; frame-src 'self' https://www.google.com; object-src 'none'; base-uri 'self'; media-src 'self' blob:; worker-src 'self' blob:;">
     <!-- Styles -->
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/inter-200-900-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/outfit-500-800-latin.woff2" crossorigin>
-    <link rel="stylesheet" href="../../style.css?v=10.4">
-    <link rel="stylesheet" href="../../tropic-noir.css?v=6.2">
+    <link rel="stylesheet" href="../../style.css?v=10.14">
+    <link rel="stylesheet" href="../../tropic-noir.css?v=9.0">
     <link rel="stylesheet" href="../../blog-post.css?v=3.0">
 
     <!-- Favicon -->
@@ -288,6 +290,8 @@
 </head>
 
 <body class="tropic post-page nav-declutter">
+
+    <a class="skip-link" href="#main-content">Zum Hauptinhalt springen</a>
     <!-- Background Elements -->
 
     <header class="main-header">
@@ -345,7 +349,7 @@
         </div>
     </header>
 
-    <main>
+    <main id="main-content">
 
         <article class="blog-post">
             <header class="post-header">
@@ -409,9 +413,12 @@
                 </p>
 
                 <figure class="post-hero-image">
-                    <img src="../../assets/images/blog/science-of-dance-mental-health.webp" 
+                    <picture>
+                      <source type="image/avif" srcset="../../assets/images/blog/science-of-dance-mental-health.avif">
+                      <img src="../../assets/images/blog/science-of-dance-mental-health.webp" 
                          alt="Paar tanzt zusammen in einer warmen, unterstützenden Umgebung" 
                          width="1024" height="1024" loading="lazy" decoding="async">
+                    </picture>
                     <figcaption>Tanzen baut nachweislich Stress ab und steigert das Glücksgefühl.</figcaption>
                 </figure>
 
@@ -488,7 +495,6 @@
       <div class="footer-col">
         <h2 class="footer-heading">Schnellzugriff</h2>
         <ul class="footer-links">
-          <li><a href="/de/#trial-form">Kostenlose Probelektion buchen</a></li>
           <li><a href="../guide-bachata">Was ist Bachata</a></li>
           <li><a href="roots-of-bachata">Wurzeln des Bachatas</a></li>
           <li><a href="../schedule">Stundenplan</a></li>
@@ -527,7 +533,7 @@
       <p>&copy; 2026 AXcent Dance. Alle Rechte vorbehalten.</p>
     </div>
   </footer>
-    <script src="../../script.js?v=7.0"></script>
+    <script src="../../script.js?v=7.3"></script>
 </body>
 
 </html>

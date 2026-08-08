@@ -29,11 +29,13 @@
         content="Learn the secret language of Bachata musicality. Discover how to hear the instruments, find the &#x27;1&#x27;, and transform your social dancing in Zurich.">
     <meta property="og:image" content="https://axcentdance.com/assets/images/blog/discover/finding-the-one-bachata-musicality-1200x675.jpg">
 
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://connect.facebook.net; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com https://placehold.co https://*.googleapis.com https://*.gstatic.com https://www.facebook.com https://connect.facebook.net; font-src 'self'; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://script.google.com https://formsubmit.co https://www.facebook.com https://connect.facebook.net; frame-src 'self' https://www.google.com; object-src 'none'; base-uri 'self'; media-src 'self' blob:; worker-src 'self' blob:;">
     <!-- Styles -->
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/inter-200-900-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/outfit-500-800-latin.woff2" crossorigin>
-    <link rel="stylesheet" href="../style.css?v=10.4">
-    <link rel="stylesheet" href="../tropic-noir.css?v=6.2">
+    <link rel="stylesheet" href="../style.css?v=10.14">
+    <link rel="stylesheet" href="../tropic-noir.css?v=9.0">
     <link rel="stylesheet" href="../blog-post.css?v=3.0">
 
     <!-- Favicon -->
@@ -282,6 +284,7 @@
 </head>
 
 <body class="tropic post-page nav-declutter">
+    <a class="skip-link" href="#main-content">Skip to main content</a>
 
     <!-- Navigation Bar -->
     <header class="main-header">
@@ -341,7 +344,7 @@
         </div>
     </header>
 
-    <main>
+    <main id="main-content">
 
         <!-- Module A: Hero Header -->
         <article class="blog-post">
@@ -416,14 +419,17 @@
                         </p>
                     </div>
                     <!-- Placeholders for collage images -->
-                    <img src="../assets/images/blog/salsa_bachata_music.webp"
+                    <picture>
+                      <source type="image/avif" srcset="../assets/images/blog/salsa_bachata_music_480w.avif 480w, ../assets/images/blog/salsa_bachata_music_800w.avif 800w, ../assets/images/blog/salsa_bachata_music.avif 1024w" sizes="(max-width: 900px) 46vw, 376px">
+                      <img src="../assets/images/blog/salsa_bachata_music.webp"
                         srcset="../assets/images/blog/salsa_bachata_music_480w.webp 480w, ../assets/images/blog/salsa_bachata_music_800w.webp 800w, ../assets/images/blog/salsa_bachata_music.webp 1024w"
-                        sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1024px" alt="Musician playing Bachata guitar"
+                        sizes="(max-width: 900px) 46vw, 376px" alt="Musician playing Bachata guitar"
                         width="1024" height="1024" class="collage-img"
                         style="width: 100%; height: auto; border-radius: 12px; border: 1px solid var(--glass-border);">
+                    </picture>
                     <img src="../assets/images/blog/connection-101.webp"
                         srcset="../assets/images/blog/connection-101_480w.webp 480w, ../assets/images/blog/connection-101_800w.webp 800w, ../assets/images/blog/connection-101.webp 1024w"
-                        sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1024px" alt="Couple dancing connected to music"
+                        sizes="(max-width: 900px) 46vw, 376px" alt="Couple dancing connected to music"
                         width="1024" height="1024" class="collage-img"
                         style="width: 100%; height: auto; border-radius: 12px; border: 1px solid var(--glass-border);" loading="lazy" decoding="async">
                 </div>
@@ -495,7 +501,6 @@
       <div class="footer-col">
         <h2 class="footer-heading">Quick Links</h2>
         <ul class="footer-links">
-          <li><a href="/#trial-form">Book Free Trial</a></li>
           <li><a href="../guide-bachata">What is Bachata</a></li>
           <li><a href="roots-of-bachata">Roots of Bachata</a></li>
           <li><a href="../schedule">Schedule</a></li>
@@ -535,7 +540,7 @@
     </div>
   </footer>
 
-    <script src="../script.js?v=7.0"></script>
+    <script src="../script.js?v=7.3"></script>
 </body>
 
 </html>

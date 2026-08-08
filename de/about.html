@@ -185,8 +185,8 @@
     <!-- Styles -->
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/inter-200-900-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/outfit-500-800-latin.woff2" crossorigin>
-    <link rel="stylesheet" href="../style.css?v=10.4">
-    <link rel="stylesheet" href="../tropic-noir.css?v=6.2">
+    <link rel="stylesheet" href="../style.css?v=10.14">
+    <link rel="stylesheet" href="../tropic-noir.css?v=9.0">
     <link rel="apple-touch-icon" href="/apple-touch-icon-v2.png">
     <link rel="icon" href="/favicon-axcent-transparent.svg" type="image/svg+xml">
 
@@ -232,6 +232,7 @@
   </head>
 
 <body class="tropic about-page nav-declutter">
+    <a class="skip-link" href="#main-content">Zum Hauptinhalt springen</a>
 
     <!-- Navigation Bar -->
     <header class="main-header">
@@ -291,7 +292,7 @@
         </div>
     </header>
 
-    <main>
+    <main id="main-content">
 
         <!-- Hero Section -->
         <section class="about-hero">
@@ -302,7 +303,7 @@
                         <span class="hero-badge-text">AXcent Team</span>
                         <span class="hero-badge-line"></span>
                     </div>
-                    <h1 class="page-title">Die Köpfe hinter<br>AXcent Dance<br>in Zürich</h1>
+                    <h1 class="page-title">Das AXcent Dance Team<br>und unsere Philosophie</h1>
                     <p class="hero-desc-border" style="border: none; padding: 0;">
                         Leidenschaft, Technik und Gemeinschaft.
                     </p>
@@ -320,11 +321,14 @@
                 <div class="founders-grid">
                     <!-- Image -->
                     <div class="founders-image-wrapper">
-                        <img src="../assets/images/ale-xidan-about.webp"
+                        <picture>
+                          <source type="image/avif" srcset="../assets/images/ale-xidan-about_480w.avif 480w, ../assets/images/ale-xidan-about_800w.avif 800w, ../assets/images/ale-xidan-about_1200w.avif 1200w" sizes="(max-width: 600px) 92vw, 480px">
+                          <img src="../assets/images/ale-xidan-about.webp"
                             srcset="../assets/images/ale-xidan-about_480w.webp 480w, ../assets/images/ale-xidan-about_800w.webp 800w, ../assets/images/ale-xidan-about_1200w.webp 1200w"
-                            sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px"
+                            sizes="(max-width: 600px) 92vw, 480px"
                             alt="Ale und Xidan - Gründer von AXcent Dance" width="640" height="1024"
                             class="founders-image">
+                        </picture>
                     </div>
 
                     <!-- Content -->
@@ -362,6 +366,25 @@
 
 
 
+        <!-- Teachers -->
+        <section class="teachers-section">
+            <div class="container">
+                <h2 class="section-title-modern">Unsere <em class="title-accent">Lehrer</em></h2>
+                <div class="teachers-grid">
+                    <div class="teacher-card reveal">
+                        <div class="teacher-portrait" aria-hidden="true"><span>A</span></div>
+                        <h3 class="teacher-name">Alexia</h3>
+                        <p class="teacher-role">Bachata-Lehrerin</p>
+                    </div>
+                    <div class="teacher-card reveal">
+                        <div class="teacher-portrait" aria-hidden="true"><span>A</span></div>
+                        <h3 class="teacher-name">Alex</h3>
+                        <p class="teacher-role">Bachata-Lehrer</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Taught around the world: globe + stat band -->
         <section id="globe-section" class="about-globe">
             <div class="container">
@@ -398,87 +421,6 @@
                         <div id="globe-viz"></div>
                     </div>
                 </div>
-            </div>
-        </section>
-
-        <!-- As Organizers Section (Premium Design) -->
-        <section class="section-padding organizers-section">
-            <div class="organizers-bg-glow"></div>
-            <div class="container relative-z">
-                <div class="organizers-header reveal">
-                    <div class="hero-badge" style="justify-content: center; margin-bottom: 1rem;">
-                        <span class="hero-badge-line"></span>
-                        <span class="hero-badge-text">DIE COMMUNITY VERBINDEN</span>
-                        <span class="hero-badge-line"></span>
-                    </div>
-                    <h2 class="organizers-title">Besondere Tanzerlebnisse schaffen</h2>
-                    <p class="organizers-desc">
-                        Über das Studio hinaus streben wir danach, außergewöhnliche Tanzerlebnisse zu schaffen. Von
-                        Zürichs größtem Dominican-Event bis zur Mitorganisation eines der prestigeträchtigsten
-                        Kongresse Italiens – wir bringen die Community mit Leidenschaft zusammen.
-                    </p>
-                </div>
-
-                <div class="organizers-grid">
-                    <!-- Event 1: Zurich -->
-                    <div class="organizer-card reveal">
-                        <a href="dominican-bootcamp"
-                            style="text-decoration: none; color: inherit; display: block; height: 100%;">
-                            <div class="organizer-card-content">
-                                <div class="organizer-badge">DOMINICAN BACHATA INTENSIVE BOOTCAMP</div>
-                                <h2 class="organizer-event-title">Zürichs grösstes Dominican Event</h2>
-                                <p class="organizer-event-desc">
-                                    Wir veranstalten das <strong>grösste Dominican Event in Zürich</strong> und
-                                    schaffen ein Zuhause für authentische Kultur und Musik im Herzen der Schweiz.
-                                </p>
-                            </div>
-                        </a>
-                    </div>
-
-                    <!-- Event 2: Milano -->
-                    <div class="organizer-card reveal">
-                        <a href="Milano-Sensual-Congress-2026"
-                            style="text-decoration: none; color: inherit; display: block; height: 100%;">
-                            <div class="organizer-card-content">
-                                <div class="organizer-badge">INTERNATIONALER KONGRESS</div>
-                                <h2 class="organizer-event-title">Milano Sensual Congress</h2>
-                                <p class="organizer-event-desc">
-                                    Mitorganisatoren eines der renommiertesten Bachata-Sensual-Kongresse Italiens.
-                                    <br><span class="highlight-text">Weltklasse-Künstler</span> • <span
-                                        class="highlight-text">4.5-Sterne-Luxushotel</span>
-                                </p>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-
-
-        <!-- Visit the studio -->
-        <section class="about-visit">
-            <div class="container">
-                <h2 class="section-title-modern">Besuche das <em class="title-accent">Studio</em></h2>
-                <div class="about-visit__grid">
-                    <figure class="about-visit__photo">
-                        <img src="../assets/images/studio/studio_room_view_1_800w.webp"
-                            srcset="../assets/images/studio/studio_room_view_1_480w.webp 480w, ../assets/images/studio/studio_room_view_1_800w.webp 800w, ../assets/images/studio/studio_room_view_1_1200w.webp 1200w"
-                            sizes="(max-width: 700px) 92vw, 42vw" alt="Der AXcent Dance Studioraum mit Spiegeln und offener Tanzfläche"
-                            width="1024" height="651" loading="lazy" decoding="async">
-                    </figure>
-                    <figure class="about-visit__photo">
-                        <img src="../assets/images/studio/studio_room_view_2_800w.webp"
-                            srcset="../assets/images/studio/studio_room_view_2_480w.webp 480w, ../assets/images/studio/studio_room_view_2_800w.webp 800w, ../assets/images/studio/studio_room_view_2_1200w.webp 1200w"
-                            sizes="(max-width: 700px) 92vw, 42vw" alt="Eine zweite Ansicht des AXcent Dance Studios in Zürich Altstetten"
-                            width="1024" height="493" loading="lazy" decoding="async">
-                    </figure>
-                </div>
-                <a class="about-visit__card" href="https://www.google.com/maps?cid=15680757943659417558" target="_blank"
-                    rel="noopener noreferrer">
-                    <span class="about-visit__address">Hermetschloostrasse 73, 8048 Zürich Altstetten</span>
-                    <span class="about-visit__hint">2 Minuten von Tram 2 und Bus 31 entfernt &middot; In Google Maps öffnen</span>
-                </a>
             </div>
         </section>
 
@@ -524,7 +466,6 @@
             <div class="footer-col">
                 <h2 class="footer-heading">Schnellzugriff</h2>
                 <ul class="footer-links">
-                    <li><a href="/de/#trial-form">Kostenlose Probelektion buchen</a></li>
                     <li><a href="guide-bachata">Was ist Bachata</a></li>
                     <li><a href="blog/roots-of-bachata">Wurzeln des Bachatas</a></li>
                     <li><a href="schedule">Stundenplan</a></li>
@@ -565,7 +506,7 @@
     </footer>
 
     <script src="/assets/vendor/gsap-3.12.5.min.js"></script>
-    <script src="../script.js?v=7.0"></script>
+    <script src="../script.js?v=7.3"></script>
     <script>
         // Lazy Load Map Strategy
         document.addEventListener('DOMContentLoaded', () => {
@@ -589,11 +530,11 @@
             function loadGlobeResources() {
                 // Dynamically load libraries
                 const script1 = document.createElement('script');
-                script1.src = 'https://unpkg.com/globe.gl';
+                script1.src = '/assets/vendor/globe.gl-2.46.1.min.js';
                 script1.async = true;
 
                 const script2 = document.createElement('script');
-                script2.src = 'https://unpkg.com/topojson-client';
+                script2.src = '/assets/vendor/topojson-client-3.1.0.min.js';
                 script2.async = true;
 
                 // Wait for both to load
@@ -715,7 +656,7 @@
                     .height(380);
 
                 // Load Country Borders
-                fetch('https://unpkg.com/world-atlas/countries-110m.json')
+                fetch('/assets/vendor/world-atlas-countries-110m-2.0.2.json')
                     .then(res => res.json())
                     .then(land => {
                         world

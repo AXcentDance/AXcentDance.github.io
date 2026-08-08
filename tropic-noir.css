@@ -674,17 +674,17 @@ body.home-page .atelier-gallery-link__text {
     color: #9DB4AB;
 }
 
-:is(body.home-page, body.schedule-page) .reviews-proof__score,
-:is(body.home-page, body.schedule-page) .reviews-proof__rating-figure {
+:is(body.home-page, body.schedule-page, body.registration-page) .reviews-proof__score,
+:is(body.home-page, body.schedule-page, body.registration-page) .reviews-proof__rating-figure {
     color: #F2E7CF;
 }
 
-:is(body.home-page, body.schedule-page) .reviews-proof__starfield {
+:is(body.home-page, body.schedule-page, body.registration-page) .reviews-proof__starfield {
     color: #E8B04B;
 }
 
-:is(body.home-page, body.schedule-page) .reviews-proof__copy,
-:is(body.home-page, body.schedule-page) .reviews-proof__source-line {
+:is(body.home-page, body.schedule-page, body.registration-page) .reviews-proof__copy,
+:is(body.home-page, body.schedule-page, body.registration-page) .reviews-proof__source-line {
     color: #9DB4AB;
 }
 
@@ -729,17 +729,43 @@ body.home-page .trial-step--contact {
 }
 
 /* The class picker well: one light surface with ink text */
+body.home-page .trial-step--choice {
+    --trial-grid-surface: #FBF7EC;
+    --trial-card-surface: #FFFDF7;
+    --trial-card-surface-hover: color-mix(in srgb, var(--trial-card-surface) 92%, var(--accent-gold));
+    --trial-card-ink: #1D130B;
+    --trial-card-muted: #6D6154;
+    --trial-divider: rgba(36, 20, 7, 0.11);
+    --trial-card-border-hover: color-mix(in srgb, var(--accent-gold) 46%, transparent);
+    --trial-card-shadow: 0 9px 24px rgba(36, 20, 7, 0.09);
+    --trial-card-shadow-hover: 0 14px 30px rgba(36, 20, 7, 0.14);
+}
+
 body.home-page .trial-step--choice .class-selection-grid {
-    background: #FBF7EC;
+    background: var(--trial-grid-surface);
     border: 1px solid #E2D5BD;
-    color: #1D130B;
+    color: var(--trial-card-ink);
     box-shadow: none;
 }
 
 body.home-page .trial-step--choice .day-column {
     background: transparent;
-    border: 1px solid rgba(36, 20, 7, 0.08);
+    border: 0;
+    border-radius: 0;
     box-shadow: none;
+}
+
+/* A single divider establishes each desktop day. Removing the surrounding
+   day boxes stops the class cards from looking framed twice. */
+@media (min-width: 900px) {
+    body.home-page .trial-step--choice .day-column {
+        padding-inline: 0.82rem;
+    }
+
+    body.home-page .trial-step--choice .trial-time-rail + .day-column,
+    body.home-page .trial-step--choice .day-column + .day-column {
+        border-left: 1px solid var(--trial-divider);
+    }
 }
 
 body.home-page .trial-step--choice .day-title {
@@ -765,17 +791,22 @@ body.home-page .trial-consent {
 
 body.home-page .trial-step .class-card,
 body.home-page .trial-step .compact-option {
-    background: #FFFDF7;
-    border: 1px solid #E2D5BD;
-    color: #1D130B;
+    background: transparent;
+    border: 0;
+    color: var(--trial-card-ink);
+    box-shadow: none;
 }
 
-/* compact-option labels wrap an inner .compact-card box — keep it light too */
+/* The label is only the interaction target. The inner card is the one and
+   only visible surface, with depth replacing the old nested outlines. */
 body.home-page .trial-step .compact-card {
-    background: #FFFDF7;
-    border: 1px solid #E2D5BD;
-    color: #1D130B;
-    box-shadow: none;
+    overflow: hidden;
+    background: var(--trial-card-surface);
+    border: 1px solid transparent;
+    border-radius: 18px;
+    color: var(--trial-card-ink);
+    box-shadow: var(--trial-card-shadow);
+    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 body.home-page .trial-step .compact-card::before,
@@ -783,27 +814,99 @@ body.home-page .trial-step .compact-card::after {
     content: none;
 }
 
-body.home-page .trial-step .compact-option:hover .compact-card {
-    border-color: rgba(216, 85, 47, 0.6);
-    background: #FFFDF7;
+/* Match the main timetable's floor-tape hover cue without moving the card. */
+body.home-page .trial-step .compact-option input:not(:checked) + .compact-card::before {
+    content: '';
+    position: absolute;
+    inset: 0.5rem auto auto 0.5rem;
+    z-index: 2;
+    width: 0.85rem;
+    height: 0.85rem;
+    border-top: 2px solid transparent;
+    border-left: 2px solid transparent;
+    border-radius: 0;
+    background: none;
+    opacity: 1;
+    transform: none;
+    pointer-events: none;
+    transition: border-color 0.3s ease;
 }
 
-/* Selected class flips to an inverted petrol card (was purple in style.css) */
+body.home-page .trial-step .compact-option:not(.compact-option--disabled):hover,
+body.home-page .trial-step .compact-option:focus-within {
+    background: transparent;
+    border-color: transparent;
+}
+
+body.home-page .trial-step .compact-option:not(.compact-option--disabled):hover .compact-card {
+    border-color: var(--trial-card-border-hover);
+    background: var(--trial-card-surface-hover);
+    box-shadow: var(--trial-card-shadow-hover);
+}
+
+body.home-page .trial-step .compact-option:focus-within .compact-card {
+    border-color: var(--trial-card-border-hover);
+    background: var(--trial-card-surface-hover);
+    box-shadow: var(--trial-card-shadow-hover);
+    outline: none;
+}
+
+body.home-page .trial-step .compact-option:not(.compact-option--disabled):hover input:not(:checked) + .compact-card::before,
+body.home-page .trial-step .compact-option:focus-within input:not(:checked) + .compact-card::before {
+    border-top-color: var(--accent-start);
+    border-left-color: var(--accent-start);
+}
+
+body.home-page .trial-step .compact-option input:focus-visible + .compact-card {
+    outline: 2px solid var(--accent-gold);
+    outline-offset: 3px;
+}
+
+body.home-page .trial-step--choice .compact-card__selection-canvas {
+    display: none;
+}
+
+/* Selection is clear without an extra icon: the card inverts and retains
+   the quiet brand watermark. */
 body.home-page .trial-step .compact-option input:checked + .compact-card,
 body.home-page .trial-step .compact-option:not(.compact-option--disabled):hover input:checked + .compact-card,
 body.home-page .trial-step .compact-option:focus-within input:checked + .compact-card {
     background: linear-gradient(135deg, #10322B 0%, #144036 100%);
-    border-color: var(--cta-form-accent);
+    border-color: transparent;
     color: #F4EFE6;
-    box-shadow:
-        0 16px 34px rgba(2, 10, 8, 0.3),
-        0 0 0 2px rgba(216, 85, 47, 0.25);
+    box-shadow: 0 14px 28px rgba(2, 10, 8, 0.26);
+}
+
+/* Reuse the trial-section couple mark as a quiet watermark. Its source WebP
+   has an alpha channel, so the selected card keeps one clean surface. */
+body.home-page .trial-step .compact-option input:checked + .compact-card::before {
+    content: '';
+    position: absolute;
+    inset: 50% 2.15rem auto auto;
+    z-index: 0;
+    width: 3rem;
+    height: 4.35rem;
+    border-radius: 0;
+    background: url("assets/images/brand/axcent-dance-couple-mark.webp") center / contain no-repeat;
+    filter: grayscale(1) sepia(1) hue-rotate(-8deg) saturate(1.5) brightness(1.35) contrast(0.9);
+    opacity: 0.14;
+    pointer-events: none;
+    transform: translateY(-50%);
+}
+
+@media (max-width: 899px) {
+    body.home-page .trial-step .compact-option input:checked + .compact-card::before {
+        inset-inline-end: 2.35rem;
+        width: 2.15rem;
+        height: 3.1rem;
+        opacity: 0.12;
+    }
 }
 
 body.home-page .trial-step .class-card:hover,
 body.home-page .trial-step .compact-option:hover {
-    border-color: rgba(216, 85, 47, 0.6);
-    background: #FFFDF7;
+    border-color: transparent;
+    background: transparent;
 }
 
 body.home-page .trial-step .class-card.selected,
@@ -925,6 +1028,17 @@ body.home-page .home-faq-section h2 {
 /* Title signature: no glyphs, no marks — the emotive word of each title
    carries the palette as an italic gradient keyword. Kill every legacy
    ::before ornament above titles. */
+.title-accent {
+    display: inline-block;
+    padding-inline-end: 0.14em;
+    margin-inline-end: -0.14em;
+    /* Tight title line-heights shrink this box below the glyph extents, and
+       background-clip: text only paints inside the box — pad the bottom so
+       italic descenders keep their gradient. */
+    padding-bottom: 0.22em;
+    margin-bottom: -0.22em;
+}
+
 :is(body.home-page, body.contact-page, body.events-page, body.blog-page, body.guide-page, body.tropic) .section-title-modern::before,
 :is(body.home-page, body.contact-page, body.events-page, body.blog-page, body.guide-page, body.tropic) .schedule-section .section-title-modern::before,
 :is(body.home-page, body.contact-page, body.events-page, body.blog-page, body.guide-page, body.tropic) .reviews-section .section-title-modern::before,
@@ -1109,9 +1223,10 @@ body.home-page .home-faq-section__cta-link:focus-visible {
     border-color: rgba(255, 90, 60, 0.4);
 }
 
-/* Trial form: the beginner option carries a small brass flag */
+/* Trial form: the beginner option carries a small brass flag without adding
+   a second outline around the card. */
 body.home-page .trial-step .compact-option--recommended .compact-card {
-    border-color: rgba(216, 85, 47, 0.55);
+    border-color: transparent;
 }
 
 body.home-page .trial-step .compact-status--recommended {
@@ -1139,8 +1254,11 @@ body.home-page .trial-step .compact-status--recommended {
     }
 
     body.home-page .trial-step--choice .compact-class-list {
-        background: #FFFDF7;
-        border: 1px solid #E2D5BD;
+        gap: 0.48rem;
+        overflow: visible;
+        background: transparent;
+        border: 0;
+        border-radius: 0;
         box-shadow: none;
     }
 
@@ -1150,12 +1268,14 @@ body.home-page .trial-step .compact-status--recommended {
     }
 
     body.home-page .trial-step .compact-card {
-        background: transparent;
-        border: none;
+        background: var(--trial-card-surface);
+        border: 1px solid transparent;
+        border-radius: 14px;
+        box-shadow: 0 6px 16px rgba(36, 20, 7, 0.08);
     }
 
     body.home-page .trial-step--choice .compact-option + .compact-option .compact-card {
-        border-top: 1px solid rgba(36, 20, 7, 0.1);
+        border-top-color: transparent;
     }
 
     /* The beginner row swaps its coral border for a soft tint */
@@ -1251,15 +1371,15 @@ body.home-page .founders-strip__link:focus-visible {
     letter-spacing: 0.05em;
 }
 
-:is(body.home-page, body.schedule-page) a.reviews-proof__source-line {
+:is(body.home-page, body.schedule-page, body.registration-page) a.reviews-proof__source-line {
     color: #9DB4AB;
     text-decoration: underline;
     text-decoration-color: rgba(232, 176, 75, 0.5);
     text-underline-offset: 3px;
 }
 
-:is(body.home-page, body.schedule-page) a.reviews-proof__source-line:hover,
-:is(body.home-page, body.schedule-page) a.reviews-proof__source-line:focus-visible {
+:is(body.home-page, body.schedule-page, body.registration-page) a.reviews-proof__source-line:hover,
+:is(body.home-page, body.schedule-page, body.registration-page) a.reviews-proof__source-line:focus-visible {
     color: #F2E7CF;
     text-decoration-color: #E8B04B;
 }
@@ -1268,7 +1388,9 @@ body.home-page .founders-strip__link:focus-visible {
 body.home-page .home-faq-section {
     max-width: 800px;
     margin: 4rem auto 6rem;
-    padding: 0 1.25rem;
+    /* Bottom padding keeps the trial CTA off the card border style.css draws
+       around this section on the homepage. */
+    padding: 0 1.25rem 2rem;
 }
 
 body.home-page .home-faq-section__title {
@@ -1434,6 +1556,34 @@ body.home-page .starter-countdown small {
     }
 }
 
+/* Beginner season reminder under the trial CTA booking process: reuses the
+   starter-countdown component, left-aligned to match the CTA copy column. */
+body.home-page .trial-season-note {
+    margin-top: 1.6rem;
+    padding-top: 1.35rem;
+    border-top: 1px solid rgba(232, 176, 75, 0.22);
+}
+
+body.home-page .trial-season-note__copy {
+    max-width: 46ch;
+    font-size: 0.95rem;
+    line-height: 1.55;
+    color: rgba(244, 239, 230, 0.78);
+}
+
+body.home-page .trial-season-note__copy strong {
+    color: #E8B04B;
+    font-weight: 600;
+}
+
+body.home-page .trial-season-note .starter-countdown:not([hidden]) {
+    margin: 1rem 0 0;
+}
+
+body.home-page .trial-season-note .starter-countdown__cell:first-child {
+    padding-left: 0;
+}
+
 /* Inline form errors on the champagne island */
 body.home-page .trial-form .form-error {
     margin: 0.5rem 0 0;
@@ -1500,6 +1650,21 @@ body.home-page .atelier-photo--event {
 body.home-page .atelier-photo--social {
     grid-column: 6 / 12;
     grid-row: 8 / 11;
+}
+
+/* Fifth photo: a wide panorama that fills the dead space in the left
+   column between the hero shot and the floating copy card. Desktop only —
+   the tablet and phone compositions are complete without it. */
+body.home-page .atelier-photo--community {
+    grid-column: 1 / 6;
+    grid-row: 5 / 8;
+    align-self: center;
+}
+
+@media (max-width: 1020px) {
+    body.home-page .atelier-photo--community {
+        display: none;
+    }
 }
 
 body.home-page .atelier-gallery-meta {
@@ -1703,6 +1868,22 @@ body.home-page .events-strip__note {
     line-height: 1.55;
 }
 
+/* Artist names inside the note link to their Instagram profiles — quiet
+   inline links so the card's coral CTA keeps the visual priority */
+body.home-page .events-strip__note a {
+    color: #F2E7CF;
+    text-decoration: underline;
+    text-underline-offset: 0.18em;
+    text-decoration-color: rgba(232, 176, 75, 0.55);
+    transition: color 0.25s ease, text-decoration-color 0.25s ease;
+}
+
+body.home-page .events-strip__note a:hover,
+body.home-page .events-strip__note a:focus-visible {
+    color: #E8B04B;
+    text-decoration-color: #E8B04B;
+}
+
 body.home-page .events-strip__link {
     margin-top: auto;
     width: fit-content;
@@ -1755,33 +1936,45 @@ body.home-page .events-strip__all:focus-visible {
     }
 }
 
-/* Location strip: answers the "how do I get there" objection right
-   before the FAQ */
+/* Location section: answers the "where is the studio and how do I get
+   there" objection right before the FAQ */
 body.home-page .location-strip {
     padding: 0 0 clamp(2.8rem, 4.5vw, 4rem);
 }
 
+body.home-page .location-strip__title {
+    text-align: center;
+    margin-bottom: clamp(1.8rem, 3.5vw, 2.6rem);
+}
+
 body.home-page .location-strip__inner {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 1rem 1.2rem;
-    padding: 1.1rem 1.4rem;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.4rem;
+    padding: clamp(1.4rem, 3vw, 2.2rem);
     background: rgba(16, 50, 43, 0.9);
     border: 1px solid rgba(232, 176, 75, 0.22);
     border-radius: 16px;
 }
 
+body.home-page .location-strip__item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.85rem;
+    min-width: 0;
+}
+
 body.home-page .location-strip__pin {
     display: inline-flex;
+    flex-shrink: 0;
+    margin-top: 0.15rem;
     color: #E8B04B;
 }
 
 body.home-page .location-strip__copy {
     display: flex;
-    flex: 1 1 18rem;
     flex-direction: column;
-    gap: 0.15rem;
+    gap: 0.2rem;
     margin: 0;
     min-width: 0;
 }
@@ -1790,9 +1983,27 @@ body.home-page .location-strip__copy strong {
     color: #F2E7CF;
 }
 
-body.home-page .location-strip__transit {
+body.home-page .location-strip__detail {
     color: #9DB4AB;
     font-size: 0.9rem;
+}
+
+body.home-page .location-strip__actions {
+    display: flex;
+    justify-content: center;
+}
+
+@media (min-width: 768px) {
+    body.home-page .location-strip__inner {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1.8rem;
+    }
+
+    body.home-page .location-strip__actions {
+        grid-column: 1 / -1;
+        border-top: 1px solid rgba(232, 176, 75, 0.14);
+        padding-top: 1.4rem;
+    }
 }
 
 body.home-page .location-strip__link {
@@ -2295,11 +2506,18 @@ body.home-page .cta-premium-title .cta-filled,
 body.home-page .cta-premium-title .cta-filled:hover,
 body.home-page .cta-premium-title .cta-filled:focus-visible {
     position: relative;
-    background: none;
+    display: inline-block;
+    max-width: 100%;
+    padding-inline-end: 0.14em;
+    margin-inline-end: -0.14em;
+    background: linear-gradient(100deg, var(--accent-start) 0%, var(--accent-end) 46%, var(--accent-gold) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
     border: none;
     outline: none;
     box-shadow: none;
-    color: #FF5A3C;
+    color: var(--accent-start);
     font-style: italic;
 }
 
@@ -2505,9 +2723,10 @@ body.home-page .trial-submit-pricing {
 
 /* Mobile photo mosaic: on phones the four stacked atelier photos ran the
    "Belong" section past two viewports. They become one magazine mosaic —
-   the smiling group shot leads full width, the other three sit under it
-   as square tiles, so all four photos share one glance with no swiping.
-   Static grid, no scroll capture, so no pointer gating is needed. */
+   the studio community shot (--event) leads full width, the other three
+   sit under it as square tiles, so all four photos share one glance with
+   no swiping. Static grid, no scroll capture, so no pointer gating is
+   needed. */
 @media (max-width: 700px) {
     body.home-page .atelier-fallback--story {
         display: grid;
@@ -2527,7 +2746,11 @@ body.home-page .trial-submit-pricing {
         clip-path: none;
     }
 
-    body.home-page .atelier-fallback--story .atelier-photo--hero {
+    /* On phones the lead slot goes to --event (owner pick 2026-08-05);
+       --hero falls back to a square tile via the reset above. order: -1
+       lifts it over the earlier DOM siblings. */
+    body.home-page .atelier-fallback--story .atelier-photo--event {
+        order: -1;
         grid-column: 1 / -1;
         grid-row: auto;
         aspect-ratio: 16 / 9;
@@ -2613,6 +2836,11 @@ body.home-page .home-hero__launch-separator {
     font-weight: 800;
 }
 
+body.home-page .home-hero__launch-note-line2 {
+    flex: 0 0 100%;
+    color: rgba(244, 239, 230, 0.82);
+}
+
 body.home-page .home-hero__launch-note code {
     padding: 0.1rem 0.38rem;
     border: 1px solid rgba(255, 248, 240, 0.22);
@@ -2685,7 +2913,7 @@ body.home-page .pricing-strip__lead {
 }
 
 body.home-page .pricing-strip__figure {
-    padding: 1.15rem 1.35rem;
+    padding: 1.15rem clamp(1rem, 3.5vw, 1.35rem);
 }
 
 body.home-page .pricing-strip__equivalent {
@@ -3811,6 +4039,28 @@ body.events-page .events-bridge::before {
     body.events-page .event-act .section-title-modern {
         text-align: left;
     }
+
+    /* Phones: kicker, date, and title lead each act; the poster follows,
+       then the copy. Content children join the act grid so the heading
+       trio can be ordered ahead of the image without duplicate markup. */
+    body.events-page .event-act .event-act__content {
+        display: contents;
+    }
+
+    body.events-page .event-act__grid,
+    body.events-page .event-act--milano .event-act__grid {
+        row-gap: 0;
+    }
+
+    body.events-page .event-act .event-act__kicker,
+    body.events-page .event-act .event-act__date,
+    body.events-page .event-act .section-title-modern {
+        order: -1;
+    }
+
+    body.events-page .event-act .event-act__media {
+        margin: 0.3rem auto 1.7rem;
+    }
 }
 
 @media (max-width: 700px) {
@@ -3988,20 +4238,59 @@ body.bootcamp-page .bootcamp-lineup__intro .section-subtitle {
     margin-top: 1.1rem;
 }
 
-body.bootcamp-page .bootcamp-lineup__flyer {
+/* Bootcamp hero: the flyer sits beside the title from 900px, mirroring the
+   split-masthead first sections on the other pages; below that it stacks
+   under the CTAs as a centered card. */
+body.bootcamp-page .events-hero-stage__media {
     max-width: 17rem;
-    margin: 0 auto 3rem;
+    margin: 2.4rem auto 0;
     padding: 0.6rem;
     background: #10322B;
     border: 1px solid rgba(232, 176, 75, 0.24);
     border-radius: 16px;
 }
 
-body.bootcamp-page .bootcamp-lineup__flyer img {
+body.bootcamp-page .events-hero-stage__media img {
     display: block;
     width: 100%;
     height: auto;
     border-radius: 10px;
+}
+
+@media (min-width: 900px) {
+    body.bootcamp-page .events-hero-stage__inner {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 0.72fr);
+        align-items: center;
+        column-gap: 3.2rem;
+        max-width: 70rem;
+        text-align: left;
+    }
+
+    body.bootcamp-page .events-hero-stage__lede {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    body.bootcamp-page .events-hero-stage__actions {
+        justify-content: flex-start;
+    }
+
+    body.bootcamp-page .events-hero-stage__countdown-units {
+        justify-content: flex-start;
+    }
+
+    /* width: 100% makes the figure fill its grid track, so max-width is what
+       actually caps the flyer. Without it the figure shrink-wraps and the
+       rendered size falls back to the img `sizes` value — CSS then has no say.
+       The cap keeps the img just under the 400px `sizes` slot so DPR-2 screens
+       stay on the 800w file (75KB) rather than 1200w (117KB) for this LCP
+       image (sizes_truth_checker enforces the rendered/slot agreement). */
+    body.bootcamp-page .events-hero-stage__media {
+        width: 100%;
+        max-width: 26.3rem;
+        margin: 0 0 0 auto;
+    }
 }
 
 body.bootcamp-page .bootcamp-lineup__switcher {
@@ -4516,7 +4805,9 @@ body.events-page .events-subheader__item--active .events-subheader__dates {
 
 /* ---- Masthead ---- */
 body.blog-page .blog-masthead {
-    padding: clamp(1.6rem, 3.5vw, 3.2rem) 0 clamp(2rem, 4vw, 3rem);
+    /* Clears the fixed header so the ghost word and the featured panel are
+       never tucked underneath it on short viewports. */
+    padding: calc(var(--header-height) + clamp(1.6rem, 3.5vw, 3.2rem)) 0 clamp(2rem, 4vw, 3rem);
 }
 
 body.blog-page .blog-masthead__grid {
@@ -5193,6 +5484,10 @@ body.blog-page .blog-grid-modern.is-filtered .modern-card {
 }
 
 @media (max-width: 900px) {
+    body.blog-page .blog-masthead {
+        padding-top: calc(var(--header-height-mobile) + clamp(1.6rem, 3.5vw, 3.2rem));
+    }
+
     body.blog-page .blog-masthead__grid {
         grid-template-columns: 1fr;
         gap: 2rem;
@@ -6364,6 +6659,13 @@ body.course-page .course-callsheet__item dd {
     color: var(--text-main);
 }
 
+body.course-page .course-masthead__note {
+    margin: 0.75rem 0 0;
+    font-size: 0.88rem;
+    line-height: 1.55;
+    color: var(--text-muted);
+}
+
 /* ---- CTA pair (tier-1 gradient / tier-2 soft) ---- */
 body.course-page .course-masthead__actions,
 body.course-page .course-register__actions {
@@ -6571,6 +6873,108 @@ body.course-page .course-syllabus__rotation strong,
 body.course-page .course-syllabus__subtitle strong {
     color: var(--title-cream);
     font-weight: 600;
+}
+
+/* ---- From zero: the Beginner 0 promise (bachata-beginner-0 only) ----
+   Replaces the technique ledger on that page: three editorial moments
+   instead of a lesson plan (owner request 2026-07-28). */
+body.course-page .course-zero {
+    padding: clamp(2.6rem, 5vw, 4.6rem) 0;
+    background: var(--bg-secondary);
+}
+
+body.course-page .course-zero__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: clamp(1.1rem, 2.2vw, 1.6rem);
+    margin: 0 auto 2.2rem;
+    padding: 0;
+    max-width: 62rem;
+    list-style: none;
+}
+
+body.course-page .course-zero__moment {
+    position: relative;
+    padding: clamp(1.4rem, 2.4vw, 1.9rem) clamp(1.2rem, 2vw, 1.6rem) clamp(1.5rem, 2.6vw, 2rem);
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 18px;
+    overflow: hidden;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+body.course-page .course-zero__moment::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent-start), var(--accent-gold) 60%, transparent);
+    opacity: 0.75;
+}
+
+body.course-page .course-zero__moment:hover {
+    border-color: rgba(232, 176, 75, 0.45);
+    box-shadow: var(--shadow-soft);
+}
+
+body.course-page .course-zero__num {
+    display: block;
+    margin: 0 0 0.55rem;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 2rem;
+    line-height: 1;
+    color: var(--accent-gold);
+}
+
+body.course-page .course-zero__name {
+    margin: 0 0 0.5rem;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    line-height: 1.3;
+    color: var(--title-cream);
+}
+
+body.course-page .course-zero__desc {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.65;
+    color: var(--text-muted);
+}
+
+body.course-page .course-zero__subtitle strong {
+    color: var(--title-cream);
+    font-weight: 600;
+}
+
+body.course-page .course-zero__guide {
+    margin: 0 auto;
+    max-width: 52ch;
+    text-align: center;
+    font-size: 0.97rem;
+    line-height: 1.65;
+    color: var(--text-muted);
+}
+
+body.course-page .course-zero__guide a {
+    color: var(--accent-start);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+body.course-page .course-zero__guide a:hover,
+body.course-page .course-zero__guide a:focus-visible {
+    color: #FF7156;
+    text-decoration: underline;
+}
+
+@media (min-width: 720px) {
+    body.course-page .course-zero__grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
 }
 
 /* ---- One night in the room: the count-in ---- */
@@ -7794,6 +8198,42 @@ body.gallery-page .gallery-hero {
     text-align: center;
 }
 
+body.gallery-page .gallery-hero .container {
+    position: relative;
+}
+
+/* Watermark word behind the masthead, same device as the schedule and
+   split mastheads — centred here because this hero is centre-aligned. */
+body.gallery-page .gallery-hero__ghost {
+    position: absolute;
+    top: -0.38em;
+    left: 50%;
+    z-index: 0;
+    transform: translateX(-50%);
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: clamp(5rem, 11vw, 8.5rem);
+    line-height: 1;
+    color: var(--title-cream);
+    opacity: 0.06;
+    pointer-events: none;
+    user-select: none;
+    white-space: nowrap;
+}
+
+body.gallery-page .gallery-hero .hero-badge,
+body.gallery-page .gallery-hero .page-title,
+body.gallery-page .gallery-hero .hero-desc-border {
+    position: relative;
+    z-index: 1;
+}
+
+@media (max-width: 899px) {
+    body.gallery-page .gallery-hero__ghost {
+        display: none;
+    }
+}
+
 body.gallery-page .page-title {
     font-family: var(--font-heading);
     font-weight: 500;
@@ -8450,7 +8890,8 @@ body.faq-page .faq-reask__cta:focus-visible {
    ABOUT PAGE (body.about-page) — "The people behind the studio"
    Faces first: slim masthead, founders split with the warm-graded taped
    portrait, then the globe + brass stat band ("Taught around the world"),
-   organizer acts, a new visit-the-studio strip, and a closing trial bridge.
+   a visit-the-studio strip, and a closing trial bridge (the organizer
+   acts section was removed 2026-08-07).
    The page's two inline <style> blocks were deleted; the load-bearing
    layout rules were ported here and re-inked. The globe keeps its lazy
    loader; its scene colors were re-inked in the page script itself.
@@ -8717,143 +9158,79 @@ body.about-page #globe-viz:active {
     }
 }
 
-/* ---- Organizers ---- */
+/* ---- Teachers ---- */
 
-body.about-page .organizers-title {
-    font-family: var(--font-heading);
-    font-weight: 500;
-    color: var(--title-cream);
+body.about-page .teachers-section {
+    padding: 1rem 20px 3.5rem;
 }
 
-body.about-page .organizers-desc {
-    color: var(--text-muted);
-}
-
-body.about-page .organizer-card {
-    background: var(--glass-bg);
-    border: 1px solid var(--glass-border);
-    backdrop-filter: none;
-}
-
-body.about-page .organizer-card:hover {
-    transform: none;
-    border-color: rgba(232, 176, 75, 0.55);
-}
-
-body.about-page .organizer-badge {
-    color: var(--accent-bronze);
-}
-
-body.about-page .organizer-event-title {
-    color: var(--title-cream);
-}
-
-body.about-page .organizer-event-desc {
-    color: var(--text-muted);
-}
-
-body.about-page .organizers-bg-glow {
-    display: none;
-}
-
-body.about-page .highlight-text {
-    color: var(--accent-bronze-soft);
-    font-style: italic;
-}
-
-/* ---- Visit the studio ---- */
-
-body.about-page .about-visit {
-    padding: 2rem 20px 3rem;
-}
-
-body.about-page .about-visit .section-title-modern {
+body.about-page .teachers-section .section-title-modern {
     text-align: center;
-    margin-bottom: 2rem;
+    margin-bottom: 2.4rem;
 }
 
-body.about-page .about-visit__grid {
+body.about-page .teachers-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-    max-width: 980px;
-    margin: 0 auto 1.2rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.6rem;
+    max-width: 640px;
+    margin: 0 auto;
 }
 
-@media (max-width: 700px) {
-    body.about-page .about-visit__grid {
+@media (max-width: 560px) {
+    body.about-page .teachers-grid {
         grid-template-columns: 1fr;
+        max-width: 320px;
     }
 }
 
-body.about-page .about-visit__photo {
-    position: relative;
-    margin: 0;
-    border-radius: 14px;
-    overflow: hidden;
-    border: 1px solid var(--glass-border);
-    box-shadow: var(--shadow-soft);
-}
-
-body.about-page .about-visit__photo::before,
-body.about-page .about-visit__photo::after {
-    content: '';
-    position: absolute;
-    width: 1.05rem;
-    height: 1.05rem;
-    pointer-events: none;
-    z-index: 3;
-}
-
-body.about-page .about-visit__photo::before {
-    top: 0.55rem;
-    left: 0.55rem;
-    border-top: 2px solid rgba(232, 176, 75, 0.55);
-    border-left: 2px solid rgba(232, 176, 75, 0.55);
-}
-
-body.about-page .about-visit__photo::after {
-    right: 0.55rem;
-    bottom: 0.55rem;
-    border-right: 2px solid rgba(232, 176, 75, 0.55);
-    border-bottom: 2px solid rgba(232, 176, 75, 0.55);
-}
-
-body.about-page .about-visit__photo img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
-
-body.about-page .about-visit__card {
+body.about-page .teacher-card {
     display: flex;
     flex-direction: column;
-    gap: 0.25rem;
-    max-width: 980px;
-    margin: 0 auto;
-    padding: 1.1rem 1.4rem;
-    border: 1px solid rgba(232, 176, 75, 0.3);
+    align-items: center;
+    gap: 0.35rem;
+    padding: 1.6rem 1.4rem;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 14px;
+    text-align: center;
+}
+
+body.about-page .teacher-portrait {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: min(100%, 190px);
+    aspect-ratio: 4 / 5;
+    margin-bottom: 0.9rem;
     border-radius: 12px;
-    background: var(--bg-secondary);
-    text-decoration: none;
-    transition: border-color 0.3s ease, background-color 0.3s ease;
+    background:
+        linear-gradient(160deg, rgba(232, 176, 75, 0.16), rgba(232, 176, 75, 0) 55%),
+        #0C2A24;
+    border: 1px solid rgba(232, 176, 75, 0.22);
 }
 
-body.about-page .about-visit__card:hover,
-body.about-page .about-visit__card:focus-visible {
-    border-color: rgba(232, 176, 75, 0.6);
-    background: #0E2E27;
+body.about-page .teacher-portrait span {
+    font-family: var(--font-heading);
+    font-size: 3.4rem;
+    color: var(--accent-bronze-soft);
 }
 
-body.about-page .about-visit__address {
+body.about-page .teacher-name {
+    font-family: var(--font-heading);
+    font-weight: 500;
+    font-size: 1.45rem;
     color: var(--title-cream);
-    font-weight: 600;
+    margin: 0;
 }
 
-body.about-page .about-visit__hint {
+body.about-page .teacher-role {
+    margin: 0;
     color: var(--text-muted);
-    font-size: 0.9rem;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
 }
 
 /* ---- Closing bridge ---- */
@@ -9072,6 +9449,32 @@ body.cart-page .cart-back-link:focus-visible {
 
 body.events-page .split-masthead__media img {
     object-position: left center;
+}
+
+/* Events masthead: photo card carries an editorial caption strip below the
+   image (portrait sources crop to the remaining row via object-fit). */
+body.events-page .split-masthead__media {
+    display: grid;
+    grid-template-rows: minmax(0, 1fr) auto;
+}
+
+/* Clips the photo when it carries an inline art-direction zoom, so the
+   scaled image never bleeds under the caption strip. */
+body.events-page .split-masthead__frame {
+    overflow: hidden;
+    min-height: 0;
+    height: 100%;
+}
+
+body.events-page .split-masthead__caption {
+    padding: 0.6rem 0.9rem;
+    border-top: 1px solid var(--glass-border);
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.8rem;
+    line-height: 1.5;
+    letter-spacing: 0.02em;
+    color: var(--text-muted);
+    text-align: right;
 }
 
 @media (max-width: 899px) {
@@ -9488,10 +9891,15 @@ body.service-page .service-steps__student-note a:focus-visible {
     outline-offset: 3px;
 }
 
+/* The steps read as one phrase, not three detached cards: a brass rail
+   runs from marker to marker and each arrowhead hands the eye to the
+   next step, the way a lead hands a follow into the next move. */
 body.service-page .service-steps__list {
+    --flow-gap: 1.5rem;
+    --flow-marker: 3rem;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.4rem;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--flow-gap);
     max-width: 980px;
     margin: 0 auto;
     padding: 0;
@@ -9499,21 +9907,128 @@ body.service-page .service-steps__list {
     counter-reset: none;
 }
 
-@media (max-width: 768px) {
-    body.service-page .service-steps__list {
-        grid-template-columns: 1fr;
-    }
+body.service-page .service-steps__item {
+    background: none;
+    border: 0;
+    border-radius: 0;
+    padding: 0;
 }
 
-body.service-page .service-steps__item {
-    background: var(--glass-bg);
-    border: 1px solid var(--glass-border);
-    border-radius: 14px;
-    padding: 1.6rem;
+body.service-page .service-steps__marker {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.15rem;
 }
 
 body.service-page .service-steps__item .service-num {
-    margin-bottom: 0.5rem;
+    display: flex;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    width: var(--flow-marker);
+    height: var(--flow-marker);
+    margin: 0;
+    border: 1px solid var(--accent-bronze-muted);
+    border-radius: 50%;
+    background: var(--glass-bg);
+    font-size: 1.55rem;
+    line-height: 1;
+}
+
+/* The last marker is filled: the phrase has arrived somewhere. */
+body.service-page .service-steps__item:last-child .service-num {
+    border-color: transparent;
+    background: linear-gradient(135deg, var(--accent-bronze-soft), var(--accent-gold));
+    color: var(--glass-bg);
+}
+
+body.service-page .service-steps__link {
+    display: flex;
+    flex: 1 1 auto;
+    align-items: center;
+    min-width: 0;
+    margin-left: 0.85rem;
+    margin-right: calc(var(--flow-gap) * -1);
+}
+
+body.service-page .service-steps__line {
+    flex: 1 1 auto;
+    min-width: 0;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(203, 164, 92, 0.14), rgba(232, 176, 75, 0.62));
+    transform-origin: left center;
+}
+
+body.service-page .service-steps__arrow {
+    flex: 0 0 auto;
+    width: 7px;
+    height: 7px;
+    margin-left: -2px;
+    border-top: 1px solid rgba(232, 176, 75, 0.72);
+    border-right: 1px solid rgba(232, 176, 75, 0.72);
+    transform: rotate(45deg);
+}
+
+/* Armed by script.js only while the section is still below the fold, so
+   the resting state stays fully visible without JavaScript. */
+body.service-page .service-steps__list[data-flow-armed] .service-steps__marker,
+body.service-page .service-steps__list[data-flow-armed] .service-steps__body {
+    opacity: 0;
+    transform: translateY(14px);
+}
+
+body.service-page .service-steps__list[data-flow-armed] .service-steps__line {
+    transform: scaleX(0);
+}
+
+body.service-page .service-steps__list[data-flow-armed] .service-steps__arrow {
+    opacity: 0;
+}
+
+@media (max-width: 768px) {
+    /* Stacked: the rail turns vertical and the arrowheads point down. */
+    body.service-page .service-steps__list {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    body.service-page .service-steps__item {
+        display: grid;
+        grid-template-columns: var(--flow-marker) 1fr;
+        column-gap: 1.05rem;
+    }
+
+    body.service-page .service-steps__item:not(:last-child) {
+        padding-bottom: 1.7rem;
+    }
+
+    body.service-page .service-steps__marker {
+        flex-direction: column;
+        align-self: stretch;
+        margin-bottom: 0;
+    }
+
+    body.service-page .service-steps__link {
+        flex-direction: column;
+        width: 100%;
+        margin: 0.7rem 0 0;
+    }
+
+    body.service-page .service-steps__line {
+        width: 1px;
+        height: auto;
+        background: linear-gradient(180deg, rgba(203, 164, 92, 0.14), rgba(232, 176, 75, 0.62));
+        transform-origin: top center;
+    }
+
+    body.service-page .service-steps__arrow {
+        margin: -2px 0 0;
+        transform: rotate(135deg);
+    }
+
+    body.service-page .service-steps__list[data-flow-armed] .service-steps__line {
+        transform: scaleY(0);
+    }
 }
 
 body.service-page .service-steps__item strong {
@@ -9900,12 +10415,6 @@ body.rental-page .rental-main-grid {
         gap: 2rem;
     }
 
-    
-
-    body.rental-page .studio-details-grid {
-        grid-template-columns: 1fr !important;
-        gap: 3rem !important;
-    }
 }
 
 body.rental-page .gallery-item-wrapper img {
@@ -9988,6 +10497,21 @@ body.rental-page .rental-inquiry-box label {
     color: #5A4B38 !important;
 }
 
+body.rental-page .rental-inquiry-box p strong {
+    color: #B3431E;
+}
+
+/* Floated state: style.css paints a dark chip (#0f0816) behind floated labels
+   to mask the input border on dark pages — on the champagne island the chip
+   must be champagne. */
+body.rental-page .rental-inquiry-box .form-input-modern:focus ~ label,
+body.rental-page .rental-inquiry-box .form-input-modern:not(:placeholder-shown) ~ label,
+body.rental-page .rental-inquiry-box .form-textarea-modern:focus ~ label,
+body.rental-page .rental-inquiry-box .form-textarea-modern:not(:placeholder-shown) ~ label {
+    background: #F4ECD9;
+    color: #B3431E !important;
+}
+
 body.rental-page .rental-inquiry-box select.form-input-modern option {
     color: #1D130B;
     background: #FFFDF7;
@@ -10023,32 +10547,149 @@ body.rental-page .rental-inquiry-box .btn-hero-primary:hover {
     color: var(--cta-submit-text);
 }
 
-/* Specs ledger (emoji boxes removed) */
-body.rental-page .spec-item-mini {
-    border-left: 2px solid rgba(232, 176, 75, 0.55);
-    padding-left: 1rem;
+/* Spec sheet: the room's numbers as a tech-rider ledger */
+body.rental-page .rental-specsheet-section {
+    padding: 1rem 0 1.5rem;
 }
 
-body.rental-page .spec-item-mini strong {
-    color: var(--title-cream) !important;
+body.rental-page .rental-specsheet-section .section-title-modern,
+body.rental-page .rental-stages-section .section-title-modern {
+    text-align: center;
+    margin-bottom: 2.5rem;
 }
 
-/* Purpose chips: brass, no hover movement */
-body.rental-page .purpose-tag {
-    background: rgba(232, 176, 75, 0.1);
-    color: var(--text-main);
-    padding: 0.5rem 1.2rem;
-    border-radius: 30px;
-    border: 1px solid rgba(232, 176, 75, 0.35);
-    font-size: 0.9rem;
-    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+body.rental-page .rental-specsheet {
+    max-width: 720px;
+    margin: 0 auto;
 }
 
-body.rental-page .purpose-tag:hover {
-    background: rgba(232, 176, 75, 0.2);
-    border-color: rgba(232, 176, 75, 0.65);
+body.rental-page .rental-specsheet__row {
+    display: grid;
+    grid-template-columns: 3rem minmax(0, 1fr) minmax(0, 1fr);
+    gap: 0.35rem 1.2rem;
+    align-items: baseline;
+    padding: 1rem 0;
+    border-top: 1px solid rgba(232, 176, 75, 0.2);
+}
+
+body.rental-page .rental-specsheet__row:last-child {
+    border-bottom: 1px solid rgba(232, 176, 75, 0.2);
+}
+
+body.rental-page .rental-specsheet__no {
+    font-family: 'Teko', sans-serif;
+    font-size: 1.5rem;
+    line-height: 1;
+    color: #E8B04B;
+}
+
+body.rental-page .rental-specsheet dt {
     color: var(--title-cream);
-    transform: none;
+    font-weight: 600;
+}
+
+body.rental-page .rental-specsheet dd {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    text-align: right;
+}
+
+@media (max-width: 640px) {
+    body.rental-page .rental-specsheet__row {
+        grid-template-columns: 2.4rem minmax(0, 1fr);
+    }
+
+    body.rental-page .rental-specsheet dd {
+        grid-column: 2;
+        text-align: left;
+    }
+}
+
+/* One space, many stages: three editorial scenario columns */
+body.rental-page .rental-stages-section {
+    padding-bottom: 4rem;
+}
+
+body.rental-page .rental-stages {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2.2rem;
+}
+
+/* Separator bars between the three stage columns only — the first column
+   keeps a clean left edge. */
+body.rental-page .rental-stage + .rental-stage {
+    border-left: 2px solid rgba(232, 176, 75, 0.45);
+    padding-left: 1.3rem;
+}
+
+body.rental-page .rental-stage__overline {
+    display: block;
+    font-family: 'Teko', sans-serif;
+    font-size: 1.05rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #E8B04B;
+}
+
+body.rental-page .rental-stage__title {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 600;
+    font-size: 1.45rem;
+    color: var(--title-cream);
+    margin: 0.35rem 0 0.6rem;
+}
+
+body.rental-page .rental-stage__copy {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.65;
+    margin: 0 0 0.9rem;
+}
+
+body.rental-page .rental-stage__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 0.55rem;
+    row-gap: 0.3rem;
+    font-size: 0.88rem;
+    color: var(--text-main);
+}
+
+body.rental-page .rental-stage__list li+li::before {
+    content: '·';
+    color: #E8B04B;
+    margin-right: 0.55rem;
+}
+
+body.rental-page .rental-stages__coda {
+    max-width: 62ch;
+    margin: 2.6rem auto 0;
+    text-align: center;
+    color: var(--text-muted);
+    line-height: 1.7;
+}
+
+body.rental-page .rental-stages__coda a {
+    color: var(--accent-start);
+}
+
+@media (max-width: 900px) {
+    body.rental-page .rental-stages {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 1.8rem;
+    }
+
+    /* Stacked single column: side bars would read as stray rules, drop them. */
+    body.rental-page .rental-stage + .rental-stage {
+        border-left: 0;
+        padding-left: 0;
+    }
 }
 
 body.rental-page .rental-rates {
@@ -11018,69 +11659,6 @@ body.education-page .edu-nav__link.edu-nav__link--active .edu-nav__count {
     color: var(--accent-start);
 }
 
-/* --- Count rail (desktop) ------------------------------------------------ */
-
-body.education-page .edu-rail {
-    display: none;
-}
-
-@media (min-width: 1280px) {
-    body.education-page .edu-rail {
-        position: fixed;
-        right: clamp(0.9rem, 2vw, 2rem);
-        top: 50%;
-        transform: translateY(-50%);
-        z-index: 30;
-        display: flex;
-        flex-direction: column;
-        gap: 1.5rem;
-    }
-}
-
-body.education-page .edu-rail__step {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.15rem;
-    text-decoration: none;
-}
-
-body.education-page .edu-rail__num {
-    font-family: 'Teko', sans-serif;
-    font-size: 1.45rem;
-    line-height: 1;
-    color: rgba(157, 180, 171, 0.55);
-    transition: color 0.3s ease;
-}
-
-body.education-page .edu-rail__label {
-    font-size: 0.62rem;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-body.education-page .edu-rail__step:hover .edu-rail__num,
-body.education-page .edu-rail__step:focus-visible .edu-rail__num {
-    color: var(--accent-bronze);
-}
-
-body.education-page .edu-rail__step--active .edu-rail__num {
-    color: var(--accent-bronze);
-}
-
-body.education-page .edu-rail__step--tap.edu-rail__step--active .edu-rail__num {
-    color: var(--accent-start);
-}
-
-body.education-page .edu-rail__step--active .edu-rail__label,
-body.education-page .edu-rail__step:hover .edu-rail__label,
-body.education-page .edu-rail__step:focus-visible .edu-rail__label {
-    opacity: 1;
-}
-
 /* --- Content rhythm ------------------------------------------------------ */
 
 body.education-page .edu-content {
@@ -11728,12 +12306,18 @@ body.registration-page .reg-masthead__dek strong {
     color: var(--text-main);
 }
 
+/* Same voice as the dek above it — the discount line is part of the
+   pitch, not fine print. */
 body.registration-page .reg-masthead__facts {
     margin: 0 0 0.4rem;
-    max-width: 52ch;
-    font-size: 0.95rem;
-    line-height: 1.6;
+    max-width: 56ch;
+    font-size: clamp(1rem, 1.4vw, 1.15rem);
+    line-height: 1.65;
     color: var(--text-muted);
+}
+
+body.registration-page .reg-masthead__facts strong {
+    color: var(--text-main);
 }
 
 body.registration-page .reg-desk {
@@ -11745,49 +12329,15 @@ body.registration-page .reg-proof {
     margin: 1.4rem 0 0;
 }
 
-body.registration-page .reg-proof__bar {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-    gap: 0.9rem 1.1rem;
+/* The rating reuses the homepage reviews-proof rating figure (same classes,
+   same glow), centered above the three-quote rail. */
+body.registration-page .reg-proof__figure {
     margin: 0 0 0.9rem;
-}
-
-body.registration-page .reg-proof__rating {
-    display: flex;
-    align-items: baseline;
-    flex-wrap: wrap;
-    gap: 0.55rem;
-}
-
-body.registration-page .reg-proof__score {
-    font-family: 'Outfit', sans-serif;
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--text-main);
-}
-
-body.registration-page .reg-proof__stars {
-    color: var(--accent-start);
-    letter-spacing: 0.12em;
-}
-
-body.registration-page .reg-proof__source {
-    font-size: 0.85rem;
-    color: var(--text-muted);
-    text-decoration: underline;
-    text-underline-offset: 3px;
-    transition: color 0.3s ease;
-}
-
-body.registration-page .reg-proof__source:hover {
-    color: var(--text-main);
 }
 
 body.registration-page .reg-proof__rail {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 0.8rem;
 }
 
@@ -11855,15 +12405,11 @@ body.registration-page .rates-table {
 }
 
 body.registration-page .rates-table th:first-child {
-    width: 54%;
+    width: 58%;
 }
 
 body.registration-page .rates-table th:nth-child(2) {
-    width: 22%;
-}
-
-body.registration-page .rates-table th:nth-child(3) {
-    width: 24%;
+    width: 42%;
 }
 
 body.registration-page .rates-table thead th {
@@ -11933,6 +12479,20 @@ body.registration-page .rates-table tbody td {
     font-variant-numeric: tabular-nums;
 }
 
+/* The block price is the decision number; the per-lesson rate rides
+   underneath as a quiet reframing line, never a competing column. */
+body.registration-page .rates-table__amount {
+    display: block;
+}
+
+body.registration-page .rates-table__per {
+    display: block;
+    margin-top: 0.1rem;
+    font-size: 0.76rem;
+    font-weight: 500;
+    color: var(--text-muted);
+}
+
 body.registration-page .reg-rates__cta {
     text-align: center;
     margin-top: 1.6rem;
@@ -11969,9 +12529,9 @@ body.registration-page .pricing-card {
     transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-body.registration-page .pricing-card.popular {
-    border-color: var(--accent-start);
-}
+/* (the form's "Most Popular" tag was removed 2026-08-07 — a coral-marked
+   card inside a radio group read as pre-selected; the rates table above
+   keeps the badge) */
 
 body.registration-page .pricing-header {
     margin-bottom: 0.3rem;
@@ -12035,14 +12595,6 @@ body.registration-page .pricing-option input:checked~.pricing-card::after {
         grid-column: 1 / -1;
     }
 
-    body.registration-page .pricing-card.popular {
-        padding-top: 1.55rem;
-    }
-
-    body.registration-page .popular-tag {
-        padding: 0.2rem 0.5rem;
-        font-size: 0.58rem;
-    }
 }
 
 @media (max-width: 700px) {

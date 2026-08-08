@@ -28,8 +28,8 @@
 
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/inter-200-900-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/outfit-500-800-latin.woff2" crossorigin>
-    <link rel="stylesheet" href="style.css?v=10.4">
-    <link rel="stylesheet" href="tropic-noir.css?v=6.2">
+    <link rel="stylesheet" href="style.css?v=10.14">
+    <link rel="stylesheet" href="tropic-noir.css?v=9.0">
     <link rel="apple-touch-icon" href="/apple-touch-icon-v2.png">
     <link rel="icon" href="/favicon-axcent-192.png" type="image/png" sizes="192x192">
     <link rel="icon" href="/favicon-axcent-transparent.svg" type="image/svg+xml">
@@ -63,21 +63,34 @@
             "@type": "DanceEvent",
             "@id": "https://axcentdance.com/dominican-bootcamp#event",
             "name": "Dominican Bachata Bootcamp Zurich",
-            "startDate": "2026-10-16T10:00:00+02:00",
-            "endDate": "2026-10-18T18:00:00+02:00",
+            "startDate": "2026-10-16T19:30:00+02:00",
+            "endDate": "2026-10-18T15:00:00+02:00",
             "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
             "eventStatus": "https://schema.org/EventScheduled",
-            "location": {
-                "@type": "Place",
-                "name": "AXcent Dance Studio",
-                "address": {
-                    "@type": "PostalAddress",
-                    "streetAddress": "Hermetschloostrasse 73",
-                    "addressLocality": "Zurich",
-                    "postalCode": "8048",
-                    "addressCountry": "CH"
+            "location": [
+                {
+                    "@type": "Place",
+                    "name": "AXcent Dance Studio",
+                    "address": {
+                        "@type": "PostalAddress",
+                        "streetAddress": "Hermetschloostrasse 73",
+                        "addressLocality": "Zurich",
+                        "postalCode": "8048",
+                        "addressCountry": "CH"
+                    }
+                },
+                {
+                    "@type": "Place",
+                    "name": "The Vibe Dance Studio",
+                    "address": {
+                        "@type": "PostalAddress",
+                        "streetAddress": "Hohlstrasse 488",
+                        "addressLocality": "Zurich",
+                        "postalCode": "8048",
+                        "addressCountry": "CH"
+                    }
                 }
-            },
+            ],
             "offers": {
                 "@type": "Offer",
                 "url": "https://axcentdance.com/dominican-bootcamp",
@@ -89,7 +102,7 @@
             "image": [
                 "https://axcentdance.com/assets/images/dominican_bootcamp_1200w.webp"
             ],
-            "description": "Dominican Bachata Bootcamp at AXcent Dance Studio in Zurich from 16 to 18 October 2026. Includes 7 hours intensive training: 4 hours with Aitor Gomez and 3 hours with Sarah La Morena. Price: 115 CHF.",
+            "description": "Dominican Bachata Bootcamp at AXcent Dance Studio in Zurich from 16 to 18 October 2026. Includes 7 hours of training: 2 hours of partnerwork with Sarah La Morena and Aitor Gomez on Friday, 3 solo hours with both artists on Saturday and 2 solo hours with Aitor Gomez on Sunday. Price: 115 CHF.",
             "organizer": {
                 "@id": "https://axcentdance.com/#organization"
             },
@@ -327,6 +340,8 @@
 
 <body class="events-page nav-declutter">
 
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
     <header class="main-header">
         <div class="container navbar">
             <a href="./" class="logo">
@@ -395,7 +410,7 @@
         </a>
     </nav>
 
-    <main>
+    <main id="main-content">
 
         <!-- 1. Hero: the Compás stage -->
         <section class="split-masthead">
@@ -422,11 +437,16 @@
                     </div>
                 </div>
                 <figure class="split-masthead__media">
-                    <img src="assets/images/gallery/gallery_15_1200w.webp"
-                        srcset="assets/images/gallery/gallery_15_480w.webp 480w, assets/images/gallery/gallery_15_800w.webp 800w, assets/images/gallery/gallery_15_1200w.webp 1200w"
-                        sizes="(max-width: 899px) 100vw, 40vw"
-                        alt="Expressive dance pose at a Bachata festival event" width="1200" height="900"
-                        loading="eager" fetchpriority="high">
+                    <div class="split-masthead__frame">
+                        <img src="assets/images/gallery/gallery_8_1200w.webp"
+                            srcset="assets/images/gallery/gallery_8_480w.webp 480w, assets/images/gallery/gallery_8_800w.webp 800w, assets/images/gallery/gallery_8_1200w.webp 1200w"
+                            sizes="(max-width: 899px) 100vw, (max-width: 1280px) 38vw, 460px"
+                            alt="AXcent Dance students and instructors together at the Sensual Bachata Festival in Bucharest" width="1200" height="900"
+                            loading="eager" fetchpriority="high"
+                            style="object-position: center 35%; transform: scale(1.18); transform-origin: 55% 58%;">
+                    </div>
+                    <figcaption class="split-masthead__caption">AXcent Dance travels to the Sensual Bachata
+                        Festival in Bucharest — February 2025</figcaption>
                 </figure>
             </div>
         </section>
@@ -439,7 +459,7 @@
                     <figure class="event-act__media">
                         <img src="assets/images/dominican_bootcamp.webp"
                             srcset="assets/images/dominican_bootcamp_480w.webp 480w, assets/images/dominican_bootcamp_800w.webp 800w, assets/images/dominican_bootcamp_1200w.webp 1200w"
-                            sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px"
+                            sizes="(max-width: 600px) 92vw, (max-width: 900px) 450px, 460px"
                             alt="Dominican Bachata Bootcamp flyer with Aitor Gomez and Sarah La Morena" width="1080"
                             height="1350" loading="lazy" decoding="async">
                     </figure>
@@ -449,9 +469,9 @@
                         <h2 class="section-title-modern">Dominican Bachata <em class="title-accent">Bootcamp</em></h2>
                         <p class="event-act__copy">
                             For one weekend in October, the studio in Altstetten runs on Dominican time.
-                            Seven hours of partnerwork-focused training with <strong>Aitor Gomez</strong>
-                            and <strong>Sarah La Morena</strong> — leading, following, and the connection
-                            that no video tutorial can give you.
+                            Seven hours with <strong>Aitor Gomez</strong>
+                            and <strong>Sarah La Morena</strong> — two hours of partnerwork plus five solo
+                            hours of footwork, body movement, and technique no video tutorial can give you.
                         </p>
                         <p class="event-act__copy">
                             Come alone or bring your crew. By Sunday evening you will have danced with
@@ -460,7 +480,9 @@
                         <dl class="event-act__facts">
                             <div class="event-act__fact">
                                 <dt>Format</dt>
-                                <dd>4 hours with Aitor + 3 hours with Sarah</dd>
+                                <dd>Friday 19:30 – 21:30 · Partnerwork with Sarah &amp; Aitor<br>
+                                    Saturday 14:30 – 18:00 · Solo training with Sarah &amp; Aitor<br>
+                                    Sunday 13:00 – 15:00 · Solo training with Aitor</dd>
                             </div>
                             <div class="event-act__fact">
                                 <dt>Price</dt>
@@ -468,7 +490,8 @@
                             </div>
                             <div class="event-act__fact">
                                 <dt>Location</dt>
-                                <dd>AXcent Dance Studio, Zurich Altstetten</dd>
+                                <dd>Friday: AXcent Dance Studio<br>
+                                    Saturday and Sunday: Vibe Dance Studio</dd>
                             </div>
                             <div class="event-act__fact">
                                 <dt>Questions</dt>
@@ -494,27 +517,29 @@
                 <h2 class="section-title-modern">What these nights <em class="title-accent">feel</em> like</h2>
                 <p class="section-subtitle">
                     Our events are built like our classes: welcoming to newcomers, serious about
-                    dancing, and impossible to leave without new friends.
+                    dancing, and impossible to leave without new friends. International dancers from
+                    all over Europe will be present &mdash; your chance to meet new people and try
+                    new styles.
                 </p>
                 <div class="event-nights__mosaic">
                     <figure class="event-nights__photo event-nights__photo--lead">
                         <img src="assets/images/gallery/gallery_7_800w.webp"
                             srcset="assets/images/gallery/gallery_7_480w.webp 480w, assets/images/gallery/gallery_7_800w.webp 800w, assets/images/gallery/gallery_7_1200w.webp 1200w"
-                            sizes="(max-width: 700px) 92vw, 33vw"
+                            sizes="(max-width: 700px) 92vw, (max-width: 1280px) 26vw, 372px"
                             alt="Group of smiling dancers after an intensive Bachata session at AXcent Dance"
                             width="800" height="368" loading="lazy" decoding="async">
                     </figure>
                     <figure class="event-nights__photo">
                         <img src="assets/images/gallery/gallery_5_800w.webp"
                             srcset="assets/images/gallery/gallery_5_480w.webp 480w, assets/images/gallery/gallery_5_800w.webp 800w, assets/images/gallery/gallery_5_1200w.webp 1200w"
-                            sizes="(max-width: 700px) 46vw, 33vw"
+                            sizes="(max-width: 700px) 46vw, (max-width: 1280px) 26vw, 372px"
                             alt="Social dancing night at AXcent Dance Zurich with happy dancers"
                             width="800" height="600" loading="lazy" decoding="async">
                     </figure>
                     <figure class="event-nights__photo">
                         <img src="assets/images/gallery/gallery_1_800w.webp"
                             srcset="assets/images/gallery/gallery_1_480w.webp 480w, assets/images/gallery/gallery_1_800w.webp 800w, assets/images/gallery/gallery_1_1200w.webp 1200w"
-                            sizes="(max-width: 700px) 46vw, 33vw"
+                            sizes="(max-width: 700px) 46vw, (max-width: 1280px) 26vw, 372px"
                             alt="AXcent dancers together at the Sensual Bachata Festival congress in Bucharest"
                             width="800" height="450" loading="lazy" decoding="async">
                     </figure>
@@ -627,7 +652,6 @@
             <div class="footer-col">
                 <h2 class="footer-heading">Quick Links</h2>
                 <ul class="footer-links">
-                    <li><a href="/#trial-form">Book Free Trial</a></li>
                     <li><a href="guide-bachata">What is Bachata</a></li>
                     <li><a href="blog/roots-of-bachata">Roots of Bachata</a></li>
                     <li><a href="schedule">Schedule</a></li>
@@ -678,7 +702,7 @@
     </a>
 
     <script src="/assets/vendor/gsap-3.12.5.min.js"></script>
-    <script src="script.js?v=7.0"></script>
+    <script src="script.js?v=7.3"></script>
 </body>
 
 </html>

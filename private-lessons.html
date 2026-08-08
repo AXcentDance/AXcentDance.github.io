@@ -30,8 +30,8 @@
     <!-- Styles -->
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/inter-200-900-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/outfit-500-800-latin.woff2" crossorigin>
-    <link rel="stylesheet" href="style.css?v=10.4">
-    <link rel="stylesheet" href="tropic-noir.css?v=6.2">
+    <link rel="stylesheet" href="style.css?v=10.14">
+    <link rel="stylesheet" href="tropic-noir.css?v=9.0">
     <link rel="apple-touch-icon" href="/apple-touch-icon-v2.png">
     <link rel="icon" href="/favicon-axcent-transparent.svg" type="image/svg+xml">
 
@@ -268,6 +268,7 @@
   </head>
 
 <body class="tropic service-page private-page nav-declutter">
+    <a class="skip-link" href="#main-content">Skip to main content</a>
     <!-- Navigation Bar -->
     <header class="main-header">
         <div class="container navbar">
@@ -326,7 +327,7 @@
         </div>
     </header>
 
-    <main>
+    <main id="main-content">
 
         <!-- Masthead -->
         <section class="split-masthead">
@@ -349,11 +350,14 @@
                     </div>
                 </div>
                 <figure class="split-masthead__media">
-                    <img src="assets/images/private_lesson_hero_1200w.webp"
+                    <picture>
+                      <source type="image/avif" srcset="assets/images/private_lesson_hero_480w.avif 480w, assets/images/private_lesson_hero_800w.avif 800w, assets/images/private_lesson_hero_1200w.avif 1200w" sizes="(max-width: 899px) 100vw, (max-width: 1280px) 38vw, 460px">
+                      <img src="assets/images/private_lesson_hero_1200w.webp"
                         srcset="assets/images/private_lesson_hero_480w.webp 480w, assets/images/private_lesson_hero_800w.webp 800w, assets/images/private_lesson_hero_1200w.webp 1200w"
-                        sizes="(max-width: 899px) 100vw, 40vw"
+                        sizes="(max-width: 899px) 100vw, (max-width: 1280px) 38vw, 460px"
                         alt="Private Bachata coaching session in Zurich" width="1200" height="1200"
                         loading="eager" fetchpriority="high">
+                    </picture>
                 </figure>
             </div>
         </section>
@@ -421,26 +425,46 @@
                 </p>
                 <ol class="service-steps__list">
                     <li class="service-steps__item">
-                        <span class="service-num">01</span>
-                        <strong>Tell us your goal</strong>
-                        <p>
-                            Fundamentals, styling, a performance, or that one move you cannot crack. Share it by
-                            <a href="https://wa.me/41799668481">WhatsApp</a> or through our
-                            <a href="contact">contact form</a>. We will answer within a few hours.
-                        </p>
+                        <div class="service-steps__marker">
+                            <span class="service-num">01</span>
+                            <span class="service-steps__link" aria-hidden="true">
+                                <i class="service-steps__line"></i>
+                                <i class="service-steps__arrow"></i>
+                            </span>
+                        </div>
+                        <div class="service-steps__body">
+                            <strong>Tell us your goal</strong>
+                            <p>
+                                Fundamentals, styling, a performance, or that one move you cannot crack. Share it by
+                                <a href="https://wa.me/41799668481">WhatsApp</a> or through our
+                                <a href="contact">contact form</a>. We will answer within a few hours.
+                            </p>
+                        </div>
                     </li>
                     <li class="service-steps__item">
-                        <span class="service-num">02</span>
-                        <strong>We propose a plan</strong>
-                        <p>Number of sessions, focus points, and the teacher who fits your goal.</p>
+                        <div class="service-steps__marker">
+                            <span class="service-num">02</span>
+                            <span class="service-steps__link" aria-hidden="true">
+                                <i class="service-steps__line"></i>
+                                <i class="service-steps__arrow"></i>
+                            </span>
+                        </div>
+                        <div class="service-steps__body">
+                            <strong>We propose a plan</strong>
+                            <p>Number of sessions, focus points, and the teacher who fits your goal.</p>
+                        </div>
                     </li>
                     <li class="service-steps__item">
-                        <span class="service-num">03</span>
-                        <strong>Train 1-on-1 or with two teachers</strong>
-                        <p>
-                            Get full attention, honest feedback, and visible progress every session. You can also
-                            bring a partner; the price is the same.
-                        </p>
+                        <div class="service-steps__marker">
+                            <span class="service-num">03</span>
+                        </div>
+                        <div class="service-steps__body">
+                            <strong>Train 1-on-1 or with two teachers</strong>
+                            <p>
+                                Get full attention, honest feedback, and visible progress every session. You can also
+                                bring a partner; the price is the same.
+                            </p>
+                        </div>
                     </li>
                 </ol>
             </div>
@@ -450,7 +474,7 @@
         <section class="service-quote">
             <div class="container">
                 <blockquote class="service-quote__text">
-                    &ldquo;The teachers Ale and Xidan combine high technical skills with a warm and welcoming
+                    &ldquo;The teachers combine high technical skills with a warm and welcoming
                     environment.&rdquo;
                 </blockquote>
                 <p class="service-quote__attribution">&mdash; Giulia P, Google review</p>
@@ -577,7 +601,6 @@
       <div class="footer-col">
         <h2 class="footer-heading">Quick Links</h2>
         <ul class="footer-links">
-          <li><a href="/#trial-form">Book Free Trial</a></li>
           <li><a href="guide-bachata">What is Bachata</a></li>
           <li><a href="blog/roots-of-bachata">Roots of Bachata</a></li>
           <li><a href="schedule">Schedule</a></li>
@@ -617,7 +640,7 @@
     </div>
   </footer>
 
-    <script src="script.js?v=7.0"></script>
+    <script src="script.js?v=7.3"></script>
 
 
 

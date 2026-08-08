@@ -44,8 +44,8 @@
   <!-- Styles -->
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/inter-200-900-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/outfit-500-800-latin.woff2" crossorigin>
-  <link rel="stylesheet" href="style.css?v=10.4">
-  <link rel="stylesheet" href="tropic-noir.css?v=6.2">
+  <link rel="stylesheet" href="style.css?v=10.14">
+  <link rel="stylesheet" href="tropic-noir.css?v=9.0">
 
   <link rel="apple-touch-icon" href="/apple-touch-icon-v2.png">
   <link rel="icon" href="/favicon-axcent-transparent.svg" type="image/svg+xml">
@@ -175,7 +175,7 @@
           "name": "What happens after the free trial?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "If you enjoyed the class, you simply continue with the course. Courses run in 8-week blocks, and one course per week costs 220 CHF (185 CHF for students). Your first course sign-up comes with 15% off. You can compare all options on our registration page."
+            "text": "If you enjoyed the class, you simply continue with the course. Courses run in 8-week blocks, and one course per week costs 210 CHF (180 CHF for students). Your first course sign-up comes with 15% off. You can compare all options on our registration page."
           }
         },
         {
@@ -183,7 +183,7 @@
           "name": "What happens in my first class?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Arrive about ten minutes early so we can welcome you. Every class starts with a short warm-up, then we break the basic step down together, and you rotate partners throughout. By the end of your first hour you will dance a full basic to music."
+            "text": "Arrive about ten minutes early so we can welcome you. Every class starts with a short warm-up, then we break the basic step down together, and you rotate partners throughout. By the end of your first hour you will be able to dance your first figures to the music."
           }
         },
         {
@@ -362,6 +362,7 @@
 </head>
 
 <body class="home-page nav-declutter">
+  <a class="skip-link" href="#main-content">Skip to main content</a>
 
   <div class="page-loader" aria-hidden="true">
     <div class="page-loader__mark">
@@ -427,7 +428,7 @@
     </div>
   </header>
 
-  <main>
+  <main id="main-content">
     <!-- 1. Hero Section -->
     <section id="hero" class="hero home-hero" aria-label="AXcent Dance video showcase">
       <div class="home-hero__grid">
@@ -435,15 +436,13 @@
           <video id="hero-showcase-video" class="home-hero__video" autoplay muted loop playsinline preload="metadata"
             poster="assets/images/hero-poster.webp" src="assets/videos/HeroVideo_mobile.mp4"
             data-hls="assets/videos/hls/hero-home/playlist.m3u8"></video>
-          <img class="home-hero__poster-frame" data-hero-poster-frame
-            src="assets/images/MilanoSensualCongress2026_1200w.webp" width="1200" height="1011"
-            loading="lazy" decoding="async" alt="Milano Sensual Congress 2026" aria-hidden="true">
           <div class="home-hero__shade" aria-hidden="true"></div>
           <div class="home-hero__actions">
             <p class="home-hero__launch-note" aria-live="polite">
-              <strong data-hero-note-label>Week of Sep 8</strong>
+              <strong data-hero-note-label>Week of Sep 7</strong>
               <span class="home-hero__launch-separator" aria-hidden="true">·</span>
               <span data-hero-note-text>Save 15% on your first pass with code <code>AXcent15</code></span>
+              <span class="home-hero__launch-note-line2" data-hero-note-text2 hidden></span>
             </p>
             <a href="#trial-form" class="btn-hero btn-hero-primary">
               <span class="btn-hero-content">Book Free Trial</span>
@@ -470,46 +469,40 @@
           </div>
           <div class="home-hero__selector" aria-label="Choose a dance video">
             <span class="home-hero__selector-divider">Weekly Classes</span>
-            <button class="home-hero__choice" type="button" data-hero-poster="assets/images/gallery/gallery_12_1200w.webp"
-              aria-pressed="false">
-              <span class="home-hero__choice-copy">
-                <span class="home-hero__choice-title">Your First Bachata Class</span>
-                <span class="home-hero__choice-note">Beginner basics</span>
-              </span>
-            </button>
             <button class="home-hero__choice is-active" type="button" data-hero-video="assets/videos/HeroVideo_mobile.mp4" data-hero-hls="assets/videos/hls/hero-home/playlist.m3u8"
               data-hero-start="0" aria-pressed="true">
               <span class="home-hero__choice-copy">
-                <span class="home-hero__choice-title">Bachata Sensual</span>
-                <span class="home-hero__choice-note">Connection and body movement</span>
+                <span class="home-hero__choice-title">Bachata</span>
+                <span class="home-hero__choice-note">Partner dance and connection</span>
               </span>
             </button>
             <button class="home-hero__choice" type="button" data-hero-video="assets/videos/HeroVideo_mobile.mp4" data-hero-hls="assets/videos/hls/hero-home/playlist.m3u8"
               data-hero-start="10" aria-pressed="false">
               <span class="home-hero__choice-copy">
-                <span class="home-hero__choice-title">Bachata Styling</span>
-                <span class="home-hero__choice-note">Solo Expression</span>
+                <span class="home-hero__choice-title">Bachata Lady Styling</span>
+                <span class="home-hero__choice-note">Musicality and Expression</span>
               </span>
             </button>
             <span class="home-hero__selector-divider">Our Events</span>
-            <button class="home-hero__choice" type="button" data-hero-video="assets/videos/DominicanBachataTrailer.mp4" data-hero-hls="assets/videos/hls/dominican-trailer/playlist.m3u8"
+            <button class="home-hero__choice" type="button" data-hero-video="assets/videos/DominicanBachataPromo.mp4" data-hero-hls="assets/videos/hls/dominican-promo/playlist.m3u8"
               data-hero-start="0" aria-pressed="false"
               data-hero-note-label="16 – 18 October · Zurich"
               data-hero-note-text="7 hours of Dominican Bachata with Aitor Gomez and Sarah La Morena"
               data-hero-cta-label="Bootcamp Details" data-hero-cta-href="dominican-bootcamp">
               <span class="home-hero__choice-copy">
-                <span class="home-hero__choice-title">Dominican Bachata</span>
-                <span class="home-hero__choice-note">Intensive Training</span>
+                <span class="home-hero__choice-title">Dominican Bachata Training</span>
+                <span class="home-hero__choice-note"><time class="home-hero__choice-date" datetime="2026-10-16/2026-10-18">16–18 Oct</time> · Zurich</span>
               </span>
             </button>
-            <button class="home-hero__choice" type="button" data-hero-poster="assets/images/MilanoSensualCongress2026_1200w.webp"
-              aria-pressed="false"
+            <button class="home-hero__choice" type="button" data-hero-video="assets/videos/MilanoCongressPromo.mp4" data-hero-hls="assets/videos/hls/milano-congress/playlist.m3u8"
+              data-hero-start="0" aria-pressed="false"
               data-hero-note-label="20 – 22 November · Milan"
-              data-hero-note-text="A full weekend of workshops, shows, and social dancing"
+              data-hero-note-text="Our own congress: a full weekend of workshops, shows, and social dancing"
+              data-hero-note-text2="Study Bachata with over 40 world-class artists — the whole AXcent Dance team and our students will be there"
               data-hero-cta-label="Congress Details" data-hero-cta-href="Milano-Sensual-Congress-2026">
               <span class="home-hero__choice-copy">
                 <span class="home-hero__choice-title">Milano Sensual Congress</span>
-                <span class="home-hero__choice-note">Our international congress</span>
+                <span class="home-hero__choice-note"><time class="home-hero__choice-date" datetime="2026-11-20/2026-11-22">20–22 Nov</time> · Milan</span>
               </span>
             </button>
           </div>
@@ -538,7 +531,7 @@
         <p class="stat-band__item">
           <strong class="stat-band__value">5/5</strong>
           <span class="stat-band__label"><a href="https://www.google.com/maps?cid=15680757943659417558"
-              target="_blank" rel="noopener noreferrer">from 41 Google reviews</a></span>
+              target="_blank" rel="noopener noreferrer">from 43 Google reviews</a></span>
         </p>
         <p class="stat-band__item">
           <strong class="stat-band__value">12</strong>
@@ -585,11 +578,11 @@
               </symbol>
             </svg>
             <p class="section-subtitle">
-              Classes start the week of Sept 8.
+              Classes start the week of Sept 7.
             </p>
-            <p class="starter-countdown" data-countdown="2026-09-08T00:00:00+02:00" hidden>
+            <p class="starter-countdown" data-countdown="2026-09-07T19:30:00+02:00" hidden>
               <span class="starter-countdown__cell"><strong data-count="days">&ndash;</strong><small>days</small></span>
-              <span class="starter-countdown__cell"><strong data-count="hours">&ndash;</strong><small>hours</small></span>
+              <span class="starter-countdown__cell"><strong data-count="hours">&ndash;</strong><small>hr</small></span>
               <span class="starter-countdown__cell"><strong data-count="mins">&ndash;</strong><small>min</small></span>
             </p>
           </div>
@@ -607,11 +600,11 @@
               <h3 class="starter-fork__course">Bachata Beginner 0</h3>
               <p class="starter-fork__when">Monday 19:30 &middot; New cycle</p>
               <p class="starter-fork__promise">
-                Built for absolute first-timers — no experience expected. Join any week.
+                Built for absolute first-timers — no experience expected.
               </p>
               <div class="starter-fork__actions">
                 <a href="?class=beginner0#trial-form" class="starter-fork__trial">Try it free</a>
-                <a href="beginner-guide" class="starter-fork__more">Details <span aria-hidden="true">→</span></a>
+                <a href="bachata-beginner-0" class="starter-fork__more">Details <span aria-hidden="true">→</span></a>
               </div>
             </div>
           </article>
@@ -621,20 +614,21 @@
           <article class="guide-card starter-fork__path">
             <figure class="starter-fork__photo starter-fork__photo--foundation">
               <img src="assets/images/home/gallery_1_1200w.webp"
-                alt="Two dancers practicing Bachata Sensual styling and connection at AXcent Dance in Zurich"
+                alt="Two dancers practicing Bachata partner work at AXcent Dance in Zurich"
                 width="1200" height="1802" loading="lazy" decoding="async">
             </figure>
             <p class="starter-fork__voice">&ldquo;I already know my basic steps.&rdquo;</p>
             <div class="starter-fork__body">
-              <h3 class="starter-fork__course">Bachata Sensual Foundation</h3>
-              <p class="starter-fork__when">Wednesday 19:30</p>
+              <h3 class="starter-fork__course">Bachata Beginner 3</h3>
+              <p class="starter-fork__when">Tuesday 19:30</p>
               <p class="starter-fork__promise">
-                You know some Bachata and now you want to learn the Bachata Sensual style —
-                this course is for you. Experience required: <strong>1 year of Bachata</strong>.
+                You know your basics and are ready for the next level —
+                this course is for you, and it is the prerequisite for Bachata Sensual.
+                Experience required: <strong>8 months of Bachata</strong>.
               </p>
               <div class="starter-fork__actions">
-                <a href="?class=foundation#trial-form" class="starter-fork__trial">Try it free</a>
-                <a href="bachata-sensual-foundation" class="starter-fork__more">Details <span aria-hidden="true">→</span></a>
+                <a href="?class=beginner2#trial-form" class="starter-fork__trial">Try it free</a>
+                <a href="bachata-beginner-2" class="starter-fork__more">Details <span aria-hidden="true">→</span></a>
               </div>
             </div>
           </article>
@@ -676,7 +670,7 @@
 
             <!-- Thu Class -->
             <a href="lady-styling" class="class-card">
-              <h3 class="class-name">Bachata Lady Style</h3>
+              <h3 class="class-name">Bachata Lady Styling</h3>
               <p class="class-experience">~ 1 year of experience</p>
             </a>
           </div>
@@ -686,7 +680,7 @@
             <div class="time-slot">19:30</div>
 
             <!-- Mon Class -->
-            <a href="beginner-guide" class="class-card class-card--recommended">
+            <a href="bachata-beginner-0" class="class-card class-card--recommended">
               <span class="level-tag tag-recommended">Start here</span>
               <h3 class="class-name">Bachata Beginner 0</h3>
               <p class="class-experience">Absolute beginners</p>
@@ -694,7 +688,7 @@
 
             <!-- Tue Class -->
             <a href="bachata-beginner-2" class="class-card">
-              <h3 class="class-name">Bachata Beginner 2</h3>
+              <h3 class="class-name">Bachata Beginner 3</h3>
               <p class="class-experience">~ 8 months of experience</p>
             </a>
 
@@ -707,7 +701,7 @@
             <!-- Thu Class -->
             <a href="bachata-sensual-inter-adv" class="class-card">
               <h3 class="class-name">Bachata Sensual Intermediate</h3>
-              <p class="class-experience">~ 2 years of experience</p>
+              <p class="class-experience">~ 2.5 years of experience</p>
             </a>
           </div>
 
@@ -729,8 +723,8 @@
 
             <!-- Thu Class -->
             <a href="bachata-sensual-inter-adv" class="class-card">
-              <h3 class="class-name">Bachata Sensual Intermediate/Advanced</h3>
-              <p class="class-experience">~ 2 years + Improver</p>
+              <h3 class="class-name">Bachata Sensual Int/Advanced</h3>
+              <p class="class-experience">~ 3 years of experience + approval</p>
             </a>
           </div>
         </div>
@@ -740,7 +734,7 @@
           <div class="mobile-schedule-day">
             <h3 class="mobile-day-title">Monday</h3>
             <div class="schedule-row">
-              <a href="beginner-guide" class="class-card class-card--recommended">
+              <a href="bachata-beginner-0" class="class-card class-card--recommended">
                 <span class="level-tag tag-recommended">Start here</span>
                 <div class="mobile-time">19:30</div>
                 <h3 class="class-name">Bachata Beginner 0</h3>
@@ -753,7 +747,7 @@
             <div class="schedule-row">
               <a href="bachata-beginner-2" class="class-card">
                 <div class="mobile-time">19:30</div>
-                <h3 class="class-name">Bachata Beginner 2</h3>
+                <h3 class="class-name">Bachata Beginner 3</h3>
                 <p class="class-experience">~ 8 months of experience</p>
               </a>
             </div>
@@ -779,18 +773,18 @@
 
               <a href="lady-styling" class="class-card">
                 <div class="mobile-time">18:30</div>
-                <h3 class="class-name">Bachata Lady Style</h3>
+                <h3 class="class-name">Bachata Lady Styling</h3>
                 <p class="class-experience">~ 1 year of experience</p>
               </a>
               <a href="bachata-sensual-inter-adv" class="class-card">
                 <div class="mobile-time">19:30</div>
                 <h3 class="class-name">Bachata Sensual Intermediate</h3>
-                <p class="class-experience">~ 2 years of experience</p>
+                <p class="class-experience">~ 2.5 years of experience</p>
               </a>
               <a href="bachata-sensual-inter-adv" class="class-card">
                 <div class="mobile-time">20:30</div>
                 <h3 class="class-name">Bachata Sensual Int/Adv</h3>
-                <p class="class-experience">~ 2 years + Improver</p>
+                <p class="class-experience">~ 3 years of experience + approval</p>
               </a>
             </div>
           </div>
@@ -821,18 +815,21 @@
             </div>
             <div class="atelier-fallback atelier-fallback--story" aria-label="Real AXcent student moments">
               <figure class="atelier-photo atelier-photo--hero">
-                <img src="assets/images/home/gallery_new_1.webp"
+                <picture>
+                  <source type="image/avif" srcset="assets/images/home/gallery_new_1_480w.avif 480w, assets/images/home/gallery_new_1_800w.avif 800w, assets/images/home/gallery_new_1_1200w.avif 1200w" sizes="(max-width: 700px) 28vw, (max-width: 1020px) 46vw, 470px">
+                  <img src="assets/images/home/gallery_new_1.webp"
                   srcset="assets/images/home/gallery_new_1_480w.webp 480w, assets/images/home/gallery_new_1_800w.webp 800w, assets/images/home/gallery_new_1_1200w.webp 1200w"
-                  sizes="(max-width: 700px) 92vw, (max-width: 1020px) 58vw, 30vw"
+                  sizes="(max-width: 700px) 28vw, (max-width: 1020px) 46vw, 470px"
                   alt="Smiling AXcent students celebrating together after Bachata class in Zurich" width="1200" height="900"
                   loading="lazy" decoding="async">
+                </picture>
                 <figcaption class="atelier-photo__caption">After-class community</figcaption>
               </figure>
 
               <figure class="atelier-photo atelier-photo--class">
                 <img src="assets/images/gallery/gallery_12.webp"
                   srcset="assets/images/gallery/gallery_12_480w.webp 480w, assets/images/gallery/gallery_12_800w.webp 800w, assets/images/gallery/gallery_12_1200w.webp 1200w"
-                  sizes="(max-width: 700px) 92vw, (max-width: 1020px) 36vw, 16vw"
+                  sizes="(max-width: 700px) 28vw, (max-width: 1020px) 34vw, 274px"
                   alt="Students smiling while practicing Bachata steps in the Zurich studio" width="1024" height="768"
                   loading="lazy" decoding="async">
                 <figcaption class="atelier-photo__caption">Class energy</figcaption>
@@ -841,16 +838,25 @@
               <figure class="atelier-photo atelier-photo--event">
                 <img src="assets/images/home/gallery_3.webp"
                   srcset="assets/images/home/gallery_3_480w.webp 480w, assets/images/home/gallery_3_800w.webp 800w, assets/images/home/gallery_3_1200w.webp 1200w"
-                  sizes="(max-width: 700px) 92vw, (max-width: 1020px) 58vw, 28vw"
+                  sizes="(max-width: 700px) 92vw, (max-width: 1020px) 58vw, 371px"
                   alt="AXcent Bachata students smiling together in the Zurich studio" width="1024" height="768"
                   loading="lazy" decoding="async">
                 <figcaption class="atelier-photo__caption">Student community</figcaption>
               </figure>
 
+              <figure class="atelier-photo atelier-photo--community">
+                <img src="assets/images/gallery/gallery_7.webp"
+                  srcset="assets/images/gallery/gallery_7_480w.webp 480w, assets/images/gallery/gallery_7_800w.webp 800w, assets/images/gallery/gallery_7_1200w.webp 1200w"
+                  sizes="470px"
+                  alt="Group of smiling AXcent dancers together after an intensive Bachata session in Zurich" width="1024" height="471"
+                  loading="lazy" decoding="async">
+                <figcaption class="atelier-photo__caption">Shared passion</figcaption>
+              </figure>
+
               <figure class="atelier-photo atelier-photo--social">
                 <img src="assets/images/home/gallery_4.webp"
                   srcset="assets/images/home/gallery_4_480w.webp 480w, assets/images/home/gallery_4_800w.webp 800w, assets/images/home/gallery_4_1200w.webp 1200w"
-                  sizes="(max-width: 700px) 92vw, (max-width: 1020px) 58vw, 24vw"
+                  sizes="(max-width: 700px) 28vw, (max-width: 1020px) 70vw, 566px"
                   alt="AXcent instructors leading a Bachata event workshop on stage with students following behind them" width="1024" height="707"
                   loading="lazy" decoding="async">
                 <figcaption class="atelier-photo__caption">Event atmosphere</figcaption>
@@ -869,17 +875,6 @@
             improve with confidence.
           </p>
 
-          <div class="founders-strip">
-            <img class="founders-strip__photo" src="assets/images/ale-xidan-about_480w.webp"
-              alt="Ale and Xidan, founders of AXcent Dance" width="480" height="768" loading="lazy" decoding="async">
-            <div class="founders-strip__copy">
-              <strong class="founders-strip__names">Ale &amp; Xidan</strong>
-              <span class="founders-strip__role">Founders, international Bachata artists, and official IDO Swiss
-                Championship judges</span>
-              <a href="about" class="founders-strip__link">Meet your teachers</a>
-            </div>
-          </div>
-
           <a href="#trial-form" class="stay-link">Book a free trial</a>
         </div>
       </div>
@@ -894,7 +889,7 @@
       <div class="container">
         <h2 class="section-title-modern">Student <em class="title-accent">Stories</em></h2>
         <div class="reviews-proof" aria-label="AXcent Dance Google rating and student reasons">
-          <div class="reviews-proof__rating-figure" aria-label="Rated 5 out of 5 stars from 41 Google reviews">
+          <div class="reviews-proof__rating-figure" aria-label="Rated 5 out of 5 stars from 43 Google reviews">
             <strong class="reviews-proof__score">5/5</strong>
             <span class="reviews-proof__starfield" aria-hidden="true">
               <span>★</span>
@@ -904,7 +899,7 @@
               <span>★</span>
             </span>
             <a class="reviews-proof__source-line" href="https://www.google.com/maps?cid=15680757943659417558"
-              target="_blank" rel="noopener noreferrer">from 41 Google reviews</a>
+              target="_blank" rel="noopener noreferrer">from 43 Google reviews</a>
           </div>
           <p class="section-subtitle reviews-proof__copy">
             Why people choose AXcent Dance.
@@ -1112,9 +1107,9 @@
               </div>
               <div class="review-stars">★★★★★</div>
               <p class="review-text">
-                "Ale and Xidan are truly professional and attentive instructors... They’ve trained with the best in the
-                world and continue to hone their skills... I don’t think you’ll find more specialized teachers than
-                them."
+                "I was able to join a beginner class at AXcent, and let me tell you, it was one of the best experiences
+                ever! I felt welcomed, the lessons were fun and easy to understand, and it was so empowering to dance my
+                first Bachata steps."
               </p>
             </div>
 
@@ -1233,7 +1228,7 @@
                target="_blank" rel="noopener noreferrer">
               <span class="review-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
               <strong class="review-cta__score">5/5</strong>
-              <span class="review-cta__label">Read all 41 Google reviews</span>
+              <span class="review-cta__label">Read all 43 Google reviews</span>
               <span class="review-cta__hint" aria-hidden="true">&rarr;</span>
             </a>
           </div>
@@ -1263,7 +1258,9 @@
               <h3 class="events-strip__title">Dominican Bachata Bootcamp</h3>
               <p class="events-strip__note">
                 The biggest Dominican Bachata bootcamp in Zurich: seven hours of intensive footwork, technique, and
-                musicality with Aitor Gomez and Sarah La Morena.
+                musicality with <a href="https://www.instagram.com/aitorbachata/" target="_blank"
+                  rel="noopener noreferrer">Aitor Gomez</a> and <a href="https://www.instagram.com/sarah.lamorena/"
+                  target="_blank" rel="noopener noreferrer">Sarah La Morena</a>.
               </p>
               <a href="dominican-bootcamp" class="events-strip__link">Discover the bootcamp<span aria-hidden="true">
                   →</span></a>
@@ -1278,9 +1275,9 @@
               <span class="events-strip__date">20 – 22 November 2026 · Milan</span>
               <h3 class="events-strip__title">Milano Sensual Congress</h3>
               <p class="events-strip__note">
-                Our international Bachata Sensual congress in Milan — a full weekend of workshops, shows, and social
-                dancing with a world-class artist lineup and an international Jack and Jill competition. The whole
-                Zurich group travels down together.
+                Have you ever dreamed of a weekend learning from Europe's top artists, surrounded by dancers who
+                share your passion? That is our congress in Milan — workshops, shows, social dancing, and an
+                international Jack and Jill competition.
               </p>
               <a href="Milano-Sensual-Congress-2026" class="events-strip__link">Discover the congress<span
                   aria-hidden="true"> →</span></a>
@@ -1299,28 +1296,35 @@
       <div class="container">
         <div class="pricing-strip__inner">
           <div class="pricing-strip__copy">
-            <div class="pricing-strip__title-row">
-              <h2 class="pricing-strip__title">Our prices</h2>
-              <span class="pricing-strip__badge">
-                15% off your first pass
-                <svg class="pricing-strip__badge-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2.5" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m0 0l-5-5m5 5l-5 5"></path>
-                </svg>
-              </span>
-            </div>
+            <h2 class="pricing-strip__title">Our prices</h2>
             <p class="pricing-strip__lead">
-              Courses run in 8-week blocks in small groups — no subscription, no hidden fees. Students always save
-              15%.
+              Courses run in 8-week blocks in small groups — no subscription and no hidden fees.
+              Student discount available.
             </p>
             <a href="registration" class="pricing-strip__cta">See all passes and prices<span aria-hidden="true">
                 →</span></a>
           </div>
           <div class="pricing-strip__figure">
-            <span class="pricing-strip__from">Courses from</span>
-            <span class="pricing-strip__amount">CHF 27.50</span>
-            <span class="pricing-strip__per">per class</span>
-            <span class="pricing-strip__equivalent">8-week course · CHF 220 · about CHF 110 per month</span>
+            <table class="pricing-strip__table">
+              <caption>Course cost at a glance</caption>
+              <tbody>
+                <tr>
+                  <th scope="row">Standard duration</th>
+                  <td>8 weeks</td>
+                </tr>
+                <tr>
+                  <th scope="row">Full course</th>
+                  <td>CHF 210</td>
+                </tr>
+              </tbody>
+            </table>
+            <p class="pricing-strip__first-pass" aria-label="15% off your first pass">
+              <strong aria-hidden="true">15%</strong>
+              <span aria-hidden="true">
+                <b>Off</b>
+                <small>First pass</small>
+              </span>
+            </p>
           </div>
         </div>
       </div>
@@ -1333,8 +1337,11 @@
         <!-- Moved CTA Header -->
         <!-- Premium CTA Section -->
         <div class="cta-premium-wrapper">
-          <img class="cta-premium-mark" src="assets/images/brand/axcent-dance-couple-mark.webp"
+          <picture>
+            <source type="image/avif" srcset="assets/images/brand/axcent-dance-couple-mark.avif">
+            <img class="cta-premium-mark" src="assets/images/brand/axcent-dance-couple-mark.webp"
             alt="AXcent Dance couple mark" width="268" height="389" loading="lazy" decoding="async">
+          </picture>
           <div class="cta-premium-copy">
             <span class="cta-premium-kicker">Free trial class</span>
             <h2 class="cta-premium-title">
@@ -1364,6 +1371,16 @@
                   </li>
                 </ol>
               </div>
+            </div>
+            <div class="trial-season-note">
+              <p class="trial-season-note__copy">
+                Sign up for the Beginner classes and we will remind you before the course starts on <strong>Monday, 7&nbsp;September</strong>.
+              </p>
+              <p class="starter-countdown" data-countdown="2026-09-07T19:30:00+02:00" hidden>
+                <span class="starter-countdown__cell"><strong data-count="days">&ndash;</strong><small>days</small></span>
+                <span class="starter-countdown__cell"><strong data-count="hours">&ndash;</strong><small>hr</small></span>
+                <span class="starter-countdown__cell"><strong data-count="mins">&ndash;</strong><small>min</small></span>
+              </p>
             </div>
           </div>
         </div>
@@ -1427,11 +1444,11 @@
                     </div>
 
                     <label class="compact-option">
-                      <input type="radio" name="class-select" value="Tuesday 19:30 - Beginner 2"
+                      <input type="radio" name="class-select" value="Tuesday 19:30 - Beginner 3"
                         data-preselect="beginner2">
                       <div class="compact-card">
                         <span class="compact-time">19:30</span>
-                        <span class="compact-name">Bachata <br>Beginner 2</span>
+                        <span class="compact-name">Bachata <br>Beginner 3</span>
                       </div>
                     </label>
                   </div>
@@ -1479,7 +1496,7 @@
                         data-preselect="ladystyle">
                       <div class="compact-card">
                         <span class="compact-time">18:30</span>
-                        <span class="compact-name">Bachata <br>Lady Style</span>
+                        <span class="compact-name">Bachata <br>Lady Styling</span>
                       </div>
                     </label>
 
@@ -1488,7 +1505,7 @@
                         data-preselect="intermediate">
                       <div class="compact-card">
                         <span class="compact-time">19:30</span>
-                        <span class="compact-name compact-name--single-line">Bachata Sensual Intermediate</span>
+                        <span class="compact-name">Bachata Sensual <br>Intermediate</span>
                       </div>
                     </label>
 
@@ -1540,17 +1557,17 @@
             </div>
 
             <button type="submit" class="btn-submit" id="submitTrialBtn">
-              <span>Request My Free Trial Class</span>
+              <span>Book My Free Class</span>
             </button>
             <p class="trial-submit-note">No payment required today. A real person confirms your class by WhatsApp.</p>
             <p class="trial-submit-pricing">
-              Afterwards, if you love it: courses run in 8-week blocks at 220 CHF — 27.50 CHF per class. Your first
+              Afterwards, if you love it: courses run in 8-week blocks at 210 CHF — 26.25 CHF per class. Your first
               course sign-up comes with 15% off, and students receive a discount as well. No subscription, no pressure.
             </p>
             <p class="trial-submit-proof">
               <span class="trial-submit-proof__stars" aria-hidden="true">★★★★★</span>
               <a href="https://www.google.com/maps?cid=15680757943659417558" target="_blank"
-                rel="noopener noreferrer">5/5 from 41 Google reviews</a>
+                rel="noopener noreferrer">5/5 from 43 Google reviews</a>
             </p>
           </form>
         </div>
@@ -1559,23 +1576,59 @@
 
     <!-- Google Sheets Submission Logic -->
 
-    <!-- Location Strip -->
-    <section class="location-strip reveal" aria-label="Studio location and public transport">
+    <!-- Location Section -->
+    <section class="location-strip reveal" aria-labelledby="location-title">
       <div class="container">
+        <h2 class="section-title-modern location-strip__title" id="location-title">Where Is Our <em
+            class="title-accent">Studio</em>?</h2>
         <div class="location-strip__inner">
-          <span class="location-strip__pin" aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"
-              stroke-linecap="round" stroke-linejoin="round">
-              <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
-              <circle cx="12" cy="10" r="3" />
-            </svg>
-          </span>
-          <p class="location-strip__copy">
-            <strong>Hermetschloostrasse 73, 8048 Zurich Altstetten</strong>
-            <span class="location-strip__transit">2 minutes on foot from the Tram 2 and Bus 31 stops.</span>
-          </p>
-          <a class="location-strip__link" href="https://www.google.com/maps?cid=15680757943659417558" target="_blank"
-            rel="noopener noreferrer">Open in Google Maps</a>
+          <div class="location-strip__item">
+            <span class="location-strip__pin" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+            </span>
+            <p class="location-strip__copy">
+              <strong>Hermetschloostrasse 73</strong>
+              <span class="location-strip__detail">8048 Zurich Altstetten</span>
+            </p>
+          </div>
+          <div class="location-strip__item">
+            <span class="location-strip__pin" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"
+                stroke-linecap="round" stroke-linejoin="round">
+                <rect x="6" y="3" width="12" height="13" rx="2.5" />
+                <path d="M6 9.5h12" />
+                <path d="M9.5 13h.01M14.5 13h.01" />
+                <path d="M9 16l-1.5 4M15 16l1.5 4" />
+              </svg>
+            </span>
+            <p class="location-strip__copy">
+              <strong>By tram or bus</strong>
+              <span class="location-strip__detail">2 minutes on foot from the Tram 2 and Bus 31 stops.</span>
+            </p>
+          </div>
+          <div class="location-strip__item">
+            <span class="location-strip__pin" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 11l1.5-3.8A2 2 0 0 1 8.4 6h7.2a2 2 0 0 1 1.9 1.2L19 11" />
+                <rect x="3.5" y="11" width="17" height="5" rx="1.6" />
+                <path d="M7.5 16v1.5M16.5 16v1.5" />
+              </svg>
+            </span>
+            <p class="location-strip__copy">
+              <strong>By car</strong>
+              <span class="location-strip__detail">Blue Zone parking nearby and the Letzipark garage a short walk
+                away.</span>
+            </p>
+          </div>
+          <div class="location-strip__actions">
+            <a class="location-strip__link" href="https://www.google.com/maps?cid=15680757943659417558" target="_blank"
+              rel="noopener noreferrer">Open in Google Maps</a>
+          </div>
         </div>
       </div>
     </section>
@@ -1654,7 +1707,7 @@
           </summary>
           <div class="faq-item__body">
             If you enjoyed the class, you simply continue with the course. Courses run in <strong>8-week blocks</strong>,
-            and one course per week costs 220 CHF (185 CHF for students). Your first course sign-up comes with
+            and one course per week costs 210 CHF (180 CHF for students). Your first course sign-up comes with
             <strong>15% off</strong>. You can compare all options on our
             <a href="registration">registration page</a>.
           </div>
@@ -1669,7 +1722,7 @@
           <div class="faq-item__body">
             Arrive about ten minutes early so we can welcome you. Every class starts with a short warm-up, then we
             break the <strong>basic step</strong> down together, and you rotate partners throughout. By the end of your
-            first hour you will dance a full basic to music. Curious for more? Read our
+            first hour you will be able to dance your first figures to the music. Curious for more? Read our
             <a href="beginner-guide">beginner guide</a>.
           </div>
         </details>
@@ -1744,7 +1797,6 @@
       <div class="footer-col">
         <h2 class="footer-heading">Quick Links</h2>
         <ul class="footer-links">
-          <li><a href="#trial-form">Book Free Trial</a></li>
           <li><a href="guide-bachata">What is Bachata</a></li>
           <li><a href="blog/roots-of-bachata">Roots of Bachata</a></li>
           <li><a href="schedule">Schedule</a></li>
@@ -1786,7 +1838,7 @@
 
   <script src="/assets/vendor/gsap-3.12.5.min.js"></script>
   <script type="module" src="hls-video.js?v=1.1"></script>
-  <script src="script.js?v=7.0"></script>
+  <script src="script.js?v=7.3"></script>
 
 
 

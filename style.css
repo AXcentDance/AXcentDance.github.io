@@ -3994,139 +3994,6 @@ textarea {
 }
 
 /* ------------------------------------------------------------------
-   PREMIUM ORGANIZERS SECTION (About Us)
-   ------------------------------------------------------------------ */
-.organizers-section {
-    position: relative;
-    overflow: hidden;
-    background: #0f0518;
-    /* Deep dark base */
-    padding-top: 8rem;
-    padding-bottom: 8rem;
-}
-
-.organizers-bg-glow {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle at center, rgba(108, 92, 231, 0.15), transparent 70%);
-    z-index: 0;
-    pointer-events: none;
-}
-
-.relative-z {
-    position: relative;
-    z-index: 1;
-}
-
-.organizers-header {
-    text-align: center;
-    max-width: 800px;
-    margin: 0 auto 5rem;
-}
-
-
-.organizers-title {
-    font-size: 3rem;
-    color: white;
-    margin-bottom: 1.5rem;
-    line-height: 1.1;
-}
-
-.organizers-desc {
-    font-size: 1.2rem;
-    color: var(--text-muted);
-    line-height: 1.6;
-}
-
-.organizers-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 2rem;
-}
-
-.organizer-card {
-    position: relative;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 20px;
-    padding: 3rem;
-    transition: all 0.4s ease;
-    overflow: hidden;
-}
-
-.organizer-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, transparent 100%);
-    opacity: 0;
-    transition: opacity 0.4s ease;
-}
-
-.organizer-card:hover {
-    transform: translateY(-10px);
-    border-color: var(--accent-start);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-}
-
-.organizer-card:hover::before {
-    opacity: 1;
-}
-
-.organizer-card-content {
-    position: relative;
-    z-index: 1;
-}
-
-.organizer-badge {
-    display: inline-block;
-    padding: 6px 14px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 20px;
-    font-size: 0.75rem;
-    font-weight: 700;
-    color: white;
-    margin-bottom: 1.5rem;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.organizer-event-title {
-    font-size: 2rem;
-    color: white;
-    margin-bottom: 1rem;
-    line-height: 1.2;
-}
-
-.organizer-event-desc {
-    font-size: 1.1rem;
-    color: var(--text-muted);
-    line-height: 1.6;
-}
-
-.highlight-text {
-    color: #ffdd59;
-    font-weight: 600;
-}
-
-/* Mobile Adjustments */
-@media (max-width: 768px) {
-    .organizers-title {
-        font-size: 2.2rem;
-    }
-
-    .organizer-card {
-        padding: 2rem;
-    }
-}
-
-/* ------------------------------------------------------------------
    PREMIUM CTA SECTION (Homepage)
    ------------------------------------------------------------------ */
 .cta-premium-wrapper {
@@ -5036,6 +4903,16 @@ body.page-loaded .page-loader {
     text-transform: uppercase;
 }
 
+.home-hero__choice-note:has(.home-hero__choice-date) {
+    font-size: 0.68rem;
+}
+
+.home-hero__choice-date {
+    color: var(--accent-gold, rgba(255, 107, 26, 0.88));
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+}
+
 .home-hero__choice:hover,
 .home-hero__choice:focus-visible,
 .home-hero__choice.is-active {
@@ -5156,6 +5033,10 @@ body.page-loaded .page-loader {
 
     .home-hero__choice-note {
         font-size: 0.5rem;
+    }
+
+    .home-hero__choice-note:has(.home-hero__choice-date) {
+        font-size: 0.62rem;
     }
 
     .home-hero__actions .btn-hero {
@@ -6004,6 +5885,10 @@ body.home-page .home-hero__choice-title {
 
 body.home-page .home-hero__choice-note {
     font-size: 0.5rem;
+}
+
+body.home-page .home-hero__choice-note:has(.home-hero__choice-date) {
+    font-size: 0.68rem;
 }
 
 body.home-page .home-hero__actions .btn-hero {
@@ -7996,13 +7881,6 @@ body.home-page .compact-option--disabled .compact-status {
   border: none;
   box-shadow: none;
 }
-}
-
-@media (min-width: 1180px) {
-    body.home-page .compact-name--single-line {
-        font-size: 0.84rem;
-        white-space: nowrap;
-    }
 }
 
 body.home-page .compact-option:not(.compact-option--disabled):hover .compact-card,
@@ -10062,38 +9940,104 @@ body.contact-page .contact-whatsapp-float:active {
 }
 
 .pricing-strip__figure {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 0.35rem;
-    padding: 1.75rem 1.5rem;
+    display: block;
+    width: 100%;
+    padding: 1rem 1.2rem;
     border: 1px solid var(--glass-border);
     border-radius: 16px;
     background: var(--glass-highlight);
 }
 
-.pricing-strip__from,
-.pricing-strip__per {
-    font-size: 0.8rem;
-    font-weight: 500;
+.pricing-strip__table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    font-variant-numeric: tabular-nums;
+}
+
+.pricing-strip__table caption {
+    padding: 0 0 0.65rem;
+    text-align: left;
+    font-size: 0.72rem;
+    font-weight: 700;
     letter-spacing: 0.12em;
     text-transform: uppercase;
+    color: var(--accent-gold);
+}
+
+.pricing-strip__table th,
+.pricing-strip__table td {
+    padding: 0.58rem 0;
+    border-top: 1px solid var(--glass-border);
+    line-height: 1.25;
+}
+
+.pricing-strip__table th {
+    width: 42%;
+    padding-right: 0.5rem;
+    text-align: left;
+    font-size: 0.82rem;
+    font-weight: 500;
     color: var(--text-muted);
 }
 
-.pricing-strip__amount {
-    font-family: var(--font-heading);
-    font-size: 3.1rem;
+.pricing-strip__table td {
+    text-align: right;
+    font-size: 0.9rem;
     font-weight: 700;
-    line-height: 1;
+    white-space: nowrap;
     color: var(--text-main);
 }
 
-.pricing-strip__equivalent {
-    margin-top: 0.8rem;
-    font-size: 0.9rem;
+.pricing-strip__table tr:nth-child(2) td {
+    font-size: 1.05rem;
+    color: var(--accent-gold);
+}
+
+.pricing-strip__first-pass {
+    display: grid;
+    grid-template-columns: auto auto;
+    align-items: center;
+    justify-content: center;
+    column-gap: 0.6rem;
+    margin: 0.75rem 0 0;
+    padding: 0.75rem 0 0;
+    border-top: 1px solid var(--glass-border);
+    text-align: center;
+}
+
+.pricing-strip__first-pass span {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.08rem;
+}
+
+.pricing-strip__first-pass b {
+    color: var(--text-main);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+.pricing-strip__first-pass small {
     color: var(--text-muted);
+    font-size: 0.63rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    line-height: 1;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.pricing-strip__first-pass strong {
+    color: var(--accent-start);
+    font-size: 2.25rem;
+    letter-spacing: -0.05em;
+    line-height: 0.9;
+    white-space: nowrap;
 }
 
 @media (min-width: 768px) {
@@ -10110,7 +10054,8 @@ body.contact-page .contact-whatsapp-float:active {
     }
 
     .pricing-strip__figure {
-        flex: 0 0 320px;
+        flex: 0 1 22rem;
+        max-width: 22rem;
     }
 
     .pricing-strip__title {
@@ -10260,4 +10205,45 @@ body.contact-page .contact-whatsapp-float:active {
     border-color: #E8B04B;
     color: #F4EFE6;
     transform: none;
+}
+
+
+/* ==========================================================================
+   Skip link (keyboard accessibility)
+   First tab stop on every page; visually hidden until keyboard focus, then
+   appears as a pill in the top-left and jumps past the header to #main-content.
+   ========================================================================== */
+
+.skip-link {
+    position: fixed;
+    top: 16px;
+    left: 16px;
+    z-index: 20001;
+    padding: 12px 22px;
+    border-radius: 30px;
+    background: var(--bg-elevated, #061A17);
+    color: var(--text-main, #F4EFE6);
+    border: 1px solid var(--glass-border, rgba(244, 239, 230, 0.3));
+    box-shadow: var(--shadow-soft, 0 8px 24px rgba(0, 0, 0, 0.35));
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    text-decoration: none;
+    transform: translateY(calc(-100% - 24px));
+}
+
+.skip-link:focus-visible {
+    transform: translateY(0);
+}
+
+
+/* ==========================================================================
+   AVIF picture wrappers
+   <picture> exists only to offer AVIF sources; display: contents removes the
+   wrapper from layout so the inner img keeps behaving as the direct flex/grid
+   child it was before wrapping. Do not style picture elements directly.
+   ========================================================================== */
+
+picture {
+    display: contents;
 }

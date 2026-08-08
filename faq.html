@@ -30,8 +30,8 @@
     <!-- Styles -->
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/inter-200-900-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/outfit-500-800-latin.woff2" crossorigin>
-    <link rel="stylesheet" href="style.css?v=10.4">
-    <link rel="stylesheet" href="tropic-noir.css?v=6.2">
+    <link rel="stylesheet" href="style.css?v=10.14">
+    <link rel="stylesheet" href="tropic-noir.css?v=9.0">
     <link rel="apple-touch-icon" href="/apple-touch-icon-v2.png">
     <link rel="icon" href="/favicon-axcent-transparent.svg" type="image/svg+xml">
 
@@ -83,7 +83,7 @@
                 "name": "Do you teach in English?",
                 "acceptedAnswer": {
                         "@type": "Answer",
-                        "text": "Yes! All our classes are taught in English to welcome our international community in Zurich. We also speak German, Italian, Spanish, and Mandarin if you need extra clarification!"
+                        "text": "Yes! All our classes are taught in English to welcome our international community in Zurich. We also speak Italian, and our teachers speak German, if you need extra clarification!"
                 }
         },
         {
@@ -91,7 +91,7 @@
                 "name": "What happens after the free trial?",
                 "acceptedAnswer": {
                         "@type": "Answer",
-                        "text": "If you enjoyed the class, you simply continue with the course. Courses run in 8-week blocks, and one course per week costs 220 CHF (185 CHF for students). Your first course sign-up comes with 15% off. You can compare all options on our registration page."
+                        "text": "If you enjoyed the class, you simply continue with the course. Courses run in 8-week blocks, and one course per week costs 210 CHF (180 CHF for students). Your first course sign-up comes with 15% off. You can compare all options on our registration page."
                 }
         },
         {
@@ -99,7 +99,7 @@
                 "name": "How do I pay for classes?",
                 "acceptedAnswer": {
                         "@type": "Answer",
-                        "text": "We accept Twint, cash, bank transfer, and secure card payment. Classes are sold as 8-week course blocks — 220 CHF, or 185 CHF for students. You can see all current options on our registration and prices page."
+                        "text": "Payment is handled securely online through Stripe when you register. Classes are sold as 8-week course blocks — 210 CHF, or 180 CHF for students. You can see all current options on our registration and prices page."
                 }
         },
         {
@@ -115,7 +115,7 @@
                 "name": "What if I miss a class?",
                 "acceptedAnswer": {
                         "@type": "Answer",
-                        "text": "If you miss a class, you can catch it up by attending a similar level class on a different day within the same course period. If you know your absence dates in advance, let us know during registration and we will prorate the cost."
+                        "text": "You can declare up to two planned absences when you register, plus one sick day per pass in the Student Portal before 12:00 on the day you will miss. In each case we extend your pass by that class day, so the lesson is never lost. You can also catch up a missed class by attending a similar level class on a different day within the same course period."
                 }
         },
         {
@@ -299,6 +299,7 @@
   </head>
 
 <body class="tropic faq-page nav-declutter">
+    <a class="skip-link" href="#main-content">Skip to main content</a>
     <!-- Navigation Bar -->
     <header class="main-header">
         <div class="container navbar">
@@ -357,14 +358,17 @@
         </div>
     </header>
 
-    <main>
+    <main id="main-content">
 
         <!-- Hero Section -->
         <section class="faq-hero relative-container">
-            <img src="assets/images/faq_artistic_motion.webp"
+            <picture>
+              <source type="image/avif" srcset="assets/images/faq_artistic_motion_480w.avif 480w, assets/images/faq_artistic_motion_800w.avif 800w, assets/images/faq_artistic_motion_1200w.avif 1200w" sizes="100vw">
+              <img src="assets/images/faq_artistic_motion.webp"
                 srcset="assets/images/faq_artistic_motion_480w.webp 480w, assets/images/faq_artistic_motion_800w.webp 800w, assets/images/faq_artistic_motion_1200w.webp 1200w"
-                sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px"
+                sizes="100vw"
                 alt="Artistic Motion Blur of Couple Dancing Bachata" width="1024" height="1024" class="hero-bg-img">
+            </picture>
             <div class="hero-overlay"></div>
 
             <div class="container hero-content-z">
@@ -421,7 +425,7 @@
                     <span class="sched-faq__icon" aria-hidden="true">+</span>
                 </summary>
                 <div class="sched-faq__body">
-                    Yes! All our classes are taught in English to welcome our international community in Zurich. We also speak German, Italian, Spanish, and Mandarin if you need extra clarification!
+                    Yes! All our classes are taught in English to welcome our international community in Zurich. We also speak Italian, and our teachers speak German, if you need extra clarification!
                 </div>
             </details>
             <h2 class="faq-group-kicker" id="money">Money & logistics</h2>
@@ -431,7 +435,7 @@
                     <span class="sched-faq__icon" aria-hidden="true">+</span>
                 </summary>
                 <div class="sched-faq__body">
-                    If you enjoyed the class, you simply continue with the course. Courses run in 8-week blocks, and one course per week costs 220 CHF (185 CHF for students). Your first course sign-up comes with 15% off. You can compare all options on our <a href="registration">registration page</a>.
+                    If you enjoyed the class, you simply continue with the course. Courses run in 8-week blocks, and one course per week costs 210 CHF (180 CHF for students). Your first course sign-up comes with 15% off. You can compare all options on our <a href="registration">registration page</a>.
                 </div>
             </details>
             <details class="glass-panel sched-faq">
@@ -440,7 +444,7 @@
                     <span class="sched-faq__icon" aria-hidden="true">+</span>
                 </summary>
                 <div class="sched-faq__body">
-                    We accept Twint, cash, bank transfer, and secure card payment. Classes are sold as 8-week course blocks — 220 CHF, or 185 CHF for students. You can see all current options on our <a href="registration">registration and prices page</a>.
+                    Payment is handled securely online through Stripe when you register. Classes are sold as 8-week course blocks — 210 CHF, or 180 CHF for students. You can see all current options on our <a href="registration">registration and prices page</a>.
                 </div>
             </details>
             <details class="glass-panel sched-faq">
@@ -458,7 +462,7 @@
                     <span class="sched-faq__icon" aria-hidden="true">+</span>
                 </summary>
                 <div class="sched-faq__body">
-                    If you miss a class, you can catch it up by attending a similar level class on a different day within the same course period. If you know your absence dates in advance, let us know during registration and we will prorate the cost.
+                    You can declare up to two planned absences when you register, plus one sick day per pass in the Student Portal before 12:00 on the day you will miss. In each case we extend your pass by that class day, so the lesson is never lost. You can also catch up a missed class by attending a similar level class on a different day within the same course period.
                 </div>
             </details>
             <h2 class="faq-group-kicker" id="community">Community & events</h2>
@@ -530,7 +534,6 @@
       <div class="footer-col">
         <h2 class="footer-heading">Quick Links</h2>
         <ul class="footer-links">
-          <li><a href="/#trial-form">Book Free Trial</a></li>
           <li><a href="guide-bachata">What is Bachata</a></li>
           <li><a href="blog/roots-of-bachata">Roots of Bachata</a></li>
           <li><a href="schedule">Schedule</a></li>
@@ -570,7 +573,7 @@
     </div>
   </footer>
 
-    <script src="script.js?v=7.0"></script>
+    <script src="script.js?v=7.3"></script>
 
 
 
