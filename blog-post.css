@@ -201,8 +201,8 @@ body.post-page .post-byline a {
 
 body.post-page .post-byline a:hover,
 body.post-page .post-byline a:focus-visible {
-    color: var(--accent-start);
-    border-bottom-color: var(--accent-start);
+    color: var(--link-ink-hover);
+    border-bottom-color: currentColor;
 }
 
 /* ==========================================================================
@@ -250,16 +250,16 @@ body.post-page .post-content p {
 }
 
 body.post-page .post-content a:not([class]) {
-    color: var(--accent-start);
+    color: var(--link-ink);
     text-decoration: none;
-    border-bottom: 1px solid rgba(232, 176, 75, 0.45);
+    border-bottom: 1px solid var(--link-underline);
     transition: color 0.25s ease, border-color 0.25s ease;
 }
 
 body.post-page .post-content a:not([class]):hover,
 body.post-page .post-content a:not([class]):focus-visible {
-    color: var(--accent-end);
-    border-bottom-color: var(--accent-start);
+    color: var(--link-ink-hover);
+    border-bottom-color: currentColor;
 }
 
 body.post-page .post-content ul:not([class]) li::marker {
@@ -303,9 +303,9 @@ body.post-page .chapter-link:focus-visible {
 }
 
 body.post-page .chapter-link.active {
-    color: var(--accent-start);
-    border-left-color: var(--accent-start);
-    background: rgba(255, 90, 60, 0.07);
+    color: var(--link-ink);
+    border-left-color: var(--accent-gold);
+    background: rgba(232, 176, 75, 0.07);
     transform: none !important;
 }
 
@@ -519,27 +519,8 @@ body.post-page .btn-cta-premium:focus-visible {
    9. Post FAQ skin (visible list; schema lives in the head)
    ========================================================================== */
 
-body.post-page .faq-section .faq-item {
-    background: var(--glass-bg);
-    border: 1px solid var(--glass-border);
-    border-left: 3px solid rgba(232, 176, 75, 0.55);
-    border-radius: 12px;
-    padding: 1.2rem 1.4rem;
-    margin-bottom: 1rem;
-}
-
-body.post-page .faq-section .faq-question {
-    display: block;
-    font-family: var(--font-heading);
-    font-size: 1.15rem;
-    color: var(--title-cream);
-    margin-bottom: 0.5rem;
-}
-
-body.post-page .faq-section .faq-answer {
-    color: var(--text-muted);
-    margin-bottom: 0;
-}
+/* The FAQ skin moved to the unified "Programme" accordion at the end of
+   tropic-noir.css, which post pages load; nothing post-specific remains. */
 
 /* ==========================================================================
    10. Recirculation band (inserted before the end of every post)

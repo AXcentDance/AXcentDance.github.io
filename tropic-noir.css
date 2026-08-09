@@ -37,6 +37,9 @@
     --accent-start: #FF5A3C;
   --accent-end: #F58042;
   --accent-gold: #E8B04B;
+  --link-ink: #E8B04B;
+  --link-ink-hover: #F2C56E;
+  --link-underline: rgba(232, 176, 75, 0.45);
   --accent-purple: #0C2A24;
   --accent-navy: #10322B;
   --accent-navy-soft: #10322B;
@@ -981,30 +984,8 @@ body.home-page .trial-time-rail__list {
     box-shadow: var(--shadow-soft);
 }
 
-body.home-page .home-faq-section details {
-    background: #0C2A24;
-    border: 1px solid rgba(232, 176, 75, 0.15);
-}
-
-/* Beats the cream card rule of the old inverted-FAQ design */
-body.home-page .home-faq-section .glass-panel {
-    background: rgba(16, 50, 43, 0.85);
-    border-color: rgba(232, 176, 75, 0.18);
-    box-shadow: none;
-}
-
-body.home-page .home-faq-section details[open] {
-    border-left: 3px solid #E8B04B;
-}
-
-body.home-page .home-faq-section summary {
-    color: #F2E7CF;
-}
-
-body.home-page .home-faq-section summary:hover {
-    color: #FF5A3C;
-}
-
+/* The FAQ card skin moved to the unified "Programme" accordion at the end
+   of this file; only section-level color context remains here. */
 body.home-page .home-faq-section p {
     color: #9DB4AB;
 }
@@ -1100,22 +1081,6 @@ body.home-page .home-faq-section h2 {
     mix-blend-mode: soft-light;
 }
 
-/* FAQ soft open: the + rotates to x when an item is open. The transition is
-   motion-gated; without it the icon still flips instantly. */
-body.home-page .home-faq-section summary span {
-    display: inline-block;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-    body.home-page .home-faq-section summary span {
-        transition: transform 0.3s ease;
-    }
-}
-
-body.home-page .home-faq-section details[open] summary span {
-    transform: rotate(45deg);
-}
-
 /* --------------------------------------------------------------------------
    14. FOOTER
    -------------------------------------------------------------------------- */
@@ -1133,7 +1098,7 @@ body.home-page .home-faq-section details[open] summary span {
 }
 
 :is(body.home-page, body.contact-page, body.events-page, body.blog-page, body.guide-page, body.tropic) .main-footer a:hover {
-    color: #FF5A3C;
+    color: var(--link-ink-hover);
 }
 
 :is(body.home-page, body.contact-page, body.events-page, body.blog-page, body.guide-page, body.tropic) .footer-socials a {
@@ -1401,45 +1366,16 @@ body.home-page .home-faq-section__title {
 body.home-page .faq-list {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
 }
 
-body.home-page .faq-item {
-    border-radius: 12px;
-    overflow: hidden;
-}
-
-body.home-page .faq-item__summary {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 1rem;
-    padding: 1.5rem;
-    cursor: pointer;
-    color: var(--text-main);
-    font-weight: 600;
-    font-size: 1.1rem;
-    list-style: none;
-}
-
-body.home-page .faq-item__summary::-webkit-details-marker {
-    display: none;
-}
-
-body.home-page .faq-item__icon {
-    color: var(--accent-start);
-    font-size: 1.5rem;
-    line-height: 1;
-}
-
-body.home-page .faq-item__body {
-    padding: 0 1.5rem 1.5rem;
-    color: var(--text-muted);
-    line-height: 1.6;
-}
-
+/* Item, summary, icon and body styling live in the unified "Programme"
+   accordion at the end of this file. */
 body.home-page .faq-item__body a {
-    color: var(--accent-start);
+    color: var(--link-ink);
+    text-decoration: underline;
+    text-decoration-color: var(--link-underline);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
 }
 
 body.home-page .home-faq-section__cta {
@@ -1464,7 +1400,7 @@ body.home-page .footer-contact a {
 
 body.home-page .footer-contact a:hover,
 body.home-page .footer-contact a:focus-visible {
-    color: #FF5A3C;
+    color: var(--link-ink-hover);
 }
 
 /* --------------------------------------------------------------------------
@@ -2815,8 +2751,8 @@ body.home-page .home-hero__launch-note {
     max-width: 50rem;
     margin: 0 0 0.18rem;
     padding: 0.62rem 0.78rem;
-    border-left: 3px solid var(--accent-gold);
-    border-radius: 0 var(--cta-radius-sm) var(--cta-radius-sm) 0;
+    border: 1px solid rgba(232, 176, 75, 0.35);
+    border-radius: var(--cta-radius-sm);
     background: linear-gradient(90deg, rgba(4, 19, 16, 0.96), rgba(4, 19, 16, 0.82));
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
     color: rgba(244, 239, 230, 0.94);
@@ -3380,7 +3316,7 @@ body.contact-page .contact-address-note {
 
 body.contact-page .contact-item--modern a:hover,
 body.contact-page .contact-item--modern a:focus-visible {
-    color: #FF8A5C;
+    color: var(--link-ink-hover);
 }
 
 /* Icon chips: the tier-2 soft coral recipe, no glow */
@@ -3501,7 +3437,7 @@ body.contact-page .contact-form__privacy a:focus-visible {
 }
 
 :is(body.contact-page, body.events-page) .main-footer .footer-links a:hover {
-    color: #FF5A3C;
+    color: var(--link-ink-hover);
 }
 
 :is(body.contact-page, body.events-page) .main-footer .footer-logo .logo-subtitle {
@@ -4593,62 +4529,10 @@ body.bootcamp-page .bootcamp-faq .section-title-modern {
 body.bootcamp-page .bootcamp-faq__list {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
 }
 
-body.bootcamp-page .bootcamp-faq__item {
-    background: #10322B;
-    border: 1px solid rgba(232, 176, 75, 0.2);
-    border-radius: 12px;
-    overflow: hidden;
-    transition: border-color 0.3s ease;
-}
-
-body.bootcamp-page .bootcamp-faq__item[open],
-body.bootcamp-page .bootcamp-faq__item:hover {
-    border-color: rgba(255, 90, 60, 0.5);
-}
-
-body.bootcamp-page .bootcamp-faq__summary {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 1rem;
-    padding: 1.4rem 1.5rem;
-    cursor: pointer;
-    list-style: none;
-    color: #F2E7CF;
-    font-weight: 600;
-    font-size: 1.05rem;
-}
-
-body.bootcamp-page .bootcamp-faq__summary::-webkit-details-marker {
-    display: none;
-}
-
-body.bootcamp-page .bootcamp-faq__icon {
-    color: #FF5A3C;
-    font-size: 1.5rem;
-    line-height: 1;
-    display: inline-block;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-    body.bootcamp-page .bootcamp-faq__icon {
-        transition: transform 0.3s ease;
-    }
-}
-
-body.bootcamp-page .bootcamp-faq__item[open] .bootcamp-faq__icon {
-    transform: rotate(45deg);
-}
-
-body.bootcamp-page .bootcamp-faq__body {
-    padding: 0 1.5rem 1.5rem;
-    color: #9DB4AB;
-    line-height: 1.65;
-}
-
+/* Item, summary, icon and body styling live in the unified "Programme"
+   accordion at the end of this file. */
 body.bootcamp-page .bootcamp-faq__body a {
     color: #E8B04B;
     text-decoration: underline;
@@ -4657,7 +4541,7 @@ body.bootcamp-page .bootcamp-faq__body a {
 
 body.bootcamp-page .bootcamp-faq__body a:hover,
 body.bootcamp-page .bootcamp-faq__body a:focus-visible {
-    color: #FF5A3C;
+    color: var(--link-ink-hover);
 }
 
 /* Responsive */
@@ -5914,8 +5798,8 @@ body.guide-page .guide-chapter__lede a {
 }
 
 body.guide-page .guide-chapter__lede a:hover {
-    color: var(--accent-start);
-    text-decoration-color: var(--accent-start);
+    color: var(--link-ink-hover);
+    text-decoration-color: var(--link-ink-hover);
 }
 
 /* ---- Chapter 01: duo cards ---- */
@@ -6614,13 +6498,52 @@ body.course-page .course-masthead__dek {
 }
 
 body.course-page .course-masthead__dek a {
-    color: var(--accent-start);
-    text-decoration: none;
+    color: var(--link-ink);
+    text-decoration: underline;
+    text-decoration-color: var(--link-underline);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
 }
 
 body.course-page .course-masthead__dek a:hover,
 body.course-page .course-masthead__dek a:focus-visible {
-    color: #FF7156;
+    color: var(--link-ink-hover);
+    text-decoration: underline;
+}
+
+/* Status notice: a course whose curriculum is published but that has no slot
+   on the current timetable. Surface lift plus a warmed border, never a bar. */
+body.course-page .course-notice {
+    margin: 0 0 1.7rem;
+    padding: clamp(0.95rem, 1.8vw, 1.25rem) clamp(1.05rem, 2vw, 1.4rem);
+    max-width: 48ch;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.045);
+    font-size: 0.97rem;
+    line-height: 1.65;
+    color: var(--text-muted);
+}
+
+body.course-page .course-notice strong {
+    display: block;
+    margin-bottom: 0.35rem;
+    color: var(--title-cream);
+    font-weight: 600;
+}
+
+body.course-page .course-notice a {
+    color: var(--link-ink);
+    text-decoration: underline;
+    text-decoration-color: var(--link-underline);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+}
+
+body.course-page .course-notice a:hover,
+body.course-page .course-notice a:focus-visible {
+    color: var(--link-ink-hover);
     text-decoration: underline;
 }
 
@@ -6960,14 +6883,17 @@ body.course-page .course-zero__guide {
 }
 
 body.course-page .course-zero__guide a {
-    color: var(--accent-start);
-    text-decoration: none;
+    color: var(--link-ink);
+    text-decoration: underline;
+    text-decoration-color: var(--link-underline);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
     font-weight: 600;
 }
 
 body.course-page .course-zero__guide a:hover,
 body.course-page .course-zero__guide a:focus-visible {
-    color: #FF7156;
+    color: var(--link-ink-hover);
     text-decoration: underline;
 }
 
@@ -7072,8 +6998,11 @@ body.course-page .course-fork__answer strong {
 
 body.course-page .course-fork__answer a,
 body.course-page .course-fork__unsure a {
-    color: var(--accent-start);
-    text-decoration: none;
+    color: var(--link-ink);
+    text-decoration: underline;
+    text-decoration-color: var(--link-underline);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
     font-weight: 600;
 }
 
@@ -7081,7 +7010,7 @@ body.course-page .course-fork__answer a:hover,
 body.course-page .course-fork__answer a:focus-visible,
 body.course-page .course-fork__unsure a:hover,
 body.course-page .course-fork__unsure a:focus-visible {
-    color: #FF7156;
+    color: var(--link-ink-hover);
     text-decoration: underline;
 }
 
@@ -7330,85 +7259,29 @@ body.course-page .course-register__trust {
 body.course-page .course-faq__list {
     display: flex;
     flex-direction: column;
-    gap: 0.8rem;
     margin: 0 auto;
     max-width: 46rem;
 }
 
-body.course-page .course-faq__item {
-    background: var(--glass-bg);
-    border: 1px solid rgba(232, 176, 75, 0.18);
-    border-radius: 14px;
-    overflow: hidden;
-    transition: border-color 0.3s ease;
-}
-
-body.course-page .course-faq__item[open] {
-    border-color: rgba(232, 176, 75, 0.4);
-    border-left: 3px solid var(--accent-gold);
-}
-
-body.course-page .course-faq__summary {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-    padding: 1rem 1.2rem;
-    cursor: pointer;
-    list-style: none;
-    font-family: 'Outfit', sans-serif;
-    font-size: 1rem;
-    font-weight: 600;
-    color: var(--title-cream);
-    transition: color 0.3s ease;
-}
-
-body.course-page .course-faq__summary::-webkit-details-marker {
-    display: none;
-}
-
-body.course-page .course-faq__summary:hover {
-    color: var(--accent-start);
-}
-
-body.course-page .course-faq__icon {
-    flex: 0 0 auto;
-    display: inline-block;
-    font-size: 1.25rem;
-    line-height: 1;
-    color: var(--accent-start);
-}
-
-@media (prefers-reduced-motion: no-preference) {
-    body.course-page .course-faq__icon {
-        transition: transform 0.3s ease;
-    }
-}
-
-body.course-page .course-faq__item[open] .course-faq__icon {
-    transform: rotate(45deg);
-}
-
-body.course-page .course-faq__body {
-    padding: 0 1.2rem 1.1rem;
-}
-
+/* Item, summary, icon and body styling live in the unified "Programme"
+   accordion at the end of this file. */
 body.course-page .course-faq__body p {
     margin: 0;
-    font-size: 0.95rem;
-    line-height: 1.65;
     color: var(--text-muted);
 }
 
 body.course-page .course-faq__body a {
-    color: var(--accent-start);
-    text-decoration: none;
+    color: var(--link-ink);
+    text-decoration: underline;
+    text-decoration-color: var(--link-underline);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
     font-weight: 600;
 }
 
 body.course-page .course-faq__body a:hover,
 body.course-page .course-faq__body a:focus-visible {
-    color: #FF7156;
+    color: var(--link-ink-hover);
     text-decoration: underline;
 }
 
@@ -8130,57 +8003,19 @@ body.schedule-page .private-classes-photo:focus-within img {
 
 /* ---- FAQ skin (5 questions, native details) ---- */
 
-:is(body.schedule-page, body.faq-page, body.service-page) .sched-faq {
-    border-radius: 12px;
-    overflow: hidden;
-}
-
-:is(body.schedule-page, body.faq-page, body.service-page) .sched-faq[open] {
-    border-left: 3px solid var(--accent-bronze);
-}
-
-:is(body.schedule-page, body.faq-page, body.service-page) .sched-faq__summary {
-    padding: 1.5rem;
-    cursor: pointer;
-    color: var(--title-cream);
-    font-weight: 600;
-    font-size: 1.1rem;
-    list-style: none;
+/* The sched-faq skin lives in the unified "Programme" accordion at the end
+   of this file; only the shared .faq-list layout and link ink remain here. */
+:is(body.schedule-page, body.faq-page, body.service-page) .faq-list {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 1rem;
-}
-
-:is(body.schedule-page, body.faq-page, body.service-page) .sched-faq__summary::-webkit-details-marker {
-    display: none;
-}
-
-:is(body.schedule-page, body.faq-page, body.service-page) .sched-faq__icon {
-    color: var(--accent-start);
-    font-size: 1.5rem;
-    line-height: 1;
-    flex-shrink: 0;
-}
-
-:is(body.schedule-page, body.faq-page, body.service-page) .sched-faq[open] .sched-faq__icon {
-    transform: rotate(45deg);
-}
-
-@media (prefers-reduced-motion: no-preference) {
-    :is(body.schedule-page, body.faq-page, body.service-page) .sched-faq__icon {
-        transition: transform 0.25s ease;
-    }
-}
-
-:is(body.schedule-page, body.faq-page, body.service-page) .sched-faq__body {
-    padding: 0 1.5rem 1.5rem;
-    color: var(--text-muted);
-    line-height: 1.6;
+    flex-direction: column;
 }
 
 :is(body.schedule-page, body.faq-page, body.service-page) .sched-faq__body a {
-    color: var(--accent-start);
+    color: var(--link-ink);
+    text-decoration: underline;
+    text-decoration-color: var(--link-underline);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
 }
 
 /* --------------------------------------------------------------------------
@@ -8824,7 +8659,8 @@ body.faq-page .faq-container {
     padding: 2rem 20px 4rem;
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    /* Rows sit flush so the Programme hairlines read as one ruled list. */
+    gap: 0;
 }
 
 body.faq-page .faq-group-kicker {
@@ -8834,9 +8670,9 @@ body.faq-page .faq-group-kicker {
     letter-spacing: 0.16em;
     text-transform: uppercase;
     color: var(--accent-bronze);
-    margin: 1.6rem 0 0.2rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 1px solid rgba(232, 176, 75, 0.25);
+    /* No rule of its own: the first Programme row under the kicker already
+       draws the hairline. */
+    margin: 2rem 0 0.6rem;
     scroll-margin-top: calc(var(--header-height) + 1rem);
 }
 
@@ -8845,7 +8681,11 @@ body.faq-page .faq-group-kicker:first-of-type {
 }
 
 body.faq-page .sched-faq__body a {
-    color: var(--accent-start);
+    color: var(--link-ink);
+    text-decoration: underline;
+    text-decoration-color: var(--link-underline);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
 }
 
 body.faq-page .faq-reask {
@@ -9875,14 +9715,14 @@ body.service-page .service-steps__student-note {
 body.service-page .service-steps__student-note a {
     color: var(--accent-bronze-soft);
     font-weight: 700;
-    text-decoration-color: var(--accent-start);
+    text-decoration-color: var(--link-ink);
     text-underline-offset: 0.2em;
     transition: color 0.25s ease, text-decoration-color 0.25s ease;
 }
 
 body.service-page .service-steps__student-note a:hover,
 body.service-page .service-steps__student-note a:focus-visible {
-    color: var(--accent-start);
+    color: var(--link-ink-hover);
     text-decoration-color: var(--accent-bronze-soft);
 }
 
@@ -10048,7 +9888,7 @@ body.service-page .service-steps__item p {
 }
 
 body.service-page .service-steps__item p a {
-    color: var(--accent-start);
+    color: var(--link-ink);
     font-weight: 600;
     text-decoration-color: var(--accent-bronze-muted);
     text-underline-offset: 0.18em;
@@ -10058,7 +9898,7 @@ body.service-page .service-steps__item p a {
 body.service-page .service-steps__item p a:hover,
 body.service-page .service-steps__item p a:focus-visible {
     color: var(--accent-bronze-soft);
-    text-decoration-color: var(--accent-start);
+    text-decoration-color: var(--link-ink-hover);
 }
 
 body.service-page .service-steps__item p a:focus-visible {
@@ -10397,7 +10237,11 @@ body.corporate-page .bento-card .service-num {
 }
 
 body.corporate-page .service-inquiry__copy a {
-    color: var(--accent-start);
+    color: var(--link-ink);
+    text-decoration: underline;
+    text-decoration-color: var(--link-underline);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
 }
 
 /* ---- Rental page: layout ported from the deleted inline blocks + island ---- */
@@ -10676,7 +10520,11 @@ body.rental-page .rental-stages__coda {
 }
 
 body.rental-page .rental-stages__coda a {
-    color: var(--accent-start);
+    color: var(--link-ink);
+    text-decoration: underline;
+    text-decoration-color: var(--link-underline);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
 }
 
 @media (max-width: 900px) {
@@ -10702,7 +10550,11 @@ body.rental-page .rental-rates .section-title-modern {
 }
 
 body.rental-page .service-price-card__note a {
-    color: var(--accent-start);
+    color: var(--link-ink);
+    text-decoration: underline;
+    text-decoration-color: var(--link-underline);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
 }
 
 /* --------------------------------------------------------------------------
@@ -10967,14 +10819,17 @@ body.legal-page .legal-content li::marker {
 }
 
 body.legal-page .legal-content a {
-    color: var(--accent-start) !important;
-    text-decoration: none;
-    border-bottom: 1px solid rgba(232, 176, 75, 0.45);
+    color: var(--link-ink) !important;
+    text-decoration: underline;
+    text-decoration-color: var(--link-underline);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
 }
 
 body.legal-page .legal-content a:hover,
 body.legal-page .legal-content a:focus-visible {
-    color: var(--accent-end) !important;
+    color: var(--link-ink-hover) !important;
+    text-decoration-color: currentColor;
 }
 
 body.legal-page .legal-content strong {
@@ -11233,7 +11088,11 @@ body.etiquette-page .hero-desc-border {
 }
 
 body.etiquette-page .hero-desc-border a {
-    color: var(--accent-start);
+    color: var(--link-ink);
+    text-decoration: underline;
+    text-decoration-color: var(--link-underline);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
 }
 
 body.etiquette-page .etiquette-container {
@@ -11252,7 +11111,8 @@ body.etiquette-page .guide-title {
     font-size: 1.75rem;
     color: var(--title-cream);
     margin-bottom: 1rem;
-    border-left: 3px solid var(--accent-bronze);
+    border-bottom: 1px solid rgba(232, 176, 75, 0.35);
+    padding-bottom: 0.6rem;
     padding-left: 1rem;
 }
 
@@ -11320,7 +11180,11 @@ body.etiquette-page .etiquette-bridge__copy {
 }
 
 body.etiquette-page .etiquette-bridge__copy a {
-    color: var(--accent-start);
+    color: var(--link-ink);
+    text-decoration: underline;
+    text-decoration-color: var(--link-underline);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
 }
 
 body.etiquette-page .etiquette-bridge__cta {
@@ -11397,7 +11261,11 @@ body.guide-lite-page .course-content-section li {
 }
 
 body.guide-lite-page .course-content-section a {
-    color: var(--accent-start);
+    color: var(--link-ink);
+    text-decoration: underline;
+    text-decoration-color: var(--link-underline);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
 }
 
 body.guide-lite-page .course-content-section strong {
@@ -11405,9 +11273,8 @@ body.guide-lite-page .course-content-section strong {
 }
 
 body.guide-lite-page .guide-highlight-box {
-    background: var(--glass-bg);
-    border: 1px solid rgba(232, 176, 75, 0.3);
-    border-left: 3px solid var(--accent-bronze);
+    background: #123A31;
+    border: 1px solid rgba(232, 176, 75, 0.35);
     border-radius: 12px;
     padding: 1.5rem;
     margin: 2rem 0;
@@ -11504,7 +11371,11 @@ body.guide-lite-page .guide-crossband__copy {
 }
 
 body.guide-lite-page .guide-crossband__copy a {
-    color: var(--accent-start);
+    color: var(--link-ink);
+    text-decoration: underline;
+    text-decoration-color: var(--link-underline);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
 }
 
 /* --------------------------------------------------------------------------
@@ -11717,7 +11588,11 @@ body.education-page .edu-section p {
 }
 
 body.education-page .edu-section a {
-    color: var(--accent-start);
+    color: var(--link-ink);
+    text-decoration: underline;
+    text-decoration-color: var(--link-underline);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
 }
 
 body.education-page .edu-section strong {
@@ -11788,12 +11663,11 @@ body.education-page .edu-era__label {
 /* --- Callout -------------------------------------------------------------- */
 
 body.education-page .edu-callout {
-    background: var(--glass-bg);
+    background: #123A31;
     padding: clamp(1.2rem, 3vw, 1.6rem);
     border-radius: 12px;
     margin: 1.8rem 0 0;
-    border: 1px solid rgba(232, 176, 75, 0.25);
-    border-left: 3px solid var(--accent-bronze);
+    border: 1px solid rgba(232, 176, 75, 0.35);
 }
 
 body.education-page .edu-callout__title {
@@ -12611,5 +12485,266 @@ body.registration-page .pricing-option input:checked~.pricing-card::after {
 
     body.registration-page .rates-table tbody td {
         font-size: 0.95rem;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   THE PROGRAMME — unified FAQ accordion (all pages, 2026-08-09)
+   One boxless editorial skin for every FAQ on the site: serif questions on
+   hairline-separated rows, and a brass "bracket" that draws itself on open —
+   a horizontal stroke under the question that turns the corner into a
+   vertical stroke beside the answer, which rises in behind it.
+   Covers the five former variants: .sched-faq (faq/schedule/service pages),
+   .course-faq__item, the homepage .faq-item, .bootcamp-faq__item, and the
+   blog post .faq-section .faq-item. Left-bar accents are banned design
+   language; the vertical stroke here is a drawn 1px hairline, not a border.
+   Height animates via interpolate-size + ::details-content on supporting
+   browsers and degrades to an instant, fully styled open elsewhere.
+   -------------------------------------------------------------------------- */
+
+:is(body.schedule-page, body.faq-page, body.service-page) .sched-faq,
+body.course-page .course-faq__item,
+body.home-page .faq-item,
+body.bootcamp-page .bootcamp-faq__item,
+body.post-page .faq-section .faq-item {
+    background: none;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    overflow: visible;
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid rgba(232, 176, 75, 0.16);
+    interpolate-size: allow-keywords;
+}
+
+:is(body.schedule-page, body.faq-page, body.service-page) .sched-faq:last-of-type,
+body.course-page .course-faq__item:last-of-type,
+body.home-page .faq-item:last-of-type,
+body.bootcamp-page .bootcamp-faq__item:last-of-type,
+body.post-page .faq-section .faq-item:last-of-type {
+    border-bottom: 1px solid rgba(232, 176, 75, 0.16);
+}
+
+:is(body.schedule-page, body.faq-page, body.service-page) .sched-faq__summary,
+body.course-page .course-faq__summary,
+body.home-page .faq-item__summary,
+body.bootcamp-page .bootcamp-faq__summary,
+body.post-page .faq-section .faq-question {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.15rem 0.2rem;
+    margin: 0;
+    cursor: pointer;
+    list-style: none;
+    font-family: var(--font-heading);
+    font-weight: 500;
+    font-size: 1.25rem;
+    line-height: 1.35;
+    color: var(--title-cream);
+    transition: color 0.3s ease;
+}
+
+:is(body.schedule-page, body.faq-page, body.service-page) .sched-faq__summary::-webkit-details-marker,
+body.course-page .course-faq__summary::-webkit-details-marker,
+body.home-page .faq-item__summary::-webkit-details-marker,
+body.bootcamp-page .bootcamp-faq__summary::-webkit-details-marker,
+body.post-page .faq-section .faq-question::-webkit-details-marker {
+    display: none;
+}
+
+:is(body.schedule-page, body.faq-page, body.service-page) .sched-faq__summary:hover,
+body.course-page .course-faq__summary:hover,
+body.home-page .faq-item__summary:hover,
+body.bootcamp-page .bootcamp-faq__summary:hover,
+body.post-page .faq-section .faq-question:hover {
+    color: var(--link-ink-hover);
+}
+
+:is(body.schedule-page, body.faq-page, body.service-page) .sched-faq[open] .sched-faq__summary,
+body.course-page .course-faq__item[open] .course-faq__summary,
+body.home-page .faq-item[open] .faq-item__summary,
+body.bootcamp-page .bootcamp-faq__item[open] .bootcamp-faq__summary,
+body.post-page .faq-section .faq-item[open] .faq-question {
+    color: var(--accent-gold);
+}
+
+:is(body.schedule-page, body.faq-page, body.service-page) .sched-faq__summary:focus-visible,
+body.course-page .course-faq__summary:focus-visible,
+body.home-page .faq-item__summary:focus-visible,
+body.bootcamp-page .bootcamp-faq__summary:focus-visible,
+body.post-page .faq-section .faq-question:focus-visible {
+    outline: 2px solid var(--accent-gold);
+    outline-offset: 3px;
+}
+
+/* Chevron: rendered by the skin so no markup change is needed; the old
+   plus-sign icon spans are retired below. */
+:is(body.schedule-page, body.faq-page, body.service-page) .sched-faq__summary::after,
+body.course-page .course-faq__summary::after,
+body.home-page .faq-item__summary::after,
+body.bootcamp-page .bootcamp-faq__summary::after,
+body.post-page .faq-section .faq-question::after {
+    content: "\25BE";
+    flex: 0 0 auto;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.95rem;
+    line-height: 1;
+    color: var(--accent-bronze-muted);
+}
+
+:is(body.schedule-page, body.faq-page, body.service-page) .sched-faq[open] .sched-faq__summary::after,
+body.course-page .course-faq__item[open] .course-faq__summary::after,
+body.home-page .faq-item[open] .faq-item__summary::after,
+body.bootcamp-page .bootcamp-faq__item[open] .bootcamp-faq__summary::after,
+body.post-page .faq-section .faq-item[open] .faq-question::after {
+    transform: rotate(180deg);
+}
+
+:is(body.schedule-page, body.faq-page, body.service-page) .sched-faq__icon,
+body.course-page .course-faq__icon,
+body.home-page .faq-item__icon,
+body.bootcamp-page .bootcamp-faq__icon {
+    display: none;
+}
+
+/* Horizontal stroke of the bracket: draws under the question on open and
+   retracts on close. It is always in the layer tree, so a transition works
+   in both directions. */
+:is(body.schedule-page, body.faq-page, body.service-page) .sched-faq__summary::before,
+body.course-page .course-faq__summary::before,
+body.home-page .faq-item__summary::before,
+body.bootcamp-page .bootcamp-faq__summary::before,
+body.post-page .faq-section .faq-question::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 1px;
+    background: var(--accent-gold);
+    opacity: 0.55;
+    transform: scaleX(0);
+    transform-origin: left;
+}
+
+:is(body.schedule-page, body.faq-page, body.service-page) .sched-faq[open] .sched-faq__summary::before,
+body.course-page .course-faq__item[open] .course-faq__summary::before,
+body.home-page .faq-item[open] .faq-item__summary::before,
+body.bootcamp-page .bootcamp-faq__item[open] .bootcamp-faq__summary::before,
+body.post-page .faq-section .faq-item[open] .faq-question::before {
+    transform: scaleX(1);
+}
+
+/* Answer block, indented behind the vertical stroke of the bracket. */
+:is(body.schedule-page, body.faq-page, body.service-page) .sched-faq__body,
+body.course-page .course-faq__body,
+body.home-page .faq-item__body,
+body.bootcamp-page .bootcamp-faq__body,
+body.post-page .faq-section .faq-answer {
+    position: relative;
+    margin: 0;
+    padding: 1.05rem 2.2rem 1.35rem 1.25rem;
+    font-size: 0.975rem;
+    color: var(--text-muted);
+    line-height: 1.65;
+}
+
+:is(body.schedule-page, body.faq-page, body.service-page) .sched-faq__body::before,
+body.course-page .course-faq__body::before,
+body.home-page .faq-item__body::before,
+body.bootcamp-page .bootcamp-faq__body::before,
+body.post-page .faq-section .faq-answer::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 1.05rem;
+    bottom: 1.35rem;
+    width: 1px;
+    background: var(--accent-gold);
+    opacity: 0.5;
+    transform-origin: top;
+}
+
+/* Motion: the closed answer subtree is unrendered, so entrances use
+   animations (they fire on first paint) while the summary stroke uses a
+   transition. All of it is motion-gated; reduced-motion users get the full
+   open state instantly. */
+@media (prefers-reduced-motion: no-preference) {
+    :is(body.schedule-page, body.faq-page, body.service-page) .sched-faq__summary::before,
+    body.course-page .course-faq__summary::before,
+    body.home-page .faq-item__summary::before,
+    body.bootcamp-page .bootcamp-faq__summary::before,
+    body.post-page .faq-section .faq-question::before {
+        transition: transform 0.45s cubic-bezier(0.32, 0.72, 0.28, 1);
+    }
+
+    :is(body.schedule-page, body.faq-page, body.service-page) .sched-faq__summary::after,
+    body.course-page .course-faq__summary::after,
+    body.home-page .faq-item__summary::after,
+    body.bootcamp-page .bootcamp-faq__summary::after,
+    body.post-page .faq-section .faq-question::after {
+        transition: transform 0.35s ease;
+    }
+
+    :is(body.schedule-page, body.faq-page, body.service-page) .sched-faq[open] .sched-faq__body,
+    body.course-page .course-faq__item[open] .course-faq__body,
+    body.home-page .faq-item[open] .faq-item__body,
+    body.bootcamp-page .bootcamp-faq__item[open] .bootcamp-faq__body,
+    body.post-page .faq-section .faq-item[open] .faq-answer {
+        animation: faq-answer-rise 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.05s both;
+    }
+
+    :is(body.schedule-page, body.faq-page, body.service-page) .sched-faq[open] .sched-faq__body::before,
+    body.course-page .course-faq__item[open] .course-faq__body::before,
+    body.home-page .faq-item[open] .faq-item__body::before,
+    body.bootcamp-page .bootcamp-faq__item[open] .bootcamp-faq__body::before,
+    body.post-page .faq-section .faq-item[open] .faq-answer::before {
+        animation: faq-vline-draw 0.5s cubic-bezier(0.32, 0.72, 0.28, 1) 0.12s both;
+    }
+
+    :is(body.schedule-page, body.faq-page, body.service-page) .sched-faq::details-content,
+    body.course-page .course-faq__item::details-content,
+    body.home-page .faq-item::details-content,
+    body.bootcamp-page .bootcamp-faq__item::details-content,
+    body.post-page .faq-section .faq-item::details-content {
+        block-size: 0;
+        overflow: hidden;
+        transition: block-size 0.45s cubic-bezier(0.32, 0.72, 0.28, 1), content-visibility 0.45s allow-discrete;
+    }
+
+    :is(body.schedule-page, body.faq-page, body.service-page) .sched-faq[open]::details-content,
+    body.course-page .course-faq__item[open]::details-content,
+    body.home-page .faq-item[open]::details-content,
+    body.bootcamp-page .bootcamp-faq__item[open]::details-content,
+    body.post-page .faq-section .faq-item[open]::details-content {
+        block-size: auto;
+    }
+}
+
+@keyframes faq-answer-rise {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@keyframes faq-vline-draw {
+    from {
+        transform: scaleY(0);
+    }
+
+    to {
+        transform: scaleY(1);
     }
 }

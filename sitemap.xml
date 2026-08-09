@@ -298,11 +298,43 @@
   </url>
   <url>
     <loc>https://axcentdance.com/bachata-beginner-2</loc>
-    <lastmod>2026-07-21T12:00:00+02:00</lastmod>
-    <priority>0.8</priority>
+    <lastmod>2026-08-09T12:00:00+02:00</lastmod>
+    <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/bachata-beginner-2" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/bachata-beginner-2" />
     <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/bachata-beginner-2" />
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/gallery/gallery_14_800w.webp</image:loc>
+      <image:title>Focused practice session in our Zurich dance studio at AXcent Dance</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/ale-xidan-about_480w.webp</image:loc>
+      <image:title>Ale and Xidan, founders of AXcent Dance</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://axcentdance.com/de/bachata-beginner-2</loc>
+    <lastmod>2026-08-09T12:00:00+02:00</lastmod>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/bachata-beginner-2" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/bachata-beginner-2" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/bachata-beginner-2" />
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/gallery/gallery_14_800w.webp</image:loc>
+      <image:title>Konzentriertes Training in unserem Tanzstudio in Zürich bei AXcent Dance</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://axcentdance.com/assets/images/ale-xidan-about_480w.webp</image:loc>
+      <image:title>Ale und Xidan, Gründer von AXcent Dance</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://axcentdance.com/bachata-beginner-3</loc>
+    <lastmod>2026-07-21T12:00:00+02:00</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/bachata-beginner-3" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/bachata-beginner-3" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/bachata-beginner-3" />
     <image:image>
       <image:loc>https://axcentdance.com/assets/images/gallery/gallery_10_800w.webp</image:loc>
       <image:title>Students learning new partnerwork moves in class at AXcent Dance in Zurich</image:title>
@@ -313,12 +345,12 @@
     </image:image>
   </url>
   <url>
-    <loc>https://axcentdance.com/de/bachata-beginner-2</loc>
+    <loc>https://axcentdance.com/de/bachata-beginner-3</loc>
     <lastmod>2026-07-21T12:00:00+02:00</lastmod>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/bachata-beginner-2" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/bachata-beginner-2" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/bachata-beginner-2" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://axcentdance.com/bachata-beginner-3" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://axcentdance.com/bachata-beginner-3" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://axcentdance.com/de/bachata-beginner-3" />
     <image:image>
       <image:loc>https://axcentdance.com/assets/images/gallery/gallery_10_800w.webp</image:loc>
       <image:title>Schüler lernen neue Partnerwork-Figuren in einer Klasse bei AXcent Dance in Zürich</image:title>
