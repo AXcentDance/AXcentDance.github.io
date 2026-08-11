@@ -7,6 +7,7 @@ import sys
 ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 HLS_ROOT = os.path.join(ROOT_DIR, "assets", "videos", "hls")
 DEFAULT_SEGMENT_SECONDS = 3.0
+DEFAULT_FIRST_SEGMENT_SECONDS = 1.0
 DEFAULT_DESKTOP_CRF = 24
 DEFAULT_DESKTOP_MAXRATE = 6000  # kbps ceiling for the 1080p rendition
 
@@ -36,20 +37,34 @@ def probe_fps(input_video):
 
 def generate_hls(input_video, name, keep_audio=False, mobile_only=False,
                  segment_seconds=DEFAULT_SEGMENT_SECONDS, desktop_crf=DEFAULT_DESKTOP_CRF,
-                 desktop_maxrate=DEFAULT_DESKTOP_MAXRATE, duration=None, fade=None):
+                 desktop_maxrate=DEFAULT_DESKTOP_MAXRATE, duration=None, fade=None,
+                 first_segment_seconds=DEFAULT_FIRST_SEGMENT_SECONDS):
     output_dir = os.path.join(HLS_ROOT, name)
     if os.path.exists(output_dir):
         shutil.rmtree(output_dir)
     os.makedirs(output_dir)
 
     fps = probe_fps(input_video)
-    gop = round(fps * segment_seconds)  # one keyframe per segment boundary
+    gop = round(fps * segment_seconds)  # maximum keyframe distance = one full segment
+
+    # Keyframe grid: 0, then <first_segment_seconds>, then every <segment_seconds>.
+    # The short bootstrap segment makes the first chunk small (~1s of footage),
+    # so the first frame paints sooner and the initial download burst is light —
+    # this matters most on desktop, where playback starts on the 1080p rendition.
+    # Segments can only be cut at keyframes, so the grid must be forced
+    # explicitly; -hls_time is set to the bootstrap length so the muxer cuts at
+    # every forced keyframe (segments come out as 1s, 3s, 3s, ...).
+    clip_end = duration or probe_duration(input_video)
+    kf_times = [0.0, first_segment_seconds]
+    while kf_times[-1] + segment_seconds < clip_end:
+        kf_times.append(kf_times[-1] + segment_seconds)
+    force_kf = ",".join("%.6g" % t for t in kf_times)
+    kmin = min(gop, round(fps * first_segment_seconds))
 
     # Fade in from black / out to black at the clip edges, so a looping hero
     # video passes through black instead of jump-cutting mid-move.
     fade_prefix = ""
     if fade:
-        clip_end = duration or probe_duration(input_video)
         fade_prefix = "fade=t=in:st=0:d=%g,fade=t=out:st=%g:d=%g," % (
             fade, clip_end - fade, fade)
 
@@ -68,7 +83,8 @@ def generate_hls(input_video, name, keep_audio=False, mobile_only=False,
         "-filter:v:0", fade_prefix + "scale=w='min(720,iw)':h=-2,format=yuv420p",
         "-c:v:0", "libx264", "-crf:v:0", "28", "-preset:v:0", "slow",
         "-b:v:0", "800k", "-maxrate:v:0", "1000k", "-bufsize:v:0", "1500k",
-        "-g:v:0", str(gop), "-keyint_min:v:0", str(gop), "-sc_threshold:v:0", "0",
+        "-g:v:0", str(gop), "-keyint_min:v:0", str(kmin), "-sc_threshold:v:0", "0",
+        "-force_key_frames:v:0", force_kf,
     ]
 
     if not mobile_only:
@@ -79,7 +95,8 @@ def generate_hls(input_video, name, keep_audio=False, mobile_only=False,
             "-b:v:1", "%dk" % round(desktop_maxrate * 0.75),
             "-maxrate:v:1", "%dk" % desktop_maxrate,
             "-bufsize:v:1", "%dk" % round(desktop_maxrate * 1.5),
-            "-g:v:1", str(gop), "-keyint_min:v:1", str(gop), "-sc_threshold:v:1", "0",
+            "-g:v:1", str(gop), "-keyint_min:v:1", str(kmin), "-sc_threshold:v:1", "0",
+            "-force_key_frames:v:1", force_kf,
         ]
 
     cmd += ["-map", "0:v"] * (1 if mobile_only else 2)
@@ -102,7 +119,11 @@ def generate_hls(input_video, name, keep_audio=False, mobile_only=False,
         "-var_stream_map", var_stream_map,
         "-master_pl_name", "playlist.m3u8",
         "-f", "hls",
-        "-hls_time", "%g" % segment_seconds,
+        # hls_time = bootstrap length: the muxer then cuts at every forced
+        # keyframe, yielding the 1s-then-3s segment plan. With hls_time set to
+        # the full segment length the muxer would skip the t=1 keyframe and the
+        # bootstrap segment would silently disappear.
+        "-hls_time", "%g" % min(first_segment_seconds, segment_seconds),
         "-hls_playlist_type", "vod",
         "-hls_segment_filename", os.path.join(output_dir, "%v_segment_%03d.ts"),
         os.path.join(output_dir, "stream_%v.m3u8"),
@@ -111,7 +132,41 @@ def generate_hls(input_video, name, keep_audio=False, mobile_only=False,
     print("Running FFmpeg HLS generation (%.6g fps, keyframe every %d frames)..." % (fps, gop))
     print(" ".join(cmd))
     subprocess.run(cmd, check=True)
+    write_desktop_first_playlist(output_dir)
     print("HLS output written to %s" % os.path.relpath(output_dir, ROOT_DIR))
+
+
+def write_desktop_first_playlist(output_dir):
+    """Emit playlist_desktop.m3u8: the master playlist with the variant order
+    reversed so the 1080p rendition is listed first.
+
+    Native HLS players (Safari, and Chromium's built-in HLS support) start
+    playback on the FIRST variant of the master playlist and only then adapt.
+    playlist.m3u8 lists 720p first — the right start for phones — so desktop
+    viewports would always play soft opening seconds. hls-video.js points
+    desktop-sized viewports at this twin instead; the segments are shared,
+    only the variant order differs. For --mobile-only streams the twin is an
+    identical single-variant playlist (harmless, keeps the URL scheme uniform).
+    """
+    master_path = os.path.join(output_dir, "playlist.m3u8")
+    with open(master_path, encoding="utf-8") as f:
+        lines = [line.rstrip("\n") for line in f]
+
+    header, variants = [], []
+    i = 0
+    while i < len(lines):
+        line = lines[i]
+        if line.startswith("#EXT-X-STREAM-INF"):
+            variants.append([line, lines[i + 1]])
+            i += 2
+        else:
+            if line.strip():
+                header.append(line)
+            i += 1
+
+    out_lines = header + [l for pair in reversed(variants) for l in pair]
+    with open(os.path.join(output_dir, "playlist_desktop.m3u8"), "w", encoding="utf-8") as f:
+        f.write("\n".join(out_lines) + "\n")
 
 
 if __name__ == "__main__":
@@ -130,6 +185,11 @@ if __name__ == "__main__":
                              "(e.g. 2.5) waste less bandwidth on early abandons, leaving budget "
                              "for a higher-quality encode of short showcase clips."
                              % DEFAULT_SEGMENT_SECONDS)
+    parser.add_argument("--first-segment-seconds", type=float, default=DEFAULT_FIRST_SEGMENT_SECONDS,
+                        help="Length of the bootstrap first segment (default: %g). A short opener "
+                             "paints the first frame sooner and keeps the initial download burst "
+                             "small, especially on desktop where playback starts on the 1080p "
+                             "rendition." % DEFAULT_FIRST_SEGMENT_SECONDS)
     parser.add_argument("--crf-desktop", type=int, default=DEFAULT_DESKTOP_CRF,
                         help="CRF for the 1080p desktop rendition (default: %d; lower = higher "
                              "quality/bitrate, still capped by --maxrate-desktop)" % DEFAULT_DESKTOP_CRF)
@@ -150,4 +210,5 @@ if __name__ == "__main__":
         sys.exit("Input file not found: %s" % args.input)
     generate_hls(args.input, args.name, keep_audio=args.keep_audio, mobile_only=args.mobile_only,
                  segment_seconds=args.segment_seconds, desktop_crf=args.crf_desktop,
-                 desktop_maxrate=args.maxrate_desktop, duration=args.duration, fade=args.fade)
+                 desktop_maxrate=args.maxrate_desktop, duration=args.duration, fade=args.fade,
+                 first_segment_seconds=args.first_segment_seconds)

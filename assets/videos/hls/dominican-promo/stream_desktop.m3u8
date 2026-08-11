@@ -1,9 +1,9 @@
 #EXTM3U
 #EXT-X-VERSION:3
-#EXT-X-TARGETDURATION:3
+#EXT-X-TARGETDURATION:2
 #EXT-X-MEDIA-SEQUENCE:0
 #EXT-X-PLAYLIST-TYPE:VOD
-#EXTINF:2.500000,
+#EXTINF:1.000000,
 desktop_segment_000.ts
 #EXTINF:2.500000,
 desktop_segment_001.ts
@@ -15,4 +15,6 @@ desktop_segment_003.ts
 desktop_segment_004.ts
 #EXTINF:2.500000,
 desktop_segment_005.ts
+#EXTINF:1.500000,
+desktop_segment_006.ts
 #EXT-X-ENDLIST

@@ -13,7 +13,7 @@
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/inter-200-900-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/outfit-500-800-latin.woff2" crossorigin>
     <link rel="stylesheet" href="style.css?v=10.14">
-    <link rel="stylesheet" href="tropic-noir.css?v=9.4">
+    <link rel="stylesheet" href="tropic-noir.css?v=9.6">
     <link rel="apple-touch-icon" href="/apple-touch-icon-v2.png">
     <link rel="icon" href="/favicon-axcent-192.png" type="image/png" sizes="192x192">
     <link rel="icon" href="/favicon-axcent-transparent.svg" type="image/svg+xml">
@@ -393,8 +393,7 @@
             window.location.href = '_login.html';
             throw new Error('Not authenticated');
         }
-        // Open to the owner and to any active teacher — teachers log their own
-        // classes here, which is what the 24h reminder email links to.
+        // Open to the owner and to any active teacher: teachers log their own // classes here, which is what the 24h reminder email links to.
         const isOwner = session.user.email.toLowerCase() === OWNER_EMAIL;
         const { data: meTeacher } = await supabase.from('teachers')
             .select('*').ilike('email', session.user.email).maybeSingle();
@@ -497,9 +496,7 @@
         // ----- Rendering ----------------------------------------------------
         function renderPicker() {
             const mon = weekMonday();
-            const sun = new Date(mon); sun.setDate(sun.getDate() + 6);
-            el('weekLabel').textContent = shortDate(iso(mon)) + ' – ' + shortDate(iso(sun)) +
-                (weekOffset === 0 ? ' (this week)' : '');
+            const sun = new Date(mon); sun.setDate(sun.getDate() + 6); el('weekLabel').textContent = shortDate(iso(mon)) + ' to ' + shortDate(iso(sun)) + (weekOffset === 0 ? ' (this week)' : '');
             el('nextWeek').disabled = weekOffset >= 0;
 
             el('dayChips').innerHTML = classDays.map(d =>
@@ -562,10 +559,7 @@
         async function renderMarks() {
             if (!selClass) { hide('markCard'); return; }
             const def = classDefs.find(c => c.value === selClass);
-            const dateStr = dateForDay(selDay);
-            el('markTitle').textContent = def.name + ' — ' +
-                new Date(dateStr + 'T00:00:00').toLocaleDateString('en-US', {
-                    weekday: 'long', month: 'long', day: 'numeric'
+            const dateStr = dateForDay(selDay); el('markTitle').textContent = def.name + ' · ' + new Date(dateStr + 'T00:00:00').toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric'
                 });
 
             const roster = await rosterForSelection();
@@ -591,8 +585,7 @@
 
             if (isOwner) {
                 // Flexible-pass holders sit on no fixed roster; the owner can
-                // drop one into any class. Teachers do not get this list —
-                // it would expose students outside their own class.
+                // drop one into any class. Teachers do not get this list: // it would expose students outside their own class.
                 const listedIds = roster.map(r => r.id);
                 const flexHolders = registrations.filter(r =>
                     r.status === 'active' && r.pass_type === FLEX_PASS && !listedIds.includes(r.id));
@@ -601,9 +594,7 @@
                         '<option value="">Mark a 10-class pass holder present...</option>' +
                         flexHolders.map(r =>
                             '<option value="' + r.id + '">' +
-                            esc(((r.first_name || '') + ' ' + (r.last_name || '')).trim() || r.email) +
-                            ' — ' + flexUsed(r.id) + ' of 10 used</option>').join('');
-                    show('flexSection');
+                            esc(((r.first_name || '') + ' ' + (r.last_name || '')).trim() || r.email) + ' · ' + flexUsed(r.id) + ' of 10 used</option>').join(''); show('flexSection');
                 } else {
                     hide('flexSection');
                 }

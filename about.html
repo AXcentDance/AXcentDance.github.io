@@ -185,7 +185,7 @@
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/inter-200-900-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/outfit-500-800-latin.woff2" crossorigin>
     <link rel="stylesheet" href="style.css?v=10.14">
-    <link rel="stylesheet" href="tropic-noir.css?v=9.4">
+    <link rel="stylesheet" href="tropic-noir.css?v=9.6">
     <link rel="apple-touch-icon" href="/apple-touch-icon-v2.png">
     <link rel="icon" href="/favicon-axcent-transparent.svg" type="image/svg+xml">
 
@@ -675,13 +675,7 @@
                     });
 
                 // Auto-rotate
-                world.controls().autoRotate = false;
-                world.controls().autoRotateSpeed = 0.5;
-
-                // Initial Zoom — centered on Switzerland (HQ)
-                world.pointOfView({
-                    lat: 46.8182,
-                    lng: 8.2275,
+                world.controls().autoRotate = false; world.controls().autoRotateSpeed = 0.5; // Initial Zoom, centered on Switzerland (HQ) world.pointOfView({ lat: 46.8182, lng: 8.2275,
                     altitude: 0.85
                 });
 

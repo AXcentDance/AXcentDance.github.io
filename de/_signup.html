@@ -18,7 +18,7 @@
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/inter-200-900-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/outfit-500-800-latin.woff2" crossorigin>
     <link rel="stylesheet" href="../style.css?v=10.14">
-    <link rel="stylesheet" href="../tropic-noir.css?v=9.4">
+    <link rel="stylesheet" href="../tropic-noir.css?v=9.6">
     <link rel="apple-touch-icon" href="/apple-touch-icon-v2.png">
     <link rel="icon" href="/favicon-axcent-192.png" type="image/png" sizes="192x192">
     <link rel="icon" href="/favicon-axcent-transparent.svg" type="image/svg+xml">
@@ -221,15 +221,10 @@
             const { error } = await supabase.auth.resend({ type: 'signup', email: lastSignupEmail });
             if (error) {
                 feedback.textContent = error.message;
-                feedback.className = 'error';
-            } else {
-                feedback.textContent = 'Bestätigungs-E-Mail erneut gesendet — bitte prüfe auch deinen Spam-Ordner.';
-                feedback.className = 'success';
-            }
+                feedback.className = 'error'; } else { feedback.textContent = 'Bestätigungs-E-Mail erneut gesendet. Bitte prüfe auch deinen Spam-Ordner.'; feedback.className = 'success'; }
         });
 
-        const NO_PASS_MESSAGE = 'Unter dieser E-Mail ist kein Pass registriert. Bitte verwende genau die E-Mail ' +
-            'deines Pass-Kaufs — falls du gerade erst bezahlt hast, warte kurz und versuche es erneut. ' +
+        const NO_PASS_MESSAGE = 'Unter dieser E-Mail ist kein Pass registriert. Bitte verwende genau die E-Mail ' + 'deines Pass-Kaufs. Falls du gerade erst bezahlt hast, warte kurz und versuche es erneut. ' +
             'Neu bei AXcent? <a href="registration" style="color: var(--accent-start, #E8B04B);">Melde dich zuerst für einen Kurs an</a>.';
 
         form.addEventListener('submit', async (e) => {

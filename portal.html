@@ -17,7 +17,7 @@
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/inter-200-900-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/outfit-500-800-latin.woff2" crossorigin>
     <link rel="stylesheet" href="style.css?v=10.14">
-    <link rel="stylesheet" href="tropic-noir.css?v=9.4">
+    <link rel="stylesheet" href="tropic-noir.css?v=9.6">
     <link rel="apple-touch-icon" href="/apple-touch-icon-v2.png">
     <link rel="icon" href="/favicon-axcent-192.png" type="image/png" sizes="192x192">
     <link rel="icon" href="/favicon-axcent-transparent.svg" type="image/svg+xml">
@@ -643,25 +643,10 @@
             <div class="portal-card portal-sidebar__card">
                 <h2>Quick Requests</h2>
                 <nav class="sidebar-links">
-                    <a class="sidebar-link" href="#request" data-reqtype="private_class">
-                        <span class="sidebar-link__title">Private Class</span>
-                        <span class="sidebar-link__hint">1-on-1 coaching — from 150 CHF</span>
-                    </a>
-                    <a class="sidebar-link" href="#request" data-reqtype="room_booking">
-                        <span class="sidebar-link__title">Practice Room Booking</span>
+                    <a class="sidebar-link" href="#request" data-reqtype="private_class"> <span class="sidebar-link__title">Private Class</span> <span class="sidebar-link__hint">1-on-1 coaching, from 150 CHF</span> </a> <a class="sidebar-link" href="#request" data-reqtype="room_booking"> <span class="sidebar-link__title">Practice Room Booking</span>
                         <span class="sidebar-link__hint">Practice hours in our 138 sqm hall</span>
                     </a>
-                    <a class="sidebar-link" href="#request" data-reqtype="bootcamp">
-                        <span class="sidebar-link__title">Dominican Bootcamp</span>
-                        <span class="sidebar-link__hint">Reserve your spot — 115 CHF</span>
-                    </a>
-                </nav>
-            </div>
-        </aside>
-
-        <div class="portal-main">
-
-        <div class="portal-card" id="loadingCard">
+                    <a class="sidebar-link" href="#request" data-reqtype="bootcamp"> <span class="sidebar-link__title">Dominican Bootcamp</span> <span class="sidebar-link__hint">Reserve your spot · 115 CHF</span> </a> </nav> </div> </aside> <div class="portal-main"> <div class="portal-card" id="loadingCard">
             <p class="muted-note">Loading your pass...</p>
         </div>
 
@@ -690,8 +675,7 @@
             <p class="quota-line" id="flexQuota"></p>
             <ul class="absence-list" id="flexList"></ul>
             <p class="muted-note">
-                Classes are counted when the studio marks you present — just drop in
-                to any class on the <a href="schedule" style="color: var(--accent-gold);">weekly schedule</a>.
+                Classes are counted when the studio marks you present. Just drop in to any class on the <a href="schedule" style="color: var(--accent-gold);">weekly schedule</a>.
             </p>
         </div>
 
@@ -723,8 +707,7 @@
         <div class="portal-card" id="freezeCard" style="display: none;">
             <h2>Pass Freeze</h2>
             <p class="muted-note" style="margin-bottom: 1rem;">
-                A pass freeze pauses your pass for a longer break of <strong>at least two weeks</strong> —
-                holidays, work travel, injury. Tell us the period; we confirm by email and adjust your
+                A pass freeze pauses your pass for a longer break of <strong>at least two weeks</strong>: holidays, work travel, injury. Tell us the period; we confirm by email and adjust your
                 pass dates. For a single missed day, use the sick day above instead.
             </p>
             <form id="freezeForm">
@@ -779,9 +762,7 @@
         </div>
 
         <div class="portal-card" id="renewCard" style="display: none;">
-            <h2>Renew Your Pass</h2>
-            <p class="muted-note" style="margin-bottom: 1.2rem;">Your details are already saved — just pick your new
-                package, classes and start date. Payment happens on our secure Stripe page.</p>
+            <h2>Renew Your Pass</h2> <p class="muted-note" style="margin-bottom: 1.2rem;">Your details are already saved. Just pick your new package, classes and start date. Payment happens on our secure Stripe page.</p>
 
             <form id="renewForm">
                 <div class="form-group">
@@ -855,8 +836,7 @@
             },
             room_booking: {
                 title: 'Practice Room Booking',
-                intro: 'Book our 138 sqm mirror hall for <strong>practice hours</strong>. This form is for ' +
-                    'practice sessions only — for any other usage (events, workshops, shootings, regular ' +
+                intro: 'Book our 138 sqm mirror hall for <strong>practice hours</strong>. This form is for ' + 'practice sessions only. For any other usage (events, workshops, shootings, regular ' +
                     'rentals), please contact <a href="mailto:info@axcentdance.com" style="color: var(--accent-gold);">info@axcentdance.com</a> ' +
                     'directly by email.',
                 fromLabel: 'Day',
@@ -870,12 +850,7 @@
                     'You pay via our secure Stripe checkout; your spot is confirmed once the payment ' +
                     'goes through. Full programme on the ' +
                     '<a href="dominican-bootcamp" style="color: var(--accent-gold);">bootcamp page</a>.',
-                detailsPlaceholder: 'Anything we should know? (optional)',
-                button: 'Proceed to Payment — 115 CHF'
-            }
-        };
-
-        const el = (id) => document.getElementById(id);
+                detailsPlaceholder: 'Anything we should know? (optional)', button: 'Proceed to Payment · 115 CHF' } }; const el = (id) => document.getElementById(id);
         const show = (id) => { el(id).style.display = 'block'; };
         const hide = (id) => { el(id).style.display = 'none'; };
 
@@ -890,8 +865,7 @@
             });
         };
 
-        // Selected classes are stored as "Day HH:MM Name (Role), ..." — the
-        // class value itself encodes the weekly slot, so the personal
+        // Selected classes are stored as "Day HH:MM Name (Role), ..."; the // class value itself encodes the weekly slot, so the personal
         // timetable needs no extra data source.
         const DAY_LABELS = { Mon: 'Monday', Tue: 'Tuesday', Wed: 'Wednesday', Thu: 'Thursday', Fri: 'Friday', Sat: 'Saturday', Sun: 'Sunday' };
         const WEEK_ORDER = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
@@ -968,11 +942,7 @@
             window.location.href = '_login.html';
             throw new Error('Not authenticated');
         }
-        if (session.user.email.toLowerCase() === 'info@axcentdance.com') {
-            window.location.href = '_admin.html';
-            throw new Error('Owner account — redirecting to the dashboard');
-        }
-        const userEmail = session.user.email;
+        if (session.user.email.toLowerCase() === 'info@axcentdance.com') { window.location.href = '_admin.html'; throw new Error('Owner account: redirecting to the dashboard'); } const userEmail = session.user.email;
 
         el('logoutBtn').addEventListener('click', async () => {
             await supabase.auth.signOut();
@@ -1309,21 +1279,11 @@
                     }
                     const pack = PRIVATE_LINKS[packKey];
                     if (!pack.url) {
-                        feedback.textContent = 'This package cannot be booked online yet — please contact info@axcentdance.com.';
-                        feedback.className = 'error';
-                        return;
-                    }
-                    payUrl = pack.url;
+                        feedback.textContent = 'This package cannot be booked online yet. Please contact info@axcentdance.com.'; feedback.className = 'error'; return; } payUrl = pack.url;
                     payload = {
                         email: userEmail,
                         name: name || null,
-                        type: 'private_class',
-                        status: 'pending_payment',
-                        date_from: from,
-                        details: pack.label + ' — ' + pack.price,
-                        sessions_total: pack.hours
-                    };
-                } else { // bootcamp
+                        type: 'private_class', status: 'pending_payment', date_from: from, details: pack.label + ' · ' + pack.price, sessions_total: pack.hours }; } else { // bootcamp
                     const phone = el('reqPhone').value.trim();
                     payUrl = BOOTCAMP_LINK;
                     payload = {
@@ -1333,11 +1293,7 @@
                         status: 'pending_payment',
                         date_from: BOOTCAMP_DATES.from,
                         date_until: BOOTCAMP_DATES.until,
-                        details: 'WhatsApp: ' + phone + (details ? ' — ' + details : '')
-                    };
-                }
-
-                const { error } = await supabase.from('requests').insert(payload);
+                        details: 'WhatsApp: ' + phone + (details ? ' · ' + details : '') }; } const { error } = await supabase.from('requests').insert(payload);
                 if (error) {
                     feedback.textContent = error.message;
                     feedback.className = 'error';
@@ -1474,10 +1430,7 @@
                         })
                     });
                 } catch (notifyErr) {
-                    console.error('Studio notification failed:', notifyErr);
-                }
-
-                feedback.textContent = 'Sick day declared — your pass has been extended by one class day. Get well soon!';
+                    console.error('Studio notification failed:', notifyErr); } feedback.textContent = 'Sick day declared. Your pass has been extended by one class day. Get well soon!';
                 feedback.className = 'success';
                 setTimeout(() => window.location.reload(), 2500);
             });

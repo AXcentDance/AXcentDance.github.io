@@ -18,7 +18,7 @@
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/inter-200-900-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/outfit-500-800-latin.woff2" crossorigin>
     <link rel="stylesheet" href="../style.css?v=10.14">
-    <link rel="stylesheet" href="../tropic-noir.css?v=9.4">
+    <link rel="stylesheet" href="../tropic-noir.css?v=9.6">
     <link rel="apple-touch-icon" href="/apple-touch-icon-v2.png">
     <link rel="icon" href="/favicon-axcent-192.png" type="image/png" sizes="192x192">
     <link rel="icon" href="/favicon-axcent-transparent.svg" type="image/svg+xml">
@@ -37,8 +37,7 @@
             min-height: calc(100vh - 80px);
         }
 
-        /* Brand panel: community photo under a petrol duotone with an
-           editorial serif line — compact band on mobile, half screen on desktop */
+        /* Brand panel: community photo under a petrol duotone with an editorial serif line: compact band on mobile, half screen on desktop */
         .auth-visual {
             position: relative;
             height: 230px;
@@ -354,13 +353,7 @@
             <div class="auth-visual__content">
                 <div class="auth-visual__rule"></div>
                 <p class="auth-visual__kicker">AXcent Dance · Mitgliederbereich</p>
-                <p class="auth-visual__line">Die Tanzfläche <em>wartet</em> auf dich.</p>
-                <p class="auth-visual__sub">Dein Pass, deine Kurse und dein Plan — alles an einem Ort.</p>
-            </div>
-        </section>
-
-        <section class="auth-panel">
-            <div class="auth-card">
+                <p class="auth-visual__line">Die Tanzfläche <em>wartet</em> auf dich.</p> <p class="auth-visual__sub">Dein Pass, deine Kurse und dein Plan: alles an einem Ort.</p> </div> </section> <section class="auth-panel"> <div class="auth-card">
                 <p class="auth-eyebrow">Mitgliederbereich</p>
                 <h1 class="auth-title">Willkommen zurück</h1>
                 <p class="auth-sub">Melde dich an, um deinen Pass zu sehen, Abwesenheiten zu melden und deine Kurse zu verlängern.</p>
@@ -442,11 +435,7 @@
                         ev.preventDefault();
                         const { error: resendError } = await supabase.auth.resend({
                             type: 'signup',
-                            email: document.getElementById('email').value
-                        });
-                        showFeedback(resendError ? resendError.message :
-                            'Bestätigungs-E-Mail gesendet — bitte prüfe auch deinen Spam-Ordner.',
-                            resendError ? 'error' : 'success');
+                            email: document.getElementById('email').value }); showFeedback(resendError ? resendError.message : 'Bestätigungs-E-Mail gesendet. Bitte prüfe auch deinen Spam-Ordner.', resendError ? 'error' : 'success');
                     });
                 } else {
                     showFeedback(error.message, 'error');
@@ -484,10 +473,7 @@
                 }
             });
             if (error) {
-                showFeedback((error.message || '').toLowerCase().includes('signups not allowed')
-                    ? 'Für diese E-Mail existiert noch kein Konto — bitte registriere dich zuerst.'
-                    : error.message, 'error');
-            } else {
+                showFeedback((error.message || '').toLowerCase().includes('signups not allowed') ? 'Für diese E-Mail existiert noch kein Konto. Bitte registriere dich zuerst.' : error.message, 'error'); } else {
                 showFeedback('Login-Link gesendet! Öffne den Link aus deinem Posteingang auf diesem Gerät.', 'success');
             }
         });

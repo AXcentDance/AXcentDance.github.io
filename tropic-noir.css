@@ -6511,42 +6511,6 @@ body.course-page .course-masthead__dek a:focus-visible {
     text-decoration: underline;
 }
 
-/* Status notice: a course whose curriculum is published but that has no slot
-   on the current timetable. Surface lift plus a warmed border, never a bar. */
-body.course-page .course-notice {
-    margin: 0 0 1.7rem;
-    padding: clamp(0.95rem, 1.8vw, 1.25rem) clamp(1.05rem, 2vw, 1.4rem);
-    max-width: 48ch;
-    background: var(--glass-bg);
-    border: 1px solid var(--glass-border);
-    border-radius: 16px;
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.045);
-    font-size: 0.97rem;
-    line-height: 1.65;
-    color: var(--text-muted);
-}
-
-body.course-page .course-notice strong {
-    display: block;
-    margin-bottom: 0.35rem;
-    color: var(--title-cream);
-    font-weight: 600;
-}
-
-body.course-page .course-notice a {
-    color: var(--link-ink);
-    text-decoration: underline;
-    text-decoration-color: var(--link-underline);
-    text-decoration-thickness: 1px;
-    text-underline-offset: 3px;
-}
-
-body.course-page .course-notice a:hover,
-body.course-page .course-notice a:focus-visible {
-    color: var(--link-ink-hover);
-    text-decoration: underline;
-}
-
 /* The call sheet: a two-column brass ledger */
 body.course-page .course-callsheet {
     display: grid;
@@ -6730,8 +6694,7 @@ body.course-page .course-syllabus__grid {
 
 body.course-page .course-syllabus__item {
     display: grid;
-    grid-template-columns: 2.4rem minmax(0, 1fr);
-    column-gap: 1rem;
+    grid-template-columns: minmax(0, 1fr);
     align-items: baseline;
     padding: 0.85rem 0.35rem;
     border-top: 1px solid rgba(232, 176, 75, 0.16);
@@ -6746,15 +6709,6 @@ body.course-page .course-syllabus__item:hover {
     background: rgba(232, 176, 75, 0.05);
 }
 
-body.course-page .course-syllabus__num {
-    font-family: 'Teko', sans-serif;
-    font-size: 1.2rem;
-    font-weight: 500;
-    line-height: 1;
-    letter-spacing: 0.08em;
-    color: var(--accent-gold);
-}
-
 body.course-page .course-syllabus__name {
     margin: 0;
     font-family: 'Playfair Display', serif;
@@ -6766,7 +6720,7 @@ body.course-page .course-syllabus__name {
 
 body.course-page .course-syllabus__desc {
     margin: 0.15rem 0 0;
-    grid-column: 2;
+    grid-column: 1;
     font-size: 0.9rem;
     line-height: 1.55;
     color: var(--text-muted);
@@ -6774,11 +6728,12 @@ body.course-page .course-syllabus__desc {
 
 @media (min-width: 720px) {
     body.course-page .course-syllabus__item {
-        grid-template-columns: 2.4rem minmax(11rem, 15rem) minmax(0, 1fr);
+        grid-template-columns: minmax(11rem, 15rem) minmax(0, 1fr);
+        column-gap: 1.6rem;
     }
 
     body.course-page .course-syllabus__desc {
-        grid-column: 3;
+        grid-column: 2;
         margin-top: 0;
     }
 }
@@ -6840,16 +6795,6 @@ body.course-page .course-zero__moment::before {
 body.course-page .course-zero__moment:hover {
     border-color: rgba(232, 176, 75, 0.45);
     box-shadow: var(--shadow-soft);
-}
-
-body.course-page .course-zero__num {
-    display: block;
-    margin: 0 0 0.55rem;
-    font-family: 'Playfair Display', serif;
-    font-style: italic;
-    font-size: 2rem;
-    line-height: 1;
-    color: var(--accent-gold);
 }
 
 body.course-page .course-zero__name {

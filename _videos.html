@@ -13,7 +13,7 @@
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/inter-200-900-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/outfit-500-800-latin.woff2" crossorigin>
     <link rel="stylesheet" href="style.css?v=10.14">
-    <link rel="stylesheet" href="tropic-noir.css?v=9.4">
+    <link rel="stylesheet" href="tropic-noir.css?v=9.6">
     <link rel="apple-touch-icon" href="/apple-touch-icon-v2.png">
     <link rel="icon" href="/favicon-axcent-192.png" type="image/png" sizes="192x192">
     <link rel="icon" href="/favicon-axcent-transparent.svg" type="image/svg+xml">
@@ -686,13 +686,7 @@
                     <label for="clipNotes">Notes (optional)</label>
                     <textarea id="clipNotes" maxlength="2000" placeholder="Variations, musicality focus, common mistakes to review..."></textarea>
                 </div>
-                <button class="btn-gold" id="saveClipBtn" type="button">Save clip</button>
-                <div id="libFeedback"></div>
-            </div>
-
-            <div class="admin-card">
-                <h2>Coverage &mdash; days since each technique was last taught</h2>
-                <div class="coverage-scroll">
+                <button class="btn-gold" id="saveClipBtn" type="button">Save clip</button> <div id="libFeedback"></div> </div> <div class="admin-card"> <h2>Coverage: days since each technique was last taught</h2> <div class="coverage-scroll">
                     <table class="coverage" id="coverageTable"></table>
                 </div>
                 <div class="cov-legend">
@@ -951,10 +945,7 @@
 
             const techIds = [...el('techniqueChecks').querySelectorAll('input:checked')]
                 .map(i => Number(i.value));
-            if (techIds.length === 0) {
-                feedback('Tick at least one technique tag — the coverage queries depend on it.', 'error');
-                return;
-            }
+            if (techIds.length === 0) { feedback('Tick at least one technique tag. The coverage queries depend on it.', 'error'); return; }
 
             const { data: video, error } = await supabase.from('library_videos')
                 .insert({

@@ -13,7 +13,7 @@
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/inter-200-900-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/outfit-500-800-latin.woff2" crossorigin>
     <link rel="stylesheet" href="style.css?v=10.14">
-    <link rel="stylesheet" href="tropic-noir.css?v=9.4">
+    <link rel="stylesheet" href="tropic-noir.css?v=9.6">
     <link rel="apple-touch-icon" href="/apple-touch-icon-v2.png">
     <link rel="icon" href="/favicon-axcent-192.png" type="image/png" sizes="192x192">
     <link rel="icon" href="/favicon-axcent-transparent.svg" type="image/svg+xml">
@@ -910,8 +910,7 @@
         <div class="admin-card" id="classesCard" style="display: none;">
             <h2>Classes</h2>
             <p class="muted-note" style="margin-bottom: 0.9rem;">
-                Pick a day and class to mark presences and see spots — the studio
-                holds a maximum of 12 couples (12 leaders, 12 followers) per class.
+                Pick a day and class to mark presences and see spots. The studio holds a maximum of 12 couples (12 leaders, 12 followers) per class.
             </p>
             <div class="week-bar">
                 <button type="button" id="clsPrevWeek" aria-label="Previous week">&larr;</button>
@@ -968,27 +967,19 @@
 
         <div class="admin-card" id="roomRentalCard" style="display: none;">
             <h2>Outside Room Requests</h2>
-            <p class="muted-note" style="margin-bottom: 0.9rem;">
-                Public rental inquiries from the room-rental page — no account, no payment yet.
-                Confirm availability and reply, then send a Stripe payment link yourself.
+            <p class="muted-note" style="margin-bottom: 0.9rem;"> Public rental inquiries from the room-rental page: no account, no payment yet. Confirm availability and reply, then send a Stripe payment link yourself.
             </p>
             <div id="roomRentalList"></div>
         </div>
 
-        <div class="admin-card" id="privateCard" style="display: none;">
-            <h2>Privates</h2>
-            <p class="muted-note" style="margin-bottom: 0.9rem;">
-                Paid private packages — tick off each delivered hour with +1.
-                Schedule the exact times with the student by email.
+        <div class="admin-card" id="privateCard" style="display: none;"> <h2>Privates</h2> <p class="muted-note" style="margin-bottom: 0.9rem;"> Paid private packages: tick off each delivered hour with +1. Schedule the exact times with the student by email.
             </p>
             <div id="privateList"></div>
         </div>
 
         <div class="admin-card" id="pendingCard" style="display: none;">
             <h2>Awaiting Payment</h2>
-            <p class="muted-note" style="margin-bottom: 0.9rem;">
-                Started checkout but no confirmed payment yet — these move to Open
-                Requests automatically when Stripe confirms.
+            <p class="muted-note" style="margin-bottom: 0.9rem;"> Started checkout but no confirmed payment yet. These move to Open Requests automatically when Stripe confirms.
             </p>
             <div id="pendingList"></div>
         </div>
@@ -996,9 +987,7 @@
         <div class="admin-card" id="passCard" style="display: none;">
             <h2>Pass Management</h2>
             <p class="muted-note" style="margin-bottom: 0.9rem;">
-                Every purchased pass with its registration-form availability notes.
-                Adjust the start or end date and save — changes apply immediately
-                and the student sees them in the portal right away.
+                Every purchased pass with its registration-form availability notes. Adjust the start or end date and save. Changes apply immediately and the student sees them in the portal right away.
             </p>
             <div id="passList"></div>
         </div>
@@ -1012,9 +1001,7 @@
             </div>
             <div id="expEmailAll"></div>
 
-            <label for="waTemplate" style="display: block; font-family: 'Outfit', sans-serif; font-weight: 600; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin: 0.9rem 0 0.4rem;">
-                WhatsApp message (edit freely — {{name}} and {{date}} are filled in per person)
-            </label>
+            <label for="waTemplate" style="display: block; font-family: 'Outfit', sans-serif; font-weight: 600; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin: 0.9rem 0 0.4rem;"> WhatsApp message (edit freely; {{name}} and {{date}} are filled in per person) </label>
             <textarea id="waTemplate" rows="3" style="width: 100%; background: var(--accent-navy, #10322B); border: 1px solid rgba(157, 180, 171, 0.28); border-radius: 10px; color: var(--text-main); padding: 10px 12px; font-family: inherit; font-size: 0.9rem; margin-bottom: 1rem;"></textarea>
 
             <div id="expiringList"></div>
@@ -1241,8 +1228,7 @@
             const ros = rosters[classValue];
             const def = window.AXCENT_PASSES.classes.find(c => c.value === classValue);
             const total = ros.leaders.length + ros.followers.length + ros.unknown.length;
-            el('rosterTitle').textContent = (def ? def.en : classValue) +
-                ' — ' + classValue.replace(/ .*$/, '') + ' ' + (classValue.match(/\d{1,2}:\d{2}/) || [''])[0];
+            el('rosterTitle').textContent = (def ? def.en : classValue) + ' · ' + classValue.replace(/ .*$/, '') + ' ' + (classValue.match(/\d{1,2}:\d{2}/) || [''])[0];
             el('rosterSummary').textContent = total + ' active ' + (total === 1 ? 'dancer' : 'dancers') +
                 ' · ' + ros.leaders.length + ' leaders · ' + ros.followers.length + ' followers' +
                 (ros.unknown.length ? ' · ' + ros.unknown.length + ' without role' : '');
@@ -1380,10 +1366,7 @@
             } else {
                 renderTrialRequests();
             }
-            show('trialRequestsCard');
-
-            // Paid private classes need no accept/decline decision — they are
-            // already booked; the owner ticks off delivered hours instead.
+            show('trialRequestsCard'); // Paid private classes need no accept/decline decision. They are // already booked; the owner ticks off delivered hours instead.
             const privates = requests.filter(r => r.type === 'private_class' &&
                 ['new', 'confirmed', 'done'].includes(r.status));
             // Outside (public, no-account) room rental inquiries get their own
@@ -1409,10 +1392,7 @@
 
             // mode: 'open' (action buttons), 'plain' (no actions), 'handled'
             const renderRequest = (r, mode) => {
-                const timeRange = (r.time_from && r.time_until)
-                    ? ', ' + esc(r.time_from) + ' &ndash; ' + esc(r.time_until)
-                    : '';
-                const dates = (r.date_from || r.date_until)
+                const timeRange = (r.time_from && r.time_until) ? ', ' + esc(r.time_from) + '–' + esc(r.time_until) : ''; const dates = (r.date_from || r.date_until)
                     ? '<div class="req__dates">' + formatDate(r.date_from) +
                       (r.date_until ? ' &rarr; ' + formatDate(r.date_until) : '') + timeRange + '</div>'
                     : '';
@@ -1431,8 +1411,7 @@
                             '<button class="req__btn req__btn--decline" data-id="' + r.id + '" data-status="declined">Decline</button>' +
                             '</div>';
                     } else {
-                        proposal = '<div class="req__proposal">No proposal possible (no active pass or no fixed class days) — adjust manually in Pass Management.</div>';
-                        actions = '<div class="req__actions">' +
+                        proposal = '<div class="req__proposal">No proposal possible (no active pass or no fixed class days). Adjust manually in Pass Management.</div>'; actions = '<div class="req__actions">' +
                             '<button class="req__btn" data-id="' + r.id + '" data-status="done">Done</button>' +
                             '<button class="req__btn req__btn--decline" data-id="' + r.id + '" data-status="declined">Decline</button>' +
                             '</div>';
@@ -1474,12 +1453,7 @@
             };
 
             el('openList').innerHTML = open.length
-                ? open.map(r => renderRequest(r, 'open')).join('')
-                : '<p class="muted-note">No open requests — all caught up.</p>';
-            show('openCard');
-
-            if (roomRentalOpen.length) {
-                el('roomRentalList').innerHTML = roomRentalOpen.map(r => renderRequest(r, 'open')).join('');
+                ? open.map(r => renderRequest(r, 'open')).join('') : '<p class="muted-note">No open requests. All caught up.</p>'; show('openCard'); if (roomRentalOpen.length) { el('roomRentalList').innerHTML = roomRentalOpen.map(r => renderRequest(r, 'open')).join('');
                 show('roomRentalCard');
             } else {
                 hide('roomRentalCard');
@@ -1500,9 +1474,7 @@
                         '</div>' +
                         (r.details ? '<div class="req__details">' + esc(r.details) +
                             (r.date_from ? ' · preferred date ' + formatDate(r.date_from) : '') + '</div>' : '') +
-                        '<div class="req__proposal"><strong>' + done + ' of ' + (total !== null ? total : '?') +
-                        '</strong> hours used' + (finished ? ' — package complete' : '') + '</div>' +
-                        '<div class="req__actions">' +
+                        '<div class="req__proposal"><strong>' + done + ' of ' + (total !== null ? total : '?') + '</strong> hours used' + (finished ? ' · package complete' : '') + '</div>' + '<div class="req__actions">' +
                         '<button class="req__btn req__btn--confirm" data-priv-id="' + r.id + '" data-priv-done="' + done + '" data-priv-delta="1">+1 hour</button>' +
                         (done > 0
                             ? '<button class="req__btn" data-priv-id="' + r.id + '" data-priv-done="' + done + '" data-priv-delta="-1">−1</button>'
@@ -1603,9 +1575,7 @@
         }
 
         const WA_TEMPLATE_DEFAULT = 'Hi {{name}}! Just a heads-up that your AXcent Dance pass ends on {{date}}. ' +
-            'You can renew in a minute from your Student Portal to keep your spot — let us know if you have any questions!';
-
-        // wa.me needs digits only (country code, no +, no spaces/dashes).
+            'You can renew in a minute from your Student Portal to keep your spot. Let us know if you have any questions!'; // wa.me needs digits only (country code, no +, no spaces/dashes).
         function phoneToWaDigits(phone) {
             if (!phone) return null;
             const digits = phone.replace(/[^\d]/g, '');
@@ -1618,9 +1588,7 @@
         }
 
         function renderExpiring() {
-            const { from, until } = expWeekRange();
-            el('expWeekLabel').textContent = formatDate(from) + ' – ' + formatDate(until) +
-                (expWeekOffset === 0 ? ' (this week)' : expWeekOffset === 1 ? ' (next week)' : '');
+            const { from, until } = expWeekRange(); el('expWeekLabel').textContent = formatDate(from) + ' to ' + formatDate(until) + (expWeekOffset === 0 ? ' (this week)' : expWeekOffset === 1 ? ' (next week)' : '');
 
             if (!el('waTemplate').value) el('waTemplate').value = WA_TEMPLATE_DEFAULT;
 
@@ -1740,10 +1708,7 @@
 
         function renderClasses() {
             const mon = clsMondayDate();
-            const sun = new Date(mon);
-            sun.setDate(sun.getDate() + 6);
-            el('clsWeekLabel').textContent = formatDate(isoDate(mon)) + ' – ' + formatDate(isoDate(sun)) +
-                (clsWeekOffset === 0 ? ' (this week)' : '');
+            const sun = new Date(mon); sun.setDate(sun.getDate() + 6); el('clsWeekLabel').textContent = formatDate(isoDate(mon)) + ' to ' + formatDate(isoDate(sun)) + (clsWeekOffset === 0 ? ' (this week)' : '');
 
             if (!clsDay || !CLASS_DAYS.includes(clsDay)) {
                 const todayAbbr = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'][new Date().getDay()];
@@ -1794,8 +1759,7 @@
                 'Leaders <strong' + (leaders >= COUPLES_MAX ? ' class="capacity-full"' : '') + '>' +
                 leaders + ' / ' + COUPLES_MAX + '</strong> · ' +
                 'Followers <strong' + (followers >= COUPLES_MAX ? ' class="capacity-full"' : '') + '>' +
-                followers + ' / ' + COUPLES_MAX + '</strong> &mdash; ' +
-                Math.max(0, COUPLES_MAX - leaders) + ' leader / ' +
+                followers + ' / ' + COUPLES_MAX + '</strong> · ' + Math.max(0, COUPLES_MAX - leaders) + ' leader / ' +
                 Math.max(0, COUPLES_MAX - followers) + ' follower spots left' +
                 (bothFull ? ' · <span class="capacity-full">CLASS FULL</span>' : '');
 
@@ -1845,9 +1809,7 @@
                 ? '<option value="">Mark a 10-class pass holder present...</option>' +
                   flexHolders.map(r =>
                       '<option value="' + r.id + '">' +
-                      esc(((r.first_name || '') + ' ' + (r.last_name || '')).trim() || r.email) +
-                      ' — ' + flexUsedCount(r.id) + ' of 10 used</option>').join('')
-                : '<option value="">No active 10-class passes</option>';
+                      esc(((r.first_name || '') + ' ' + (r.last_name || '')).trim() || r.email) + ' · ' + flexUsedCount(r.id) + ' of 10 used</option>').join('') : '<option value="">No active 10-class passes</option>';
 
             show('clsPanel');
         }
@@ -1974,9 +1936,7 @@
         const teacherName = (t) =>
             ((t.first_name || '') + ' ' + (t.last_name || '')).trim() || t.email;
 
-        // Class occurrences in the recent past whose presences were never
-        // logged — the same condition the daily reminder email uses.
-        function unloggedSessions(daysBack = 14) {
+        // Class occurrences in the recent past whose presences were never // logged, the same condition the daily reminder email uses. function unloggedSessions(daysBack = 14) {
             const logged = new Set(attendance.map(a => a.class_value + '|' + a.class_date));
             const now = new Date();
             const out = [];
@@ -2004,8 +1964,7 @@
                   (pending.length === 1 ? ' class is' : ' classes are') +
                   '</strong> more than 24h old with no presences logged: ' +
                   pending.slice(0, 6).map(p => esc(p.name) + ' (' + formatDate(p.date) + ')').join(', ') +
-                  (pending.length > 6 ? ' …' : '') +
-                  ' — the assigned teacher is reminded by email once per class.</div>'
+                  (pending.length > 6 ? ' …' : '') + ' · the assigned teacher is reminded by email once per class.</div>'
                 : '';
 
             const hoursFor = (id) => {
@@ -2048,13 +2007,7 @@
                         '<button class="req__btn' + (t.active ? ' req__btn--decline' : ' req__btn--confirm') +
                         '" data-teacher-toggle="' + t.id + '" data-active="' + t.active + '">' +
                         (t.active ? 'Deactivate' : 'Reactivate') + '</button>' +
-                        '</div>' +
-                        '</div>';
-                }).join('')
-                : '<p class="muted-note">No teachers yet — add one below.</p>';
-        }
-
-        el('teacherAddForm').addEventListener('submit', async (e) => {
+                        '</div>' + '</div>'; }).join('') : '<p class="muted-note">No teachers yet. Add one below.</p>'; } el('teacherAddForm').addEventListener('submit', async (e) => {
             e.preventDefault();
             const email = el('teacherEmail').value.trim();
             const { error } = await supabase.from('teachers').insert({
@@ -2141,10 +2094,7 @@
             const marks = attendance.filter(a =>
                 a.class_value === classValue && a.class_date === dateStr);
             el('lookupResult').innerHTML =
-                '<h3 style="font-family: var(--font-heading); color: var(--title-cream); font-size: 1.15rem; margin: 0.4rem 0 0.6rem;">' +
-                esc(classLabel(classValue)) + ' — ' + formatDate(dateStr) + '</h3>' +
-                (marks.length
-                    ? marks.map(a => {
+                '<h3 style="font-family: var(--font-heading); color: var(--title-cream); font-size: 1.15rem; margin: 0.4rem 0 0.6rem;">' + esc(classLabel(classValue)) + ' · ' + formatDate(dateStr) + '</h3>' + (marks.length ? marks.map(a => {
                         const r = regById[a.registration_id];
                         const who = r ? ((r.first_name || '') + ' ' + (r.last_name || '')).trim() : a.email;
                         return '<div style="padding: 7px 0; border-bottom: 1px solid var(--portal-divider); font-size: 0.9rem; color: var(--text-main);">' +
@@ -2168,9 +2118,7 @@
             )).entries()].sort((a, b) => a[1].localeCompare(b[1]));
             el('personSelect').innerHTML = '<option value="">Choose a dancer...</option>' +
                 people.map(([email, name]) =>
-                    '<option value="' + esc(email) + '">' + esc(name) + ' — ' + esc(email) + '</option>').join('');
-
-            el('lookupClass').innerHTML = '<option value="">Choose a class...</option>' +
+                    '<option value="' + esc(email) + '">' + esc(name) + ' · ' + esc(email) + '</option>').join(''); el('lookupClass').innerHTML = '<option value="">Choose a class...</option>' +
                 window.AXCENT_PASSES.classes.map(c =>
                     '<option value="' + esc(c.value) + '">' + esc(classLabel(c.value)) + '</option>').join('');
 

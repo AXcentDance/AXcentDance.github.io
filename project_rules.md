@@ -163,3 +163,4 @@ Use modern, elegant fonts available via Google Fonts. The typography should echo
 
 ### Writing Style
 - **No Abbreviations/Contractions**: Do not use contractions like "it's", "we'll", "won't", "can't". Always use the full form: "it is", "we will", "will not", "cannot".
+- **No Long Dashes** (owner rule 2026-08-09): never use em dashes ("—", "&mdash;") or spaced en dashes (" – ") anywhere in site copy, including metas, JSON-LD descriptions, alt text, and German pages. Rephrase with a period, comma, or colon instead. Unspaced en-dash numeric ranges such as "2&ndash;3 years" remain allowed.

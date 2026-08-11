@@ -18,7 +18,7 @@
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/inter-200-900-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/outfit-500-800-latin.woff2" crossorigin>
     <link rel="stylesheet" href="../style.css?v=10.14">
-    <link rel="stylesheet" href="../tropic-noir.css?v=9.4">
+    <link rel="stylesheet" href="../tropic-noir.css?v=9.6">
     <link rel="apple-touch-icon" href="/apple-touch-icon-v2.png">
     <link rel="icon" href="/favicon-axcent-192.png" type="image/png" sizes="192x192">
     <link rel="icon" href="/favicon-axcent-transparent.svg" type="image/svg+xml">
@@ -642,26 +642,10 @@
         <aside class="portal-sidebar">
             <div class="portal-card portal-sidebar__card">
                 <h2>Schnellanfragen</h2>
-                <nav class="sidebar-links">
-                    <a class="sidebar-link" href="#request" data-reqtype="private_class">
-                        <span class="sidebar-link__title">Privatstunde</span>
-                        <span class="sidebar-link__hint">1-zu-1-Coaching — ab 150 CHF</span>
-                    </a>
-                    <a class="sidebar-link" href="#request" data-reqtype="room_booking">
-                        <span class="sidebar-link__title">Übungsraum buchen</span>
+                <nav class="sidebar-links"> <a class="sidebar-link" href="#request" data-reqtype="private_class"> <span class="sidebar-link__title">Privatstunde</span> <span class="sidebar-link__hint">1-zu-1-Coaching, ab 150 CHF</span> </a> <a class="sidebar-link" href="#request" data-reqtype="room_booking"> <span class="sidebar-link__title">Übungsraum buchen</span>
                         <span class="sidebar-link__hint">Übungsstunden in unserer 138 m² Halle</span>
                     </a>
-                    <a class="sidebar-link" href="#request" data-reqtype="bootcamp">
-                        <span class="sidebar-link__title">Dominican Bootcamp</span>
-                        <span class="sidebar-link__hint">Platz sichern — 115 CHF</span>
-                    </a>
-                </nav>
-            </div>
-        </aside>
-
-        <div class="portal-main">
-
-        <div class="portal-card" id="loadingCard">
+                    <a class="sidebar-link" href="#request" data-reqtype="bootcamp"> <span class="sidebar-link__title">Dominican Bootcamp</span> <span class="sidebar-link__hint">Platz sichern · 115 CHF</span> </a> </nav> </div> </aside> <div class="portal-main"> <div class="portal-card" id="loadingCard">
             <p class="muted-note">Dein Pass wird geladen...</p>
         </div>
 
@@ -691,8 +675,7 @@
             <p class="quota-line" id="flexQuota"></p>
             <ul class="absence-list" id="flexList"></ul>
             <p class="muted-note">
-                Lektionen werden gezählt, wenn das Studio dich als anwesend markiert — komm einfach
-                in jede Klasse im <a href="schedule" style="color: var(--accent-gold);">Wochenplan</a>.
+                Lektionen werden gezählt, wenn das Studio dich als anwesend markiert. Komm einfach in jede Klasse im <a href="schedule" style="color: var(--accent-gold);">Wochenplan</a>.
             </p>
         </div>
 
@@ -724,8 +707,7 @@
         <div class="portal-card" id="freezeCard" style="display: none;">
             <h2>Pass-Pause</h2>
             <p class="muted-note" style="margin-bottom: 1rem;">
-                Eine Pass-Pause pausiert deinen Pass für eine längere Auszeit von <strong>mindestens
-                zwei Wochen</strong> — Ferien, Arbeitsreisen, Verletzung. Gib uns den Zeitraum an; wir
+                Eine Pass-Pause pausiert deinen Pass für eine längere Auszeit von <strong>mindestens zwei Wochen</strong>: Ferien, Arbeitsreisen, Verletzung. Gib uns den Zeitraum an; wir
                 bestätigen per E-Mail und passen deine Pass-Daten an. Für einen einzelnen verpassten
                 Tag nutze bitte den Krankheitstag oben.
             </p>
@@ -781,9 +763,7 @@
         </div>
 
         <div class="portal-card" id="renewCard" style="display: none;">
-            <h2>Pass erneuern</h2>
-            <p class="muted-note" style="margin-bottom: 1.2rem;">Deine Angaben sind bereits gespeichert — wähle einfach
-                dein neues Paket, deine Kurse und das Startdatum. Die Zahlung erfolgt auf unserer sicheren
+            <h2>Pass erneuern</h2> <p class="muted-note" style="margin-bottom: 1.2rem;">Deine Angaben sind bereits gespeichert. Wähle einfach dein neues Paket, deine Kurse und das Startdatum. Die Zahlung erfolgt auf unserer sicheren
                 Stripe-Seite.</p>
 
             <form id="renewForm">
@@ -858,8 +838,7 @@
             },
             room_booking: {
                 title: 'Übungsraum buchen',
-                intro: 'Buche unsere 138 m² Spiegelhalle für <strong>Übungsstunden</strong>. Dieses Formular ist ' +
-                    'nur für Übungsstunden gedacht — für jede andere Nutzung (Events, Workshops, Shootings, ' +
+                intro: 'Buche unsere 138 m² Spiegelhalle für <strong>Übungsstunden</strong>. Dieses Formular ist ' + 'nur für Übungsstunden gedacht. Für jede andere Nutzung (Events, Workshops, Shootings, ' +
                     'regelmässige Vermietung) kontaktiere bitte direkt ' +
                     '<a href="mailto:info@axcentdance.com" style="color: var(--accent-gold);">info@axcentdance.com</a>.',
                 fromLabel: 'Tag',
@@ -873,12 +852,7 @@
                     'Du bezahlst über unseren sicheren Stripe-Checkout; dein Platz ist nach erfolgreicher ' +
                     'Zahlung bestätigt. Das ganze Programm auf der ' +
                     '<a href="dominican-bootcamp" style="color: var(--accent-gold);">Bootcamp-Seite</a>.',
-                detailsPlaceholder: 'Gibt es etwas, das wir wissen sollten? (optional)',
-                button: 'Weiter zur Zahlung — 115 CHF'
-            }
-        };
-
-        const el = (id) => document.getElementById(id);
+                detailsPlaceholder: 'Gibt es etwas, das wir wissen sollten? (optional)', button: 'Weiter zur Zahlung · 115 CHF' } }; const el = (id) => document.getElementById(id);
         const show = (id) => { el(id).style.display = 'block'; };
         const hide = (id) => { el(id).style.display = 'none'; };
 
@@ -899,8 +873,7 @@
             cancelled: 'storniert'
         };
 
-        // Gewählte Kurse sind als "Tag HH:MM Name (Rolle), ..." gespeichert —
-        // der Kurswert selbst enthält den Wochenslot, der persönliche
+        // Gewählte Kurse sind als "Tag HH:MM Name (Rolle), ..." gespeichert; // der Kurswert selbst enthält den Wochenslot, der persönliche
         // Stundenplan braucht keine zusätzliche Datenquelle.
         const DAY_LABELS = { Mon: 'Montag', Tue: 'Dienstag', Wed: 'Mittwoch', Thu: 'Donnerstag', Fri: 'Freitag', Sat: 'Samstag', Sun: 'Sonntag' };
         const DAY_ABBR = { Mon: 'Mo', Tue: 'Di', Wed: 'Mi', Thu: 'Do', Fri: 'Fr', Sat: 'Sa', Sun: 'So' };
@@ -978,11 +951,7 @@
             window.location.href = '_login.html';
             throw new Error('Not authenticated');
         }
-        if (session.user.email.toLowerCase() === 'info@axcentdance.com') {
-            window.location.href = '/_admin.html';
-            throw new Error('Owner account — redirecting to the dashboard');
-        }
-        const userEmail = session.user.email;
+        if (session.user.email.toLowerCase() === 'info@axcentdance.com') { window.location.href = '/_admin.html'; throw new Error('Owner account: redirecting to the dashboard'); } const userEmail = session.user.email;
 
         el('logoutBtn').addEventListener('click', async () => {
             await supabase.auth.signOut();
@@ -1319,21 +1288,11 @@
                     }
                     const pack = PRIVATE_LINKS[packKey];
                     if (!pack.url) {
-                        feedback.textContent = 'Dieses Paket kann noch nicht online gebucht werden — bitte kontaktiere info@axcentdance.com.';
-                        feedback.className = 'error';
-                        return;
-                    }
-                    payUrl = pack.url;
+                        feedback.textContent = 'Dieses Paket kann noch nicht online gebucht werden. Bitte kontaktiere info@axcentdance.com.'; feedback.className = 'error'; return; } payUrl = pack.url;
                     payload = {
                         email: userEmail,
                         name: name || null,
-                        type: 'private_class',
-                        status: 'pending_payment',
-                        date_from: from,
-                        details: pack.label + ' — ' + pack.price,
-                        sessions_total: pack.hours
-                    };
-                } else { // bootcamp
+                        type: 'private_class', status: 'pending_payment', date_from: from, details: pack.label + ' · ' + pack.price, sessions_total: pack.hours }; } else { // bootcamp
                     const phone = el('reqPhone').value.trim();
                     payUrl = BOOTCAMP_LINK;
                     payload = {
@@ -1343,11 +1302,7 @@
                         status: 'pending_payment',
                         date_from: BOOTCAMP_DATES.from,
                         date_until: BOOTCAMP_DATES.until,
-                        details: 'WhatsApp: ' + phone + (details ? ' — ' + details : '')
-                    };
-                }
-
-                const { error } = await supabase.from('requests').insert(payload);
+                        details: 'WhatsApp: ' + phone + (details ? ' · ' + details : '') }; } const { error } = await supabase.from('requests').insert(payload);
                 if (error) {
                     feedback.textContent = error.message;
                     feedback.className = 'error';
@@ -1398,10 +1353,7 @@
             const sickUsed = absences.filter(a => a.type === 'sick').length;
 
             el('quotaLine').innerHTML = sickUsed >= 1
-                ? '<strong>Krankheitstag genutzt</strong> für diesen Pass'
-                : '<strong>Krankheitstag verfügbar</strong> — nur heute, vor 12:00';
-
-            // Bei der Anmeldung als Freitext angegebene Abwesenheiten
+                ? '<strong>Krankheitstag genutzt</strong> für diesen Pass' : '<strong>Krankheitstag verfügbar</strong>: nur heute, vor 12:00'; // Bei der Anmeldung als Freitext angegebene Abwesenheiten
             if (pass.dates_unavailable) {
                 el('regNote').innerHTML = '<strong>Bei der Anmeldung angegeben:</strong> ' +
                     esc(pass.dates_unavailable);
@@ -1484,10 +1436,7 @@
                         })
                     });
                 } catch (notifyErr) {
-                    console.error('Studio notification failed:', notifyErr);
-                }
-
-                feedback.textContent = 'Krankheitstag angegeben — dein Pass wurde um einen Kurstag verlängert. Gute Besserung!';
+                    console.error('Studio notification failed:', notifyErr); } feedback.textContent = 'Krankheitstag angegeben. Dein Pass wurde um einen Kurstag verlängert. Gute Besserung!';
                 feedback.className = 'success';
                 setTimeout(() => window.location.reload(), 2500);
             });

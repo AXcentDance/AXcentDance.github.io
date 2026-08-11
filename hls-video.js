@@ -44,25 +44,61 @@ function stripProgressiveFallback(video) {
 async function attach(video, playlistUrl, { autoStart = false } = {}) {
     detach(video);
 
-    if (video.canPlayType('application/vnd.apple.mpegurl')) {
-        stripProgressiveFallback(video);
-        video.src = playlistUrl;
-        return true;
+    // Prefer hls.js wherever MediaSource exists (Chrome/Edge/Firefox/Electron
+    // and macOS Safari) even though several of those could play HLS natively:
+    // native players pick their own conservative first variant (Chromium's
+    // built-in HLS player ignores the master-playlist order entirely), which
+    // means visibly soft opening seconds on desktop. hls.js gives explicit
+    // control of the starting rendition. Browsers without MSE (iOS Safari)
+    // fall through to the native branch below.
+    let Hls = null;
+    if (window.MediaSource) {
+        try {
+            Hls = await loadHlsModule();
+        } catch (e) {
+            Hls = null; // vendor module unreachable: try native, else fallback
+        }
     }
 
-    let Hls;
-    try {
-        Hls = await loadHlsModule();
-    } catch (e) {
-        return false; // CDN unreachable: progressive fallback keeps working
-    }
-    if (!Hls.isSupported()) {
-        return false;
+    if (!Hls || !Hls.isSupported()) {
+        if (video.canPlayType('application/vnd.apple.mpegurl')) {
+            stripProgressiveFallback(video);
+            // Native HLS players built on AVPlayer (iOS/iPadOS Safari) begin
+            // playback on the FIRST variant listed in the master playlist.
+            // playlist.m3u8 lists 720p first — right for phones. The rare
+            // desktop-sized native viewport gets the twin playlist with the
+            // 1080p rendition listed first (same segments, only the variant
+            // order differs).
+            video.src = window.matchMedia('(min-width: 1024px)').matches
+                ? playlistUrl.replace(/playlist\.m3u8$/, 'playlist_desktop.m3u8')
+                : playlistUrl;
+            return true;
+        }
+        return false; // no MSE and no native HLS: progressive fallback keeps working
     }
 
     stripProgressiveFallback(video);
-    const hls = new Hls({ maxBufferLength: 10, autoStartLoad: autoStart });
+    // autoStartLoad stays false even for autoplay: loading is kicked off in
+    // MANIFEST_PARSED below, after the start level is pinned. Otherwise the
+    // internal controllers (registered first) would pick the start fragment
+    // before the pin applies.
+    const hls = new Hls({ maxBufferLength: 10, autoStartLoad: false });
     instances.set(video, hls);
+    hls.on(Hls.Events.MANIFEST_PARSED, (event, data) => {
+        // Desktop viewports start on the top rendition instead of hls.js's
+        // cautious default (a 500 kbps estimate that always lands on the 720p
+        // rung, playing ~3 soft seconds before ABR ramps up). The poster
+        // covers any extra first-frame wait, and ABR still down-switches if
+        // the connection turns out slow. Phones keep the conservative start:
+        // 720p is their target rendition anyway, and cellular is where the
+        // fast-start assumption would actually stall.
+        if (window.matchMedia('(min-width: 1024px)').matches) {
+            hls.startLevel = data.levels.length - 1;
+        }
+        if (autoStart) {
+            hls.startLoad();
+        }
+    });
     hls.loadSource(playlistUrl);
     hls.attachMedia(video);
     if (!autoStart) {
