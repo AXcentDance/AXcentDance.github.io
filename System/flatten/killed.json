@@ -1,0 +1,151 @@
+[
+ {
+  "start": 38039,
+  "end": 38146,
+  "what": "pulse"
+ },
+ {
+  "start": 55020,
+  "end": 55279,
+  "what": [
+   ".popular-tag"
+  ]
+ },
+ {
+  "start": 164051,
+  "end": 164303,
+  "what": [
+   "body.home-page .atelier-photo--workshop"
+  ]
+ },
+ {
+  "start": 164876,
+  "end": 165109,
+  "what": [
+   "body.home-page .atelier-photo--connection"
+  ]
+ },
+ {
+  "start": 168463,
+  "end": 168565,
+  "what": [
+   "body.home-page .atelier-photo--connection"
+  ]
+ },
+ {
+  "start": 168571,
+  "end": 168672,
+  "what": [
+   "body.home-page .atelier-photo--workshop"
+  ]
+ },
+ {
+  "start": 170257,
+  "end": 170335,
+  "what": [
+   "body.home-page .atelier-photo--connection"
+  ]
+ },
+ {
+  "start": 238540,
+  "end": 238679,
+  "what": [
+   ".pricing-strip__title-row"
+  ]
+ },
+ {
+  "start": 238681,
+  "end": 239035,
+  "what": [
+   ".pricing-strip__badge"
+  ]
+ },
+ {
+  "start": 239037,
+  "end": 239150,
+  "what": [
+   ".pricing-strip__badge-arrow"
+  ]
+ },
+ {
+  "start": 239199,
+  "end": 239286,
+  "what": [
+   ".pricing-strip__badge",
+   ".pricing-strip__badge-arrow"
+  ]
+ },
+ {
+  "start": 239290,
+  "end": 239437,
+  "what": "pricing-badge-nudge"
+ },
+ {
+  "start": 239439,
+  "end": 239623,
+  "what": "pricing-badge-pulse"
+ },
+ {
+  "start": 326863,
+  "end": 326959,
+  "what": [
+   "body.home-page .mobile-cta-bar__hint"
+  ]
+ },
+ {
+  "start": 346379,
+  "end": 346451,
+  "what": [
+   "body.home-page .pricing-strip__title-row"
+  ]
+ },
+ {
+  "start": 346636,
+  "end": 346705,
+  "what": [
+   "body.home-page .pricing-strip__equivalent"
+  ]
+ },
+ {
+  "start": 472155,
+  "end": 472280,
+  "what": [
+   "body.course-page .mobile-cta-bar__hint"
+  ]
+ },
+ {
+  "start": 515014,
+  "end": 515226,
+  "what": [
+   "body.about-page .mission-cta"
+  ]
+ },
+ {
+  "start": 515228,
+  "end": 515397,
+  "what": [
+   "body.about-page .mission-cta span"
+  ]
+ },
+ {
+  "start": 515399,
+  "end": 515468,
+  "what": [
+   "body.about-page .mission-cta:hover"
+  ]
+ },
+ {
+  "start": 515470,
+  "end": 515533,
+  "what": [
+   "body.about-page .mission-cta:hover span"
+  ]
+ },
+ {
+  "start": 544138,
+  "end": 544497,
+  "what": [
+   "body.service-page .service-badge-callout"
+  ]
+ }
+]

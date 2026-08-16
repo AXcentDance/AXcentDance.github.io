@@ -276,6 +276,27 @@ def check_page_baseline(pages):
                 fail('baseline', f"{page} has a skip link but no id=\"main-content\" target")
 
 
+def check_script_loading(pages):
+    """Performance rules from axcent-rules 3.3 / video policy (2026-08-14):
+    every classic <script src> must be deferred (defer/async/module) — a
+    synchronous script is a render-blocking request for zero benefit — and
+    autoplaying HLS videos must use data-autoplay, never the autoplay
+    attribute (which double-downloads the progressive fallback MP4)."""
+    SYNC_WHITELIST = ('cdn.jsdelivr.net/npm/@supabase',)
+    for page in sorted(pages):
+        content = pages[page]
+        for tag in re.findall(r'<script\b[^>]*\bsrc=[^>]*>', content, re.I):
+            if re.search(r'\b(defer|async)\b', tag, re.I) or re.search(r'type=["\']module["\']', tag, re.I):
+                continue
+            if any(host in tag for host in SYNC_WHITELIST):
+                continue
+            fail('scripts', f"{page} has a synchronous script tag (add defer): {tag[:90]}")
+        for tag in re.findall(r'<video\b[^>]*\bdata-hls=[^>]*>', content, re.I):
+            if re.search(r'(?<![\w-])autoplay(?![\w-])(?!=)', tag.replace('data-autoplay', ''), re.I):
+                fail('scripts', f"{page}: video[data-hls] carries the autoplay attribute — "
+                                f"use data-autoplay=\"1\" + preload=\"none\" (video policy): {tag[:90]}")
+
+
 def check_titles_descriptions(pages, indexable):
     titles = {}
     descs = {}
@@ -390,6 +411,8 @@ def run_external_checks():
         ('headings', ['python3', 'scripts/heading_structure_checker.py'], 'issues: 0'),
         ('links', ['python3', 'scripts/check_broken_links.py'], 'No broken local links'),
         ('hreflang', ['python3', 'scripts/audit_hreflang.py'], 'perfectly reciprocal'),
+        ('minified assets', ['python3', 'scripts/minify_assets.py', '--check'], 'PASS: minified twins current'),
+        ('critical css', ['python3', 'scripts/critical_css.py', '--check'], 'PASS: critical CSS fresh'),
     ]
     for name, cmd, ok_marker in checks:
         result = subprocess.run(cmd, cwd=ROOT_DIR, capture_output=True, text=True)
@@ -422,6 +445,7 @@ def main():
     check_llms(pages)
     check_speculation_rules(pages)
     check_page_baseline(pages)
+    check_script_loading(pages)
     check_titles_descriptions(pages, indexable)
     check_image_sizes(pages)
     run_external_checks()

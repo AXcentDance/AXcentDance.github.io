@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"><title>selector usage harness</title></head>
+<body>
+<iframe id="fr" style="width:1280px;height:900px;border:0"></iframe>
+<pre id="out"></pre>
+<script>
+// Site-wide selector usage test for the purge pass (analyze_rules.py).
+// Loads every page, tests which selectors from selectors.json match at least
+// one element anywhere, and returns the ones that never match.
+//   const unmatched = await runUsage();
+// Selectors are dropped from the pending set on first match, so later pages
+// test fewer and fewer selectors.
+
+function loadPage(page) {
+  return new Promise(resolve => {
+    const fr = document.getElementById('fr');
+    fr.onload = () => setTimeout(() => resolve(fr.contentDocument), 1500);
+    fr.src = page + '?_us=' + Date.now();
+  });
+}
+
+window.runUsage = async function () {
+  const selectors = await (await fetch('/System/flatten/selectors.json')).json();
+  const pages = await (await fetch('/System/flatten/pages.json')).json();
+  let pending = new Set(selectors);
+  const invalid = [];
+  for (const [i, page] of pages.entries()) {
+    if (!pending.size) break;
+    const doc = await loadPage(page);
+    for (const sel of [...pending]) {
+      let hit = false;
+      try {
+        hit = !!doc.querySelector(sel);
+      } catch (e) {
+        invalid.push(sel);   // unparseable: keep (cannot prove unused)
+        pending.delete(sel);
+        continue;
+      }
+      if (hit) pending.delete(sel);
+    }
+    document.getElementById('out').textContent =
+      (i + 1) + '/' + pages.length + ' pages, ' + pending.size + ' still unmatched';
+  }
+  return { unmatched: [...pending], invalid };
+};
+</script>
+</body>
+</html>

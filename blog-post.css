@@ -119,6 +119,10 @@ body.post-page .post-title {
 body.post-page .post-hero-image {
     position: relative;
     width: 100%;
+    /* height:auto is load-bearing: heroes carry width/height attributes for
+       CLS reservation, and width:100% alone would leave the attribute height
+       fixed — the flyer posts rendered stretched (378x1348 for a 4:5 image) */
+    height: auto;
     max-width: 1200px;
     margin: 0 auto;
     border-radius: 16px;

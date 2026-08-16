@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Serif Comparison: Cormorant Garamond vs Playfair Display</title>
+<style>
+  /* Cormorant @font-face removed 2026-08-14 with the font files themselves —
+     its column renders in the browser's fallback serif as a historical record. */
+  @font-face {
+    font-family: 'Playfair Display'; font-style: normal; font-weight: 400 900; font-display: swap;
+    src: url('/assets/fonts/playfair-display-400-900-latin.woff2') format('woff2');
+  }
+  @font-face {
+    font-family: 'Playfair Display'; font-style: italic; font-weight: 400 900; font-display: swap;
+    src: url('/assets/fonts/playfair-display-400-900-italic-latin.woff2') format('woff2');
+  }
+  @font-face {
+    font-family: 'Inter'; font-style: normal; font-weight: 200 900; font-display: swap;
+    src: url('/assets/fonts/inter-200-900-latin.woff2') format('woff2');
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #061A17;
+    color: #F4EFE6;
+    font-family: 'Inter', sans-serif;
+    padding: 3rem clamp(1rem, 5vw, 4rem) 6rem;
+  }
+  .intro { max-width: 46rem; margin-bottom: 3rem; }
+  .intro h1 { font-size: 1.1rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #E8B04B; margin-bottom: 0.6rem; }
+  .intro p { color: #9DB4AB; font-size: 0.95rem; line-height: 1.6; }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    background: rgba(232, 176, 75, 0.25);
+    border: 1px solid rgba(232, 176, 75, 0.25);
+    border-radius: 18px;
+    overflow: hidden;
+  }
+  @media (max-width: 900px) { .grid { grid-template-columns: 1fr; } }
+  .col { background: #061A17; padding: clamp(1.2rem, 3vw, 2.5rem); }
+  .col--alt { background: #0C2A24; }
+  .col-label {
+    font-size: 0.78rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase;
+    color: #E8B04B; margin-bottom: 1.8rem; padding-bottom: 0.7rem;
+    border-bottom: 1px solid rgba(232, 176, 75, 0.2);
+  }
+  .col-label small { display: block; margin-top: 0.35rem; font-weight: 500; letter-spacing: 0.02em; text-transform: none; color: #9DB4AB; }
+
+  .cormorant { font-family: 'Cormorant Garamond', serif; }
+  .playfair { font-family: 'Playfair Display', serif; }
+
+  .sample { margin-bottom: 2.6rem; }
+  .sample-tag { font-family: 'Inter', sans-serif; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #9DB4AB; margin-bottom: 0.55rem; }
+  .hero-line { font-size: clamp(2.4rem, 5vw, 4.2rem); font-weight: 700; line-height: 1.02; color: #F2E7CF; }
+  .hero-line .accent { color: #FF6146; }
+  .section-line { font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 600; line-height: 1.15; }
+  .section-line em { font-style: italic; color: #E8B04B; }
+  .editorial { font-size: 1.25rem; font-weight: 600; line-height: 1.35; max-width: 26ch; }
+  .quote { font-size: 1.35rem; font-style: italic; line-height: 1.45; color: #E5CD9F; max-width: 30ch; }
+  .numerals { font-size: 1.9rem; font-weight: 700; letter-spacing: 0.02em; }
+  .footnote { font-family: 'Inter', sans-serif; font-size: 0.78rem; color: #9DB4AB; line-height: 1.5; margin-top: 0.5rem; }
+  .warn { color: #FF6146; }
+</style>
+</head>
+<body>
+  <div class="intro">
+    <p style="border:1px solid rgba(232,176,75,0.4); border-radius:12px; padding:0.8rem 1rem; margin-bottom:1.5rem; color:#F2E7CF;">
+      <strong style="color:#E8B04B;">DECIDED 2026-08-14: Playfair Display.</strong>
+      The Cormorant files were removed from the repo, so its column below now renders in a fallback serif —
+      this page is kept only as the record of the comparison.
+    </p>
+    <h1>Serif comparison — pick the site's one display serif</h1>
+    <p>Both families render below with the exact font files the site ships. Same text, same sizes, same colors.
+       One practical difference to know: the site has a <em>real italic file</em> only for Playfair.
+       Cormorant italic would be faked by the browser (slanted upright letters) unless we ship one more file.</p>
+  </div>
+
+  <div class="grid">
+    <div class="col">
+      <div class="col-label">Cormorant Garamond <small>the serif named in the design rules · 37 KB file · italic would be synthesized</small></div>
+
+      <div class="sample">
+        <div class="sample-tag">Hero headline</div>
+        <div class="hero-line cormorant">Move With <span class="accent">AXcent</span></div>
+      </div>
+
+      <div class="sample">
+        <div class="sample-tag">Section title with accent word</div>
+        <div class="section-line cormorant">A Place to Move, Connect, <em>Belong</em></div>
+      </div>
+
+      <div class="sample">
+        <div class="sample-tag">Editorial heading</div>
+        <div class="editorial cormorant">The Roots of Bachata: From the Dominican Republic to Zurich</div>
+      </div>
+
+      <div class="sample">
+        <div class="sample-tag">Pull quote (italic)</div>
+        <div class="quote cormorant">&ldquo;Dance is the hidden language of the soul, of the body.&rdquo;</div>
+        <p class="footnote warn">&uarr; this italic is synthesized (slanted by the browser, not drawn by the type designer)</p>
+      </div>
+
+      <div class="sample">
+        <div class="sample-tag">Numerals &amp; schedule</div>
+        <div class="numerals cormorant">Monday 19:30 &middot; CHF 210 &middot; 8 weeks</div>
+      </div>
+    </div>
+
+    <div class="col col--alt">
+      <div class="col-label">Playfair Display <small>used more in today's build · 75 KB (two files) · real italic included</small></div>
+
+      <div class="sample">
+        <div class="sample-tag">Hero headline</div>
+        <div class="hero-line playfair">Move With <span class="accent">AXcent</span></div>
+      </div>
+
+      <div class="sample">
+        <div class="sample-tag">Section title with accent word</div>
+        <div class="section-line playfair">A Place to Move, Connect, <em>Belong</em></div>
+      </div>
+
+      <div class="sample">
+        <div class="sample-tag">Editorial heading</div>
+        <div class="editorial playfair">The Roots of Bachata: From the Dominican Republic to Zurich</div>
+      </div>
+
+      <div class="sample">
+        <div class="sample-tag">Pull quote (italic)</div>
+        <div class="quote playfair">&ldquo;Dance is the hidden language of the soul, of the body.&rdquo;</div>
+        <p class="footnote">&uarr; true drawn italic from the italic file</p>
+      </div>
+
+      <div class="sample">
+        <div class="sample-tag">Numerals &amp; schedule</div>
+        <div class="numerals playfair">Monday 19:30 &middot; CHF 210 &middot; 8 weeks</div>
+      </div>
+    </div>
+  </div>
+
+  <p class="footnote" style="margin-top:2rem; max-width:46rem;">
+    Weight note: Cormorant ships weights 600&ndash;700 only (it is a lighter, more calligraphic face by design);
+    Playfair ships 400&ndash;900 and reads heavier at the same size. Choosing Cormorant saves ~75 KB on every page load;
+    choosing Playfair saves ~37 KB and keeps the real italic. Either single-serif choice noticeably speeds up phones.
+  </p>
+</body>
+</html>

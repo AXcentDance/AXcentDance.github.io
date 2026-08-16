@@ -68,8 +68,11 @@ def check_advanced_image_quality():
                 if src.endswith(".svg") or "facebook.com/tr" in src:
                     continue
                 
-                # Check 2: Alt Text
-                if not alt_match or not alt_match.group(1).strip():
+                # Check 2: Alt Text. Decorative images marked aria-hidden="true"
+                # correctly carry alt="" (a descriptive alt there would make
+                # screen readers announce the same content twice).
+                decorative = re.search(r'aria-hidden=["\']true["\']', attrs, re.IGNORECASE) is not None
+                if not decorative and (not alt_match or not alt_match.group(1).strip()):
                     print(f"{rel_path:<40} | Missing/Empty Alt            | Src: {src[:30]}...")
                     issues_count += 1
                 

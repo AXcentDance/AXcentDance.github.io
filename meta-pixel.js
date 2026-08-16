@@ -76,13 +76,24 @@
         }
     }
 
+    // The 100KB fbevents.js download stays out of the page's critical load
+    // window: bootstrap at window.load (owner-approved 2026-08-14). Visitors
+    // are counted a moment later; only sub-second bouncers are missed.
+    function initWhenLoaded() {
+        if (document.readyState === 'complete') {
+            initMetaPixel();
+        } else {
+            window.addEventListener('load', initMetaPixel, { once: true });
+        }
+    }
+
     // Speculation Rules prerendering (script.js) renders pages before the user
     // actually visits them. Firing the pixel during a prerender would count
     // PageViews for visits that may never happen, so wait until the page is
     // actually shown.
     if (document.prerendering) {
-        document.addEventListener('prerenderingchange', initMetaPixel, { once: true });
+        document.addEventListener('prerenderingchange', initWhenLoaded, { once: true });
     } else {
-        initMetaPixel();
+        initWhenLoaded();
     }
 }());

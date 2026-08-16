@@ -23,7 +23,7 @@ Conversion and Ethical Persuasion: Only use persuasion signals that are true, sp
 2. Design System
 2.1. Design Locked; Palette Values Still Open
 
-STATUS (owner decision 2026-07-28): The Tropic Noir DESIGN is final — the structure, typography roles, component shapes, textures, motion, and photo treatment shipped site-wide via `tropic-noir.css` are the site's design and will not be replaced ("I will only change the color, not the style itself"). What remains open are the PALETTE VALUES only: the specific hues (currently petrol/coral/brass/champagne) may still be swapped. Do not treat any hex value as final brand law; do treat the design system itself as settled — never propose replacing the skin, and consolidation work (e.g. flattening tropic-noir.css into style.css) may proceed without waiting for the color decision.
+STATUS (owner decision 2026-07-28): The Tropic Noir DESIGN is final — the structure, typography roles, component shapes, textures, motion, and photo treatment shipped site-wide via `tropic-noir.css` are the site's design and will not be replaced ("I will only change the color, not the style itself"). What remains open are the PALETTE VALUES only: the specific hues (currently petrol/coral/brass/champagne) may still be swapped. Do not treat any hex value as final brand law; do treat the design system itself as settled — never propose replacing the skin. CONSOLIDATION DONE 2026-08-14: tropic-noir.css was merged verbatim into the tail of `style.css` and retired; the whole design now lives in the ONE stylesheet, and its `:root` token blocks are where a future palette swap happens. Never reintroduce a second site-wide stylesheet (the `tropic-noir--*.css` files are palette-lab variants for palette-preview.html only).
 
 Until the final palette values are decided:
 
@@ -32,13 +32,17 @@ Until the final palette values are decided:
 - When a task touches colors, ask the owner which direction applies, or propose options — do not silently invent a new palette.
 - AT PALETTE LOCK-IN, also surface to the owner: the serif consolidation decision (Cormorant vs Playfair — two display serifs currently coexist) and the §2.2 typography re-sync (Playfair and Teko are live site-wide but undocumented there).
 
-2.2. Typography
+2.2. Typography (re-synced to the live build 2026-08-14; serif consolidation decided by owner)
 
-Hero/Display Headings: font-family: 'Cormorant Garamond', serif; (Weights: 600, 700). Use only for brand-led hero moments and refined editorial headings that echo the logo's elegant serif character.
+Hero/Display Headings: font-family: 'Playfair Display', serif; (variable 400–900, plus a REAL italic file for accent words). Use for brand-led hero moments and refined editorial headings that echo the logo's elegant serif character. Cormorant Garamond was retired 2026-08-14 (owner decision after side-by-side comparison, System/font-comparison.html): one display serif site-wide, real italics, ~37 KB less on every page's critical path.
 
-UI/Section Headings: font-family: 'Outfit', sans-serif; (Weights: 600, 700).
+UI/Section Headings: font-family: 'Outfit', sans-serif; (Weights: 500–800).
 
-Body: font-family: 'Inter', sans-serif; (Weights: 400, 500).
+Body: font-family: 'Inter', sans-serif; (variable 200–900).
+
+Display numerals/condensed accents: font-family: 'Teko', sans-serif; (variable 300–700) — existing uses only.
+
+FONT BUDGET RULE: the site ships exactly these FOUR families (5 woff2 files, self-hosted, latin-subset, font-display: swap). Every font file rides the critical path of every page, so adding a family, weight file, or subset requires explicit owner sign-off with the byte cost stated. Preload only the Inter and Outfit latin files (the above-the-fold pair); never preload the rest.
 
 Sizing: Use rem for font sizes.
 
@@ -93,6 +97,16 @@ Contrast Optimization: Ensure sufficient contrast ratios between --text-muted an
 
 Execution: Defer all non-critical scripts. Use type="module".
 
+DEFER RULE (enforced by site_health `check_script_loading` since 2026-08-14): every classic `<script src>` tag on every page MUST carry `defer` (or `async` for remote analytics loaders, or be `type="module"`, which defers natively). A synchronous script anywhere in the document is a render-blocking request for zero benefit. The only sanctioned exception is the Supabase CDN script on the portal/auth pages, whose inline auth code depends on it synchronously.
+
+HEAVY-LIBRARY RULE: three.js (and any future decorative-scene library) loads via dynamic `import()` gated behind `window.load` — use the `whenWindowLoaded()` helper at the top of script.js. Decorative canvases fade in anyway; their bytes must never compete with the LCP image, fonts, or CSS.
+
+3.3.1. Minified Twins (MANDATORY workflow since 2026-08-14)
+
+Pages reference the minified twins — `style.min.css`, `blog-post.min.css`, `script.min.js` — while the unminified files remain the ONLY editing surface. After ANY edit to one of the three sources: run `python3 scripts/minify_assets.py` (pinned esbuild via npx, byte-deterministic), then bump the twin's `?v=` query in one coordinated pass across all pages. `scripts/site_health.py` runs `minify_assets.py --check` and FAILS on a stale or missing twin, so a forgotten regeneration cannot reach production. Never edit a `.min.` file by hand; never point a page at the unminified source. (`script-blog.min.js` is a separate hand-frozen slim script for blog pages — not generated by the pipeline, do not overwrite it.)
+
+CSS edits additionally invalidate the per-page critical blocks: pages do not load the stylesheets render-blocking but inline a GENERATED `<style data-critical>` block and async-load the full sheet (`media="print"` + onload flip + noscript fallback — the One Stylesheet + Critical CSS Rule in AGENTS.md). After a CSS source edit or an above-the-fold markup change, re-run the critical pipeline (`scripts/critical_css.py export` → `/System/flatten/critical.html` harness → `apply`); `critical_css.py --check` inside site_health fails stale pages, so this cannot be forgotten silently either.
+
 3.4. Component Consistency (Source of Truth)
 
 CRITICAL RULE: The index.html file is the Master Template.
@@ -117,6 +131,8 @@ Verification: After ANY header or footer change, run `python3 scripts/header_foo
 Allowed: Animate opacity, color, background-color, border-color, and transform when the animation is decorative and does not cause layout shift.
 
 Forbidden: Do NOT animate width, height, margin, padding (causes Layout Shift/CLS).
+
+LCP PROTECTION (mandatory since 2026-08-14, learned the hard way): the LCP element — the hero poster img / dominant above-the-fold visual — and its ancestor containers must NEVER start at opacity 0 or visibility hidden under JS control. A from-opacity-0 tween on the LCP element postpones the *recorded* LCP until JavaScript executes, wrecking the Core Web Vitals ranking signal even when the delay is invisible to users. Entrance animations target the LCP element's SIBLINGS and children of other containers (headline, buttons, selector rows), never the stage that holds the hero visual. Full-screen overlays (page loader) dismiss on DOMContentLoaded plus a short grace period — never on window.load, which holds the reveal hostage to every deferred image and video byte.
 
 Hover Constraint: Hover states may change color, opacity, border, shadow, or underline treatments. Do not use hover movement such as translate or scale on layout elements.
 

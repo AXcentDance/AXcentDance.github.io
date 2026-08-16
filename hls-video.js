@@ -7,7 +7,7 @@
    Without JavaScript the element keeps its progressive src/<source> fallback.
 */
 
-const HLS_CDN = '/assets/vendor/hls-1.5.13.mjs';
+const HLS_CDN = '/assets/vendor/hls-1.5.13.min.mjs';
 
 let hlsModulePromise = null;
 const instances = new WeakMap();
@@ -82,7 +82,10 @@ async function attach(video, playlistUrl, { autoStart = false } = {}) {
     // MANIFEST_PARSED below, after the start level is pinned. Otherwise the
     // internal controllers (registered first) would pick the start fragment
     // before the pin applies.
-    const hls = new Hls({ maxBufferLength: 10, autoStartLoad: false });
+    // capLevelToPlayerSize keeps ABR honest about the rendered element: a
+    // phone-sized hero stays on the 720p rendition even on fast wifi instead
+    // of ramping to the 1080p "desktop" rung it can never show.
+    const hls = new Hls({ maxBufferLength: 10, autoStartLoad: false, capLevelToPlayerSize: true });
     instances.set(video, hls);
     hls.on(Hls.Events.MANIFEST_PARSED, (event, data) => {
         // Desktop viewports start on the top rendition instead of hls.js's
@@ -110,18 +113,45 @@ async function attach(video, playlistUrl, { autoStart = false } = {}) {
 /* Expose for script.js (classic script) — used by the homepage hero switcher. */
 window.AXHls = { attach, detach };
 
-/* Auto-upgrade every declared video on the page. */
+/* Auto-upgrade every declared video on the page.
+   Autoplay heroes declare data-autoplay="1" instead of the autoplay attribute:
+   a markup-level autoplay makes the browser start downloading the progressive
+   mp4 the moment the tag is parsed, so visitors would pay for the full file
+   AND the HLS segments. With data-autoplay the poster shows instantly, HLS
+   attaches, and playback starts on segments only. */
+/* Autoplaying heroes hold their first segment request until window.load so
+   the stream never competes with CSS, fonts, and the poster on the critical
+   path — the poster (visually the same frame) covers the wait. */
+function whenLoaded(callback) {
+    if (document.readyState === 'complete') {
+        callback();
+    } else {
+        window.addEventListener('load', callback, { once: true });
+    }
+}
+
 document.querySelectorAll('video[data-hls]').forEach((video) => {
-    const auto = video.autoplay;
-    attach(video, video.dataset.hls, { autoStart: auto })
-        .then((ok) => {
-            if (ok) {
-                video.dataset.hlsActive = '1';
+    const auto = video.autoplay || video.dataset.autoplay === '1';
+    const start = () => {
+        attach(video, video.dataset.hls, { autoStart: auto })
+            .then((ok) => {
+                if (ok) {
+                    video.dataset.hlsActive = '1';
+                }
                 if (auto) {
                     video.muted = true;
+                    // Unsupported HLS leaves the progressive fallback in place —
+                    // play() then streams the mp4 exactly as the old markup did.
                     video.play().catch(() => {});
                 }
-            }
-        })
-        .catch(() => {});
+            })
+            .catch(() => {});
+    };
+    // Click-to-play videos attach immediately (no bytes move until the user
+    // presses play); only autoplaying heroes wait out the critical path.
+    if (auto) {
+        whenLoaded(start);
+    } else {
+        start();
+    }
 });

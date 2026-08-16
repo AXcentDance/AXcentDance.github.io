@@ -6,6 +6,58 @@ workstream merges tropic-noir.css into style.css component by component, ending
 with one stylesheet and one `:root` token block that repaints the whole site.
 See axcent-rules.md §2.1.
 
+## STATUS 2026-08-14: MERGE COMPLETE — tropic-noir.css is retired
+
+The whole remaining skin was appended VERBATIM to the end of style.css (its
+exact former load position: it always loaded immediately after style.css on
+every page, so concatenation in load order is cascade-identical by
+construction). All 138 pages now load ONE stylesheet, style.min.css?v=11.0;
+the tropic link line was deleted site-wide, script.js's seven
+`link[href*="tropic-noir"]` detects were hardcoded true (they were always true
+at runtime — every page carried the link), and palette-preview.html's
+`#palette-css` link is href-less by default (variants still set it; the
+default tokens live in style.css). tropic-noir.css and tropic-noir.min.css are
+deleted; the 43 `tropic-noir--*.css` palette-variant skins remain for
+palette-preview.html only.
+
+Proof: fingerprint rig (`fingerprint.html`, 18 pages x 2 viewports, double
+baseline for flakiness mapping) — 31/36 captures byte-identical; the 5 dirty
+captures contained 30 geometry-only diffs, all live countdown/relative-time
+digit drift, with ZERO computed-style property changes across every element on
+every page. sizes_truth_checker: 690 measurements, zero divergences.
+site_health, header_footer, advanced_image: PASS.
+
+Next passes work INSIDE style.css: declaration-level purge of legacy rules the
+appended skin overrides (see the pilot scope map below — the method still
+applies, now within one file), plus site-wide-unused rule removal. Verify every
+pass with a FRESH fingerprint.html double baseline.
+
+## Purge pass 1 (2026-08-14): never-matched rules
+
+Tooling: `analyze_rules.py` (byte-faithful parser + kill) and `usage.html`
+(real-browser selector matching across all 138 pages, runtime-state
+pseudo-classes and pseudo-elements stripped). Kill standard: a rule dies only
+when every selector both (a) matched nothing on any page and (b) contains a
+class/id/attribute name declared NOWHERE — not in any page's static markup and
+not in any script's word tokens — so no runtime mutation can produce it.
+Result: 19 rules + 3 orphaned keyframes, −3.4 KB raw; 200 unmatched-but-
+runtime-plausible rules kept (nav/menu/lightbox/FAQ states etc.). Verified
+36/36 fingerprint captures byte-identical. The big remaining candidates are
+DECLARATION-level kills (legacy cream-era blocks the appended skin overrides
+on every element) — that is the pilot-method work, per component, not
+selector-level.
+
+## Critical CSS pipeline (2026-08-14) — see AGENTS.md rule
+
+Every page inlines a generated `<style data-critical="HASH">` block and loads
+the full sheet(s) async (media="print" + onload flip + noscript). Pipeline:
+`scripts/critical_css.py export` → serve repo + run `upload_sink.py` (port
+3001) → open `/System/flatten/critical.html`, `await runCritical()` (tests
+every rule's selectors above the fold at 375x812 and 1280x900, POSTs ids to
+the sink) → `scripts/critical_css.py apply`. Freshness gate:
+`critical_css.py --check` inside site_health (hash = CSS sources + page body).
+Regenerate after any CSS edit or above-fold markup change.
+
 ## Method (established by the buttons/CTA pilot, 2026-07-28)
 
 1. **Match-set from the browser, declarations from the source.** Chrome's CSSOM

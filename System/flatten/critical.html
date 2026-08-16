@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"><title>critical-css harness</title></head>
+<body>
+<iframe id="fr" style="width:1280px;height:900px;border:0"></iframe>
+<pre id="out"></pre>
+<script>
+// Above-the-fold rule extraction for scripts/critical_css.py.
+// For every page, at mobile (375x812) and desktop (1280x900), a rule from
+// critical_rules.json is critical when its @-contexts hold at that viewport
+// and any of its test selectors matches an element intersecting the initial
+// viewport. Run:  const ids = await runCritical();  -> stashed in __crit.
+
+const VIEWPORTS = [[375, 812], [1280, 900]];
+const FOLD_PAD = 100;
+
+function loadPage(page, w, h) {
+  return new Promise(resolve => {
+    const fr = document.getElementById('fr');
+    fr.style.width = w + 'px';
+    fr.style.height = h + 'px';
+    fr.onload = () => setTimeout(() => resolve(fr.contentDocument), 1500);
+    fr.src = page + '?_cr=' + Date.now();
+  });
+}
+
+function ctxHolds(win, ctx) {
+  for (const c of ctx) {
+    if (c.startsWith('@media')) {
+      // preference queries must not gate inclusion: force them true
+      const q = c.slice(6).trim()
+        .replace(/\(\s*prefers-[^)]*\)/g, '(min-width: 0px)')
+        .replace(/\(\s*forced-colors[^)]*\)/g, '(min-width: 0px)');
+      if (!win.matchMedia(q).matches) return false;
+    } else if (c.startsWith('@supports')) {
+      try {
+        if (!win.CSS.supports(c.slice(9).trim())) return false;
+      } catch (e) { /* unparseable: keep */ }
+    }
+  }
+  return true;
+}
+
+window.runCritical = async function () {
+  const rules = await (await fetch('/System/flatten/critical_rules.json')).json();
+  const pages = await (await fetch('/System/flatten/pages.json')).json();
+  const result = {};
+  for (const [pi, page] of pages.entries()) {
+    const ids = new Set();
+    for (const [w, h] of VIEWPORTS) {
+      const doc = await loadPage(page, w, h);
+      const win = doc.defaultView;
+      const hitCache = new Map();
+      const aboveFold = sel => {
+        if (hitCache.has(sel)) return hitCache.get(sel);
+        let hit = false;
+        let els;
+        try {
+          els = doc.querySelectorAll(sel);
+        } catch (e) {
+          hitCache.set(sel, true);   // unparseable: include
+          return true;
+        }
+        for (const el of els) {
+          const r = el.getBoundingClientRect();
+          if (r.top < h + FOLD_PAD && r.bottom > -20
+              && r.left < w && r.right > 0
+              && (r.width > 0 || r.height > 0)) { hit = true; break; }
+        }
+        hitCache.set(sel, hit);
+        return hit;
+      };
+      for (const rule of rules) {
+        if (ids.has(rule.id)) continue;
+        // rule.gap: its @media band excludes every sampled width (e.g. the
+        // 900-1023 hero and 1024-1180 nav bands — iPad territory). The block
+        // ships to all devices, so include it on selector match alone; the
+        // @media wrapper is preserved on assembly and still gates application.
+        if (!rule.gap && !ctxHolds(win, rule.context)) continue;
+        if (rule.always) { ids.add(rule.id); continue; }
+        for (const t of rule.tests) {
+          if (aboveFold(t)) { ids.add(rule.id); break; }
+        }
+      }
+    }
+    result[page] = [...ids].sort((a, b) => a - b);
+    document.getElementById('out').textContent =
+      (pi + 1) + '/' + pages.length + ' pages (' + page + ': '
+      + result[page].length + ' rules)';
+  }
+  window.__crit = result;
+  return 'done: ' + pages.length + ' pages';
+};
+</script>
+</body>
+</html>

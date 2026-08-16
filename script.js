@@ -1,5 +1,16 @@
 console.log('AXcent Dance website initialized.');
 
+/* Decorative WebGL scenes wait for window.load before pulling three.js:
+   a 167 KB module import at DOMContentLoaded competes with the hero poster,
+   fonts, and CSS on the critical path, and every scene fades in anyway. */
+const whenWindowLoaded = () => new Promise((resolve) => {
+    if (document.readyState === 'complete') {
+        resolve();
+    } else {
+        window.addEventListener('load', () => resolve(), { once: true });
+    }
+});
+
 document.addEventListener('DOMContentLoaded', () => {
     console.log('DOM fully loaded and parsed');
 
@@ -19,8 +30,11 @@ document.addEventListener('DOMContentLoaded', () => {
             ? Array.from(selector.children).sort((first, second) => first.getBoundingClientRect().top - second.getBoundingClientRect().top)
             : [];
         const actionTargets = gsap.utils.toArray('.home-hero__actions .btn-hero, .home-hero__actions .home-hero__assurance li');
-        const stage = document.querySelector('.home-hero__stage');
-        const motionTargets = [stage, ...panelIntroTargets, ...selectorTargets, ...actionTargets].filter(Boolean);
+        // The stage (video + poster) is deliberately NOT animated: it is the
+        // LCP element, and a from-opacity-0 tween would postpone the recorded
+        // LCP paint until this JS runs. The loader overlay covers the stage
+        // during these first frames anyway, so the fade was never visible.
+        const motionTargets = [...panelIntroTargets, ...selectorTargets, ...actionTargets].filter(Boolean);
         const clearIntroStyles = () => {
             gsap.set(motionTargets, { clearProps: 'opacity,visibility,transform' });
         };
@@ -29,24 +43,18 @@ document.addEventListener('DOMContentLoaded', () => {
             defaults: { ease: 'power3.out' },
             onComplete: clearIntroStyles
         })
-            .from(stage, {
-                opacity: 0,
-                y: 30,
-                scale: 0.985,
-                duration: 0.62
-            })
             .from(actionTargets, {
                 opacity: 0,
                 y: 18,
                 duration: 0.38,
                 stagger: 0.035
-            }, '-=0.36')
+            })
             .from(panelIntroTargets, {
                 opacity: 0,
                 y: 14,
                 duration: 0.36,
                 stagger: 0.025
-            }, '-=0.44')
+            }, '-=0.30')
             .from(selectorTargets, {
                 opacity: 0,
                 y: 16,
@@ -115,10 +123,10 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         };
 
-        window.addEventListener('load', () => {
-            window.setTimeout(markPageLoaded, 150);
-        }, { once: true });
-        window.setTimeout(markPageLoaded, 1050);
+        // This script is deferred, so it runs right at DOMContentLoaded. Lift
+        // the curtain from here instead of window.load: late resources (video
+        // segments, lazy images) must never hold the whole page hostage.
+        window.setTimeout(markPageLoaded, 150);
     } else {
         markHeroIntroPlayed();
     }
@@ -129,6 +137,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const heroVideoChoices = document.querySelectorAll('.home-hero__choice[data-hero-video], .home-hero__choice[data-hero-poster]');
 
     if (heroShowcaseVideo && heroVideoChoices.length) {
+        // The static posterframe img under the video exists only for the first
+        // paint (it is the page's LCP element; see .home-hero__posterframe in
+        // style.css). Once the stream has rendered real frames it must go:
+        // the switcher below fades the video to transparent, and a lingering
+        // posterframe would flash the default clip's poster during every
+        // transition. Hidden, fades pass through the stage's black background,
+        // matching the clips' own fade-to-black edges. visibility (not
+        // display) so the img keeps its layout box and never re-triggers LCP.
+        const heroPosterframeImg = document.querySelector('.home-hero__posterframe');
+        if (heroPosterframeImg) {
+            heroShowcaseVideo.addEventListener('playing', () => {
+                heroPosterframeImg.style.visibility = 'hidden';
+            }, { once: true });
+        }
+
         // Stage overlay (launch-note ribbon + CTA pair). Event entries in the
         // selector carry data-hero-note-* / data-hero-cta-* overrides so the
         // overlay copy always matches the footage being shown; class entries
@@ -702,7 +725,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let threeModulePromise = null;
         const loadThreeModule = () => {
             if (!threeModulePromise) {
-                threeModulePromise = import('/assets/vendor/three-0.160.0.module.js')
+                threeModulePromise = whenWindowLoaded().then(() => import('/assets/vendor/three-0.160.0.module.min.js'))
                     .catch(() => null);
             }
             return threeModulePromise;
@@ -1070,7 +1093,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const rows = Array.from(schedule.querySelectorAll('.schedule-row'));
         const cards = Array.from(schedule.querySelectorAll('.class-card'));
-        const tropicNoirActive = !!document.querySelector('link[href*="tropic-noir"]');
+        const tropicNoirActive = true;
         const revealTargets = gsap
             ? gsap.utils.toArray([
                 '.schedule-grid-header',
@@ -1217,10 +1240,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const enhanceTropicChoreography = () => {
         // Homepage-only motion system for the Tropic Noir prototype.
-        // The .reveal slab is neutralized in tropic-noir.css; content stays
+        // The .reveal slab is neutralized by the Tropic Noir block in style.css; content stays
         // visible without JavaScript and under prefers-reduced-motion.
         if (!document.body.classList.contains('home-page')) return;
-        if (!document.querySelector('link[href*="tropic-noir"]')) return;
 
         const observeOnce = (target, onEnter, options) => {
             if (!('IntersectionObserver' in window)) {
@@ -1291,7 +1313,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Dancing underline: the section-title rule draws in three steps and
         // a tap (the bachata basic). Drives the CSS variable read by the
-        // ::after element in tropic-noir.css.
+        // ::after element styled by the Tropic Noir block in style.css.
         gsap.utils.toArray('.section-title-modern').forEach((title) => {
             gsap.set(title, { '--title-underline-scale': 0 });
             observeOnce(title, () => {
@@ -1374,7 +1396,6 @@ document.addEventListener('DOMContentLoaded', () => {
         // fully visible without JavaScript and under prefers-reduced-motion;
         // initial hidden states are set from JS only.
         if (!document.body.classList.contains('events-page')) return;
-        if (!document.querySelector('link[href*="tropic-noir"]')) return;
 
         const heroSection = document.querySelector('[data-events-hero]');
 
@@ -1672,7 +1693,6 @@ document.addEventListener('DOMContentLoaded', () => {
         // Content stays fully visible without JavaScript and under
         // prefers-reduced-motion; everything here is additive.
         if (!document.body.classList.contains('course-page')) return;
-        if (!document.querySelector('link[href*="tropic-noir"]')) return;
 
         const observeOnce = (target, onEnter, options) => {
             if (!target) return;
@@ -1764,7 +1784,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let threeModulePromise = null;
         const loadThreeModule = () => {
             if (!threeModulePromise) {
-                threeModulePromise = import('/assets/vendor/three-0.160.0.module.js')
+                threeModulePromise = whenWindowLoaded().then(() => import('/assets/vendor/three-0.160.0.module.min.js'))
                     .catch(() => null);
             }
             return threeModulePromise;
@@ -2168,9 +2188,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!words.length) return;
 
         const wordCycleDelay = 1500;
-        // Tropic Noir pages recolor the hero scene to coral/brass/champagne;
-        // pages without the stylesheet keep the warm cream palette.
-        const tropicNoirActive = !!document.querySelector('link[href*="tropic-noir"]');
+        // Tropic Noir (flattened into style.css) recolors the hero scene to
+        // coral/brass/champagne.
+        const tropicNoirActive = true;
         const sceneState = { pulse: 0, activeIndex: 0 };
         let activeWordIndex = 0;
         let activeWordElement = null;
@@ -2245,7 +2265,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let contactThreePromise = null;
         const loadContactThree = () => {
             if (!contactThreePromise) {
-                contactThreePromise = import('/assets/vendor/three-0.160.0.module.js')
+                contactThreePromise = whenWindowLoaded().then(() => import('/assets/vendor/three-0.160.0.module.min.js'))
                     .catch(() => null);
             }
             return contactThreePromise;
@@ -3276,8 +3296,7 @@ const blogCards = document.querySelectorAll('.modern-card'); // Ensure this matc
 // The Tropic Noir journal (EN blog.html) carries body.blog-page and gets the
 // animated FLIP filter plus the editorial grid; every other page that owns
 // .filter-btn (de/blog.html) keeps the original instant toggle untouched.
-const isNoirBlog = document.body.classList.contains('blog-page')
-    && Boolean(document.querySelector('link[href*="tropic-noir"]'));
+const isNoirBlog = document.body.classList.contains('blog-page');
 const blogPrefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const blogGrid = document.querySelector('.blog-grid-modern');
 
@@ -3608,7 +3627,6 @@ enhanceBlogNoir();
    entrance choreography with hidden states set from JS only. */
 const enhanceGuidePage = () => {
     if (!document.body.classList.contains('guide-page')) return;
-    if (!document.querySelector('link[href*="tropic-noir"]')) return;
 
     const gsapRef = window.gsap;
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -4009,7 +4027,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const loadTrialProcessThree = () => {
                 if (trialProcessThreePromise) return trialProcessThreePromise;
 
-                trialProcessThreePromise = import('/assets/vendor/three-0.160.0.module.js')
+                trialProcessThreePromise = whenWindowLoaded().then(() => import('/assets/vendor/three-0.160.0.module.min.js'))
                     .catch(() => null);
 
                 return trialProcessThreePromise;
@@ -4256,7 +4274,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const loadClassChoiceThree = () => {
                 if (classChoiceThreePromise) return classChoiceThreePromise;
 
-                classChoiceThreePromise = import('/assets/vendor/three-0.160.0.module.js')
+                classChoiceThreePromise = whenWindowLoaded().then(() => import('/assets/vendor/three-0.160.0.module.min.js'))
                     .catch(() => null);
 
                 return classChoiceThreePromise;
@@ -5291,7 +5309,7 @@ info@axcentdance.com`,
         let threePromise = null;
         const loadThree = () => {
             if (!threePromise) {
-                threePromise = import('/assets/vendor/three-0.160.0.module.js')
+                threePromise = whenWindowLoaded().then(() => import('/assets/vendor/three-0.160.0.module.min.js'))
                     .catch(() => null);
             }
             return threePromise;

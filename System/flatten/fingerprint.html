@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"><title>flatten fingerprint rig</title></head>
+<body>
+<iframe id="fr" style="width:1280px;height:900px;border:0"></iframe>
+<pre id="out"></pre>
+<script>
+// Full-page layout+style fingerprint rig for the flattening workstream
+// (System/flatten/README.md). Serve the repo root and open this page, then
+// drive from the console / automation:
+//   await runAll('base1', PAGES, [1280, 375])   // fresh baseline
+//   await runAll('base2', PAGES, [1280, 375])   // self-consistency run
+//   markFlaky('base1', 'base2')                 // elements that drift on their own
+//   ... apply the CSS change on disk ...
+//   await runAll('post', PAGES, [1280, 375])
+//   compare('base2', 'post', true)              // diffs, flaky elements excluded
+//   detail('base2', 'post', key, idx)           // drill into one element
+// Captures live in window.store — keep this page open across the change;
+// baselines cannot be reused after a reload (fresh-baseline doctrine).
+
+const PROPS = ['color', 'background-color', 'font-family', 'font-size',
+  'font-weight', 'line-height', 'border-top-color', 'border-top-width',
+  'border-bottom-color', 'border-radius', 'opacity', 'display', 'position',
+  'z-index', 'box-shadow', 'text-align'];
+
+window.PAGES = ['/index.html', '/about.html', '/schedule.html',
+  '/registration.html', '/events.html', '/gallery.html', '/contact.html',
+  '/bachata-beginner-0.html', '/bachata-sensual-foundation.html',
+  '/beginner-guide.html', '/blog/index.html', '/blog/connection-101.html',
+  '/cart.html', '/Milano-Sensual-Congress-2026.html', '/_login.html',
+  '/de/index.html', '/de/schedule.html', '/de/blog/connection-101.html'];
+
+function loadPage(page, width) {
+  return new Promise(resolve => {
+    const fr = document.getElementById('fr');
+    fr.style.width = width + 'px';
+    fr.onload = () => setTimeout(() => resolve(fr.contentDocument), 2200);
+    fr.src = page + (page.includes('?') ? '&' : '?') + '_fp=' + Date.now();
+  });
+}
+
+async function capture(page, width) {
+  const doc = await loadPage(page, width);
+  const st = doc.createElement('style');
+  st.textContent = '*, *::before, *::after {'
+    + 'animation: none !important; transition: none !important;'
+    + 'caret-color: transparent !important; scroll-behavior: auto !important; }';
+  doc.head.appendChild(st);
+  await new Promise(r => setTimeout(r, 400));
+  const win = doc.defaultView;
+  const els = Array.from(doc.querySelectorAll('*')).slice(0, 8000);
+  return els.map(el => {
+    const r = el.getBoundingClientRect();
+    const cs = win.getComputedStyle(el);
+    // Rects rounded to 2px so sub-pixel and countdown-digit drift is absorbed.
+    const rect = [r.x, r.y, r.width, r.height]
+      .map(v => Math.round(v / 2) * 2).join(',');
+    return el.tagName + '|' + rect + '|'
+      + PROPS.map(p => cs.getPropertyValue(p)).join('|');
+  });
+}
+
+function hash(lines) {
+  let h = 5381;
+  const s = lines.join('\n');
+  for (let i = 0; i < s.length; i++) h = ((h * 33) ^ s.charCodeAt(i)) >>> 0;
+  return h.toString(16);
+}
+
+window.store = {};
+window.flakySet = {};
+
+window.runAll = async function (label, pages, widths) {
+  window.store[label] = {};
+  const summary = {};
+  for (const p of (pages || window.PAGES)) {
+    for (const w of (widths || [1280, 375])) {
+      const key = p + '@' + w;
+      const lines = await capture(p, w);
+      window.store[label][key] = lines;
+      summary[key] = hash(lines) + ' n=' + lines.length;
+      document.getElementById('out').textContent = label + ' ' + key;
+    }
+  }
+  document.getElementById('out').textContent = label + ' done';
+  return summary;
+};
+
+window.markFlaky = function (a, b) {
+  window.flakySet = {};
+  let total = 0;
+  for (const key of Object.keys(window.store[a])) {
+    const A = window.store[a][key], B = window.store[b][key] || [];
+    const s = new Set();
+    for (let i = 0; i < Math.max(A.length, B.length); i++) {
+      if (A[i] !== B[i]) s.add(i);
+    }
+    window.flakySet[key] = s;
+    total += s.size;
+  }
+  return total;
+};
+
+window.compare = function (a, b, skipFlaky) {
+  const out = {};
+  for (const key of Object.keys(window.store[a])) {
+    const A = window.store[a][key], B = (window.store[b] || {})[key] || [];
+    const flaky = skipFlaky ? (window.flakySet[key] || new Set()) : new Set();
+    const diffs = [];
+    for (let i = 0; i < Math.max(A.length, B.length); i++) {
+      if (flaky.has(i)) continue;
+      if (A[i] !== B[i]) diffs.push(i);
+    }
+    out[key] = { nA: A.length, nB: B.length, diffs: diffs.length,
+      sample: diffs.slice(0, 5) };
+  }
+  return out;
+};
+
+window.detail = function (a, b, key, idx) {
+  return { A: (window.store[a][key] || [])[idx] || null,
+           B: (window.store[b][key] || [])[idx] || null };
+};
+</script>
+</body>
+</html>
