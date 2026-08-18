@@ -28,7 +28,7 @@ window.AXCENT_PASSES = {
     // durationDays: added to the start date for the pass end date
     // (8 weeks minus 1 day = 55; the flexible pass is valid 1 year).
     packages: [
-        { value: "1 Course (8 Weeks)", en: "1 Course", de: "1 Kurs", regular: "210 CHF", student: "180 CHF", durationDays: 55 },
+        { value: "1 Course (8 Weeks)", en: "1 Course", de: "1 Kurs", regular: "210 CHF", student: "175 CHF", durationDays: 55 },
         { value: "2 Classes/Week (8 Weeks)", en: "2 Classes/Week", de: "2 Kurse/Woche", regular: "320 CHF", student: "270 CHF", durationDays: 55 },
         { value: "3 Classes/Week (8 Weeks)", en: "3 Classes/Week", de: "3 Kurse/Woche", regular: "390 CHF", student: "330 CHF", durationDays: 55 },
         { value: "4 Classes/Week (8 Weeks)", en: "All You Can Dance", de: "All You Can Dance", regular: "450 CHF", student: "380 CHF", durationDays: 55 },
