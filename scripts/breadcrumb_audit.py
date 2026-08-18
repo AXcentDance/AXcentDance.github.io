@@ -10,9 +10,14 @@ SKIPPED_FILES = {
     "portal.html", "_login.html", "_signup.html",
     "de/portal.html", "de/_login.html", "de/_signup.html",
     # Owner-only admin tools (noindex): no breadcrumb schema by design.
-    "_admin.html", "_attendance.html",
+    "_admin.html", "_attendance.html", "_videos.html",
     # Internal design references, never published as public pages.
     "System/palette-proposals.html",
+    "System/font-comparison.html",
+    "System/flatten/critical.html",
+    "System/flatten/fingerprint.html",
+    "System/flatten/harness.html",
+    "System/flatten/usage.html",
     "palette-preview.html",
 }
 
