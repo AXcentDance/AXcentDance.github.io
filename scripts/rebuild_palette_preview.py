@@ -76,18 +76,21 @@ def rebuild_markup():
 
 
 def refresh_critical():
-    """Re-inline the critical block, reusing index.html's extracted rule set."""
-    ids_path = cc.FLAT / 'critical_ids.json'
-    ids_by_page = json.loads(ids_path.read_text())
-    ids_by_page['/' + PAGE] = ids_by_page['/index.html']
-    ids_path.write_text(json.dumps(ids_by_page, separators=(',', ':')))
+    """Re-inline the critical block, reusing index.html's key set from the
+    incremental map (critical_map.json, the pipeline of 2026-08-16)."""
+    crit_map = cc.load_map()
+    crit_map['pages']['/' + PAGE] = list(crit_map['pages']['/index.html'])
+    cc.save_map(crit_map)
 
+    units = cc.source_rules()
+    keys = set(crit_map['pages']['/' + PAGE])
+    ids = [u['id'] for u in units if u['kind'] == 'rule' and u['key'] in keys]
     css_texts = {name: (cc.ROOT / name).read_text(encoding='utf-8')
                  for name in cc.SOURCES}
     p = cc.ROOT / PAGE
     text = cc.NOSCRIPT_RE.sub('', cc.CRITICAL_RE.sub('', p.read_text(encoding='utf-8')))
     link = next(m for m in cc.LINK_RE.finditer(text) if m.group('file') == 'style')
-    block_css = cc.minify_block(cc.assemble(cc.source_rules(), ids_by_page['/' + PAGE]))
+    block_css = cc.minify_block(cc.assemble(units, ids))
     h = cc.page_hash(text, False, css_texts)
     block = (f'<style data-critical="{h}">{block_css}</style>\n    '
              + '\n    '.join(cc.async_links(link.group('prefix'),
