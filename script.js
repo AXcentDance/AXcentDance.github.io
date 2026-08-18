@@ -4558,7 +4558,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // 3. Send to the existing lead channels and the owner inbox in parallel.
             // IMPORTANT: PASTE YOUR WEB APP URL BELOW
-            const scriptURL = 'https://script.google.com/macros/s/AKfycbwPqLutAq-xa9OkSiT-rLm72DJCdQ2Xw10Yp4DvHexTq42HxCKJyJr8mJmZ0RuZSc7A5A/exec';
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbxLholn2yEjzApjC4n-iPnXrBIDexzsbpUra2GU8dkofKuMd2AbZP1NJn8O_XBoI2mFtQ/exec';
             const formSubmitEmail = 'info@axcentdance.com'; // Using FormSubmit for reliable emails
             const formSubmitURL = `https://formsubmit.co/ajax/${formSubmitEmail}`;
             const supabaseURL = 'https://jwravnvytkmsvqoqkmwb.supabase.co';
@@ -4726,6 +4726,7 @@ info@axcentdance.com`;
             // 2. Gather Data
             const rawFormData = new FormData(contactForm);
             const data = {
+                form_type: 'contact',
                 name: rawFormData.get('name'),
                 email: rawFormData.get('email'),
                 phone: rawFormData.get('phone'),
@@ -4733,7 +4734,7 @@ info@axcentdance.com`;
             };
 
             // 3. Send to Google Script AND FormSubmit (Parallel)
-            const googleScriptURL = 'https://script.google.com/macros/s/AKfycbxOYwPUSX0twewRAHIA-7k4Cyds8oH9i6wUuFDLcTM68ZyWK9MO1RF2wQ7rYUUBDbgrZw/exec';
+            const googleScriptURL = 'https://script.google.com/macros/s/AKfycbzmoLS5ZoRlTiRUGo2TZVSWfbYGacLmoEvCTDSlCWd18L4LvK9TBJzBvFxGp1r3LDgtCQ/exec';
             const formSubmitEmail = 'info@axcentdance.com'; // Using FormSubmit for reliable emails
             const formSubmitURL = `https://formsubmit.co/ajax/${formSubmitEmail}`;
 
@@ -4813,6 +4814,7 @@ info@axcentdance.com`,
             // 2. Gather Data
             const rawFormData = new FormData(eventRegForm);
             const data = {
+                form_type: 'bootcamp',
                 firstname: rawFormData.get('firstname'),
                 lastname: rawFormData.get('lastname'),
                 email: rawFormData.get('email'),
@@ -4821,8 +4823,7 @@ info@axcentdance.com`,
             };
 
             // 3. Send to Google Script AND FormSubmit (Parallel)
-            // REPLACE THIS URL with the one generated from your Google Apps Script
-            const googleScriptURL = 'https://script.google.com/macros/s/AKfycby8afi6chnCIBjEtrgGWmy1qqrUfrdMrZ0JYcaIrO6mzBfW6C219hYBgD-jPMfnoHWlbw/exec';
+            const googleScriptURL = 'https://script.google.com/macros/s/AKfycbzmoLS5ZoRlTiRUGo2TZVSWfbYGacLmoEvCTDSlCWd18L4LvK9TBJzBvFxGp1r3LDgtCQ/exec';
             const formSubmitEmail = 'info@axcentdance.com';
             const formSubmitURL = `https://formsubmit.co/ajax/${formSubmitEmail}`;
 

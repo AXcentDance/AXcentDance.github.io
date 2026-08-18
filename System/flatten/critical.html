@@ -43,7 +43,16 @@ function ctxHolds(win, ctx) {
 
 window.runCritical = async function () {
   const rules = await (await fetch('/System/flatten/critical_rules.json')).json();
-  const pages = await (await fetch('/System/flatten/pages.json')).json();
+  // probe_pages.json (written by critical_css.py export) narrows the run to
+  // the pages a CSS change could actually affect; full list is the fallback.
+  let pages = null;
+  try {
+    const r = await fetch('/System/flatten/probe_pages.json?_=' + Date.now());
+    if (r.ok) pages = await r.json();
+  } catch (e) { /* no probe list: full run */ }
+  if (!pages || !pages.length) {
+    pages = await (await fetch('/System/flatten/pages.json')).json();
+  }
   const result = {};
   for (const [pi, page] of pages.entries()) {
     const ids = new Set();
@@ -89,7 +98,18 @@ window.runCritical = async function () {
       + result[page].length + ' rules)';
   }
   window.__crit = result;
-  return 'done: ' + pages.length + ' pages';
+  try {
+    await fetch('http://localhost:3001/save', {
+      method: 'POST',
+      headers: {'content-type': 'application/json'},
+      body: JSON.stringify(result)
+    });
+    document.getElementById('out').textContent += ' — POSTED to sink';
+    return 'done: ' + pages.length + ' pages (posted to sink)';
+  } catch (e) {
+    return 'done: ' + pages.length + ' pages (sink POST FAILED — run '
+      + 'upload_sink.py and POST window.__crit manually)';
+  }
 };
 </script>
 </body>

@@ -50,13 +50,37 @@ selector-level.
 ## Critical CSS pipeline (2026-08-14) — see AGENTS.md rule
 
 Every page inlines a generated `<style data-critical="HASH">` block and loads
-the full sheet(s) async (media="print" + onload flip + noscript). Pipeline:
-`scripts/critical_css.py export` → serve repo + run `upload_sink.py` (port
-3001) → open `/System/flatten/critical.html`, `await runCritical()` (tests
-every rule's selectors above the fold at 375x812 and 1280x900, POSTs ids to
-the sink) → `scripts/critical_css.py apply`. Freshness gate:
-`critical_css.py --check` inside site_health (hash = CSS sources + page body).
-Regenerate after any CSS edit or above-fold markup change.
+the full sheet(s) async (media="print" + onload flip + noscript). Freshness
+gate: `critical_css.py --check` inside site_health (hash = CSS sources + page
+body).
+
+INCREMENTAL since 2026-08-16: rules are tracked by content key
+(sha1 of @-contexts + selectors, declarations excluded) in
+`critical_map.json`, which stores per-page match results and never needs a
+full re-scan for routine edits. Workflow after ANY change:
+
+1. `scripts/critical_css.py export` — diffs the CSS against the map and
+   writes `probe_pages.json` with ONLY the affected pages. Declaration
+   edits, rule deletions, and re-added identical selectors report
+   "0 pages need probing".
+2. If (and only if) export listed pages: serve the repo, run
+   `upload_sink.py` (port 3001), open `/System/flatten/critical.html`,
+   `await runCritical()` — the harness reads `probe_pages.json` (falls back
+   to the full `pages.json` when absent/empty) and auto-POSTs its result to
+   the sink.
+3. `scripts/critical_css.py apply` — ingests any fresh harness output,
+   accounts for new rule keys (candidate pages are computed statically from
+   class/id tokens vs page HTML + first-party JS; a new rule with an
+   always-include selector like `body` skips probing entirely), assembles,
+   and injects all pages. Errors out with instructions if a new rule still
+   has unprobed candidate pages.
+
+A markup-only edit needs only `apply` (hashes cover page bodies); re-probe
+via export/harness when an ABOVE-FOLD markup change could alter which rules
+match. Deleting `critical_map.json` forces a full 138-page bootstrap run —
+the recovery path if the map is ever suspected wrong. `apply` is
+byte-idempotent (the strip regexes eat the injected lines' indentation; that
+drift bug was fixed with the incremental rework).
 
 ## Method (established by the buttons/CTA pilot, 2026-07-28)
 

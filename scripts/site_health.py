@@ -3,6 +3,8 @@ import re
 import sys
 import json
 import subprocess
+import urllib.request
+import urllib.error
 from urllib.parse import urlparse, unquote
 
 ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -404,6 +406,69 @@ def check_image_sizes(pages):
             warn('img-sizes', f'stale manifest entry (img gone): {key} - re-bless to prune')
 
 
+FORM_ENDPOINT_RE = re.compile(r'https://script\.google\.com/macros/s/[A-Za-z0-9_-]+/exec')
+# Apps Script serves error interstitials with HTTP 200, so the body text is the signal.
+# A doPost-only deployment answers a GET with "function not found: doGet" - that is the
+# healthy response: deployed, public, executing. These markers mean it is NOT healthy.
+FORM_ENDPOINT_BAD_MARKERS = (
+    'unable to open the file',
+    'need permission',
+    'Zugriff ben',          # "Zugriff benötigt" permission page, umlaut-safe prefix
+    'Seite nicht gefunden',
+    'Page not found',
+    'has been deleted',
+)
+FORM_ENDPOINT_OK_MARKERS = (
+    'not found: doGet',
+    'nicht gefunden: doGet',
+)
+
+
+def collect_form_endpoints(pages):
+    """Every distinct Apps Script exec URL in pages and root-level JS, with its files."""
+    sources = dict(pages)
+    for entry in sorted(os.listdir(ROOT_DIR)):
+        if entry.endswith('.js'):
+            with open(os.path.join(ROOT_DIR, entry), encoding='utf-8') as f:
+                sources[entry] = f.read()
+    endpoints = {}
+    for name, content in sources.items():
+        for url in FORM_ENDPOINT_RE.findall(content):
+            endpoints.setdefault(url, set()).add(name)
+    return endpoints
+
+
+def check_form_endpoints(pages):
+    """Probe each form's Apps Script deployment: still published and public?
+
+    A GET writes nothing to the sheets. Network trouble is a warning (offline QA
+    runs must not hard-fail); a definitive bad response from Google is a failure.
+    """
+    endpoints = collect_form_endpoints(pages)
+    if not endpoints:
+        warn('form-endpoints', 'no script.google.com endpoints found in repo (forms removed?)')
+        return 0
+    for url, files in sorted(endpoints.items()):
+        where = ', '.join(sorted(files)[:3])
+        short = url.split('/s/')[1][:14] + '...'
+        try:
+            req = urllib.request.Request(url, headers={'User-Agent': 'axcent-site-health'})
+            with urllib.request.urlopen(req, timeout=20) as resp:
+                body = resp.read(20000).decode('utf-8', 'replace')
+        except urllib.error.HTTPError as e:
+            fail('form-endpoints', f'{short} (used by {where}): HTTP {e.code} - deployment broken?')
+            continue
+        except Exception as e:
+            warn('form-endpoints', f'{short} (used by {where}): could not verify ({e})')
+            continue
+        if any(m in body for m in FORM_ENDPOINT_BAD_MARKERS):
+            fail('form-endpoints', f'{short} (used by {where}): deployment unreachable or '
+                                   f'permissions broken - redeploy as "Anyone" and update the URL')
+        elif not any(m in body for m in FORM_ENDPOINT_OK_MARKERS):
+            warn('form-endpoints', f'{short} (used by {where}): unexpected response - inspect manually')
+    return len(endpoints)
+
+
 def run_external_checks():
     """Existing checkers with reliable pass/fail signals."""
     checks = [
@@ -434,6 +499,21 @@ def run_external_checks():
 def main():
     pages = collect_pages()
     indexable = {p for p, c in pages.items() if not is_noindex(c)}
+
+    if '--forms-only' in sys.argv:
+        print(f"Form endpoint check: probing Apps Script deployments")
+        print("-" * 70)
+        count = check_form_endpoints(pages)
+        for w in warnings:
+            print(f"  WARN {w}")
+        if failures:
+            for f in failures:
+                print(f"  FAIL {f}")
+            print(f"FAIL: {len(failures)} problem(s), {len(warnings)} warning(s).")
+            sys.exit(1)
+        print(f"PASS: all {count} form endpoints live ({len(warnings)} warning(s)).")
+        return
+
     print(f"Site health check: {len(pages)} pages ({len(indexable)} indexable)")
     print("-" * 70)
 
@@ -448,6 +528,7 @@ def main():
     check_script_loading(pages)
     check_titles_descriptions(pages, indexable)
     check_image_sizes(pages)
+    check_form_endpoints(pages)
     run_external_checks()
 
     for w in warnings:

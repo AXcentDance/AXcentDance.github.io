@@ -7880,15 +7880,6 @@ body.home-page .compact-option input:checked + .compact-card {
         inset 0 1px 0 rgba(255, 255, 255, 0.12);
 }
 
-body.home-page .compact-option input:checked + .compact-card::before {
-    background: linear-gradient(180deg, var(--accent-start), var(--accent-gold));
-    opacity: 1;
-}
-
-body.home-page .compact-option input:checked + .compact-card::after {
-    opacity: 0.22;
-}
-
 body.home-page .compact-option input:checked + .compact-card .compact-name,
 body.home-page .compact-option input:checked + .compact-card .compact-status {
     color: var(--text-inverse);
@@ -7917,17 +7908,6 @@ body.home-page .compact-option:focus-within input:checked + .compact-card {
         0 0 0 3px rgba(201, 74, 53, 0.22),
         0 0 28px rgba(184, 135, 43, 0.18),
         inset 0 1px 0 rgba(255, 255, 255, 0.18);
-}
-
-body.home-page .compact-option:not(.compact-option--disabled):hover input:checked + .compact-card::before,
-body.home-page .compact-option:focus-within input:checked + .compact-card::before {
-    background: linear-gradient(180deg, var(--accent-gold), var(--accent-start));
-    opacity: 1;
-}
-
-body.home-page .compact-option:not(.compact-option--disabled):hover input:checked + .compact-card::after,
-body.home-page .compact-option:focus-within input:checked + .compact-card::after {
-    opacity: 0.36;
 }
 
 body.home-page .compact-option:not(.compact-option--disabled):hover input:checked + .compact-card .compact-time,
@@ -11067,6 +11047,24 @@ body.home-page .trial-step .compact-option input:checked + .compact-card::before
     }
 }
 
+/* The selected card keeps the floor-tape corner. ::before is occupied by the
+   watermark on checked cards, so the cue moves to ::after there. */
+body.home-page .trial-step .compact-option input:checked + .compact-card::after {
+    content: '';
+    position: absolute;
+    inset: 0.5rem auto auto 0.5rem;
+    z-index: 2;
+    width: 0.85rem;
+    height: 0.85rem;
+    border-top: 2px solid var(--accent-start);
+    border-left: 2px solid var(--accent-start);
+    border-radius: 0;
+    background: none;
+    opacity: 1;
+    transform: none;
+    pointer-events: none;
+}
+
 body.home-page .trial-step .class-card:hover,
 body.home-page .trial-step .compact-option:hover {
     border-color: transparent;
@@ -11679,6 +11677,50 @@ body.home-page .trial-season-note .starter-countdown:not([hidden]) {
 
 body.home-page .trial-season-note .starter-countdown__cell:first-child {
     padding-left: 0;
+}
+
+/* The season reminder lives inside the form's step-1 header, under the
+   title. The header sits on the champagne card, so the dark-panel palette
+   flips to the AA ink/gold pair and the block centers with the title. */
+body.home-page .trial-step__header .trial-season-note {
+    margin-top: 1rem;
+    padding-top: 0;
+    border-top: 0;
+}
+
+body.home-page .trial-step__header .trial-season-note__copy {
+    margin: 0 auto;
+    color: #6D6154;
+}
+
+body.home-page .trial-step__header .trial-season-note__copy strong {
+    color: #8A6118;
+}
+
+body.home-page .trial-step__header .trial-season-note .starter-countdown:not([hidden]) {
+    margin: 0.9rem auto 0;
+}
+
+body.home-page .trial-step__header .trial-season-note .starter-countdown__cell:first-child {
+    padding-left: 1.1rem;
+}
+
+body.home-page .trial-step__header .starter-countdown strong {
+    color: #8A6118;
+}
+
+body.home-page .trial-step__header .starter-countdown small {
+    color: #6D6154;
+}
+
+body.home-page .trial-step__header .starter-countdown__cell + .starter-countdown__cell {
+    border-left-color: rgba(138, 97, 24, 0.3);
+}
+
+@media (max-width: 700px) {
+    body.home-page .trial-step__header .trial-season-note .starter-countdown__cell:first-child {
+        padding-left: 0.85rem;
+    }
 }
 
 /* Inline form errors on the champagne island */
@@ -19120,7 +19162,11 @@ body.about-page .teacher-portrait {
     align-items: center;
     justify-content: center;
     width: min(100%, 190px);
+    /* height:auto beats the img width/height attribute hint, so the
+       aspect-ratio (not the 600px attribute) sizes the photo */
+    height: auto;
     aspect-ratio: 4 / 5;
+    object-fit: cover;
     margin-bottom: 0.9rem;
     border-radius: 12px;
     background:
