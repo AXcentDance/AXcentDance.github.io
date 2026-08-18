@@ -4608,6 +4608,7 @@ info@axcentdance.com`;
                 _subject: `New Trial Booking from ${data.firstname}`,
                 _template: 'table',
                 _captcha: 'false',
+                _cc: 'slamitza@gmail.com',
                 _autoresponse: autoresponse,
                 firstname: data.firstname,
                 lastname: data.lastname,
@@ -4743,6 +4744,7 @@ info@axcentdance.com`;
                 _subject: `New Contact from ${data.name}`,
                 _template: 'table', // or 'box'
                 _captcha: 'false',  // Disable captcha if you want instant submission
+                _cc: 'slamitza@gmail.com',
                 _autoresponse: isGermanPage ? `Danke für deine Nachricht an AXcent Dance.
 
 Wir melden uns bald per E-Mail oder WhatsApp.
@@ -4832,6 +4834,7 @@ info@axcentdance.com`,
                 _subject: `New Bootcamp Registration from ${data.firstname} ${data.lastname}`,
                 _template: 'table',
                 _captcha: 'false',
+                _cc: 'slamitza@gmail.com',
                 _autoresponse: `Thank you for registering for the Dominican Bachata Bootcamp!\n\nIf you haven't completed your payment yet, please use this secure link: https://buy.stripe.com/8x214p2wDgyt2BV9cCfnO0a\n\nBest regards,\nThe AXcent Dance Team`,
                 firstname: data.firstname,
                 lastname: data.lastname,
