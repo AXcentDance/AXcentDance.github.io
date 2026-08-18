@@ -5,17 +5,22 @@ name: Supabase Monitor
 # uses); the first successful check after a confirmed outage sends an UP
 # email. Exactly one email per transition — no repeats while down.
 #
-# State ("<consecutive-failures>:<alerted yes/no>") lives in the repository
-# Actions variable SUPABASE_MONITOR_STATE so it survives between runs.
+# State lives in the workflow's own run history: a run exits nonzero when
+# the ping fails, so "consecutive failures" is read back with the runs API
+# (GITHUB_TOKEN only needs actions:read). The previous design stored state
+# in a repository Actions variable, but writing variables fails with
+# "Resource not accessible by integration" (HTTP 403) under this repo's
+# token policy — see the first run on 2026-08-18.
 #
 # Notes:
-#   * Scheduled workflows only run from the default branch — this activates
-#     when the branch merges to main (same as the keep-alive workflow).
+#   * Scheduled workflows only run from the default branch — this activated
+#     when the revamp merged to main (same as the keep-alive workflow).
 #   * GitHub may delay or occasionally skip scheduled runs under load, so
 #     timings are approximate. The alert therefore fires roughly 40-60
 #     minutes into an outage.
 #   * As a side effect the pings count as project activity, which also
 #     protects against the free-tier inactivity pause.
+#   * Failed pings show as red runs in the Actions tab by design.
 
 on:
   schedule:
@@ -23,7 +28,7 @@ on:
   workflow_dispatch: {}
 
 permissions:
-  actions: write
+  actions: read
 
 concurrency: supabase-monitor
 
@@ -32,7 +37,6 @@ jobs:
     runs-on: ubuntu-latest
     env:
       GH_TOKEN: ${{ github.token }}
-      VAR_NAME: SUPABASE_MONITOR_STATE
     steps:
       - name: Ping Supabase and alert on state change
         run: |
@@ -43,10 +47,14 @@ jobs:
             -H "apikey: ${ANON_KEY}" -H "Authorization: Bearer ${ANON_KEY}" || echo "000")
           echo "Supabase responded with HTTP ${STATUS}"
 
-          STATE=$(gh api "repos/${GITHUB_REPOSITORY}/actions/variables/${VAR_NAME}" --jq .value 2>/dev/null || echo "0:no")
-          FAILS="${STATE%%:*}"
-          ALERTED="${STATE##*:}"
-          echo "Previous state: ${FAILS} consecutive failure(s), alerted=${ALERTED}"
+          # Conclusions of the two most recent COMPLETED runs of this
+          # workflow (the current run is still in_progress, so it is never
+          # in this list). PREV1 is the newest. Missing runs read as empty.
+          RUNS=$(gh api "repos/${GITHUB_REPOSITORY}/actions/workflows/supabase-monitor.yml/runs?status=completed&per_page=2" \
+            --jq '.workflow_runs[].conclusion' 2>/dev/null || true)
+          PREV1=$(echo "${RUNS}" | sed -n 1p)
+          PREV2=$(echo "${RUNS}" | sed -n 2p)
+          echo "Previous run conclusions: newest=${PREV1:-none}, before=${PREV2:-none}"
 
           send_mail() {
             curl -s "https://formsubmit.co/ajax/info@axcentdance.com" \
@@ -56,24 +64,24 @@ jobs:
           }
 
           if [ "${STATUS}" = "200" ]; then
-            if [ "${ALERTED}" = "yes" ]; then
+            # Recovery: an alert only ever went out after two consecutive
+            # failed runs, so email exactly when the last two runs failed.
+            if [ "${PREV1}" = "failure" ] && [ "${PREV2}" = "failure" ]; then
               send_mail "Supabase is UP again ✅" "Recovered — portal logins, admin pages and the Stripe webhook are reachable again."
               echo "Recovery email sent."
             fi
-            NEW_STATE="0:no"
-          else
-            FAILS=$((FAILS + 1))
-            if [ "${FAILS}" -ge 2 ] && [ "${ALERTED}" != "yes" ]; then
-              send_mail "Supabase appears DOWN 🔴" "Two consecutive checks failed (last HTTP ${STATUS}). Portal logins and admin pages are likely unavailable. Stripe payments keep working and webhooks retry automatically — no money is lost. Check https://status.supabase.com"
-              echo "Down alert sent."
-              NEW_STATE="${FAILS}:yes"
-            else
-              NEW_STATE="${FAILS}:${ALERTED}"
-            fi
+            exit 0
           fi
 
-          echo "New state: ${NEW_STATE}"
-          gh api -X PATCH "repos/${GITHUB_REPOSITORY}/actions/variables/${VAR_NAME}" \
-            -f name="${VAR_NAME}" -f value="${NEW_STATE}" 2>/dev/null || \
-          gh api -X POST "repos/${GITHUB_REPOSITORY}/actions/variables" \
-            -f name="${VAR_NAME}" -f value="${NEW_STATE}"
+          # This run will conclude "failure" (exit 1 below), encoding the
+          # outage in run history. Email on the exact transition to two
+          # consecutive failures: previous run failed, the one before not.
+          if [ "${PREV1}" = "failure" ] && [ "${PREV2}" != "failure" ]; then
+            send_mail "Supabase appears DOWN 🔴" "Two consecutive checks failed (last HTTP ${STATUS}). Portal logins and admin pages are likely unavailable. Stripe payments keep working and webhooks retry automatically — no money is lost. Check https://status.supabase.com"
+            echo "Down alert sent."
+          elif [ "${PREV1}" = "failure" ]; then
+            echo "Still down; alert already sent earlier in this outage."
+          else
+            echo "First failed check; waiting for a second before alerting."
+          fi
+          exit 1
