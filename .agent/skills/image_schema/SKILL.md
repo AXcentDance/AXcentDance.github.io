@@ -37,11 +37,12 @@ A plain URL string is *technically valid*, but **`ImageObject` with explicit `wi
   "creditText": "AXcent Dance",
   "copyrightNotice": "© AXcent Dance",
   "creator": { "@type": "Organization", "name": "AXcent Dance" },
-  "license": "https://axcentdance.com/terms"
+  "license": "https://axcentdance.com/terms",
+  "acquireLicensePage": "https://axcentdance.com/contact"
 }
 ```
 
-> **Credit fields (added 2026-07-05, creator format revised 2026-08-19):** every hero `ImageObject` (any block that carries `width`/`height`) MUST include `creditText`, `copyrightNotice`, `creator`, and `license` pointing to `https://axcentdance.com/terms`. Google reads these for image credit/licensing information in Google Images. The `creator` must be INLINE — `{ "@type": "Organization", "name": "AXcent Dance" }` — never an `@id` reference to `#organization`: Google's Rich Results validator does not resolve `@id` references here and reports "Invalid object type for field creator" (confirmed in Search Console 2026-08-19; 97 instances migrated site-wide). Do NOT add them to the publisher `logo` ImageObject, and do NOT add `acquireLicensePage` (our photos are not offered for licensing; Search Console shows a non-critical "Missing field acquireLicensePage" warning for this — it is accepted and expected).
+> **Credit fields (added 2026-07-05, revised 2026-08-19):** every hero `ImageObject` (any block that carries `width`/`height`) MUST include `creditText`, `copyrightNotice`, `creator`, `license` pointing to `https://axcentdance.com/terms`, and `acquireLicensePage` pointing to `https://axcentdance.com/contact`. Google reads these for image credit/licensing information in Google Images. Two format rules learned from Search Console validation (2026-08-19): the `creator` must be INLINE — `{ "@type": "Organization", "name": "AXcent Dance" }` — never an `@id` reference to `#organization` (Google's validator does not resolve `@id` references here and reports "Invalid object type for field creator"); and `acquireLicensePage` uses the EN contact URL on both EN and DE pages, same single-URL convention as `license`. Owner decision 2026-08-19: the contact page is the licensing contact point — reuse requests are handled case by case by email; there is no dedicated licensing page and no standing commercial offer. Do NOT add any of these fields to the publisher `logo` ImageObject.
 
 ### Multiple aspect ratios (ideal for Google Discover — flagship posts only)
 
