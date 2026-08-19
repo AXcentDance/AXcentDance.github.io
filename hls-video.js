@@ -72,6 +72,17 @@ async function attach(video, playlistUrl, { autoStart = false } = {}) {
             video.src = window.matchMedia('(min-width: 1024px)').matches
                 ? playlistUrl.replace(/playlist\.m3u8$/, 'playlist_desktop.m3u8')
                 : playlistUrl;
+            // autoStart must kick loading here, mirroring hls.js's
+            // startLoad(): preload="none" is honored natively, so a bare
+            // src swap never reaches loadedmetadata and callers waiting on
+            // it (the homepage hero switcher) would deadlock with the stage
+            // faded out. autoStart callers are muted autoplay heroes, so
+            // play() is safe without a gesture.
+            if (autoStart) {
+                video.muted = true;
+                const p = video.play();
+                if (p && typeof p.catch === 'function') p.catch(() => {});
+            }
             return true;
         }
         return false; // no MSE and no native HLS: progressive fallback keeps working
