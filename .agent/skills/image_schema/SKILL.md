@@ -36,12 +36,12 @@ A plain URL string is *technically valid*, but **`ImageObject` with explicit `wi
   "height": 675,
   "creditText": "AXcent Dance",
   "copyrightNotice": "© AXcent Dance",
-  "creator": { "@id": "https://axcentdance.com/#organization" },
+  "creator": { "@type": "Organization", "name": "AXcent Dance" },
   "license": "https://axcentdance.com/terms"
 }
 ```
 
-> **Credit fields (added 2026-07-05):** every hero `ImageObject` (any block that carries `width`/`height`) MUST include `creditText`, `copyrightNotice`, `creator` (as an `@id` reference to `#organization`), and `license` pointing to `https://axcentdance.com/terms`. Google reads these for image credit/licensing information in Google Images. Do NOT add them to the publisher `logo` ImageObject, and do NOT add `acquireLicensePage` (our photos are not offered for licensing).
+> **Credit fields (added 2026-07-05, creator format revised 2026-08-19):** every hero `ImageObject` (any block that carries `width`/`height`) MUST include `creditText`, `copyrightNotice`, `creator`, and `license` pointing to `https://axcentdance.com/terms`. Google reads these for image credit/licensing information in Google Images. The `creator` must be INLINE — `{ "@type": "Organization", "name": "AXcent Dance" }` — never an `@id` reference to `#organization`: Google's Rich Results validator does not resolve `@id` references here and reports "Invalid object type for field creator" (confirmed in Search Console 2026-08-19; 97 instances migrated site-wide). Do NOT add them to the publisher `logo` ImageObject, and do NOT add `acquireLicensePage` (our photos are not offered for licensing; Search Console shows a non-critical "Missing field acquireLicensePage" warning for this — it is accepted and expected).
 
 ### Multiple aspect ratios (ideal for Google Discover — flagship posts only)
 
