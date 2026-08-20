@@ -8,20 +8,20 @@ window.AXCENT_PASSES = {
             regular: "https://buy.stripe.com/5kQeVfefleql3FZdsSfnO0k"
         },
         "4 Classes/Week (8 Weeks)": {
-            student: "https://buy.stripe.com/dRmdRbdbh4PLccv74ufnO07",
-            regular: "https://buy.stripe.com/00w14p9Z59610tN1KafnO06"
+            student: "https://buy.stripe.com/eVq7sN6MT81X4K32OefnO0t",
+            regular: "https://buy.stripe.com/bJecN71sz961foH9cCfnO0s"
         },
         "3 Classes/Week (8 Weeks)": {
-            student: "https://buy.stripe.com/aFabJ37QXgyt90j60qfnO05",
-            regular: "https://buy.stripe.com/cNiaEZ8V13LH90j74ufnO04"
+            student: "https://buy.stripe.com/4gMbJ34EL9611xR60qfnO0q",
+            regular: "https://buy.stripe.com/7sYdRb6MT3LHgsL3SifnO0p"
         },
         "2 Classes/Week (8 Weeks)": {
             student: "https://buy.stripe.com/aFaeVf4ELeqla4n3SifnO03",
-            regular: "https://buy.stripe.com/eVqeVf9Z581X1xR60qfnO02"
+            regular: "https://buy.stripe.com/28E6oJgnt0zvgsLdsSfnO0o"
         },
         "1 Course (8 Weeks)": {
-            student: "https://buy.stripe.com/cNidRb9Z56XTccv0G6fnO01",
-            regular: "https://buy.stripe.com/eVq28tb395TP5O7agGfnO00"
+            student: "https://buy.stripe.com/aFa8wRgntbe93FZdsSfnO0n",
+            regular: "https://buy.stripe.com/aFaeVf6MTcid6SbewWfnO0m"
         }
     },
 
@@ -31,7 +31,7 @@ window.AXCENT_PASSES = {
         { value: "1 Course (8 Weeks)", en: "1 Course", de: "1 Kurs", regular: "210 CHF", student: "175 CHF", durationDays: 55 },
         { value: "2 Classes/Week (8 Weeks)", en: "2 Classes/Week", de: "2 Kurse/Woche", regular: "320 CHF", student: "270 CHF", durationDays: 55 },
         { value: "3 Classes/Week (8 Weeks)", en: "3 Classes/Week", de: "3 Kurse/Woche", regular: "390 CHF", student: "330 CHF", durationDays: 55 },
-        { value: "4 Classes/Week (8 Weeks)", en: "All You Can Dance", de: "All You Can Dance", regular: "450 CHF", student: "380 CHF", durationDays: 55 },
+        { value: "4 Classes/Week (8 Weeks)", en: "All You Can Dance", de: "All You Can Dance", regular: "440 CHF", student: "375 CHF", durationDays: 55 },
         { value: "10-Class Flexible Package", en: "10-Class Flexible (1 Year)", de: "10er-Abo Flexibel (1 Jahr)", regular: "290 CHF", student: "245 CHF", durationDays: 365 }
     ],
 
