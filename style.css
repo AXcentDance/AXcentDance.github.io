@@ -11682,14 +11682,19 @@ body.home-page .trial-season-note .starter-countdown__cell:first-child {
 /* The season reminder lives inside the form's step-1 header, under the
    title. The header sits on the champagne card, so the dark-panel palette
    flips to the AA ink/gold pair and the block centers with the title. */
+body.home-page .trial-form {
+    gap: 1rem;
+}
+
 body.home-page .trial-step__header .trial-season-note {
-    margin-top: 1rem;
+    margin-top: 0.4rem;
     padding-top: 0;
     border-top: 0;
 }
 
 body.home-page .trial-step__header .trial-season-note__copy {
     margin: 0 auto;
+    max-width: 62ch;
     color: #6D6154;
 }
 
@@ -11698,7 +11703,7 @@ body.home-page .trial-step__header .trial-season-note__copy strong {
 }
 
 body.home-page .trial-step__header .trial-season-note .starter-countdown:not([hidden]) {
-    margin: 0.9rem auto 0;
+    margin: 0.5rem auto 0;
 }
 
 body.home-page .trial-step__header .trial-season-note .starter-countdown__cell:first-child {
