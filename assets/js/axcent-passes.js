@@ -4,8 +4,8 @@
 window.AXCENT_PASSES = {
     stripeLinks: {
         "10-Class Flexible Package": {
-            student: "https://buy.stripe.com/aFa00l1sz1Dz90jewWfnO09",
-            regular: "https://buy.stripe.com/8x2cN71szaa5b8r88yfnO08"
+            student: "https://buy.stripe.com/aFafZj9Z55TPfoHbkKfnO0l",
+            regular: "https://buy.stripe.com/5kQeVfefleql3FZdsSfnO0k"
         },
         "4 Classes/Week (8 Weeks)": {
             student: "https://buy.stripe.com/dRmdRbdbh4PLccv74ufnO07",
@@ -32,7 +32,7 @@ window.AXCENT_PASSES = {
         { value: "2 Classes/Week (8 Weeks)", en: "2 Classes/Week", de: "2 Kurse/Woche", regular: "320 CHF", student: "270 CHF", durationDays: 55 },
         { value: "3 Classes/Week (8 Weeks)", en: "3 Classes/Week", de: "3 Kurse/Woche", regular: "390 CHF", student: "330 CHF", durationDays: 55 },
         { value: "4 Classes/Week (8 Weeks)", en: "All You Can Dance", de: "All You Can Dance", regular: "450 CHF", student: "380 CHF", durationDays: 55 },
-        { value: "10-Class Flexible Package", en: "10-Class Flexible (1 Year)", de: "10er-Abo Flexibel (1 Jahr)", regular: "300 CHF", student: "255 CHF", durationDays: 365 }
+        { value: "10-Class Flexible Package", en: "10-Class Flexible (1 Year)", de: "10er-Abo Flexibel (1 Jahr)", regular: "290 CHF", student: "245 CHF", durationDays: 365 }
     ],
 
     classes: [
