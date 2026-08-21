@@ -20734,6 +20734,24 @@ body.error-page .error-message {
     font-size: 1.05rem;
 }
 
+/* 404 recovery links for lost visitors and AI agents (sitemap, llms.txt) */
+body.error-page .error-recovery {
+    margin-top: 1.6rem;
+    font-size: 0.9rem;
+}
+
+body.error-page .error-recovery a {
+    color: var(--link-ink);
+    text-decoration: underline;
+    text-underline-offset: 0.18em;
+    transition: color 0.3s ease;
+}
+
+body.error-page .error-recovery a:hover,
+body.error-page .error-recovery a:focus-visible {
+    color: var(--link-ink-hover);
+}
+
 /* Trial thank-you: guide mini cards */
 body.thankyou-page .guides-preview-section {
     margin-top: 2.5rem;

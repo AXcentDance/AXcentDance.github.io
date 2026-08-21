@@ -240,6 +240,57 @@ def check_llms(pages):
     for leak in ('.claude/', 'System/', 'blog-posts/', 'tests/'):
         if f'({leak}' in content:
             fail('llms', f"llms-full.txt leaks internal content: {leak}")
+    # llms.txt must keep its agent when-to-use guidance (Is Agentic 2026-08)
+    index_path = os.path.join(ROOT_DIR, 'llms.txt')
+    if not os.path.exists(index_path):
+        fail('llms', 'llms.txt missing')
+        return
+    with open(index_path, encoding='utf-8') as f:
+        index_content = f.read()
+    if '## When to use this site' not in index_content:
+        fail('llms', 'llms.txt lost its "When to use this site" agent '
+                     'instruction section')
+
+
+def check_agent_readiness(pages):
+    """Agent-readiness invariants (Is Agentic audit, 2026-08-21).
+
+    1. The 404 pages must keep their recovery links (sitemap.xml, llms.txt,
+       llms-full.txt) so an agent that hits a dead URL can re-orient.
+    2. Every full #organization JSON-LD node must carry a complete
+       contactPoint (contactType + email + telephone): AI assistants use it
+       to verify the business and answer contact queries.
+    """
+    for page in ('404.html', 'de/404.html'):
+        if page not in pages:
+            fail('agent', f'{page} missing')
+            continue
+        for target in ('/sitemap.xml', '/llms.txt', '/llms-full.txt'):
+            if f'href="{target}"' not in pages[page]:
+                fail('agent', f'{page} lost its recovery link to {target}')
+    for page in sorted(pages):
+        for block in re.findall(
+                r'<script type="application/ld\+json">(.*?)</script>',
+                pages[page], re.S):
+            try:
+                data = json.loads(block)
+            except ValueError:
+                continue  # invalid JSON is check_schema's failure to report
+            for node in data.get('@graph', []):
+                if node.get('@id') != f'{DOMAIN}/#organization' \
+                        or 'name' not in node:
+                    continue
+                cp = node.get('contactPoint')
+                if isinstance(cp, list):
+                    cp = cp[0] if cp else None
+                if not isinstance(cp, dict) or cp.get('@type') != 'ContactPoint':
+                    fail('agent', f'{page}: organization node has no '
+                                  'contactPoint')
+                    continue
+                for key in ('contactType', 'email', 'telephone'):
+                    if not cp.get(key):
+                        fail('agent', f'{page}: organization contactPoint '
+                                      f'missing {key}')
 
 
 def check_speculation_rules(pages):
@@ -478,6 +529,7 @@ def run_external_checks():
         ('hreflang', ['python3', 'scripts/audit_hreflang.py'], 'perfectly reciprocal'),
         ('minified assets', ['python3', 'scripts/minify_assets.py', '--check'], 'PASS: minified twins current'),
         ('critical css', ['python3', 'scripts/critical_css.py', '--check'], 'PASS: critical CSS fresh'),
+        ('markdown twins', ['python3', 'scripts/generate_md_pages.py', '--check'], 'PASS: markdown twins current'),
     ]
     for name, cmd, ok_marker in checks:
         result = subprocess.run(cmd, cwd=ROOT_DIR, capture_output=True, text=True)
@@ -523,6 +575,7 @@ def main():
     check_canonicals(pages, indexable)
     check_blog_indexes(pages, indexable)
     check_llms(pages)
+    check_agent_readiness(pages)
     check_speculation_rules(pages)
     check_page_baseline(pages)
     check_script_loading(pages)
