@@ -5,8 +5,10 @@
  * negotiates between the HTML page and its markdown twin (<path>.md, generated
  * by scripts/generate_md_pages.py and published as static files):
  *
- *   - Accept prefers text/markdown  -> serve the .md twin,
- *     Content-Type: text/markdown; charset=utf-8, Vary: Accept
+ *   - Accept names text/markdown EXPLICITLY and prefers it -> serve the .md
+ *     twin, Content-Type: text/markdown; charset=utf-8, Vary: Accept.
+ *     A wildcard match alone (* / * or text/*) never selects markdown, so
+ *     generic clients (curl's default Accept, link-preview scrapers) get HTML
  *   - Accept prefers text/html (or wildcard, or no Accept header) -> serve the
  *     HTML page, Vary: Accept added
  *   - Accept matches neither (no wildcard)  -> 406 Not Acceptable
@@ -46,8 +48,9 @@ function parseAccept(header) {
   return out;
 }
 
-function scoreFor(mimeType, accepted) {
-  // Highest q among entries matching mimeType (exact > type/* > */*), or -1
+function matchFor(mimeType, accepted) {
+  // Best match for mimeType: {q, spec} with spec 2=exact, 1=type/*, 0=*/*.
+  // q is -1 when nothing matches.
   const [type, subtype] = mimeType.split('/');
   let best = -1;
   let bestSpec = -1;
@@ -62,7 +65,7 @@ function scoreFor(mimeType, accepted) {
       best = a.q;
     }
   }
-  return best;
+  return { q: best, spec: bestSpec };
 }
 
 function isPageUrl(pathname) {
@@ -99,8 +102,13 @@ export default {
     const acceptHeader = request.headers.get('Accept');
     // No Accept header means "anything" (RFC 9110): serve HTML
     const accepted = acceptHeader ? parseAccept(acceptHeader) : null;
-    const mdScore = accepted ? scoreFor(MD_TYPE, accepted) : 0;
-    const htmlScore = accepted ? scoreFor(HTML_TYPE, accepted) : 1;
+    const md = accepted ? matchFor(MD_TYPE, accepted) : { q: 0, spec: -1 };
+    const html = accepted ? matchFor(HTML_TYPE, accepted) : { q: 1, spec: -1 };
+    const mdScore = md.q;
+    const htmlScore = html.q;
+    // Markdown is served only on an EXPLICIT text/markdown entry (spec 2):
+    // wildcard-only clients (curl's */*, link-preview scrapers) get HTML.
+    const wantsMarkdown = md.spec === 2 && mdScore > 0 && mdScore >= htmlScore;
 
     if (accepted && mdScore <= 0 && htmlScore <= 0) {
       return new Response(
@@ -113,7 +121,7 @@ export default {
       );
     }
 
-    if (mdScore > 0 && mdScore >= htmlScore) {
+    if (wantsMarkdown) {
       const twinUrl = new URL(url);
       twinUrl.pathname = mdPath(url.pathname);
       const twin = await fetch(new Request(twinUrl, request));
