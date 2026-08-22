@@ -30,6 +30,9 @@ System/GSC_Content_Report.md
 System/gsc_search_console_data.json
 System/GSC_Topic_Action_Report.md
 
+# Private playbook, never publish (owner rule 2026-08-22)
+System/website-optimization-playbook.md
+
 # Large Media Files (Exclude from normal git tracking, use LFS if needed)
 *.mp4
 *.mov
