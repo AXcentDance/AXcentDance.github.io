@@ -79,6 +79,26 @@ function mdPath(pathname) {
   return pathname + '.md';
 }
 
+function markdown404() {
+  // Agent-friendly 404: a short markdown body with recovery links, served
+  // when a markdown-preferring client requests a path that does not exist.
+  return new Response(
+    '# 404: Page Not Found\n\n' +
+      'This path does not exist on axcentdance.com.\n\n' +
+      'Where to look next:\n\n' +
+      '- [Agent guide (llms.txt)](https://axcentdance.com/llms.txt)\n' +
+      '- [Full site content (llms-full.txt)](https://axcentdance.com/llms-full.txt)\n' +
+      '- [Site map (sitemap.xml)](https://axcentdance.com/sitemap.xml)\n' +
+      '- [Homepage](https://axcentdance.com/)\n\n' +
+      'Tip: append .md to any page URL for a markdown rendition, ' +
+      'for example https://axcentdance.com/schedule.md\n',
+    {
+      status: 404,
+      headers: { 'Content-Type': 'text/markdown; charset=utf-8', Vary: 'Accept' },
+    },
+  );
+}
+
 function withVary(response) {
   const r = new Response(response.body, response);
   const vary = r.headers.get('Vary');
@@ -131,14 +151,20 @@ export default {
         r.headers.set('Vary', 'Accept');
         return r;
       }
-      // No twin (page is noindex or twin missing): fall through to HTML,
-      // unless the client cannot accept HTML at all
+      // No twin. A nonexistent page gets a short markdown 404 so agents can
+      // recover; an existing page without a twin (noindex pages) falls back
+      // to HTML when the client can take it.
+      const origin = await fetch(request);
+      if (origin.status === 404) {
+        return markdown404();
+      }
       if (htmlScore <= 0) {
         return new Response('406 Not Acceptable\n', {
           status: 406,
           headers: { 'Content-Type': 'text/plain; charset=utf-8', Vary: 'Accept' },
         });
       }
+      return withVary(origin);
     }
 
     return withVary(await fetch(request));
